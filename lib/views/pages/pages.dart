@@ -9,7 +9,7 @@ part 'welcome_page.dart';
 part 'sign_in_page.dart';
 part 'sign_up_page.dart';
 part 'homepage.dart';
-part 'film_page.blade.dart';
+part 'film_page.dart';
 part 'podcast_page.dart';
 part 'profile_page.dart';
 part 'ask_the_expert_page.dart';
