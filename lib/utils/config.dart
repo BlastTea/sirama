@@ -16,6 +16,8 @@ class Config {
 
   static get heightSize => screenHeight;
 
+  static const appName = 'sirama';
+
   // define spacing height
   static const spaceSmall = SizedBox(
     height: 25,

@@ -15,6 +15,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) => GetMaterialApp(
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: scaffoldMessengerKey,
+        title: Config.appName,
         theme: ThemeData.light().copyWith(
           materialTapTargetSize: MaterialTapTargetSize.padded,
           colorScheme: ColorScheme.fromSeed(
