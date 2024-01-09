@@ -6,11 +6,13 @@ class MyFilledButton extends StatelessWidget {
     required this.onPressed,
     this.iconAssetName,
     required this.labelText,
+    this.textStyle,
   });
 
   final VoidCallback? onPressed;
   final String? iconAssetName;
   final String labelText;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) => Directionality(
@@ -26,10 +28,10 @@ class MyFilledButton extends StatelessWidget {
               : Container(),
           label: Text(
             labelText,
-            style: const TextStyle(
-              fontSize: 16.0,
-              color: Colors.white,
-            ),
+            style: textStyle ??
+                Config.textStyleTitleSmall.copyWith(
+                  color: Colors.white,
+                ),
           ),
           style: FilledButton.styleFrom(
             padding: const EdgeInsets.symmetric(

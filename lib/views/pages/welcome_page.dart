@@ -8,6 +8,7 @@ class WelcomePage extends StatelessWidget {
         body: Center(
           child: ListView(
             shrinkWrap: true,
+            padding: responsivePadding(MediaQuery.sizeOf(context), minimumHorizontalPadding: 64.0),
             children: [
               Image.asset(
                 'assets/dummy logo.png',
@@ -31,21 +32,15 @@ class WelcomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32.0),
-              Padding(
-                padding: responsivePadding(MediaQuery.sizeOf(context), minimumHorizontalPadding: 64.0),
-                child: Image.asset(
-                  'assets/welcome image.png',
-                ),
-              ),
+              Image.asset('assets/welcome image.png'),
               const SizedBox(height: 32.0),
               Center(
                 child: MyFilledButton(
-                  onPressed: () => Get.to(const EducationalVideoPage()),
+                  onPressed: () => Get.to(() => const SignInPage()),
                   iconAssetName: 'assets/icons/Monotone arrow right.png',
                   labelText: 'Daftar',
                 ),
               ),
-              const SizedBox(height: 8.0),
               Center(
                 child: TextButton(
                   onPressed: () {},

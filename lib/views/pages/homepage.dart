@@ -3,7 +3,7 @@ part of 'pages.dart';
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
-  final RxInt selectedIndex = 1.obs;
+  final RxInt selectedIndex = 0.obs;
 
   @override
   Widget build(BuildContext context) => Scaffold(

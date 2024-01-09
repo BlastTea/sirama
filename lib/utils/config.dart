@@ -31,17 +31,20 @@ class Config {
   );
 
   // text form field
-  static const outlinedBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(8)),
+  static InputBorder outlinedBorder = OutlineInputBorder(
+    borderRadius: const BorderRadius.all(Radius.circular(10)),
+    borderSide: BorderSide(
+      color: greyColor.withOpacity(0.3),
+    ),
   );
 
   static const focusBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderRadius: BorderRadius.all(Radius.circular(10)),
     borderSide: BorderSide(color: Color.fromRGBO(36, 46, 73, 100)),
   );
 
   static const errorBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(8)),
+    borderRadius: BorderRadius.all(Radius.circular(10)),
     borderSide: BorderSide(
       color: Colors.red,
     ),
@@ -49,6 +52,7 @@ class Config {
 
   // static const primaryColor = Color.fromRGBO(139, 192, 248, 100);
   static const primaryColor = Color(0xFF8BC0F8);
+  static const greyColor = Color(0xFF858585);
 
   static const fontColor = Color(0xFF242E49);
 
@@ -69,6 +73,29 @@ class Config {
   static TextStyle textStyleHeadlineSmall = defaultStyle.copyWith(
     fontSize: 22.0,
     fontWeight: FontWeight.w600,
+    color: fontColor,
+  );
+
+  static TextStyle textStyleTitleLarge = defaultStyle.copyWith(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: fontColor,
+  );
+
+  static TextStyle textStyleTitleMedium = defaultStyle.copyWith(
+    fontSize: 18.0,
+    fontWeight: FontWeight.bold,
+    color: fontColor,
+  );
+
+  static TextStyle textStyleTitleSmall = defaultStyle.copyWith(
+    fontSize: 16.0,
+    fontWeight: FontWeight.w600,
+    color: fontColor,
+  );
+
+  static TextStyle textStyleBodyLarge = defaultStyle.copyWith(
+    fontSize: 14.0,
     color: fontColor,
   );
 }
