@@ -13,6 +13,7 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
         navigatorKey: navigatorKey,
         scaffoldMessengerKey: scaffoldMessengerKey,
         title: Config.appName,
@@ -34,5 +35,10 @@ class MainApp extends StatelessWidget {
           ),
         ),
         home: const WelcomePage(),
+        // profile: const ProfilePage(),
+        // route for home page
+
+
+
       );
 }

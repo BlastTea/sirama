@@ -61,6 +61,7 @@ class Config {
     fontSize: 26.0,
     fontWeight: FontWeight.w800,
     color: fontColor,
+    fontFamily: 'PlusJakartaSans',
   );
 
   static const TextStyle textStyleHeadlineSmall = TextStyle(

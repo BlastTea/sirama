@@ -40,7 +40,7 @@ class WelcomePage extends StatelessWidget {
               const SizedBox(height: 32.0),
               Center(
                 child: MyFilledButton(
-                  onPressed: () => Get.to(const SignInPage()),
+                  onPressed: () => Get.to(const EducationalVideoPage()),
                   iconAssetName: 'assets/icons/Monotone arrow right.png',
                   labelText: 'Daftar',
                 ),
