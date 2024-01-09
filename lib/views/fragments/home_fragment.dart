@@ -146,15 +146,25 @@ class HomeFragment extends StatelessWidget {
               SizedBox(
                 height: 35,
                 child: ListView.separated(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
                     scrollDirection: Axis.horizontal,
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     itemBuilder: (context, index) => Container(
+                          padding: const EdgeInsets.all(10),
                           decoration: BoxDecoration(
-                            color: selectedFitur == index
-                                ? Config.primaryColor
-                                : Colors.white,
+                              color: selectedFitur == index
+                                  ? Config.primaryColor
+                                  : Colors.red,
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Text(
+                            fitur[index],
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontWeight: FontWeight.bold,
+                              color: selectedFitur == index
+                                  ? Colors.white
+                                  : Colors.black,
+                            ),
                           ),
-                          child: Text(fitur[index]),
                         ),
                     separatorBuilder: (context, index) => const SizedBox(
                           width: 10,
