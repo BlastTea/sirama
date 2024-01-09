@@ -1,10 +1,8 @@
 part of 'fragments.dart';
 
-class ChatMe extends StatelessWidget {
-  const ChatMe({super.key});
+class ChatMeFragment extends StatelessWidget {
+  const ChatMeFragment({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
-  }
+  Widget build(BuildContext context) => const Center(child: Text('Chat me Fragment'));
 }

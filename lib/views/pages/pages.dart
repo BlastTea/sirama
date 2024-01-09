@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/utils/config.dart';
+import 'package:sirama/views/fragments/fragments.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 
 part 'welcome_page.dart';

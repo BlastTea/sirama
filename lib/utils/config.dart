@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class Config {
   static MediaQueryData? mediaQueryData;
@@ -51,20 +52,22 @@ class Config {
 
   static const fontColor = Color(0xFF242E49);
 
-  static const TextStyle textStyleHeadlineLarge = TextStyle(
+  static TextStyle defaultStyle = GoogleFonts.plusJakartaSans();
+
+  static TextStyle textStyleHeadlineLarge = defaultStyle.copyWith(
     fontSize: 30.0,
     fontWeight: FontWeight.w800,
     color: fontColor,
   );
 
-  static const TextStyle textStyleHeadlineMedium = TextStyle(
+  static TextStyle textStyleHeadlineMedium = defaultStyle.copyWith(
     fontSize: 26.0,
     fontWeight: FontWeight.w800,
     color: fontColor,
     fontFamily: 'PlusJakartaSans',
   );
 
-  static const TextStyle textStyleHeadlineSmall = TextStyle(
+  static TextStyle textStyleHeadlineSmall = defaultStyle.copyWith(
     fontSize: 22.0,
     fontWeight: FontWeight.w600,
     color: fontColor,

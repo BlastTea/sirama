@@ -11,6 +11,7 @@ dependencies:
     sdk: flutter
   freezed_annotation: ^2.4.1
   get: ^4.6.6
+  google_fonts: ^6.1.0
   http: ^1.1.0
   in_app_update: ^4.2.2
   json_annotation: ^4.8.1
@@ -29,40 +30,37 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.5
   json_serializable: ^6.7.1
-  
 
 flutter:
   uses-material-design: true
   fonts:
-  - family: PlusJakartaSans
-    fonts:
-      - asset: fonts/PlusJakartaSans.ttf
+    - family: PlusJakartaSans
+      fonts:
+        - asset: fonts/PlusJakartaSans.ttf
   assets:
     - assets/
     - assets/icons/
-      # - asset: fonts/static/PlusJakartaSans-Bold.ttf
-      # - asset: fonts/static/PlusJakartaSans-BoldItalic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-ExtraBold.ttf
-      # - asset: fonts/static/PlusJakartaSans-ExtraBoldItalic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-ExtraItalic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-ExtraLightItalic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-Italic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-Light.ttf
-      # - asset: fonts/static/PlusJakartaSans-LightItalic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-Medium.ttf
-      # - asset: fonts/static/PlusJakartaSans-MediumItalic.ttf
-      #   style: italic
-      # - asset: fonts/static/PlusJakartaSans-SemiBold.ttf
-      # - asset: fonts/static/PlusJakartaSans-SemiBoldItalic.ttf
-      #   style: italic
-
-  
+    # - asset: fonts/static/PlusJakartaSans-Bold.ttf
+    # - asset: fonts/static/PlusJakartaSans-BoldItalic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-ExtraBold.ttf
+    # - asset: fonts/static/PlusJakartaSans-ExtraBoldItalic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-ExtraItalic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-ExtraLightItalic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-Italic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-Light.ttf
+    # - asset: fonts/static/PlusJakartaSans-LightItalic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-Medium.ttf
+    # - asset: fonts/static/PlusJakartaSans-MediumItalic.ttf
+    #   style: italic
+    # - asset: fonts/static/PlusJakartaSans-SemiBold.ttf
+    # - asset: fonts/static/PlusJakartaSans-SemiBoldItalic.ttf
+    #   style: italic
 
 flutter_launcher_icons:
   android: true

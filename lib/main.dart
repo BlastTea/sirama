@@ -34,11 +34,8 @@ class MainApp extends StatelessWidget {
             errorBorder: Config.errorBorder,
           ),
         ),
-        home: const WelcomePage(),
+        home: HomePage(),
         // profile: const ProfilePage(),
         // route for home page
-
-
-
       );
 }
