@@ -46,7 +46,7 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
                 MyFilledButton(
-                  onPressed: () {},
+                  onPressed: () => Get.offAll(() => HomePage()),
                   labelText: 'Masuk',
                   textStyle: Config.textStyleHeadlineSmall.copyWith(
                     color: Colors.white,
@@ -57,7 +57,7 @@ class SignInPage extends StatelessWidget {
           ),
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 72.0),
+          padding: const EdgeInsets.only(bottom: 32.0),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -68,7 +68,7 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () {},
+                onPressed: () => Get.to(() => const SignUpPage()),
                 child: Text(
                   'Sign Up',
                   style: Config.textStyleTitleSmall.copyWith(

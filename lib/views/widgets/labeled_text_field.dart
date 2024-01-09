@@ -13,6 +13,7 @@ class LabeledTextField extends StatefulWidget {
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
+    this.inputFormatters,
   }) : _isPassword = false;
 
   const LabeledTextField.password({
@@ -27,6 +28,7 @@ class LabeledTextField extends StatefulWidget {
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
+    this.inputFormatters,
   }) : _isPassword = true;
 
   final String labelText;
@@ -39,6 +41,7 @@ class LabeledTextField extends StatefulWidget {
   final ValueChanged<String>? onChanged;
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
   final bool _isPassword;
 
   @override
@@ -46,7 +49,13 @@ class LabeledTextField extends StatefulWidget {
 }
 
 class _LabeledTextFieldState extends State<LabeledTextField> {
-  final RxBool _showPassword = false.obs;
+  late final RxBool _showPassword;
+
+  @override
+  void initState() {
+    super.initState();
+    _showPassword = widget._isPassword ? false.obs : true.obs;
+  }
 
   void _handleTap() => _showPassword.toggle();
 
@@ -97,6 +106,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
             onChanged: widget.onChanged,
             onEditingComplete: widget.onEditingComplete,
             onSubmitted: widget.onSubmitted,
+            inputFormatters: widget.inputFormatters,
           ),
         ),
       ],
