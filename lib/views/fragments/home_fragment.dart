@@ -149,7 +149,7 @@ class HomeFragment extends StatelessWidget {
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
-                                        color: const Color.fromARGB(255, 219, 228, 252),
+                                        color: const Color(0xFFFAFAFA),
                                       ),
                                       child: const Text(
                                         'Tanya Ahli',

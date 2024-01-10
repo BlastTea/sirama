@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class EducationalVideoPage extends StatelessWidget {
   const EducationalVideoPage({super.key});
