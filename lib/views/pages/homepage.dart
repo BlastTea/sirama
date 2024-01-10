@@ -10,7 +10,7 @@ class Homepage extends StatelessWidget {
         body: Obx(() => [
               const HomeFragment(),
               const ScreeningFragment(),
-              const ChatMeFragment(),
+              ChatMeFragment(),
               const ProfileFragment(),
             ][selectedIndex.value]),
         bottomNavigationBar: Obx(

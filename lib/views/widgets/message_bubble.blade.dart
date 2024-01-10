@@ -1,5 +1,60 @@
 part of 'widgets.dart';
 
+class MessageBubble extends StatelessWidget {
+  const MessageBubble({
+    super.key,
+    required this.message,
+    this.isSender = false,
+    this.withTail = true,
+    required this.sentAt,
+  });
+
+  final String message;
+  final bool isSender;
+  final bool withTail;
+  final TimeOfDay sentAt;
+
+  @override
+  Widget build(BuildContext context) => Align(
+        alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
+        child: CustomPaint(
+          painter: MessageBubblePainter(
+            color: isSender ? Theme.of(context).colorScheme.primary : Config.greyColor,
+            alignment: isSender ? Alignment.topRight : Alignment.topLeft,
+            tail: withTail,
+          ),
+          child: Padding(
+              padding: EdgeInsets.fromLTRB(isSender ? 10.0 : 20.0, 10.0, isSender ? 20.0 : 10.0, 10.0),
+              child: _MessageBubble(
+                message: message,
+                sentAt: sentAt,
+              )
+
+              // ConstrainedBox(
+              //   constraints: const BoxConstraints(
+              //     minWidth: 100.0,
+              //   ),
+              //   child: Column(
+              //     mainAxisSize: MainAxisSize.min,
+              //     crossAxisAlignment: CrossAxisAlignment.start,
+              //     children: [
+              //       Text(
+              //         message,
+              //         style: Config.textStyleTitleSmall.copyWith(color: Colors.white),
+              //       ),
+              //       Text(
+              //         sentAt.toFormattedString(),
+              //         style: Config.textStyleBodyMedium,
+              //         textAlign: TextAlign.end,
+              //       ),
+              //     ],
+              //   ),
+              // ),
+              ),
+        ),
+      );
+}
+
 /// https://github.com/prahack/chat_bubbles/blob/master/lib/bubbles/bubble_special_one.dart
 class MessageBubblePainter extends CustomPainter {
   MessageBubblePainter({
@@ -117,41 +172,106 @@ class MessageBubblePainter extends CustomPainter {
   bool shouldRepaint(MessageBubblePainter oldDelegate) => oldDelegate.color != color || oldDelegate.alignment != alignment || oldDelegate.tail != tail;
 }
 
-class MessageBubble extends StatelessWidget {
-  const MessageBubble({
-    super.key,
+class _MessageBubble extends LeafRenderObjectWidget {
+  const _MessageBubble({
     required this.message,
-    this.isSender = false,
-    this.withTail = true,
-    this.sentAt,
+    required this.sentAt,
   });
 
   final String message;
-  final bool isSender;
-  final bool withTail;
-  final TimeOfDay? sentAt;
+  final TimeOfDay sentAt;
 
   @override
-  Widget build(BuildContext context) => CustomPaint(
-        painter: MessageBubblePainter(
-          color: Theme.of(context).colorScheme.primary,
-          alignment: isSender ? Alignment.topRight : Alignment.topLeft,
-          tail: withTail,
-        ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(message, style: const TextStyle(color: Colors.white)),
-              if (sentAt != null)
-                Text(
-                  sentAt!.toFormattedString(),
-                  style: Config.textStyleBodyMedium,
-                ),
-            ],
-          ),
-        ),
+  RenderObject createRenderObject(BuildContext context) => _RenderMessageBubble(
+        message: message,
+        sentAt: sentAt,
+        textDirection: Directionality.of(context),
       );
+
+  @override
+  void updateRenderObject(BuildContext context, _RenderMessageBubble renderObject) => renderObject
+    ..message = message
+    ..sentAt = sentAt;
+}
+
+class _RenderMessageBubble extends RenderBox {
+  _RenderMessageBubble({
+    required String message,
+    required TimeOfDay sentAt,
+    required TextDirection textDirection,
+  }) {
+    _message = message;
+    _sentAt = sentAt;
+
+    _messageTextPainter = TextPainter(
+      text: _messageTextSpan,
+      textDirection: textDirection,
+    );
+
+    _sentAtTextPainter = TextPainter(
+      text: _sentAtTextSpan,
+      textDirection: textDirection,
+    );
+  }
+
+  late TextPainter _messageTextPainter;
+  late TextPainter _sentAtTextPainter;
+
+  late double sentAtWidth;
+  late double sentAtHeight;
+
+  late String _message;
+  String get message => _message;
+  set message(String value) {
+    if (value == message) {
+      return;
+    }
+
+    _message = value;
+    markNeedsLayout();
+  }
+
+  late TimeOfDay _sentAt;
+  TimeOfDay get sentAt => _sentAt;
+  set sentAt(TimeOfDay value) {
+    if (value == sentAt) {
+      return;
+    }
+
+    _sentAt = value;
+    markNeedsLayout();
+  }
+
+  TextSpan get _messageTextSpan => TextSpan(text: message, style: Config.textStyleTitleSmall.copyWith(color: Colors.white));
+
+  TextSpan get _sentAtTextSpan => TextSpan(text: sentAt.toFormattedString(), style: Config.textStyleBodyMedium);
+
+  @override
+  void performLayout() {
+    BoxConstraints contentConstraints = constraints.copyWith(minWidth: 100.0);
+
+    _messageTextPainter.layout(maxWidth: contentConstraints.maxWidth, minWidth: contentConstraints.minWidth);
+    final messageTextLines = _messageTextPainter.computeLineMetrics();
+
+    _sentAtTextPainter.layout(maxWidth: contentConstraints.maxWidth, minWidth: contentConstraints.minWidth);
+    final sentAtTextLine = _sentAtTextPainter.computeLineMetrics().single;
+
+    double longestLineWidth = 0.0;
+    for (final line in messageTextLines) {
+      longestLineWidth = max(longestLineWidth, line.width);
+    }
+
+    final double messageHeight = messageTextLines.first.height * messageTextLines.length;
+
+    sentAtWidth = sentAtTextLine.width;
+    sentAtHeight = sentAtTextLine.height;
+
+    size = contentConstraints.constrain(Size(longestLineWidth, messageHeight + sentAtHeight + 2.0));
+  }
+
+  @override
+  void paint(PaintingContext context, Offset offset) {
+    _messageTextPainter.paint(context.canvas, offset);
+    _sentAtTextPainter.paint(context.canvas, offset + Offset(size.width - sentAtWidth, size.height - sentAtHeight));
+  }
 }
