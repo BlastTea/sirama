@@ -1,5 +1,6 @@
 part of 'fragments.dart';
 
+// TODO: Change this into page
 class ChatMeFragment extends StatelessWidget {
   ChatMeFragment({super.key});
 
@@ -106,12 +107,12 @@ class ChatMeFragment extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: const Text('Aal IF\'22'),
+          title: const Text('Zalorin Vexstar'),
           centerTitle: true,
           actions: const [
             ImageContainer.hero(
               tag: 'Chat Photo Profile',
-              image: AssetImage('assets/usman yousaf.jpg'),
+              image: NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
               width: 40.0,
               height: 40.0,
               border: Border(),
