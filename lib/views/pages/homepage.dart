@@ -1,7 +1,7 @@
 part of 'pages.dart';
 
-class HomePage extends StatelessWidget {
-  HomePage({super.key});
+class Homepage extends StatelessWidget {
+  Homepage({super.key});
 
   final RxInt selectedIndex = 0.obs;
 

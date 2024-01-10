@@ -55,7 +55,7 @@ class SignUpPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 33.0),
                 MyFilledButton(
-                  onPressed: () => Get.offAll(() => HomePage()),
+                  onPressed: () => Get.offAll(() => Homepage()),
                   labelText: 'Daftar',
                   textStyle: Config.textStyleHeadlineSmall.copyWith(
                     color: Colors.white,

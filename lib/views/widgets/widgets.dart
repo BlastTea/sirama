@@ -8,3 +8,4 @@ part 'my_filled_button.dart';
 part 'my_navigation_bar.dart';
 part 'card_educational_video.dart';
 part 'labeled_text_field.dart';
+part 'message_bubble.blade.dart';

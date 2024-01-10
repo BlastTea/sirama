@@ -98,4 +98,9 @@ class Config {
     fontSize: 14.0,
     color: fontColor,
   );
+  static TextStyle textStyleBodyMedium = defaultStyle.copyWith(
+    fontSize: 12.0,
+    color: fontColor,
+    fontWeight: FontWeight.w500,
+  );
 }

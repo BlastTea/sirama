@@ -46,7 +46,7 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
                 MyFilledButton(
-                  onPressed: () => Get.offAll(() => HomePage()),
+                  onPressed: () => Get.offAll(() => Homepage()),
                   labelText: 'Masuk',
                   textStyle: Config.textStyleHeadlineSmall.copyWith(
                     color: Colors.white,
