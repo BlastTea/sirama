@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class AskTheExpertPage extends StatelessWidget {
   const AskTheExpertPage({super.key});

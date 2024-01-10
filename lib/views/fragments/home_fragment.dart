@@ -49,7 +49,7 @@ class HomeFragment extends StatelessWidget {
                               style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
-                                  color: Colors.black),
+                                  color: Colors.black26),
                             ),
                           ],
                         ),
@@ -149,7 +149,7 @@ class HomeFragment extends StatelessWidget {
                                       padding: const EdgeInsets.all(10),
                                       decoration: BoxDecoration(
                                         borderRadius: BorderRadius.circular(5),
-                                        color: Colors.black,
+                                        color: const Color.fromARGB(255, 219, 228, 252),
                                       ),
                                       child: const Text(
                                         'Tanya Ahli',
@@ -157,7 +157,7 @@ class HomeFragment extends StatelessWidget {
                                         style: TextStyle(
                                             fontSize: 10,
                                             fontWeight: FontWeight.bold,
-                                            color: Colors.white),
+                                            color: Colors.black),
                                       ),
                                     ),
                                   ),
@@ -205,7 +205,7 @@ class HomeFragment extends StatelessWidget {
                             decoration: BoxDecoration(
                                 color: selectedFitur == index
                                     ? Config.primaryColor
-                                    : Colors.red,
+                                    : const Color.fromARGB(255, 242, 244, 250),
                                 borderRadius: BorderRadius.circular(5)),
                             child: Text(
                               fitur[index],
