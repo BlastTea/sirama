@@ -21,8 +21,32 @@ class Homepage extends StatelessWidget {
             destinations: List.generate(
               4,
               (index) => MyNavigationDestination(
-                icon: Icon([Icons.home, Icons.paste, Icons.message, Icons.person][index]),
-                label: 'Test',
+                icon: Image.asset(
+                  [
+                    'assets/icons/Home unselected.png',
+                    'assets/icons/Clipboard unselected.png',
+                    'assets/icons/Message unselected.png',
+                    'assets/icons/User unselected.png',
+                  ][index],
+                  width: 30.0,
+                  height: 30.0,
+                ),
+                selectedIcon: Image.asset(
+                  [
+                    'assets/icons/Home selected.png',
+                    'assets/icons/Clipboard selected.png',
+                    'assets/icons/Message selected.png',
+                    'assets/icons/User selected.png',
+                  ][index],
+                  width: 30.0,
+                  height: 30.0,
+                ),
+                label: [
+                  'Beranda',
+                  'Skrining',
+                  'Chat',
+                  'Profil',
+                ][index],
               ),
             ),
             selectedIndex: selectedIndex.value,
