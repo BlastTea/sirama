@@ -49,15 +49,15 @@ class LabeledTextField extends StatefulWidget {
 }
 
 class _LabeledTextFieldState extends State<LabeledTextField> {
-  late final RxBool _showPassword;
+  late bool _showPassword;
 
   @override
   void initState() {
     super.initState();
-    _showPassword = widget._isPassword ? false.obs : true.obs;
+    _showPassword = widget._isPassword ? false : true;
   }
 
-  void _handleTap() => _showPassword.toggle();
+  void _handleTap() => setState(() => _showPassword = !_showPassword);
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
       effectiveDecoration = effectiveDecoration.copyWith(
         suffixIcon: IconButton(
           onPressed: _handleTap,
-          icon: Obx(() => Icon(_showPassword.value ? Icons.visibility_off : Icons.visibility)),
+          icon: Icon(_showPassword ? Icons.visibility_off : Icons.visibility),
         ),
       );
     }
@@ -94,20 +94,18 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
           style: Config.textStyleHeadlineSmall,
         ),
         const SizedBox(height: 18.0),
-        Obx(
-          () => TextField(
-            controller: widget.controller,
-            decoration: effectiveDecoration,
-            obscureText: !_showPassword.value,
-            autofillHints: widget.autofillHints,
-            textCapitalization: widget.textCapitalization,
-            keyboardType: widget.keyboardType,
-            textInputAction: widget.textInputAction,
-            onChanged: widget.onChanged,
-            onEditingComplete: widget.onEditingComplete,
-            onSubmitted: widget.onSubmitted,
-            inputFormatters: widget.inputFormatters,
-          ),
+        TextField(
+          controller: widget.controller,
+          decoration: effectiveDecoration,
+          obscureText: !_showPassword,
+          autofillHints: widget.autofillHints,
+          textCapitalization: widget.textCapitalization,
+          keyboardType: widget.keyboardType,
+          textInputAction: widget.textInputAction,
+          onChanged: widget.onChanged,
+          onEditingComplete: widget.onEditingComplete,
+          onSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatters,
         ),
       ],
     );

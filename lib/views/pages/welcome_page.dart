@@ -36,7 +36,7 @@ class WelcomePage extends StatelessWidget {
               const SizedBox(height: 32.0),
               Center(
                 child: MyFilledButton(
-                  onPressed: () => Get.to(() => const SignInPage()),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignInPage())),
                   iconAssetName: 'assets/icons/Monotone arrow right.png',
                   labelText: 'Daftar',
                 ),

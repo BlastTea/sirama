@@ -55,7 +55,16 @@ class SignUpPage extends StatelessWidget {
                 ),
                 const SizedBox(height: 33.0),
                 MyFilledButton(
-                  onPressed: () => Get.offAll(() => Homepage()),
+                  onPressed: () {
+                    while (NavigationHelper.canGoBack()) {
+                      NavigationHelper.back();
+                    }
+                    NavigationHelper.toReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Homepage(),
+                      ),
+                    );
+                  },
                   labelText: 'Daftar',
                   textStyle: Config.textStyleHeadlineSmall.copyWith(
                     color: Colors.white,
@@ -78,7 +87,7 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () => Get.back(),
+                onPressed: () => NavigationHelper.back(),
                 child: Text(
                   'Sign In',
                   style: Config.textStyleTitleSmall.copyWith(

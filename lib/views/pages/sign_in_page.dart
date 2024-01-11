@@ -46,7 +46,16 @@ class SignInPage extends StatelessWidget {
                   ),
                 ),
                 MyFilledButton(
-                  onPressed: () => Get.offAll(() => Homepage()),
+                  onPressed: () {
+                    while (NavigationHelper.canGoBack()) {
+                      NavigationHelper.back();
+                    }
+                    NavigationHelper.toReplacement(
+                      MaterialPageRoute(
+                        builder: (context) => Homepage(),
+                      ),
+                    );
+                  },
                   labelText: 'Masuk',
                   textStyle: Config.textStyleHeadlineSmall.copyWith(
                     color: Colors.white,
@@ -68,7 +77,7 @@ class SignInPage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () => Get.to(() => const SignUpPage()),
+                onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpPage())),
                 child: Text(
                   'Sign Up',
                   style: Config.textStyleTitleSmall.copyWith(
