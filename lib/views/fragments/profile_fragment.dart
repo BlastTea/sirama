@@ -1,6 +1,5 @@
 part of 'fragments.dart';
 
-// TODO: Change this into doctor profile page
 class ProfileFragment extends StatelessWidget {
   const ProfileFragment({super.key});
 
