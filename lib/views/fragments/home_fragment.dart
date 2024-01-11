@@ -45,7 +45,7 @@ class HomeFragment extends StatelessWidget {
                               height: 10,
                             ),
                             Text(
-                              'Rick Sanchez',
+                              'Altamis Atmaja 👋',
                               style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.bold,
