@@ -8,3 +8,4 @@ part 'home_fragment.dart';
 part 'screening_fragment.dart';
 part 'profile_fragment.dart';
 part 'chat_fragment.dart';
+part 'ask_the_expert_fragment.dart';

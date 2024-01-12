@@ -12,6 +12,7 @@ class Homepage extends StatelessWidget {
             body: [
               const HomeFragment(),
               const ScreeningFragment(),
+              const AskTheExpertFragment(),
               const ChatFragment(),
               const ProfileFragment(),
             ][stateHomepage.selectedIndex],
@@ -21,31 +22,26 @@ class Homepage extends StatelessWidget {
               ),
               indicatorColor: Theme.of(context).colorScheme.primary,
               destinations: List.generate(
-                4,
+                5,
                 (index) => MyNavigationDestination(
-                  icon: SvgPicture.asset(
-                    [
-                      'assets/svgs/Home unselected.svg',
-                      'assets/svgs/Clipboard unselected.svg',
-                      'assets/svgs/Message unselected.svg',
-                      'assets/svgs/User unselected.svg',
-                    ][index],
-                    width: 30.0,
-                    height: 30.0,
-                  ),
-                  selectedIcon: SvgPicture.asset(
-                    [
-                      'assets/svgs/Home selected.svg',
-                      'assets/svgs/Clipboard selected.svg',
-                      'assets/svgs/Message selected.svg',
-                      'assets/svgs/User selected.svg',
-                    ][index],
-                    width: 30.0,
-                    height: 30.0,
-                  ),
+                  icon: [
+                    SvgPicture.asset('assets/svgs/Home unselected.svg', width: 30.0, height: 30.0),
+                    SvgPicture.asset('assets/svgs/Clipboard unselected.svg', width: 30.0, height: 30.0),
+                    const Icon(Icons.contact_support, size: 30.0),
+                    SvgPicture.asset('assets/svgs/Message unselected.svg', width: 30.0, height: 30.0),
+                    SvgPicture.asset('assets/svgs/User unselected.svg', width: 30.0, height: 30.0),
+                  ][index],
+                  selectedIcon: [
+                    SvgPicture.asset('assets/svgs/Home selected.svg', width: 30.0, height: 30.0),
+                    SvgPicture.asset('assets/svgs/Clipboard selected.svg', width: 30.0, height: 30.0),
+                    Icon(Icons.contact_support, size: 30.0, color: Theme.of(context).colorScheme.onPrimary),
+                    SvgPicture.asset('assets/svgs/Message selected.svg', width: 30.0, height: 30.0),
+                    SvgPicture.asset('assets/svgs/User selected.svg', width: 30.0, height: 30.0),
+                  ][index],
                   label: [
                     'Beranda',
                     'Skrining',
+                    'Tanya Ahli',
                     'Chat',
                     'Profil',
                   ][index],

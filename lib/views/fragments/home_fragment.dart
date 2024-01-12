@@ -92,77 +92,83 @@ class HomeFragment extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Container(
-                      height: 225,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(15),
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Flexible(
-                            child: Padding(
-                                padding: const EdgeInsets.all(20),
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      'Yuk, Tanya Ahli!',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color: Theme.of(context).colorScheme.onPrimary,
-                                      ),
-                                    ),
-                                    Text(
-                                      'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
-                                      textAlign: TextAlign.start,
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                        color: Theme.of(context).colorScheme.onPrimary,
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      height: 10,
-                                    ),
-                                    Align(
-                                      alignment: Alignment.centerLeft,
-                                      child: Container(
-                                        height: 35,
-                                        width: 100,
-                                        padding: const EdgeInsets.all(10),
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(5),
-                                          color: const Color(0xFFFAFAFA),
-                                        ),
-                                        child: const Text(
-                                          'Tanya Ahli',
-                                          textAlign: TextAlign.center,
-                                          style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                )),
-                          ),
-                          Stack(
-                            clipBehavior: Clip.hardEdge,
-                            children: [
-                              Image.asset(
-                                'assets/card-homepage.png',
-                                height: double.infinity,
-                                fit: BoxFit.contain,
-                              ),
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
+                  CardTile(
+                    title: const Text('Yuk, Tanya Ahli!'),
+                    subtitle: const Text(shortLorem),
+                    button: const Text('Tanya Ahli'),
+                    image: Image.asset('assets/card-homepage.png', fit: BoxFit.contain),
                   ),
+                  // Padding(
+                  //   padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //   child: Container(
+                  //     height: 225,
+                  //     decoration: BoxDecoration(
+                  //       borderRadius: BorderRadius.circular(15),
+                  //       color: Theme.of(context).colorScheme.primary,
+                  //     ),
+                  //     child: Row(
+                  //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //       children: [
+                  //         Flexible(
+                  //           child: Padding(
+                  //               padding: const EdgeInsets.all(20),
+                  //               child: Column(
+                  //                 mainAxisAlignment: MainAxisAlignment.start,
+                  //                 children: [
+                  //                   Text(
+                  //                     'Yuk, Tanya Ahli!',
+                  //                     textAlign: TextAlign.start,
+                  //                     style: TextStyle(
+                  //                       fontSize: 20,
+                  //                       fontWeight: FontWeight.bold,
+                  //                       color: Theme.of(context).colorScheme.onPrimary,
+                  //                     ),
+                  //                   ),
+                  //                   Text(
+                  //                     'Yorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vulputate libero et velit interdum',
+                  //                     textAlign: TextAlign.start,
+                  //                     style: TextStyle(
+                  //                       fontSize: 10,
+                  //                       color: Theme.of(context).colorScheme.onPrimary,
+                  //                     ),
+                  //                   ),
+                  //                   const SizedBox(
+                  //                     height: 10,
+                  //                   ),
+                  //                   Align(
+                  //                     alignment: Alignment.centerLeft,
+                  //                     child: Container(
+                  //                       height: 35,
+                  //                       width: 100,
+                  //                       padding: const EdgeInsets.all(10),
+                  //                       decoration: BoxDecoration(
+                  //                         borderRadius: BorderRadius.circular(5),
+                  //                         color: const Color(0xFFFAFAFA),
+                  //                       ),
+                  //                       child: const Text(
+                  //                         'Tanya Ahli',
+                  //                         textAlign: TextAlign.center,
+                  //                         style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Colors.black),
+                  //                       ),
+                  //                     ),
+                  //                   ),
+                  //                 ],
+                  //               )),
+                  //         ),
+                  //         Stack(
+                  //           clipBehavior: Clip.hardEdge,
+                  //           children: [
+                  //             Image.asset(
+                  //               'assets/card-homepage.png',
+                  //               height: double.infinity,
+                  //               fit: BoxFit.contain,
+                  //             ),
+                  //           ],
+                  //         )
+                  //       ],
+                  //     ),
+                  //   ),
+                  // ),
                   const SizedBox(
                     height: 20,
                   ),

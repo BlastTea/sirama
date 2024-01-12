@@ -12,3 +12,4 @@ part 'card_educational_video.dart';
 part 'labeled_text_field.dart';
 part 'message_bubble.blade.dart';
 part 'play_video_from_youtube.dart';
+part 'card_tile.dart';
