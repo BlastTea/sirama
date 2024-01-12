@@ -1,5 +1,11 @@
 part of 'widgets.dart';
 
+enum CardTileAlignment {
+  top,
+  center,
+  bottom,
+}
+
 class CardTile extends StatelessWidget {
   const CardTile({
     super.key,
@@ -11,6 +17,9 @@ class CardTile extends StatelessWidget {
     this.subtitleStyle,
     this.buttonStyle,
     this.minImageWidth = 80.0,
+    this.spacing = 8.0,
+    this.contentPadding = const EdgeInsets.all(20.0),
+    this.imageAlignment = CardTileAlignment.center,
     this.onPressed,
   });
 
@@ -22,6 +31,9 @@ class CardTile extends StatelessWidget {
   final TextStyle? subtitleStyle;
   final TextStyle? buttonStyle;
   final double minImageWidth;
+  final double spacing;
+  final EdgeInsetsGeometry contentPadding;
+  final CardTileAlignment imageAlignment;
   final VoidCallback? onPressed;
 
   Color onPrimaryColor(BuildContext context) => Theme.of(context).colorScheme.onPrimary;
@@ -43,10 +55,13 @@ class CardTile extends StatelessWidget {
               subtitle: subtitle,
               button: button,
               image: image,
-              titleStyle: titleStyle?.merge(Config.textStyleHeadlineSmall.copyWith(color: onPrimaryColor(context))) ?? Config.textStyleHeadlineSmall.copyWith(color: onPrimaryColor(context)),
-              subtitleStyle: subtitleStyle?.merge(Config.textStyleBodyMedium.copyWith(color: onPrimaryColor(context))) ?? Config.textStyleBodyMedium.copyWith(color: onPrimaryColor(context)),
-              buttonStyle: buttonStyle?.merge(Config.textStyleTitleSmall.copyWith(color: onPrimaryColor(context))) ?? Config.textStyleTitleSmall.copyWith(color: onPrimaryColor(context)),
+              titleStyle: titleStyle ?? Config.textStyleHeadlineSmall.copyWith(color: onPrimaryColor(context)),
+              subtitleStyle: subtitleStyle ?? Config.textStyleBodyMedium.copyWith(color: onPrimaryColor(context)),
+              buttonStyle: buttonStyle ?? Config.textStyleTitleSmall.copyWith(color: onPrimaryColor(context)),
               minImageWidth: minImageWidth,
+              spacing: spacing,
+              contentPadding: contentPadding,
+              imageAlignment: imageAlignment,
             ),
           ),
         ),
@@ -70,6 +85,9 @@ class _CardTile extends SlottedMultiChildRenderObjectWidget<_CardTileSlot, Rende
     required this.subtitleStyle,
     required this.buttonStyle,
     required this.minImageWidth,
+    required this.spacing,
+    required this.contentPadding,
+    required this.imageAlignment,
   });
 
   final Widget? title;
@@ -80,6 +98,9 @@ class _CardTile extends SlottedMultiChildRenderObjectWidget<_CardTileSlot, Rende
   final TextStyle subtitleStyle;
   final TextStyle buttonStyle;
   final double minImageWidth;
+  final double spacing;
+  final EdgeInsetsGeometry contentPadding;
+  final CardTileAlignment imageAlignment;
 
   @override
   Widget? childForSlot(_CardTileSlot slot) {
@@ -114,17 +135,34 @@ class _CardTile extends SlottedMultiChildRenderObjectWidget<_CardTileSlot, Rende
   }
 
   @override
-  SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox> createRenderObject(BuildContext context) => _RenderCardTile(minImageWidth: minImageWidth);
+  SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox> createRenderObject(BuildContext context) => _RenderCardTile(
+        minImageWidth: minImageWidth,
+        spacing: spacing,
+        contentPadding: contentPadding.resolve(Directionality.of(context)),
+        imageAlignment: imageAlignment,
+      );
 
   @override
-  void updateRenderObject(BuildContext context, _RenderCardTile renderObject) => renderObject..minImageWidth = minImageWidth;
+  void updateRenderObject(BuildContext context, _RenderCardTile renderObject) => renderObject
+    ..minImageWidth = minImageWidth
+    ..spacing = spacing
+    ..contentPadding = contentPadding.resolve(Directionality.of(context))
+    ..imageAlignment = imageAlignment;
 
   @override
   Iterable<_CardTileSlot> get slots => _CardTileSlot.values;
 }
 
 class _RenderCardTile extends RenderBox with SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox> {
-  _RenderCardTile({required double minImageWidth}) : _minImageWidth = minImageWidth;
+  _RenderCardTile({
+    required double minImageWidth,
+    required double spacing,
+    required EdgeInsets contentPadding,
+    required CardTileAlignment imageAlignment,
+  })  : _minImageWidth = minImageWidth,
+        _spacing = spacing,
+        _contentPadding = contentPadding,
+        _imageAlignment = imageAlignment;
 
   double _minImageWidth;
   double get minImageWidth => _minImageWidth;
@@ -134,6 +172,39 @@ class _RenderCardTile extends RenderBox with SlottedContainerRenderObjectMixin<_
     }
 
     _minImageWidth = value;
+    markNeedsLayout();
+  }
+
+  double _spacing;
+  double get spacing => _spacing;
+  set spacing(double value) {
+    if (value == spacing) {
+      return;
+    }
+
+    _spacing = spacing;
+    markNeedsLayout();
+  }
+
+  EdgeInsets _contentPadding;
+  EdgeInsets get contentPadding => _contentPadding;
+  set contentPadding(EdgeInsets value) {
+    if (value == contentPadding) {
+      return;
+    }
+
+    _contentPadding = value;
+    markNeedsLayout();
+  }
+
+  CardTileAlignment _imageAlignment;
+  CardTileAlignment get imageAlignment => _imageAlignment;
+  set imageAlignment(CardTileAlignment value) {
+    if (value == imageAlignment) {
+      return;
+    }
+
+    _imageAlignment = value;
     markNeedsLayout();
   }
 
@@ -152,27 +223,43 @@ class _RenderCardTile extends RenderBox with SlottedContainerRenderObjectMixin<_
 
   @override
   void performLayout() {
-    double nonImageWidth = constraints.maxWidth - minImageWidth;
+    EdgeInsets effectivePadding = EdgeInsets.fromLTRB(contentPadding.left, contentPadding.top, _image == null ? contentPadding.right : 0.0, contentPadding.bottom);
 
-    _title?.layout(constraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
-    _subtitle?.layout(constraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
-    _button?.layout(constraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
+    BoxConstraints effectiveContstraints = constraints.deflate(effectivePadding);
+    final double effectiveSpacing = (_title != null && (_subtitle != null || _button != null) ? spacing : 0.0) + (_subtitle != null && _button != null ? spacing : 0.0);
+
+    double nonImageWidth = effectiveContstraints.maxWidth - (_image != null ? minImageWidth : 0.0);
+
+    _title?.layout(effectiveContstraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
+    _subtitle?.layout(effectiveContstraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
+    _button?.layout(effectiveContstraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
 
     double nonImageHeight = (_title?.size.height ?? 0.0) + (_subtitle?.size.height ?? 0.0) + (_button?.size.height ?? 0.0);
     if (nonImageHeight < _minImageWidth) {
       nonImageHeight = _minImageWidth;
     }
 
-    _image?.layout(constraints.copyWith(minWidth: minImageWidth, maxWidth: minImageWidth, minHeight: nonImageHeight, maxHeight: nonImageHeight));
+    _image?.layout(effectiveContstraints.copyWith(minWidth: minImageWidth, maxWidth: minImageWidth, minHeight: nonImageHeight, maxHeight: nonImageHeight), parentUsesSize: true);
 
-    size = constraints.constrain(Size(constraints.maxWidth, nonImageHeight));
+    size = constraints.constrain(Size(constraints.maxWidth + contentPadding.horizontal, nonImageHeight + contentPadding.vertical + effectiveSpacing));
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    _title?.paint(context, offset);
-    _subtitle?.paint(context, offset + Offset(0.0, _title?.size.height ?? 0.0));
-    _button?.paint(context, offset + Offset(0.0, (_title?.size.height ?? 0.0) + (_subtitle?.size.height ?? 0.0)));
-    _image?.paint(context, offset + Offset(size.width - minImageWidth, 0.0));
+    _title?.paint(context, offset + Offset(contentPadding.left, contentPadding.top));
+    _subtitle?.paint(context, offset + Offset(contentPadding.left, (_title?.size.height ?? 0.0) + contentPadding.top + (_title != null ? spacing : 0.0)));
+    _button?.paint(context, offset + Offset(contentPadding.left, (_title?.size.height ?? 0.0) + (_subtitle?.size.height ?? 0.0) + contentPadding.top + (_title != null ? spacing : 0.0) + (_subtitle != null ? spacing : 0.0)));
+
+    double imageYOffset = 0.0;
+    switch (imageAlignment) {
+      case CardTileAlignment.center:
+        imageYOffset = (size.height / 2) - ((_image?.size.height ?? 0.0) / 2);
+      case CardTileAlignment.bottom:
+        imageYOffset = size.height - (_image?.size.height ?? 0.0);
+      default:
+      // Do nothing
+    }
+
+    _image?.paint(context, offset + Offset(size.width - minImageWidth, imageYOffset));
   }
 }

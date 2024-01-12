@@ -35,6 +35,10 @@ class Config {
 
   static const fontColor = Color(0xFF242E49);
 
+  static final colorScheme = ColorScheme.fromSeed(
+    seedColor: const Color(0xFF8BC0F8),
+  );
+
   static TextStyle defaultStyle = GoogleFonts.plusJakartaSans();
 
   static TextStyle textStyleHeadlineLarge = defaultStyle.copyWith(

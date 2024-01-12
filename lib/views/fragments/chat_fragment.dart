@@ -1,17 +1,13 @@
 part of 'fragments.dart';
 
-// TODO: Change this into page
 class ChatFragment extends StatelessWidget {
   const ChatFragment({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text('Chat'),
-          centerTitle: true,
-        ),
-        body: ListView.builder(
-          itemBuilder: (context, index) => ListTile(
+  Widget build(BuildContext context) => ListView.builder(
+        itemBuilder: (context, index) => Padding(
+          padding: EdgeInsets.only(top: index == 0 ? 10.0 : 0.0),
+          child: ListTile(
             leading: ImageContainer.hero(
               tag: 'Chat profile picture $index',
               width: 48.0,
@@ -32,7 +28,7 @@ class ChatFragment extends StatelessWidget {
             contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
             onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => ChatMePage(index: index))),
           ),
-          itemCount: 100,
         ),
+        itemCount: 100,
       );
 }

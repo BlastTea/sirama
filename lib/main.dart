@@ -14,6 +14,10 @@ void main() async {
     DeviceOrientation.portraitDown,
   ]);
 
+  await MWidget.initialize(
+    defaultLanguage: LanguageType.indonesiaIndonesian,
+  );
+
   runApp(const MyApp());
 }
 
@@ -40,12 +44,16 @@ class MyApp extends StatelessWidget {
             title: Config.appName,
             theme: ThemeData.light().copyWith(
               materialTapTargetSize: MaterialTapTargetSize.padded,
-              colorScheme: ColorScheme.fromSeed(
-                seedColor: const Color(0xFF8BC0F8),
-              ),
-              filledButtonTheme: const FilledButtonThemeData(
+              colorScheme: Config.colorScheme,
+              filledButtonTheme: FilledButtonThemeData(
                 style: ButtonStyle(
-                  fixedSize: MaterialStatePropertyAll(Size.fromHeight(60.0)),
+                  shape: MaterialStatePropertyAll(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(
+                        kShapeMedium,
+                      ),
+                    ),
+                  ),
                 ),
               ),
               inputDecorationTheme: InputDecorationTheme(
@@ -55,6 +63,11 @@ class MyApp extends StatelessWidget {
                     color: Config.greyColor.withOpacity(0.3),
                   ),
                 ),
+              ),
+              chipTheme: ChipThemeData(
+                selectedColor: Config.colorScheme.primary,
+                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
+                checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),
             home: const WelcomePage(),

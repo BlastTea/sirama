@@ -57,8 +57,10 @@ class SignUpPage extends StatelessWidget {
                 MyFilledButton(
                   onPressed: () => NavigationHelper.back(),
                   labelText: 'Daftar',
-                  textStyle: Config.textStyleHeadlineSmall.copyWith(
-                    color: Colors.white,
+                  buttonStyle: FilledButton.styleFrom(
+                    textStyle: Config.textStyleHeadlineSmall.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
                   ),
                 ),
                 SizedBox(height: MediaQuery.viewInsetsOf(context).bottom > 0.0 ? 32.0 : 0.0),

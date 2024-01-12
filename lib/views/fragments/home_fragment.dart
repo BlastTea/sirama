@@ -92,11 +92,16 @@ class HomeFragment extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  CardTile(
-                    title: const Text('Yuk, Tanya Ahli!'),
-                    subtitle: const Text(shortLorem),
-                    button: const Text('Tanya Ahli'),
-                    image: Image.asset('assets/card-homepage.png', fit: BoxFit.contain),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: CardTile(
+                      title: const Text('Yuk, Tanya Ahli!'),
+                      subtitle: const Text(shortLorem),
+                      image: Image.asset('assets/card-homepage.png', height: 50.0),
+                      imageAlignment: CardTileAlignment.bottom,
+                      minImageWidth: 134.0,
+                      onPressed: () => debugPrint('Tanya Ahli pressed'),
+                    ),
                   ),
                   // Padding(
                   //   padding: const EdgeInsets.symmetric(horizontal: 20),

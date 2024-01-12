@@ -75,8 +75,21 @@ class ProfileFragment extends StatelessWidget {
                 ],
               ),
             ),
-            const SizedBox(height: 20.0),
-            // TODO: Add Jam Kerja
+            SizedBox(
+              height: 48.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Padding(
+                  padding: EdgeInsets.only(left: index == 0 ? 20.0 : 8.0, right: index == 9 ? 20.0 : 0.0),
+                  child: ChoiceChip(
+                    label: Text(TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()),
+                    selected: index == 0,
+                    onSelected: (value) {},
+                  ),
+                ),
+                itemCount: 10,
+              ),
+            ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
@@ -93,8 +106,30 @@ class ProfileFragment extends StatelessWidget {
                 ],
               ),
             ),
+            SizedBox(
+              height: 48.0,
+              child: ListView.builder(
+                scrollDirection: Axis.horizontal,
+                itemBuilder: (context, index) => Padding(
+                  padding: EdgeInsets.only(left: index == 0 ? 20.0 : 8.0, right: index == 6 ? 20.0 : 0.0),
+                  child: ChoiceChip(
+                    label: Text([
+                      'Senin',
+                      'Selasa',
+                      'Rabu',
+                      'Kamis',
+                      'Jumat',
+                      'Sabtu',
+                      'Minggu',
+                    ][index]),
+                    selected: index == DateTime.now().weekday - 1,
+                    onSelected: (value) {},
+                  ),
+                ),
+                itemCount: 7,
+              ),
+            ),
             const SizedBox(height: 20.0),
-            // TODO: Add Hari
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: MyFilledButton(

@@ -27,14 +27,14 @@ class Homepage extends StatelessWidget {
                   icon: [
                     SvgPicture.asset('assets/svgs/Home unselected.svg', width: 30.0, height: 30.0),
                     SvgPicture.asset('assets/svgs/Clipboard unselected.svg', width: 30.0, height: 30.0),
-                    const Icon(Icons.contact_support, size: 30.0),
+                    const Icon(Icons.contact_support_outlined, size: 30.0, color: Color(0xFF4A4B57)),
                     SvgPicture.asset('assets/svgs/Message unselected.svg', width: 30.0, height: 30.0),
                     SvgPicture.asset('assets/svgs/User unselected.svg', width: 30.0, height: 30.0),
                   ][index],
                   selectedIcon: [
                     SvgPicture.asset('assets/svgs/Home selected.svg', width: 30.0, height: 30.0),
                     SvgPicture.asset('assets/svgs/Clipboard selected.svg', width: 30.0, height: 30.0),
-                    Icon(Icons.contact_support, size: 30.0, color: Theme.of(context).colorScheme.onPrimary),
+                    Icon(Icons.contact_support_outlined, size: 30.0, color: Theme.of(context).colorScheme.onPrimary),
                     SvgPicture.asset('assets/svgs/Message selected.svg', width: 30.0, height: 30.0),
                     SvgPicture.asset('assets/svgs/User selected.svg', width: 30.0, height: 30.0),
                   ][index],

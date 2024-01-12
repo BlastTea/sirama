@@ -57,8 +57,10 @@ class SignInPage extends StatelessWidget {
                     );
                   },
                   labelText: 'Masuk',
-                  textStyle: Config.textStyleHeadlineSmall.copyWith(
-                    color: Colors.white,
+                  buttonStyle: FilledButton.styleFrom(
+                    textStyle: Config.textStyleHeadlineSmall.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
                   ),
                 ),
               ],

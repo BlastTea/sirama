@@ -61,35 +61,43 @@ class ScreeningFragment extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
-              child: Card(
-                color: Theme.of(context).colorScheme.primary,
-                clipBehavior: Clip.hardEdge,
-                child: InkWell(
-                  splashColor: Theme.of(context).colorScheme.primary.withAlpha(30),
-                  onTap: () => debugPrint('Card tapped.'),
-                  child: SizedBox(
-                    height: 200,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...',
-                            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 25, fontWeight: FontWeight.bold),
-                          ),
-                          Text(
-                            'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!',
-                            style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onPrimary),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.0),
+              child: CardTile(
+                title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
               ),
             ),
+
+            // Padding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 10),
+            //   child: Card(
+            //     color: Theme.of(context).colorScheme.primary,
+            //     clipBehavior: Clip.hardEdge,
+            //     child: InkWell(
+            //       splashColor: Theme.of(context).colorScheme.primary.withAlpha(30),
+            //       onTap: () => debugPrint('Card tapped.'),
+            //       child: SizedBox(
+            //         height: 200,
+            //         child: Padding(
+            //           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            //           child: Column(
+            //             children: [
+            //               Text(
+            //                 'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...',
+            //                 style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 25, fontWeight: FontWeight.bold),
+            //               ),
+            //               Text(
+            //                 'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!',
+            //                 style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onPrimary),
+            //               ),
+            //             ],
+            //           ),
+            //         ),
+            //       ),
+            //     ),
+            //   ),
+            // ),
             const SizedBox(
               height: 20,
             ),
