@@ -11,6 +11,7 @@ List<Map> data = [
     'title': 'Video Title 1',
     'creator': 'Creator 1',
     'date': '2024-01-11',
+    'like': 1231,
   },
   {
     'id_film': '2',
@@ -22,6 +23,7 @@ List<Map> data = [
     'title': 'Video Title 2',
     'creator': 'Creator 2',
     'date': '2024-01-12',
+    'like': 1231,
   },
   {
     'id_film': '3',
@@ -33,6 +35,7 @@ List<Map> data = [
     'title': 'Video Title 3',
     'creator': 'Creator 3',
     'date': '2024-01-13',
+    'like': 1231,
   },
 ];
 
@@ -116,6 +119,8 @@ class ScreeningFragment extends StatelessWidget {
                         builder: (context) => DetailsEducationalVideoPage(
                           videoUrl: data[index]['link_film']!,
                           title: data[index]['judul_film']!,
+                          uploadUserId: data[index]['creator']!,
+                          totalLike: data[index]['like']!,
                         ),
                       ),
                     );

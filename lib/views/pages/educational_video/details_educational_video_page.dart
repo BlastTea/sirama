@@ -2,13 +2,18 @@ part of '../pages.dart';
 
 class DetailsEducationalVideoPage extends StatelessWidget {
   const DetailsEducationalVideoPage({
-    Key? key,
+    super.key,
     required this.videoUrl,
     required this.title,
-  }) : super(key: key);
+    required this.uploadUserId,
+    required this.totalLike,
+  });
 
   final String videoUrl;
   final String title;
+  final String uploadUserId;
+  final int totalLike;
+
   @override
   Widget build(BuildContext context) {
     // Implement your detail page UI here
@@ -17,7 +22,15 @@ class DetailsEducationalVideoPage extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Text('Video URL: $videoUrl'),
+        child: 
+        PlayVideoFromYoutube(videoUrl: 'videoUrl', title: title, uploadUserId: uploadUserId, totalLike: totalLike),
+        // Column(
+        //   children: [
+        //     Text('Video URL: $videoUrl'),
+        //     Text('Author: $uploadUserId'),
+        //     Text('Total Like: $totalLike'),
+        //   ],
+        // ),
       ),
     );
   }
