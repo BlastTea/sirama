@@ -30,7 +30,7 @@ class MyFilledButton extends StatelessWidget {
             labelText,
             style: textStyle ??
                 Config.textStyleTitleSmall.copyWith(
-                  color: Colors.white,
+                  color: Theme.of(context).colorScheme.onPrimary,
                 ),
           ),
           style: FilledButton.styleFrom(

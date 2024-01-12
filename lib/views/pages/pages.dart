@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:m_widget/m_widget.dart';
+import 'package:pod_player/pod_player.dart';
 import 'package:sirama/blocs/blocs.dart';
 import 'package:sirama/main.dart';
 import 'package:sirama/utils/config.dart';

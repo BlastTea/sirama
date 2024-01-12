@@ -70,7 +70,7 @@ class ProfileFragment extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text('See All'),
+                    child: const Text('Lihat Semua'),
                   ),
                 ],
               ),
@@ -88,7 +88,7 @@ class ProfileFragment extends StatelessWidget {
                   ),
                   TextButton(
                     onPressed: () {},
-                    child: const Text('See All'),
+                    child: const Text('Lihat Semua'),
                   ),
                 ],
               ),

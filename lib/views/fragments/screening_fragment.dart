@@ -28,7 +28,7 @@ List<Map> data = [
   {
     'id_film': '3',
     'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film': 'https://www.youtube.com/watch?v=MvSkn9svGGw',
+    'link_film': 'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
     'upload_user_id': 'Altamis',
     'thumbnail': 'https://picsum.photos/250?image=9',
     'profile_url': 'https://picsum.photos/250?image=9',

@@ -165,6 +165,7 @@ class _MessageBubble extends LeafRenderObjectWidget {
         message: message,
         sentAt: sentAt,
         textDirection: Directionality.of(context),
+        colorScheme: Theme.of(context).colorScheme,
       );
 
   @override
@@ -178,6 +179,7 @@ class _RenderMessageBubble extends RenderBox {
     required String message,
     required TimeOfDay sentAt,
     required TextDirection textDirection,
+    required this.colorScheme,
   }) {
     _message = message;
     _sentAt = sentAt;
@@ -198,6 +200,8 @@ class _RenderMessageBubble extends RenderBox {
 
   late double sentAtWidth;
   late double sentAtHeight;
+
+  final ColorScheme colorScheme;
 
   late String _message;
   String get message => _message;
@@ -221,9 +225,9 @@ class _RenderMessageBubble extends RenderBox {
     markNeedsLayout();
   }
 
-  TextSpan get _messageTextSpan => TextSpan(text: message, style: Config.textStyleTitleSmall.copyWith(color: Colors.white));
+  TextSpan get _messageTextSpan => TextSpan(text: message, style: Config.textStyleTitleSmall.copyWith(color: colorScheme.onPrimary));
 
-  TextSpan get _sentAtTextSpan => TextSpan(text: sentAt.toFormattedString(), style: Config.textStyleBodyMedium);
+  TextSpan get _sentAtTextSpan => TextSpan(text: sentAt.toFormattedString(), style: Config.textStyleBodyMedium.copyWith(color: colorScheme.onPrimary));
 
   @override
   void performLayout() {
