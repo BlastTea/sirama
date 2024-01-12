@@ -5,11 +5,18 @@ class ChatmeBloc extends Bloc<ChatmeEvent, ChatmeState> {
     on<SetChatmeState>((event, emit) => emit(event.state ?? _chatmeDataLoaded));
 
     on<ChatmeSendPressed>((event, emit) {
+      if (_textControllerMessage.text.trim().isEmpty) {
+        //TODO:Add return message
+        return;
+      }
+
       chats.add({
         'message': _textControllerMessage.text.trim(),
         'sentAt': TimeOfDay.fromDateTime(DateTime.now()),
         'isSender': true,
       });
+
+      _textControllerMessage.text = '';
 
       emit(_chatmeDataLoaded);
     });

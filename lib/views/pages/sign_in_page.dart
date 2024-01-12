@@ -10,13 +10,13 @@ class SignInPage extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 28.0),
               children: [
-                const SizedBox(height: 28.0),
+                const SizedBox(height: 20.0),
                 Text(
                   'Yuk, mulai masuk!',
                   textAlign: TextAlign.center,
                   style: Config.textStyleHeadlineMedium,
                 ),
-                const SizedBox(height: 65.0),
+                const SizedBox(height: 64.0),
                 const LabeledTextField(
                   labelText: 'Email',
                   decoration: InputDecoration(
@@ -25,7 +25,7 @@ class SignInPage extends StatelessWidget {
                   autofillHints: [AutofillHints.email],
                   textInputAction: TextInputAction.next,
                 ),
-                const SizedBox(height: 23.0),
+                const SizedBox(height: 20.0),
                 const LabeledTextField.password(
                   labelText: 'Password',
                   decoration: InputDecoration(
@@ -52,7 +52,7 @@ class SignInPage extends StatelessWidget {
                     }
                     NavigationHelper.toReplacement(
                       MaterialPageRoute(
-                        builder: (context) => Homepage(),
+                        builder: (context) => const Homepage(),
                       ),
                     );
                   },
@@ -80,9 +80,7 @@ class SignInPage extends StatelessWidget {
                 onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpPage())),
                 child: Text(
                   'Sign Up',
-                  style: Config.textStyleTitleSmall.copyWith(
-                    color: const Color(0xFF0B8FAC),
-                  ),
+                  style: Config.textStyleTitleSmall,
                 ),
               ),
             ],

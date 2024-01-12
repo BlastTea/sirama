@@ -19,6 +19,7 @@ class Homepage extends StatelessWidget {
               indicatorShape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10.0),
               ),
+              indicatorColor: Theme.of(context).colorScheme.primary,
               destinations: List.generate(
                 4,
                 (index) => MyNavigationDestination(

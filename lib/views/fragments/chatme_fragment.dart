@@ -29,6 +29,7 @@ class ChatMeFragment extends StatelessWidget {
             children: [
               Expanded(
                 child: ListView.builder(
+                  key: UniqueKey(),
                   padding: const EdgeInsets.symmetric(horizontal: 8.0),
                   reverse: true,
                   keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
@@ -64,7 +65,13 @@ class ChatMeFragment extends StatelessWidget {
                         ),
                         child: TextField(
                           controller: stateChatme.textControllerMessage,
-                          decoration: const InputDecoration(isDense: true),
+                          decoration: const InputDecoration(
+                            isDense: true,
+                            filled: true,
+                            border: OutlineInputBorder(
+                              borderSide: BorderSide.none,
+                            ),
+                          ),
                           textInputAction: TextInputAction.newline,
                           maxLines: null,
                         ),

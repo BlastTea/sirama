@@ -19,38 +19,17 @@ class MessageBubble extends StatelessWidget {
         alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
         child: CustomPaint(
           painter: MessageBubblePainter(
-            color: isSender ? Theme.of(context).colorScheme.primary : Config.greyColor,
+            color: isSender ? Theme.of(context).colorScheme.primary : Config.greyColor.withOpacity(0.5),
             alignment: isSender ? Alignment.topRight : Alignment.topLeft,
             tail: withTail,
           ),
           child: Padding(
-              padding: EdgeInsets.fromLTRB(isSender ? 10.0 : 20.0, 10.0, isSender ? 20.0 : 10.0, 10.0),
-              child: _MessageBubble(
-                message: message,
-                sentAt: sentAt,
-              )
-
-              // ConstrainedBox(
-              //   constraints: const BoxConstraints(
-              //     minWidth: 100.0,
-              //   ),
-              //   child: Column(
-              //     mainAxisSize: MainAxisSize.min,
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       Text(
-              //         message,
-              //         style: Config.textStyleTitleSmall.copyWith(color: Colors.white),
-              //       ),
-              //       Text(
-              //         sentAt.toFormattedString(),
-              //         style: Config.textStyleBodyMedium,
-              //         textAlign: TextAlign.end,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              ),
+            padding: EdgeInsets.fromLTRB(isSender ? 10.0 : 20.0, 10.0, isSender ? 20.0 : 10.0, 10.0),
+            child: _MessageBubble(
+              message: message,
+              sentAt: sentAt,
+            ),
+          ),
         ),
       );
 }

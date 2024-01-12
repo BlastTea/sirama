@@ -61,30 +61,24 @@ class ScreeningFragment extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Card(
-                color: Colors.blue,
+                color: Theme.of(context).colorScheme.primary,
                 clipBehavior: Clip.hardEdge,
                 child: InkWell(
-                  splashColor: Colors.blue.withAlpha(30),
-                  onTap: () {
-                    debugPrint('Card tapped.');
-                  },
-                  child: const SizedBox(
+                  splashColor: Theme.of(context).colorScheme.primary.withAlpha(30),
+                  onTap: () => debugPrint('Card tapped.'),
+                  child: SizedBox(
                     height: 200,
                     child: Padding(
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                       child: Column(
                         children: [
                           Text(
                             'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 25,
-                                fontWeight: FontWeight.bold),
+                            style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 25, fontWeight: FontWeight.bold),
                           ),
                           Text(
                             'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!',
-                            style: TextStyle(fontSize: 15, color: Colors.white),
+                            style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onPrimary),
                           ),
                         ],
                       ),
@@ -141,8 +135,7 @@ class ScreeningFragment extends StatelessWidget {
                       ListTile(
                         contentPadding: const EdgeInsets.all(0),
                         leading: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(data[index]['profile_url']!),
+                          backgroundImage: NetworkImage(data[index]['profile_url']!),
                         ),
                         title: Text(
                           data[index]['judul_film']!,

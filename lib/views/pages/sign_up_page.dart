@@ -10,13 +10,13 @@ class SignUpPage extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.symmetric(horizontal: 28.0),
               children: [
-                const SizedBox(height: 28.0),
+                const SizedBox(height: 20.0),
                 Text(
                   'Yuk, buat akun baru',
                   textAlign: TextAlign.center,
                   style: Config.textStyleHeadlineMedium,
                 ),
-                const SizedBox(height: 65.0),
+                const SizedBox(height: 64.0),
                 const LabeledTextField(
                   labelText: 'Nama Lengkap',
                   decoration: InputDecoration(
@@ -25,7 +25,7 @@ class SignUpPage extends StatelessWidget {
                   autofillHints: [AutofillHints.name],
                   textInputAction: TextInputAction.next,
                 ),
-                const SizedBox(height: 23.0),
+                const SizedBox(height: 20.0),
                 const LabeledTextField.password(
                   labelText: 'Password',
                   decoration: InputDecoration(
@@ -34,7 +34,7 @@ class SignUpPage extends StatelessWidget {
                   autofillHints: [AutofillHints.newPassword],
                   textInputAction: TextInputAction.next,
                 ),
-                const SizedBox(height: 23.0),
+                const SizedBox(height: 20.0),
                 const LabeledTextField(
                   labelText: 'Email',
                   decoration: InputDecoration(
@@ -43,7 +43,7 @@ class SignUpPage extends StatelessWidget {
                   autofillHints: [AutofillHints.email],
                   textInputAction: TextInputAction.next,
                 ),
-                const SizedBox(height: 23.0),
+                const SizedBox(height: 20.0),
                 LabeledTextField(
                   labelText: 'Nomor Handphone',
                   decoration: const InputDecoration(
@@ -53,18 +53,9 @@ class SignUpPage extends StatelessWidget {
                   keyboardType: TextInputType.number,
                   inputFormatters: [textFormatterDigitsOnly],
                 ),
-                const SizedBox(height: 33.0),
+                const SizedBox(height: 32.0),
                 MyFilledButton(
-                  onPressed: () {
-                    while (NavigationHelper.canGoBack()) {
-                      NavigationHelper.back();
-                    }
-                    NavigationHelper.toReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => Homepage(),
-                      ),
-                    );
-                  },
+                  onPressed: () => NavigationHelper.back(),
                   labelText: 'Daftar',
                   textStyle: Config.textStyleHeadlineSmall.copyWith(
                     color: Colors.white,
@@ -90,9 +81,7 @@ class SignUpPage extends StatelessWidget {
                 onPressed: () => NavigationHelper.back(),
                 child: Text(
                   'Sign In',
-                  style: Config.textStyleTitleSmall.copyWith(
-                    color: const Color(0xFF0B8FAC),
-                  ),
+                  style: Config.textStyleTitleSmall,
                 ),
               ),
             ],

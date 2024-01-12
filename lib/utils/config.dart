@@ -30,28 +30,7 @@ class Config {
     height: screenHeight! * 0.08,
   );
 
-  // text form field
-  static InputBorder outlinedBorder = OutlineInputBorder(
-    borderRadius: const BorderRadius.all(Radius.circular(10)),
-    borderSide: BorderSide(
-      color: greyColor.withOpacity(0.3),
-    ),
-  );
-
-  static const focusBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(10)),
-    borderSide: BorderSide(color: Color.fromRGBO(36, 46, 73, 100)),
-  );
-
-  static const errorBorder = OutlineInputBorder(
-    borderRadius: BorderRadius.all(Radius.circular(10)),
-    borderSide: BorderSide(
-      color: Colors.red,
-    ),
-  );
-
   // static const primaryColor = Color.fromRGBO(139, 192, 248, 100);
-  static const primaryColor = Color(0xFF8BC0F8);
   static const greyColor = Color(0xFF858585);
 
   static const fontColor = Color(0xFF242E49);

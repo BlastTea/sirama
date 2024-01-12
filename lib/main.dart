@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         ],
         child: MediaQuery(
           data: MediaQuery.of(context).copyWith(
-            textScaler: const TextScaler.linear(1.0),
+            textScaler: TextScaler.noScaling,
           ),
           child: MaterialApp(
             debugShowCheckedModeBanner: false,
@@ -41,8 +41,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData.light().copyWith(
               materialTapTargetSize: MaterialTapTargetSize.padded,
               colorScheme: ColorScheme.fromSeed(
-                seedColor: Config.primaryColor,
-                primary: Config.primaryColor,
+                seedColor: const Color(0xFF8BC0F8),
               ),
               filledButtonTheme: const FilledButtonThemeData(
                 style: ButtonStyle(
@@ -50,9 +49,12 @@ class MyApp extends StatelessWidget {
                 ),
               ),
               inputDecorationTheme: InputDecorationTheme(
-                border: Config.outlinedBorder,
-                focusedBorder: Config.focusBorder,
-                errorBorder: Config.errorBorder,
+                border: OutlineInputBorder(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  borderSide: BorderSide(
+                    color: Config.greyColor.withOpacity(0.3),
+                  ),
+                ),
               ),
             ),
             home: const WelcomePage(),
