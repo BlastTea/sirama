@@ -9,44 +9,50 @@ class OneOnOneSessionsPage extends StatelessWidget {
           title: const Text('1 on 1 Sessions'),
           centerTitle: true,
         ),
-        body: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20.0),
-          children: [
-            const SizedBox(height: 20.0),
-            CardTile(
-              title: const Text('Upcoming Session'),
-              subtitle: Text('Sahana V. Msc in Clicinal Psychology\n${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}'),
-              button: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Join Now'),
-                  const SizedBox(width: 8.0),
-                  Icon(Icons.play_circle, color: Theme.of(context).colorScheme.onPrimary),
-                ],
-              ),
-              onPressed: () => debugPrint('Upcoming Session Pressed'),
-            ),
-            const SizedBox(height: 10.0),
-            DropdownButton(
-              value: 'All Sessions',
-              underline: Container(),
-              items: List.generate(
-                4,
-                (index) => DropdownMenuItem(
-                  value: ['All Sessions', '1', '2', '3'][index],
-                  child: Text(
-                    ['All Sessions', '1', '2', '3'][index],
+        body: CustomScrollView(
+          slivers: [
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              sliver: SliverToBoxAdapter(
+                child: CardTile(
+                  title: const Text('Upcoming Session'),
+                  subtitle: Text('Sahana V. Msc in Clicinal Psychology\n${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}'),
+                  button: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text('Join Now'),
+                      const SizedBox(width: 8.0),
+                      Icon(Icons.play_circle, color: Theme.of(context).colorScheme.onPrimary),
+                    ],
                   ),
+                  onPressed: () => debugPrint('Upcoming Session Pressed'),
                 ),
               ),
-              onChanged: (value) {},
             ),
-            const SizedBox(height: 10.0),
-            ListView.builder(
-              primary: false,
-              shrinkWrap: true,
+            const SliverToBoxAdapter(child: SizedBox(height: 10.0)),
+            SliverPadding(
+              padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              sliver: SliverToBoxAdapter(
+                child: DropdownButton(
+                  value: 'All Sessions',
+                  underline: Container(),
+                  items: List.generate(
+                    4,
+                    (index) => DropdownMenuItem(
+                      value: ['All Sessions', '1', '2', '3'][index],
+                      child: Text(
+                        ['All Sessions', '1', '2', '3'][index],
+                      ),
+                    ),
+                  ),
+                  onChanged: (value) {},
+                ),
+              ),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 10.0)),
+            SliverList.builder(
               itemBuilder: (context, index) => Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
+                padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
                 child: CardTile(
                   title: Row(
                     children: [
@@ -126,7 +132,7 @@ class OneOnOneSessionsPage extends StatelessWidget {
                   ),
                 ),
               ),
-              itemCount: 10,
+              itemCount: 1000,
             ),
           ],
         ),
