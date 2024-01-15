@@ -17,30 +17,30 @@ class SignUpPage extends StatelessWidget {
                   style: Config.textStyleHeadlineMedium,
                 ),
                 const SizedBox(height: 64.0),
-                const LabeledTextField(
+                LabeledTextField(
                   labelText: 'Nama Lengkap',
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Enter Your Email',
                   ),
-                  autofillHints: [AutofillHints.name],
+                  autofillHints: const [AutofillHints.name],
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 20.0),
-                const LabeledTextField.password(
+                LabeledTextField.password(
                   labelText: 'Password',
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Enter Your Password',
                   ),
-                  autofillHints: [AutofillHints.newPassword],
+                  autofillHints: const [AutofillHints.newPassword],
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 20.0),
-                const LabeledTextField(
+                LabeledTextField(
                   labelText: 'Email',
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                     hintText: 'Enter Your Email',
                   ),
-                  autofillHints: [AutofillHints.email],
+                  autofillHints: const [AutofillHints.email],
                   textInputAction: TextInputAction.next,
                 ),
                 const SizedBox(height: 20.0),

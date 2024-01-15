@@ -11,7 +11,7 @@ class WelcomePage extends StatelessWidget {
             padding: responsivePadding(MediaQuery.sizeOf(context), minimumHorizontalPadding: 64.0),
             children: [
               Image.asset(
-                'assets/dummy logo.png',
+                'assets/Logo SIRAMA (trimmed).png',
                 width: 64.0,
                 height: 64.0,
               ),

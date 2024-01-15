@@ -42,7 +42,7 @@ class ProfileFragment extends StatelessWidget {
               title: const Text('Hapus Akun'),
               onTap: () => showDeleteDialog(
                 titleText: 'Hapus Akun?',
-                messageText: shortLorem,
+                messageText: 'Semua data dan pengaturan Anda akan dihapus secara permanen. Ini termasuk profil, konten yang Anda simpan, dan semua interaksi dalam aplikasi. Proses ini tidak dapat dibatalkan.',
                 primaryFilledButton: true,
               ),
             ),
@@ -50,7 +50,11 @@ class ProfileFragment extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
-              onTap: () => debugPrint('Logout pressed'),
+              onTap: () async {
+                NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+                await Future.delayed(kDurationMedium3);
+                MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 0));
+              },
             ),
           ],
         ),

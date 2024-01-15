@@ -62,6 +62,7 @@ class AskTheExpertFragment extends StatelessWidget {
             SliverList.builder(
               itemBuilder: (context, index) => ListTile(
                 isThreeLine: true,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
                 onTap: () => debugPrint('On question pressed'),
                 leading: ImageContainer.hero(
                   tag: 'Profile picture $index',
