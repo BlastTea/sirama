@@ -121,27 +121,54 @@ class HomeFragment extends StatelessWidget {
                     height: 20,
                   ),
                   SizedBox(
-                    height: 35,
-                    child: ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        padding: const EdgeInsets.symmetric(horizontal: 20),
-                        itemBuilder: (context, index) => Container(
-                              padding: const EdgeInsets.all(10),
-                              decoration: BoxDecoration(color: selectedFitur == index ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.primaryContainer, borderRadius: BorderRadius.circular(5)),
-                              child: Text(
-                                fitur[index],
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: FontWeight.bold,
-                                  color: selectedFitur == index ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onPrimaryContainer,
-                                ),
+                    height: 48.0,
+                    child: ListView(
+                      scrollDirection: Axis.horizontal,
+                      children: [
+                        'ChatMe',
+                        'Skrining',
+                        'Infografis',
+                        'Film',
+                        'Podcast',
+                        'Video Edukasi',
+                        'Tanya Ahli',
+                      ]
+                          .map(
+                            (e) => Padding(
+                              padding: EdgeInsets.only(left: e == 'ChatMe' ? 20.0 : 8.0, right: e == 'Tanya Ahli' ? 20.0 : 0.0),
+                              child: ActionChip(
+                                label: Text(e),
+                                color: MaterialStatePropertyAll(Theme.of(context).colorScheme.primary),
+                                labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                                onPressed: () => debugPrint('on $e pressed'),
                               ),
                             ),
-                        separatorBuilder: (context, index) => const SizedBox(
-                              width: 10,
-                            ),
-                        itemCount: 7),
+                          )
+                          .toList(),
+                    ),
                   ),
+                  // SizedBox(
+                  //   height: 35,
+                  //   child: ListView.separated(
+                  //       scrollDirection: Axis.horizontal,
+                  //       padding: const EdgeInsets.symmetric(horizontal: 20),
+                  //       itemBuilder: (context, index) => Container(
+                  //             padding: const EdgeInsets.all(10),
+                  //             decoration: BoxDecoration(color: selectedFitur == index ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.primaryContainer, borderRadius: BorderRadius.circular(5)),
+                  //             child: Text(
+                  //               fitur[index],
+                  //               style: TextStyle(
+                  //                 fontSize: 12,
+                  //                 fontWeight: FontWeight.bold,
+                  //                 color: selectedFitur == index ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onPrimaryContainer,
+                  //               ),
+                  //             ),
+                  //           ),
+                  //       separatorBuilder: (context, index) => const SizedBox(
+                  //             width: 10,
+                  //           ),
+                  //       itemCount: 7),
+                  // ),
                   const SizedBox(
                     height: 20,
                   ),

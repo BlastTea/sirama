@@ -7,6 +7,7 @@ class AskTheExpertFragment extends StatelessWidget {
   Widget build(BuildContext context) => SafeArea(
         child: CustomScrollView(
           slivers: [
+            const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(

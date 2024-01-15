@@ -5,12 +5,13 @@ class OneOnOneSessionsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(
-          title: const Text('1 on 1 Sessions'),
-          centerTitle: true,
-        ),
         body: CustomScrollView(
           slivers: [
+            const SliverAppBar(
+              floating: true,
+              title: Text('1 on 1 Sessions'),
+              centerTitle: true,
+            ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
@@ -53,82 +54,94 @@ class OneOnOneSessionsPage extends StatelessWidget {
             SliverList.builder(
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
-                child: CardTile(
-                  title: Row(
-                    children: [
-                      ImageContainer.hero(
-                        tag: 'Sessions $index',
-                        width: 48.0,
-                        height: 48.0,
-                        iconSize: 24.0,
-                        icon: Icons.person,
-                        border: const Border(),
-                        image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
-                        borderRadius: BorderRadius.circular(24.0),
-                      ),
-                      const SizedBox(width: 10.0),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            'Sahana V',
-                            style: Config.textStyleBodyLarge.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                          ),
-                          const SizedBox(height: 4.0),
-                          Text(
-                            'Msc in Clinical Psychology',
-                            style: Config.textStyleBodyMedium.copyWith(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                          )
-                        ],
-                      ),
-                    ],
+                child: Container(
+                  padding: const EdgeInsets.all(20.0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(kShapeLarge),
+                    color: Theme.of(context).colorScheme.primary,
                   ),
-                  subtitle: const Divider(),
-                  button: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  child: Column(
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
                         children: [
-                          Row(
-                            children: [
-                              Icon(
-                                Icons.calendar_month_outlined,
-                                color: Theme.of(context).colorScheme.onPrimary,
-                              ),
-                              const SizedBox(width: 4.0),
-                              Text(DateTime.now().toFormattedDate(withMonthName: true)),
-                            ],
+                          ImageContainer.hero(
+                            tag: 'Sessions $index',
+                            width: 48.0,
+                            height: 48.0,
+                            iconSize: 24.0,
+                            icon: Icons.person,
+                            border: const Border(),
+                            image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                            borderRadius: BorderRadius.circular(24.0),
                           ),
-                          const SizedBox(height: 10.0),
-                          Row(
+                          const SizedBox(width: 10.0),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Icon(
-                                Icons.schedule,
-                                color: Theme.of(context).colorScheme.onPrimary,
+                              Text(
+                                'Sahana V',
+                                style: Config.textStyleBodyLarge.copyWith(
+                                  color: Theme.of(context).colorScheme.onPrimary,
+                                ),
                               ),
-                              const SizedBox(width: 4.0),
-                              Text('${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}'),
+                              const SizedBox(height: 4.0),
+                              Text(
+                                'Msc in Clinical Psychology',
+                                style: Config.textStyleBodyMedium.copyWith(
+                                  color: Theme.of(context).colorScheme.onPrimary,
+                                ),
+                              )
                             ],
                           ),
                         ],
                       ),
-                      FilledButton(
-                        onPressed: () {},
-                        style: FilledButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                          foregroundColor: Theme.of(context).colorScheme.primary,
-                        ),
-                        child: const Text('Chat sekarang'),
+                      const Divider(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.calendar_month_outlined,
+                                    color: Theme.of(context).colorScheme.onPrimary,
+                                  ),
+                                  const SizedBox(width: 4.0),
+                                  Text(
+                                    DateTime.now().toFormattedDate(withMonthName: true),
+                                    style: Config.textStyleBodyMedium.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                                  ),
+                                ],
+                              ),
+                              const SizedBox(height: 10.0),
+                              Row(
+                                children: [
+                                  Icon(
+                                    Icons.schedule,
+                                    color: Theme.of(context).colorScheme.onPrimary,
+                                  ),
+                                  const SizedBox(width: 4.0),
+                                  Text(
+                                    '${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}',
+                                    style: Config.textStyleBodyMedium.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                          FilledButton(
+                            onPressed: () => debugPrint('chat now pressed'),
+                            style: FilledButton.styleFrom(
+                              backgroundColor: Theme.of(context).colorScheme.onPrimary,
+                              foregroundColor: Theme.of(context).colorScheme.primary,
+                            ),
+                            child: const Text('Chat sekarang'),
+                          ),
+                        ],
                       ),
                     ],
-                  ),
-                  buttonStyle: Config.textStyleBodyMedium.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
                   ),
                 ),
               ),

@@ -19,7 +19,7 @@ dependencies:
   m_widget:
     git:
       url: https://github.com/BlastTea/MWidget.git
-      ref: 38e64ee8e33e19ccfdd7ffa712eced4a3ed5fe6c
+      ref: b77e6ab67efeb9ee3631121e3e3142325fb2b5da
   shared_preferences: ^2.2.2
   web_socket_channel: ^2.4.0
   pod_player: ^0.2.1

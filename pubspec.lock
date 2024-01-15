@@ -604,11 +604,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "38e64ee8e33e19ccfdd7ffa712eced4a3ed5fe6c"
-      resolved-ref: "38e64ee8e33e19ccfdd7ffa712eced4a3ed5fe6c"
+      ref: b77e6ab67efeb9ee3631121e3e3142325fb2b5da
+      resolved-ref: b77e6ab67efeb9ee3631121e3e3142325fb2b5da
       url: "https://github.com/BlastTea/MWidget.git"
     source: git
-    version: "2.12.0"
+    version: "2.14.0"
   matcher:
     dependency: transitive
     description:

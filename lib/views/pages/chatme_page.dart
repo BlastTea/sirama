@@ -32,7 +32,6 @@ class ChatMePage extends StatelessWidget {
                     key: UniqueKey(),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     reverse: true,
-                    keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
                     itemBuilder: (context, index) => index < stateChatme.chats.length
                         ? Column(
                             children: [
@@ -76,6 +75,7 @@ class ChatMePage extends StatelessWidget {
                             ),
                             textInputAction: TextInputAction.newline,
                             maxLines: null,
+                            textCapitalization: TextCapitalization.sentences,
                           ),
                         ),
                       ),
