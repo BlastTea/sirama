@@ -6,7 +6,6 @@ class ChatmeBloc extends Bloc<ChatmeEvent, ChatmeState> {
 
     on<ChatmeSendPressed>((event, emit) {
       if (_textControllerMessage.text.trim().isEmpty) {
-        //TODO:Add return message
         return;
       }
 

@@ -1,6 +1,6 @@
 part of '../pages.dart';
 
-List<Map> data = [
+List<Map> dataFilm = [
   {
     'id_film': '1',
     'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
@@ -40,8 +40,8 @@ List<Map> data = [
   },
 ];
 
-class EducationalVideoPage extends StatelessWidget {
-  const EducationalVideoPage({super.key});
+class FilmPage extends StatelessWidget {
+  const FilmPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,7 @@ class EducationalVideoPage extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Padding(
+           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: CardTile(
                 title: Text(
@@ -79,20 +79,20 @@ class EducationalVideoPage extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: ListView.builder(
-                itemCount: data.length,
+                itemCount: dataFilm.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    // Navigate to the detail page and pass the necessary data
+                    // Navigate to the detail page and pass the necessary dataFilm
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailsEducationalVideoPage(
-                          videoUrl: data[index]['link_film']!,
-                          title: data[index]['judul_film']!,
-                          uploadUserId: data[index]['creator']!,
-                          totalLike: data[index]['like']!,
+                        builder: (context) => DetailsFilmPage(
+                          videoUrl: dataFilm[index]['link_film']!,
+                          title: dataFilm[index]['judul_film']!,
+                          uploadUserId: dataFilm[index]['creator']!,
+                          totalLike: dataFilm[index]['like']!,
                         ),
                       ),
                     );
@@ -104,7 +104,7 @@ class EducationalVideoPage extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
                           child: Image.network(
-                            data[index]['thumbnail']!,
+                            dataFilm[index]['thumbnail']!,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -113,14 +113,14 @@ class EducationalVideoPage extends StatelessWidget {
                         contentPadding: const EdgeInsets.all(0),
                         leading: CircleAvatar(
                           backgroundImage:
-                              NetworkImage(data[index]['profile_url']!),
+                              NetworkImage(dataFilm[index]['profile_url']!),
                         ),
                         title: Text(
-                          data[index]['judul_film']!,
+                          dataFilm[index]['judul_film']!,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          "${data[index]['creator']!} . ${data[index]['date']!}",
+                          "${dataFilm[index]['creator']!} . ${dataFilm[index]['date']!}",
                           style: const TextStyle(
                             color: Colors.grey,
                           ),

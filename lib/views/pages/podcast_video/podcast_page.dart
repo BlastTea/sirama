@@ -1,6 +1,6 @@
-part of 'fragments.dart';
+part of '../pages.dart';
 
-List<Map> data = [
+List<Map> dataPodcast = [
   {
     'id_film': '1',
     'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
@@ -28,7 +28,8 @@ List<Map> data = [
   {
     'id_film': '3',
     'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film': 'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
+    'link_film':
+        'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
     'upload_user_id': 'Altamis',
     'thumbnail': 'https://picsum.photos/250?image=9',
     'profile_url': 'https://picsum.photos/250?image=9',
@@ -39,21 +40,12 @@ List<Map> data = [
   },
 ];
 
-class ScreeningFragment extends StatelessWidget {
-  const ScreeningFragment({super.key});
+class PodcastPage extends StatelessWidget {
+  const PodcastPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).push(const HomeFragment() as Route<Object?>),
-        ),
-        title: const Text("Video Edukasi"),
-        centerTitle: true,
-      ),
       body: SafeArea(
         child: ListView(
           shrinkWrap: true,
@@ -61,43 +53,15 @@ class ScreeningFragment extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            const Padding(
+           const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               child: CardTile(
-                title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                title: Text(
+                    'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                button: Text(
+                    'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
               ),
             ),
-
-            // Padding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 10),
-            //   child: Card(
-            //     color: Theme.of(context).colorScheme.primary,
-            //     clipBehavior: Clip.hardEdge,
-            //     child: InkWell(
-            //       splashColor: Theme.of(context).colorScheme.primary.withAlpha(30),
-            //       onTap: () => debugPrint('Card tapped.'),
-            //       child: SizedBox(
-            //         height: 200,
-            //         child: Padding(
-            //           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            //           child: Column(
-            //             children: [
-            //               Text(
-            //                 'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...',
-            //                 style: TextStyle(color: Theme.of(context).colorScheme.onPrimary, fontSize: 25, fontWeight: FontWeight.bold),
-            //               ),
-            //               Text(
-            //                 'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!',
-            //                 style: TextStyle(fontSize: 15, color: Theme.of(context).colorScheme.onPrimary),
-            //               ),
-            //             ],
-            //           ),
-            //         ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
             const SizedBox(
               height: 20,
             ),
@@ -115,20 +79,20 @@ class ScreeningFragment extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               child: ListView.builder(
-                itemCount: data.length,
+                itemCount: dataPodcast.length,
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) => InkWell(
                   onTap: () {
-                    // Navigate to the detail page and pass the necessary data
+                    // Navigate to the detail page and pass the necessary dataPodcast
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => DetailsEducationalVideoPage(
-                          videoUrl: data[index]['link_film']!,
-                          title: data[index]['judul_film']!,
-                          uploadUserId: data[index]['creator']!,
-                          totalLike: data[index]['like']!,
+                        builder: (context) => DetailsPodcastPage(
+                          videoUrl: dataPodcast[index]['link_film']!,
+                          title: dataPodcast[index]['judul_film']!,
+                          uploadUserId: dataPodcast[index]['creator']!,
+                          totalLike: dataPodcast[index]['like']!,
                         ),
                       ),
                     );
@@ -140,7 +104,7 @@ class ScreeningFragment extends StatelessWidget {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
                           child: Image.network(
-                            data[index]['thumbnail']!,
+                            dataPodcast[index]['thumbnail']!,
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -148,14 +112,15 @@ class ScreeningFragment extends StatelessWidget {
                       ListTile(
                         contentPadding: const EdgeInsets.all(0),
                         leading: CircleAvatar(
-                          backgroundImage: NetworkImage(data[index]['profile_url']!),
+                          backgroundImage:
+                              NetworkImage(dataPodcast[index]['profile_url']!),
                         ),
                         title: Text(
-                          data[index]['judul_film']!,
+                          dataPodcast[index]['judul_film']!,
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          "${data[index]['creator']!} . ${data[index]['date']!}",
+                          "${dataPodcast[index]['creator']!} . ${dataPodcast[index]['date']!}",
                           style: const TextStyle(
                             color: Colors.grey,
                           ),

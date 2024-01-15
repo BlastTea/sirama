@@ -11,7 +11,7 @@ class Homepage extends StatelessWidget {
           return Scaffold(
             body: [
               const HomeFragment(),
-              const ScreeningFragment(),
+              const ContentFragment(),
               const AskTheExpertFragment(),
               const ChatFragment(),
               const ProfileFragment(),
@@ -40,7 +40,7 @@ class Homepage extends StatelessWidget {
                   ][index],
                   label: [
                     'Beranda',
-                    'Skrining',
+                    'Konten',
                     'Tanya Ahli',
                     'Chat',
                     'Profil',

@@ -38,6 +38,12 @@ class MyApp extends StatelessWidget {
             textScaler: TextScaler.noScaling,
           ),
           child: MaterialApp(
+            routes: {
+              '/film': (context) => const FilmPage(),
+              '/podcast': (context) => const PodcastPage(),
+              '/educational-video': (context) => const EducationalVideoPage(),
+              '/infographics': (context) => const InfographicsPage(),
+            },
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
             scaffoldMessengerKey: scaffoldMessengerKey,
@@ -66,7 +72,10 @@ class MyApp extends StatelessWidget {
               ),
               chipTheme: ChipThemeData(
                 selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
+                secondaryLabelStyle: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(color: Config.colorScheme.onPrimary),
                 checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),

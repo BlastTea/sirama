@@ -30,7 +30,7 @@ class Config {
     height: screenHeight! * 0.08,
   );
 
-  // static const primaryColor = Color.fromRGBO(139, 192, 248, 100);
+
   static const greyColor = Color(0xFF858585);
 
   static const fontColor = Color(0xFF242E49);

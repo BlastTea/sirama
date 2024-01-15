@@ -27,3 +27,12 @@ part 'ask_the_expert/one_on_one_sesions_page.dart';
 
 part 'educational_video/educational_video_page.dart';
 part 'educational_video/details_educational_video_page.dart';
+
+part 'film_video/detail_film_page.dart';
+part 'film_video/film_page.dart';
+
+part 'podcast_video/podcast_page.dart';
+part 'podcast_video/details_podcast_page.dart';
+
+part 'infographics/infographics_page.dart';
+part 'infographics/details_infographics_page.dart';
