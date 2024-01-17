@@ -18,6 +18,7 @@ part 'podcast_page.dart';
 part 'chatme_page.dart';
 part 'doctor_profile_page.dart';
 part 'edit_profile_page.dart';
+part 'sign_up_role_page.dart';
 
 part 'screening/screening_page.dart';
 
