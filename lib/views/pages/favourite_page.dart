@@ -9,6 +9,7 @@ class FavouritePage extends StatelessWidget {
         child: Scaffold(
           appBar: AppBar(
             title: const Text('Favorit'),
+            centerTitle: true,
             bottom: TabBar(
               isScrollable: true,
               tabAlignment: TabAlignment.start,

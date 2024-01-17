@@ -73,6 +73,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField(
+                    controller: TextEditingController(text: 'Zalorin Vexstar'),
                     labelText: 'Username',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
                     minVerticalPadding: 4.0,
@@ -86,6 +87,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField(
+                    controller: TextEditingController(text: 'Zalorin Vexstar'),
                     labelText: 'Nama Lengkap',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
                     minVerticalPadding: 4.0,
@@ -99,6 +101,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField.date(
+                    value: DateTime(1970, 1, 1),
                     labelText: 'Tanggal Lahir',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
                     minVerticalPadding: 4.0,
@@ -113,6 +116,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField.dropdown(
+                    controller: TextEditingController(text: 'Laki-Laki'),
                     width: MediaQuery.sizeOf(context).width - 40.0,
                     labelText: 'Jenis Kelamin',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
@@ -127,6 +131,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField.dropdown(
+                    controller: TextEditingController(text: 'Bapak'),
                     width: MediaQuery.sizeOf(context).width - 40.0,
                     labelText: 'Orang Tua',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
@@ -141,6 +146,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField(
+                    controller: TextEditingController(text: 'Philips'),
                     labelText: 'Nama Orang Tua',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
                     minVerticalPadding: 4.0,
@@ -152,6 +158,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField.dropdown(
+                    controller: TextEditingController(text: '3'),
                     width: MediaQuery.sizeOf(context).width - 40.0,
                     labelText: 'Anak SMP',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
@@ -166,6 +173,7 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField(
+                    controller: TextEditingController(text: 'SMP Negeri'),
                     labelText: 'Nama Sekolah',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
                     minVerticalPadding: 4.0,

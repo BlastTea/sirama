@@ -1,7 +1,12 @@
 part of 'pages.dart';
 
 class DoctorProfilePage extends StatelessWidget {
-  const DoctorProfilePage({super.key});
+  const DoctorProfilePage({
+    super.key,
+    required this.index,
+  });
+
+  final int index;
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -16,7 +21,7 @@ class DoctorProfilePage extends StatelessWidget {
               child: Row(
                 children: [
                   ImageContainer.hero(
-                    tag: 'Dokter profile picture',
+                    tag: 'Doctor Profile Picture $index',
                     width: 132.0,
                     height: 132.0,
                     image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
@@ -75,6 +80,7 @@ class DoctorProfilePage extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 8.0),
             SizedBox(
               height: 48.0,
               child: ListView.builder(
@@ -82,7 +88,7 @@ class DoctorProfilePage extends StatelessWidget {
                 itemBuilder: (context, index) => Padding(
                   padding: EdgeInsets.only(left: index == 0 ? 20.0 : 8.0, right: index == 9 ? 20.0 : 0.0),
                   child: ChoiceChip(
-                    label: Text(TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()),
+                    label: Text(TimeOfDay(hour: [7, 8, 9, 10, 11, 12, 13, 14, 15, 16][index], minute: 0).toFormattedString()),
                     selected: index == 0,
                     onSelected: (value) {},
                   ),
@@ -90,6 +96,7 @@ class DoctorProfilePage extends StatelessWidget {
                 itemCount: 10,
               ),
             ),
+            const SizedBox(height: 8.0),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
@@ -106,6 +113,7 @@ class DoctorProfilePage extends StatelessWidget {
                 ],
               ),
             ),
+            const SizedBox(height: 8.0),
             SizedBox(
               height: 48.0,
               child: ListView.builder(

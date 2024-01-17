@@ -52,38 +52,46 @@ class CategorySessionsPage extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          ImageContainer.hero(
-                            tag: 'Sessions $index',
-                            width: 48.0,
-                            height: 48.0,
-                            iconSize: 24.0,
-                            icon: Icons.person,
-                            border: const Border(),
-                            image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
-                            borderRadius: BorderRadius.circular(24.0),
-                          ),
-                          const SizedBox(width: 10.0),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                      Material(
+                        color: Colors.transparent,
+                        borderRadius: const BorderRadius.horizontal(left: Radius.circular(24.0), right: Radius.circular(kShapeLarge)),
+                        child: InkWell(
+                          borderRadius: const BorderRadius.horizontal(left: Radius.circular(24.0), right: Radius.circular(kShapeLarge)),
+                          onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => DoctorProfilePage(index: index))),
+                          child: Row(
                             children: [
-                              Text(
-                                'Sahana V',
-                                style: Config.textStyleBodyLarge.copyWith(
-                                  color: Theme.of(context).colorScheme.onPrimary,
-                                ),
+                              ImageContainer.hero(
+                                tag: 'Doctor Profile Picture $index',
+                                width: 48.0,
+                                height: 48.0,
+                                iconSize: 24.0,
+                                icon: Icons.person,
+                                border: const Border(),
+                                image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                                borderRadius: BorderRadius.circular(24.0),
                               ),
-                              const SizedBox(height: 4.0),
-                              Text(
-                                'Msc in Clinical Psychology',
-                                style: Config.textStyleBodyMedium.copyWith(
-                                  color: Theme.of(context).colorScheme.onPrimary,
-                                ),
-                              )
+                              const SizedBox(width: 10.0),
+                              Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    'Sahana V',
+                                    style: Config.textStyleBodyLarge.copyWith(
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 4.0),
+                                  Text(
+                                    'Msc in Clinical Psychology',
+                                    style: Config.textStyleBodyMedium.copyWith(
+                                      color: Theme.of(context).colorScheme.onPrimary,
+                                    ),
+                                  )
+                                ],
+                              ),
                             ],
                           ),
-                        ],
+                        ),
                       ),
                       const Divider(),
                       Row(

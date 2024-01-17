@@ -54,8 +54,21 @@ class ChatAskTheExpertPage extends StatelessWidget {
                               const SizedBox(height: 2.0),
                             ],
                           )
-                        : const SizedBox(height: 16.0),
-                    itemCount: stateChatme.chats.length + 1,
+                        : Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(left: 48.0),
+                                child: MessageBubble(
+                                  message: 'P',
+                                  sentAt: TimeOfDay.fromDateTime(DateTime.now()),
+                                  isSender: true,
+                                ),
+                              ),
+                              const SizedBox(height: 2.0),
+                            ],
+                          ),
+                    // : const SizedBox(height: 16.0),
+                    itemCount: stateChatme.chats.length + 10000,
                   ),
                 ),
                 Padding(
