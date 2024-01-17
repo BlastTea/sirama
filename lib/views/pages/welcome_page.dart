@@ -10,11 +10,6 @@ class WelcomePage extends StatelessWidget {
             shrinkWrap: true,
             padding: responsivePadding(MediaQuery.sizeOf(context), minimumHorizontalPadding: 64.0),
             children: [
-              Image.asset(
-                'assets/Logo SIRAMA (trimmed).png',
-                width: 64.0,
-                height: 64.0,
-              ),
               const SizedBox(height: 16.0),
               RichText(
                 text: TextSpan(
@@ -32,11 +27,13 @@ class WelcomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32.0),
-              Image.asset('assets/welcome image.png'),
+              Image.asset(
+                'assets/Logo SIRAMA (trimmed).png',
+              ),
               const SizedBox(height: 32.0),
               Center(
                 child: MyFilledButton(
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpRolePage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignInPage())),
                   iconAssetName: 'assets/icons/Monotone arrow right.png',
                   labelText: 'Daftar',
                 ),

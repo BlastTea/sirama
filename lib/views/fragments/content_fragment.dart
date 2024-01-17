@@ -17,8 +17,7 @@ class ContentFragment extends StatelessWidget {
         backgroundColor: Colors.white,
         leading: IconButton(
           icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context)
-              .push(const HomeFragment() as Route<Object?>),
+          onPressed: () => Navigator.of(context).push(const HomeFragment() as Route<Object?>),
         ),
         title: const Text("Video Edukasi"),
         centerTitle: true,

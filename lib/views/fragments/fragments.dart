@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
 import 'package:sirama/main.dart';
-import 'package:sirama/utils/config.dart';
+import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 

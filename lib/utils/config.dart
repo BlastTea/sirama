@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+part of 'utils.dart';
 
 class Config {
   static MediaQueryData? mediaQueryData;
@@ -29,7 +28,6 @@ class Config {
   static final spaceBig = SizedBox(
     height: screenHeight! * 0.08,
   );
-
 
   static const greyColor = Color(0xFF858585);
 

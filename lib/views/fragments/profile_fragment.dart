@@ -26,15 +26,9 @@ class ProfileFragment extends StatelessWidget {
             ),
             const SizedBox(height: 32.0),
             ListTile(
-              leading: const Icon(Icons.school),
-              title: const Text('Sekolah'),
-              onTap: () => debugPrint('sekolah pressed'),
-            ),
-            const Divider(),
-            ListTile(
               leading: const Icon(Icons.favorite),
               title: const Text('Favorit'),
-              onTap: () => debugPrint('Favorit pressed'),
+              onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const FavouritePage())),
             ),
             const Divider(),
             ListTile(

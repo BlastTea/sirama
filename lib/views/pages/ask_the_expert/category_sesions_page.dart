@@ -1,7 +1,7 @@
 part of '../pages.dart';
 
-class OneOnOneSessionsPage extends StatelessWidget {
-  const OneOnOneSessionsPage({super.key});
+class CategorySessionsPage extends StatelessWidget {
+  const CategorySessionsPage({super.key});
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -26,31 +26,21 @@ class OneOnOneSessionsPage extends StatelessWidget {
                       Icon(Icons.play_circle, color: Theme.of(context).colorScheme.onPrimary),
                     ],
                   ),
-                  onPressed: () => debugPrint('Upcoming Session Pressed'),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const InputAskPage())),
                 ),
               ),
             ),
-            const SliverToBoxAdapter(child: SizedBox(height: 10.0)),
+            const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
-                child: DropdownButton(
-                  value: 'All Sessions',
-                  underline: Container(),
-                  items: List.generate(
-                    4,
-                    (index) => DropdownMenuItem(
-                      value: ['All Sessions', '1', '2', '3'][index],
-                      child: Text(
-                        ['All Sessions', '1', '2', '3'][index],
-                      ),
-                    ),
-                  ),
-                  onChanged: (value) {},
+                child: Text(
+                  'All Sessions',
+                  style: Config.textStyleHeadlineSmall,
                 ),
               ),
             ),
-            const SliverToBoxAdapter(child: SizedBox(height: 10.0)),
+            const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
             SliverList.builder(
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
@@ -132,7 +122,7 @@ class OneOnOneSessionsPage extends StatelessWidget {
                             ],
                           ),
                           FilledButton(
-                            onPressed: () => debugPrint('chat now pressed'),
+                            onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const InputAskPage())),
                             style: FilledButton.styleFrom(
                               backgroundColor: Theme.of(context).colorScheme.onPrimary,
                               foregroundColor: Theme.of(context).colorScheme.primary,

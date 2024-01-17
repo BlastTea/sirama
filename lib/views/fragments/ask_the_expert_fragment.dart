@@ -16,7 +16,7 @@ class AskTheExpertFragment extends StatelessWidget {
                   subtitle: const Text('Let`s open up to the things that matter the most '),
                   button: const Text('Chat Sekarang'),
                   image: Image.asset('assets/hug.png'),
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const OneOnOneSessionsPage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const CategorySessionsPage())),
                 ),
               ),
             ),

@@ -13,6 +13,7 @@ class EditProfilePage extends StatelessWidget {
                 centerTitle: true,
                 pinned: true,
                 foregroundColor: Theme.of(context).colorScheme.onPrimary,
+                backgroundColor: Theme.of(context).colorScheme.primary,
                 flexibleSpace: FlexibleSpaceBar(
                   background: Align(
                     alignment: Alignment.topCenter,
@@ -20,8 +21,16 @@ class EditProfilePage extends StatelessWidget {
                       children: [
                         Container(
                           width: double.infinity,
-                          color: Theme.of(context).colorScheme.primary,
                           height: 165.0,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Container(
+                            width: double.infinity,
+                            height: 200.0 - 145.0,
+                            color: Theme.of(context).colorScheme.background,
+                          ),
                         ),
                         Align(
                           child: Padding(
@@ -66,7 +75,7 @@ class EditProfilePage extends StatelessWidget {
                   child: LabeledTextField(
                     labelText: 'Username',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
-                    minVerticalPadding: 2.0,
+                    minVerticalPadding: 4.0,
                     textInputAction: TextInputAction.next,
                     autofillHints: const [AutofillHints.username],
                   ),
@@ -79,7 +88,7 @@ class EditProfilePage extends StatelessWidget {
                   child: LabeledTextField(
                     labelText: 'Nama Lengkap',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
-                    minVerticalPadding: 2.0,
+                    minVerticalPadding: 4.0,
                     textInputAction: TextInputAction.next,
                     autofillHints: const [AutofillHints.name],
                   ),
@@ -92,7 +101,7 @@ class EditProfilePage extends StatelessWidget {
                   child: LabeledTextField.date(
                     labelText: 'Tanggal Lahir',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
-                    minVerticalPadding: 2.0,
+                    minVerticalPadding: 4.0,
                     firstDate: DateTime(1970, 1, 1),
                     lastDate: DateTime.now(),
                     readOnly: true,
@@ -104,11 +113,64 @@ class EditProfilePage extends StatelessWidget {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 sliver: SliverToBoxAdapter(
                   child: LabeledTextField.dropdown(
+                    width: MediaQuery.sizeOf(context).width - 40.0,
                     labelText: 'Jenis Kelamin',
                     labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
-                    minVerticalPadding: 2.0,
-                    items: ['Laki-Laki', 'Perempuan'].map((e) => PopupMenuItem(value: e, child: Text(e))).toList(),
+                    minVerticalPadding: 4.0,
+                    items: ['Laki-Laki', 'Perempuan'].map((e) => DropdownMenuEntry(value: e, label: e)).toList(),
                     readOnly: true,
+                  ),
+                ),
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                sliver: SliverToBoxAdapter(
+                  child: LabeledTextField.dropdown(
+                    width: MediaQuery.sizeOf(context).width - 40.0,
+                    labelText: 'Orang Tua',
+                    labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
+                    minVerticalPadding: 4.0,
+                    items: ['Bapak', 'Ibu'].map((e) => DropdownMenuEntry(value: e, label: e)).toList(),
+                    readOnly: true,
+                  ),
+                ),
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                sliver: SliverToBoxAdapter(
+                  child: LabeledTextField(
+                    labelText: 'Nama Orang Tua',
+                    labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
+                    minVerticalPadding: 4.0,
+                  ),
+                ),
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                sliver: SliverToBoxAdapter(
+                  child: LabeledTextField.dropdown(
+                    width: MediaQuery.sizeOf(context).width - 40.0,
+                    labelText: 'Anak SMP',
+                    labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
+                    minVerticalPadding: 4.0,
+                    items: ['1', '2', '3'].map((e) => DropdownMenuEntry(value: e, label: e)).toList(),
+                    readOnly: true,
+                  ),
+                ),
+              ),
+              const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+              SliverPadding(
+                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                sliver: SliverToBoxAdapter(
+                  child: LabeledTextField(
+                    labelText: 'Nama Sekolah',
+                    labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
+                    minVerticalPadding: 4.0,
+                    textInputAction: TextInputAction.next,
+                    autofillHints: const [AutofillHints.name],
                   ),
                 ),
               ),

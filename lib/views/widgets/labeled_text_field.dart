@@ -24,11 +24,18 @@ class LabeledTextField extends StatefulWidget {
     this.onSubmitted,
     this.inputFormatters,
     this.readOnly = false,
+    this.expands = false,
+    this.constraints,
+    this.maxLines = 1,
+    this.maxLength,
+    this.textAlignVertical,
+    this.buildCounter,
   })  : _type = _LabeledTextFieldType.none,
         items = const [],
         value = null,
         firstDate = DateTime.now(),
-        lastDate = DateTime.now();
+        lastDate = DateTime.now(),
+        width = null;
 
   LabeledTextField.password({
     super.key,
@@ -46,11 +53,18 @@ class LabeledTextField extends StatefulWidget {
     this.onSubmitted,
     this.inputFormatters,
     this.readOnly = false,
+    this.expands = false,
+    this.constraints,
+    this.maxLines = 1,
+    this.maxLength,
+    this.textAlignVertical,
+    this.buildCounter,
   })  : _type = _LabeledTextFieldType.password,
         items = const [],
         value = null,
         firstDate = DateTime.now(),
-        lastDate = DateTime.now();
+        lastDate = DateTime.now(),
+        width = null;
 
   const LabeledTextField.date({
     super.key,
@@ -68,33 +82,47 @@ class LabeledTextField extends StatefulWidget {
     this.onSubmitted,
     this.inputFormatters,
     this.readOnly = false,
+    this.expands = false,
+    this.constraints,
+    this.maxLines = 1,
+    this.maxLength,
+    this.textAlignVertical,
+    this.buildCounter,
     this.value,
     required this.firstDate,
     required this.lastDate,
   })  : _type = _LabeledTextFieldType.date,
-        items = const [];
+        items = const [],
+        width = null;
 
   LabeledTextField.dropdown({
     super.key,
+    this.width,
     required this.labelText,
     this.labelStyle,
     this.minVerticalPadding,
     this.controller,
     this.decoration,
-    this.autofillHints,
-    this.textCapitalization = TextCapitalization.none,
-    this.keyboardType,
-    this.textInputAction,
     this.onChanged,
-    this.onEditingComplete,
-    this.onSubmitted,
-    this.inputFormatters,
     this.readOnly = false,
+    this.expands = false,
+    this.constraints,
     required this.items,
   })  : _type = _LabeledTextFieldType.dropdown,
         value = null,
+        textCapitalization = TextCapitalization.none,
+        autofillHints = null,
+        onEditingComplete = null,
+        onSubmitted = null,
+        keyboardType = null,
+        inputFormatters = null,
+        textInputAction = null,
         firstDate = DateTime.now(),
-        lastDate = DateTime.now();
+        lastDate = DateTime.now(),
+        maxLines = null,
+        textAlignVertical = null,
+        buildCounter = null,
+        maxLength = null;
 
   final String labelText;
   final TextStyle? labelStyle;
@@ -110,11 +138,18 @@ class LabeledTextField extends StatefulWidget {
   final ValueChanged<String>? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
+  final bool expands;
+  final BoxConstraints? constraints;
+  final int? maxLines;
+  final int? maxLength;
+  final TextAlignVertical? textAlignVertical;
+  final InputCounterWidgetBuilder? buildCounter;
   final _LabeledTextFieldType _type;
   final DateTime? value;
   final DateTime firstDate;
   final DateTime lastDate;
-  final List<PopupMenuItem<String>> items;
+  final List<DropdownMenuEntry<String>> items;
+  final double? width;
 
   @override
   State<LabeledTextField> createState() => _LabeledTextFieldState();
@@ -164,6 +199,8 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
 
   @override
   Widget build(BuildContext context) {
+    InputDecoration effectiveDecoration = _getEffectiveDecoration(context);
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -172,51 +209,66 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
           style: widget.labelStyle ?? Config.textStyleHeadlineSmall,
         ),
         SizedBox(height: widget.minVerticalPadding ?? 18.0),
-        switch (widget._type) {
-          _LabeledTextFieldType.date => DateField(
-              value: widget.value,
-              firstDate: widget.firstDate,
-              lastDate: widget.lastDate,
-              decoration: _getEffectiveDecoration(context),
-              obscureText: !_showPassword,
-              textCapitalization: widget.textCapitalization,
-              keyboardType: widget.keyboardType,
-              textInputAction: widget.textInputAction,
-              onChanged: widget.onChanged,
-              onEditingComplete: widget.onEditingComplete,
-              onSubmitted: widget.onSubmitted,
-              inputFormatters: widget.inputFormatters,
-              readOnly: widget.readOnly,
-            ),
-          _LabeledTextFieldType.dropdown => DropdownField(
-              controller: _textController,
-              items: widget.items,
-              decoration: _getEffectiveDecoration(context),
-              obscureText: !_showPassword,
-              textCapitalization: widget.textCapitalization,
-              keyboardType: widget.keyboardType,
-              textInputAction: widget.textInputAction,
-              onChanged: widget.onChanged,
-              onEditingComplete: widget.onEditingComplete,
-              onSubmitted: widget.onSubmitted,
-              inputFormatters: widget.inputFormatters,
-              readOnly: widget.readOnly,
-            ),
-          _ => TextField(
-              controller: _textController,
-              decoration: _getEffectiveDecoration(context),
-              obscureText: !_showPassword,
-              autofillHints: widget.autofillHints,
-              textCapitalization: widget.textCapitalization,
-              keyboardType: widget.keyboardType,
-              textInputAction: widget.textInputAction,
-              onChanged: widget.onChanged,
-              onEditingComplete: widget.onEditingComplete,
-              onSubmitted: widget.onSubmitted,
-              inputFormatters: widget.inputFormatters,
-              readOnly: widget.readOnly,
-            ),
-        }
+        ConstrainedBox(
+          constraints: widget.constraints ?? const BoxConstraints(),
+          child: switch (widget._type) {
+            _LabeledTextFieldType.date => DateField(
+                value: widget.value,
+                firstDate: widget.firstDate,
+                lastDate: widget.lastDate,
+                decoration: effectiveDecoration,
+                obscureText: !_showPassword,
+                textCapitalization: widget.textCapitalization,
+                keyboardType: widget.keyboardType,
+                textInputAction: widget.textInputAction,
+                onChanged: widget.onChanged,
+                onEditingComplete: widget.onEditingComplete,
+                onSubmitted: widget.onSubmitted,
+                inputFormatters: widget.inputFormatters,
+                readOnly: widget.readOnly,
+                expands: widget.expands,
+                maxLines: widget.maxLines,
+                maxLength: widget.maxLength,
+                textAlignVertical: widget.textAlignVertical,
+                buildCounter: widget.buildCounter,
+              ),
+            _LabeledTextFieldType.dropdown => DropdownMenu(
+                width: widget.width,
+                controller: _textController,
+                dropdownMenuEntries: widget.items,
+                inputDecorationTheme: Theme.of(context).inputDecorationTheme.copyWith(
+                      contentPadding: effectiveDecoration.contentPadding,
+                      filled: effectiveDecoration.filled,
+                      fillColor: effectiveDecoration.fillColor,
+                      hintStyle: effectiveDecoration.hintStyle,
+                    ),
+                trailingIcon: effectiveDecoration.suffixIcon,
+                enableSearch: !widget.readOnly,
+                enableFilter: !widget.readOnly,
+                label: effectiveDecoration.labelText != null ? Text(effectiveDecoration.labelText!) : effectiveDecoration.label,
+                onSelected: (value) => value != null ? widget.onChanged!(value) : null,
+              ),
+            _ => TextField(
+                controller: _textController,
+                decoration: effectiveDecoration,
+                obscureText: !_showPassword,
+                autofillHints: widget.autofillHints,
+                textCapitalization: widget.textCapitalization,
+                keyboardType: widget.keyboardType,
+                textInputAction: widget.textInputAction,
+                onChanged: widget.onChanged,
+                onEditingComplete: widget.onEditingComplete,
+                onSubmitted: widget.onSubmitted,
+                inputFormatters: widget.inputFormatters,
+                readOnly: widget.readOnly,
+                expands: widget.expands,
+                maxLines: widget.maxLines,
+                maxLength: widget.maxLength,
+                textAlignVertical: widget.textAlignVertical,
+                buildCounter: widget.buildCounter,
+              ),
+          },
+        ),
       ],
     );
   }

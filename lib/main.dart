@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
-import 'package:sirama/utils/config.dart';
+import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 
 void main() async {
@@ -72,10 +72,7 @@ class MyApp extends StatelessWidget {
               ),
               chipTheme: ChipThemeData(
                 selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .copyWith(color: Config.colorScheme.onPrimary),
+                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
                 checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),
