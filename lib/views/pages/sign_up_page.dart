@@ -80,7 +80,7 @@ class SignUpPage extends StatelessWidget {
                 ),
               ),
               TextButton(
-                onPressed: () => NavigationHelper.back(),
+                onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const Homepage())),
                 child: Text(
                   'Sign In',
                   style: Config.textStyleTitleSmall,
