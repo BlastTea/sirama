@@ -28,7 +28,7 @@ class EditProfilePage extends StatelessWidget {
                           alignment: Alignment.bottomCenter,
                           child: Container(
                             width: double.infinity,
-                            height: 200.0 - 145.0,
+                            height: 200.0 - 165.0 + MediaQuery.viewPaddingOf(context).top,
                             color: Theme.of(context).colorScheme.background,
                           ),
                         ),
