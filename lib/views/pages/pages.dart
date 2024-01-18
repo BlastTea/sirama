@@ -23,6 +23,9 @@ part 'sign_up_role_page.dart';
 part 'favourite_page.dart';
 
 part 'screening/screening_page.dart';
+part 'screening/choose_screening_page.dart';
+part 'screening/main_screening_page.dart';
+part 'screening/history_screening_page.dart';
 
 part 'ask_the_expert/category_sesions_page.dart';
 part 'ask_the_expert/input_ask_page.dart';
