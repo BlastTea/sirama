@@ -25,7 +25,7 @@ class AskTheExpertFragment extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
                 child: Text(
-                  'Paling sering ditanyakan',
+                  'Kategori',
                   style: Config.textStyleHeadlineSmall,
                 ),
               ),
@@ -53,7 +53,7 @@ class AskTheExpertFragment extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
                 child: Text(
-                  'Pertanyaan serupa dari Sobat RAMA lainnya',
+                  'Semua pertanyaan dari Sobat RAMA lainnya',
                   style: Config.textStyleHeadlineSmall,
                 ),
               ),
