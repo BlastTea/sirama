@@ -48,6 +48,7 @@ class MyApp extends StatelessWidget {
               '/podcast': (context) => const PodcastPage(),
               '/educational-video': (context) => const EducationalVideoPage(),
               '/infographics': (context) => const InfographicsPage(),
+              '/mainscreening': (context) => const MainScreeningPage(),
             },
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
