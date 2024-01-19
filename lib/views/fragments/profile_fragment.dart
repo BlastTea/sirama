@@ -26,15 +26,9 @@ class ProfileFragment extends StatelessWidget {
             ),
             const SizedBox(height: 32.0),
             ListTile(
-              leading: const Icon(Icons.school),
-              title: const Text('Sekolah'),
-              onTap: () => debugPrint('sekolah pressed'),
-            ),
-            const Divider(),
-            ListTile(
               leading: const Icon(Icons.favorite),
               title: const Text('Favorit'),
-              onTap: () => debugPrint('Favorit pressed'),
+              onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const FavouritePage())),
             ),
             const Divider(),
             ListTile(
@@ -42,7 +36,7 @@ class ProfileFragment extends StatelessWidget {
               title: const Text('Hapus Akun'),
               onTap: () => showDeleteDialog(
                 titleText: 'Hapus Akun?',
-                messageText: shortLorem,
+                messageText: 'Semua data dan pengaturan Anda akan dihapus secara permanen. Ini termasuk profil, konten yang Anda simpan, dan semua interaksi dalam aplikasi. Proses ini tidak dapat dibatalkan.',
                 primaryFilledButton: true,
               ),
             ),
@@ -50,7 +44,11 @@ class ProfileFragment extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
-              onTap: () => debugPrint('Logout pressed'),
+              onTap: () async {
+                NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+                await Future.delayed(kDurationMedium3);
+                MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 0));
+              },
             ),
           ],
         ),

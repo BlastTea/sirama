@@ -1,3 +1,5 @@
+part of 'utils.dart';
+
 List<Map> data = [
   {
     'id_film': '1',

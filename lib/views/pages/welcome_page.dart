@@ -10,11 +10,6 @@ class WelcomePage extends StatelessWidget {
             shrinkWrap: true,
             padding: responsivePadding(MediaQuery.sizeOf(context), minimumHorizontalPadding: 64.0),
             children: [
-              Image.asset(
-                'assets/dummy logo.png',
-                width: 64.0,
-                height: 64.0,
-              ),
               const SizedBox(height: 16.0),
               RichText(
                 text: TextSpan(
@@ -32,7 +27,12 @@ class WelcomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32.0),
-              Image.asset('assets/welcome image.png'),
+              Center(
+                child: Image.asset(
+                  'assets/Logo SIRAMA (trimmed).png',
+                  width: 200.0,
+                ),
+              ),
               const SizedBox(height: 32.0),
               Center(
                 child: MyFilledButton(
@@ -43,7 +43,7 @@ class WelcomePage extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                  onPressed: () {},
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const Homepage())),
                   child: const Text(
                     'Lanjutkan sebagai guest',
                     style: TextStyle(

@@ -16,7 +16,7 @@ class AskTheExpertFragment extends StatelessWidget {
                   subtitle: const Text('Let`s open up to the things that matter the most '),
                   button: const Text('Chat Sekarang'),
                   image: Image.asset('assets/hug.png'),
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const OneOnOneSessionsPage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const CategorySessionsPage())),
                 ),
               ),
             ),
@@ -25,7 +25,7 @@ class AskTheExpertFragment extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
                 child: Text(
-                  'Paling sering ditanyakan',
+                  'Kategori',
                   style: Config.textStyleHeadlineSmall,
                 ),
               ),
@@ -53,7 +53,7 @@ class AskTheExpertFragment extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
                 child: Text(
-                  'Pertanyaan serupa dari Sobat RAMA lainnya',
+                  'Semua pertanyaan dari Sobat RAMA lainnya',
                   style: Config.textStyleHeadlineSmall,
                 ),
               ),
@@ -62,6 +62,7 @@ class AskTheExpertFragment extends StatelessWidget {
             SliverList.builder(
               itemBuilder: (context, index) => ListTile(
                 isThreeLine: true,
+                contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
                 onTap: () => debugPrint('On question pressed'),
                 leading: ImageContainer.hero(
                   tag: 'Profile picture $index',

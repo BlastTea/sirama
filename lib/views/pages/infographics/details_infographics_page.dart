@@ -140,6 +140,30 @@ class DetailsInfographicsPageState
           const SizedBox(
             height: 20,
           ),
+
+          // ListView(
+//         padding: const EdgeInsets.all(8.0),
+//         itemExtent: 106.0,
+//         children: <CustomListItem>[
+//           CustomListItem(
+//             user: 'Flutter',
+//             viewCount: 999000,
+//             thumbnail: Container(
+//               decoration: const BoxDecoration(color: Colors.blue),
+//             ),
+//             title: 'The Flutter YouTube Channel',
+//           ),
+//           CustomListItem(
+//             user: 'Dash',
+//             viewCount: 884000,
+//             thumbnail: Container(
+//               decoration: const BoxDecoration(color: Colors.yellow),
+//             ),
+//             title: 'Announcing Flutter 1.0',
+//           ),
+//         ],
+//       ),
+
           Padding(
               padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
               child: ListView.builder(
@@ -197,3 +221,5 @@ class DetailsInfographicsPageState
         ])));
   }
 }
+
+

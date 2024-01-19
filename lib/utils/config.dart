@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+part of 'utils.dart';
 
 class Config {
   static MediaQueryData? mediaQueryData;
@@ -30,13 +29,13 @@ class Config {
     height: screenHeight! * 0.08,
   );
 
-
   static const greyColor = Color(0xFF858585);
 
   static const fontColor = Color(0xFF242E49);
 
   static final colorScheme = ColorScheme.fromSeed(
     seedColor: const Color(0xFF8BC0F8),
+    primary: const Color(0xFF8BC0F8),
   );
 
   static TextStyle defaultStyle = GoogleFonts.plusJakartaSans();

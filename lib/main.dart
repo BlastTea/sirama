@@ -3,7 +3,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
-import 'package:sirama/utils/config.dart';
+import 'package:sirama/services/services.dart';
+import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 
 void main() async {
@@ -18,6 +19,8 @@ void main() async {
     defaultLanguage: LanguageType.indonesiaIndonesian,
   );
 
+  await ApiHelper.signInWithToken();
+
   runApp(const MyApp());
 }
 
@@ -26,12 +29,14 @@ class MyApp extends StatelessWidget {
 
   static HomepageBloc homepageBloc = HomepageBloc();
   static ChatmeBloc chatmeBloc = ChatmeBloc();
+  static AuthenticationBloc authenticationBloc = AuthenticationBloc();
 
   @override
   Widget build(BuildContext context) => MultiBlocProvider(
         providers: [
           BlocProvider(create: (context) => homepageBloc),
           BlocProvider(create: (context) => chatmeBloc),
+          BlocProvider(create: (context) => authenticationBloc),
         ],
         child: MediaQuery(
           data: MediaQuery.of(context).copyWith(
@@ -43,6 +48,7 @@ class MyApp extends StatelessWidget {
               '/podcast': (context) => const PodcastPage(),
               '/educational-video': (context) => const EducationalVideoPage(),
               '/infographics': (context) => const InfographicsPage(),
+              '/mainscreening': (context) => const MainScreeningPage(),
             },
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
@@ -72,14 +78,11 @@ class MyApp extends StatelessWidget {
               ),
               chipTheme: ChipThemeData(
                 selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .copyWith(color: Config.colorScheme.onPrimary),
+                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
                 checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),
-            home: const WelcomePage(),
+            home: currentUser != null ? const Homepage() : const WelcomePage(),
           ),
         ),
       );
