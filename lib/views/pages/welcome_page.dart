@@ -27,8 +27,11 @@ class WelcomePage extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 32.0),
-              Image.asset(
-                'assets/Logo SIRAMA (trimmed).png',
+              Center(
+                child: Image.asset(
+                  'assets/Logo SIRAMA (trimmed).png',
+                  width: 200.0,
+                ),
               ),
               const SizedBox(height: 32.0),
               Center(

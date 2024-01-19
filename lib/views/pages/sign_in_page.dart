@@ -4,89 +4,88 @@ class SignInPage extends StatelessWidget {
   const SignInPage({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: AutofillGroup(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 28.0),
-              children: [
-                const SizedBox(height: 20.0),
-                Text(
-                  'Yuk, mulai masuk!',
-                  textAlign: TextAlign.center,
-                  style: Config.textStyleHeadlineMedium,
-                ),
-                const SizedBox(height: 64.0),
-                LabeledTextField(
-                  labelText: 'Email',
-                  decoration: const InputDecoration(
-                    hintText: 'Enter Your Email',
-                  ),
-                  autofillHints: const [AutofillHints.email],
-                  textInputAction: TextInputAction.next,
-                ),
-                const SizedBox(height: 20.0),
-                LabeledTextField.password(
-                  labelText: 'Password',
-                  decoration: const InputDecoration(
-                    hintText: 'Enter Your Password',
-                  ),
-                  autofillHints: const [AutofillHints.password],
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                    onPressed: () {},
-                    child: Text(
-                      'Lupa password?',
-                      style: Config.textStyleTitleSmall.copyWith(
-                        decoration: TextDecoration.underline,
+  Widget build(BuildContext context) => BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, stateAuthentication) {
+          stateAuthentication as AuthenticationDataLoaded;
+
+          return Scaffold(
+            body: SafeArea(
+              child: AutofillGroup(
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                  children: [
+                    const SizedBox(height: 20.0),
+                    Text(
+                      'Yuk, mulai masuk!',
+                      textAlign: TextAlign.center,
+                      style: Config.textStyleHeadlineMedium,
+                    ),
+                    const SizedBox(height: 64.0),
+                    LabeledTextField(
+                      controller: stateAuthentication.textControllerUsernameSignIn,
+                      labelText: 'Username',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Username Anda',
+                      ),
+                      autofillHints: const [AutofillHints.email],
+                      textInputAction: TextInputAction.next,
+                    ),
+                    const SizedBox(height: 20.0),
+                    LabeledTextField.password(
+                      controller: stateAuthentication.textControllerPasswordSignIn,
+                      labelText: 'Password',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Password Anda',
+                      ),
+                      autofillHints: const [AutofillHints.password],
+                    ),
+                    Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () {},
+                        child: Text(
+                          'Lupa password?',
+                          style: Config.textStyleTitleSmall.copyWith(
+                            decoration: TextDecoration.underline,
+                          ),
+                        ),
                       ),
                     ),
-                  ),
-                ),
-                MyFilledButton(
-                  onPressed: () {
-                    while (NavigationHelper.canGoBack()) {
-                      NavigationHelper.back();
-                    }
-                    NavigationHelper.toReplacement(
-                      MaterialPageRoute(
-                        builder: (context) => const Homepage(),
+                    MyFilledButton(
+                      onPressed: () => MyApp.authenticationBloc.add(SignInPressed()),
+                      labelText: 'Masuk',
+                      buttonStyle: FilledButton.styleFrom(
+                        textStyle: Config.textStyleHeadlineSmall.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
                       ),
-                    );
-                  },
-                  labelText: 'Masuk',
-                  buttonStyle: FilledButton.styleFrom(
-                    textStyle: Config.textStyleHeadlineSmall.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
                     ),
-                  ),
+                  ],
                 ),
-              ],
+              ),
             ),
-          ),
-        ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 32.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Belum punya akun?',
-                style: Config.textStyleTitleSmall.copyWith(
-                  color: Config.greyColor,
-                ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.only(bottom: 32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Belum punya akun?',
+                    style: Config.textStyleTitleSmall.copyWith(
+                      color: Config.greyColor,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpPage())),
+                    child: Text(
+                      'Sign Up',
+                      style: Config.textStyleTitleSmall,
+                    ),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpPage())),
-                child: Text(
-                  'Sign Up',
-                  style: Config.textStyleTitleSmall,
-                ),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       );
 }
