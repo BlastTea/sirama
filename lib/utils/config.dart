@@ -35,6 +35,7 @@ class Config {
 
   static final colorScheme = ColorScheme.fromSeed(
     seedColor: const Color(0xFF8BC0F8),
+    primary: const Color(0xFF8BC0F8),
   );
 
   static TextStyle defaultStyle = GoogleFonts.plusJakartaSans();
