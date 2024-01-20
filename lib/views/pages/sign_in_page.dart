@@ -8,6 +8,11 @@ class SignInPage extends StatelessWidget {
         builder: (context, stateAuthentication) {
           stateAuthentication as AuthenticationDataLoaded;
 
+          if (kDebugMode) {
+            stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
+            stateAuthentication.textControllerPasswordSignIn.text = '123';
+          }
+
           return Scaffold(
             body: SafeArea(
               child: AutofillGroup(
@@ -22,6 +27,7 @@ class SignInPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 64.0),
                     LabeledTextField(
+                      focusNode: stateAuthentication.focusNodeUsernameSignIn,
                       controller: stateAuthentication.textControllerUsernameSignIn,
                       labelText: 'Username',
                       decoration: const InputDecoration(
@@ -32,12 +38,14 @@ class SignInPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     LabeledTextField.password(
+                      focusNode: stateAuthentication.focusNodePasswordSignIn,
                       controller: stateAuthentication.textControllerPasswordSignIn,
                       labelText: 'Password',
                       decoration: const InputDecoration(
                         hintText: 'Masukkan Password Anda',
                       ),
                       autofillHints: const [AutofillHints.password],
+                      onEditingComplete: () => MyApp.authenticationBloc.add(SignInPressed()),
                     ),
                     Align(
                       alignment: Alignment.centerRight,
@@ -59,6 +67,7 @@ class SignInPage extends StatelessWidget {
                           color: Theme.of(context).colorScheme.onPrimary,
                         ),
                       ),
+                      isLoading: stateAuthentication.isSingingIn,
                     ),
                   ],
                 ),

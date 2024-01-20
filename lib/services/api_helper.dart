@@ -14,7 +14,8 @@ part of 'services.dart';
 /// }
 /// ```
 class ApiHelper {
-  static String url = 'http://localhost:8000';
+  // static String url = 'http://localhost:8000';
+  static String url = 'http://192.168.1.12:8000';
 
   static const String _keyToken = 'token';
   static const String _keyCurrentUser = 'current_user';
@@ -37,15 +38,18 @@ class ApiHelper {
     _dioInstance!.interceptors.add(
       InterceptorsWrapper(
         onRequest: (options, handler) async {
+          debugPrint('${options.method} ${options.uri} ${options.path} ${options.data}');
+
           SharedPreferences sharedPref = await SharedPreferences.getInstance();
           String? token = sharedPref.getString(_keyToken);
 
-          if (token == null) {
+          if (token == null && options.method == 'POST' && !(options.uri.path == '/api/login' || options.uri.path == '/api/register')) {
             return handler.reject(
               DioException(
                 requestOptions: options,
                 message: 'Session is expired',
               ),
+              true,
             );
           }
 
@@ -53,15 +57,21 @@ class ApiHelper {
 
           return handler.next(options);
         },
+        onResponse: (response, handler) {
+          debugPrint('http response : ${response.data}');
+        },
         onError: (error, handler) {
-          if (error.message == 'Session is expired') {
+          String? message = error.response?.data?['message'] ?? error.message;
+
+          if (message == 'Session is expired') {
             while (NavigationHelper.canGoBack()) {
               NavigationHelper.back();
             }
             NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+            message = 'Sesi Anda telah berakhir';
+            showInformationDialog(message);
+            return handler.next(error);
           }
-
-          String? message = error.response?.data?['message'] ?? error.message;
 
           if (message != null) {
             showErrorDialog(message);

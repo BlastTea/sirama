@@ -8,6 +8,7 @@ class MyFilledButton extends StatelessWidget {
     required this.labelText,
     this.labelStyle,
     this.buttonStyle,
+    this.isLoading = false,
   });
 
   final VoidCallback? onPressed;
@@ -15,6 +16,7 @@ class MyFilledButton extends StatelessWidget {
   final String labelText;
   final TextStyle? labelStyle;
   final ButtonStyle? buttonStyle;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +33,7 @@ class MyFilledButton extends StatelessWidget {
     return Directionality(
       textDirection: TextDirection.rtl,
       child: FilledButton.icon(
-        onPressed: onPressed,
+        onPressed: isLoading ? null : onPressed,
         icon: iconAssetName != null
             ? Image.asset(
                 iconAssetName!,
@@ -39,13 +41,21 @@ class MyFilledButton extends StatelessWidget {
                 height: 24.0,
               )
             : Container(),
-        label: Text(
-          labelText,
-          style: labelStyle ??
-              Config.textStyleTitleSmall.copyWith(
-                color: Theme.of(context).colorScheme.onPrimary,
+        label: isLoading
+            ? SizedBox(
+                width: 24.0,
+                height: 24.0,
+                child: CircularProgressIndicator(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              )
+            : Text(
+                labelText,
+                style: labelStyle ??
+                    Config.textStyleTitleSmall.copyWith(
+                      color: Theme.of(context).colorScheme.onPrimary,
+                    ),
               ),
-        ),
         style: effectiveButtonStyle,
       ),
     );

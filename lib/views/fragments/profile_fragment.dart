@@ -37,7 +37,6 @@ class ProfileFragment extends StatelessWidget {
               onTap: () => showDeleteDialog(
                 titleText: 'Hapus Akun?',
                 messageText: 'Semua data dan pengaturan Anda akan dihapus secara permanen. Ini termasuk profil, konten yang Anda simpan, dan semua interaksi dalam aplikasi. Proses ini tidak dapat dibatalkan.',
-                primaryFilledButton: true,
               ),
             ),
             const Divider(),

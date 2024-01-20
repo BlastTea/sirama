@@ -42,47 +42,52 @@ class MyApp extends StatelessWidget {
           data: MediaQuery.of(context).copyWith(
             textScaler: TextScaler.noScaling,
           ),
-          child: MaterialApp(
-            routes: {
-              '/film': (context) => const FilmPage(),
-              '/podcast': (context) => const PodcastPage(),
-              '/educational-video': (context) => const EducationalVideoPage(),
-              '/infographics': (context) => const InfographicsPage(),
-              '/mainscreening': (context) => const MainScreeningPage(),
-            },
-            debugShowCheckedModeBanner: false,
-            navigatorKey: navigatorKey,
-            scaffoldMessengerKey: scaffoldMessengerKey,
-            title: Config.appName,
-            theme: ThemeData.light().copyWith(
-              materialTapTargetSize: MaterialTapTargetSize.padded,
-              colorScheme: Config.colorScheme,
-              filledButtonTheme: FilledButtonThemeData(
-                style: ButtonStyle(
-                  shape: MaterialStatePropertyAll(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(
-                        kShapeMedium,
+          child: MWidgetTheme(
+            dialogTheme: MWidgetDialogThemeData(
+              primaryFilledButton: true,
+            ),
+            child: MaterialApp(
+              routes: {
+                '/film': (context) => const FilmPage(),
+                '/podcast': (context) => const PodcastPage(),
+                '/educational-video': (context) => const EducationalVideoPage(),
+                '/infographics': (context) => const InfographicsPage(),
+                '/mainscreening': (context) => const MainScreeningPage(),
+              },
+              debugShowCheckedModeBanner: false,
+              navigatorKey: navigatorKey,
+              scaffoldMessengerKey: scaffoldMessengerKey,
+              title: Config.appName,
+              theme: ThemeData.light().copyWith(
+                materialTapTargetSize: MaterialTapTargetSize.padded,
+                colorScheme: Config.colorScheme,
+                filledButtonTheme: FilledButtonThemeData(
+                  style: ButtonStyle(
+                    shape: MaterialStatePropertyAll(
+                      RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                          kShapeMedium,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              inputDecorationTheme: InputDecorationTheme(
-                border: OutlineInputBorder(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  borderSide: BorderSide(
-                    color: Config.greyColor.withOpacity(0.3),
+                inputDecorationTheme: InputDecorationTheme(
+                  border: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    borderSide: BorderSide(
+                      color: Config.greyColor.withOpacity(0.3),
+                    ),
                   ),
                 ),
+                chipTheme: ChipThemeData(
+                  selectedColor: Config.colorScheme.primary,
+                  secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
+                  checkmarkColor: Config.colorScheme.onPrimary,
+                ),
               ),
-              chipTheme: ChipThemeData(
-                selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
-                checkmarkColor: Config.colorScheme.onPrimary,
-              ),
+              home: currentUser != null ? const Homepage() : const WelcomePage(),
             ),
-            home: currentUser != null ? const Homepage() : const WelcomePage(),
           ),
         ),
       );
