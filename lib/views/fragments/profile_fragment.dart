@@ -44,6 +44,7 @@ class ProfileFragment extends StatelessWidget {
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               onTap: () async {
+                await ApiHelper.signOut();
                 NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
                 await Future.delayed(kDurationMedium3);
                 MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 0));
