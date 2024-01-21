@@ -21,14 +21,14 @@ class EditProfilePage extends StatelessWidget {
                       children: [
                         Container(
                           width: double.infinity,
-                          height: 165.0,
+                          height: 150.0 + MediaQuery.viewPaddingOf(context).top,
                           color: Theme.of(context).colorScheme.primary,
                         ),
                         Align(
                           alignment: Alignment.bottomCenter,
                           child: Container(
                             width: double.infinity,
-                            height: 200.0 - 165.0 + MediaQuery.viewPaddingOf(context).top,
+                            height: 200.0 - 150.0 + MediaQuery.viewPaddingOf(context).top,
                             color: Theme.of(context).colorScheme.background,
                           ),
                         ),
