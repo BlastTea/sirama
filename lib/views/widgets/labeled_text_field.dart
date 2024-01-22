@@ -13,6 +13,7 @@ class LabeledTextField extends StatefulWidget {
     required this.labelText,
     this.labelStyle,
     this.minVerticalPadding,
+    this.focusNode,
     this.controller,
     this.decoration,
     this.autofillHints,
@@ -42,6 +43,7 @@ class LabeledTextField extends StatefulWidget {
     required this.labelText,
     this.labelStyle,
     this.minVerticalPadding,
+    this.focusNode,
     this.controller,
     this.decoration,
     this.autofillHints,
@@ -71,6 +73,7 @@ class LabeledTextField extends StatefulWidget {
     required this.labelText,
     this.labelStyle,
     this.minVerticalPadding,
+    this.focusNode,
     this.controller,
     this.decoration,
     this.autofillHints,
@@ -109,6 +112,7 @@ class LabeledTextField extends StatefulWidget {
     this.constraints,
     required this.items,
   })  : _type = _LabeledTextFieldType.dropdown,
+        focusNode = null,
         value = null,
         textCapitalization = TextCapitalization.none,
         autofillHints = null,
@@ -127,6 +131,7 @@ class LabeledTextField extends StatefulWidget {
   final String labelText;
   final TextStyle? labelStyle;
   final double? minVerticalPadding;
+  final FocusNode? focusNode;
   final TextEditingController? controller;
   final InputDecoration? decoration;
   final Iterable<String>? autofillHints;
@@ -213,6 +218,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
           constraints: widget.constraints ?? const BoxConstraints(),
           child: switch (widget._type) {
             _LabeledTextFieldType.date => DateField(
+                focusNode: widget.focusNode,
                 value: widget.value,
                 firstDate: widget.firstDate,
                 lastDate: widget.lastDate,
@@ -249,6 +255,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 onSelected: (value) => value != null ? widget.onChanged!(value) : null,
               ),
             _ => TextField(
+                focusNode: widget.focusNode,
                 controller: _textController,
                 decoration: effectiveDecoration,
                 obscureText: !_showPassword,

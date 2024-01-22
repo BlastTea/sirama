@@ -37,7 +37,6 @@ class ProfileFragment extends StatelessWidget {
               onTap: () => showDeleteDialog(
                 titleText: 'Hapus Akun?',
                 messageText: 'Semua data dan pengaturan Anda akan dihapus secara permanen. Ini termasuk profil, konten yang Anda simpan, dan semua interaksi dalam aplikasi. Proses ini tidak dapat dibatalkan.',
-                primaryFilledButton: true,
               ),
             ),
             const Divider(),
@@ -45,6 +44,7 @@ class ProfileFragment extends StatelessWidget {
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),
               onTap: () async {
+                await ApiHelper.signOut();
                 NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
                 await Future.delayed(kDurationMedium3);
                 MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 0));

@@ -19,6 +19,13 @@ class _SignUpRolePageState extends State<SignUpRolePage> {
                 child: ListView(
           padding: const EdgeInsets.symmetric(horizontal: 20),
           children: [
+            const SizedBox(height: 20.0),
+            Text(
+              'Mau daftar sebagai apa?',
+              textAlign: TextAlign.center,
+              style: Config.textStyleHeadlineMedium,
+            ),
+            const SizedBox(height: 20.0),
             RadioListTile<SingingCharacter>(
               secondary: const Icon(Icons.logout),
               controlAffinity: ListTileControlAffinity.trailing,
@@ -79,15 +86,38 @@ class _SignUpRolePageState extends State<SignUpRolePage> {
                 });
               },
             ),
+            const SizedBox(height: 32.0),
+            MyFilledButton(
+              onPressed: () => NavigationHelper.back(),
+              labelText: 'Lanjutkn pendafaran',
+              buttonStyle: FilledButton.styleFrom(
+                textStyle: Config.textStyleHeadlineSmall.copyWith(
+                  color: Theme.of(context).colorScheme.onPrimary,
+                ),
+              ),
+            ),
           ],
         ))),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(20),
-          child: MyFilledButton(
-            onPressed: () => NavigationHelper.to(
-                MaterialPageRoute(builder: (context) => const SignUpPage())),
-            iconAssetName: 'assets/icons/Monotone arrow right.png',
-            labelText: 'Lanjutkan pendaftaran',
+          padding: const EdgeInsets.only(bottom: 32.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                'Sudah punya akun?',
+                style: Config.textStyleTitleSmall.copyWith(
+                  color: Config.greyColor,
+                ),
+              ),
+              TextButton(
+                onPressed: () => NavigationHelper.to(
+                    MaterialPageRoute(builder: (context) => const Homepage())),
+                child: Text(
+                  'Sign In',
+                  style: Config.textStyleTitleSmall,
+                ),
+              ),
+            ],
           ),
         ),
       );

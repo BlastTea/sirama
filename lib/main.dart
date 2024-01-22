@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
 import 'package:sirama/services/services.dart';
@@ -8,7 +9,8 @@ import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
@@ -32,15 +34,22 @@ class MyApp extends StatelessWidget {
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
 
   @override
-  Widget build(BuildContext context) => MultiBlocProvider(
-        providers: [
-          BlocProvider(create: (context) => homepageBloc),
-          BlocProvider(create: (context) => chatmeBloc),
-          BlocProvider(create: (context) => authenticationBloc),
-        ],
-        child: MediaQuery(
-          data: MediaQuery.of(context).copyWith(
-            textScaler: TextScaler.noScaling,
+  Widget build(BuildContext context) {
+    FlutterNativeSplash.remove();
+
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => homepageBloc),
+        BlocProvider(create: (context) => chatmeBloc),
+        BlocProvider(create: (context) => authenticationBloc),
+      ],
+      child: MediaQuery(
+        data: MediaQuery.of(context).copyWith(
+          textScaler: TextScaler.noScaling,
+        ),
+        child: MWidgetTheme(
+          dialogTheme: const MWidgetDialogThemeData(
+            primaryFilledButton: true,
           ),
           child: MaterialApp(
             routes: {
@@ -85,5 +94,7 @@ class MyApp extends StatelessWidget {
             home: currentUser != null ? const Homepage() : const WelcomePage(),
           ),
         ),
-      );
+      ),
+    );
+  }
 }

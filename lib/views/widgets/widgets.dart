@@ -15,3 +15,6 @@ part 'play_video_from_youtube.dart';
 part 'card_tile.dart';
 part 'screening_list_item.dart';
 part 'screening_choose_list_item.dart';
+part 'screening_list_answer.dart';
+part 'my_infographics_list_item.dart';
+part 'my_infographics_description.dart';

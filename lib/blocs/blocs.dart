@@ -15,3 +15,19 @@ part 'chatme_bloc/chatme_state.dart';
 part 'authentication_bloc/authentication_bloc.dart';
 part 'authentication_bloc/authentication_event.dart';
 part 'authentication_bloc/authentication_state.dart';
+
+part 'infographics_bloc/infographics_bloc.dart';
+part 'infographics_bloc/infographics_event.dart';
+part 'infographics_bloc/infographics_state.dart';
+
+part 'educational_video_bloc/educational_video_bloc.dart';
+part 'educational_video_bloc/educational_video_event.dart';
+part 'educational_video_bloc/educational_video_state.dart';
+
+part 'film_video_bloc/film_video_bloc.dart';
+part 'film_video_bloc/film_video_event.dart';
+part 'film_video_bloc/film_video_state.dart';
+
+part 'podcast_bloc/podcast_bloc.dart';
+part 'podcast_bloc/podcast_event.dart';
+part 'podcast_bloc/podcast_state.dart';

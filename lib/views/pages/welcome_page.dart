@@ -43,7 +43,7 @@ class WelcomePage extends StatelessWidget {
               ),
               Center(
                 child: TextButton(
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const Homepage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpRolePage())),
                   child: const Text(
                     'Lanjutkan sebagai guest',
                     style: TextStyle(

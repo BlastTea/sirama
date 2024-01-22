@@ -14,7 +14,8 @@ part of 'services.dart';
 /// }
 /// ```
 class ApiHelper {
-  static String url = 'http://localhost:8000';
+  // static String url = 'http://localhost:8000';
+  static String url = 'https://dev-sirama.propertiideal.id';
 
   static const String _keyToken = 'token';
   static const String _keyCurrentUser = 'current_user';
@@ -28,8 +29,7 @@ class ApiHelper {
       BaseOptions(
         baseUrl: url,
         headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'multipart/form-data',
+          'Content-Type': 'application/json',
         },
       ),
     );
@@ -40,28 +40,56 @@ class ApiHelper {
           SharedPreferences sharedPref = await SharedPreferences.getInstance();
           String? token = sharedPref.getString(_keyToken);
 
-          if (token == null) {
+          if (token == null && options.method == 'POST' && !(options.uri.path == '/api/login' || options.uri.path == '/api/register')) {
             return handler.reject(
               DioException(
                 requestOptions: options,
                 message: 'Session is expired',
               ),
+              true,
             );
           }
 
           options.headers['Authorization'] = 'Bearer $token';
 
+          dynamic data;
+
+          if (options.data is FormData) {
+            data = (options.data as FormData).fields;
+          } else {
+            data = options.data;
+          }
+
+          debugPrint('http request : ${options.method} ${options.uri} ${options.headers} $data');
+
           return handler.next(options);
         },
+        onResponse: (response, handler) {
+          debugPrint('http response : ${response.data}');
+          handler.next(response);
+        },
         onError: (error, handler) {
-          if (error.message == 'Session is expired') {
+          String? message;
+          try {
+            dynamic data = error.response?.data;
+            if (data is Map && data['message'] is String) {
+              message = data['message'];
+            } else {
+              message = data;
+            }
+          } catch (e) {
+            message = error.message;
+          }
+
+          if (message == 'Session is expired') {
             while (NavigationHelper.canGoBack()) {
               NavigationHelper.back();
             }
             NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+            message = 'Sesi Anda telah berakhir';
+            showInformationDialog(message);
+            return handler.next(error);
           }
-
-          String? message = error.response?.data?['message'] ?? error.message;
 
           if (message != null) {
             showErrorDialog(message);
@@ -77,7 +105,13 @@ class ApiHelper {
     required String username,
     required String password,
   }) async {
-    Response response = await post('/api/login');
+    Response response = await post(
+      '/api/login',
+      body: {
+        'username': username,
+        'password': password,
+      },
+    );
 
     String token = response.data['token'];
 
@@ -85,8 +119,8 @@ class ApiHelper {
 
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
 
-    sharedPref.setString(_keyToken, token);
-    sharedPref.setString(_keyCurrentUser, jsonEncode(currentUser!.toJson()));
+    await sharedPref.setString(_keyToken, token);
+    await sharedPref.setString(_keyCurrentUser, jsonEncode(currentUser!.toJson()));
   }
 
   static Future<void> signOut() async {
