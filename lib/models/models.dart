@@ -24,6 +24,18 @@ class User with _$User {
 }
 
 @freezed
+class TopikPertanyaan with _$TopikPertanyaan {
+  const factory TopikPertanyaan({
+    @JsonKey(name: 'id_jetnis_topik_pertanyaan') int? idJenisTopikPertanyaan,
+    @JsonKey(name: 'nama_topik') String? namaTopik,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _TopikPertanyaan;
+
+  factory TopikPertanyaan.fromJson(Map<String, dynamic> json) => _$TopikPertanyaanFromJson(json);
+}
+
+@freezed
 class TanyaAhli with _$TanyaAhli {
   const factory TanyaAhli({
     @JsonKey(name: 'id_tanya_ahli') int? idTanyaAhli,

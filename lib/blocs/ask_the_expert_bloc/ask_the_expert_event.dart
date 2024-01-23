@@ -12,3 +12,9 @@ class SetAskTheExpertState extends AskTheExpertEvent {
 class SetAskTheExpertToInitial extends AskTheExpertEvent {}
 
 class InitializeAskTheExpertData extends AskTheExpertEvent {}
+
+class SetSelectedTopikPertanyaan extends AskTheExpertEvent {
+  SetSelectedTopikPertanyaan({required this.index});
+
+  final int index;
+}

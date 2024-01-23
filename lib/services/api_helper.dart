@@ -50,7 +50,9 @@ class ApiHelper {
             );
           }
 
-          options.headers['Authorization'] = 'Bearer $token';
+          if (options.method != 'GET') {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
 
           dynamic data;
 
