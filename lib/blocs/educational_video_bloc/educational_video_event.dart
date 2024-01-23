@@ -1,8 +1,14 @@
-// part of 'infographics_bloc.dart';
-
 part of '../blocs.dart';
 
-// @immutable
-// class InfographicsEvent with _$InfographicsEvent {
-//   const factory InfographicsEvent.started() = _Started;
-// }
+@immutable
+abstract class EducationalVideoEvent {}
+
+class SetEducationalVideoState extends EducationalVideoEvent {
+  SetEducationalVideoState([this.state]);
+
+  final EducationalVideoState? state;
+}
+
+class SetEducationalVideoToInitial extends EducationalVideoEvent {}
+
+class InitializeEducationalVideoData extends EducationalVideoEvent {}
