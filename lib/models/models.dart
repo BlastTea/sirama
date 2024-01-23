@@ -16,3 +16,9 @@ class User with _$User {
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
+
+
+// @freezed
+// class AskTheExpert with _$AskTheExpert {
+
+// }

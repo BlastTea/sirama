@@ -31,3 +31,7 @@ part 'film_video_bloc/film_video_state.dart';
 part 'podcast_bloc/podcast_bloc.dart';
 part 'podcast_bloc/podcast_event.dart';
 part 'podcast_bloc/podcast_state.dart';
+
+part 'ask_the_expert_bloc/ask_the_expert_bloc.dart';
+part 'ask_the_expert_bloc/ask_the_expert_event.dart';
+part 'ask_the_expert_bloc/ask_the_expert_state.dart';
