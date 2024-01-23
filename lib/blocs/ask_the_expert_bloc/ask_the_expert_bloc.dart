@@ -8,7 +8,9 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
 
     on<InitializeAskTheExpertData>((event, emit) async {
       try {
-        await ApiHelper.get('/tanyaahli');
+        _tanyaAhlis = await ApiHelper.get(
+          '/api/tanyaahli',
+        ).then((value) => (value.data['data'] as List).map((e) => TanyaAhli.fromJson(e)).toList());
       } catch (e) {
         emit(AskTheExpertError());
         return;
@@ -18,5 +20,9 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
     });
   }
 
-  AskTheExpertDataLoaded get _askTheExpertDataLoaded => AskTheExpertDataLoaded();
+  List<TanyaAhli> _tanyaAhlis = [];
+
+  AskTheExpertDataLoaded get _askTheExpertDataLoaded => AskTheExpertDataLoaded(
+        tanyaAhlis: _tanyaAhlis,
+      );
 }

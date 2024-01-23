@@ -14,8 +14,8 @@ part of 'services.dart';
 /// }
 /// ```
 class ApiHelper {
-  // static String url = 'http://localhost:8000';
-  static String url = 'https://dev-sirama.propertiideal.id';
+  static String url = 'http://192.168.121.58:8000';
+  // static String url = 'https://dev-sirama.propertiideal.id';
 
   static const String _keyToken = 'token';
   static const String _keyCurrentUser = 'current_user';

@@ -3,6 +3,12 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 part 'models.freezed.dart';
 part 'models.g.dart';
 
+bool? _parseBool(dynamic data) => data is int? && data != null
+    ? (data == 1)
+    : data is bool
+        ? data
+        : null;
+
 @freezed
 class User with _$User {
   const factory User({
@@ -17,8 +23,18 @@ class User with _$User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
 
+@freezed
+class TanyaAhli with _$TanyaAhli {
+  const factory TanyaAhli({
+    @JsonKey(name: 'id_tanya_ahli') int? idTanyaAhli,
+    @JsonKey(name: 'topik_id') int? topikId,
+    @JsonKey(name: 'penanya_user_id') penanyaUserId,
+    String? pertanyaan,
+    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+    @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _TanyaAhli;
 
-// @freezed
-// class AskTheExpert with _$AskTheExpert {
-
-// }
+  factory TanyaAhli.fromJson(Map<String, dynamic> json) => _$TanyaAhliFromJson(json);
+}

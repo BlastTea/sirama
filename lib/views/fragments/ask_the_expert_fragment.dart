@@ -5,7 +5,7 @@ class AskTheExpertFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MyApp.askTheExpertBloc is AskTheExpertInitial) {
+    if (MyApp.askTheExpertBloc.state is AskTheExpertInitial) {
       MyApp.askTheExpertBloc.add(InitializeAskTheExpertData());
     }
 
@@ -68,72 +68,76 @@ class AskTheExpertFragment extends StatelessWidget {
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
                 SliverList.builder(
-                  itemBuilder: (context, index) => ListTile(
-                    isThreeLine: true,
-                    contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    onTap: () => debugPrint('On question pressed'),
-                    leading: ImageContainer.hero(
-                      tag: 'Profile picture $index',
-                      width: 48.0,
-                      height: 48.0,
-                      iconSize: 24.0,
-                      icon: Icons.person,
-                      border: const Border(),
-                      image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
-                      borderRadius: BorderRadius.circular(24.0),
-                    ),
-                    title: const Padding(
-                      padding: EdgeInsets.only(left: 8.0),
-                      child: Text('Cal Dingo • just now'),
-                    ),
-                    subtitle: Column(
-                      children: [
-                        const Padding(
-                          padding: EdgeInsets.only(left: 8.0),
-                          child: Text('Is there a therapy wich can cure crossdressing & bsdm compulsion?'),
-                        ),
-                        Row(
-                          children: [
-                            SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.thumb_up_outlined),
-                                iconSize: 20.0,
-                              ),
-                            ),
-                            const Text('2'),
-                            const SizedBox(width: 18.0),
-                            SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.messenger_outline),
-                                iconSize: 20.0,
-                              ),
-                            ),
-                            const SizedBox(width: 10.0),
-                            SizedBox(
-                              width: 40.0,
-                              height: 40.0,
-                              child: IconButton(
-                                onPressed: () {},
-                                icon: Transform.flip(
-                                  flipX: true,
-                                  child: const Icon(Icons.reply_outlined),
+                  itemBuilder: (context, index) {
+                    TanyaAhli tanyaAhli = stateAskTheExpert.tanyaAhlis[index];
+
+                    return ListTile(
+                      isThreeLine: true,
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      onTap: () => debugPrint('On question pressed'),
+                      leading: ImageContainer.hero(
+                        tag: 'Profile picture $index',
+                        width: 48.0,
+                        height: 48.0,
+                        iconSize: 24.0,
+                        icon: Icons.person,
+                        border: const Border(),
+                        image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                        borderRadius: BorderRadius.circular(24.0),
+                      ),
+                      title: const Padding(
+                        padding: EdgeInsets.only(left: 8.0),
+                        child: Text('Cal Dingo • just now'),
+                      ),
+                      subtitle: Column(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8.0),
+                            child: Text(tanyaAhli.pertanyaan ?? '?'),
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: 40.0,
+                                height: 40.0,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.thumb_up_outlined),
+                                  iconSize: 20.0,
                                 ),
-                                iconSize: 20.0,
                               ),
-                            ),
-                          ],
-                        ),
-                        const Divider(),
-                      ],
-                    ),
-                  ),
-                  itemCount: 1000,
+                              const Text('2'),
+                              const SizedBox(width: 18.0),
+                              SizedBox(
+                                width: 40.0,
+                                height: 40.0,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: const Icon(Icons.messenger_outline),
+                                  iconSize: 20.0,
+                                ),
+                              ),
+                              const SizedBox(width: 10.0),
+                              SizedBox(
+                                width: 40.0,
+                                height: 40.0,
+                                child: IconButton(
+                                  onPressed: () {},
+                                  icon: Transform.flip(
+                                    flipX: true,
+                                    child: const Icon(Icons.reply_outlined),
+                                  ),
+                                  iconSize: 20.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          const Divider(),
+                        ],
+                      ),
+                    );
+                  },
+                  itemCount: stateAskTheExpert.tanyaAhlis.length,
                 ),
               ],
             ),

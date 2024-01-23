@@ -7,4 +7,8 @@ class AskTheExpertInitial extends AskTheExpertState {}
 
 class AskTheExpertError extends AskTheExpertState {}
 
-class AskTheExpertDataLoaded extends AskTheExpertState {}
+class AskTheExpertDataLoaded extends AskTheExpertState {
+  AskTheExpertDataLoaded({required this.tanyaAhlis});
+
+  final List<TanyaAhli> tanyaAhlis;
+}
