@@ -2,7 +2,7 @@ part of '../blocs.dart';
 
 class EducationalVideoBloc extends Bloc<EducationalVideoEvent, EducationalVideoState> {
   EducationalVideoBloc() : super(EducationalVideoInitial()) {
-    on<SetEducationalVideoState>((event, emit) => emit(event.state ?? _EducationalVideoDataLoaded));
+    on<SetEducationalVideoState>((event, emit) => emit(event.state ?? _educationalVideoDataLoaded));
 
     on<SetEducationalVideoToInitial>((event, emit) => emit(EducationalVideoInitial()));
 
@@ -14,9 +14,9 @@ class EducationalVideoBloc extends Bloc<EducationalVideoEvent, EducationalVideoS
         return;
       }
 
-      emit(_EducationalVideoDataLoaded);
+      emit(_educationalVideoDataLoaded);
     });
   }
 
-  EducationalVideoDataLoaded get _EducationalVideoDataLoaded => EducationalVideoDataLoaded();
+  EducationalVideoDataLoaded get _educationalVideoDataLoaded => EducationalVideoDataLoaded();
 }

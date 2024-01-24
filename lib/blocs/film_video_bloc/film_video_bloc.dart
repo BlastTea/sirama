@@ -2,7 +2,7 @@ part of '../blocs.dart';
 
 class FilmVideoBloc extends Bloc<FilmVideoEvent, FilmVideoState> {
   FilmVideoBloc() : super(FilmVideoInitial()) {
-    on<SetFilmVideoState>((event, emit) => emit(event.state ?? _FilmVideoDataLoaded));
+    on<SetFilmVideoState>((event, emit) => emit(event.state ?? _filmVideoDataLoaded));
 
     on<SetFilmVideoToInitial>((event, emit) => emit(FilmVideoInitial()));
 
@@ -14,9 +14,9 @@ class FilmVideoBloc extends Bloc<FilmVideoEvent, FilmVideoState> {
         return;
       }
 
-      emit(_FilmVideoDataLoaded);
+      emit(_filmVideoDataLoaded);
     });
   }
 
-  FilmVideoDataLoaded get _FilmVideoDataLoaded => FilmVideoDataLoaded();
+  FilmVideoDataLoaded get _filmVideoDataLoaded => FilmVideoDataLoaded();
 }

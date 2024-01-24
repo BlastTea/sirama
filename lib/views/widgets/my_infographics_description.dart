@@ -1,7 +1,7 @@
 part of 'widgets.dart';
 
-class _InfographicsDescription extends StatelessWidget {
-  const _InfographicsDescription({
+class InfographicsDescription extends StatelessWidget {
+  const InfographicsDescription({super.key, 
     required this.title,
     required this.user,
     required this.viewCount,

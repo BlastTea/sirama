@@ -50,3 +50,49 @@ class TanyaAhli with _$TanyaAhli {
 
   factory TanyaAhli.fromJson(Map<String, dynamic> json) => _$TanyaAhliFromJson(json);
 }
+
+@freezed
+class Podcast with _$Podcast {
+  const factory Podcast({
+    @JsonKey(name: 'id_podcast') int? idPodcast,
+    @JsonKey(name: 'judul_podcast') String? judulPodcast,
+    @JsonKey(name: 'link_podcast') String? linkPodcast,
+    @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _Podcast;
+
+  factory Podcast.fromJson(Map<String, dynamic> json) => _$PodcastFromJson(json);
+}
+
+@freezed
+class Film with _$Film {
+  const factory Film({
+    @JsonKey(name: 'id_film') int? idFilm,
+    @JsonKey(name: 'judul_film') String? judulFilm,
+    @JsonKey(name: 'link_film') String? linkFilm,
+    @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _Film;
+
+  factory Film.fromJson(Map<String, dynamic> json) => _$FilmFromJson(json);
+}
+
+@freezed
+class Infografis with _$Infografis {
+  const factory Infografis({
+    @JsonKey(name: 'id_infografis') int? idiInfografis,
+    @JsonKey(name: 'judul_infografis') String? judulInfografis,
+    @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
+    @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+    @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _Infografis;
+
+  factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
+}
