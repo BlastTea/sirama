@@ -9,7 +9,15 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
     on<InitializeAskTheExpertData>((event, emit) async {
       try {
         _topikPertanyaans = await ApiHelper.get('/api/topikpertanyaan').then((value) => (value.data['data'] as List).map((e) => TopikPertanyaan.fromJson(e)).toList());
-        _tanyaAhlis = await ApiHelper.get('/api/tanyaahli').then((value) => (value.data['data'] as List).map((e) => TanyaAhli.fromJson(e)).toList());
+        _tanyaAhlis = List.generate(_topikPertanyaans.length, (index) => []);
+
+        await ApiHelper.get('/api/tanyaahli').then((value) {
+          List<TanyaAhli> ahlis = (value.data['data'] as List).map((e) => TanyaAhli.fromJson(e)).toList();
+          for (TanyaAhli tanyaAhli in ahlis) {
+            int topikIndex = _topikPertanyaans.indexWhere((element) => element.idJenisTopikPertanyaan == tanyaAhli.topikId);
+            _tanyaAhlis[topikIndex].add(tanyaAhli);
+          }
+        });
       } catch (e) {
         emit(AskTheExpertError());
         return;
@@ -29,8 +37,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
 
   List<TopikPertanyaan> _topikPertanyaans = [];
 
-  //TODO: change _tanyaAhlis field into 2D list
-  List<TanyaAhli> _tanyaAhlis = [];
+  List<List<TanyaAhli>> _tanyaAhlis = [];
 
   int _selectedTopikPertanyaan = 0;
 

@@ -32,7 +32,7 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
 _$TopikPertanyaanImpl _$$TopikPertanyaanImplFromJson(
         Map<String, dynamic> json) =>
     _$TopikPertanyaanImpl(
-      idJenisTopikPertanyaan: json['id_jetnis_topik_pertanyaan'] as int?,
+      idJenisTopikPertanyaan: json['id_jenis_topik_pertanyaan'] as int?,
       namaTopik: json['nama_topik'] as String?,
       createdAt: json['created_at'] == null
           ? null
@@ -45,7 +45,7 @@ _$TopikPertanyaanImpl _$$TopikPertanyaanImplFromJson(
 Map<String, dynamic> _$$TopikPertanyaanImplToJson(
         _$TopikPertanyaanImpl instance) =>
     <String, dynamic>{
-      'id_jetnis_topik_pertanyaan': instance.idJenisTopikPertanyaan,
+      'id_jenis_topik_pertanyaan': instance.idJenisTopikPertanyaan,
       'nama_topik': instance.namaTopik,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),

@@ -268,7 +268,7 @@ TopikPertanyaan _$TopikPertanyaanFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$TopikPertanyaan {
-  @JsonKey(name: 'id_jetnis_topik_pertanyaan')
+  @JsonKey(name: 'id_jenis_topik_pertanyaan')
   int? get idJenisTopikPertanyaan => throw _privateConstructorUsedError;
   @JsonKey(name: 'nama_topik')
   String? get namaTopik => throw _privateConstructorUsedError;
@@ -290,7 +290,7 @@ abstract class $TopikPertanyaanCopyWith<$Res> {
       _$TopikPertanyaanCopyWithImpl<$Res, TopikPertanyaan>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id_jetnis_topik_pertanyaan') int? idJenisTopikPertanyaan,
+      {@JsonKey(name: 'id_jenis_topik_pertanyaan') int? idJenisTopikPertanyaan,
       @JsonKey(name: 'nama_topik') String? namaTopik,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
@@ -344,7 +344,7 @@ abstract class _$$TopikPertanyaanImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id_jetnis_topik_pertanyaan') int? idJenisTopikPertanyaan,
+      {@JsonKey(name: 'id_jenis_topik_pertanyaan') int? idJenisTopikPertanyaan,
       @JsonKey(name: 'nama_topik') String? namaTopik,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
@@ -391,7 +391,7 @@ class __$$TopikPertanyaanImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TopikPertanyaanImpl implements _TopikPertanyaan {
   const _$TopikPertanyaanImpl(
-      {@JsonKey(name: 'id_jetnis_topik_pertanyaan') this.idJenisTopikPertanyaan,
+      {@JsonKey(name: 'id_jenis_topik_pertanyaan') this.idJenisTopikPertanyaan,
       @JsonKey(name: 'nama_topik') this.namaTopik,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt});
@@ -400,7 +400,7 @@ class _$TopikPertanyaanImpl implements _TopikPertanyaan {
       _$$TopikPertanyaanImplFromJson(json);
 
   @override
-  @JsonKey(name: 'id_jetnis_topik_pertanyaan')
+  @JsonKey(name: 'id_jenis_topik_pertanyaan')
   final int? idJenisTopikPertanyaan;
   @override
   @JsonKey(name: 'nama_topik')
@@ -454,7 +454,7 @@ class _$TopikPertanyaanImpl implements _TopikPertanyaan {
 
 abstract class _TopikPertanyaan implements TopikPertanyaan {
   const factory _TopikPertanyaan(
-          {@JsonKey(name: 'id_jetnis_topik_pertanyaan')
+          {@JsonKey(name: 'id_jenis_topik_pertanyaan')
           final int? idJenisTopikPertanyaan,
           @JsonKey(name: 'nama_topik') final String? namaTopik,
           @JsonKey(name: 'created_at') final DateTime? createdAt,
@@ -465,7 +465,7 @@ abstract class _TopikPertanyaan implements TopikPertanyaan {
       _$TopikPertanyaanImpl.fromJson;
 
   @override
-  @JsonKey(name: 'id_jetnis_topik_pertanyaan')
+  @JsonKey(name: 'id_jenis_topik_pertanyaan')
   int? get idJenisTopikPertanyaan;
   @override
   @JsonKey(name: 'nama_topik')

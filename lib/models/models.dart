@@ -26,7 +26,7 @@ class User with _$User {
 @freezed
 class TopikPertanyaan with _$TopikPertanyaan {
   const factory TopikPertanyaan({
-    @JsonKey(name: 'id_jetnis_topik_pertanyaan') int? idJenisTopikPertanyaan,
+    @JsonKey(name: 'id_jenis_topik_pertanyaan') int? idJenisTopikPertanyaan,
     @JsonKey(name: 'nama_topik') String? namaTopik,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,

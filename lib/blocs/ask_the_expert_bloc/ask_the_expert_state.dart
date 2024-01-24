@@ -19,7 +19,7 @@ class AskTheExpertDataLoaded extends AskTheExpertState {
 
   final List<TopikPertanyaan> topikPertanyaans;
 
-  final List<TanyaAhli> tanyaAhlis;
+  final List<List<TanyaAhli>> tanyaAhlis;
 
   final int selectedTopikPertanyaan;
 }

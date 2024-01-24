@@ -80,60 +80,73 @@ class AskTheExpertFragment extends StatelessWidget {
                       ),
                     )
                   : PageView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       controller: stateAskTheExpert.pageController,
-                      itemBuilder: (context, index) => ListView.builder(
-                        primary: false,
-                        shrinkWrap: true,
-                        itemBuilder: (context, index) {
-                          TanyaAhli tanyaAhli = stateAskTheExpert.tanyaAhlis[index];
+                      itemBuilder: (context, pageIndex) {
+                        List<TanyaAhli> tanyaAhlis = stateAskTheExpert.tanyaAhlis[pageIndex];
 
-                          return ListTile(
-                            isThreeLine: true,
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
-                            onTap: () => debugPrint('On question pressed'),
-                            leading: ImageContainer.hero(
-                              tag: 'Profile picture $index',
-                              width: 48.0,
-                              height: 48.0,
-                              iconSize: 24.0,
-                              icon: Icons.person,
-                              border: const Border(),
-                              image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
-                              borderRadius: BorderRadius.circular(24.0),
-                            ),
-                            title: Text('Cal Dingo • ${tanyaAhli.waktuTanya?.toFormattedDate(
-                              withHour: true,
-                              withMonthName: true,
-                              withWeekday: true,
-                              withSeconds: false,
-                            )}'),
-                            subtitle: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  tanyaAhli.pertanyaan ?? '?',
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
-                                ),
-                                const SizedBox(height: 8.0),
-                                Row(
-                                  children: [
-                                    Icon(
-                                      (tanyaAhli.statusPertanyaan ?? false) ? Icons.done_all : Icons.done,
-                                      size: 18.0,
-                                      color: (tanyaAhli.statusPertanyaan ?? false) ? Theme.of(context).colorScheme.primary : null,
-                                    ),
-                                    const SizedBox(width: 8.0),
-                                    Text('${(tanyaAhli.statusPertanyaan ?? false) ? 'Sudah' : 'Belum'} dijawab oleh ahli'),
-                                  ],
-                                ),
-                                const Divider(),
-                              ],
+                        if (tanyaAhlis.isEmpty) {
+                          return Center(
+                            child: Text(
+                              'Tidak ada data',
+                              style: Theme.of(context).textTheme.bodyLarge,
                             ),
                           );
-                        },
-                        itemCount: stateAskTheExpert.tanyaAhlis.length,
-                      ),
+                        }
+
+                        return ListView.builder(
+                          primary: false,
+                          itemBuilder: (context, index) {
+                            TanyaAhli tanyaAhli = tanyaAhlis[index];
+
+                            return ListTile(
+                              isThreeLine: true,
+                              contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
+                              onTap: () => debugPrint('On question pressed'),
+                              leading: ImageContainer.hero(
+                                tag: 'Profile picture $index',
+                                width: 48.0,
+                                height: 48.0,
+                                iconSize: 24.0,
+                                icon: Icons.person,
+                                border: const Border(),
+                                image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                                borderRadius: BorderRadius.circular(24.0),
+                              ),
+                              title: Text('Cal Dingo • ${tanyaAhli.waktuTanya?.toFormattedDate(
+                                withHour: true,
+                                withMonthName: true,
+                                withWeekday: true,
+                                withSeconds: false,
+                              )}'),
+                              subtitle: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    tanyaAhli.pertanyaan ?? '?',
+                                    maxLines: 2,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                  const SizedBox(height: 8.0),
+                                  Row(
+                                    children: [
+                                      Icon(
+                                        (tanyaAhli.statusPertanyaan ?? false) ? Icons.done_all : Icons.done,
+                                        size: 18.0,
+                                        color: (tanyaAhli.statusPertanyaan ?? false) ? Theme.of(context).colorScheme.primary : null,
+                                      ),
+                                      const SizedBox(width: 8.0),
+                                      Text('${(tanyaAhli.statusPertanyaan ?? false) ? 'Sudah' : 'Belum'} dijawab oleh ahli'),
+                                    ],
+                                  ),
+                                  const Divider(),
+                                ],
+                              ),
+                            );
+                          },
+                          itemCount: tanyaAhlis.length,
+                        );
+                      },
                       itemCount: stateAskTheExpert.topikPertanyaans.length,
                     ),
             ),
