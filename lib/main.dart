@@ -45,6 +45,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => chatmeBloc),
         BlocProvider(create: (context) => authenticationBloc),
         BlocProvider(create: (context) => askTheExpertBloc),
+        BlocProvider(create: (context) => podcastBloc),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
