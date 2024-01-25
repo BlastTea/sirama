@@ -40,12 +40,6 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
       emit(_askTheExpertDataLoaded);
     });
 
-    on<ChatAskTheExpertPressed>((event, emit) async {
-      if (_tanyaAhlis[event.topicIndex][event.index].jawabanAhli == null) {}
-
-      emit(_askTheExpertDataLoaded);
-    });
-
     on<SendAskTheExpertPressed>((event, emit) async {
       if (_textControllerQuestion.text.trim().isEmpty) {
         NavigationHelper.clearSnackBars();
