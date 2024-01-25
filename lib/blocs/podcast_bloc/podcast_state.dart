@@ -1,8 +1,19 @@
-// part of 'infographics_bloc.dart';
-
 part of '../blocs.dart';
 
-// @immutable
-// class InfographicsState with _$InfographicsState {
-//   const factory InfographicsState.initial() = _Initial;
-// }
+@immutable
+abstract class PodcastState {}
+
+class PodcastInitial extends PodcastState {}
+
+class PodcastError extends PodcastState {}
+
+class PodcastDataLoaded extends PodcastState {
+  PodcastDataLoaded({
+    required this.podcasts,
+    // required this.podcastsLength,
+  });
+
+  final List<Podcast> podcasts;
+
+  // final List<List<Podcast>> podcastsLength;
+}
