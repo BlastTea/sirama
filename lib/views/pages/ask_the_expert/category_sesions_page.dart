@@ -93,7 +93,7 @@ class CategorySessionsPage extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const Divider(),
+                      Divider(color: Theme.of(context).colorScheme.onPrimary),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

@@ -42,7 +42,7 @@ class Homepage extends StatelessWidget {
                     'Beranda',
                     'Konten',
                     'Tanya Ahli',
-                    'Chat',
+                    'ChatMe',
                     'Profil',
                   ][index],
                 ),

@@ -35,9 +35,9 @@ class TopikPertanyaan with _$TopikPertanyaan {
   factory TopikPertanyaan.fromJson(Map<String, dynamic> json) => _$TopikPertanyaanFromJson(json);
 }
 
-@freezed
+@unfreezed
 class TanyaAhli with _$TanyaAhli {
-  const factory TanyaAhli({
+  factory TanyaAhli({
     @JsonKey(name: 'id_tanya_ahli') int? idTanyaAhli,
     @JsonKey(name: 'topik_id') int? topikId,
     @JsonKey(name: 'penanya_user_id') penanyaUserId,
@@ -46,9 +46,28 @@ class TanyaAhli with _$TanyaAhli {
     @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    JawabanAhli? jawabanAhli,
   }) = _TanyaAhli;
 
   factory TanyaAhli.fromJson(Map<String, dynamic> json) => _$TanyaAhliFromJson(json);
+}
+
+@freezed
+class JawabanAhli with _$JawabanAhli {
+  const factory JawabanAhli({
+    @JsonKey(name: 'id_jawaban_ahli') int? idJawabanAhli,
+    @JsonKey(name: 'penjawab_user_id') int? penjawabUserId,
+    @JsonKey(name: 'tanya_ahli_id') int? tanyaAhliId,
+    @JsonKey(name: 'jawaban_ahli') String? jawabanAhli,
+    @JsonKey(name: 'waktu_jawaban') DateTime? waktuJawaban,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    String? pertanyaan,
+    @JsonKey(name: 'penanya_user_id') int? penanyaUserId,
+    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+  }) = _JawabanAhli;
+
+  factory JawabanAhli.fromJson(Map<String, dynamic> json) => _$JawabanAhliFromJson(json);
 }
 
 @freezed

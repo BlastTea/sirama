@@ -36,7 +36,8 @@ class LabeledTextField extends StatefulWidget {
         value = null,
         firstDate = DateTime.now(),
         lastDate = DateTime.now(),
-        width = null;
+        width = null,
+        onSelected = null;
 
   LabeledTextField.password({
     super.key,
@@ -66,7 +67,8 @@ class LabeledTextField extends StatefulWidget {
         value = null,
         firstDate = DateTime.now(),
         lastDate = DateTime.now(),
-        width = null;
+        width = null,
+        onSelected = null;
 
   const LabeledTextField.date({
     super.key,
@@ -96,7 +98,8 @@ class LabeledTextField extends StatefulWidget {
     required this.lastDate,
   })  : _type = _LabeledTextFieldType.date,
         items = const [],
-        width = null;
+        width = null,
+        onSelected = null;
 
   LabeledTextField.dropdown({
     super.key,
@@ -106,7 +109,7 @@ class LabeledTextField extends StatefulWidget {
     this.minVerticalPadding,
     this.controller,
     this.decoration,
-    this.onChanged,
+    this.onSelected,
     this.readOnly = false,
     this.expands = false,
     this.constraints,
@@ -126,7 +129,8 @@ class LabeledTextField extends StatefulWidget {
         maxLines = null,
         textAlignVertical = null,
         buildCounter = null,
-        maxLength = null;
+        maxLength = null,
+        onChanged = null;
 
   final String labelText;
   final TextStyle? labelStyle;
@@ -139,6 +143,7 @@ class LabeledTextField extends StatefulWidget {
   final TextInputType? keyboardType;
   final TextInputAction? textInputAction;
   final ValueChanged<String>? onChanged;
+  final ValueChanged? onSelected;
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onSubmitted;
   final List<TextInputFormatter>? inputFormatters;
@@ -153,7 +158,7 @@ class LabeledTextField extends StatefulWidget {
   final DateTime? value;
   final DateTime firstDate;
   final DateTime lastDate;
-  final List<DropdownMenuEntry<String>> items;
+  final List<DropdownMenuEntry> items;
   final double? width;
 
   @override
@@ -252,7 +257,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 enableSearch: !widget.readOnly,
                 enableFilter: !widget.readOnly,
                 label: effectiveDecoration.labelText != null ? Text(effectiveDecoration.labelText!) : effectiveDecoration.label,
-                onSelected: (value) => value != null ? widget.onChanged!(value) : null,
+                onSelected: (value) => widget.onSelected != null ? widget.onSelected!(value) : null,
               ),
             _ => TextField(
                 focusNode: widget.focusNode,

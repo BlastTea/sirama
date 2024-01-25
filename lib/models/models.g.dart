@@ -67,6 +67,9 @@ _$TanyaAhliImpl _$$TanyaAhliImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      jawabanAhli: json['jawabanAhli'] == null
+          ? null
+          : JawabanAhli.fromJson(json['jawabanAhli'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$TanyaAhliImplToJson(_$TanyaAhliImpl instance) =>
@@ -79,6 +82,41 @@ Map<String, dynamic> _$$TanyaAhliImplToJson(_$TanyaAhliImpl instance) =>
       'waktu_tanya': instance.waktuTanya?.toIso8601String(),
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'jawabanAhli': instance.jawabanAhli,
+    };
+
+_$JawabanAhliImpl _$$JawabanAhliImplFromJson(Map<String, dynamic> json) =>
+    _$JawabanAhliImpl(
+      idJawabanAhli: json['id_jawaban_ahli'] as int?,
+      penjawabUserId: json['penjawab_user_id'] as int?,
+      tanyaAhliId: json['tanya_ahli_id'] as int?,
+      jawabanAhli: json['jawaban_ahli'] as String?,
+      waktuJawaban: json['waktu_jawaban'] == null
+          ? null
+          : DateTime.parse(json['waktu_jawaban'] as String),
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      pertanyaan: json['pertanyaan'] as String?,
+      penanyaUserId: json['penanya_user_id'] as int?,
+      statusPertanyaan: _parseBool(json['status_pertanyaan']),
+    );
+
+Map<String, dynamic> _$$JawabanAhliImplToJson(_$JawabanAhliImpl instance) =>
+    <String, dynamic>{
+      'id_jawaban_ahli': instance.idJawabanAhli,
+      'penjawab_user_id': instance.penjawabUserId,
+      'tanya_ahli_id': instance.tanyaAhliId,
+      'jawaban_ahli': instance.jawabanAhli,
+      'waktu_jawaban': instance.waktuJawaban?.toIso8601String(),
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'pertanyaan': instance.pertanyaan,
+      'penanya_user_id': instance.penanyaUserId,
+      'status_pertanyaan': instance.statusPertanyaan,
     };
 
 _$PodcastImpl _$$PodcastImplFromJson(Map<String, dynamic> json) =>

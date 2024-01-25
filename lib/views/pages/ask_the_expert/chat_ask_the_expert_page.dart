@@ -1,13 +1,22 @@
 part of '../pages.dart';
 
 class ChatAskTheExpertPage extends StatelessWidget {
-  const ChatAskTheExpertPage({super.key});
+  const ChatAskTheExpertPage({
+    super.key,
+    required this.topicIndex,
+    required this.index,
+  });
+
+  final int topicIndex;
+  final int index;
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<ChatmeBloc, ChatmeState>(
-        builder: (context, stateChatme) {
-          stateChatme as ChatmeDataLoaded;
+  Widget build(BuildContext context) {
+    MyApp.askTheExpertBloc.add(ChatAskTheExpertPressed(topicIndex: topicIndex, index: index));
 
+    return BlocBuilder<AskTheExpertBloc, AskTheExpertState>(
+      builder: (context, stateAskTheExpert) {
+        if (stateAskTheExpert is AskTheExpertDataLoaded) {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Tanya Ahli'),
@@ -37,77 +46,45 @@ class ChatAskTheExpertPage extends StatelessWidget {
                     key: UniqueKey(),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     reverse: true,
-                    itemBuilder: (context, index) => index < stateChatme.chats.length
-                        ? Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: (stateChatme.chats[index]['isSender'] as bool? ?? false) ? 48.0 : 0.0,
-                                  right: (stateChatme.chats[index]['isSender'] as bool? ?? false) ? 0.0 : 48.0,
-                                ),
-                                child: MessageBubble(
-                                  message: (stateChatme.chats[index]['message'] as String?) ?? '-',
-                                  sentAt: (stateChatme.chats[index]['sentAt'] as TimeOfDay?) ?? TimeOfDay.fromDateTime(DateTime.now()),
-                                  isSender: (stateChatme.chats[index]['isSender'] as bool?) ?? false,
-                                ),
-                              ),
-                              const SizedBox(height: 2.0),
-                            ],
-                          )
-                        : Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 48.0),
-                                child: MessageBubble(
-                                  message: 'P',
-                                  sentAt: TimeOfDay.fromDateTime(DateTime.now()),
-                                  isSender: true,
-                                ),
-                              ),
-                              const SizedBox(height: 2.0),
-                            ],
-                          ),
-                    // : const SizedBox(height: 16.0),
-                    itemCount: stateChatme.chats.length + 10000,
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: ConstrainedBox(
-                          constraints: const BoxConstraints(
-                            maxHeight: 200.0,
-                          ),
-                          child: TextField(
-                            controller: stateChatme.textControllerMessage,
-                            decoration: InputDecoration(
-                              isDense: true,
-                              filled: true,
-                              fillColor: Config.greyColor.withOpacity(0.5),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(16.0),
-                                borderSide: BorderSide.none,
-                              ),
+                    itemBuilder: (context, index) {
+                      TanyaAhli tanyaAhli = stateAskTheExpert.tanyaAhlis[topicIndex][index];
+
+                      return Column(
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                              left: index == 1 ? 48.0 : 0.0,
+                              right: index == 1 ? 0.0 : 48.0,
                             ),
-                            textInputAction: TextInputAction.newline,
-                            maxLines: null,
-                            textCapitalization: TextCapitalization.sentences,
+                            child: MessageBubble(
+                              message: (index == 0 ? tanyaAhli.pertanyaan : tanyaAhli.jawabanAhli?.jawabanAhli) ?? '-',
+                              sentAt: TimeOfDay.fromDateTime((index == 0 ? tanyaAhli.waktuTanya : tanyaAhli.jawabanAhli?.waktuJawaban) ?? DateTime.now()),
+                              isSender: index == 1,
+                            ),
                           ),
-                        ),
-                      ),
-                      const SizedBox(width: 8.0),
-                      IconButton.filled(
-                        onPressed: () => MyApp.chatmeBloc.add(ChatmeSendPressed()),
-                        icon: SvgPicture.asset('assets/svgs/Send.svg'),
-                      )
-                    ],
+                          const SizedBox(height: 2.0),
+                        ],
+                      );
+                    },
+                    itemCount: stateAskTheExpert.tanyaAhlis[topicIndex][index].jawabanAhli != null ? 2 : 1,
                   ),
                 ),
+                const SizedBox(height: 20.0),
               ],
             ),
           );
-        },
-      );
+        }
+
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text('Tanya Ahli'),
+            centerTitle: true,
+          ),
+          body: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
+      },
+    );
+  }
 }
