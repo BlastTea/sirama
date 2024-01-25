@@ -33,6 +33,7 @@ class MyApp extends StatelessWidget {
   static ChatmeBloc chatmeBloc = ChatmeBloc();
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
+  static PodcastBloc podcastBloc = PodcastBloc();
 
   @override
   Widget build(BuildContext context) {

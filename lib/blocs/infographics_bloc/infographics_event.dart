@@ -1,8 +1,14 @@
-// part of 'infographics_bloc.dart';
-
 part of '../blocs.dart';
 
-// @immutable
-// class InfographicsEvent with _$InfographicsEvent {
-//   const factory InfographicsEvent.started() = _Started;
-// }
+@immutable
+abstract class InfographicsEvent {}
+
+class SetInfographicsState extends InfographicsEvent {
+  SetInfographicsState([this.state]);
+
+  final InfographicsState? state;
+}
+
+class SetInfographicsToInitial extends InfographicsEvent {}
+
+class InitializeInfographicsData extends InfographicsEvent {}
