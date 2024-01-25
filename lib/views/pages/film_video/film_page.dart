@@ -46,6 +46,15 @@ class FilmPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text("Film Edukasi"),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: ListView(
           shrinkWrap: true,

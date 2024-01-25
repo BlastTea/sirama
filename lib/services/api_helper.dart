@@ -14,7 +14,7 @@ part of 'services.dart';
 /// }
 /// ```
 class ApiHelper {
-  // static String url = 'http://localhost:8000';
+  // static String url = 'http://192.168.121.58:8000';
   static String url = 'https://dev-sirama.propertiideal.id';
 
   static const String _keyToken = 'token';
@@ -50,7 +50,9 @@ class ApiHelper {
             );
           }
 
-          options.headers['Authorization'] = 'Bearer $token';
+          if (options.method != 'GET') {
+            options.headers['Authorization'] = 'Bearer $token';
+          }
 
           dynamic data;
 

@@ -628,11 +628,11 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "6bdf3f0948fb8954800401fb8cde840d4b5d1c0b"
-      resolved-ref: "6bdf3f0948fb8954800401fb8cde840d4b5d1c0b"
+      ref: "30a2156d944afd6eb3c75274e4b8b7f9dd9884d8"
+      resolved-ref: "30a2156d944afd6eb3c75274e4b8b7f9dd9884d8"
       url: "https://github.com/BlastTea/MWidget.git"
     source: git
-    version: "2.14.1"
+    version: "2.15.0"
   matcher:
     dependency: transitive
     description:

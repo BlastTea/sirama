@@ -20,7 +20,7 @@ class ProfileFragment extends StatelessWidget {
                 image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
                 borderRadius: BorderRadius.circular(24.0),
               ),
-              title: const Text('Zalorin Vexstar'),
+              title: Text(currentUser?.username ?? 'Anonymous'),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const EditProfilePage())),
             ),

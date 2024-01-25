@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
+import 'package:sirama/models/models.dart';
 import 'package:sirama/services/services.dart';
 import 'package:sirama/views/pages/pages.dart';
 
@@ -31,3 +33,7 @@ part 'film_video_bloc/film_video_state.dart';
 part 'podcast_bloc/podcast_bloc.dart';
 part 'podcast_bloc/podcast_event.dart';
 part 'podcast_bloc/podcast_state.dart';
+
+part 'ask_the_expert_bloc/ask_the_expert_bloc.dart';
+part 'ask_the_expert_bloc/ask_the_expert_event.dart';
+part 'ask_the_expert_bloc/ask_the_expert_state.dart';
