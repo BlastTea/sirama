@@ -30,7 +30,7 @@ List<Map> dataPodcast = [
     'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
     'link_film':
         'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
-    'upload_user_id': 'Altamis',
+    'upload_user_id': 1, // or role or lgsg nama
     'thumbnail': 'https://picsum.photos/250?image=9',
     'profile_url': 'https://picsum.photos/250?image=9',
     'title': 'Video Title 3',
@@ -44,14 +44,12 @@ class PodcastPage extends StatelessWidget {
   const PodcastPage({super.key});
   @override
   Widget build(BuildContext context) {
+    if (MyApp.podcastBloc.state is AskTheExpertInitial) {
+      MyApp.podcastBloc.add(InitializePodcastData());
+    }
     return BlocBuilder<PodcastBloc, PodcastState>(
       builder: (context, statePodcast) {
         if (statePodcast is PodcastDataLoaded) {
-          if (kDebugMode) {
-            print('Podcast Data Loaded: ${statePodcast.podcasts.length} items');
-          }
-          debugPrint(
-              'Podcast Data Loaded: ${statePodcast.podcasts.length} items');
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,

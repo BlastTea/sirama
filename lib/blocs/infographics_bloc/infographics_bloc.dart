@@ -8,7 +8,7 @@ class InfographicsBloc extends Bloc<InfographicsEvent, InfographicsState> {
 
     on<InitializeInfographicsData>((event, emit) async {
       try {
-        await ApiHelper.get('/infografis');
+        await ApiHelper.get('/api/infografis');
       } catch (e) {
         emit(InfographicsError());
         return;
@@ -18,5 +18,7 @@ class InfographicsBloc extends Bloc<InfographicsEvent, InfographicsState> {
     });
   }
 
-  InfographicsDataLoaded get _infographicsDataLoaded => InfographicsDataLoaded();
+  InfographicsDataLoaded get _infographicsDataLoaded => InfographicsDataLoaded(
+    
+  );
 }
