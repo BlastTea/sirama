@@ -7,4 +7,7 @@ class InfographicsInitial extends InfographicsState {}
 
 class InfographicsError extends InfographicsState {}
 
-class InfographicsDataLoaded extends InfographicsState {}
+class InfographicsDataLoaded extends InfographicsState {
+  InfographicsDataLoaded({required this.infografis});
+  final List<Infografis> infografis;
+}

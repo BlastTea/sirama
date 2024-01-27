@@ -7,4 +7,10 @@ class FilmVideoInitial extends FilmVideoState {}
 
 class FilmVideoError extends FilmVideoState {}
 
-class FilmVideoDataLoaded extends FilmVideoState {}
+class FilmVideoDataLoaded extends FilmVideoState {
+  FilmVideoDataLoaded({
+    required this.filmvideo
+  });
+
+  final List<Film> filmvideo;
+}

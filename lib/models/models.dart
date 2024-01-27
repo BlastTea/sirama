@@ -103,7 +103,7 @@ class Film with _$Film {
 @freezed
 class Infografis with _$Infografis {
   const factory Infografis({
-    @JsonKey(name: 'id_infografis') int? idiInfografis,
+    @JsonKey(name: 'id_infografis') int? idInfografis,
     @JsonKey(name: 'judul_infografis') String? judulInfografis,
     @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -114,4 +114,19 @@ class Infografis with _$Infografis {
   }) = _Infografis;
 
   factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
+}
+
+@freezed
+class EducationalVideo with _$EducationalVideo {
+  const factory EducationalVideo({
+    @JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
+    @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+    @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+    @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _EducationalVideo;
+
+  factory EducationalVideo.fromJson(Map<String, dynamic> json) => _$EducationalVideoFromJson(json);
 }

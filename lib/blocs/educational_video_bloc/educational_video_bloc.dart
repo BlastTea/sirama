@@ -1,14 +1,20 @@
 part of '../blocs.dart';
 
-class EducationalVideoBloc extends Bloc<EducationalVideoEvent, EducationalVideoState> {
+class EducationalVideoBloc
+    extends Bloc<EducationalVideoEvent, EducationalVideoState> {
   EducationalVideoBloc() : super(EducationalVideoInitial()) {
-    on<SetEducationalVideoState>((event, emit) => emit(event.state ?? _educationalVideoDataLoaded));
+    on<SetEducationalVideoState>(
+        (event, emit) => emit(event.state ?? _educationalVideoDataLoaded));
 
-    on<SetEducationalVideoToInitial>((event, emit) => emit(EducationalVideoInitial()));
+    on<SetEducationalVideoToInitial>(
+        (event, emit) => emit(EducationalVideoInitial()));
 
     on<InitializeEducationalVideoData>((event, emit) async {
       try {
-        await ApiHelper.get('/tanyaahli');
+        _videoEdukasiList = await ApiHelper.get('/video_edukasi').then(
+            (value) => (value.data['data'] as List)
+                .map((e) => EducationalVideo.fromJson(e))
+                .toList());
       } catch (e) {
         emit(EducationalVideoError());
         return;
@@ -18,5 +24,10 @@ class EducationalVideoBloc extends Bloc<EducationalVideoEvent, EducationalVideoS
     });
   }
 
-  EducationalVideoDataLoaded get _educationalVideoDataLoaded => EducationalVideoDataLoaded();
+  List<EducationalVideo> _videoEdukasiList = [];
+
+  EducationalVideoDataLoaded get _educationalVideoDataLoaded =>
+      EducationalVideoDataLoaded(
+        videoedukasi : _videoEdukasiList
+      );
 }

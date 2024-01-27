@@ -144,6 +144,29 @@ class PodcastPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            // ListView.builder(
+                            //   itemBuilder: (context, statePodcast) {
+                            //     Podcast kontenPodcasts = statePodcast.podcasts[index];
+                            // return ListTile(
+                            //   contentPadding: const EdgeInsets.all(0),
+                            //   leading: CircleAvatar(
+                            //     backgroundImage: NetworkImage(kontenPodcasts.uploadUserId
+                            //         .toString()),
+                            //   ),
+                            //   title: Text(
+                            //     kontenPodcasts.judulPodcast
+                            //         .toString(),
+                            //     style: const TextStyle(
+                            //         fontWeight: FontWeight.bold),
+                            //   ),
+                            //   subtitle: Text(
+                            //     "${kontenPodcasts.uploadUserId} . ${kontenPodcasts.tanggalUpload}",
+                            //     style: const TextStyle(
+                            //       color: Colors.grey,
+                            //     ),
+                            //   ),
+                            // }),
+                            // )
                           ],
                         ),
                       ),

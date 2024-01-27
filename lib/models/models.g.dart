@@ -176,7 +176,7 @@ Map<String, dynamic> _$$FilmImplToJson(_$FilmImpl instance) =>
 
 _$InfografisImpl _$$InfografisImplFromJson(Map<String, dynamic> json) =>
     _$InfografisImpl(
-      idiInfografis: json['id_infografis'] as int?,
+      idInfografis: json['id_infografis'] as int?,
       judulInfografis: json['judul_infografis'] as String?,
       deskripsiInfografis: json['deskripsi_infografis'] as String?,
       tanggalUpload: json['tgl_upload'] == null
@@ -194,11 +194,41 @@ _$InfografisImpl _$$InfografisImplFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$InfografisImplToJson(_$InfografisImpl instance) =>
     <String, dynamic>{
-      'id_infografis': instance.idiInfografis,
+      'id_infografis': instance.idInfografis,
       'judul_infografis': instance.judulInfografis,
       'deskripsi_infografis': instance.deskripsiInfografis,
       'tgl_upload': instance.tanggalUpload?.toIso8601String(),
       'gambar_infografis': instance.gambarInfografis,
+      'upload_user_id': instance.uploadUserId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+    };
+
+_$EducationalVideoImpl _$$EducationalVideoImplFromJson(
+        Map<String, dynamic> json) =>
+    _$EducationalVideoImpl(
+      idVideoEdukasi: json['id_video_edukasi'] as int?,
+      judulVideoEdukasi: json['judul_video_edukasi'] as String?,
+      linkVideoEdukasi: json['link_video_edukasi'] as String?,
+      tanggalUpload: json['tgl_upload'] == null
+          ? null
+          : DateTime.parse(json['tgl_upload'] as String),
+      uploadUserId: json['upload_user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+    );
+
+Map<String, dynamic> _$$EducationalVideoImplToJson(
+        _$EducationalVideoImpl instance) =>
+    <String, dynamic>{
+      'id_video_edukasi': instance.idVideoEdukasi,
+      'judul_video_edukasi': instance.judulVideoEdukasi,
+      'link_video_edukasi': instance.linkVideoEdukasi,
+      'tgl_upload': instance.tanggalUpload?.toIso8601String(),
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
