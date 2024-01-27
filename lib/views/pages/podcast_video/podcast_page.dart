@@ -44,7 +44,7 @@ class PodcastPage extends StatelessWidget {
   const PodcastPage({super.key});
   @override
   Widget build(BuildContext context) {
-    if (MyApp.podcastBloc.state is AskTheExpertInitial) {
+    if (MyApp.podcastBloc.state is PodcastInitial) {
       MyApp.podcastBloc.add(InitializePodcastData());
     }
     return BlocBuilder<PodcastBloc, PodcastState>(
@@ -128,8 +128,7 @@ class PodcastPage extends StatelessWidget {
                               contentPadding: const EdgeInsets.all(0),
                               leading: CircleAvatar(
                                 backgroundImage: NetworkImage(statePodcast
-                                    .podcasts[index].uploadUserId
-                                    .toString()),
+                                    .podcasts[index].uploadUserId.toString()),
                               ),
                               title: Text(
                                 statePodcast.podcasts[index].judulPodcast
