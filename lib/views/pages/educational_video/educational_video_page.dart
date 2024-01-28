@@ -45,104 +45,125 @@ class EducationalVideoPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text("Video Edukasi"),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            const SizedBox(
-              height: 20,
+    if (MyApp.educationavideoBloc.state is EducationalVideoInitial) {
+      MyApp.educationavideoBloc.add(InitializeEducationalVideoData());
+    }
+    return BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
+      builder: (context, stateEducationalVideo) {
+        if (stateEducationalVideo is EducationalVideoDataLoaded) {
+
+        return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            leading: IconButton(
+              icon: const Icon(Icons.arrow_back, color: Colors.black),
+              onPressed: () => Navigator.of(context).pop(),
             ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: CardTile(
-                title: Text(
-                    'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                button: Text(
-                    'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-              ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
-                children: [
-                  Text(
-                    'Video edukasi terbaru',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            title: const Text("Video Edukasi"),
+            centerTitle: true,
+          ),
+          body: SafeArea(
+            child: ListView(
+              shrinkWrap: true,
+              children: [
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: CardTile(
+                    title: Text(
+                        'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                    button: Text(
+                        'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: ListView.builder(
-                itemCount: data.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    // Navigate to the detail page and pass the necessary data
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailsEducationalVideoPage(
-                          videoUrl: data[index]['link_film']!,
-                          title: data[index]['judul_film']!,
-                          uploadUserId: data[index]['creator']!,
-                          totalLike: data[index]['like']!,
-                        ),
-                      ),
-                    );
-                  },
-                  child: Column(
-                    children: <Widget>[
-                      AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
-                            data[index]['thumbnail']!,
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ),
-                      ListTile(
-                        contentPadding: const EdgeInsets.all(0),
-                        leading: CircleAvatar(
-                          backgroundImage:
-                              NetworkImage(data[index]['profile_url']!),
-                        ),
-                        title: Text(
-                          data[index]['judul_film']!,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(
-                          "${data[index]['creator']!} . ${data[index]['date']!}",
-                          style: const TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Video edukasi terbaru',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
                       ),
                     ],
                   ),
                 ),
-              ),
-            )
-          ],
-        ),
-      ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: ListView.builder(
+                    itemCount: data.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        // Navigate to the detail page and pass the necessary data
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => DetailsEducationalVideoPage(
+                              videoUrl: data[index]['link_film']!,
+                              title: data[index]['judul_film']!,
+                              uploadUserId: data[index]['creator']!,
+                              totalLike: data[index]['like']!,
+                            ),
+                          ),
+                        );
+                      },
+                      child: Column(
+                        children: <Widget>[
+                          AspectRatio(
+                            aspectRatio: 16 / 9,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(10.0),
+                              child: Image.network(
+                                data[index]['thumbnail']!,
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            contentPadding: const EdgeInsets.all(0),
+                            leading: CircleAvatar(
+                              backgroundImage:
+                                  NetworkImage(data[index]['profile_url']!),
+                            ),
+                            title: Text(
+                              data[index]['judul_film']!,
+                              style:
+                                  const TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            subtitle: Text(
+                              "${data[index]['creator']!} . ${data[index]['date']!}",
+                              style: const TextStyle(
+                                color: Colors.grey,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+          ),
+        );
+        } else if (stateEducationalVideo is EducationalVideoInitial) {
+          return const CircularProgressIndicator();
+        }
+        else if (stateEducationalVideo is EducationalVideoError) {
+          return const Text('Error anj');
+        }
+        else {
+          return Container();
+        }
+      },
     );
   }
 }

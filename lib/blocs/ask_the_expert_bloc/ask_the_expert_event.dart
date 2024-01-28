@@ -18,3 +18,11 @@ class SetSelectedTopikPertanyaan extends AskTheExpertEvent {
 
   final int index;
 }
+
+class SetSelectedInputTopikPertanyaan extends AskTheExpertEvent {
+  SetSelectedInputTopikPertanyaan({required this.index});
+
+  final int index;
+}
+
+class SendAskTheExpertPressed extends AskTheExpertEvent {}

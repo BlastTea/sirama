@@ -13,11 +13,6 @@ class PodcastBloc extends Bloc<PodcastEvent, PodcastState> {
             (value) => (value.data['data'] as List)
                 .map((e) => Podcast.fromJson(e))
                 .toList());
-
-      // if (kDebugMode) {
-      //   print(_podcastList);
-      // }
-
       } catch (e) {
         emit(PodcastError());
         return;
@@ -29,10 +24,7 @@ class PodcastBloc extends Bloc<PodcastEvent, PodcastState> {
 
   List<Podcast> _podcastList = [];
 
-  // List<List<Podcast>> _podcastsLength = [];
-
   PodcastDataLoaded get _podcastDataLoaded => PodcastDataLoaded(
         podcasts: _podcastList,
-        // podcastsLength: _podcastsLength,
       );
 }

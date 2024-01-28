@@ -9,11 +9,17 @@ class AskTheExpertError extends AskTheExpertState {}
 
 class AskTheExpertDataLoaded extends AskTheExpertState {
   AskTheExpertDataLoaded({
+    required this.textControllerTopic,
+    required this.textControllerQuestion,
     required this.pageController,
     required this.topikPertanyaans,
     required this.tanyaAhlis,
     required this.selectedTopikPertanyaan,
+    required this.selectedInputTopikPertanyaan,
   });
+
+  final TextEditingController textControllerTopic;
+  final TextEditingController textControllerQuestion;
 
   final PageController pageController;
 
@@ -22,4 +28,5 @@ class AskTheExpertDataLoaded extends AskTheExpertState {
   final List<List<TanyaAhli>> tanyaAhlis;
 
   final int selectedTopikPertanyaan;
+  final int? selectedInputTopikPertanyaan;
 }

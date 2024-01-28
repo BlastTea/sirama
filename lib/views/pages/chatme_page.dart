@@ -1,7 +1,10 @@
 part of 'pages.dart';
 
 class ChatMePage extends StatelessWidget {
-  const ChatMePage({super.key, required this.index});
+  const ChatMePage({
+    super.key,
+    required this.index,
+  });
 
   final int index;
 
@@ -29,7 +32,7 @@ class ChatMePage extends StatelessWidget {
               children: [
                 Expanded(
                   child: ListView.builder(
-                    key: UniqueKey(),
+                    key: ValueKey(stateChatme.chats.length),
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     reverse: true,
                     itemBuilder: (context, index) => index < stateChatme.chats.length

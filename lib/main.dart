@@ -34,6 +34,9 @@ class MyApp extends StatelessWidget {
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
   static PodcastBloc podcastBloc = PodcastBloc();
+  static FilmVideoBloc filmBloc = FilmVideoBloc();
+  static InfographicsBloc infografisBloc = InfographicsBloc();
+  static EducationalVideoBloc educationavideoBloc = EducationalVideoBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +48,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => chatmeBloc),
         BlocProvider(create: (context) => authenticationBloc),
         BlocProvider(create: (context) => askTheExpertBloc),
+        BlocProvider(create: (context) => podcastBloc),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(

@@ -35,9 +35,9 @@ class TopikPertanyaan with _$TopikPertanyaan {
   factory TopikPertanyaan.fromJson(Map<String, dynamic> json) => _$TopikPertanyaanFromJson(json);
 }
 
-@freezed
+@unfreezed
 class TanyaAhli with _$TanyaAhli {
-  const factory TanyaAhli({
+  factory TanyaAhli({
     @JsonKey(name: 'id_tanya_ahli') int? idTanyaAhli,
     @JsonKey(name: 'topik_id') int? topikId,
     @JsonKey(name: 'penanya_user_id') penanyaUserId,
@@ -46,9 +46,28 @@ class TanyaAhli with _$TanyaAhli {
     @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    JawabanAhli? jawabanAhli,
   }) = _TanyaAhli;
 
   factory TanyaAhli.fromJson(Map<String, dynamic> json) => _$TanyaAhliFromJson(json);
+}
+
+@freezed
+class JawabanAhli with _$JawabanAhli {
+  const factory JawabanAhli({
+    @JsonKey(name: 'id_jawaban_ahli') int? idJawabanAhli,
+    @JsonKey(name: 'penjawab_user_id') int? penjawabUserId,
+    @JsonKey(name: 'tanya_ahli_id') int? tanyaAhliId,
+    @JsonKey(name: 'jawaban_ahli') String? jawabanAhli,
+    @JsonKey(name: 'waktu_jawaban') DateTime? waktuJawaban,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    String? pertanyaan,
+    @JsonKey(name: 'penanya_user_id') int? penanyaUserId,
+    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+  }) = _JawabanAhli;
+
+  factory JawabanAhli.fromJson(Map<String, dynamic> json) => _$JawabanAhliFromJson(json);
 }
 
 @freezed
@@ -84,7 +103,7 @@ class Film with _$Film {
 @freezed
 class Infografis with _$Infografis {
   const factory Infografis({
-    @JsonKey(name: 'id_infografis') int? idiInfografis,
+    @JsonKey(name: 'id_infografis') int? idInfografis,
     @JsonKey(name: 'judul_infografis') String? judulInfografis,
     @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -95,4 +114,19 @@ class Infografis with _$Infografis {
   }) = _Infografis;
 
   factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
+}
+
+@freezed
+class EducationalVideo with _$EducationalVideo {
+  const factory EducationalVideo({
+    @JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
+    @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+    @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+    @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _EducationalVideo;
+
+  factory EducationalVideo.fromJson(Map<String, dynamic> json) => _$EducationalVideoFromJson(json);
 }
