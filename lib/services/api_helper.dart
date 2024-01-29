@@ -30,6 +30,7 @@ class ApiHelper {
         baseUrl: url,
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
       ),
     );
@@ -50,9 +51,7 @@ class ApiHelper {
             );
           }
 
-          if (options.method != 'GET') {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
+          if (options.method != 'GET') options.headers['Authorization'] = 'Bearer $token';
 
           dynamic data;
 
@@ -93,9 +92,7 @@ class ApiHelper {
             return handler.next(error);
           }
 
-          if (message != null) {
-            showErrorDialog(message);
-          }
+          if (message != null) showErrorDialog(message);
 
           return handler.next(error);
         },

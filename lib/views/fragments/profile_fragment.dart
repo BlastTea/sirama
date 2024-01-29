@@ -17,7 +17,7 @@ class ProfileFragment extends StatelessWidget {
                 iconSize: 24.0,
                 icon: Icons.person,
                 border: const Border(),
-                image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                image: const NetworkImage('https://dev-sirama.propertiideal.id/storage/test/shark.png'),
                 borderRadius: BorderRadius.circular(24.0),
               ),
               title: Text(currentUser?.username ?? 'Anonymous'),

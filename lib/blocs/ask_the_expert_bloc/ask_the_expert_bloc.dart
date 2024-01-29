@@ -55,7 +55,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
         showLoadingDialog();
 
         tanyaAhli = await ApiHelper.post(
-          '/api/tanyaahlli',
+          '/api/tanyaahli',
           body: {
             'topik_id': _topikPertanyaans[_selectedTopikPertanyaan].idJenisTopikPertanyaan,
             'pertanyaan': _textControllerQuestion.text.trim(),
@@ -73,7 +73,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
         MaterialPageRoute(
           builder: (context) => ChatAskTheExpertPage(
             topicIndex: _selectedInputTopikPertanyaan!,
-            index: _tanyaAhlis[_selectedInputTopikPertanyaan!].length,
+            index: _tanyaAhlis[_selectedInputTopikPertanyaan!].length - 1,
           ),
         ),
       );
