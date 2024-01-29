@@ -2392,3 +2392,263 @@ abstract class _EducationalVideo implements EducationalVideo {
   _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+Quote _$QuoteFromJson(Map<String, dynamic> json) {
+  return _Quote.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Quote {
+  @JsonKey(name: 'id_quote')
+  int? get idQuote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_quote')
+  String? get namaQuote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'gambar_quote')
+  String? get gambarQuote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuoteCopyWith<Quote> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuoteCopyWith<$Res> {
+  factory $QuoteCopyWith(Quote value, $Res Function(Quote) then) =
+      _$QuoteCopyWithImpl<$Res, Quote>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_quote') int? idQuote,
+      @JsonKey(name: 'nama_quote') String? namaQuote,
+      @JsonKey(name: 'gambar_quote') String? gambarQuote,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class _$QuoteCopyWithImpl<$Res, $Val extends Quote>
+    implements $QuoteCopyWith<$Res> {
+  _$QuoteCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idQuote = freezed,
+    Object? namaQuote = freezed,
+    Object? gambarQuote = freezed,
+    Object? uploadUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idQuote: freezed == idQuote
+          ? _value.idQuote
+          : idQuote // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaQuote: freezed == namaQuote
+          ? _value.namaQuote
+          : namaQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gambarQuote: freezed == gambarQuote
+          ? _value.gambarQuote
+          : gambarQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$QuoteImplCopyWith<$Res> implements $QuoteCopyWith<$Res> {
+  factory _$$QuoteImplCopyWith(
+          _$QuoteImpl value, $Res Function(_$QuoteImpl) then) =
+      __$$QuoteImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_quote') int? idQuote,
+      @JsonKey(name: 'nama_quote') String? namaQuote,
+      @JsonKey(name: 'gambar_quote') String? gambarQuote,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$QuoteImplCopyWithImpl<$Res>
+    extends _$QuoteCopyWithImpl<$Res, _$QuoteImpl>
+    implements _$$QuoteImplCopyWith<$Res> {
+  __$$QuoteImplCopyWithImpl(
+      _$QuoteImpl _value, $Res Function(_$QuoteImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idQuote = freezed,
+    Object? namaQuote = freezed,
+    Object? gambarQuote = freezed,
+    Object? uploadUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$QuoteImpl(
+      idQuote: freezed == idQuote
+          ? _value.idQuote
+          : idQuote // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaQuote: freezed == namaQuote
+          ? _value.namaQuote
+          : namaQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gambarQuote: freezed == gambarQuote
+          ? _value.gambarQuote
+          : gambarQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$QuoteImpl implements _Quote {
+  const _$QuoteImpl(
+      {@JsonKey(name: 'id_quote') this.idQuote,
+      @JsonKey(name: 'nama_quote') this.namaQuote,
+      @JsonKey(name: 'gambar_quote') this.gambarQuote,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt});
+
+  factory _$QuoteImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuoteImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_quote')
+  final int? idQuote;
+  @override
+  @JsonKey(name: 'nama_quote')
+  final String? namaQuote;
+  @override
+  @JsonKey(name: 'gambar_quote')
+  final String? gambarQuote;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @override
+  String toString() {
+    return 'Quote(idQuote: $idQuote, namaQuote: $namaQuote, gambarQuote: $gambarQuote, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QuoteImpl &&
+            (identical(other.idQuote, idQuote) || other.idQuote == idQuote) &&
+            (identical(other.namaQuote, namaQuote) ||
+                other.namaQuote == namaQuote) &&
+            (identical(other.gambarQuote, gambarQuote) ||
+                other.gambarQuote == gambarQuote) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idQuote, namaQuote, gambarQuote,
+      uploadUserId, createdAt, updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$QuoteImplCopyWith<_$QuoteImpl> get copyWith =>
+      __$$QuoteImplCopyWithImpl<_$QuoteImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QuoteImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Quote implements Quote {
+  const factory _Quote(
+      {@JsonKey(name: 'id_quote') final int? idQuote,
+      @JsonKey(name: 'nama_quote') final String? namaQuote,
+      @JsonKey(name: 'gambar_quote') final String? gambarQuote,
+      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$QuoteImpl;
+
+  factory _Quote.fromJson(Map<String, dynamic> json) = _$QuoteImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_quote')
+  int? get idQuote;
+  @override
+  @JsonKey(name: 'nama_quote')
+  String? get namaQuote;
+  @override
+  @JsonKey(name: 'gambar_quote')
+  String? get gambarQuote;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$QuoteImplCopyWith<_$QuoteImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}

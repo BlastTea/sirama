@@ -130,3 +130,17 @@ class EducationalVideo with _$EducationalVideo {
 
   factory EducationalVideo.fromJson(Map<String, dynamic> json) => _$EducationalVideoFromJson(json);
 }
+
+@freezed
+class Quote with _$Quote {
+  const factory Quote({
+    @JsonKey(name: 'id_quote') int? idQuote,
+    @JsonKey(name: 'nama_quote') String? namaQuote,
+    @JsonKey(name: 'gambar_quote') String? gambarQuote,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _Quote;
+
+  factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
+}
