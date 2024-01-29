@@ -8,6 +8,7 @@ import 'package:sirama/services/services.dart';
 import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 import 'package:sirama/views/widgets/widgets.dart';
+import 'package:intl/intl.dart';
 
 part 'home_fragment.dart';
 part 'content_fragment.dart';

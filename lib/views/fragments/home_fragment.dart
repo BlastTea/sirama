@@ -14,6 +14,28 @@ class _HomeFragmentState extends State<HomeFragment> {
     {'text3': 'Menyapa kepada teman', 'value3': false},
   ];
 
+
+  String currentDay = '';
+
+  @override
+  void initState() {
+    super.initState();
+    resetValuesIfNeeded();
+  }
+
+  void resetValuesIfNeeded() {
+    String today = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    if (currentDay != today) {
+      setState(() {
+        for (var e in checkboxHomeFragment) {
+          e['value${e.keys.first.substring(4)}'] = false;
+        }
+        currentDay = today;
+      });
+    }
+  }
+
+
   @override
   Widget build(BuildContext context) => Scaffold(
         body: SafeArea(
