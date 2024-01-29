@@ -233,3 +233,26 @@ Map<String, dynamic> _$$EducationalVideoImplToJson(
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
+
+_$QuoteImpl _$$QuoteImplFromJson(Map<String, dynamic> json) => _$QuoteImpl(
+      idQuote: json['id_quote'] as int?,
+      namaQuote: json['nama_quote'] as String?,
+      gambarQuote: json['gambar_quote'] as String?,
+      uploadUserId: json['upload_user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+    );
+
+Map<String, dynamic> _$$QuoteImplToJson(_$QuoteImpl instance) =>
+    <String, dynamic>{
+      'id_quote': instance.idQuote,
+      'nama_quote': instance.namaQuote,
+      'gambar_quote': instance.gambarQuote,
+      'upload_user_id': instance.uploadUserId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+    };
