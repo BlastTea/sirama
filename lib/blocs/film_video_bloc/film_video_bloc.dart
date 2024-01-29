@@ -8,7 +8,10 @@ class FilmVideoBloc extends Bloc<FilmVideoEvent, FilmVideoState> {
 
     on<InitializeFilmVideoData>((event, emit) async {
       try {
-        await ApiHelper.get('/filmvideo');
+        _filmVideoList = await ApiHelper.get('/api/film').then((value) =>
+            (value.data['data'] as List)
+                .map((e) => Film.fromJson(e))
+                .toList());
       } catch (e) {
         emit(FilmVideoError());
         return;
@@ -18,5 +21,9 @@ class FilmVideoBloc extends Bloc<FilmVideoEvent, FilmVideoState> {
     });
   }
 
-  FilmVideoDataLoaded get _filmVideoDataLoaded => FilmVideoDataLoaded();
+  List<Film> _filmVideoList = [];
+
+  FilmVideoDataLoaded get _filmVideoDataLoaded => FilmVideoDataLoaded(
+    filmvideo : _filmVideoList
+  );
 }

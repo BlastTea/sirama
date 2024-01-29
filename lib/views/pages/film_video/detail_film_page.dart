@@ -79,11 +79,9 @@ class DetailsFilmPageState
 
   @override
   Widget build(BuildContext context) {
-    // Implement your detail page UI here
+    
     return Scaffold(
-        // appBar: AppBar(
-        //   title: Text(widget.title),
-        // ),
+        
         appBar: AppBar(
           backgroundColor: Colors.white,
           leading: IconButton(

@@ -30,7 +30,7 @@ List<Map> dataPodcast = [
     'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
     'link_film':
         'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
-    'upload_user_id': 'Altamis',
+    'upload_user_id': 1, // or role or lgsg nama
     'thumbnail': 'https://picsum.photos/250?image=9',
     'profile_url': 'https://picsum.photos/250?image=9',
     'title': 'Video Title 3',
@@ -44,14 +44,12 @@ class PodcastPage extends StatelessWidget {
   const PodcastPage({super.key});
   @override
   Widget build(BuildContext context) {
+    if (MyApp.podcastBloc.state is PodcastInitial) {
+      MyApp.podcastBloc.add(InitializePodcastData());
+    }
     return BlocBuilder<PodcastBloc, PodcastState>(
       builder: (context, statePodcast) {
         if (statePodcast is PodcastDataLoaded) {
-          if (kDebugMode) {
-            print('Podcast Data Loaded: ${statePodcast.podcasts.length} items');
-          }
-          debugPrint(
-              'Podcast Data Loaded: ${statePodcast.podcasts.length} items');
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -130,8 +128,7 @@ class PodcastPage extends StatelessWidget {
                               contentPadding: const EdgeInsets.all(0),
                               leading: CircleAvatar(
                                 backgroundImage: NetworkImage(statePodcast
-                                    .podcasts[index].uploadUserId
-                                    .toString()),
+                                    .podcasts[index].uploadUserId.toString()),
                               ),
                               title: Text(
                                 statePodcast.podcasts[index].judulPodcast
@@ -146,6 +143,29 @@ class PodcastPage extends StatelessWidget {
                                 ),
                               ),
                             ),
+                            // ListView.builder(
+                            //   itemBuilder: (context, statePodcast) {
+                            //     Podcast kontenPodcasts = statePodcast.podcasts[index];
+                            // return ListTile(
+                            //   contentPadding: const EdgeInsets.all(0),
+                            //   leading: CircleAvatar(
+                            //     backgroundImage: NetworkImage(kontenPodcasts.uploadUserId
+                            //         .toString()),
+                            //   ),
+                            //   title: Text(
+                            //     kontenPodcasts.judulPodcast
+                            //         .toString(),
+                            //     style: const TextStyle(
+                            //         fontWeight: FontWeight.bold),
+                            //   ),
+                            //   subtitle: Text(
+                            //     "${kontenPodcasts.uploadUserId} . ${kontenPodcasts.tanggalUpload}",
+                            //     style: const TextStyle(
+                            //       color: Colors.grey,
+                            //     ),
+                            //   ),
+                            // }),
+                            // )
                           ],
                         ),
                       ),

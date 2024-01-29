@@ -45,118 +45,115 @@ class InfographicsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back, color: Colors.black),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: const Text("Infografis"),
-        centerTitle: true,
-      ),
-      body: SafeArea(
-        child: ListView(
-          shrinkWrap: true,
-          children: [
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20.0),
-              child: CardTile(
-                title: Text(
-                    'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                button: Text(
-                    'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+    return BlocBuilder<InfographicsBloc, InfographicsState>(
+      builder: (context, stateInfographics) {
+        if (MyApp.infografisBloc.state is InfographicsInitial) {
+          MyApp.infografisBloc.add(InitializeInfographicsData());
+        }
+
+        if (stateInfographics is InfographicsDataLoaded) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () => Navigator.of(context).pop(),
               ),
+              title: const Text("Infografis"),
+              centerTitle: true,
             ),
-            const SizedBox(
-              height: 20,
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 20),
-              child: Row(
+            body: SafeArea(
+              child: ListView(
+                shrinkWrap: true,
                 children: [
-                  Text(
-                    'Video edukasi terbaru',
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  const SizedBox(
+                    height: 20,
                   ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: CardTile(
+                      title: Text(
+                          'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                      button: Text(
+                          'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Video edukasi terbaru',
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
+                    child: ListView.builder(
+                      itemCount: dataInfographics.length,
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemBuilder: (context, index) => InkWell(
+                        onTap: () {
+                          // Navigate to the detail page and pass the necessary dataInfographics
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => DetailsInfographicsPage(
+                                videoUrl: dataInfographics[index]['link_film']!,
+                                title: dataInfographics[index]['judul_film']!,
+                                uploadUserId: dataInfographics[index]
+                                    ['creator']!,
+                                totalLike: dataInfographics[index]['like']!,
+                              ),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          children: <Widget>[
+                            InfographicsListItem(
+                                thumbnail: AspectRatio(
+                                  aspectRatio: 16 / 9,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(10.0),
+                                    child: Image.network(
+                                      dataInfographics[index]['thumbnail']!,
+                                      fit: BoxFit.cover,
+                                    ),
+                                  ),
+                                ),
+                                title: stateInfographics
+                                    .infografis[index].judulInfografis
+                                    .toString(),
+                                user: stateInfographics
+                                    .infografis[index].uploadUserId
+                                    .toString(),
+                                viewCount: stateInfographics
+                                    .infografis[index].idInfografis!)
+                          ],
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-              child: ListView.builder(
-                itemCount: dataInfographics.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    // Navigate to the detail page and pass the necessary dataInfographics
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailsInfographicsPage(
-                          videoUrl: dataInfographics[index]['link_film']!,
-                          title: dataInfographics[index]['judul_film']!,
-                          uploadUserId: dataInfographics[index]['creator']!,
-                          totalLike: dataInfographics[index]['like']!,
-                        ),
-                      ),
-                    );
-                  },
-                  child: Column(
-                    children: <Widget>[
-                      InfographicsListItem(
-                          thumbnail: AspectRatio(
-                            aspectRatio: 16 / 9,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.network(
-                                dataInfographics[index]['thumbnail']!,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          title: dataInfographics[index]['judul_film']!,
-                          user: dataInfographics[index]['creator']!,
-                          viewCount: dataInfographics[index]['like']!)
-                      // AspectRatio(
-                      //   aspectRatio: 16 / 9,
-                      //   child: ClipRRect(
-                      //     borderRadius: BorderRadius.circular(10.0),
-                      //     child: Image.network(
-                      //       dataInfographics[index]['thumbnail']!,
-                      //       fit: BoxFit.cover,
-                      //     ),
-                      //   ),
-                      // ),
-                      // ListTile(
-                      //   contentPadding: const EdgeInsets.all(0),
-                      //   leading: CircleAvatar(
-                      //     backgroundImage:
-                      //         NetworkImage(dataInfographics[index]['profile_url']!),
-                      //   ),
-                      //   title: Text(
-                      //     dataInfographics[index]['judul_film']!,
-                      //     style: const TextStyle(fontWeight: FontWeight.bold),
-                      //   ),
-                      //   subtitle: Text(
-                      //     "${dataInfographics[index]['creator']!} . ${dataInfographics[index]['date']!}",
-                      //     style: const TextStyle(
-                      //       color: Colors.grey,
-                      //     ),
-                      //   ),
-                      // ),
-                    ],
-                  ),
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
+          );
+        } else if (stateInfographics is InfographicsInitial) {
+          return const CircularProgressIndicator();
+        } else if (stateInfographics is InfographicsError) {
+          return const Text('error');
+        } else {
+          return Container();
+        }
+      },
     );
   }
 }

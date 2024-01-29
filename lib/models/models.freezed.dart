@@ -1780,7 +1780,7 @@ Infografis _$InfografisFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Infografis {
   @JsonKey(name: 'id_infografis')
-  int? get idiInfografis => throw _privateConstructorUsedError;
+  int? get idInfografis => throw _privateConstructorUsedError;
   @JsonKey(name: 'judul_infografis')
   String? get judulInfografis => throw _privateConstructorUsedError;
   @JsonKey(name: 'deskripsi_infografis')
@@ -1809,7 +1809,7 @@ abstract class $InfografisCopyWith<$Res> {
       _$InfografisCopyWithImpl<$Res, Infografis>;
   @useResult
   $Res call(
-      {@JsonKey(name: 'id_infografis') int? idiInfografis,
+      {@JsonKey(name: 'id_infografis') int? idInfografis,
       @JsonKey(name: 'judul_infografis') String? judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
       @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -1832,7 +1832,7 @@ class _$InfografisCopyWithImpl<$Res, $Val extends Infografis>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idiInfografis = freezed,
+    Object? idInfografis = freezed,
     Object? judulInfografis = freezed,
     Object? deskripsiInfografis = freezed,
     Object? tanggalUpload = freezed,
@@ -1842,9 +1842,9 @@ class _$InfografisCopyWithImpl<$Res, $Val extends Infografis>
     Object? updatedAt = freezed,
   }) {
     return _then(_value.copyWith(
-      idiInfografis: freezed == idiInfografis
-          ? _value.idiInfografis
-          : idiInfografis // ignore: cast_nullable_to_non_nullable
+      idInfografis: freezed == idInfografis
+          ? _value.idInfografis
+          : idInfografis // ignore: cast_nullable_to_non_nullable
               as int?,
       judulInfografis: freezed == judulInfografis
           ? _value.judulInfografis
@@ -1887,7 +1887,7 @@ abstract class _$$InfografisImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {@JsonKey(name: 'id_infografis') int? idiInfografis,
+      {@JsonKey(name: 'id_infografis') int? idInfografis,
       @JsonKey(name: 'judul_infografis') String? judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
       @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -1908,7 +1908,7 @@ class __$$InfografisImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? idiInfografis = freezed,
+    Object? idInfografis = freezed,
     Object? judulInfografis = freezed,
     Object? deskripsiInfografis = freezed,
     Object? tanggalUpload = freezed,
@@ -1918,9 +1918,9 @@ class __$$InfografisImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
   }) {
     return _then(_$InfografisImpl(
-      idiInfografis: freezed == idiInfografis
-          ? _value.idiInfografis
-          : idiInfografis // ignore: cast_nullable_to_non_nullable
+      idInfografis: freezed == idInfografis
+          ? _value.idInfografis
+          : idInfografis // ignore: cast_nullable_to_non_nullable
               as int?,
       judulInfografis: freezed == judulInfografis
           ? _value.judulInfografis
@@ -1958,7 +1958,7 @@ class __$$InfografisImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$InfografisImpl implements _Infografis {
   const _$InfografisImpl(
-      {@JsonKey(name: 'id_infografis') this.idiInfografis,
+      {@JsonKey(name: 'id_infografis') this.idInfografis,
       @JsonKey(name: 'judul_infografis') this.judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') this.deskripsiInfografis,
       @JsonKey(name: 'tgl_upload') this.tanggalUpload,
@@ -1972,7 +1972,7 @@ class _$InfografisImpl implements _Infografis {
 
   @override
   @JsonKey(name: 'id_infografis')
-  final int? idiInfografis;
+  final int? idInfografis;
   @override
   @JsonKey(name: 'judul_infografis')
   final String? judulInfografis;
@@ -1997,7 +1997,7 @@ class _$InfografisImpl implements _Infografis {
 
   @override
   String toString() {
-    return 'Infografis(idiInfografis: $idiInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Infografis(idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -2005,8 +2005,8 @@ class _$InfografisImpl implements _Infografis {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$InfografisImpl &&
-            (identical(other.idiInfografis, idiInfografis) ||
-                other.idiInfografis == idiInfografis) &&
+            (identical(other.idInfografis, idInfografis) ||
+                other.idInfografis == idInfografis) &&
             (identical(other.judulInfografis, judulInfografis) ||
                 other.judulInfografis == judulInfografis) &&
             (identical(other.deskripsiInfografis, deskripsiInfografis) ||
@@ -2027,7 +2027,7 @@ class _$InfografisImpl implements _Infografis {
   @override
   int get hashCode => Object.hash(
       runtimeType,
-      idiInfografis,
+      idInfografis,
       judulInfografis,
       deskripsiInfografis,
       tanggalUpload,
@@ -2052,7 +2052,7 @@ class _$InfografisImpl implements _Infografis {
 
 abstract class _Infografis implements Infografis {
   const factory _Infografis(
-      {@JsonKey(name: 'id_infografis') final int? idiInfografis,
+      {@JsonKey(name: 'id_infografis') final int? idInfografis,
       @JsonKey(name: 'judul_infografis') final String? judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') final String? deskripsiInfografis,
       @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
@@ -2067,7 +2067,7 @@ abstract class _Infografis implements Infografis {
 
   @override
   @JsonKey(name: 'id_infografis')
-  int? get idiInfografis;
+  int? get idInfografis;
   @override
   @JsonKey(name: 'judul_infografis')
   String? get judulInfografis;
@@ -2092,5 +2092,563 @@ abstract class _Infografis implements Infografis {
   @override
   @JsonKey(ignore: true)
   _$$InfografisImplCopyWith<_$InfografisImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+EducationalVideo _$EducationalVideoFromJson(Map<String, dynamic> json) {
+  return _EducationalVideo.fromJson(json);
+}
+
+/// @nodoc
+mixin _$EducationalVideo {
+  @JsonKey(name: 'id_video_edukasi')
+  int? get idVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_video_edukasi')
+  String? get judulVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_video_edukasi')
+  String? get linkVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $EducationalVideoCopyWith<EducationalVideo> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $EducationalVideoCopyWith<$Res> {
+  factory $EducationalVideoCopyWith(
+          EducationalVideo value, $Res Function(EducationalVideo) then) =
+      _$EducationalVideoCopyWithImpl<$Res, EducationalVideo>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
+    implements $EducationalVideoCopyWith<$Res> {
+  _$EducationalVideoCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idVideoEdukasi = freezed,
+    Object? judulVideoEdukasi = freezed,
+    Object? linkVideoEdukasi = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idVideoEdukasi: freezed == idVideoEdukasi
+          ? _value.idVideoEdukasi
+          : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      judulVideoEdukasi: freezed == judulVideoEdukasi
+          ? _value.judulVideoEdukasi
+          : judulVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkVideoEdukasi: freezed == linkVideoEdukasi
+          ? _value.linkVideoEdukasi
+          : linkVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$EducationalVideoImplCopyWith<$Res>
+    implements $EducationalVideoCopyWith<$Res> {
+  factory _$$EducationalVideoImplCopyWith(_$EducationalVideoImpl value,
+          $Res Function(_$EducationalVideoImpl) then) =
+      __$$EducationalVideoImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$EducationalVideoImplCopyWithImpl<$Res>
+    extends _$EducationalVideoCopyWithImpl<$Res, _$EducationalVideoImpl>
+    implements _$$EducationalVideoImplCopyWith<$Res> {
+  __$$EducationalVideoImplCopyWithImpl(_$EducationalVideoImpl _value,
+      $Res Function(_$EducationalVideoImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idVideoEdukasi = freezed,
+    Object? judulVideoEdukasi = freezed,
+    Object? linkVideoEdukasi = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$EducationalVideoImpl(
+      idVideoEdukasi: freezed == idVideoEdukasi
+          ? _value.idVideoEdukasi
+          : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as int?,
+      judulVideoEdukasi: freezed == judulVideoEdukasi
+          ? _value.judulVideoEdukasi
+          : judulVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkVideoEdukasi: freezed == linkVideoEdukasi
+          ? _value.linkVideoEdukasi
+          : linkVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$EducationalVideoImpl implements _EducationalVideo {
+  const _$EducationalVideoImpl(
+      {@JsonKey(name: 'id_video_edukasi') this.idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') this.judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') this.linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') this.tanggalUpload,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt});
+
+  factory _$EducationalVideoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$EducationalVideoImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_video_edukasi')
+  final int? idVideoEdukasi;
+  @override
+  @JsonKey(name: 'judul_video_edukasi')
+  final String? judulVideoEdukasi;
+  @override
+  @JsonKey(name: 'link_video_edukasi')
+  final String? linkVideoEdukasi;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  final DateTime? tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @override
+  String toString() {
+    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$EducationalVideoImpl &&
+            (identical(other.idVideoEdukasi, idVideoEdukasi) ||
+                other.idVideoEdukasi == idVideoEdukasi) &&
+            (identical(other.judulVideoEdukasi, judulVideoEdukasi) ||
+                other.judulVideoEdukasi == judulVideoEdukasi) &&
+            (identical(other.linkVideoEdukasi, linkVideoEdukasi) ||
+                other.linkVideoEdukasi == linkVideoEdukasi) &&
+            (identical(other.tanggalUpload, tanggalUpload) ||
+                other.tanggalUpload == tanggalUpload) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      idVideoEdukasi,
+      judulVideoEdukasi,
+      linkVideoEdukasi,
+      tanggalUpload,
+      uploadUserId,
+      createdAt,
+      updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
+      __$$EducationalVideoImplCopyWithImpl<_$EducationalVideoImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$EducationalVideoImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _EducationalVideo implements EducationalVideo {
+  const factory _EducationalVideo(
+          {@JsonKey(name: 'id_video_edukasi') final int? idVideoEdukasi,
+          @JsonKey(name: 'judul_video_edukasi') final String? judulVideoEdukasi,
+          @JsonKey(name: 'link_video_edukasi') final String? linkVideoEdukasi,
+          @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
+          @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+          @JsonKey(name: 'created_at') final DateTime? createdAt,
+          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
+      _$EducationalVideoImpl;
+
+  factory _EducationalVideo.fromJson(Map<String, dynamic> json) =
+      _$EducationalVideoImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_video_edukasi')
+  int? get idVideoEdukasi;
+  @override
+  @JsonKey(name: 'judul_video_edukasi')
+  String? get judulVideoEdukasi;
+  @override
+  @JsonKey(name: 'link_video_edukasi')
+  String? get linkVideoEdukasi;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Quote _$QuoteFromJson(Map<String, dynamic> json) {
+  return _Quote.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Quote {
+  @JsonKey(name: 'id_quote')
+  int? get idQuote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_quote')
+  String? get namaQuote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'gambar_quote')
+  String? get gambarQuote => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $QuoteCopyWith<Quote> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $QuoteCopyWith<$Res> {
+  factory $QuoteCopyWith(Quote value, $Res Function(Quote) then) =
+      _$QuoteCopyWithImpl<$Res, Quote>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_quote') int? idQuote,
+      @JsonKey(name: 'nama_quote') String? namaQuote,
+      @JsonKey(name: 'gambar_quote') String? gambarQuote,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class _$QuoteCopyWithImpl<$Res, $Val extends Quote>
+    implements $QuoteCopyWith<$Res> {
+  _$QuoteCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idQuote = freezed,
+    Object? namaQuote = freezed,
+    Object? gambarQuote = freezed,
+    Object? uploadUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idQuote: freezed == idQuote
+          ? _value.idQuote
+          : idQuote // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaQuote: freezed == namaQuote
+          ? _value.namaQuote
+          : namaQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gambarQuote: freezed == gambarQuote
+          ? _value.gambarQuote
+          : gambarQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$QuoteImplCopyWith<$Res> implements $QuoteCopyWith<$Res> {
+  factory _$$QuoteImplCopyWith(
+          _$QuoteImpl value, $Res Function(_$QuoteImpl) then) =
+      __$$QuoteImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_quote') int? idQuote,
+      @JsonKey(name: 'nama_quote') String? namaQuote,
+      @JsonKey(name: 'gambar_quote') String? gambarQuote,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$QuoteImplCopyWithImpl<$Res>
+    extends _$QuoteCopyWithImpl<$Res, _$QuoteImpl>
+    implements _$$QuoteImplCopyWith<$Res> {
+  __$$QuoteImplCopyWithImpl(
+      _$QuoteImpl _value, $Res Function(_$QuoteImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idQuote = freezed,
+    Object? namaQuote = freezed,
+    Object? gambarQuote = freezed,
+    Object? uploadUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$QuoteImpl(
+      idQuote: freezed == idQuote
+          ? _value.idQuote
+          : idQuote // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaQuote: freezed == namaQuote
+          ? _value.namaQuote
+          : namaQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      gambarQuote: freezed == gambarQuote
+          ? _value.gambarQuote
+          : gambarQuote // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$QuoteImpl implements _Quote {
+  const _$QuoteImpl(
+      {@JsonKey(name: 'id_quote') this.idQuote,
+      @JsonKey(name: 'nama_quote') this.namaQuote,
+      @JsonKey(name: 'gambar_quote') this.gambarQuote,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt});
+
+  factory _$QuoteImpl.fromJson(Map<String, dynamic> json) =>
+      _$$QuoteImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_quote')
+  final int? idQuote;
+  @override
+  @JsonKey(name: 'nama_quote')
+  final String? namaQuote;
+  @override
+  @JsonKey(name: 'gambar_quote')
+  final String? gambarQuote;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @override
+  String toString() {
+    return 'Quote(idQuote: $idQuote, namaQuote: $namaQuote, gambarQuote: $gambarQuote, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$QuoteImpl &&
+            (identical(other.idQuote, idQuote) || other.idQuote == idQuote) &&
+            (identical(other.namaQuote, namaQuote) ||
+                other.namaQuote == namaQuote) &&
+            (identical(other.gambarQuote, gambarQuote) ||
+                other.gambarQuote == gambarQuote) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idQuote, namaQuote, gambarQuote,
+      uploadUserId, createdAt, updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$QuoteImplCopyWith<_$QuoteImpl> get copyWith =>
+      __$$QuoteImplCopyWithImpl<_$QuoteImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$QuoteImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Quote implements Quote {
+  const factory _Quote(
+      {@JsonKey(name: 'id_quote') final int? idQuote,
+      @JsonKey(name: 'nama_quote') final String? namaQuote,
+      @JsonKey(name: 'gambar_quote') final String? gambarQuote,
+      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$QuoteImpl;
+
+  factory _Quote.fromJson(Map<String, dynamic> json) = _$QuoteImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_quote')
+  int? get idQuote;
+  @override
+  @JsonKey(name: 'nama_quote')
+  String? get namaQuote;
+  @override
+  @JsonKey(name: 'gambar_quote')
+  String? get gambarQuote;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$QuoteImplCopyWith<_$QuoteImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
