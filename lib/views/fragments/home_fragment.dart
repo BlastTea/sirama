@@ -1,10 +1,18 @@
 part of 'fragments.dart';
 
-var fitur = ['ChatMe', 'Skrining', 'Infografis', 'Film', 'Podcast', 'Video Edukasi', 'Tanya Ahli'];
-var selectedFitur = 0;
-
-class HomeFragment extends StatelessWidget {
+class HomeFragment extends StatefulWidget {
   const HomeFragment({super.key});
+
+  @override
+  State<HomeFragment> createState() => _HomeFragmentState();
+}
+
+class _HomeFragmentState extends State<HomeFragment> {
+  List<Map<String, dynamic>> checkboxHomeFragment = [
+    {'text1': 'Berpamitan kepada orang tua', 'value1': false},
+    {'text2': 'Berdoa sebelum belajar', 'value2': false},
+    {'text3': 'Menyapa kepada teman', 'value3': false},
+  ];
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -26,7 +34,9 @@ class HomeFragment extends StatelessWidget {
                         children: [
                           const Text(
                             'Welcome Home',
-                            style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(
                             height: 10,
@@ -72,7 +82,8 @@ class HomeFragment extends StatelessWidget {
                           padding: const EdgeInsets.all(20),
                           child: Text(
                             '“It is better to conquer yourself than to win a thousand battles yourself than to win a thousand battles yourself than to win a thousand battles”',
-                            style: Config.textStyleBodyLarge.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                            style: Config.textStyleBodyLarge.copyWith(
+                                color: Theme.of(context).colorScheme.onPrimary),
                             textAlign: TextAlign.start,
                           ),
                         ),
@@ -101,7 +112,8 @@ class HomeFragment extends StatelessWidget {
                   image: Image.asset('assets/card-homepage.png', height: 50.0),
                   imageAlignment: CardTileAlignment.bottom,
                   minImageWidth: 134.0,
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const ScreeningPage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(
+                      builder: (context) => const ScreeningPage())),
                 ),
               ),
               const SizedBox(
@@ -136,11 +148,20 @@ class HomeFragment extends StatelessWidget {
                   ]
                       .map(
                         (e) => Padding(
-                          padding: EdgeInsets.only(left: e == 'ChatMe' ? 20.0 : 8.0, right: e == 'Tanya Ahli' ? 20.0 : 0.0),
+                          padding: EdgeInsets.only(
+                              left: e == 'ChatMe' ? 20.0 : 8.0,
+                              right: e == 'Tanya Ahli' ? 20.0 : 0.0),
                           child: ActionChip(
                             label: Text(e),
-                            color: MaterialStatePropertyAll(Theme.of(context).colorScheme.primary),
-                            labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                            color: MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.primary),
+                            labelStyle: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimary),
                             onPressed: () => debugPrint('on $e pressed'),
                           ),
                         ),
@@ -148,28 +169,6 @@ class HomeFragment extends StatelessWidget {
                       .toList(),
                 ),
               ),
-              // SizedBox(
-              //   height: 35,
-              //   child: ListView.separated(
-              //       scrollDirection: Axis.horizontal,
-              //       padding: const EdgeInsets.symmetric(horizontal: 20),
-              //       itemBuilder: (context, index) => Container(
-              //             padding: const EdgeInsets.all(10),
-              //             decoration: BoxDecoration(color: selectedFitur == index ? Theme.of(context).colorScheme.primary : Theme.of(context).colorScheme.primaryContainer, borderRadius: BorderRadius.circular(5)),
-              //             child: Text(
-              //               fitur[index],
-              //               style: TextStyle(
-              //                 fontSize: 12,
-              //                 fontWeight: FontWeight.bold,
-              //                 color: selectedFitur == index ? Theme.of(context).colorScheme.onPrimary : Theme.of(context).colorScheme.onPrimaryContainer,
-              //               ),
-              //             ),
-              //           ),
-              //       separatorBuilder: (context, index) => const SizedBox(
-              //             width: 10,
-              //           ),
-              //       itemCount: 7),
-              // ),
               const SizedBox(
                 height: 20,
               ),
@@ -187,160 +186,67 @@ class HomeFragment extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-
-              ...['Berpamitan kepada orang tua', 'Berdoa sebelum belajar', 'Menyapa kepada teman'].map(
-                (e) => Padding(
+              ...checkboxHomeFragment.map(
+                (Map<String, dynamic> e) => Padding(
                   padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
                   child: CheckboxListTile(
-                    value: e == 'Berdoa sebelum belajar',
+                    value: e['value${e.keys.first.substring(4)}'] as bool,
                     title: Text(
-                      e,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                      e.values.first,
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary),
                     ),
                     tileColor: Theme.of(context).colorScheme.primary,
-                    fillColor: e == 'Berdoa sebelum belajar' ? MaterialStatePropertyAll(Theme.of(context).colorScheme.onPrimary) : null,
-                    checkColor: Theme.of(context).colorScheme.primary,
-                    side: BorderSide(color: Theme.of(context).colorScheme.onPrimary, width: 2),
+                    checkColor: Theme.of(context).colorScheme.onPrimary,
+                    side: BorderSide(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        width: 2),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(kShapeMedium),
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                    onChanged: (value) {},
+                    onChanged: (value) {
+                      setState(() {
+                        e['value${e.keys.first.substring(4)}'] = value;
+                      });
+                    },
                   ),
                 ),
+                // ...[
+                //   'Berpamitan kepada orang tua',
+                //   'Berdoa sebelum belajar',
+                //   'Menyapa kepada teman'
+                // ].map(
+                //   (e) => Padding(
+                //     padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
+                //     child: CheckboxListTile(
+                //       value: e == 'Berpamitan kepada orang tua',
+                //       title: Text(
+                //         e,
+                //         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                //             color: Theme.of(context).colorScheme.onPrimary),
+                //       ),
+                //       tileColor: Theme.of(context).colorScheme.primary,
+                //       fillColor: e == 'Berdoa sebelum belajar'
+                //           ? MaterialStatePropertyAll(
+                //               Theme.of(context).colorScheme.onPrimary)
+                //           : null,
+                //       checkColor: Theme.of(context).colorScheme.primary,
+                //       side: BorderSide(
+                //           color: Theme.of(context).colorScheme.onPrimary,
+                //           width: 2),
+                //       shape: RoundedRectangleBorder(
+                //         borderRadius: BorderRadius.circular(kShapeMedium),
+                //       ),
+                //       onChanged: (value) {
+                //         setState(() {
+                //           e == 'Berdoa sebelum belajar'
+                //               ? e = 'Berpamitan kepada orang tua'
+                //               : e = 'Berdoa sebelum belajar';
+                //         });
+                //       },
+                //     ),
+                //   ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20),
-              //   child: Container(
-              //     height: 75,
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(15),
-              //       color: Theme.of(context).colorScheme.primary,
-              //     ),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Flexible(
-              //           child: Padding(
-              //             padding: const EdgeInsets.all(20),
-              //             child: Text(
-              //               'Berpamitan kepada orang tua',
-              //               textAlign: TextAlign.start,
-              //               style: Config.textStyleTitleSmall.copyWith(color: Theme.of(context).colorScheme.onPrimary),
-              //             ),
-              //           ),
-              //         ),
-              //         Stack(
-              //           children: [
-              //             Transform.scale(
-              //               scale: 1.5,
-              //               child: Padding(
-              //                 padding: const EdgeInsets.all(10),
-              //                 child: Checkbox(
-              //                   activeColor: Theme.of(context).colorScheme.onPrimary,
-              //                   checkColor: Theme.of(context).colorScheme.primary,
-              //                   value: false,
-              //                   onChanged: (value) {},
-              //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              //                 ),
-              //               ),
-              //             ),
-              //           ],
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20),
-              //   child: Container(
-              //     height: 75,
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(15),
-              //       color: Theme.of(context).colorScheme.primary,
-              //     ),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Flexible(
-              //           child: Padding(
-              //             padding: const EdgeInsets.all(20),
-              //             child: Text(
-              //               'Berdoa sebelum belajar',
-              //               textAlign: TextAlign.start,
-              //               style: Config.textStyleTitleSmall.copyWith(color: Theme.of(context).colorScheme.onPrimary),
-              //             ),
-              //           ),
-              //         ),
-              //         Stack(
-              //           children: [
-              //             Transform.scale(
-              //               scale: 1.5,
-              //               child: Padding(
-              //                 padding: const EdgeInsets.all(10),
-              //                 child: Checkbox(
-              //                   activeColor: Theme.of(context).colorScheme.onPrimary,
-              //                   checkColor: Theme.of(context).colorScheme.primary,
-              //                   value: true,
-              //                   onChanged: (value) {},
-              //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              //                 ),
-              //               ),
-              //             ),
-              //           ],
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20),
-              //   child: Container(
-              //     height: 75,
-              //     decoration: BoxDecoration(
-              //       borderRadius: BorderRadius.circular(15),
-              //       color: Theme.of(context).colorScheme.primary,
-              //     ),
-              //     child: Row(
-              //       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //       children: [
-              //         Flexible(
-              //           child: Padding(
-              //             padding: const EdgeInsets.all(20),
-              //             child: Text(
-              //               'Menyapa kepada teman',
-              //               textAlign: TextAlign.start,
-              //               style: Config.textStyleTitleSmall.copyWith(color: Theme.of(context).colorScheme.onPrimary),
-              //             ),
-              //           ),
-              //         ),
-              //         Stack(
-              //           children: [
-              //             Transform.scale(
-              //               scale: 1.5,
-              //               child: Padding(
-              //                 padding: const EdgeInsets.all(10),
-              //                 child: Checkbox(
-              //                   activeColor: Theme.of(context).colorScheme.onPrimary,
-              //                   checkColor: Theme.of(context).colorScheme.primary,
-              //                   value: false,
-              //                   onChanged: (value) {},
-              //                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
-              //                 ),
-              //               ),
-              //             ),
-              //           ],
-              //         )
-              //       ],
-              //     ),
-              //   ),
-              // ),
-              // const SizedBox(height: 32.0),
             ],
           ),
         ),
