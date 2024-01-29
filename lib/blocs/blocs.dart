@@ -40,3 +40,7 @@ part 'podcast_bloc/podcast_state.dart';
 part 'ask_the_expert_bloc/ask_the_expert_bloc.dart';
 part 'ask_the_expert_bloc/ask_the_expert_event.dart';
 part 'ask_the_expert_bloc/ask_the_expert_state.dart';
+
+part 'quote_bloc/quote_bloc.dart';
+part 'quote_bloc/quote_event.dart';
+part 'quote_bloc/quote_state.dart';
