@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,7 @@ part 'doctor_profile_page.dart';
 part 'edit_profile_page.dart';
 part 'sign_up_role_page.dart';
 part 'favourite_page.dart';
+part 'my_carousel_slider.dart';
 
 part 'screening/screening_page.dart';
 part 'screening/choose_screening_page.dart';

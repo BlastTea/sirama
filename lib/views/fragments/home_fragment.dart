@@ -14,7 +14,6 @@ class _HomeFragmentState extends State<HomeFragment> {
     {'text3': 'Menyapa kepada teman', 'value3': false},
   ];
 
-
   String currentDay = '';
 
   @override
@@ -34,7 +33,6 @@ class _HomeFragmentState extends State<HomeFragment> {
       });
     }
   }
-
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -88,40 +86,57 @@ class _HomeFragmentState extends State<HomeFragment> {
               const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Container(
-                  height: 100,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(15),
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Flexible(
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Text(
-                            '“It is better to conquer yourself than to win a thousand battles yourself than to win a thousand battles yourself than to win a thousand battles”',
-                            style: Config.textStyleBodyLarge.copyWith(
-                                color: Theme.of(context).colorScheme.onPrimary),
-                            textAlign: TextAlign.start,
-                          ),
-                        ),
-                      ),
-                      Stack(
-                        children: [
-                          Image.asset(
-                            'assets/quote.png',
-                            height: 50,
-                            width: 50,
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 20),
+                child: MyCarouselSlider()
+                
+                // BlocBuilder<QuoteBloc, QuoteState>(
+                //   builder: (context, stateQuote) {
+                //     if (stateQuote is QuoteInitial) {
+                //       MyApp.quoteBloc.add(InitializeQuoteData());
+                //     }
+
+                //     if (stateQuote is QuoteDataLoaded) {
+                //       final List<String> imgList = stateQuote.quotes
+                //           .map((quote) =>
+                //               "https://dev-sirama.propertiideal.id/storage/quote/${quote.gambarQuote!}")
+                //           .toList();
+
+                //       if (kDebugMode) {
+                //         print(imgList);
+                //       }
+                //       final List<Widget> imageSliders = imgList
+                //           .map((item) => Container(
+                //                   margin: const EdgeInsets.all(5.0),
+                //                   child: ClipRRect(
+                //                     borderRadius:
+                //                         const BorderRadius.all(Radius.circular(5.0)),
+                //                     child: Stack(
+                //                       children: <Widget>[
+                //                         Image.network(item,
+                //                             ),
+                //                       ],
+                //                     ),
+                //                   ),
+                //               ))
+                //           .toList();
+                //       return CarouselSlider(
+                //         options: CarouselOptions(
+                //           height: 200.0,
+                //           autoPlay: true,
+                //           autoPlayInterval: const Duration(seconds: 6),
+                //         ),
+                //         items: imageSliders,
+                //       );
+                //     } else if (stateQuote is QuoteInitial) {
+                //       return const CircularProgressIndicator();
+                //     } else if (stateQuote is QuoteError) {
+                //       return const Text('error anj');
+                //     } else {
+                //       return Container();
+                //     }
+                //   },
+                // ),
               ),
               const SizedBox(
                 height: 20,
@@ -233,41 +248,6 @@ class _HomeFragmentState extends State<HomeFragment> {
                     },
                   ),
                 ),
-                // ...[
-                //   'Berpamitan kepada orang tua',
-                //   'Berdoa sebelum belajar',
-                //   'Menyapa kepada teman'
-                // ].map(
-                //   (e) => Padding(
-                //     padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
-                //     child: CheckboxListTile(
-                //       value: e == 'Berpamitan kepada orang tua',
-                //       title: Text(
-                //         e,
-                //         style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                //             color: Theme.of(context).colorScheme.onPrimary),
-                //       ),
-                //       tileColor: Theme.of(context).colorScheme.primary,
-                //       fillColor: e == 'Berdoa sebelum belajar'
-                //           ? MaterialStatePropertyAll(
-                //               Theme.of(context).colorScheme.onPrimary)
-                //           : null,
-                //       checkColor: Theme.of(context).colorScheme.primary,
-                //       side: BorderSide(
-                //           color: Theme.of(context).colorScheme.onPrimary,
-                //           width: 2),
-                //       shape: RoundedRectangleBorder(
-                //         borderRadius: BorderRadius.circular(kShapeMedium),
-                //       ),
-                //       onChanged: (value) {
-                //         setState(() {
-                //           e == 'Berdoa sebelum belajar'
-                //               ? e = 'Berpamitan kepada orang tua'
-                //               : e = 'Berdoa sebelum belajar';
-                //         });
-                //       },
-                //     ),
-                //   ),
               ),
             ],
           ),
