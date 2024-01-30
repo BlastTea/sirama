@@ -85,9 +85,9 @@ class Podcast with _$Podcast {
   factory Podcast.fromJson(Map<String, dynamic> json) => _$PodcastFromJson(json);
 }
 
-@freezed
+@unfreezed
 class Film with _$Film {
-  const factory Film({
+  factory Film({
     @JsonKey(name: 'id_film') int? idFilm,
     @JsonKey(name: 'judul_film') String? judulFilm,
     @JsonKey(name: 'link_film') String? linkFilm,
@@ -95,6 +95,7 @@ class Film with _$Film {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Film;
 
   factory Film.fromJson(Map<String, dynamic> json) => _$FilmFromJson(json);
@@ -116,9 +117,9 @@ class Infografis with _$Infografis {
   factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
 }
 
-@freezed
+@unfreezed
 class EducationalVideo with _$EducationalVideo {
-  const factory EducationalVideo({
+  factory EducationalVideo({
     @JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
     @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
     @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
@@ -126,6 +127,7 @@ class EducationalVideo with _$EducationalVideo {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _EducationalVideo;
 
   factory EducationalVideo.fromJson(Map<String, dynamic> json) => _$EducationalVideoFromJson(json);
@@ -143,4 +145,45 @@ class Quote with _$Quote {
   }) = _Quote;
 
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
+}
+
+enum UserRole {
+  remaja,
+  orangTua,
+  @JsonValue('ahli')
+  tenagaAhli,
+  @JsonValue('kader')
+  kaderKesehatan,
+  guru;
+
+  String get text => switch (this) {
+        remaja => 'Remaja',
+        orangTua => 'Orang Tua',
+        tenagaAhli => 'Tenaga Ahli',
+        kaderKesehatan => 'Kader Kesehatan',
+        guru => 'Guru',
+      };
+
+  String get serverValue => switch (this) {
+        remaja => 'remaja',
+        orangTua => 'orangtua',
+        tenagaAhli => 'ahli',
+        kaderKesehatan => 'kader',
+        guru => 'guru',
+      };
+}
+
+enum Gender {
+  lakiLaki,
+  perempuan;
+
+  String get text => switch (this) {
+        lakiLaki => 'Laki-Laki',
+        perempuan => 'Perempuan',
+      };
+
+  String get serverValue => switch (this) {
+        lakiLaki => 'L',
+        perempuan => 'P',
+      };
 }

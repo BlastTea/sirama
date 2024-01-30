@@ -1,166 +1,151 @@
 part of '../pages.dart';
 
-List<Map> dataFilm = [
-  {
-    'id_film': '1',
-    'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film': 'https://www.youtube.com/watch?v=MvSkn9svGGw',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 1',
-    'creator': 'Creator 1',
-    'date': '2024-01-11',
-    'like': 1231,
-  },
-  {
-    'id_film': '2',
-    'judul_film': 'Apa itu kesehatan mental?',
-    'link_film': 'https://www.youtube.com/watch?v=xDUy5dmhHcM',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 2',
-    'creator': 'Creator 2',
-    'date': '2024-01-12',
-    'like': 1231,
-  },
-  {
-    'id_film': '3',
-    'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film':
-        'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 3',
-    'creator': 'Creator 3',
-    'date': '2024-01-13',
-    'like': 1231,
-  },
-];
-
 class FilmPage extends StatelessWidget {
   const FilmPage({super.key});
 
+  static Widget listVideo({
+    required BuildContext context,
+    required FilmVideoDataLoaded stateFilm,
+    bool replaceCurrentPage = false,
+    int? currentFilm,
+  }) =>
+      ListView.builder(
+        shrinkWrap: true,
+        primary: false,
+        itemBuilder: (context, index) {
+          Film film = stateFilm.films[index];
+
+          if (film.idFilm == currentFilm) return Container();
+
+          return InkWell(
+            onTap: () {
+              Route route = MaterialPageRoute(
+                builder: (context) => DetailsFilmPage(
+                  film: film,
+                ),
+              );
+
+              if (replaceCurrentPage) {
+                NavigationHelper.toReplacement(route);
+              } else {
+                NavigationHelper.to(route);
+              }
+            },
+            child: Column(
+              children: <Widget>[
+                AspectRatio(
+                  aspectRatio: 16 / 9,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(10.0),
+                    child: film.thumbnailImageData != null
+                        ? Image.memory(
+                            Uint8List.fromList(film.thumbnailImageData!),
+                            fit: BoxFit.cover,
+                          )
+                        : Image.network(
+                            'https://dev-sirama.propertiideal.id/storage/test/image not found.png',
+                            fit: BoxFit.cover,
+                          ),
+                  ),
+                ),
+                ListTile(
+                  contentPadding: EdgeInsets.zero,
+                  leading: const CircleAvatar(
+                    backgroundImage: NetworkImage('https://dev-sirama.propertiideal.id/storage/test/shark.png'),
+                  ),
+                  title: Text(
+                    film.judulFilm ?? '?',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Text(
+                    'Zalorin Vexstar . ${stateFilm.films[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    style: const TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+        itemCount: stateFilm.films.length,
+      );
+
   @override
   Widget build(BuildContext context) {
-    if (MyApp.filmBloc.state is FilmVideoInitial) {
-      MyApp.filmBloc.add(InitializeFilmVideoData());
+    if (MyApp.filmVideoBloc.state is FilmVideoInitial) {
+      MyApp.filmVideoBloc.add(InitializeFilmVideoData());
     }
+
     return BlocBuilder<FilmVideoBloc, FilmVideoState>(
       builder: (context, stateFilm) {
-      if (stateFilm is FilmVideoDataLoaded) {
+        if (stateFilm is FilmVideoDataLoaded) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: const Text('Film Edukasi'),
+              centerTitle: true,
+            ),
+            body: SafeArea(
+              child: ListView(
+                children: [
+                  const SizedBox(height: 20),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    child: CardTile(
+                      title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                      button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Video edukasi terbaru',
+                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    child: listVideo(
+                      context: context,
+                      stateFilm: stateFilm,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          );
+        } else if (stateFilm is FilmVideoError) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: const Text('Film Edukasi'),
+              centerTitle: true,
+            ),
+            body: ErrorOccuredButton(
+              onRetryPressed: () => MyApp.filmVideoBloc.add(InitializeFilmVideoData()),
+            ),
+          );
+        }
+
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            leading: IconButton(
-              icon: const Icon(Icons.arrow_back, color: Colors.black),
-              onPressed: () => Navigator.of(context).pop(),
-            ),
-            title: const Text("Film Edukasi"),
+            title: const Text('Film Edukasi'),
             centerTitle: true,
           ),
-          body: SafeArea(
-            child: ListView(
-              shrinkWrap: true,
-              children: [
-                const SizedBox(
-                  height: 20,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: CardTile(
-                    title: Text(
-                        'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                    button: Text(
-                        'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Video edukasi terbaru',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: ListView.builder(
-                    itemCount: dataFilm.length,
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () {
-                        // Navigate to the detail page and pass the necessary dataFilm
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => DetailsFilmPage(
-                              videoUrl: dataFilm[index]['link_film']!,
-                              title: dataFilm[index]['judul_film']!,
-                              uploadUserId: dataFilm[index]['creator']!,
-                              totalLike: dataFilm[index]['like']!,
-                            ),
-                          ),
-                        );
-                      },
-                      child: Column(
-                        children: <Widget>[
-                          AspectRatio(
-                            aspectRatio: 16 / 9,
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(10.0),
-                              child: Image.network(
-                                stateFilm.filmvideo[index].judulFilm.toString(),
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                          ),
-                          ListTile(
-                            contentPadding: const EdgeInsets.all(0),
-                            leading: CircleAvatar(
-                              backgroundImage: NetworkImage(stateFilm
-                                  .filmvideo[index].linkFilm
-                                  .toString()),
-                            ),
-                            title: Text(
-                              dataFilm[index]['judul_film']!,
-                              style:
-                                  const TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            subtitle: Text(
-                              "${stateFilm.filmvideo[index].judulFilm.toString()} . ${stateFilm.filmvideo[index].tanggalUpload.toString()}",
-                              style: const TextStyle(
-                                color: Colors.grey,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),
-                )
-              ],
-            ),
+          body: const Center(
+            child: CircularProgressIndicator(),
           ),
         );
-      } else if (stateFilm is FilmVideoInitial) {
-        return const CircularProgressIndicator();
-      } else if (stateFilm is FilmVideoError) {
-        return const Text('Error anj');
-      } else {
-        return Container();
-      }
-    });
+      },
+    );
   }
 }

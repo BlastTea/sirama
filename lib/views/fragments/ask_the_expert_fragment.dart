@@ -1,14 +1,29 @@
 part of 'fragments.dart';
 
-class AskTheExpertFragment extends StatelessWidget {
+class AskTheExpertFragment extends StatefulWidget {
   const AskTheExpertFragment({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  State<AskTheExpertFragment> createState() => _AskTheExpertFragmentState();
+}
+
+class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
+  late PageController _pageController;
+
+  @override
+  void initState() {
+    super.initState();
     if (MyApp.askTheExpertBloc.state is AskTheExpertInitial) {
       MyApp.askTheExpertBloc.add(InitializeAskTheExpertData());
     }
 
+    _pageController = PageController(
+      initialPage: MyApp.askTheExpertBloc.state is AskTheExpertDataLoaded ? (MyApp.askTheExpertBloc.state as AskTheExpertDataLoaded).selectedTopikPertanyaan : 0,
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return BlocBuilder<AskTheExpertBloc, AskTheExpertState>(
       builder: (context, stateAskTheExpert) {
         if (stateAskTheExpert is AskTheExpertDataLoaded) {
@@ -52,7 +67,10 @@ class AskTheExpertFragment extends StatelessWidget {
                           child: ChoiceChip(
                             label: Text(topikPertanyaan.namaTopik ?? '?'),
                             selected: index == stateAskTheExpert.selectedTopikPertanyaan,
-                            onSelected: (value) => MyApp.askTheExpertBloc.add(SetSelectedTopikPertanyaan(index: index)),
+                            onSelected: (value) {
+                              MyApp.askTheExpertBloc.add(SetSelectedTopikPertanyaan(index: index));
+                              _pageController.animateToPage(index, duration: kDurationShort4, curve: Curves.fastOutSlowIn);
+                            },
                           ),
                         );
                       },
@@ -81,7 +99,7 @@ class AskTheExpertFragment extends StatelessWidget {
                     )
                   : PageView.builder(
                       physics: const NeverScrollableScrollPhysics(),
-                      controller: stateAskTheExpert.pageController,
+                      controller: _pageController,
                       itemBuilder: (context, pageIndex) {
                         List<TanyaAhli> tanyaAhlis = stateAskTheExpert.tanyaAhlis[pageIndex];
 
@@ -116,7 +134,7 @@ class AskTheExpertFragment extends StatelessWidget {
                                 iconSize: 24.0,
                                 icon: Icons.person,
                                 border: const Border(),
-                                image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                                image: const NetworkImage('https://dev-sirama.propertiideal.id/storage/test/person.png'),
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               title: Text('Cal Dingo • ${tanyaAhli.waktuTanya?.toFormattedDate(

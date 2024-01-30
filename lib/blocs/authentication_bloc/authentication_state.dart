@@ -10,6 +10,9 @@ class AuthenticationDataLoaded extends AuthenticationState {
     required this.textControllerUsernameSignIn,
     required this.textControllerPasswordSignIn,
     required this.isSingingIn,
+    required this.role,
+    required this.dateOfBirth,
+    required this.gender,
   });
 
   final FocusNode focusNodeUsernameSignIn;
@@ -19,4 +22,10 @@ class AuthenticationDataLoaded extends AuthenticationState {
   final TextEditingController textControllerPasswordSignIn;
 
   final bool isSingingIn;
+
+  final UserRole role;
+
+  final DateTime dateOfBirth;
+
+  final Gender gender;
 }

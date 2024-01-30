@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
@@ -9,6 +10,7 @@ import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 part 'home_fragment.dart';
 part 'content_fragment.dart';

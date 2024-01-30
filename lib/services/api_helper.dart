@@ -30,6 +30,7 @@ class ApiHelper {
         baseUrl: url,
         headers: {
           'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
         },
       ),
     );
@@ -50,9 +51,7 @@ class ApiHelper {
             );
           }
 
-          if (options.method != 'GET') {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
+          if (options.method != 'GET') options.headers['Authorization'] = 'Bearer $token';
 
           dynamic data;
 
@@ -71,6 +70,8 @@ class ApiHelper {
           handler.next(response);
         },
         onError: (error, handler) {
+          if (error.requestOptions.uri.host == 'i.ytimg.com') return handler.next(error);
+
           String? message;
           try {
             dynamic data = error.response?.data;
@@ -93,9 +94,7 @@ class ApiHelper {
             return handler.next(error);
           }
 
-          if (message != null) {
-            showErrorDialog(message);
-          }
+          if (message != null) showErrorDialog(message);
 
           return handler.next(error);
         },
@@ -147,6 +146,18 @@ class ApiHelper {
     if (sharedPref.getString(_keyToken) == null) return;
 
     currentUser = User.fromJson(jsonDecode(sharedPref.getString(_keyCurrentUser)!));
+  }
+
+  static Future<Response<Uint8List>> getBytesUri(Uri uri) {
+    _initialize();
+    return _dioInstance!.getUri(
+      uri,
+      options: Options(
+        responseType: ResponseType.bytes,
+        followRedirects: false,
+        receiveTimeout: Duration.zero,
+      ),
+    );
   }
 
   static Future<Response> get(String path) {

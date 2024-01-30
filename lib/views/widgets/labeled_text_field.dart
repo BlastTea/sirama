@@ -37,7 +37,8 @@ class LabeledTextField extends StatefulWidget {
         firstDate = DateTime.now(),
         lastDate = DateTime.now(),
         width = null,
-        onSelected = null;
+        onSelected = null,
+        onDateChanged = null;
 
   LabeledTextField.password({
     super.key,
@@ -68,7 +69,8 @@ class LabeledTextField extends StatefulWidget {
         firstDate = DateTime.now(),
         lastDate = DateTime.now(),
         width = null,
-        onSelected = null;
+        onSelected = null,
+        onDateChanged = null;
 
   const LabeledTextField.date({
     super.key,
@@ -85,6 +87,7 @@ class LabeledTextField extends StatefulWidget {
     this.onChanged,
     this.onEditingComplete,
     this.onSubmitted,
+    this.onDateChanged,
     this.inputFormatters,
     this.readOnly = false,
     this.expands = false,
@@ -130,7 +133,8 @@ class LabeledTextField extends StatefulWidget {
         textAlignVertical = null,
         buildCounter = null,
         maxLength = null,
-        onChanged = null;
+        onChanged = null,
+        onDateChanged = null;
 
   final String labelText;
   final TextStyle? labelStyle;
@@ -146,6 +150,7 @@ class LabeledTextField extends StatefulWidget {
   final ValueChanged? onSelected;
   final VoidCallback? onEditingComplete;
   final ValueChanged<String>? onSubmitted;
+  final ValueChanged<DateTime?>? onDateChanged;
   final List<TextInputFormatter>? inputFormatters;
   final bool readOnly;
   final bool expands;
@@ -242,6 +247,7 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 maxLength: widget.maxLength,
                 textAlignVertical: widget.textAlignVertical,
                 buildCounter: widget.buildCounter,
+                onDateChanged: widget.onDateChanged,
               ),
             _LabeledTextFieldType.dropdown => DropdownMenu(
                 width: widget.width,

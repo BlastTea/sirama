@@ -8,9 +8,7 @@ class EducationalVideoInitial extends EducationalVideoState {}
 class EducationalVideoError extends EducationalVideoState {}
 
 class EducationalVideoDataLoaded extends EducationalVideoState {
-  EducationalVideoDataLoaded({
-    required this.videoedukasi
-  });
+  EducationalVideoDataLoaded({required this.educationalVideos});
 
-  final List<EducationalVideo> videoedukasi;
+  final List<EducationalVideo> educationalVideos;
 }

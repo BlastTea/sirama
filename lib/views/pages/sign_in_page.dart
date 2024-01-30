@@ -11,7 +11,7 @@ class SignInPage extends StatelessWidget {
           if (kDebugMode) {
             // stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
             stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
-            stateAuthentication.textControllerPasswordSignIn.text = '123';
+            stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
           }
 
           return Scaffold(
@@ -86,7 +86,7 @@ class SignInPage extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpPage())),
+                    onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpRolePage())),
                     child: Text(
                       'Sign Up',
                       style: Config.textStyleTitleSmall,
