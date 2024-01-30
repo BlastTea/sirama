@@ -37,7 +37,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text("Video Edukasi"),
+              title: const Text('Film Edukasi'),
               centerTitle: true,
             ),
             body: SafeArea(
@@ -53,7 +53,10 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                       ListTile(
                         title: Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(widget.film.judulFilm ?? '?', style: Config.textStyleTitleMedium),
+                          child: Text(
+                            widget.film.judulFilm ?? '?',
+                            style: Config.textStyleTitleMedium,
+                          ),
                         ),
                         subtitle: Align(
                           alignment: Alignment.centerLeft,
@@ -102,7 +105,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: const Text("Video Edukasi"),
+            title: const Text('Film Edukasi'),
             centerTitle: true,
           ),
           body: const Center(

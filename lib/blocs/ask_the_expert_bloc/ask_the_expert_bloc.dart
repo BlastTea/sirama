@@ -31,7 +31,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
 
     on<SetSelectedTopikPertanyaan>((event, emit) {
       _selectedTopikPertanyaan = event.index;
-      _pageController.animateToPage(event.index, duration: kDurationShort4, curve: Curves.fastOutSlowIn);
+
       emit(_askTheExpertDataLoaded);
     });
 
@@ -84,8 +84,6 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
   final TextEditingController _textControllerTopic = TextEditingController();
   final TextEditingController _textControllerQuestion = TextEditingController();
 
-  final PageController _pageController = PageController();
-
   List<TopikPertanyaan> _topikPertanyaans = [];
 
   List<List<TanyaAhli>> _tanyaAhlis = [];
@@ -96,7 +94,6 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
   AskTheExpertDataLoaded get _askTheExpertDataLoaded => AskTheExpertDataLoaded(
         textControllerTopic: _textControllerTopic,
         textControllerQuestion: _textControllerQuestion,
-        pageController: _pageController,
         topikPertanyaans: _topikPertanyaans,
         tanyaAhlis: _tanyaAhlis,
         selectedTopikPertanyaan: _selectedTopikPertanyaan,

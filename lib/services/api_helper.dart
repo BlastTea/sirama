@@ -70,6 +70,8 @@ class ApiHelper {
           handler.next(response);
         },
         onError: (error, handler) {
+          if (error.requestOptions.uri.host == 'i.ytimg.com') return handler.next(error);
+
           String? message;
           try {
             dynamic data = error.response?.data;

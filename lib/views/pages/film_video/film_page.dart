@@ -49,7 +49,7 @@ class FilmPage extends StatelessWidget {
                   ),
                 ),
                 ListTile(
-                  contentPadding: const EdgeInsets.all(0),
+                  contentPadding: EdgeInsets.zero,
                   leading: const CircleAvatar(
                     backgroundImage: NetworkImage('https://dev-sirama.propertiideal.id/storage/test/shark.png'),
                   ),
@@ -58,7 +58,7 @@ class FilmPage extends StatelessWidget {
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    '${'Zalorin Vexstar'} . ${stateFilm.films[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Zalorin Vexstar . ${stateFilm.films[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
@@ -83,7 +83,7 @@ class FilmPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text("Film Edukasi"),
+              title: const Text('Film Edukasi'),
               centerTitle: true,
             ),
             body: SafeArea(
@@ -126,7 +126,7 @@ class FilmPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text("Film Edukasi"),
+              title: const Text('Film Edukasi'),
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
@@ -138,7 +138,7 @@ class FilmPage extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: const Text("Film Edukasi"),
+            title: const Text('Film Edukasi'),
             centerTitle: true,
           ),
           body: const Center(

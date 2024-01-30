@@ -15,10 +15,10 @@ class FilmVideoBloc extends Bloc<FilmVideoEvent, FilmVideoState> {
         await for (Film film in Stream.fromIterable(_films)) {
           String? id = Uri.parse(film.linkFilm ?? '').queryParameters['v'];
 
+          if (id == null) continue;
+
           try {
-            film.thumbnailImageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/maxresdefault.jpg')).then((value) {
-              return value.data;
-            });
+            film.thumbnailImageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/maxresdefault.jpg')).then((value) => value.data);
           } catch (e) {
             // Ignored, really
           }
@@ -29,7 +29,7 @@ class FilmVideoBloc extends Bloc<FilmVideoEvent, FilmVideoState> {
               // Ignored, really
             }
           }
-          add(SetFilmVideoState());
+          emit(_filmVideoDataLoaded);
         }
       } catch (e) {
         emit(FilmVideoError());
