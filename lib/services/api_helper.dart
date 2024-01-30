@@ -146,6 +146,18 @@ class ApiHelper {
     currentUser = User.fromJson(jsonDecode(sharedPref.getString(_keyCurrentUser)!));
   }
 
+  static Future<Response<Uint8List>> getBytesUri(Uri uri) {
+    _initialize();
+    return _dioInstance!.getUri(
+      uri,
+      options: Options(
+        responseType: ResponseType.bytes,
+        followRedirects: false,
+        receiveTimeout: Duration.zero,
+      ),
+    );
+  }
+
   static Future<Response> get(String path) {
     _initialize();
     return _dioInstance!.get(path);

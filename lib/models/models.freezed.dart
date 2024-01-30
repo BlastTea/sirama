@@ -1498,18 +1498,37 @@ Film _$FilmFromJson(Map<String, dynamic> json) {
 mixin _$Film {
   @JsonKey(name: 'id_film')
   int? get idFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_film')
+  set idFilm(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'judul_film')
   String? get judulFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_film')
+  set judulFilm(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'link_film')
   String? get linkFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_film')
+  set linkFilm(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'tgl_upload')
   DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  set tanggalUpload(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'upload_user_id')
   int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  set uploadUserId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set thumbnailImageData(List<int>? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1528,7 +1547,9 @@ abstract class $FilmCopyWith<$Res> {
       @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? thumbnailImageData});
 }
 
 /// @nodoc
@@ -1551,6 +1572,7 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
       idFilm: freezed == idFilm
@@ -1581,6 +1603,10 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      thumbnailImageData: freezed == thumbnailImageData
+          ? _value.thumbnailImageData
+          : thumbnailImageData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ) as $Val);
   }
 }
@@ -1599,7 +1625,9 @@ abstract class _$$FilmImplCopyWith<$Res> implements $FilmCopyWith<$Res> {
       @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? thumbnailImageData});
 }
 
 /// @nodoc
@@ -1619,6 +1647,7 @@ class __$$FilmImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? thumbnailImageData = freezed,
   }) {
     return _then(_$FilmImpl(
       idFilm: freezed == idFilm
@@ -1649,6 +1678,10 @@ class __$$FilmImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      thumbnailImageData: freezed == thumbnailImageData
+          ? _value.thumbnailImageData
+          : thumbnailImageData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -1656,69 +1689,49 @@ class __$$FilmImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$FilmImpl implements _Film {
-  const _$FilmImpl(
+  _$FilmImpl(
       {@JsonKey(name: 'id_film') this.idFilm,
       @JsonKey(name: 'judul_film') this.judulFilm,
       @JsonKey(name: 'link_film') this.linkFilm,
       @JsonKey(name: 'tgl_upload') this.tanggalUpload,
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt});
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.thumbnailImageData});
 
   factory _$FilmImpl.fromJson(Map<String, dynamic> json) =>
       _$$FilmImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_film')
-  final int? idFilm;
+  int? idFilm;
   @override
   @JsonKey(name: 'judul_film')
-  final String? judulFilm;
+  String? judulFilm;
   @override
   @JsonKey(name: 'link_film')
-  final String? linkFilm;
+  String? linkFilm;
   @override
   @JsonKey(name: 'tgl_upload')
-  final DateTime? tanggalUpload;
+  DateTime? tanggalUpload;
   @override
   @JsonKey(name: 'upload_user_id')
-  final int? uploadUserId;
+  int? uploadUserId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FilmImpl &&
-            (identical(other.idFilm, idFilm) || other.idFilm == idFilm) &&
-            (identical(other.judulFilm, judulFilm) ||
-                other.judulFilm == judulFilm) &&
-            (identical(other.linkFilm, linkFilm) ||
-                other.linkFilm == linkFilm) &&
-            (identical(other.tanggalUpload, tanggalUpload) ||
-                other.tanggalUpload == tanggalUpload) &&
-            (identical(other.uploadUserId, uploadUserId) ||
-                other.uploadUserId == uploadUserId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, idFilm, judulFilm, linkFilm,
-      tanggalUpload, uploadUserId, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -1735,38 +1748,59 @@ class _$FilmImpl implements _Film {
 }
 
 abstract class _Film implements Film {
-  const factory _Film(
-      {@JsonKey(name: 'id_film') final int? idFilm,
-      @JsonKey(name: 'judul_film') final String? judulFilm,
-      @JsonKey(name: 'link_film') final String? linkFilm,
-      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
-      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$FilmImpl;
+  factory _Film(
+      {@JsonKey(name: 'id_film') int? idFilm,
+      @JsonKey(name: 'judul_film') String? judulFilm,
+      @JsonKey(name: 'link_film') String? linkFilm,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? thumbnailImageData}) = _$FilmImpl;
 
   factory _Film.fromJson(Map<String, dynamic> json) = _$FilmImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_film')
   int? get idFilm;
+  @JsonKey(name: 'id_film')
+  set idFilm(int? value);
   @override
   @JsonKey(name: 'judul_film')
   String? get judulFilm;
+  @JsonKey(name: 'judul_film')
+  set judulFilm(String? value);
   @override
   @JsonKey(name: 'link_film')
   String? get linkFilm;
+  @JsonKey(name: 'link_film')
+  set linkFilm(String? value);
   @override
   @JsonKey(name: 'tgl_upload')
   DateTime? get tanggalUpload;
+  @JsonKey(name: 'tgl_upload')
+  set tanggalUpload(DateTime? value);
   @override
   @JsonKey(name: 'upload_user_id')
   int? get uploadUserId;
+  @JsonKey(name: 'upload_user_id')
+  set uploadUserId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get thumbnailImageData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
   _$$FilmImplCopyWith<_$FilmImpl> get copyWith =>

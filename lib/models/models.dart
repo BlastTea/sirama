@@ -85,9 +85,9 @@ class Podcast with _$Podcast {
   factory Podcast.fromJson(Map<String, dynamic> json) => _$PodcastFromJson(json);
 }
 
-@freezed
+@unfreezed
 class Film with _$Film {
-  const factory Film({
+  factory Film({
     @JsonKey(name: 'id_film') int? idFilm,
     @JsonKey(name: 'judul_film') String? judulFilm,
     @JsonKey(name: 'link_film') String? linkFilm,
@@ -95,6 +95,7 @@ class Film with _$Film {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Film;
 
   factory Film.fromJson(Map<String, dynamic> json) => _$FilmFromJson(json);

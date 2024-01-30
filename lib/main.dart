@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
   static PodcastBloc podcastBloc = PodcastBloc();
-  static FilmVideoBloc filmBloc = FilmVideoBloc();
+  static FilmVideoBloc filmVideoBloc = FilmVideoBloc();
   static InfographicsBloc infografisBloc = InfographicsBloc();
   static EducationalVideoBloc educationavideoBloc = EducationalVideoBloc();
 
@@ -49,6 +49,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => authenticationBloc),
         BlocProvider(create: (context) => askTheExpertBloc),
         BlocProvider(create: (context) => podcastBloc),
+        BlocProvider(create: (context) => filmVideoBloc),
+        BlocProvider(create: (context) => infografisBloc),
+        BlocProvider(create: (context) => educationavideoBloc),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
