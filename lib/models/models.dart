@@ -146,3 +146,44 @@ class Quote with _$Quote {
 
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
 }
+
+enum UserRole {
+  remaja,
+  orangTua,
+  @JsonValue('ahli')
+  tenagaAhli,
+  @JsonValue('kader')
+  kaderKesehatan,
+  guru;
+
+  String get text => switch (this) {
+        remaja => 'Remaja',
+        orangTua => 'Orang Tua',
+        tenagaAhli => 'Tenaga Ahli',
+        kaderKesehatan => 'Kader Kesehatan',
+        guru => 'Guru',
+      };
+
+  String get serverValue => switch (this) {
+        remaja => 'remaja',
+        orangTua => 'orangtua',
+        tenagaAhli => 'ahli',
+        kaderKesehatan => 'kader',
+        guru => 'guru',
+      };
+}
+
+enum Gender {
+  lakiLaki,
+  perempuan;
+
+  String get text => switch (this) {
+        lakiLaki => 'Laki-Laki',
+        perempuan => 'Perempuan',
+      };
+
+  String get serverValue => switch (this) {
+        lakiLaki => 'L',
+        perempuan => 'P',
+      };
+}

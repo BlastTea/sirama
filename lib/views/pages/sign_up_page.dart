@@ -4,90 +4,150 @@ class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});
 
   @override
-  Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-          child: AutofillGroup(
-            child: ListView(
-              padding: const EdgeInsets.symmetric(horizontal: 28.0),
-              children: [
-                const SizedBox(height: 20.0),
-                Text(
-                  'Yuk, buat akun baru',
-                  textAlign: TextAlign.center,
-                  style: Config.textStyleHeadlineMedium,
+  Widget build(BuildContext context) => BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, stateAuthentication) {
+          stateAuthentication as AuthenticationDataLoaded;
+
+          return Scaffold(
+            body: SafeArea(
+              child: AutofillGroup(
+                child: ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 28.0),
+                  children: [
+                    const SizedBox(height: 20.0),
+                    Text(
+                      'Yuk, buat akun baru',
+                      textAlign: TextAlign.center,
+                      style: Config.textStyleHeadlineMedium,
+                    ),
+                    const SizedBox(height: 64.0),
+                    LabeledTextField(
+                      labelText: 'Username',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Username Anda',
+                      ),
+                      autofillHints: const [AutofillHints.name],
+                      textInputAction: TextInputAction.next,
+                    ),
+                    const SizedBox(height: 20.0),
+                    LabeledTextField(
+                      labelText: 'Email',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Email Anda',
+                      ),
+                      autofillHints: const [AutofillHints.email],
+                      textInputAction: TextInputAction.next,
+                    ),
+                    const SizedBox(height: 20.0),
+                    LabeledTextField.password(
+                      labelText: 'Password',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Password Anda',
+                      ),
+                      autofillHints: const [AutofillHints.newPassword],
+                      textInputAction: TextInputAction.next,
+                    ),
+                    const SizedBox(height: 20.0),
+                    const Divider(),
+                    const SizedBox(height: 20.0),
+                    LabeledTextField(
+                      labelText: 'Nama',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Nama Anda',
+                      ),
+                      autofillHints: const [AutofillHints.name],
+                      textInputAction: TextInputAction.next,
+                    ),
+                    const SizedBox(height: 20.0),
+                    LabeledTextField(
+                      labelText: 'Nomor Handphone',
+                      decoration: const InputDecoration(
+                        hintText: 'Masukkan Nomor Handphone Anda',
+                      ),
+                      autofillHints: const [AutofillHints.telephoneNumber],
+                      keyboardType: TextInputType.number,
+                      inputFormatters: [textFormatterDigitsOnly],
+                      textInputAction: TextInputAction.next,
+                    ),
+                    ...switch (stateAuthentication.role) {
+                      UserRole.remaja => [
+                          const SizedBox(height: 20.0),
+                          LabeledTextField.date(
+                            value: stateAuthentication.dateOfBirth,
+                            firstDate: DateTime(1970),
+                            lastDate: DateTime.now(),
+                            labelText: 'Tanggal Lahir',
+                            decoration: const InputDecoration(
+                              hintText: 'Masukkan Tanggal Lahir Anda',
+                            ),
+                            readOnly: true,
+                            onDateChanged: (value) => MyApp.authenticationBloc.add(SetSignUpDateOfBirth(value: value!)),
+                          ),
+                          const SizedBox(height: 20.0),
+                          LabeledTextField.dropdown(
+                            controller: TextEditingController(text: stateAuthentication.gender.text),
+                            width: MediaQuery.sizeOf(context).width - 56.0,
+                            items: Gender.values.map((e) => DropdownMenuEntry(value: e, label: e.text)).toList(),
+                            labelText: 'Jenis Kelamin',
+                            decoration: const InputDecoration(
+                              hintText: 'Masukkan Jenis Kelamin Anda',
+                            ),
+                            readOnly: true,
+                          ),
+                          const SizedBox(height: 20.0),
+                          LabeledTextField(
+                            labelText: 'Sekolah',
+                            decoration: const InputDecoration(
+                              hintText: 'Masukkan Sekolah Anda',
+                            ),
+                            textInputAction: TextInputAction.next,
+                          ),
+                        ],
+                      UserRole.orangTua => [],
+                      UserRole.tenagaAhli => [],
+                      UserRole.kaderKesehatan => [],
+                      UserRole.guru => [],
+                    },
+                    const SizedBox(height: 32.0),
+                    MyFilledButton(
+                      onPressed: () => NavigationHelper.back(),
+                      labelText: 'Daftar',
+                      buttonStyle: FilledButton.styleFrom(
+                        textStyle: Config.textStyleHeadlineSmall.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                    ),
+                    SizedBox(height: MediaQuery.viewInsetsOf(context).bottom > 0.0 ? 32.0 : 0.0),
+                  ],
                 ),
-                const SizedBox(height: 64.0),
-                LabeledTextField(
-                  labelText: 'Nama Lengkap',
-                  decoration: const InputDecoration(
-                    hintText: 'Enter Your Email',
-                  ),
-                  autofillHints: const [AutofillHints.name],
-                  textInputAction: TextInputAction.next,
-                ),
-                const SizedBox(height: 20.0),
-                LabeledTextField.password(
-                  labelText: 'Password',
-                  decoration: const InputDecoration(
-                    hintText: 'Enter Your Password',
-                  ),
-                  autofillHints: const [AutofillHints.newPassword],
-                  textInputAction: TextInputAction.next,
-                ),
-                const SizedBox(height: 20.0),
-                LabeledTextField(
-                  labelText: 'Email',
-                  decoration: const InputDecoration(
-                    hintText: 'Enter Your Email',
-                  ),
-                  autofillHints: const [AutofillHints.email],
-                  textInputAction: TextInputAction.next,
-                ),
-                const SizedBox(height: 20.0),
-                LabeledTextField(
-                  labelText: 'Nomor Handphone',
-                  decoration: const InputDecoration(
-                    hintText: 'Enter Your Phone',
-                  ),
-                  autofillHints: const [AutofillHints.telephoneNumber],
-                  keyboardType: TextInputType.number,
-                  inputFormatters: [textFormatterDigitsOnly],
-                ),
-                const SizedBox(height: 32.0),
-                MyFilledButton(
-                  onPressed: () => NavigationHelper.back(),
-                  labelText: 'Daftar',
-                  buttonStyle: FilledButton.styleFrom(
-                    textStyle: Config.textStyleHeadlineSmall.copyWith(
-                      color: Theme.of(context).colorScheme.onPrimary,
+              ),
+            ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.only(bottom: 32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Sudah punya akun?',
+                    style: Config.textStyleTitleSmall.copyWith(
+                      color: Config.greyColor,
                     ),
                   ),
-                ),
-                SizedBox(height: MediaQuery.viewInsetsOf(context).bottom > 0.0 ? 32.0 : 0.0),
-              ],
+                  TextButton(
+                    onPressed: () {
+                      NavigationHelper.back();
+                      NavigationHelper.back();
+                    },
+                    child: Text(
+                      'Sign In',
+                      style: Config.textStyleTitleSmall,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ),
-        ),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 32.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Sudah punya akun?',
-                style: Config.textStyleTitleSmall.copyWith(
-                  color: Config.greyColor,
-                ),
-              ),
-              TextButton(
-                onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const Homepage())),
-                child: Text(
-                  'Sign In',
-                  style: Config.textStyleTitleSmall,
-                ),
-              ),
-            ],
-          ),
-        ),
+          );
+        },
       );
 }

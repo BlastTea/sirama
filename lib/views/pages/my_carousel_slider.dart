@@ -12,33 +12,34 @@ class MyCarouselSlider extends StatelessWidget {
         }
 
         if (stateQuote is QuoteDataLoaded) {
-          final List<String> imgList = stateQuote.quotes
-              .map((quote) =>
-                  "https://dev-sirama.propertiideal.id/storage/quote/${quote.gambarQuote!}")
-              .toList();
+          final List<String> imgList = stateQuote.quotes.map((quote) => "https://dev-sirama.propertiideal.id/storage/quote/${quote.gambarQuote!}").toList();
 
-          if (kDebugMode) {
-            print(imgList);
-          }
           final List<Widget> imageSliders = imgList
-              .map((item) => Container(
-                    margin: const EdgeInsets.all(5.0),
-                    child: ClipRRect(
-                      borderRadius:
-                          const BorderRadius.all(Radius.circular(5.0)),
-                      child: Stack(
-                        children: <Widget>[
-                          Image.network(
-                            item, width: 250,
-                          ),
-                        ],
-                      ),
-                    ),
-                  ))
+              .map(
+                (item) => ImageContainer.hero(
+                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  tag: item,
+                  image: NetworkImage(item),
+                  border: const Border(),
+                  borderRadius: BorderRadius.circular(5.0),
+                  extendedAppBar: AppBar(),
+                ),
+
+                // Container(
+                //   margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                //   child: ClipRRect(
+                //     borderRadius: const BorderRadius.all(Radius.circular(5.0)),
+                //     child: Image.network(
+                //       item,
+                //       fit: BoxFit.cover,
+                //     ),
+                //   ),
+                // ),
+              )
               .toList();
           return CarouselSlider(
             options: CarouselOptions(
-              height: 100.0,
+              height: 90.0,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 6),
             ),

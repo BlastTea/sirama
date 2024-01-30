@@ -1,124 +1,72 @@
 part of 'pages.dart';
 
-enum SingingCharacter { remaja, tenagaahli, guru, kaderkesehatan, orangtua }
-
-SingingCharacter? _character = SingingCharacter.remaja;
-
-class SignUpRolePage extends StatefulWidget {
+class SignUpRolePage extends StatelessWidget {
   const SignUpRolePage({super.key});
 
   @override
-  State<SignUpRolePage> createState() => _SignUpRolePageState();
-}
+  Widget build(BuildContext context) => BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (context, stateAuthentication) {
+          stateAuthentication as AuthenticationDataLoaded;
 
-class _SignUpRolePageState extends State<SignUpRolePage> {
-  @override
-  Widget build(BuildContext context) => Scaffold(
-        body: SafeArea(
-            child: AutofillGroup(
+          return Scaffold(
+            body: SafeArea(
+              child: AutofillGroup(
                 child: ListView(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          children: [
-            const SizedBox(height: 20.0),
-            Text(
-              'Mau daftar sebagai apa?',
-              textAlign: TextAlign.center,
-              style: Config.textStyleHeadlineMedium,
-            ),
-            const SizedBox(height: 20.0),
-            RadioListTile<SingingCharacter>(
-              secondary: const Icon(Icons.logout),
-              controlAffinity: ListTileControlAffinity.trailing,
-              title: const Text('Remaja'),
-              value: SingingCharacter.remaja,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-            RadioListTile<SingingCharacter>(
-              secondary: const Icon(Icons.logout),
-              controlAffinity: ListTileControlAffinity.trailing,
-              title: const Text('Tenaga Ahli'),
-              value: SingingCharacter.tenagaahli,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-            RadioListTile<SingingCharacter>(
-              secondary: const Icon(Icons.logout),
-              controlAffinity: ListTileControlAffinity.trailing,
-              title: const Text('Guru'),
-              value: SingingCharacter.guru,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-            RadioListTile<SingingCharacter>(
-              secondary: const Icon(Icons.logout),
-              controlAffinity: ListTileControlAffinity.trailing,
-              title: const Text('Kader Kesehatan'),
-              value: SingingCharacter.kaderkesehatan,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-            RadioListTile<SingingCharacter>(
-              secondary: const Icon(Icons.logout),
-              controlAffinity: ListTileControlAffinity.trailing,
-              title: const Text('Orang Tua'),
-              value: SingingCharacter.orangtua,
-              groupValue: _character,
-              onChanged: (SingingCharacter? value) {
-                setState(() {
-                  _character = value;
-                });
-              },
-            ),
-            const SizedBox(height: 32.0),
-            MyFilledButton(
-              onPressed: () => NavigationHelper.back(),
-              labelText: 'Lanjutkn pendafaran',
-              buttonStyle: FilledButton.styleFrom(
-                textStyle: Config.textStyleHeadlineSmall.copyWith(
-                  color: Theme.of(context).colorScheme.onPrimary,
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  children: [
+                    const SizedBox(height: 20.0),
+                    Text(
+                      'Mau daftar sebagai apa?',
+                      textAlign: TextAlign.center,
+                      style: Config.textStyleHeadlineMedium,
+                    ),
+                    const SizedBox(height: 20.0),
+                    ...UserRole.values.map(
+                      (e) => RadioListTile(
+                        value: e,
+                        groupValue: stateAuthentication.role,
+                        title: Text(e.text),
+                        secondary: const Icon(Icons.person),
+                        controlAffinity: ListTileControlAffinity.trailing,
+                        onChanged: (value) => MyApp.authenticationBloc.add(SetSignUpRole(value: value!)),
+                      ),
+                    ),
+                    const SizedBox(height: 32.0),
+                    MyFilledButton(
+                      onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const SignUpPage())),
+                      labelText: 'Lanjutkan pendaftaran',
+                      buttonStyle: FilledButton.styleFrom(
+                        textStyle: Config.textStyleHeadlineSmall.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary,
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
             ),
-          ],
-        ))),
-        bottomNavigationBar: Padding(
-          padding: const EdgeInsets.only(bottom: 32.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Sudah punya akun?',
-                style: Config.textStyleTitleSmall.copyWith(
-                  color: Config.greyColor,
-                ),
+            bottomNavigationBar: Padding(
+              padding: const EdgeInsets.only(bottom: 32.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Sudah punya akun?',
+                    style: Config.textStyleTitleSmall.copyWith(
+                      color: Config.greyColor,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () => NavigationHelper.back(),
+                    child: Text(
+                      'Sign In',
+                      style: Config.textStyleTitleSmall,
+                    ),
+                  ),
+                ],
               ),
-              TextButton(
-                onPressed: () => NavigationHelper.to(
-                    MaterialPageRoute(builder: (context) => const Homepage())),
-                child: Text(
-                  'Sign In',
-                  style: Config.textStyleTitleSmall,
-                ),
-              ),
-            ],
-          ),
-        ),
+            ),
+          );
+        },
       );
 }
