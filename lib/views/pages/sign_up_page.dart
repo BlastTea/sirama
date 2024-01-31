@@ -24,19 +24,20 @@ class SignUpPage extends StatelessWidget {
                     LabeledTextField(
                       controller: stateAuthentication.textControllerUsernameSignUp,
                       labelText: 'Username',
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'Masukkan Username Anda',
-                        errorText: 'Error Bang',
+                        errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.usernameIsStillEmpty) ? InvalidType.usernameIsStillEmpty.text : null,
                       ),
-                      autofillHints: const [AutofillHints.name],
+                      autofillHints: const [AutofillHints.username],
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 20.0),
                     LabeledTextField(
                       controller: stateAuthentication.textControllerEmailSignUp,
                       labelText: 'Email',
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'Masukkan Email Anda',
+                        errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.emailIsStillEmpty) ? InvalidType.emailIsStillEmpty.text : null,
                       ),
                       autofillHints: const [AutofillHints.email],
                       textInputAction: TextInputAction.next,
@@ -45,10 +46,11 @@ class SignUpPage extends StatelessWidget {
                     LabeledTextField.password(
                       controller: stateAuthentication.textControllerPasswordSignUp,
                       labelText: 'Password',
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'Masukkan Password Anda',
+                        errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.passwordIsStillEmpty) ? InvalidType.passwordIsStillEmpty.text : null,
                       ),
-                      autofillHints: const [AutofillHints.newPassword],
+                      autofillHints: const [AutofillHints.password],
                       textInputAction: TextInputAction.next,
                       onSubmitted: (value) => stateAuthentication.focusNodeNameSignUp.requestFocus(),
                     ),
@@ -59,8 +61,9 @@ class SignUpPage extends StatelessWidget {
                       focusNode: stateAuthentication.focusNodeNameSignUp,
                       controller: stateAuthentication.textControllerNameSignUp,
                       labelText: 'Nama',
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         hintText: 'Masukkan Nama Anda',
+                        errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.nameIsStillEmpty) ? InvalidType.nameIsStillEmpty.text : null,
                       ),
                       autofillHints: const [AutofillHints.name],
                       textInputAction: TextInputAction.next,
@@ -69,9 +72,13 @@ class SignUpPage extends StatelessWidget {
                     LabeledTextField(
                       controller: stateAuthentication.textControllerPhoneNumberSignUp,
                       labelText: 'Nomor Handphone',
-                      decoration: const InputDecoration(
-                        hintText: 'Masukkan Nomor Handphone Anda',
-                      ),
+                      decoration: InputDecoration(
+                          hintText: 'Masukkan Nomor Handphone Anda',
+                          errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.phoneNumberIsStillEmpty)
+                              ? InvalidType.phoneNumberIsStillEmpty.text
+                              : stateAuthentication.invalidSignUpTypes.contains(InvalidType.phoneNumberIsNotValid)
+                                  ? InvalidType.phoneNumberIsNotValid.text
+                                  : null),
                       autofillHints: const [AutofillHints.telephoneNumber],
                       keyboardType: TextInputType.number,
                       inputFormatters: [textFormatterDigitsOnly],
@@ -106,8 +113,9 @@ class SignUpPage extends StatelessWidget {
                           LabeledTextField(
                             controller: stateAuthentication.textControllerSchoolSignUp,
                             labelText: 'Sekolah',
-                            decoration: const InputDecoration(
+                            decoration: InputDecoration(
                               hintText: 'Masukkan Sekolah Anda',
+                              errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.schoolIsStillEmpty) ? InvalidType.schoolIsStillEmpty.text : null,
                             ),
                             onEditingComplete: () => MyApp.authenticationBloc.add(SignUpPressed()),
                           ),
@@ -119,7 +127,7 @@ class SignUpPage extends StatelessWidget {
                     },
                     const SizedBox(height: 32.0),
                     MyFilledButton(
-                      onPressed: () => NavigationHelper.back(),
+                      onPressed: () => MyApp.authenticationBloc.add(SignUpPressed()),
                       labelText: 'Daftar',
                       buttonStyle: FilledButton.styleFrom(
                         textStyle: Config.textStyleHeadlineSmall.copyWith(

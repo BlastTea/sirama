@@ -42,6 +42,9 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
           builder: (context) => const Homepage(),
         ),
       );
+
+      _textControllerUsernameSignIn.text = '';
+      _textControllerPasswordSignIn.text = '';
     });
 
     on<SetSignUpRole>((event, emit) {
@@ -61,34 +64,26 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
     on<SignUpPressed>((event, emit) {
       _invalidSignUpTypes.clear();
-      if (_textControllerUsernameSignUp.text.trim().isEmpty) {
-        _invalidSignUpTypes.add(InvalidType.usernameIsStillEmpty);
-      }
-      if (_textControllerEmailSignUp.text.trim().isEmpty) {
-        _invalidSignUpTypes.add(InvalidType.emailIsStillEmpty);
-      }
-      if (_textControllerPasswordSignUp.text.trim().isEmpty) {
-        _invalidSignUpTypes.add(InvalidType.passwordIsStillEmpty);
-      }
-      if (_textControllerNameSignUp.text.trim().isEmpty) {
-        _invalidSignUpTypes.add(InvalidType.nameIsStillEmpty);
-      }
+      if (_textControllerUsernameSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.usernameIsStillEmpty);
+      if (_textControllerEmailSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.emailIsStillEmpty);
+      if (_textControllerPasswordSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.passwordIsStillEmpty);
+      if (_textControllerNameSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.nameIsStillEmpty);
       if (_textControllerPhoneNumberSignUp.text.trim().isEmpty) {
         _invalidSignUpTypes.add(InvalidType.phoneNumberIsStillEmpty);
+      } else if (_textControllerPhoneNumberSignUp.text.trim().length < 10) {
+        _invalidSignUpTypes.add(InvalidType.phoneNumberIsNotValid);
       }
 
       switch (_role) {
         case UserRole.remaja:
-          if (_textControllerSchoolSignUp.text.trim().isEmpty) {}
+          if (_textControllerSchoolSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.schoolIsStillEmpty);
         case UserRole.orangTua:
         case UserRole.tenagaAhli:
         case UserRole.kaderKesehatan:
         case UserRole.guru:
       }
 
-      if (_invalidSignUpTypes.isEmpty) {
-        _invalidSignUpTypes.add(InvalidType.none);
-      }
+      if (_invalidSignUpTypes.isEmpty) _invalidSignUpTypes.add(InvalidType.none);
 
       if (_invalidSignUpTypes.first != InvalidType.none) {
         NavigationHelper.clearSnackBars();
@@ -96,6 +91,36 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         emit(_authenticationDataLoaded);
         return;
       }
+
+      try {
+        FocusManager.instance.primaryFocus?.unfocus();
+
+        showLoadingDialog();
+
+        ApiHelper.post(
+          '/api/register',
+          body: {
+            'username': _textControllerUsernameSignUp.text.trim(),
+            'email': _textControllerEmailSignUp.text.trim(),
+            'password': _textControllerPasswordSignUp.text.trim(),
+            'role': _role.serverValue,
+            'nama': _textControllerNameSignUp.text.trim(),
+            'no_hp': _textControllerPhoneNumberSignUp.text.trim(),
+            if (_role == UserRole.remaja) 'tgl_lahir': '${_dateOfBirth.year}-${_dateOfBirth.month}-${_dateOfBirth.day}',
+            if (_role == UserRole.remaja) 'jenis_kelamin': _gender.serverValue,
+            if (_role == UserRole.remaja) 'sekolah': _textControllerSchoolSignUp.text.trim(),
+          },
+        );
+      } catch (e) {
+        NavigationHelper.back();
+        return;
+      }
+
+      NavigationHelper.back();
+      NavigationHelper.back();
+      NavigationHelper.back();
+      NavigationHelper.clearSnackBars();
+      NavigationHelper.showSnackBar(const SnackBar(content: Text('Sign Up berhasil')));
     });
   }
 
