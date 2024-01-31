@@ -187,3 +187,25 @@ enum Gender {
         perempuan => 'P',
       };
 }
+
+enum InvalidType {
+  none,
+  usernameIsStillEmpty,
+  emailIsStillEmpty,
+  passwordIsStillEmpty,
+  nameIsStillEmpty,
+  phoneNumberIsStillEmpty,
+  phoneNumberIsNotValid,
+  schoolIsStillEmpty;
+
+  String get text => switch (this) {
+        usernameIsStillEmpty => 'Username masih kosong',
+        emailIsStillEmpty => 'Email masih kosong',
+        passwordIsStillEmpty => 'Password masih kosong',
+        nameIsStillEmpty => 'Nama masih kosong',
+        phoneNumberIsStillEmpty => 'Nomor Handphone masih kosong',
+        phoneNumberIsNotValid => 'Nomor Handphone tidak valid',
+        schoolIsStillEmpty => 'Sekolah masih kosong',
+        _ => '',
+      };
+}

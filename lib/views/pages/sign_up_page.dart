@@ -22,15 +22,18 @@ class SignUpPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 64.0),
                     LabeledTextField(
+                      controller: stateAuthentication.textControllerUsernameSignUp,
                       labelText: 'Username',
                       decoration: const InputDecoration(
                         hintText: 'Masukkan Username Anda',
+                        errorText: 'Error Bang',
                       ),
                       autofillHints: const [AutofillHints.name],
                       textInputAction: TextInputAction.next,
                     ),
                     const SizedBox(height: 20.0),
                     LabeledTextField(
+                      controller: stateAuthentication.textControllerEmailSignUp,
                       labelText: 'Email',
                       decoration: const InputDecoration(
                         hintText: 'Masukkan Email Anda',
@@ -40,17 +43,21 @@ class SignUpPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     LabeledTextField.password(
+                      controller: stateAuthentication.textControllerPasswordSignUp,
                       labelText: 'Password',
                       decoration: const InputDecoration(
                         hintText: 'Masukkan Password Anda',
                       ),
                       autofillHints: const [AutofillHints.newPassword],
                       textInputAction: TextInputAction.next,
+                      onSubmitted: (value) => stateAuthentication.focusNodeNameSignUp.requestFocus(),
                     ),
                     const SizedBox(height: 20.0),
                     const Divider(),
                     const SizedBox(height: 20.0),
                     LabeledTextField(
+                      focusNode: stateAuthentication.focusNodeNameSignUp,
+                      controller: stateAuthentication.textControllerNameSignUp,
                       labelText: 'Nama',
                       decoration: const InputDecoration(
                         hintText: 'Masukkan Nama Anda',
@@ -60,6 +67,7 @@ class SignUpPage extends StatelessWidget {
                     ),
                     const SizedBox(height: 20.0),
                     LabeledTextField(
+                      controller: stateAuthentication.textControllerPhoneNumberSignUp,
                       labelText: 'Nomor Handphone',
                       decoration: const InputDecoration(
                         hintText: 'Masukkan Nomor Handphone Anda',
@@ -96,11 +104,12 @@ class SignUpPage extends StatelessWidget {
                           ),
                           const SizedBox(height: 20.0),
                           LabeledTextField(
+                            controller: stateAuthentication.textControllerSchoolSignUp,
                             labelText: 'Sekolah',
                             decoration: const InputDecoration(
                               hintText: 'Masukkan Sekolah Anda',
                             ),
-                            textInputAction: TextInputAction.next,
+                            onEditingComplete: () => MyApp.authenticationBloc.add(SignUpPressed()),
                           ),
                         ],
                       UserRole.orangTua => [],

@@ -59,7 +59,44 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       emit(_authenticationDataLoaded);
     });
 
-    on<SignUpPressed>((event, emit) {});
+    on<SignUpPressed>((event, emit) {
+      _invalidSignUpTypes.clear();
+      if (_textControllerUsernameSignUp.text.trim().isEmpty) {
+        _invalidSignUpTypes.add(InvalidType.usernameIsStillEmpty);
+      }
+      if (_textControllerEmailSignUp.text.trim().isEmpty) {
+        _invalidSignUpTypes.add(InvalidType.emailIsStillEmpty);
+      }
+      if (_textControllerPasswordSignUp.text.trim().isEmpty) {
+        _invalidSignUpTypes.add(InvalidType.passwordIsStillEmpty);
+      }
+      if (_textControllerNameSignUp.text.trim().isEmpty) {
+        _invalidSignUpTypes.add(InvalidType.nameIsStillEmpty);
+      }
+      if (_textControllerPhoneNumberSignUp.text.trim().isEmpty) {
+        _invalidSignUpTypes.add(InvalidType.phoneNumberIsStillEmpty);
+      }
+
+      switch (_role) {
+        case UserRole.remaja:
+          if (_textControllerSchoolSignUp.text.trim().isEmpty) {}
+        case UserRole.orangTua:
+        case UserRole.tenagaAhli:
+        case UserRole.kaderKesehatan:
+        case UserRole.guru:
+      }
+
+      if (_invalidSignUpTypes.isEmpty) {
+        _invalidSignUpTypes.add(InvalidType.none);
+      }
+
+      if (_invalidSignUpTypes.first != InvalidType.none) {
+        NavigationHelper.clearSnackBars();
+        NavigationHelper.showSnackBar(SnackBar(content: Text(_invalidSignUpTypes.first.text)));
+        emit(_authenticationDataLoaded);
+        return;
+      }
+    });
   }
 
   static final FocusNode _focusNodeUsernameSignIn = FocusNode();
@@ -72,7 +109,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   static final TextEditingController _textControllerEmailSignUp = TextEditingController();
   static final TextEditingController _textControllerPasswordSignUp = TextEditingController();
   static final TextEditingController _textControllerNameSignUp = TextEditingController();
-  static final TextEditingController _textControllerPhoneNumberSignup = TextEditingController();
+  static final TextEditingController _textControllerPhoneNumberSignUp = TextEditingController();
+  static final TextEditingController _textControllerSchoolSignUp = TextEditingController();
 
   static bool _isSigningIn = false;
 
@@ -82,14 +120,24 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
   static Gender _gender = Gender.values.first;
 
+  static final List<InvalidType> _invalidSignUpTypes = [InvalidType.none];
+
   static AuthenticationDataLoaded get _authenticationDataLoaded => AuthenticationDataLoaded(
         focusNodeUsernameSignIn: _focusNodeUsernameSignIn,
         focusNodePasswordSignIn: _focusNodePasswordSignIn,
+        focusNodeNameSignUp: _focusNodeNameSignUp,
         textControllerUsernameSignIn: _textControllerUsernameSignIn,
         textControllerPasswordSignIn: _textControllerPasswordSignIn,
+        textControllerUsernameSignUp: _textControllerUsernameSignUp,
+        textControllerEmailSignUp: _textControllerEmailSignUp,
+        textControllerPasswordSignUp: _textControllerPasswordSignUp,
+        textControllerNameSignUp: _textControllerNameSignUp,
+        textControllerPhoneNumberSignUp: _textControllerPhoneNumberSignUp,
+        textControllerSchoolSignUp: _textControllerSchoolSignUp,
         isSingingIn: _isSigningIn,
         role: _role,
         dateOfBirth: _dateOfBirth,
         gender: _gender,
+        invalidSignUpTypes: _invalidSignUpTypes,
       );
 }
