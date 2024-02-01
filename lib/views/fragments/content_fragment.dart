@@ -1,10 +1,10 @@
 part of 'fragments.dart';
 
 List<Map> kontenData = [
-  {'title': 'Film Edukasi', 'route': '/film'},
-  {'title': 'Podcast Edukasi', 'route': '/podcast'},
-  {'title': 'Video Edukasi', 'route': '/educational-video'},
-  {'title': 'Infographics', 'route': '/infographics'},
+  {'title': 'Film Edukasi', 'route': '/film', 'icon': 'play'},
+  {'title': 'Podcast Edukasi', 'route': '/podcast', 'icon': 'mic'},
+  {'title': 'Video Edukasi', 'route': '/educational-video', 'icon': 'video'},
+  {'title': 'Infografis', 'route': '/infographics', 'icon': 'image'},
 ];
 
 class ContentFragment extends StatelessWidget {
@@ -16,35 +16,55 @@ class ContentFragment extends StatelessWidget {
           const SizedBox(height: 20.0),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: CardTile(title: Text('tes'), subtitle: Text(shortLorem)),
+            child: CardTile(
+                title: Text('Konten Edukasi'), subtitle: Text(shortLorem)),
           ),
-          const SizedBox(height: 20.0),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Row(
+              children: [
+                Text(
+                  'Semua konten',
+                  style: Config.textStyleHeadlineSmall,
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: 10.0),
           GridView.count(
             primary: false,
             shrinkWrap: true,
             crossAxisCount: 2,
-            padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             children: kontenData
                 .map((data) => Card(
+                      color: Config.colorScheme.primary,
+                      margin: const EdgeInsets.all(10),
                       child: InkWell(
                         borderRadius: BorderRadius.circular(kShapeMedium),
-                        onTap: () => Navigator.pushNamed(context, data['route']),
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            const Icon(Icons.play_circle),
-                            const SizedBox(height: 10),
-                            Text(
-                              data['title'],
-                              style: const TextStyle(fontSize: 16),
-                            ),
-                          ],
+                        onTap: () =>
+                            Navigator.pushNamed(context, data['route']),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                data['title'],
+                                style: const TextStyle(
+                                    fontSize: 16, color: Colors.white),
+                              ),
+                              _getIconForCard(data['icon']),
+                            ],
+                          ),
                         ),
                       ),
                     ))
                 .toList(),
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 10),
           const Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
             child: Row(
@@ -92,7 +112,8 @@ class ContentFragment extends StatelessWidget {
                     ListTile(
                       contentPadding: const EdgeInsets.all(0),
                       leading: CircleAvatar(
-                        backgroundImage: NetworkImage(dataPodcast[index]['profile_url']!),
+                        backgroundImage:
+                            NetworkImage(dataPodcast[index]['profile_url']!),
                       ),
                       title: Text(
                         dataPodcast[index]['judul_film']!,
@@ -112,4 +133,32 @@ class ContentFragment extends StatelessWidget {
           ),
         ]),
       );
+
+  Widget _getIconForCard(String? iconName) {
+    if (iconName == null) {
+      return const Icon(Icons.play_circle,
+          color: Colors.white);
+    }
+
+    IconData iconData;
+    switch (iconName) {
+      case 'play':
+        iconData = Icons.play_circle;
+        break;
+      case 'mic':
+        iconData = Icons.mic;
+        break;
+      case 'video':
+        iconData = Icons.video_library;
+        break;
+      case 'image':
+        iconData = Icons.image;
+        break;
+
+      default:
+        iconData = Icons.play_circle;
+    }
+
+    return Icon(iconData, color: Colors.white);
+  }
 }

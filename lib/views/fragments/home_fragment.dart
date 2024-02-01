@@ -15,11 +15,18 @@ class _HomeFragmentState extends State<HomeFragment> {
   ];
 
   String currentDay = '';
+  late SharedPreferences prefs;
 
   @override
   void initState() {
     super.initState();
-    resetValuesIfNeeded();
+    initializeSharedPreferences().then((_) {
+      resetValuesIfNeeded();
+    });
+  }
+
+  Future<void> initializeSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
   }
 
   void resetValuesIfNeeded() {
@@ -27,7 +34,8 @@ class _HomeFragmentState extends State<HomeFragment> {
     if (currentDay != today) {
       setState(() {
         for (var e in checkboxHomeFragment) {
-          e['value${e.keys.first.substring(4)}'] = false;
+          String key = 'value${e.keys.first.substring(4)}';
+          e[key] = prefs.getBool(key) ?? false;
         }
         currentDay = today;
       });
@@ -52,22 +60,16 @@ class _HomeFragmentState extends State<HomeFragment> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
+                           Text(
                             'Selamat datang',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           Text(
                             '${currentUser?.username ?? 'Guest'} 👋',
-                            style: const TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black26,
-                            ),
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)
                           ),
                         ],
                       ),
@@ -101,10 +103,15 @@ class _HomeFragmentState extends State<HomeFragment> {
                     children: [
                       Text('Skrining'),
                       SizedBox(width: 10),
-                      Icon(Icons.arrow_forward, color: Colors.white,)
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      )
                     ],
                   ),
-                  image: Image.asset('assets/card-homepage.png',),
+                  image: Image.asset(
+                    'assets/card-homepage.png',
+                  ),
                   imageAlignment: CardTileAlignment.bottom,
                   minImageWidth: 100.0,
                   onPressed: () => NavigationHelper.to(MaterialPageRoute(
@@ -149,7 +156,8 @@ class _HomeFragmentState extends State<HomeFragment> {
                           child: ActionChip(
                             label: Text(e),
                             side: BorderSide(
-                                color: Theme.of(context).colorScheme.onPrimary,),
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
                             color: MaterialStatePropertyAll(
                                 Theme.of(context).colorScheme.primary),
                             labelStyle: Theme.of(context)
@@ -213,4 +221,17 @@ class _HomeFragmentState extends State<HomeFragment> {
           ),
         ),
       );
+
+  @override
+  void dispose() {
+    saveCheckboxValuesToSharedPreferences();
+    super.dispose();
+  }
+
+  void saveCheckboxValuesToSharedPreferences() {
+    for (var e in checkboxHomeFragment) {
+      String key = 'value${e.keys.first.substring(4)}';
+      prefs.setBool(key, e[key]);
+    }
+  }
 }
