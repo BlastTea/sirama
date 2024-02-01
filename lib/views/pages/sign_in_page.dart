@@ -8,11 +8,11 @@ class SignInPage extends StatelessWidget {
         builder: (context, stateAuthentication) {
           stateAuthentication as AuthenticationDataLoaded;
 
-          if (kDebugMode) {
-            // stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
-            stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
-            stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
-          }
+          // if (kDebugMode) {
+          // stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
+          stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
+          stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
+          // }
 
           return Scaffold(
             body: SafeArea(

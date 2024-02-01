@@ -4,7 +4,7 @@ part 'models.freezed.dart';
 part 'models.g.dart';
 
 bool? _parseBool(dynamic data) => data is int? && data != null
-    ? (data == 1)
+    ? data == 1
     : data is bool
         ? data
         : null;
@@ -149,6 +149,7 @@ class Quote with _$Quote {
 
 enum UserRole {
   remaja,
+  @JsonValue('orangtua')
   orangTua,
   @JsonValue('ahli')
   tenagaAhli,
@@ -174,7 +175,9 @@ enum UserRole {
 }
 
 enum Gender {
+  @JsonValue('L')
   lakiLaki,
+  @JsonValue('P')
   perempuan;
 
   String get text => switch (this) {
@@ -185,5 +188,27 @@ enum Gender {
   String get serverValue => switch (this) {
         lakiLaki => 'L',
         perempuan => 'P',
+      };
+}
+
+enum InvalidType {
+  none,
+  usernameIsStillEmpty,
+  emailIsStillEmpty,
+  passwordIsStillEmpty,
+  nameIsStillEmpty,
+  phoneNumberIsStillEmpty,
+  phoneNumberIsNotValid,
+  schoolIsStillEmpty;
+
+  String get text => switch (this) {
+        usernameIsStillEmpty => 'Username masih kosong',
+        emailIsStillEmpty => 'Email masih kosong',
+        passwordIsStillEmpty => 'Password masih kosong',
+        nameIsStillEmpty => 'Nama masih kosong',
+        phoneNumberIsStillEmpty => 'Nomor Handphone masih kosong',
+        phoneNumberIsNotValid => 'Nomor Handphone tidak valid',
+        schoolIsStillEmpty => 'Sekolah masih kosong',
+        _ => '',
       };
 }
