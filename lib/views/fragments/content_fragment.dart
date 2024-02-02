@@ -65,13 +65,13 @@ class ContentFragment extends StatelessWidget {
                 .toList(),
           ),
           const SizedBox(height: 10),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 20),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
             child: Row(
               children: [
                 Text(
                   'Video terbaru',
-                  style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  style: Config.textStyleHeadlineSmall,
                 ),
               ],
             ),
@@ -136,8 +136,7 @@ class ContentFragment extends StatelessWidget {
 
   Widget _getIconForCard(String? iconName) {
     if (iconName == null) {
-      return const Icon(Icons.play_circle,
-          color: Colors.white);
+      return const Icon(Icons.play_circle, color: Colors.white);
     }
 
     IconData iconData;
