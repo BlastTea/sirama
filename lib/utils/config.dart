@@ -48,7 +48,7 @@ class Config {
 
   static TextStyle textStyleHeadlineMedium = defaultStyle.copyWith(
     fontSize: 26.0,
-    fontWeight: FontWeight.w800,
+    fontWeight: FontWeight.w900,
     color: fontColor,
   );
 

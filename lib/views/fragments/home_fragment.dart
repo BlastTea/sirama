@@ -15,11 +15,18 @@ class _HomeFragmentState extends State<HomeFragment> {
   ];
 
   String currentDay = '';
+  late SharedPreferences prefs;
 
   @override
   void initState() {
     super.initState();
-    resetValuesIfNeeded();
+    initializeSharedPreferences().then((_) {
+      resetValuesIfNeeded();
+    });
+  }
+
+  Future<void> initializeSharedPreferences() async {
+    prefs = await SharedPreferences.getInstance();
   }
 
   void resetValuesIfNeeded() {
@@ -27,7 +34,8 @@ class _HomeFragmentState extends State<HomeFragment> {
     if (currentDay != today) {
       setState(() {
         for (var e in checkboxHomeFragment) {
-          e['value${e.keys.first.substring(4)}'] = false;
+          String key = 'value${e.keys.first.substring(4)}';
+          e[key] = prefs.getBool(key) ?? false;
         }
         currentDay = today;
       });
@@ -52,22 +60,16 @@ class _HomeFragmentState extends State<HomeFragment> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const Text(
-                            'Welcome Home',
-                            style: TextStyle(
-                                color: Colors.grey,
-                                fontWeight: FontWeight.bold),
+                           Text(
+                            'Selamat datang',
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
                           ),
                           const SizedBox(
                             height: 10,
                           ),
                           Text(
-                            '${currentUser?.username ?? 'Anonymous'} 👋',
-                            style: const TextStyle(
-                              fontSize: 28,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black26,
-                            ),
+                            '${currentUser?.username ?? 'Guest'} 👋',
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)
                           ),
                         ],
                       ),
@@ -75,8 +77,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: ClipOval(
-                        child: Image.asset('assets/ugm.png', width: 50),
-
+                        child: Image.asset('assets/person.png', width: 50),
                         //45:00 min
                       ),
                     ),
@@ -87,68 +88,32 @@ class _HomeFragmentState extends State<HomeFragment> {
                 height: 20,
               ),
               const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20),
-                child: MyCarouselSlider()
-                
-                // BlocBuilder<QuoteBloc, QuoteState>(
-                //   builder: (context, stateQuote) {
-                //     if (stateQuote is QuoteInitial) {
-                //       MyApp.quoteBloc.add(InitializeQuoteData());
-                //     }
-
-                //     if (stateQuote is QuoteDataLoaded) {
-                //       final List<String> imgList = stateQuote.quotes
-                //           .map((quote) =>
-                //               "https://dev-sirama.propertiideal.id/storage/quote/${quote.gambarQuote!}")
-                //           .toList();
-
-                //       if (kDebugMode) {
-                //         print(imgList);
-                //       }
-                //       final List<Widget> imageSliders = imgList
-                //           .map((item) => Container(
-                //                   margin: const EdgeInsets.all(5.0),
-                //                   child: ClipRRect(
-                //                     borderRadius:
-                //                         const BorderRadius.all(Radius.circular(5.0)),
-                //                     child: Stack(
-                //                       children: <Widget>[
-                //                         Image.network(item,
-                //                             ),
-                //                       ],
-                //                     ),
-                //                   ),
-                //               ))
-                //           .toList();
-                //       return CarouselSlider(
-                //         options: CarouselOptions(
-                //           height: 200.0,
-                //           autoPlay: true,
-                //           autoPlayInterval: const Duration(seconds: 6),
-                //         ),
-                //         items: imageSliders,
-                //       );
-                //     } else if (stateQuote is QuoteInitial) {
-                //       return const CircularProgressIndicator();
-                //     } else if (stateQuote is QuoteError) {
-                //       return const Text('error anj');
-                //     } else {
-                //       return Container();
-                //     }
-                //   },
-                // ),
-              ),
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: MyCarouselSlider()),
               const SizedBox(
                 height: 20,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: CardTile(
-                  title: const Text('Yuk, Tanya Ahli!'),
-                  subtitle: const Text(shortLorem),
-                  image: Image.asset('assets/card-homepage.png', height: 50.0),
+                  title: const Text('Yuk, Skrining!'),
+                  subtitle: const Text(
+                      'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
+                  button: const Row(
+                    children: [
+                      Text('Skrining'),
+                      SizedBox(width: 10),
+                      Icon(
+                        Icons.arrow_forward,
+                        color: Colors.white,
+                      )
+                    ],
+                  ),
+                  image: Image.asset(
+                    'assets/card-homepage.png',
+                  ),
                   imageAlignment: CardTileAlignment.bottom,
-                  minImageWidth: 134.0,
+                  minImageWidth: 100.0,
                   onPressed: () => NavigationHelper.to(MaterialPageRoute(
                       builder: (context) => const ScreeningPage())),
                 ),
@@ -190,15 +155,18 @@ class _HomeFragmentState extends State<HomeFragment> {
                               right: e == 'Tanya Ahli' ? 20.0 : 0.0),
                           child: ActionChip(
                             label: Text(e),
+                            side: BorderSide(
+                              color: Theme.of(context).colorScheme.onPrimary,
+                            ),
                             color: MaterialStatePropertyAll(
                                 Theme.of(context).colorScheme.primary),
                             labelStyle: Theme.of(context)
                                 .textTheme
                                 .labelLarge
                                 ?.copyWith(
-                                    color: Theme.of(context)
-                                        .colorScheme
-                                        .onPrimary),
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
+                                ),
                             onPressed: () => debugPrint('on $e pressed'),
                           ),
                         ),
@@ -253,4 +221,17 @@ class _HomeFragmentState extends State<HomeFragment> {
           ),
         ),
       );
+
+  @override
+  void dispose() {
+    saveCheckboxValuesToSharedPreferences();
+    super.dispose();
+  }
+
+  void saveCheckboxValuesToSharedPreferences() {
+    for (var e in checkboxHomeFragment) {
+      String key = 'value${e.keys.first.substring(4)}';
+      prefs.setBool(key, e[key]);
+    }
+  }
 }

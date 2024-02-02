@@ -4,7 +4,7 @@ part 'models.freezed.dart';
 part 'models.g.dart';
 
 bool? _parseBool(dynamic data) => data is int? && data != null
-    ? (data == 1)
+    ? data == 1
     : data is bool
         ? data
         : null;
@@ -147,8 +147,69 @@ class Quote with _$Quote {
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
 }
 
+@freezed
+class Konten with _$Konten {
+  const factory Konten({
+    @JsonKey(name: 'podcast_terbaru') List<PodcastTerbaru>? podcastTerbaru,
+    @JsonKey(name: 'film_terbaru') List<FilmTerbaru>? filmTerbaru,
+    @JsonKey(name: 'video_terbaru') List<VideoTerbaru>? videoTerbaru,
+  }) = _Konten;
+
+  factory Konten.fromJson(Map<String, dynamic> json) => _$KontenFromJson(json);
+}
+
+@freezed
+class PodcastTerbaru with _$PodcastTerbaru {
+  const factory PodcastTerbaru({
+    @JsonKey(name: 'id_podcast') int? idPodcast,
+    @JsonKey(name: 'judul_podcast') String? judulPodcast,
+    @JsonKey(name: 'link_podcast') String? linkPodcast,
+    @JsonKey(name: 'tgl_upload') String? tglUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'total_likes') dynamic totalLikes,
+  }) = _PodcastTerbaru;
+
+  factory PodcastTerbaru.fromJson(Map<String, dynamic> json) => _$PodcastTerbaruFromJson(json);
+}
+
+@freezed
+class FilmTerbaru with _$FilmTerbaru {
+  const factory FilmTerbaru({
+    @JsonKey(name: 'id_film') int? idFilm,
+    @JsonKey(name: 'judul_film') String? judulFilm,
+    @JsonKey(name: 'link_film') String? linkFilm,
+    @JsonKey(name: 'tgl_upload') String? tglUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'total_likes') dynamic totalLikes,
+  }) = _FilmTerbaru;
+
+  factory FilmTerbaru.fromJson(Map<String, dynamic> json) => _$FilmTerbaruFromJson(json);
+}
+
+@freezed
+class VideoTerbaru with _$VideoTerbaru {
+  const factory VideoTerbaru({
+    @JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
+    @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+    @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+    @JsonKey(name: 'tgl_upload') String? tglUpload,
+    @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'total_likes') dynamic totalLikes,
+  }) = _VideoTerbaru;
+
+  factory VideoTerbaru.fromJson(Map<String, dynamic> json) => _$VideoTerbaruFromJson(json);
+}
+
+
 enum UserRole {
   remaja,
+  @JsonValue('orangtua')
   orangTua,
   @JsonValue('ahli')
   tenagaAhli,
@@ -174,7 +235,9 @@ enum UserRole {
 }
 
 enum Gender {
+  @JsonValue('L')
   lakiLaki,
+  @JsonValue('P')
   perempuan;
 
   String get text => switch (this) {
@@ -185,5 +248,27 @@ enum Gender {
   String get serverValue => switch (this) {
         lakiLaki => 'L',
         perempuan => 'P',
+      };
+}
+
+enum InvalidType {
+  none,
+  usernameIsStillEmpty,
+  emailIsStillEmpty,
+  passwordIsStillEmpty,
+  nameIsStillEmpty,
+  phoneNumberIsStillEmpty,
+  phoneNumberIsNotValid,
+  schoolIsStillEmpty;
+
+  String get text => switch (this) {
+        usernameIsStillEmpty => 'Username masih kosong',
+        emailIsStillEmpty => 'Email masih kosong',
+        passwordIsStillEmpty => 'Password masih kosong',
+        nameIsStillEmpty => 'Nama masih kosong',
+        phoneNumberIsStillEmpty => 'Nomor Handphone masih kosong',
+        phoneNumberIsNotValid => 'Nomor Handphone tidak valid',
+        schoolIsStillEmpty => 'Sekolah masih kosong',
+        _ => '',
       };
 }

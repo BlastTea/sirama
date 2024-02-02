@@ -68,7 +68,7 @@ class ChooseScreeningPage extends StatelessWidget {
                   route: '/mainscreening',
                 ),
                 const ScreeningChooseListItem(
-                  title: 'Skrining Kemampuan Prososial',
+                  title: 'Skrining K. Prososial',
                   route: '/mainscreening',
                 ),
               ],

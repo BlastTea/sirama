@@ -16,7 +16,7 @@ class ScreeningPage extends StatelessWidget {
           title: const Text("Skrining"),
           centerTitle: true,
           bottom: TabBar(
-            labelPadding: const EdgeInsets.symmetric(horizontal: 50.0),
+            labelPadding: const EdgeInsets.symmetric(horizontal: 30.0),
             isScrollable: true,
             tabAlignment: TabAlignment.center,
             tabs: ['Pilihan Skrining', 'Riwayat Skrining']
