@@ -16,8 +16,6 @@ part 'welcome_page.dart';
 part 'sign_in_page.dart';
 part 'sign_up_page.dart';
 part 'homepage.dart';
-part 'film_page.dart';
-part 'podcast_page.dart';
 part 'chatme_page.dart';
 part 'doctor_profile_page.dart';
 part 'edit_profile_page.dart';
