@@ -1,6 +1,5 @@
 import 'dart:math';
 
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:m_widget/m_widget.dart';
@@ -17,5 +16,5 @@ part 'card_tile.dart';
 part 'screening_list_item.dart';
 part 'screening_choose_list_item.dart';
 part 'screening_list_answer.dart';
-part 'my_infographics_list_item.dart';
-part 'my_infographics_description.dart';
+part 'infographics_widgets/my_infographics_list_item.dart';
+part 'infographics_widgets/my_infographics_description.dart';

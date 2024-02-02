@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class SignUpPage extends StatelessWidget {
   const SignUpPage({super.key});

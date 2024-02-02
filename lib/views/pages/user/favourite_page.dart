@@ -1,4 +1,4 @@
-part of 'pages.dart';
+part of '../pages.dart';
 
 class FavouritePage extends StatelessWidget {
   const FavouritePage({super.key});

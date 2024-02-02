@@ -1,11 +1,5 @@
 part of 'widgets.dart';
 
-// List<Map> routeDataScreening = [
-//   {'title': 'Film Edukasi', 'route': '/film'},
-//   {'title': 'Podcast Edukasi', 'route': '/podcast'},
-//   {'title': 'Video Edukasi', 'route': '/educational-video'},
-//   {'title': 'Infographics', 'route': '/infographics'},
-// ];
 
 class ScreeningChooseListItem extends StatelessWidget {
   const ScreeningChooseListItem({

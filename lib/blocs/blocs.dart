@@ -1,13 +1,9 @@
-import 'dart:math';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/models/models.dart';
 import 'package:sirama/services/services.dart';
 import 'package:sirama/views/pages/pages.dart';
-import 'package:sirama/views/widgets/widgets.dart';
 
 part 'homepage_bloc/homepage_bloc.dart';
 part 'homepage_bloc/homepage_event.dart';
@@ -45,6 +41,3 @@ part 'quote_bloc/quote_bloc.dart';
 part 'quote_bloc/quote_event.dart';
 part 'quote_bloc/quote_state.dart';
 
-part 'new_content_bloc/new_content_bloc.dart';
-part 'new_content_bloc/new_content_event.dart';
-part 'new_content_bloc/new_content_state.dart';
