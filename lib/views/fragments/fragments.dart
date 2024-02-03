@@ -10,6 +10,7 @@ import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 import 'package:intl/intl.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

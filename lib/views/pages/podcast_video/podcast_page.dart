@@ -130,9 +130,27 @@ class PodcastPage extends StatelessWidget {
             ),
           );
         } else if (statePodcast is PodcastInitial) {
-          return const CircularProgressIndicator();
+          return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: const Text('Film Edukasi'),
+            centerTitle: true,
+          ),
+          body: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
         } else if (statePodcast is PodcastError) {
-          return const Text('Error loading podcasts');
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: const Text('Podcast Edukasi'),
+              centerTitle: true,
+            ),
+            body: ErrorOccuredButton(
+              onRetryPressed: () => MyApp.podcastBloc.add(InitializePodcastData()),
+            ),
+          );
         } else {
           return Container();
         }

@@ -2283,10 +2283,6 @@ mixin _$EducationalVideo {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
-  int? get totalLikes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
-  set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2313,7 +2309,6 @@ abstract class $EducationalVideoCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2338,7 +2333,6 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2370,10 +2364,6 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2398,7 +2388,6 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2421,7 +2410,6 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_$EducationalVideoImpl(
@@ -2453,10 +2441,6 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2476,7 +2460,6 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -2505,15 +2488,12 @@ class _$EducationalVideoImpl implements _EducationalVideo {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
-  @JsonKey(name: 'total_likes')
-  int? totalLikes;
-  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -2540,7 +2520,6 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
 
@@ -2582,11 +2561,6 @@ abstract class _EducationalVideo implements EducationalVideo {
   DateTime? get updatedAt;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
-  @override
-  @JsonKey(name: 'total_likes')
-  int? get totalLikes;
-  @JsonKey(name: 'total_likes')
-  set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;

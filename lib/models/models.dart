@@ -131,7 +131,6 @@ class EducationalVideo with _$EducationalVideo {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _EducationalVideo;
 

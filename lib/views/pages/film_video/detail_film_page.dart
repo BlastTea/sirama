@@ -67,7 +67,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                                 onPressed: () {},
                                 icon: const Icon(Icons.favorite),
                               ),
-                              Text((widget.film.totalLikes ?? 0) as String),
+                              Text(widget.film.totalLikes?.toString() ?? '0'),
                             ],
                           ),
                         ),

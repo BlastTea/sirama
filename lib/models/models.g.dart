@@ -226,7 +226,6 @@ _$EducationalVideoImpl _$$EducationalVideoImplFromJson(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'] as int?,
     );
 
 Map<String, dynamic> _$$EducationalVideoImplToJson(
@@ -239,7 +238,6 @@ Map<String, dynamic> _$$EducationalVideoImplToJson(
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
-      'total_likes': instance.totalLikes,
     };
 
 _$QuoteImpl _$$QuoteImplFromJson(Map<String, dynamic> json) => _$QuoteImpl(
