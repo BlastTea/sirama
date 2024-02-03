@@ -1,7 +1,7 @@
 part of '../pages.dart';
 
-class EducationalVideoPage extends StatelessWidget {
-  const EducationalVideoPage({super.key});
+class AllEducationalVideoPage extends StatelessWidget {
+  const AllEducationalVideoPage({super.key});
 
   static Widget listVideo({
     required BuildContext context,
@@ -13,9 +13,11 @@ class EducationalVideoPage extends StatelessWidget {
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          EducationalVideo educationalVideo = stateEducationalVideo.educationalVideos[index];
+          EducationalVideo educationalVideo =
+              stateEducationalVideo.educationalVideos[index];
 
-          if (educationalVideo.idVideoEdukasi == currentEducationVideo) return Container();
+          if (educationalVideo.idVideoEdukasi == currentEducationVideo)
+            return Container();
 
           return InkWell(
             onTap: () {
@@ -39,7 +41,8 @@ class EducationalVideoPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     child: educationalVideo.thumbnailImageData != null
                         ? Image.memory(
-                            Uint8List.fromList(educationalVideo.thumbnailImageData!),
+                            Uint8List.fromList(
+                                educationalVideo.thumbnailImageData!),
                             fit: BoxFit.cover,
                           )
                         : Image.network(
@@ -71,8 +74,6 @@ class EducationalVideoPage extends StatelessWidget {
         itemCount: stateEducationalVideo.educationalVideos.length,
       );
 
-    
-
   @override
   Widget build(BuildContext context) {
     if (MyApp.educationavideoBloc.state is EducationalVideoInitial) {
@@ -82,44 +83,41 @@ class EducationalVideoPage extends StatelessWidget {
     return BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
       builder: (context, stateEducationalVideo) {
         if (stateEducationalVideo is EducationalVideoDataLoaded) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Video Edukasi'),
-              centerTitle: true,
-            ),
-            body: SafeArea(
-              child: ListView(
-                children: [
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: CardTile(
-                      title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                      button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-                    ),
+          SafeArea(
+            child: ListView(
+              children: [
+                const SizedBox(height: 20),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  child: CardTile(
+                    title: Text(
+                        'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                    button: Text(
+                        'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
                   ),
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Video edukasi terbaru',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
+                ),
+                const SizedBox(height: 20),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: Row(
+                    children: [
+                      Text(
+                        'Video edukasi terbaru',
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.bold),
+                      ),
+                    ],
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: listVideo(
-                      context: context,
-                      stateEducationalVideo: stateEducationalVideo,
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                  child: listVideo(
+                    context: context,
+                    stateEducationalVideo: stateEducationalVideo,
+                  ),
+                )
+              ],
             ),
           );
         } else if (stateEducationalVideo is EducationalVideoError) {
@@ -130,7 +128,8 @@ class EducationalVideoPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.educationavideoBloc.add(InitializeEducationalVideoData()),
+              onRetryPressed: () => MyApp.educationavideoBloc
+                  .add(InitializeEducationalVideoData()),
             ),
           );
         }

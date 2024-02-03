@@ -33,6 +33,7 @@ part 'ask_the_expert/input_ask_page.dart';
 part 'ask_the_expert/chat_ask_the_expert_page.dart';
 
 part 'educational_video/educational_video_page.dart';
+part 'educational_video/all_educational_video_page.dart';
 part 'educational_video/details_educational_video_page.dart';
 
 part 'film_video/detail_film_page.dart';
