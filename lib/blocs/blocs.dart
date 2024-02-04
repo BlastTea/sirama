@@ -45,6 +45,3 @@ part 'quote_bloc/quote_bloc.dart';
 part 'quote_bloc/quote_event.dart';
 part 'quote_bloc/quote_state.dart';
 
-part 'new_content_bloc/new_content_bloc.dart';
-part 'new_content_bloc/new_content_event.dart';
-part 'new_content_bloc/new_content_state.dart';

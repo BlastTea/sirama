@@ -66,7 +66,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                                   onPressed: () {},
                                   icon: const Icon(Icons.favorite),
                                 ),
-                                const Text('1231'),
+                                Text(widget.educationalVideo.totalLikes?.toString() ?? '0'),
                               ],
                             ),
                           ),

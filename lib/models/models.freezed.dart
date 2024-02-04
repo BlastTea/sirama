@@ -1213,18 +1213,41 @@ Podcast _$PodcastFromJson(Map<String, dynamic> json) {
 mixin _$Podcast {
   @JsonKey(name: 'id_podcast')
   int? get idPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_podcast')
+  set idPodcast(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'judul_podcast')
   String? get judulPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_podcast')
+  set judulPodcast(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'link_podcast')
   String? get linkPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_podcast')
+  set linkPodcast(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'tgl_upload')
   DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  set tanggalUpload(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'upload_user_id')
   int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  set uploadUserId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set thumbnailImageData(List<int>? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1243,7 +1266,10 @@ abstract class $PodcastCopyWith<$Res> {
       @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? thumbnailImageData});
 }
 
 /// @nodoc
@@ -1266,6 +1292,8 @@ class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
+    Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
       idPodcast: freezed == idPodcast
@@ -1296,6 +1324,14 @@ class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailImageData: freezed == thumbnailImageData
+          ? _value.thumbnailImageData
+          : thumbnailImageData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ) as $Val);
   }
 }
@@ -1314,7 +1350,10 @@ abstract class _$$PodcastImplCopyWith<$Res> implements $PodcastCopyWith<$Res> {
       @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? thumbnailImageData});
 }
 
 /// @nodoc
@@ -1335,6 +1374,8 @@ class __$$PodcastImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
+    Object? thumbnailImageData = freezed,
   }) {
     return _then(_$PodcastImpl(
       idPodcast: freezed == idPodcast
@@ -1365,6 +1406,14 @@ class __$$PodcastImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
+      thumbnailImageData: freezed == thumbnailImageData
+          ? _value.thumbnailImageData
+          : thumbnailImageData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
     ));
   }
 }
@@ -1372,70 +1421,53 @@ class __$$PodcastImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PodcastImpl implements _Podcast {
-  const _$PodcastImpl(
+  _$PodcastImpl(
       {@JsonKey(name: 'id_podcast') this.idPodcast,
       @JsonKey(name: 'judul_podcast') this.judulPodcast,
       @JsonKey(name: 'link_podcast') this.linkPodcast,
       @JsonKey(name: 'tgl_upload') this.tanggalUpload,
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt});
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'total_likes') this.totalLikes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.thumbnailImageData});
 
   factory _$PodcastImpl.fromJson(Map<String, dynamic> json) =>
       _$$PodcastImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_podcast')
-  final int? idPodcast;
+  int? idPodcast;
   @override
   @JsonKey(name: 'judul_podcast')
-  final String? judulPodcast;
+  String? judulPodcast;
   @override
   @JsonKey(name: 'link_podcast')
-  final String? linkPodcast;
+  String? linkPodcast;
   @override
   @JsonKey(name: 'tgl_upload')
-  final DateTime? tanggalUpload;
+  DateTime? tanggalUpload;
   @override
   @JsonKey(name: 'upload_user_id')
-  final int? uploadUserId;
+  int? uploadUserId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
+  @override
+  @JsonKey(name: 'total_likes')
+  int? totalLikes;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'Podcast(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Podcast(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PodcastImpl &&
-            (identical(other.idPodcast, idPodcast) ||
-                other.idPodcast == idPodcast) &&
-            (identical(other.judulPodcast, judulPodcast) ||
-                other.judulPodcast == judulPodcast) &&
-            (identical(other.linkPodcast, linkPodcast) ||
-                other.linkPodcast == linkPodcast) &&
-            (identical(other.tanggalUpload, tanggalUpload) ||
-                other.tanggalUpload == tanggalUpload) &&
-            (identical(other.uploadUserId, uploadUserId) ||
-                other.uploadUserId == uploadUserId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, idPodcast, judulPodcast,
-      linkPodcast, tanggalUpload, uploadUserId, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -1452,38 +1484,65 @@ class _$PodcastImpl implements _Podcast {
 }
 
 abstract class _Podcast implements Podcast {
-  const factory _Podcast(
-      {@JsonKey(name: 'id_podcast') final int? idPodcast,
-      @JsonKey(name: 'judul_podcast') final String? judulPodcast,
-      @JsonKey(name: 'link_podcast') final String? linkPodcast,
-      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
-      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$PodcastImpl;
+  factory _Podcast(
+      {@JsonKey(name: 'id_podcast') int? idPodcast,
+      @JsonKey(name: 'judul_podcast') String? judulPodcast,
+      @JsonKey(name: 'link_podcast') String? linkPodcast,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? thumbnailImageData}) = _$PodcastImpl;
 
   factory _Podcast.fromJson(Map<String, dynamic> json) = _$PodcastImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_podcast')
   int? get idPodcast;
+  @JsonKey(name: 'id_podcast')
+  set idPodcast(int? value);
   @override
   @JsonKey(name: 'judul_podcast')
   String? get judulPodcast;
+  @JsonKey(name: 'judul_podcast')
+  set judulPodcast(String? value);
   @override
   @JsonKey(name: 'link_podcast')
   String? get linkPodcast;
+  @JsonKey(name: 'link_podcast')
+  set linkPodcast(String? value);
   @override
   @JsonKey(name: 'tgl_upload')
   DateTime? get tanggalUpload;
+  @JsonKey(name: 'tgl_upload')
+  set tanggalUpload(DateTime? value);
   @override
   @JsonKey(name: 'upload_user_id')
   int? get uploadUserId;
+  @JsonKey(name: 'upload_user_id')
+  set uploadUserId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
+  @override
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get thumbnailImageData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
   _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
@@ -1524,6 +1583,10 @@ mixin _$Film {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1548,6 +1611,7 @@ abstract class $FilmCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1572,6 +1636,7 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1603,6 +1668,10 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -1626,6 +1695,7 @@ abstract class _$$FilmImplCopyWith<$Res> implements $FilmCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1647,6 +1717,7 @@ class __$$FilmImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_$FilmImpl(
@@ -1678,6 +1749,10 @@ class __$$FilmImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -1697,6 +1772,7 @@ class _$FilmImpl implements _Film {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'total_likes') this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -1725,12 +1801,15 @@ class _$FilmImpl implements _Film {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
+  @JsonKey(name: 'total_likes')
+  int? totalLikes;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData)';
+    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -1756,6 +1835,7 @@ abstract class _Film implements Film {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$FilmImpl;
 
@@ -1797,6 +1877,11 @@ abstract class _Film implements Film {
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
   @override
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value);
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1829,6 +1914,8 @@ mixin _$Infografis {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1850,7 +1937,8 @@ abstract class $InfografisCopyWith<$Res> {
       @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes});
 }
 
 /// @nodoc
@@ -1874,6 +1962,7 @@ class _$InfografisCopyWithImpl<$Res, $Val extends Infografis>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
   }) {
     return _then(_value.copyWith(
       idInfografis: freezed == idInfografis
@@ -1908,6 +1997,10 @@ class _$InfografisCopyWithImpl<$Res, $Val extends Infografis>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -1928,7 +2021,8 @@ abstract class _$$InfografisImplCopyWith<$Res>
       @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes});
 }
 
 /// @nodoc
@@ -1950,6 +2044,7 @@ class __$$InfografisImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
   }) {
     return _then(_$InfografisImpl(
       idInfografis: freezed == idInfografis
@@ -1984,6 +2079,10 @@ class __$$InfografisImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -1991,7 +2090,7 @@ class __$$InfografisImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$InfografisImpl implements _Infografis {
-  const _$InfografisImpl(
+  _$InfografisImpl(
       {@JsonKey(name: 'id_infografis') this.idInfografis,
       @JsonKey(name: 'judul_infografis') this.judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') this.deskripsiInfografis,
@@ -1999,7 +2098,8 @@ class _$InfografisImpl implements _Infografis {
       @JsonKey(name: 'gambar_infografis') this.gambarInfografis,
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt});
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'total_likes') this.totalLikes});
 
   factory _$InfografisImpl.fromJson(Map<String, dynamic> json) =>
       _$$InfografisImplFromJson(json);
@@ -2028,10 +2128,13 @@ class _$InfografisImpl implements _Infografis {
   @override
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
+  @override
+  @JsonKey(name: 'total_likes')
+  final int? totalLikes;
 
   @override
   String toString() {
-    return 'Infografis(idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'Infografis(idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes)';
   }
 
   @override
@@ -2054,7 +2157,9 @@ class _$InfografisImpl implements _Infografis {
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
+                other.updatedAt == updatedAt) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes));
   }
 
   @JsonKey(ignore: true)
@@ -2068,7 +2173,8 @@ class _$InfografisImpl implements _Infografis {
       gambarInfografis,
       uploadUserId,
       createdAt,
-      updatedAt);
+      updatedAt,
+      totalLikes);
 
   @JsonKey(ignore: true)
   @override
@@ -2085,7 +2191,7 @@ class _$InfografisImpl implements _Infografis {
 }
 
 abstract class _Infografis implements Infografis {
-  const factory _Infografis(
+  factory _Infografis(
       {@JsonKey(name: 'id_infografis') final int? idInfografis,
       @JsonKey(name: 'judul_infografis') final String? judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') final String? deskripsiInfografis,
@@ -2093,8 +2199,8 @@ abstract class _Infografis implements Infografis {
       @JsonKey(name: 'gambar_infografis') final String? gambarInfografis,
       @JsonKey(name: 'upload_user_id') final int? uploadUserId,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at')
-      final DateTime? updatedAt}) = _$InfografisImpl;
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') final int? totalLikes}) = _$InfografisImpl;
 
   factory _Infografis.fromJson(Map<String, dynamic> json) =
       _$InfografisImpl.fromJson;
@@ -2123,6 +2229,9 @@ abstract class _Infografis implements Infografis {
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @override
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes;
   @override
   @JsonKey(ignore: true)
   _$$InfografisImplCopyWith<_$InfografisImpl> get copyWith =>
@@ -2163,6 +2272,10 @@ mixin _$EducationalVideo {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2189,6 +2302,7 @@ abstract class $EducationalVideoCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2213,6 +2327,7 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2244,6 +2359,10 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2268,6 +2387,7 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2290,6 +2410,7 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_$EducationalVideoImpl(
@@ -2321,6 +2442,10 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2340,6 +2465,7 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'total_likes') this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -2368,12 +2494,15 @@ class _$EducationalVideoImpl implements _EducationalVideo {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
+  @JsonKey(name: 'total_likes')
+  int? totalLikes;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData)';
+    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -2400,6 +2529,7 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
 
@@ -2441,6 +2571,11 @@ abstract class _EducationalVideo implements EducationalVideo {
   DateTime? get updatedAt;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
+  @override
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;
@@ -2709,1193 +2844,5 @@ abstract class _Quote implements Quote {
   @override
   @JsonKey(ignore: true)
   _$$QuoteImplCopyWith<_$QuoteImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-Konten _$KontenFromJson(Map<String, dynamic> json) {
-  return _Konten.fromJson(json);
-}
-
-/// @nodoc
-mixin _$Konten {
-  @JsonKey(name: 'podcast_terbaru')
-  List<PodcastTerbaru>? get podcastTerbaru =>
-      throw _privateConstructorUsedError;
-  @JsonKey(name: 'film_terbaru')
-  List<FilmTerbaru>? get filmTerbaru => throw _privateConstructorUsedError;
-  @JsonKey(name: 'video_terbaru')
-  List<VideoTerbaru>? get videoTerbaru => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $KontenCopyWith<Konten> get copyWith => throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $KontenCopyWith<$Res> {
-  factory $KontenCopyWith(Konten value, $Res Function(Konten) then) =
-      _$KontenCopyWithImpl<$Res, Konten>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'podcast_terbaru') List<PodcastTerbaru>? podcastTerbaru,
-      @JsonKey(name: 'film_terbaru') List<FilmTerbaru>? filmTerbaru,
-      @JsonKey(name: 'video_terbaru') List<VideoTerbaru>? videoTerbaru});
-}
-
-/// @nodoc
-class _$KontenCopyWithImpl<$Res, $Val extends Konten>
-    implements $KontenCopyWith<$Res> {
-  _$KontenCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? podcastTerbaru = freezed,
-    Object? filmTerbaru = freezed,
-    Object? videoTerbaru = freezed,
-  }) {
-    return _then(_value.copyWith(
-      podcastTerbaru: freezed == podcastTerbaru
-          ? _value.podcastTerbaru
-          : podcastTerbaru // ignore: cast_nullable_to_non_nullable
-              as List<PodcastTerbaru>?,
-      filmTerbaru: freezed == filmTerbaru
-          ? _value.filmTerbaru
-          : filmTerbaru // ignore: cast_nullable_to_non_nullable
-              as List<FilmTerbaru>?,
-      videoTerbaru: freezed == videoTerbaru
-          ? _value.videoTerbaru
-          : videoTerbaru // ignore: cast_nullable_to_non_nullable
-              as List<VideoTerbaru>?,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$KontenImplCopyWith<$Res> implements $KontenCopyWith<$Res> {
-  factory _$$KontenImplCopyWith(
-          _$KontenImpl value, $Res Function(_$KontenImpl) then) =
-      __$$KontenImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'podcast_terbaru') List<PodcastTerbaru>? podcastTerbaru,
-      @JsonKey(name: 'film_terbaru') List<FilmTerbaru>? filmTerbaru,
-      @JsonKey(name: 'video_terbaru') List<VideoTerbaru>? videoTerbaru});
-}
-
-/// @nodoc
-class __$$KontenImplCopyWithImpl<$Res>
-    extends _$KontenCopyWithImpl<$Res, _$KontenImpl>
-    implements _$$KontenImplCopyWith<$Res> {
-  __$$KontenImplCopyWithImpl(
-      _$KontenImpl _value, $Res Function(_$KontenImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? podcastTerbaru = freezed,
-    Object? filmTerbaru = freezed,
-    Object? videoTerbaru = freezed,
-  }) {
-    return _then(_$KontenImpl(
-      podcastTerbaru: freezed == podcastTerbaru
-          ? _value._podcastTerbaru
-          : podcastTerbaru // ignore: cast_nullable_to_non_nullable
-              as List<PodcastTerbaru>?,
-      filmTerbaru: freezed == filmTerbaru
-          ? _value._filmTerbaru
-          : filmTerbaru // ignore: cast_nullable_to_non_nullable
-              as List<FilmTerbaru>?,
-      videoTerbaru: freezed == videoTerbaru
-          ? _value._videoTerbaru
-          : videoTerbaru // ignore: cast_nullable_to_non_nullable
-              as List<VideoTerbaru>?,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$KontenImpl implements _Konten {
-  const _$KontenImpl(
-      {@JsonKey(name: 'podcast_terbaru')
-      final List<PodcastTerbaru>? podcastTerbaru,
-      @JsonKey(name: 'film_terbaru') final List<FilmTerbaru>? filmTerbaru,
-      @JsonKey(name: 'video_terbaru') final List<VideoTerbaru>? videoTerbaru})
-      : _podcastTerbaru = podcastTerbaru,
-        _filmTerbaru = filmTerbaru,
-        _videoTerbaru = videoTerbaru;
-
-  factory _$KontenImpl.fromJson(Map<String, dynamic> json) =>
-      _$$KontenImplFromJson(json);
-
-  final List<PodcastTerbaru>? _podcastTerbaru;
-  @override
-  @JsonKey(name: 'podcast_terbaru')
-  List<PodcastTerbaru>? get podcastTerbaru {
-    final value = _podcastTerbaru;
-    if (value == null) return null;
-    if (_podcastTerbaru is EqualUnmodifiableListView) return _podcastTerbaru;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<FilmTerbaru>? _filmTerbaru;
-  @override
-  @JsonKey(name: 'film_terbaru')
-  List<FilmTerbaru>? get filmTerbaru {
-    final value = _filmTerbaru;
-    if (value == null) return null;
-    if (_filmTerbaru is EqualUnmodifiableListView) return _filmTerbaru;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  final List<VideoTerbaru>? _videoTerbaru;
-  @override
-  @JsonKey(name: 'video_terbaru')
-  List<VideoTerbaru>? get videoTerbaru {
-    final value = _videoTerbaru;
-    if (value == null) return null;
-    if (_videoTerbaru is EqualUnmodifiableListView) return _videoTerbaru;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
-  @override
-  String toString() {
-    return 'Konten(podcastTerbaru: $podcastTerbaru, filmTerbaru: $filmTerbaru, videoTerbaru: $videoTerbaru)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$KontenImpl &&
-            const DeepCollectionEquality()
-                .equals(other._podcastTerbaru, _podcastTerbaru) &&
-            const DeepCollectionEquality()
-                .equals(other._filmTerbaru, _filmTerbaru) &&
-            const DeepCollectionEquality()
-                .equals(other._videoTerbaru, _videoTerbaru));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_podcastTerbaru),
-      const DeepCollectionEquality().hash(_filmTerbaru),
-      const DeepCollectionEquality().hash(_videoTerbaru));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$KontenImplCopyWith<_$KontenImpl> get copyWith =>
-      __$$KontenImplCopyWithImpl<_$KontenImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$KontenImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _Konten implements Konten {
-  const factory _Konten(
-      {@JsonKey(name: 'podcast_terbaru')
-      final List<PodcastTerbaru>? podcastTerbaru,
-      @JsonKey(name: 'film_terbaru') final List<FilmTerbaru>? filmTerbaru,
-      @JsonKey(name: 'video_terbaru')
-      final List<VideoTerbaru>? videoTerbaru}) = _$KontenImpl;
-
-  factory _Konten.fromJson(Map<String, dynamic> json) = _$KontenImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'podcast_terbaru')
-  List<PodcastTerbaru>? get podcastTerbaru;
-  @override
-  @JsonKey(name: 'film_terbaru')
-  List<FilmTerbaru>? get filmTerbaru;
-  @override
-  @JsonKey(name: 'video_terbaru')
-  List<VideoTerbaru>? get videoTerbaru;
-  @override
-  @JsonKey(ignore: true)
-  _$$KontenImplCopyWith<_$KontenImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-PodcastTerbaru _$PodcastTerbaruFromJson(Map<String, dynamic> json) {
-  return _PodcastTerbaru.fromJson(json);
-}
-
-/// @nodoc
-mixin _$PodcastTerbaru {
-  @JsonKey(name: 'id_podcast')
-  int? get idPodcast => throw _privateConstructorUsedError;
-  @JsonKey(name: 'judul_podcast')
-  String? get judulPodcast => throw _privateConstructorUsedError;
-  @JsonKey(name: 'link_podcast')
-  String? get linkPodcast => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tgl_upload')
-  String? get tglUpload => throw _privateConstructorUsedError;
-  @JsonKey(name: 'upload_user_id')
-  int? get uploadUserId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
-  dynamic get totalLikes => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $PodcastTerbaruCopyWith<PodcastTerbaru> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $PodcastTerbaruCopyWith<$Res> {
-  factory $PodcastTerbaruCopyWith(
-          PodcastTerbaru value, $Res Function(PodcastTerbaru) then) =
-      _$PodcastTerbaruCopyWithImpl<$Res, PodcastTerbaru>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'id_podcast') int? idPodcast,
-      @JsonKey(name: 'judul_podcast') String? judulPodcast,
-      @JsonKey(name: 'link_podcast') String? linkPodcast,
-      @JsonKey(name: 'tgl_upload') String? tglUpload,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') dynamic totalLikes});
-}
-
-/// @nodoc
-class _$PodcastTerbaruCopyWithImpl<$Res, $Val extends PodcastTerbaru>
-    implements $PodcastTerbaruCopyWith<$Res> {
-  _$PodcastTerbaruCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idPodcast = freezed,
-    Object? judulPodcast = freezed,
-    Object? linkPodcast = freezed,
-    Object? tglUpload = freezed,
-    Object? uploadUserId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
-  }) {
-    return _then(_value.copyWith(
-      idPodcast: freezed == idPodcast
-          ? _value.idPodcast
-          : idPodcast // ignore: cast_nullable_to_non_nullable
-              as int?,
-      judulPodcast: freezed == judulPodcast
-          ? _value.judulPodcast
-          : judulPodcast // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkPodcast: freezed == linkPodcast
-          ? _value.linkPodcast
-          : linkPodcast // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tglUpload: freezed == tglUpload
-          ? _value.tglUpload
-          : tglUpload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadUserId: freezed == uploadUserId
-          ? _value.uploadUserId
-          : uploadUserId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$PodcastTerbaruImplCopyWith<$Res>
-    implements $PodcastTerbaruCopyWith<$Res> {
-  factory _$$PodcastTerbaruImplCopyWith(_$PodcastTerbaruImpl value,
-          $Res Function(_$PodcastTerbaruImpl) then) =
-      __$$PodcastTerbaruImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'id_podcast') int? idPodcast,
-      @JsonKey(name: 'judul_podcast') String? judulPodcast,
-      @JsonKey(name: 'link_podcast') String? linkPodcast,
-      @JsonKey(name: 'tgl_upload') String? tglUpload,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') dynamic totalLikes});
-}
-
-/// @nodoc
-class __$$PodcastTerbaruImplCopyWithImpl<$Res>
-    extends _$PodcastTerbaruCopyWithImpl<$Res, _$PodcastTerbaruImpl>
-    implements _$$PodcastTerbaruImplCopyWith<$Res> {
-  __$$PodcastTerbaruImplCopyWithImpl(
-      _$PodcastTerbaruImpl _value, $Res Function(_$PodcastTerbaruImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idPodcast = freezed,
-    Object? judulPodcast = freezed,
-    Object? linkPodcast = freezed,
-    Object? tglUpload = freezed,
-    Object? uploadUserId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
-  }) {
-    return _then(_$PodcastTerbaruImpl(
-      idPodcast: freezed == idPodcast
-          ? _value.idPodcast
-          : idPodcast // ignore: cast_nullable_to_non_nullable
-              as int?,
-      judulPodcast: freezed == judulPodcast
-          ? _value.judulPodcast
-          : judulPodcast // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkPodcast: freezed == linkPodcast
-          ? _value.linkPodcast
-          : linkPodcast // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tglUpload: freezed == tglUpload
-          ? _value.tglUpload
-          : tglUpload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadUserId: freezed == uploadUserId
-          ? _value.uploadUserId
-          : uploadUserId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$PodcastTerbaruImpl implements _PodcastTerbaru {
-  const _$PodcastTerbaruImpl(
-      {@JsonKey(name: 'id_podcast') this.idPodcast,
-      @JsonKey(name: 'judul_podcast') this.judulPodcast,
-      @JsonKey(name: 'link_podcast') this.linkPodcast,
-      @JsonKey(name: 'tgl_upload') this.tglUpload,
-      @JsonKey(name: 'upload_user_id') this.uploadUserId,
-      @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes});
-
-  factory _$PodcastTerbaruImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PodcastTerbaruImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'id_podcast')
-  final int? idPodcast;
-  @override
-  @JsonKey(name: 'judul_podcast')
-  final String? judulPodcast;
-  @override
-  @JsonKey(name: 'link_podcast')
-  final String? linkPodcast;
-  @override
-  @JsonKey(name: 'tgl_upload')
-  final String? tglUpload;
-  @override
-  @JsonKey(name: 'upload_user_id')
-  final int? uploadUserId;
-  @override
-  @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
-  @override
-  @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
-  @override
-  @JsonKey(name: 'total_likes')
-  final dynamic totalLikes;
-
-  @override
-  String toString() {
-    return 'PodcastTerbaru(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tglUpload: $tglUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PodcastTerbaruImpl &&
-            (identical(other.idPodcast, idPodcast) ||
-                other.idPodcast == idPodcast) &&
-            (identical(other.judulPodcast, judulPodcast) ||
-                other.judulPodcast == judulPodcast) &&
-            (identical(other.linkPodcast, linkPodcast) ||
-                other.linkPodcast == linkPodcast) &&
-            (identical(other.tglUpload, tglUpload) ||
-                other.tglUpload == tglUpload) &&
-            (identical(other.uploadUserId, uploadUserId) ||
-                other.uploadUserId == uploadUserId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality()
-                .equals(other.totalLikes, totalLikes));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idPodcast,
-      judulPodcast,
-      linkPodcast,
-      tglUpload,
-      uploadUserId,
-      createdAt,
-      updatedAt,
-      const DeepCollectionEquality().hash(totalLikes));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$PodcastTerbaruImplCopyWith<_$PodcastTerbaruImpl> get copyWith =>
-      __$$PodcastTerbaruImplCopyWithImpl<_$PodcastTerbaruImpl>(
-          this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$PodcastTerbaruImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _PodcastTerbaru implements PodcastTerbaru {
-  const factory _PodcastTerbaru(
-          {@JsonKey(name: 'id_podcast') final int? idPodcast,
-          @JsonKey(name: 'judul_podcast') final String? judulPodcast,
-          @JsonKey(name: 'link_podcast') final String? linkPodcast,
-          @JsonKey(name: 'tgl_upload') final String? tglUpload,
-          @JsonKey(name: 'upload_user_id') final int? uploadUserId,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt,
-          @JsonKey(name: 'total_likes') final dynamic totalLikes}) =
-      _$PodcastTerbaruImpl;
-
-  factory _PodcastTerbaru.fromJson(Map<String, dynamic> json) =
-      _$PodcastTerbaruImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'id_podcast')
-  int? get idPodcast;
-  @override
-  @JsonKey(name: 'judul_podcast')
-  String? get judulPodcast;
-  @override
-  @JsonKey(name: 'link_podcast')
-  String? get linkPodcast;
-  @override
-  @JsonKey(name: 'tgl_upload')
-  String? get tglUpload;
-  @override
-  @JsonKey(name: 'upload_user_id')
-  int? get uploadUserId;
-  @override
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt;
-  @override
-  @JsonKey(name: 'updated_at')
-  DateTime? get updatedAt;
-  @override
-  @JsonKey(name: 'total_likes')
-  dynamic get totalLikes;
-  @override
-  @JsonKey(ignore: true)
-  _$$PodcastTerbaruImplCopyWith<_$PodcastTerbaruImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-FilmTerbaru _$FilmTerbaruFromJson(Map<String, dynamic> json) {
-  return _FilmTerbaru.fromJson(json);
-}
-
-/// @nodoc
-mixin _$FilmTerbaru {
-  @JsonKey(name: 'id_film')
-  int? get idFilm => throw _privateConstructorUsedError;
-  @JsonKey(name: 'judul_film')
-  String? get judulFilm => throw _privateConstructorUsedError;
-  @JsonKey(name: 'link_film')
-  String? get linkFilm => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tgl_upload')
-  String? get tglUpload => throw _privateConstructorUsedError;
-  @JsonKey(name: 'upload_user_id')
-  int? get uploadUserId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
-  dynamic get totalLikes => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $FilmTerbaruCopyWith<FilmTerbaru> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $FilmTerbaruCopyWith<$Res> {
-  factory $FilmTerbaruCopyWith(
-          FilmTerbaru value, $Res Function(FilmTerbaru) then) =
-      _$FilmTerbaruCopyWithImpl<$Res, FilmTerbaru>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'id_film') int? idFilm,
-      @JsonKey(name: 'judul_film') String? judulFilm,
-      @JsonKey(name: 'link_film') String? linkFilm,
-      @JsonKey(name: 'tgl_upload') String? tglUpload,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') dynamic totalLikes});
-}
-
-/// @nodoc
-class _$FilmTerbaruCopyWithImpl<$Res, $Val extends FilmTerbaru>
-    implements $FilmTerbaruCopyWith<$Res> {
-  _$FilmTerbaruCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idFilm = freezed,
-    Object? judulFilm = freezed,
-    Object? linkFilm = freezed,
-    Object? tglUpload = freezed,
-    Object? uploadUserId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
-  }) {
-    return _then(_value.copyWith(
-      idFilm: freezed == idFilm
-          ? _value.idFilm
-          : idFilm // ignore: cast_nullable_to_non_nullable
-              as int?,
-      judulFilm: freezed == judulFilm
-          ? _value.judulFilm
-          : judulFilm // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkFilm: freezed == linkFilm
-          ? _value.linkFilm
-          : linkFilm // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tglUpload: freezed == tglUpload
-          ? _value.tglUpload
-          : tglUpload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadUserId: freezed == uploadUserId
-          ? _value.uploadUserId
-          : uploadUserId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$FilmTerbaruImplCopyWith<$Res>
-    implements $FilmTerbaruCopyWith<$Res> {
-  factory _$$FilmTerbaruImplCopyWith(
-          _$FilmTerbaruImpl value, $Res Function(_$FilmTerbaruImpl) then) =
-      __$$FilmTerbaruImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'id_film') int? idFilm,
-      @JsonKey(name: 'judul_film') String? judulFilm,
-      @JsonKey(name: 'link_film') String? linkFilm,
-      @JsonKey(name: 'tgl_upload') String? tglUpload,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') dynamic totalLikes});
-}
-
-/// @nodoc
-class __$$FilmTerbaruImplCopyWithImpl<$Res>
-    extends _$FilmTerbaruCopyWithImpl<$Res, _$FilmTerbaruImpl>
-    implements _$$FilmTerbaruImplCopyWith<$Res> {
-  __$$FilmTerbaruImplCopyWithImpl(
-      _$FilmTerbaruImpl _value, $Res Function(_$FilmTerbaruImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idFilm = freezed,
-    Object? judulFilm = freezed,
-    Object? linkFilm = freezed,
-    Object? tglUpload = freezed,
-    Object? uploadUserId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
-  }) {
-    return _then(_$FilmTerbaruImpl(
-      idFilm: freezed == idFilm
-          ? _value.idFilm
-          : idFilm // ignore: cast_nullable_to_non_nullable
-              as int?,
-      judulFilm: freezed == judulFilm
-          ? _value.judulFilm
-          : judulFilm // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkFilm: freezed == linkFilm
-          ? _value.linkFilm
-          : linkFilm // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tglUpload: freezed == tglUpload
-          ? _value.tglUpload
-          : tglUpload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadUserId: freezed == uploadUserId
-          ? _value.uploadUserId
-          : uploadUserId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$FilmTerbaruImpl implements _FilmTerbaru {
-  const _$FilmTerbaruImpl(
-      {@JsonKey(name: 'id_film') this.idFilm,
-      @JsonKey(name: 'judul_film') this.judulFilm,
-      @JsonKey(name: 'link_film') this.linkFilm,
-      @JsonKey(name: 'tgl_upload') this.tglUpload,
-      @JsonKey(name: 'upload_user_id') this.uploadUserId,
-      @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes});
-
-  factory _$FilmTerbaruImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FilmTerbaruImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'id_film')
-  final int? idFilm;
-  @override
-  @JsonKey(name: 'judul_film')
-  final String? judulFilm;
-  @override
-  @JsonKey(name: 'link_film')
-  final String? linkFilm;
-  @override
-  @JsonKey(name: 'tgl_upload')
-  final String? tglUpload;
-  @override
-  @JsonKey(name: 'upload_user_id')
-  final int? uploadUserId;
-  @override
-  @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
-  @override
-  @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
-  @override
-  @JsonKey(name: 'total_likes')
-  final dynamic totalLikes;
-
-  @override
-  String toString() {
-    return 'FilmTerbaru(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tglUpload: $tglUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$FilmTerbaruImpl &&
-            (identical(other.idFilm, idFilm) || other.idFilm == idFilm) &&
-            (identical(other.judulFilm, judulFilm) ||
-                other.judulFilm == judulFilm) &&
-            (identical(other.linkFilm, linkFilm) ||
-                other.linkFilm == linkFilm) &&
-            (identical(other.tglUpload, tglUpload) ||
-                other.tglUpload == tglUpload) &&
-            (identical(other.uploadUserId, uploadUserId) ||
-                other.uploadUserId == uploadUserId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality()
-                .equals(other.totalLikes, totalLikes));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idFilm,
-      judulFilm,
-      linkFilm,
-      tglUpload,
-      uploadUserId,
-      createdAt,
-      updatedAt,
-      const DeepCollectionEquality().hash(totalLikes));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$FilmTerbaruImplCopyWith<_$FilmTerbaruImpl> get copyWith =>
-      __$$FilmTerbaruImplCopyWithImpl<_$FilmTerbaruImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$FilmTerbaruImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _FilmTerbaru implements FilmTerbaru {
-  const factory _FilmTerbaru(
-          {@JsonKey(name: 'id_film') final int? idFilm,
-          @JsonKey(name: 'judul_film') final String? judulFilm,
-          @JsonKey(name: 'link_film') final String? linkFilm,
-          @JsonKey(name: 'tgl_upload') final String? tglUpload,
-          @JsonKey(name: 'upload_user_id') final int? uploadUserId,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt,
-          @JsonKey(name: 'total_likes') final dynamic totalLikes}) =
-      _$FilmTerbaruImpl;
-
-  factory _FilmTerbaru.fromJson(Map<String, dynamic> json) =
-      _$FilmTerbaruImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'id_film')
-  int? get idFilm;
-  @override
-  @JsonKey(name: 'judul_film')
-  String? get judulFilm;
-  @override
-  @JsonKey(name: 'link_film')
-  String? get linkFilm;
-  @override
-  @JsonKey(name: 'tgl_upload')
-  String? get tglUpload;
-  @override
-  @JsonKey(name: 'upload_user_id')
-  int? get uploadUserId;
-  @override
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt;
-  @override
-  @JsonKey(name: 'updated_at')
-  DateTime? get updatedAt;
-  @override
-  @JsonKey(name: 'total_likes')
-  dynamic get totalLikes;
-  @override
-  @JsonKey(ignore: true)
-  _$$FilmTerbaruImplCopyWith<_$FilmTerbaruImpl> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-VideoTerbaru _$VideoTerbaruFromJson(Map<String, dynamic> json) {
-  return _VideoTerbaru.fromJson(json);
-}
-
-/// @nodoc
-mixin _$VideoTerbaru {
-  @JsonKey(name: 'id_video_edukasi')
-  int? get idVideoEdukasi => throw _privateConstructorUsedError;
-  @JsonKey(name: 'judul_video_edukasi')
-  String? get judulVideoEdukasi => throw _privateConstructorUsedError;
-  @JsonKey(name: 'link_video_edukasi')
-  String? get linkVideoEdukasi => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tgl_upload')
-  String? get tglUpload => throw _privateConstructorUsedError;
-  @JsonKey(name: 'upload_user_id')
-  int? get uploadUserId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'updated_at')
-  DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
-  dynamic get totalLikes => throw _privateConstructorUsedError;
-
-  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-  @JsonKey(ignore: true)
-  $VideoTerbaruCopyWith<VideoTerbaru> get copyWith =>
-      throw _privateConstructorUsedError;
-}
-
-/// @nodoc
-abstract class $VideoTerbaruCopyWith<$Res> {
-  factory $VideoTerbaruCopyWith(
-          VideoTerbaru value, $Res Function(VideoTerbaru) then) =
-      _$VideoTerbaruCopyWithImpl<$Res, VideoTerbaru>;
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
-      @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
-      @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
-      @JsonKey(name: 'tgl_upload') String? tglUpload,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') dynamic totalLikes});
-}
-
-/// @nodoc
-class _$VideoTerbaruCopyWithImpl<$Res, $Val extends VideoTerbaru>
-    implements $VideoTerbaruCopyWith<$Res> {
-  _$VideoTerbaruCopyWithImpl(this._value, this._then);
-
-  // ignore: unused_field
-  final $Val _value;
-  // ignore: unused_field
-  final $Res Function($Val) _then;
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idVideoEdukasi = freezed,
-    Object? judulVideoEdukasi = freezed,
-    Object? linkVideoEdukasi = freezed,
-    Object? tglUpload = freezed,
-    Object? uploadUserId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
-  }) {
-    return _then(_value.copyWith(
-      idVideoEdukasi: freezed == idVideoEdukasi
-          ? _value.idVideoEdukasi
-          : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      judulVideoEdukasi: freezed == judulVideoEdukasi
-          ? _value.judulVideoEdukasi
-          : judulVideoEdukasi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkVideoEdukasi: freezed == linkVideoEdukasi
-          ? _value.linkVideoEdukasi
-          : linkVideoEdukasi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tglUpload: freezed == tglUpload
-          ? _value.tglUpload
-          : tglUpload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadUserId: freezed == uploadUserId
-          ? _value.uploadUserId
-          : uploadUserId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ) as $Val);
-  }
-}
-
-/// @nodoc
-abstract class _$$VideoTerbaruImplCopyWith<$Res>
-    implements $VideoTerbaruCopyWith<$Res> {
-  factory _$$VideoTerbaruImplCopyWith(
-          _$VideoTerbaruImpl value, $Res Function(_$VideoTerbaruImpl) then) =
-      __$$VideoTerbaruImplCopyWithImpl<$Res>;
-  @override
-  @useResult
-  $Res call(
-      {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
-      @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
-      @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
-      @JsonKey(name: 'tgl_upload') String? tglUpload,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') dynamic totalLikes});
-}
-
-/// @nodoc
-class __$$VideoTerbaruImplCopyWithImpl<$Res>
-    extends _$VideoTerbaruCopyWithImpl<$Res, _$VideoTerbaruImpl>
-    implements _$$VideoTerbaruImplCopyWith<$Res> {
-  __$$VideoTerbaruImplCopyWithImpl(
-      _$VideoTerbaruImpl _value, $Res Function(_$VideoTerbaruImpl) _then)
-      : super(_value, _then);
-
-  @pragma('vm:prefer-inline')
-  @override
-  $Res call({
-    Object? idVideoEdukasi = freezed,
-    Object? judulVideoEdukasi = freezed,
-    Object? linkVideoEdukasi = freezed,
-    Object? tglUpload = freezed,
-    Object? uploadUserId = freezed,
-    Object? createdAt = freezed,
-    Object? updatedAt = freezed,
-    Object? totalLikes = freezed,
-  }) {
-    return _then(_$VideoTerbaruImpl(
-      idVideoEdukasi: freezed == idVideoEdukasi
-          ? _value.idVideoEdukasi
-          : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
-              as int?,
-      judulVideoEdukasi: freezed == judulVideoEdukasi
-          ? _value.judulVideoEdukasi
-          : judulVideoEdukasi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      linkVideoEdukasi: freezed == linkVideoEdukasi
-          ? _value.linkVideoEdukasi
-          : linkVideoEdukasi // ignore: cast_nullable_to_non_nullable
-              as String?,
-      tglUpload: freezed == tglUpload
-          ? _value.tglUpload
-          : tglUpload // ignore: cast_nullable_to_non_nullable
-              as String?,
-      uploadUserId: freezed == uploadUserId
-          ? _value.uploadUserId
-          : uploadUserId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      createdAt: freezed == createdAt
-          ? _value.createdAt
-          : createdAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      updatedAt: freezed == updatedAt
-          ? _value.updatedAt
-          : updatedAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      totalLikes: freezed == totalLikes
-          ? _value.totalLikes
-          : totalLikes // ignore: cast_nullable_to_non_nullable
-              as dynamic,
-    ));
-  }
-}
-
-/// @nodoc
-@JsonSerializable()
-class _$VideoTerbaruImpl implements _VideoTerbaru {
-  const _$VideoTerbaruImpl(
-      {@JsonKey(name: 'id_video_edukasi') this.idVideoEdukasi,
-      @JsonKey(name: 'judul_video_edukasi') this.judulVideoEdukasi,
-      @JsonKey(name: 'link_video_edukasi') this.linkVideoEdukasi,
-      @JsonKey(name: 'tgl_upload') this.tglUpload,
-      @JsonKey(name: 'upload_user_id') this.uploadUserId,
-      @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes});
-
-  factory _$VideoTerbaruImpl.fromJson(Map<String, dynamic> json) =>
-      _$$VideoTerbaruImplFromJson(json);
-
-  @override
-  @JsonKey(name: 'id_video_edukasi')
-  final int? idVideoEdukasi;
-  @override
-  @JsonKey(name: 'judul_video_edukasi')
-  final String? judulVideoEdukasi;
-  @override
-  @JsonKey(name: 'link_video_edukasi')
-  final String? linkVideoEdukasi;
-  @override
-  @JsonKey(name: 'tgl_upload')
-  final String? tglUpload;
-  @override
-  @JsonKey(name: 'upload_user_id')
-  final int? uploadUserId;
-  @override
-  @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
-  @override
-  @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
-  @override
-  @JsonKey(name: 'total_likes')
-  final dynamic totalLikes;
-
-  @override
-  String toString() {
-    return 'VideoTerbaru(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tglUpload: $tglUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes)';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$VideoTerbaruImpl &&
-            (identical(other.idVideoEdukasi, idVideoEdukasi) ||
-                other.idVideoEdukasi == idVideoEdukasi) &&
-            (identical(other.judulVideoEdukasi, judulVideoEdukasi) ||
-                other.judulVideoEdukasi == judulVideoEdukasi) &&
-            (identical(other.linkVideoEdukasi, linkVideoEdukasi) ||
-                other.linkVideoEdukasi == linkVideoEdukasi) &&
-            (identical(other.tglUpload, tglUpload) ||
-                other.tglUpload == tglUpload) &&
-            (identical(other.uploadUserId, uploadUserId) ||
-                other.uploadUserId == uploadUserId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            const DeepCollectionEquality()
-                .equals(other.totalLikes, totalLikes));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idVideoEdukasi,
-      judulVideoEdukasi,
-      linkVideoEdukasi,
-      tglUpload,
-      uploadUserId,
-      createdAt,
-      updatedAt,
-      const DeepCollectionEquality().hash(totalLikes));
-
-  @JsonKey(ignore: true)
-  @override
-  @pragma('vm:prefer-inline')
-  _$$VideoTerbaruImplCopyWith<_$VideoTerbaruImpl> get copyWith =>
-      __$$VideoTerbaruImplCopyWithImpl<_$VideoTerbaruImpl>(this, _$identity);
-
-  @override
-  Map<String, dynamic> toJson() {
-    return _$$VideoTerbaruImplToJson(
-      this,
-    );
-  }
-}
-
-abstract class _VideoTerbaru implements VideoTerbaru {
-  const factory _VideoTerbaru(
-          {@JsonKey(name: 'id_video_edukasi') final int? idVideoEdukasi,
-          @JsonKey(name: 'judul_video_edukasi') final String? judulVideoEdukasi,
-          @JsonKey(name: 'link_video_edukasi') final String? linkVideoEdukasi,
-          @JsonKey(name: 'tgl_upload') final String? tglUpload,
-          @JsonKey(name: 'upload_user_id') final int? uploadUserId,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt,
-          @JsonKey(name: 'total_likes') final dynamic totalLikes}) =
-      _$VideoTerbaruImpl;
-
-  factory _VideoTerbaru.fromJson(Map<String, dynamic> json) =
-      _$VideoTerbaruImpl.fromJson;
-
-  @override
-  @JsonKey(name: 'id_video_edukasi')
-  int? get idVideoEdukasi;
-  @override
-  @JsonKey(name: 'judul_video_edukasi')
-  String? get judulVideoEdukasi;
-  @override
-  @JsonKey(name: 'link_video_edukasi')
-  String? get linkVideoEdukasi;
-  @override
-  @JsonKey(name: 'tgl_upload')
-  String? get tglUpload;
-  @override
-  @JsonKey(name: 'upload_user_id')
-  int? get uploadUserId;
-  @override
-  @JsonKey(name: 'created_at')
-  DateTime? get createdAt;
-  @override
-  @JsonKey(name: 'updated_at')
-  DateTime? get updatedAt;
-  @override
-  @JsonKey(name: 'total_likes')
-  dynamic get totalLikes;
-  @override
-  @JsonKey(ignore: true)
-  _$$VideoTerbaruImplCopyWith<_$VideoTerbaruImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

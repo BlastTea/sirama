@@ -147,9 +147,27 @@ class InfographicsPage extends StatelessWidget {
             ),
           );
         } else if (stateInfographics is InfographicsInitial) {
-          return const CircularProgressIndicator();
+          return Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.white,
+            title: const Text('Infografis Edukasi'),
+            centerTitle: true,
+          ),
+          body: const Center(
+            child: CircularProgressIndicator(),
+          ),
+        );
         } else if (stateInfographics is InfographicsError) {
-          return const Text('error');
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: const Text('Infografis Edukasi'),
+              centerTitle: true,
+            ),
+            body: ErrorOccuredButton(
+              onRetryPressed: () => MyApp.infografisBloc.add(InitializeInfographicsData()),
+            ),
+          );
         } else {
           return Container();
         }

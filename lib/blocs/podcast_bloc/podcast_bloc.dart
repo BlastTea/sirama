@@ -2,17 +2,35 @@ part of '../blocs.dart';
 
 class PodcastBloc extends Bloc<PodcastEvent, PodcastState> {
   PodcastBloc() : super(PodcastInitial()) {
-    on<SetPodcastState>(
-        (event, emit) => emit(event.state ?? _podcastDataLoaded));
+    on<SetPodcastState>((event, emit) => emit(event.state ?? _podcastDataLoaded));
 
     on<SetPodcastToInitial>((event, emit) => emit(PodcastInitial()));
 
     on<InitializePodcastData>((event, emit) async {
       try {
-        _podcastList = await ApiHelper.get('/api/podcast').then(
-            (value) => (value.data['data'] as List)
-                .map((e) => Podcast.fromJson(e))
-                .toList());
+        _podcasts = await ApiHelper.get('/api/podcast').then((value) => (value.data['data'] as List).map((e) => Podcast.fromJson(e)).toList());
+
+        emit(_podcastDataLoaded);
+
+        await for (Podcast podcast in Stream.fromIterable(_podcasts)) {
+          String? id = Uri.parse(podcast.linkPodcast ?? '').queryParameters['v'];
+
+          if (id == null) continue;
+
+          try {
+            podcast.thumbnailImageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/maxresdefault.jpg')).then((value) => value.data);
+          } catch (e) {
+            // Ignored, really
+          }
+          if (podcast.thumbnailImageData == null) {
+            try {
+              podcast.thumbnailImageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/hqdefault.jpg')).then((value) => value.data);
+            } catch (e) {
+              // Ignored, really
+            }
+          }
+          emit(_podcastDataLoaded);
+        }
       } catch (e) {
         emit(PodcastError());
         return;
@@ -22,9 +40,9 @@ class PodcastBloc extends Bloc<PodcastEvent, PodcastState> {
     });
   }
 
-  List<Podcast> _podcastList = [];
+  List<Podcast> _podcasts = [];
 
   PodcastDataLoaded get _podcastDataLoaded => PodcastDataLoaded(
-        podcasts: _podcastList,
+        podcasts: _podcasts,
       );
 }

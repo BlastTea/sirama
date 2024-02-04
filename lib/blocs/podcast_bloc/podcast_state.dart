@@ -14,5 +14,4 @@ class PodcastDataLoaded extends PodcastState {
 
   final List<Podcast> podcasts;
 
-  // final List<List<Podcast>> podcastsLength;
 }

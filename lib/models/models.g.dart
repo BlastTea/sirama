@@ -134,6 +134,7 @@ _$PodcastImpl _$$PodcastImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      totalLikes: json['total_likes'] as int?,
     );
 
 Map<String, dynamic> _$$PodcastImplToJson(_$PodcastImpl instance) =>
@@ -145,6 +146,7 @@ Map<String, dynamic> _$$PodcastImplToJson(_$PodcastImpl instance) =>
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'total_likes': instance.totalLikes,
     };
 
 _$FilmImpl _$$FilmImplFromJson(Map<String, dynamic> json) => _$FilmImpl(
@@ -161,6 +163,7 @@ _$FilmImpl _$$FilmImplFromJson(Map<String, dynamic> json) => _$FilmImpl(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      totalLikes: json['total_likes'] as int?,
     );
 
 Map<String, dynamic> _$$FilmImplToJson(_$FilmImpl instance) =>
@@ -172,6 +175,7 @@ Map<String, dynamic> _$$FilmImplToJson(_$FilmImpl instance) =>
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'total_likes': instance.totalLikes,
     };
 
 _$InfografisImpl _$$InfografisImplFromJson(Map<String, dynamic> json) =>
@@ -190,6 +194,7 @@ _$InfografisImpl _$$InfografisImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      totalLikes: json['total_likes'] as int?,
     );
 
 Map<String, dynamic> _$$InfografisImplToJson(_$InfografisImpl instance) =>
@@ -202,6 +207,7 @@ Map<String, dynamic> _$$InfografisImplToJson(_$InfografisImpl instance) =>
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'total_likes': instance.totalLikes,
     };
 
 _$EducationalVideoImpl _$$EducationalVideoImplFromJson(
@@ -220,6 +226,7 @@ _$EducationalVideoImpl _$$EducationalVideoImplFromJson(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      totalLikes: json['total_likes'] as int?,
     );
 
 Map<String, dynamic> _$$EducationalVideoImplToJson(
@@ -232,6 +239,7 @@ Map<String, dynamic> _$$EducationalVideoImplToJson(
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'total_likes': instance.totalLikes,
     };
 
 _$QuoteImpl _$$QuoteImplFromJson(Map<String, dynamic> json) => _$QuoteImpl(
@@ -255,108 +263,4 @@ Map<String, dynamic> _$$QuoteImplToJson(_$QuoteImpl instance) =>
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
-    };
-
-_$KontenImpl _$$KontenImplFromJson(Map<String, dynamic> json) => _$KontenImpl(
-      podcastTerbaru: (json['podcast_terbaru'] as List<dynamic>?)
-          ?.map((e) => PodcastTerbaru.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      filmTerbaru: (json['film_terbaru'] as List<dynamic>?)
-          ?.map((e) => FilmTerbaru.fromJson(e as Map<String, dynamic>))
-          .toList(),
-      videoTerbaru: (json['video_terbaru'] as List<dynamic>?)
-          ?.map((e) => VideoTerbaru.fromJson(e as Map<String, dynamic>))
-          .toList(),
-    );
-
-Map<String, dynamic> _$$KontenImplToJson(_$KontenImpl instance) =>
-    <String, dynamic>{
-      'podcast_terbaru': instance.podcastTerbaru,
-      'film_terbaru': instance.filmTerbaru,
-      'video_terbaru': instance.videoTerbaru,
-    };
-
-_$PodcastTerbaruImpl _$$PodcastTerbaruImplFromJson(Map<String, dynamic> json) =>
-    _$PodcastTerbaruImpl(
-      idPodcast: json['id_podcast'] as int?,
-      judulPodcast: json['judul_podcast'] as String?,
-      linkPodcast: json['link_podcast'] as String?,
-      tglUpload: json['tgl_upload'] as String?,
-      uploadUserId: json['upload_user_id'] as int?,
-      createdAt: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-      updatedAt: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'],
-    );
-
-Map<String, dynamic> _$$PodcastTerbaruImplToJson(
-        _$PodcastTerbaruImpl instance) =>
-    <String, dynamic>{
-      'id_podcast': instance.idPodcast,
-      'judul_podcast': instance.judulPodcast,
-      'link_podcast': instance.linkPodcast,
-      'tgl_upload': instance.tglUpload,
-      'upload_user_id': instance.uploadUserId,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'total_likes': instance.totalLikes,
-    };
-
-_$FilmTerbaruImpl _$$FilmTerbaruImplFromJson(Map<String, dynamic> json) =>
-    _$FilmTerbaruImpl(
-      idFilm: json['id_film'] as int?,
-      judulFilm: json['judul_film'] as String?,
-      linkFilm: json['link_film'] as String?,
-      tglUpload: json['tgl_upload'] as String?,
-      uploadUserId: json['upload_user_id'] as int?,
-      createdAt: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-      updatedAt: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'],
-    );
-
-Map<String, dynamic> _$$FilmTerbaruImplToJson(_$FilmTerbaruImpl instance) =>
-    <String, dynamic>{
-      'id_film': instance.idFilm,
-      'judul_film': instance.judulFilm,
-      'link_film': instance.linkFilm,
-      'tgl_upload': instance.tglUpload,
-      'upload_user_id': instance.uploadUserId,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'total_likes': instance.totalLikes,
-    };
-
-_$VideoTerbaruImpl _$$VideoTerbaruImplFromJson(Map<String, dynamic> json) =>
-    _$VideoTerbaruImpl(
-      idVideoEdukasi: json['id_video_edukasi'] as int?,
-      judulVideoEdukasi: json['judul_video_edukasi'] as String?,
-      linkVideoEdukasi: json['link_video_edukasi'] as String?,
-      tglUpload: json['tgl_upload'] as String?,
-      uploadUserId: json['upload_user_id'] as int?,
-      createdAt: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-      updatedAt: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'],
-    );
-
-Map<String, dynamic> _$$VideoTerbaruImplToJson(_$VideoTerbaruImpl instance) =>
-    <String, dynamic>{
-      'id_video_edukasi': instance.idVideoEdukasi,
-      'judul_video_edukasi': instance.judulVideoEdukasi,
-      'link_video_edukasi': instance.linkVideoEdukasi,
-      'tgl_upload': instance.tglUpload,
-      'upload_user_id': instance.uploadUserId,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'total_likes': instance.totalLikes,
     };

@@ -13,14 +13,14 @@ import 'package:sirama/views/fragments/fragments.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 
 part 'welcome_page.dart';
-part 'sign_in_page.dart';
-part 'sign_up_page.dart';
+part 'user/sign_in_page.dart';
+part 'user/sign_up_page.dart';
 part 'homepage.dart';
 part 'chatme_page.dart';
 part 'doctor_profile_page.dart';
-part 'edit_profile_page.dart';
-part 'sign_up_role_page.dart';
-part 'favourite_page.dart';
+part 'user/edit_profile_page.dart';
+part 'user/sign_up_role_page.dart';
+part 'user/favourite_page.dart';
 part 'my_carousel_slider.dart';
 
 part 'screening/screening_page.dart';
@@ -33,6 +33,7 @@ part 'ask_the_expert/input_ask_page.dart';
 part 'ask_the_expert/chat_ask_the_expert_page.dart';
 
 part 'educational_video/educational_video_page.dart';
+part 'educational_video/all_educational_video_page.dart';
 part 'educational_video/details_educational_video_page.dart';
 
 part 'film_video/detail_film_page.dart';
