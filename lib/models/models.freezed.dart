@@ -1213,22 +1213,41 @@ Podcast _$PodcastFromJson(Map<String, dynamic> json) {
 mixin _$Podcast {
   @JsonKey(name: 'id_podcast')
   int? get idPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_podcast')
+  set idPodcast(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'judul_podcast')
   String? get judulPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_podcast')
+  set judulPodcast(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'link_podcast')
   String? get linkPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_podcast')
+  set linkPodcast(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'tgl_upload')
   DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  set tanggalUpload(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'upload_user_id')
   int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  set uploadUserId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes')
   int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set thumbnailImageData(List<int>? value) =>
+      throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1392,7 +1411,7 @@ class __$$PodcastImplCopyWithImpl<$Res>
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
       thumbnailImageData: freezed == thumbnailImageData
-          ? _value._thumbnailImageData
+          ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
     ));
@@ -1402,7 +1421,7 @@ class __$$PodcastImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$PodcastImpl implements _Podcast {
-  const _$PodcastImpl(
+  _$PodcastImpl(
       {@JsonKey(name: 'id_podcast') this.idPodcast,
       @JsonKey(name: 'judul_podcast') this.judulPodcast,
       @JsonKey(name: 'link_podcast') this.linkPodcast,
@@ -1412,91 +1431,43 @@ class _$PodcastImpl implements _Podcast {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'total_likes') this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<int>? thumbnailImageData})
-      : _thumbnailImageData = thumbnailImageData;
+      this.thumbnailImageData});
 
   factory _$PodcastImpl.fromJson(Map<String, dynamic> json) =>
       _$$PodcastImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_podcast')
-  final int? idPodcast;
+  int? idPodcast;
   @override
   @JsonKey(name: 'judul_podcast')
-  final String? judulPodcast;
+  String? judulPodcast;
   @override
   @JsonKey(name: 'link_podcast')
-  final String? linkPodcast;
+  String? linkPodcast;
   @override
   @JsonKey(name: 'tgl_upload')
-  final DateTime? tanggalUpload;
+  DateTime? tanggalUpload;
   @override
   @JsonKey(name: 'upload_user_id')
-  final int? uploadUserId;
+  int? uploadUserId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
   @override
   @JsonKey(name: 'total_likes')
-  final int? totalLikes;
-  final List<int>? _thumbnailImageData;
+  int? totalLikes;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  List<int>? get thumbnailImageData {
-    final value = _thumbnailImageData;
-    if (value == null) return null;
-    if (_thumbnailImageData is EqualUnmodifiableListView)
-      return _thumbnailImageData;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
+  List<int>? thumbnailImageData;
 
   @override
   String toString() {
     return 'Podcast(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$PodcastImpl &&
-            (identical(other.idPodcast, idPodcast) ||
-                other.idPodcast == idPodcast) &&
-            (identical(other.judulPodcast, judulPodcast) ||
-                other.judulPodcast == judulPodcast) &&
-            (identical(other.linkPodcast, linkPodcast) ||
-                other.linkPodcast == linkPodcast) &&
-            (identical(other.tanggalUpload, tanggalUpload) ||
-                other.tanggalUpload == tanggalUpload) &&
-            (identical(other.uploadUserId, uploadUserId) ||
-                other.uploadUserId == uploadUserId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt) &&
-            (identical(other.totalLikes, totalLikes) ||
-                other.totalLikes == totalLikes) &&
-            const DeepCollectionEquality()
-                .equals(other._thumbnailImageData, _thumbnailImageData));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idPodcast,
-      judulPodcast,
-      linkPodcast,
-      tanggalUpload,
-      uploadUserId,
-      createdAt,
-      updatedAt,
-      totalLikes,
-      const DeepCollectionEquality().hash(_thumbnailImageData));
 
   @JsonKey(ignore: true)
   @override
@@ -1513,47 +1484,65 @@ class _$PodcastImpl implements _Podcast {
 }
 
 abstract class _Podcast implements Podcast {
-  const factory _Podcast(
-      {@JsonKey(name: 'id_podcast') final int? idPodcast,
-      @JsonKey(name: 'judul_podcast') final String? judulPodcast,
-      @JsonKey(name: 'link_podcast') final String? linkPodcast,
-      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
-      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') final int? totalLikes,
+  factory _Podcast(
+      {@JsonKey(name: 'id_podcast') int? idPodcast,
+      @JsonKey(name: 'judul_podcast') String? judulPodcast,
+      @JsonKey(name: 'link_podcast') String? linkPodcast,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<int>? thumbnailImageData}) = _$PodcastImpl;
+      List<int>? thumbnailImageData}) = _$PodcastImpl;
 
   factory _Podcast.fromJson(Map<String, dynamic> json) = _$PodcastImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_podcast')
   int? get idPodcast;
+  @JsonKey(name: 'id_podcast')
+  set idPodcast(int? value);
   @override
   @JsonKey(name: 'judul_podcast')
   String? get judulPodcast;
+  @JsonKey(name: 'judul_podcast')
+  set judulPodcast(String? value);
   @override
   @JsonKey(name: 'link_podcast')
   String? get linkPodcast;
+  @JsonKey(name: 'link_podcast')
+  set linkPodcast(String? value);
   @override
   @JsonKey(name: 'tgl_upload')
   DateTime? get tanggalUpload;
+  @JsonKey(name: 'tgl_upload')
+  set tanggalUpload(DateTime? value);
   @override
   @JsonKey(name: 'upload_user_id')
   int? get uploadUserId;
+  @JsonKey(name: 'upload_user_id')
+  set uploadUserId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
   @override
   @JsonKey(name: 'total_likes')
   int? get totalLikes;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
   _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
@@ -2101,7 +2090,7 @@ class __$$InfografisImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$InfografisImpl implements _Infografis {
-  const _$InfografisImpl(
+  _$InfografisImpl(
       {@JsonKey(name: 'id_infografis') this.idInfografis,
       @JsonKey(name: 'judul_infografis') this.judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') this.deskripsiInfografis,
@@ -2202,7 +2191,7 @@ class _$InfografisImpl implements _Infografis {
 }
 
 abstract class _Infografis implements Infografis {
-  const factory _Infografis(
+  factory _Infografis(
       {@JsonKey(name: 'id_infografis') final int? idInfografis,
       @JsonKey(name: 'judul_infografis') final String? judulInfografis,
       @JsonKey(name: 'deskripsi_infografis') final String? deskripsiInfografis,
@@ -2283,6 +2272,10 @@ mixin _$EducationalVideo {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2309,6 +2302,7 @@ abstract class $EducationalVideoCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2333,6 +2327,7 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2364,6 +2359,10 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2388,6 +2387,7 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2410,6 +2410,7 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_$EducationalVideoImpl(
@@ -2441,6 +2442,10 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2460,6 +2465,7 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'total_likes') this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -2488,12 +2494,15 @@ class _$EducationalVideoImpl implements _EducationalVideo {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
+  @JsonKey(name: 'total_likes')
+  int? totalLikes;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData)';
+    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -2520,6 +2529,7 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'total_likes') int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
 
@@ -2561,6 +2571,11 @@ abstract class _EducationalVideo implements EducationalVideo {
   DateTime? get updatedAt;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
+  @override
+  @JsonKey(name: 'total_likes')
+  int? get totalLikes;
+  @JsonKey(name: 'total_likes')
+  set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;

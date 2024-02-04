@@ -70,9 +70,9 @@ class JawabanAhli with _$JawabanAhli {
   factory JawabanAhli.fromJson(Map<String, dynamic> json) => _$JawabanAhliFromJson(json);
 }
 
-@freezed
+@unfreezed
 class Podcast with _$Podcast {
-  const factory Podcast({
+  factory Podcast({
     @JsonKey(name: 'id_podcast') int? idPodcast,
     @JsonKey(name: 'judul_podcast') String? judulPodcast,
     @JsonKey(name: 'link_podcast') String? linkPodcast,
@@ -106,7 +106,7 @@ class Film with _$Film {
 
 @freezed
 class Infografis with _$Infografis {
-  const factory Infografis({
+  factory Infografis({
     @JsonKey(name: 'id_infografis') int? idInfografis,
     @JsonKey(name: 'judul_infografis') String? judulInfografis,
     @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
@@ -131,6 +131,7 @@ class EducationalVideo with _$EducationalVideo {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'total_likes') int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _EducationalVideo;
 

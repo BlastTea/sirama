@@ -16,8 +16,7 @@ class AllEducationalVideoPage extends StatelessWidget {
           EducationalVideo educationalVideo =
               stateEducationalVideo.educationalVideos[index];
 
-          if (educationalVideo.idVideoEdukasi == currentEducationVideo)
-            return Container();
+          if (educationalVideo.idVideoEdukasi == currentEducationVideo) return Container();
 
           return InkWell(
             onTap: () {
@@ -83,66 +82,22 @@ class AllEducationalVideoPage extends StatelessWidget {
     return BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
       builder: (context, stateEducationalVideo) {
         if (stateEducationalVideo is EducationalVideoDataLoaded) {
-          SafeArea(
-            child: ListView(
-              children: [
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20.0),
-                  child: CardTile(
-                    title: Text(
-                        'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                    button: Text(
-                        'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Video edukasi terbaru',
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                  child: listVideo(
-                    context: context,
-                    stateEducationalVideo: stateEducationalVideo,
-                  ),
-                )
-              ],
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: listVideo(
+              context: context,
+              stateEducationalVideo: stateEducationalVideo,
             ),
           );
         } else if (stateEducationalVideo is EducationalVideoError) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Video Edukasi'),
-              centerTitle: true,
-            ),
-            body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.educationavideoBloc
-                  .add(InitializeEducationalVideoData()),
-            ),
+          return ErrorOccuredButton(
+            onRetryPressed: () =>
+                MyApp.educationavideoBloc.add(InitializeEducationalVideoData()),
           );
         }
 
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text('Video Edukasi'),
-            centerTitle: true,
-          ),
-          body: const Center(
-            child: CircularProgressIndicator(),
-          ),
+        return const Center(
+          child: CircularProgressIndicator(),
         );
       },
     );
