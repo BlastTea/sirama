@@ -12,7 +12,10 @@ class MyCarouselSlider extends StatelessWidget {
         }
 
         if (stateQuote is QuoteDataLoaded) {
-          final List<String> imgList = stateQuote.quotes.map((quote) => "https://dev-sirama.propertiideal.id/storage/quote/${quote.gambarQuote!}").toList();
+          final List<String> imgList = stateQuote.quotes
+              .map((quote) =>
+                  "https://dev-sirama.propertiideal.id/storage/quote/${quote.gambarQuote!}")
+              .toList();
 
           final List<Widget> imageSliders = imgList
               .map(
@@ -24,17 +27,6 @@ class MyCarouselSlider extends StatelessWidget {
                   borderRadius: BorderRadius.circular(5.0),
                   extendedAppBar: AppBar(),
                 ),
-
-                // Container(
-                //   margin: const EdgeInsets.symmetric(horizontal: 10.0),
-                //   child: ClipRRect(
-                //     borderRadius: const BorderRadius.all(Radius.circular(5.0)),
-                //     child: Image.network(
-                //       item,
-                //       fit: BoxFit.cover,
-                //     ),
-                //   ),
-                // ),
               )
               .toList();
           return CarouselSlider(
@@ -46,9 +38,10 @@ class MyCarouselSlider extends StatelessWidget {
             items: imageSliders,
           );
         } else if (stateQuote is QuoteInitial) {
-          return const CircularProgressIndicator();
+          return const Center(child: CircularProgressIndicator());
         } else if (stateQuote is QuoteError) {
-          return const Text('error anj');
+          return ErrorOccuredButton(
+              onRetryPressed: () => MyApp.quoteBloc.add(InitializeQuoteData()));
         } else {
           return Container();
         }

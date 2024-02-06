@@ -65,7 +65,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                             style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
                           Text(
                             '${currentUser?.username ?? 'Guest'} 👋',

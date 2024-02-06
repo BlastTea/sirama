@@ -104,9 +104,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                     ))
               ])));
         } else {
-          return const Center(
-            child: CircularProgressIndicator()
-          );
+          return const Center(child: CircularProgressIndicator());
         }
       },
     );

@@ -1,47 +1,62 @@
 part of '../pages.dart';
 
-List<Map> dataInfographics = [
-  {
-    'id_film': '1',
-    'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film': 'https://www.youtube.com/watch?v=MvSkn9svGGw',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 1',
-    'creator': 'Creator 1',
-    'date': '2024-01-11',
-    'like': 1231,
-  },
-  {
-    'id_film': '2',
-    'judul_film': 'Apa itu kesehatan mental?',
-    'link_film': 'https://www.youtube.com/watch?v=xDUy5dmhHcM',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 2',
-    'creator': 'Creator 2',
-    'date': '2024-01-12',
-    'like': 1231,
-  },
-  {
-    'id_film': '3',
-    'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film':
-        'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 3',
-    'creator': 'Creator 3',
-    'date': '2024-01-13',
-    'like': 1231,
-  },
-];
-
 class InfographicsPage extends StatelessWidget {
   const InfographicsPage({super.key});
+
+  static Widget listInfgraphics({
+    required BuildContext context,
+    required InfographicsDataLoaded stateInfographics,
+    bool replaceCurrentPage = false,
+    int? currentInfographics,
+  }) =>
+      ListView.builder(
+        shrinkWrap: true,
+        primary: false,
+        itemBuilder: (context, index) {
+          Infografis infographic = stateInfographics.infografis[index];
+
+          if (infographic.idInfografis == currentInfographics) return Container();
+
+          return InkWell(
+            onTap: () {
+              Route route = MaterialPageRoute(
+                builder: (context) => DetailsInfographicsPage(
+                  infographic: infographic,
+                ),
+              );
+
+              if (replaceCurrentPage) {
+                NavigationHelper.toReplacement(route);
+              } else {
+                NavigationHelper.to(route);
+              }
+            },
+            child: Column(
+              children: <Widget>[
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: InfographicsListItem(
+                    thumbnail: AspectRatio(
+                      aspectRatio: 16 / 9,
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(10.0),
+                        child: Image.network(
+                          'https://dev-sirama.propertiideal.id/storage/infografis/${infographic.gambarInfografis}',
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    ),
+                    title: infographic.judulInfografis!,
+                    user: infographic.uploadUserId.toString(),
+                    tanggalUpload: infographic.tanggalUpload!.toFormattedDate(withWeekday: true, withMonthName: true),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+        itemCount: stateInfographics.infografis.length,
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +74,7 @@ class InfographicsPage extends StatelessWidget {
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: const Text("Infografis"),
+              title: const Text("Infografis Edukasi"),
               centerTitle: true,
             ),
             body: SafeArea(
@@ -86,77 +101,33 @@ class InfographicsPage extends StatelessWidget {
                     child: Row(
                       children: [
                         Text(
-                          'Video edukasi terbaru',
+                          'Infografis terbaru',
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: ListView.builder(
-                      itemCount: dataInfographics.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => InkWell(
-                        onTap: () {
-                          // Navigate to the detail page and pass the necessary dataInfographics
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => DetailsInfographicsPage(
-                                videoUrl: dataInfographics[index]['link_film']!,
-                                title: dataInfographics[index]['judul_film']!,
-                                uploadUserId: dataInfographics[index]
-                                    ['creator']!,
-                                totalLike: dataInfographics[index]['like']!,
-                              ),
-                            ),
-                          );
-                        },
-                        child: Column(
-                          children: <Widget>[
-                            InfographicsListItem(
-                                thumbnail: AspectRatio(
-                                  aspectRatio: 16 / 9,
-                                  child: ClipRRect(
-                                    borderRadius: BorderRadius.circular(10.0),
-                                    child: Image.network(
-                                      dataInfographics[index]['thumbnail']!,
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                ),
-                                title: stateInfographics
-                                    .infografis[index].judulInfografis
-                                    .toString(),
-                                user: stateInfographics
-                                    .infografis[index].uploadUserId
-                                    .toString(),
-                                viewCount: stateInfographics
-                                    .infografis[index].idInfografis!)
-                          ],
-                        ),
-                      ),
-                    ),
-                  )
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  listInfgraphics(
+                      context: context, stateInfographics: stateInfographics),
                 ],
               ),
             ),
           );
         } else if (stateInfographics is InfographicsInitial) {
           return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text('Infografis Edukasi'),
-            centerTitle: true,
-          ),
-          body: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: const Text('Infografis Edukasi'),
+              centerTitle: true,
+            ),
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         } else if (stateInfographics is InfographicsError) {
           return Scaffold(
             appBar: AppBar(
@@ -165,7 +136,8 @@ class InfographicsPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.infografisBloc.add(InitializeInfographicsData()),
+              onRetryPressed: () =>
+                  MyApp.infografisBloc.add(InitializeInfographicsData()),
             ),
           );
         } else {
