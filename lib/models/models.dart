@@ -9,7 +9,11 @@ bool? _parseBool(dynamic data) => data is int? && data != null
         ? data
         : null;
 
-int? _parseInt(dynamic data) => data is String? && data != null ? int.tryParse(data) ?? 0 : 0;
+int? _parseInt(dynamic data) => data is String? && data != null
+    ? int.tryParse(data) ?? 0
+    : data is int
+        ? data
+        : 0;
 
 @freezed
 class User with _$User {
