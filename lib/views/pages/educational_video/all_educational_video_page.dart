@@ -13,8 +13,7 @@ class AllEducationalVideoPage extends StatelessWidget {
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          EducationalVideo educationalVideo =
-              stateEducationalVideo.educationalVideos[index];
+          EducationalVideo educationalVideo = stateEducationalVideo.educationalVideos[index];
 
           if (educationalVideo.idVideoEdukasi == currentEducationVideo) return Container();
 
@@ -40,8 +39,7 @@ class AllEducationalVideoPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10.0),
                     child: educationalVideo.thumbnailImageData != null
                         ? Image.memory(
-                            Uint8List.fromList(
-                                educationalVideo.thumbnailImageData!),
+                            Uint8List.fromList(educationalVideo.thumbnailImageData!),
                             fit: BoxFit.cover,
                           )
                         : Image.network(
@@ -82,7 +80,7 @@ class AllEducationalVideoPage extends StatelessWidget {
     return BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
       builder: (context, stateEducationalVideo) {
         if (stateEducationalVideo is EducationalVideoDataLoaded) {
-          Padding(
+          return Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             child: listVideo(
               context: context,
@@ -91,8 +89,9 @@ class AllEducationalVideoPage extends StatelessWidget {
           );
         } else if (stateEducationalVideo is EducationalVideoError) {
           return ErrorOccuredButton(
-            onRetryPressed: () =>
-                MyApp.educationavideoBloc.add(InitializeEducationalVideoData()),
+            onRetryPressed: () => MyApp.educationavideoBloc.add(
+              InitializeEducationalVideoData(),
+            ),
           );
         }
 

@@ -62,7 +62,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       emit(_authenticationDataLoaded);
     });
 
-    on<SignUpPressed>((event, emit) {
+    on<SignUpPressed>((event, emit) async {
       _invalidSignUpTypes.clear();
       if (_textControllerUsernameSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.usernameIsStillEmpty);
       if (_textControllerEmailSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.emailIsStillEmpty);
@@ -97,7 +97,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
         showLoadingDialog();
 
-        ApiHelper.post(
+        await ApiHelper.post(
           '/api/register',
           body: {
             'username': _textControllerUsernameSignUp.text.trim(),

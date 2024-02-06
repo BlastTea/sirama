@@ -9,6 +9,8 @@ bool? _parseBool(dynamic data) => data is int? && data != null
         ? data
         : null;
 
+int? _parseInt(dynamic data) => data is String? && data != null ? int.tryParse(data) ?? 0 : 0;
+
 @freezed
 class User with _$User {
   const factory User({
@@ -80,7 +82,7 @@ class Podcast with _$Podcast {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Podcast;
 
@@ -97,7 +99,7 @@ class Film with _$Film {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Film;
 
@@ -115,7 +117,7 @@ class Infografis with _$Infografis {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
   }) = _Infografis;
 
   factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
@@ -131,7 +133,7 @@ class EducationalVideo with _$EducationalVideo {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _EducationalVideo;
 
@@ -151,7 +153,6 @@ class Quote with _$Quote {
 
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
 }
-
 
 enum UserRole {
   remaja,

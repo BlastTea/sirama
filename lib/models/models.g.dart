@@ -134,7 +134,7 @@ _$PodcastImpl _$$PodcastImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'] as int?,
+      totalLikes: _parseInt(json['total_likes']),
     );
 
 Map<String, dynamic> _$$PodcastImplToJson(_$PodcastImpl instance) =>
@@ -163,7 +163,7 @@ _$FilmImpl _$$FilmImplFromJson(Map<String, dynamic> json) => _$FilmImpl(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'] as int?,
+      totalLikes: _parseInt(json['total_likes']),
     );
 
 Map<String, dynamic> _$$FilmImplToJson(_$FilmImpl instance) =>
@@ -194,7 +194,7 @@ _$InfografisImpl _$$InfografisImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'] as int?,
+      totalLikes: _parseInt(json['total_likes']),
     );
 
 Map<String, dynamic> _$$InfografisImplToJson(_$InfografisImpl instance) =>
@@ -226,7 +226,7 @@ _$EducationalVideoImpl _$$EducationalVideoImplFromJson(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      totalLikes: json['total_likes'] as int?,
+      totalLikes: _parseInt(json['total_likes']),
     );
 
 Map<String, dynamic> _$$EducationalVideoImplToJson(

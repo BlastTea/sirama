@@ -1239,9 +1239,9 @@ mixin _$Podcast {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
@@ -1267,7 +1267,7 @@ abstract class $PodcastCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1351,7 +1351,7 @@ abstract class _$$PodcastImplCopyWith<$Res> implements $PodcastCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1429,7 +1429,7 @@ class _$PodcastImpl implements _Podcast {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -1458,7 +1458,7 @@ class _$PodcastImpl implements _Podcast {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1492,7 +1492,7 @@ abstract class _Podcast implements Podcast {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$PodcastImpl;
 
@@ -1534,9 +1534,9 @@ abstract class _Podcast implements Podcast {
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1583,9 +1583,9 @@ mixin _$Film {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
@@ -1611,7 +1611,7 @@ abstract class $FilmCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1695,7 +1695,7 @@ abstract class _$$FilmImplCopyWith<$Res> implements $FilmCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1772,7 +1772,7 @@ class _$FilmImpl implements _Film {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -1801,7 +1801,7 @@ class _$FilmImpl implements _Film {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1835,7 +1835,7 @@ abstract class _Film implements Film {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$FilmImpl;
 
@@ -1877,9 +1877,9 @@ abstract class _Film implements Film {
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1914,7 +1914,7 @@ mixin _$Infografis {
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -1938,7 +1938,7 @@ abstract class $InfografisCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes});
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes});
 }
 
 /// @nodoc
@@ -2022,7 +2022,7 @@ abstract class _$$InfografisImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes});
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes});
 }
 
 /// @nodoc
@@ -2099,7 +2099,7 @@ class _$InfografisImpl implements _Infografis {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes});
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes});
 
   factory _$InfografisImpl.fromJson(Map<String, dynamic> json) =>
       _$$InfografisImplFromJson(json);
@@ -2129,7 +2129,7 @@ class _$InfografisImpl implements _Infografis {
   @JsonKey(name: 'updated_at')
   final DateTime? updatedAt;
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   final int? totalLikes;
 
   @override
@@ -2200,7 +2200,8 @@ abstract class _Infografis implements Infografis {
       @JsonKey(name: 'upload_user_id') final int? uploadUserId,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       @JsonKey(name: 'updated_at') final DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') final int? totalLikes}) = _$InfografisImpl;
+      @JsonKey(name: 'total_likes', fromJson: _parseInt)
+      final int? totalLikes}) = _$InfografisImpl;
 
   factory _Infografis.fromJson(Map<String, dynamic> json) =
       _$InfografisImpl.fromJson;
@@ -2230,7 +2231,7 @@ abstract class _Infografis implements Infografis {
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
   @override
   @JsonKey(ignore: true)
@@ -2272,9 +2273,9 @@ mixin _$EducationalVideo {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
@@ -2302,7 +2303,7 @@ abstract class $EducationalVideoCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2387,7 +2388,7 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -2465,7 +2466,7 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes') this.totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -2494,7 +2495,7 @@ class _$EducationalVideoImpl implements _EducationalVideo {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2529,7 +2530,7 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes') int? totalLikes,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
 
@@ -2572,9 +2573,9 @@ abstract class _EducationalVideo implements EducationalVideo {
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
   @override
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
-  @JsonKey(name: 'total_likes')
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value);
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
