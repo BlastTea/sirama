@@ -202,6 +202,52 @@ enum Gender {
       };
 }
 
+enum SchoolLevel {
+  @JsonValue('SD')
+  sd,
+  @JsonValue('SMP')
+  smp,
+  @JsonValue('SMA')
+  sma;
+
+  String get text => switch (this) {
+        sd => 'SD',
+        smp => 'SMP',
+        sma => 'SMA',
+      };
+
+  String get serverValue => switch (this) {
+        sd => 'SD',
+        smp => 'SMP',
+        sma => 'SMA',
+      };
+}
+
+enum ExpertsType {
+  @JsonValue('Spesialis Keperawatan Jiwa')
+  spesialisKeperawatanJiwa,
+  @JsonValue('Spesialis Keperawatan Anak')
+  spesialisKeperawatanAnak,
+  @JsonValue('Psikolog')
+  psikolog,
+  @JsonValue('Psikiater')
+  psikiater;
+
+  String get text => switch (this) {
+        spesialisKeperawatanJiwa => 'Spesialis Keperawatan Jiwa',
+        spesialisKeperawatanAnak => 'Spesialis Keperawatan Anak',
+        psikolog => 'Psikolog',
+        psikiater => 'Psikiater',
+      };
+
+  String get serverValue => switch (this) {
+        spesialisKeperawatanJiwa => 'Spesialis Keperawatan Jiwa',
+        spesialisKeperawatanAnak => 'Spesialis Keperawatan Anak',
+        psikolog => 'Psikolog',
+        psikiater => 'Psikiater',
+      };
+}
+
 enum InvalidType {
   none,
   usernameIsStillEmpty,

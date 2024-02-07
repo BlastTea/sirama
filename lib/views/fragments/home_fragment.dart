@@ -60,17 +60,14 @@ class _HomeFragmentState extends State<HomeFragment> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text(
+                          Text(
                             'Selamat datang',
                             style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
                           ),
                           const SizedBox(
                             height: 5,
                           ),
-                          Text(
-                            '${currentUser?.username ?? 'Guest'} 👋',
-                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)
-                          ),
+                          Text('${currentUser?.username ?? 'Guest'} 👋', style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -87,9 +84,7 @@ class _HomeFragmentState extends State<HomeFragment> {
               const SizedBox(
                 height: 20,
               ),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: MyCarouselSlider()),
+              const Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: MyCarouselSlider()),
               const SizedBox(
                 height: 20,
               ),
@@ -97,8 +92,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: CardTile(
                   title: const Text('Yuk, Skrining!'),
-                  subtitle: const Text(
-                      'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
+                  subtitle: const Text('Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
                   button: const Row(
                     children: [
                       Text('Skrining'),
@@ -114,8 +108,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                   ),
                   imageAlignment: CardTileAlignment.bottom,
                   minImageWidth: 100.0,
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(
-                      builder: (context) => const ScreeningPage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const ScreeningPage())),
                 ),
               ),
               const SizedBox(
@@ -150,22 +143,15 @@ class _HomeFragmentState extends State<HomeFragment> {
                   ]
                       .map(
                         (e) => Padding(
-                          padding: EdgeInsets.only(
-                              left: e == 'ChatMe' ? 20.0 : 8.0,
-                              right: e == 'Tanya Ahli' ? 20.0 : 0.0),
+                          padding: EdgeInsets.only(left: e == 'ChatMe' ? 20.0 : 8.0, right: e == 'Tanya Ahli' ? 20.0 : 0.0),
                           child: ActionChip(
                             label: Text(e),
                             side: BorderSide(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
-                            color: MaterialStatePropertyAll(
-                                Theme.of(context).colorScheme.primary),
-                            labelStyle: Theme.of(context)
-                                .textTheme
-                                .labelLarge
-                                ?.copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+                            color: MaterialStatePropertyAll(Theme.of(context).colorScheme.primary),
+                            labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
+                                  color: Theme.of(context).colorScheme.onPrimary,
                                 ),
                             onPressed: () => debugPrint('on $e pressed'),
                           ),
@@ -198,14 +184,11 @@ class _HomeFragmentState extends State<HomeFragment> {
                     value: e['value${e.keys.first.substring(4)}'] as bool,
                     title: Text(
                       e.values.first,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
                     ),
                     tileColor: Theme.of(context).colorScheme.primary,
                     checkColor: Theme.of(context).colorScheme.onPrimary,
-                    side: BorderSide(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        width: 2),
+                    side: BorderSide(color: Theme.of(context).colorScheme.onPrimary, width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

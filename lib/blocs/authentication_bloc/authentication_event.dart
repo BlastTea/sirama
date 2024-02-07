@@ -29,4 +29,16 @@ class SetSignUpGender extends AuthenticationEvent {
   final Gender value;
 }
 
+class SetSignupChildSchoolLevel extends AuthenticationEvent {
+  SetSignupChildSchoolLevel({required this.value});
+
+  final SchoolLevel value;
+}
+
+class SetSignUpExpertsType extends AuthenticationEvent {
+  SetSignUpExpertsType({required this.value});
+
+  final ExpertsType value;
+}
+
 class SignUpPressed extends AuthenticationEvent {}
