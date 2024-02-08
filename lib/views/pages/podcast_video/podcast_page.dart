@@ -49,15 +49,14 @@ class PodcastPage extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: const CircleAvatar(
-                    backgroundImage: NetworkImage(
-                        'https://dev-sirama.propertiideal.id/storage/test/shark.png'),
+                    backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
                     podcast.judulPodcast ?? '?',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Zalorin Vexstar . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

@@ -44,3 +44,8 @@ part 'podcast_video/details_podcast_page.dart';
 
 part 'infographics/infographics_page.dart';
 part 'infographics/details_infographics_page.dart';
+
+part 'user/favourite_user/educational_video_favourite_page.dart';
+part 'user/favourite_user/film_favourite_page.dart';
+part 'user/favourite_user/infographics_favourite_page.dart';
+part 'user/favourite_user/podcast_favourite_page.dart';

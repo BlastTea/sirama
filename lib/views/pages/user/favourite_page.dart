@@ -13,11 +13,21 @@ class FavouritePage extends StatelessWidget {
             bottom: TabBar(
               isScrollable: true,
               tabAlignment: TabAlignment.start,
-              tabs: ['Film Edukasi', 'Podcast Edukasi', 'Video Edukasi', 'Infografis'].map((e) => Tab(text: e)).toList(),
+              tabs: [
+                'Film Edukasi',
+                'Podcast Edukasi',
+                'Video Edukasi',
+                'Infografis'
+              ].map((e) => Tab(text: e)).toList(),
             ),
           ),
-          body: TabBarView(
-            children: ['Film Edukasi', 'Podcast Edukasi', 'Video Edukasi', 'Infografis'].map((e) => Center(child: Text(e))).toList(),
+          body: const TabBarView(
+            children: [
+              FavEducationalVideo(),
+              FavFilm(),
+              FavInfographics(),
+              FavPodcast()
+            ],
           ),
         ),
       );

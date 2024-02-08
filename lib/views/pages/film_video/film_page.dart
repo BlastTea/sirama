@@ -51,14 +51,14 @@ class FilmPage extends StatelessWidget {
                 ListTile(
                   contentPadding: EdgeInsets.zero,
                   leading: const CircleAvatar(
-                    backgroundImage: NetworkImage('https://dev-sirama.propertiideal.id/storage/test/shark.png'),
+                    backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
                     film.judulFilm ?? '?',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Zalorin Vexstar . ${stateFilm.films[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${stateFilm.films[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

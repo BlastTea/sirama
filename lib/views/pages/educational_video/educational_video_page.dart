@@ -50,15 +50,15 @@ class EducationalVideoPage extends StatelessWidget {
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(data[index]['profile_url']!),
+                  leading: const CircleAvatar(
+                    backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
                     educationalVideo.judulVideoEdukasi ?? '?',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Zalorin Vexstar . ${educationalVideo.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${educationalVideo.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

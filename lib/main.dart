@@ -6,6 +6,7 @@ import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
 import 'package:sirama/services/services.dart';
 import 'package:sirama/utils/utils.dart';
+import 'package:sirama/views/fragments/fragments.dart';
 import 'package:sirama/views/pages/pages.dart';
 
 void main() async {
@@ -38,6 +39,10 @@ class MyApp extends StatelessWidget {
   static InfographicsBloc infografisBloc = InfographicsBloc();
   static EducationalVideoBloc educationavideoBloc = EducationalVideoBloc();
   static QuoteBloc quoteBloc = QuoteBloc();
+  static FavFilmBloc favFilmBloc = FavFilmBloc();
+  static FavPodcastBloc favPodcastBloc = FavPodcastBloc();
+  static FavVideoEdukasiBloc favVideoEdukasiBloc = FavVideoEdukasiBloc();
+  static FavInfografisBloc favInfografisBloc = FavInfografisBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -54,6 +59,10 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => infografisBloc),
         BlocProvider(create: (context) => educationavideoBloc),
         BlocProvider(create: (context) => quoteBloc),
+        BlocProvider(create: (context) => favFilmBloc),
+        BlocProvider(create: (context) => favPodcastBloc),
+        BlocProvider(create: (context) => favVideoEdukasiBloc),
+        BlocProvider(create: (context) => favInfografisBloc),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
@@ -70,6 +79,9 @@ class MyApp extends StatelessWidget {
               '/educational-video': (context) => const EducationalVideoPage(),
               '/infographics': (context) => const InfographicsPage(),
               '/mainscreening': (context) => const MainScreeningPage(),
+              '/screening': (context) => const ScreeningPage(),
+              '/chatme': (context) => const ChatFragment(),
+              '/asktheexpert': (context) => const AskTheExpertFragment(),
             },
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,

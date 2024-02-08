@@ -16,10 +16,15 @@ class AuthenticationDataLoaded extends AuthenticationState {
     required this.textControllerNameSignUp,
     required this.textControllerPhoneNumberSignUp,
     required this.textControllerSchoolSignUp,
+    required this.textControllerDescriptionSignUp,
+    required this.textControllerAgeSignUp,
+    required this.textControllerBuiltAreaSignUp,
     required this.isSingingIn,
     required this.role,
     required this.dateOfBirth,
     required this.gender,
+    required this.childSchoolLevel,
+    required this.expertsType,
     required this.invalidSignUpTypes,
   });
 
@@ -35,6 +40,9 @@ class AuthenticationDataLoaded extends AuthenticationState {
   final TextEditingController textControllerNameSignUp;
   final TextEditingController textControllerPhoneNumberSignUp;
   final TextEditingController textControllerSchoolSignUp;
+  final TextEditingController textControllerDescriptionSignUp;
+  final TextEditingControllerThousandFormat textControllerAgeSignUp;
+  final TextEditingController textControllerBuiltAreaSignUp;
 
   final bool isSingingIn;
 
@@ -43,6 +51,10 @@ class AuthenticationDataLoaded extends AuthenticationState {
   final DateTime dateOfBirth;
 
   final Gender gender;
+
+  final SchoolLevel childSchoolLevel;
+
+  final ExpertsType expertsType;
 
   final List<InvalidType> invalidSignUpTypes;
 }

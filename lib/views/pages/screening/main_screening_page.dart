@@ -31,7 +31,7 @@ class MainScreeningPage extends StatelessWidget {
                 RichText(
                     textAlign: TextAlign.center,
                     text: const TextSpan(
-                        style: TextStyle(fontSize: 14.0),
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
                         children: <TextSpan>[
                           TextSpan(
                               text: 'Penting! ',

@@ -6,24 +6,27 @@ class InfographicsListItem extends StatelessWidget {
     required this.thumbnail,
     required this.title,
     required this.user,
-    required this.viewCount,
+    required this.tanggalUpload,
   });
 
   final Widget thumbnail;
   final String title;
   final String user;
-  final int viewCount;
+  final String tanggalUpload;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 5.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Expanded(
             flex: 2,
             child: thumbnail,
+          ),
+          const SizedBox(
+            width: 5,
           ),
           Expanded(
             flex: 3,
@@ -40,22 +43,18 @@ class InfographicsListItem extends StatelessWidget {
                     ),
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-                  Text(
-                    user,
-                    style: const TextStyle(fontSize: 10.0),
+                  const Text(
+                    'Diupload oleh Admin',
+                    style: TextStyle(fontSize: 12.0),
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
                   Text(
-                    '$viewCount views',
-                    style: const TextStyle(fontSize: 10.0),
+                    tanggalUpload,
+                    style: const TextStyle(fontSize: 12.0),
                   ),
                 ],
               ),
             ),
-          ),
-          const Icon(
-            Icons.more_vert,
-            size: 16.0,
           ),
         ],
       ),

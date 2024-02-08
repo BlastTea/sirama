@@ -14,6 +14,32 @@ class _HomeFragmentState extends State<HomeFragment> {
     {'text3': 'Menyapa kepada teman', 'value3': false},
   ];
 
+  List<Map<String, String>> routeListView = [
+    {'title': 'ChatMe', 'route': '/chatme'},
+    {'title': 'Skrining', 'route': '/screening'},
+    {'title': 'Film', 'route': '/film'},
+    {'title': 'Podcast', 'route': '/podcast'},
+    {'title': 'Video Edukasi', 'route': '/educational-video'},
+    {'title': 'Tanya Ahli', 'route': '/asktheexpert'},
+  ];
+
+  void navigateToPage(String route) {
+    switch (route) {
+      case '/chatme':
+        return MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 3));
+      case '/screening':
+        NavigationHelper.toNamed('/screening');
+      case '/film':
+        NavigationHelper.toNamed('/film');
+      case '/podcast':
+        NavigationHelper.toNamed('/podcast');
+      case '/educational-video':
+        NavigationHelper.toNamed('/educational-video');
+      case '/asktheexpert':
+        return MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 2));
+    }
+  }
+
   String currentDay = '';
   late SharedPreferences prefs;
 
@@ -60,17 +86,17 @@ class _HomeFragmentState extends State<HomeFragment> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                           Text(
+                          Text(
                             'Selamat datang',
-                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
+                            style: Config.textStyleHeadlineSmall
+                                .copyWith(fontSize: 14),
                           ),
                           const SizedBox(
-                            height: 10,
+                            height: 5,
                           ),
-                          Text(
-                            '${currentUser?.username ?? 'Guest'} 👋',
-                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)
-                          ),
+                          Text('${currentUser?.username ?? 'Guest'} 👋',
+                              style: Config.textStyleHeadlineSmall.copyWith(
+                                  fontSize: 25, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -139,22 +165,14 @@ class _HomeFragmentState extends State<HomeFragment> {
                 height: 48.0,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    'ChatMe',
-                    'Skrining',
-                    'Infografis',
-                    'Film',
-                    'Podcast',
-                    'Video Edukasi',
-                    'Tanya Ahli',
-                  ]
+                  children: routeListView
                       .map(
                         (e) => Padding(
                           padding: EdgeInsets.only(
-                              left: e == 'ChatMe' ? 20.0 : 8.0,
-                              right: e == 'Tanya Ahli' ? 20.0 : 0.0),
+                              left: e['title'] == 'ChatMe' ? 20.0 : 8.0,
+                              right: e['title'] == 'Tanya Ahli' ? 20.0 : 0.0),
                           child: ActionChip(
-                            label: Text(e),
+                            label: Text(e['title']!),
                             side: BorderSide(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
@@ -167,7 +185,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            onPressed: () => debugPrint('on $e pressed'),
+                            onPressed: () => navigateToPage(e['route']!),
                           ),
                         ),
                       )

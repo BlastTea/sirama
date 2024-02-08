@@ -62,7 +62,17 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       emit(_authenticationDataLoaded);
     });
 
-    on<SignUpPressed>((event, emit) {
+    on<SetSignupChildSchoolLevel>((event, emit) {
+      _childSchoolLevel = event.value;
+      emit(_authenticationDataLoaded);
+    });
+
+    on<SetSignUpExpertsType>((event, emit) {
+      _expertsType = event.value;
+      emit(_authenticationDataLoaded);
+    });
+
+    on<SignUpPressed>((event, emit) async {
       _invalidSignUpTypes.clear();
       if (_textControllerUsernameSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.usernameIsStillEmpty);
       if (_textControllerEmailSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.emailIsStillEmpty);
@@ -77,10 +87,14 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       switch (_role) {
         case UserRole.remaja:
           if (_textControllerSchoolSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.schoolIsStillEmpty);
-        case UserRole.orangTua:
         case UserRole.tenagaAhli:
+          if (_textControllerDescriptionSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.descriptionIsStillEmpty);
         case UserRole.kaderKesehatan:
-        case UserRole.guru:
+          if (_textControllerAgeSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.ageIsStillEmpty);
+
+          if (_textControllerBuiltAreaSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.builtAreaIsStillEmpty);
+        default:
+        // Do nothing
       }
 
       if (_invalidSignUpTypes.isEmpty) _invalidSignUpTypes.add(InvalidType.none);
@@ -97,7 +111,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
         showLoadingDialog();
 
-        ApiHelper.post(
+        await ApiHelper.post(
           '/api/register',
           body: {
             'username': _textControllerUsernameSignUp.text.trim(),
@@ -106,9 +120,21 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
             'role': _role.serverValue,
             'nama': _textControllerNameSignUp.text.trim(),
             'no_hp': _textControllerPhoneNumberSignUp.text.trim(),
-            if (_role == UserRole.remaja) 'tgl_lahir': '${_dateOfBirth.year}-${_dateOfBirth.month}-${_dateOfBirth.day}',
-            if (_role == UserRole.remaja) 'jenis_kelamin': _gender.serverValue,
-            if (_role == UserRole.remaja) 'sekolah': _textControllerSchoolSignUp.text.trim(),
+            if (_role == UserRole.remaja) ...{
+              'tgl_lahir': '${_dateOfBirth.year}-${_dateOfBirth.month}-${_dateOfBirth.day}',
+              'jenis_kelamin': _gender.serverValue,
+              'sekolah': _textControllerSchoolSignUp.text.trim(),
+            },
+            if (_role == UserRole.orangTua) 'tingkat_sekolah_anak': _childSchoolLevel.serverValue,
+            if (_role == UserRole.tenagaAhli) ...{
+              'jenis_ahli': _expertsType.serverValue,
+              'deskripsi_ahli': _textControllerDescriptionSignUp.text.trim(),
+            },
+            if (_role == UserRole.kaderKesehatan) ...{
+              'usia': _textControllerAgeSignUp.number?.toInt(),
+              'wilayah_binaan': _textControllerBuiltAreaSignUp.text.trim(),
+            },
+            if (_role == UserRole.guru) 'jenis_guru': 'BK',
           },
         );
       } catch (e) {
@@ -121,6 +147,28 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       NavigationHelper.back();
       NavigationHelper.clearSnackBars();
       NavigationHelper.showSnackBar(const SnackBar(content: Text('Sign Up berhasil')));
+
+      _isSigningIn = false;
+
+      _textControllerUsernameSignUp.text = '';
+      _textControllerEmailSignUp.text = '';
+      _textControllerPasswordSignUp.text = '';
+      _textControllerNameSignUp.text = '';
+      _textControllerPhoneNumberSignUp.text = '';
+      _textControllerSchoolSignUp.text = '';
+      _textControllerDescriptionSignUp.text = '';
+
+      _role = UserRole.values.first;
+
+      _dateOfBirth = DateTime.now();
+
+      _gender = Gender.values.first;
+
+      _childSchoolLevel = SchoolLevel.smp;
+
+      _expertsType = ExpertsType.values.first;
+
+      emit(_authenticationDataLoaded);
     });
   }
 
@@ -136,6 +184,9 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   static final TextEditingController _textControllerNameSignUp = TextEditingController();
   static final TextEditingController _textControllerPhoneNumberSignUp = TextEditingController();
   static final TextEditingController _textControllerSchoolSignUp = TextEditingController();
+  static final TextEditingController _textControllerDescriptionSignUp = TextEditingController();
+  static final TextEditingControllerThousandFormat _textControllerAgeSignUp = TextEditingControllerThousandFormat();
+  static final TextEditingController _textControllerBuiltAreaSignUp = TextEditingController();
 
   static bool _isSigningIn = false;
 
@@ -144,6 +195,10 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   static DateTime _dateOfBirth = DateTime.now();
 
   static Gender _gender = Gender.values.first;
+
+  static SchoolLevel _childSchoolLevel = SchoolLevel.smp;
+
+  static ExpertsType _expertsType = ExpertsType.values.first;
 
   static final List<InvalidType> _invalidSignUpTypes = [InvalidType.none];
 
@@ -159,10 +214,15 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         textControllerNameSignUp: _textControllerNameSignUp,
         textControllerPhoneNumberSignUp: _textControllerPhoneNumberSignUp,
         textControllerSchoolSignUp: _textControllerSchoolSignUp,
+        textControllerDescriptionSignUp: _textControllerDescriptionSignUp,
+        textControllerAgeSignUp: _textControllerAgeSignUp,
+        textControllerBuiltAreaSignUp: _textControllerBuiltAreaSignUp,
         isSingingIn: _isSigningIn,
         role: _role,
         dateOfBirth: _dateOfBirth,
         gender: _gender,
+        childSchoolLevel: _childSchoolLevel,
+        expertsType: _expertsType,
         invalidSignUpTypes: _invalidSignUpTypes,
       );
 }

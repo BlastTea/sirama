@@ -9,6 +9,12 @@ bool? _parseBool(dynamic data) => data is int? && data != null
         ? data
         : null;
 
+int? _parseInt(dynamic data) => data is String? && data != null
+    ? int.tryParse(data) ?? 0
+    : data is int
+        ? data
+        : 0;
+
 @freezed
 class User with _$User {
   const factory User({
@@ -80,7 +86,7 @@ class Podcast with _$Podcast {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Podcast;
 
@@ -97,7 +103,7 @@ class Film with _$Film {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Film;
 
@@ -115,7 +121,7 @@ class Infografis with _$Infografis {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
   }) = _Infografis;
 
   factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
@@ -131,7 +137,7 @@ class EducationalVideo with _$EducationalVideo {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(name: 'total_likes') int? totalLikes,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _EducationalVideo;
 
@@ -152,6 +158,57 @@ class Quote with _$Quote {
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
 }
 
+@freezed
+class FavInfografis with _$FavInfografis {
+  const factory FavInfografis({
+    @JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'infografis_id') String? idInfografis,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavInfografis;
+
+  factory FavInfografis.fromJson(Map<String, dynamic> json) => _$FavInfografisFromJson(json);
+}
+
+@freezed
+class FavFilmVideo with _$FavFilmVideo {
+  const factory FavFilmVideo({
+    @JsonKey(name: 'id_fav_film') int? idFavFilm,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'film_id') String? idFilm,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavFilmVideo;
+
+  factory FavFilmVideo.fromJson(Map<String, dynamic> json) => _$FavFilmVideoFromJson(json);
+}
+
+@freezed
+class FavPodcastVideo with _$FavPodcastVideo {
+  const factory FavPodcastVideo({
+    @JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'podcast_id') String? idPodcast,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavPodcastVideo;
+
+  factory FavPodcastVideo.fromJson(Map<String, dynamic> json) => _$FavPodcastVideoFromJson(json);
+}
+
+@freezed
+class FavVideoEdukasi with _$FavVideoEdukasi {
+  const factory FavVideoEdukasi({
+    @JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'video_edukasi_id') String? idVideoEdukasi,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavVideoEdukasi;
+
+  factory FavVideoEdukasi.fromJson(Map<String, dynamic> json) => _$FavVideoEdukasiFromJson(json);
+}
 
 enum UserRole {
   remaja,
@@ -197,6 +254,52 @@ enum Gender {
       };
 }
 
+enum SchoolLevel {
+  @JsonValue('SD')
+  sd,
+  @JsonValue('SMP')
+  smp,
+  @JsonValue('SMA')
+  sma;
+
+  String get text => switch (this) {
+        sd => 'SD',
+        smp => 'SMP',
+        sma => 'SMA',
+      };
+
+  String get serverValue => switch (this) {
+        sd => 'SD',
+        smp => 'SMP',
+        sma => 'SMA',
+      };
+}
+
+enum ExpertsType {
+  @JsonValue('Spesialis Keperawatan Jiwa')
+  spesialisKeperawatanJiwa,
+  @JsonValue('Spesialis Keperawatan Anak')
+  spesialisKeperawatanAnak,
+  @JsonValue('Psikolog')
+  psikolog,
+  @JsonValue('Psikiater')
+  psikiater;
+
+  String get text => switch (this) {
+        spesialisKeperawatanJiwa => 'Spesialis Keperawatan Jiwa',
+        spesialisKeperawatanAnak => 'Spesialis Keperawatan Anak',
+        psikolog => 'Psikolog',
+        psikiater => 'Psikiater',
+      };
+
+  String get serverValue => switch (this) {
+        spesialisKeperawatanJiwa => 'Spesialis Keperawatan Jiwa',
+        spesialisKeperawatanAnak => 'Spesialis Keperawatan Anak',
+        psikolog => 'Psikolog',
+        psikiater => 'Psikiater',
+      };
+}
+
 enum InvalidType {
   none,
   usernameIsStillEmpty,
@@ -205,7 +308,10 @@ enum InvalidType {
   nameIsStillEmpty,
   phoneNumberIsStillEmpty,
   phoneNumberIsNotValid,
-  schoolIsStillEmpty;
+  schoolIsStillEmpty,
+  descriptionIsStillEmpty,
+  ageIsStillEmpty,
+  builtAreaIsStillEmpty;
 
   String get text => switch (this) {
         usernameIsStillEmpty => 'Username masih kosong',
@@ -215,6 +321,9 @@ enum InvalidType {
         phoneNumberIsStillEmpty => 'Nomor Handphone masih kosong',
         phoneNumberIsNotValid => 'Nomor Handphone tidak valid',
         schoolIsStillEmpty => 'Sekolah masih kosong',
+        descriptionIsStillEmpty => 'Deskripsi masih kosong',
+        ageIsStillEmpty => 'Umur masih kosong',
+        builtAreaIsStillEmpty => 'Wilayah Binaan masih kosong',
         _ => '',
       };
 }

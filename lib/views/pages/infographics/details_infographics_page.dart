@@ -1,225 +1,167 @@
 part of '../pages.dart';
 
-List<Map> dataDummyInfographics = [
-  {
-    'id_film': '1',
-    'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film': 'https://www.youtube.com/watch?v=MvSkn9svGGw',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 1',
-    'creator': 'Creator 1',
-    'date': '2024-01-11',
-    'like': 1231,
-  },
-  {
-    'id_film': '2',
-    'judul_film': 'Apa itu kesehatan mental?',
-    'link_film': 'https://www.youtube.com/watch?v=xDUy5dmhHcM',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 2',
-    'creator': 'Creator 2',
-    'date': '2024-01-12',
-    'like': 1231,
-  },
-  {
-    'id_film': '3',
-    'judul_film': 'Seberapa penting kesehatan mental untuk kita?',
-    'link_film':
-        'https://www.youtube.com/watch?v=cq34RWXegM8&list=PLjxrf2q8roU0WrDTm4tUB430Mja7dQEVP&index=2',
-    'upload_user_id': 'Altamis',
-    'thumbnail': 'https://picsum.photos/250?image=9',
-    'profile_url': 'https://picsum.photos/250?image=9',
-    'title': 'Video Title 3',
-    'creator': 'Creator 3',
-    'date': '2024-01-13',
-    'like': 1231,
-  },
-];
-
 class DetailsInfographicsPage extends StatefulWidget {
-  const DetailsInfographicsPage({
-    super.key,
-    required this.videoUrl,
-    required this.title,
-    required this.uploadUserId,
-    required this.totalLike,
-  });
+  const DetailsInfographicsPage({super.key, required this.infographic});
 
-  final String videoUrl;
-  final String title;
-  final String uploadUserId;
-  final int totalLike;
+  final Infografis infographic;
 
   @override
   State<DetailsInfographicsPage> createState() =>
-      DetailsInfographicsPageState();
+      _DetailsInfographicsPageState();
 }
 
-class DetailsInfographicsPageState
-    extends State<DetailsInfographicsPage> {
-  late final PodPlayerController _podPlayerController;
 
-  @override
-  void initState() {
-    super.initState();
-    _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.videoUrl),
-    )..initialise();
-  }
-
-  @override
-  void dispose() {
-    _podPlayerController.dispose();
-    super.dispose();
-  }
-
+class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
   @override
   Widget build(BuildContext context) {
-    // Implement your detail page UI here
-    return Scaffold(
-        // appBar: AppBar(
-        //   title: Text(widget.title),
-        // ),
-        appBar: AppBar(
-          backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back, color: Colors.black),
-            onPressed: () => Navigator.of(context).pop(),
-          ),
-          title: const Text("Video Edukasi"),
-          centerTitle: true,
-        ),
-        body: SafeArea(
-            child: ListView(shrinkWrap: true, children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-            child: PodVideoPlayer(controller: _podPlayerController),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              ListTile(
-                title: const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 10),
-                  child: Text('Title'),
+    return BlocBuilder<InfographicsBloc, InfographicsState>(
+      builder: (context, stateInfographics) {
+        if (stateInfographics is InfographicsDataLoaded) {
+          return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.black),
+                  onPressed: () => Navigator.of(context).pop(),
                 ),
-                subtitle: Align(
-                  alignment: Alignment.centerLeft,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      IconButton(
-                        onPressed: () {},
-                        icon: const Icon(Icons.favorite),
-                      ),
-                      const Text('1231'),
-                    ],
-                  ),
-                ),
+                title: Text(widget.infographic.judulInfografis!),
+                centerTitle: true,
               ),
-            ],
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 30),
-            child: Row(
-              children: [
-                Text(
-                  'Video lainnya',
-                  style: Config.textStyleHeadlineSmall,
-                ),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 20,
-          ),
-
-          // ListView(
-//         padding: const EdgeInsets.all(8.0),
-//         itemExtent: 106.0,
-//         children: <CustomListItem>[
-//           CustomListItem(
-//             user: 'Flutter',
-//             viewCount: 999000,
-//             thumbnail: Container(
-//               decoration: const BoxDecoration(color: Colors.blue),
-//             ),
-//             title: 'The Flutter YouTube Channel',
-//           ),
-//           CustomListItem(
-//             user: 'Dash',
-//             viewCount: 884000,
-//             thumbnail: Container(
-//               decoration: const BoxDecoration(color: Colors.yellow),
-//             ),
-//             title: 'Announcing Flutter 1.0',
-//           ),
-//         ],
-//       ),
-
-          Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-              child: ListView.builder(
-                itemCount: dataDummyInfographics.length,
+              body: SafeArea(
+                  child: ListView(
                 shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    // Navigate to the detail page and pass the necessary dataDummyInfographics
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => DetailsInfographicsPage(
-                          videoUrl: dataDummyInfographics[index]['link_film']!,
-                          title: dataDummyInfographics[index]['judul_film']!,
-                          uploadUserId: dataDummyInfographics[index]['creator']!,
-                          totalLike: dataDummyInfographics[index]['like']!,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        SizedBox(
+                          width: 148.75,
+                          height: 210.50,
+                          child: Container(
+                              decoration: BoxDecoration(
+                            border: Border.all(
+                              color: Colors.white,
+                              width: 0,
+                            ),
+                            borderRadius: BorderRadius.circular(10.0),
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                'https://dev-sirama.propertiideal.id/storage/infografis/${widget.infographic.gambarInfografis}',
+                              ),
+                              fit: BoxFit.cover,
+                            ),
+                          )),
                         ),
-                      ),
-                    );
-                  },
-                  child: Column(
-                    children: <Widget>[
-                      AspectRatio(
-                        aspectRatio: 16 / 9,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(10.0),
-                          child: Image.network(
-                            dataDummyInfographics[index]['thumbnail']!,
-                            fit: BoxFit.cover,
+                        Flexible(
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 10),
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
+                                    child: Column(
+                                      children: [
+                                        Text(
+                                            widget.infographic.judulInfografis!,
+                                            style: Config.textStyleTitleSmall
+                                                .copyWith(fontSize: 14)),
+                                        const SizedBox(height: 5),
+                                        Text(
+                                          widget
+                                              .infographic.deskripsiInfografis!,
+                                        ),
+                                        const SizedBox(height: 20),
+                                        const Text('Diupload oleh Admin'),
+                                        Text(widget.infographic.tanggalUpload!
+                                            .toFormattedDate(
+                                                withWeekday: true,
+                                                withMonthName: true)),
+                                      ],
+                                    ),
+                                  ),
+                                  Row(
+                                    children: [
+                                      IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            isFavorited = !isFavorited;
+                                          });
+                                        },
+                                        icon: Icon(
+                                          isFavorited
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
+                                      ),
+                                      Text(widget.infographic.totalLikes
+                                              ?.toString() ??
+                                          '0'),
+                                    ],
+                                  ),
+                                ]),
                           ),
-                        ),
-                      ),
-                      ListTile(
-                        contentPadding: const EdgeInsets.all(0),
-                        leading: CircleAvatar(
-                          backgroundImage: NetworkImage(dataDummyInfographics[index]['profile_url']!),
-                        ),
-                        title: Text(
-                          dataDummyInfographics[index]['judul_film']!,
-                          style: const TextStyle(fontWeight: FontWeight.bold),
-                        ),
-                        subtitle: Text(
-                          "${dataDummyInfographics[index]['creator']!} . ${dataDummyInfographics[index]['date']!}",
-                          style: const TextStyle(
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ),
-                    ],
+                        )
+                      ],
+                    ),
                   ),
-                ),
-              ),
-            )
-        ])));
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Infografis lainnya',
+                          style: Config.textStyleHeadlineSmall,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  InfographicsPage.listInfgraphics(
+                    context: context,
+                    stateInfographics: stateInfographics,
+                    replaceCurrentPage: true,
+                    currentInfographics: widget.infographic.idInfografis,
+                  )
+                ],
+              )));
+        } else if (stateInfographics is InfographicsInitial) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: Text(widget.infographic.judulInfografis!),
+              centerTitle: true,
+            ),
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (stateInfographics is InfographicsError) {
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: Text(widget.infographic.judulInfografis!),
+              centerTitle: true,
+            ),
+            body: ErrorOccuredButton(
+              onRetryPressed: () =>
+                  MyApp.infografisBloc.add(InitializeInfographicsData()),
+            ),
+          );
+        } else {
+          return Container();
+        }
+      },
+    );
   }
 }
-
-
