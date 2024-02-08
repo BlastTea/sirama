@@ -7,21 +7,17 @@ class HomeFragment extends StatefulWidget {
   State<HomeFragment> createState() => _HomeFragmentState();
 }
 
-class _HomeFragmentState extends State<HomeFragment> {
-  List<Map<String, dynamic>> checkboxHomeFragment = [
-    {'text1': 'Berpamitan kepada orang tua', 'value1': false},
-    {'text2': 'Berdoa sebelum belajar', 'value2': false},
-    {'text3': 'Menyapa kepada teman', 'value3': false},
-  ];
+List<Map<String, String>> siramaIcon = [
+  {'icon': 'skrining-menu-icon', 'title': 'Screening', 'route': '/screening'},
+  {'icon': 'infografis-menu-icon', 'title': 'Infografis', 'route': '/infographics'},
+  {'icon': 'film-menu-icon', 'title': 'Film', 'route': '/film'},
+  {'icon': 'podcast-menu-icon', 'title': 'Podcast', 'route': '/podcast'},
+  {'icon': 'video-edukasi-menu-icon', 'title': 'Video Edukasi', 'route': '/educational-video'},
+  {'icon': 'tanya-ahli-menu-icon', 'title': 'Tanya Ahli', 'route': '/asktheexpert'},
+];
 
-  List<Map<String, String>> routeListView = [
-    {'title': 'ChatMe', 'route': '/chatme'},
-    {'title': 'Skrining', 'route': '/screening'},
-    {'title': 'Film', 'route': '/film'},
-    {'title': 'Podcast', 'route': '/podcast'},
-    {'title': 'Video Edukasi', 'route': '/educational-video'},
-    {'title': 'Tanya Ahli', 'route': '/asktheexpert'},
-  ];
+class _HomeFragmentState extends State<HomeFragment> {
+  
 
   void navigateToPage(String route) {
     switch (route) {
@@ -119,31 +115,6 @@ class _HomeFragmentState extends State<HomeFragment> {
               const SizedBox(
                 height: 20,
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: CardTile(
-                  title: const Text('Yuk, Skrining!'),
-                  subtitle: const Text(
-                      'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
-                  button: const Row(
-                    children: [
-                      Text('Skrining'),
-                      SizedBox(width: 10),
-                      Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                  image: Image.asset(
-                    'assets/card-homepage.png',
-                  ),
-                  imageAlignment: CardTileAlignment.bottom,
-                  minImageWidth: 100.0,
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(
-                      builder: (context) => const ScreeningPage())),
-                ),
-              ),
               const SizedBox(
                 height: 20,
               ),
@@ -153,55 +124,122 @@ class _HomeFragmentState extends State<HomeFragment> {
                   children: [
                     Text(
                       'Menu',
-                      style: Config.textStyleHeadlineSmall,
+                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 18),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 48.0,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: routeListView
-                      .map(
-                        (e) => Padding(
-                          padding: EdgeInsets.only(
-                              left: e['title'] == 'ChatMe' ? 20.0 : 8.0,
-                              right: e['title'] == 'Tanya Ahli' ? 20.0 : 0.0),
-                          child: ActionChip(
-                            label: Text(e['title']!),
-                            side: BorderSide(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                            color: MaterialStatePropertyAll(
-                                Theme.of(context).colorScheme.primary),
-                            labelStyle: Theme.of(context)
-                                .textTheme
-                                .labelLarge
-                                ?.copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
-                                ),
-                            onPressed: () => navigateToPage(e['route']!),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                child: SizedBox(
+                    height: 210,
+                    child: GridView.count(
+                      primary: false,
+                      crossAxisCount: 3,
+                      mainAxisSpacing: 2,
+                      children: [
+                        ...siramaIcon.map((e) => Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 3),
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: IconButton(
+                                      onPressed: () => navigateToPage(e['route']!),
+                                      icon: SvgPicture.asset(
+                                        'assets/icons/${e['icon']!}.svg',
+                                      )),
+                                ),
+                                const SizedBox(
+                                  height: 9,
+                                ),
+                                Text(
+                                  e['title']!,
+                                  style: Config.textStyleBodyLarge
+                                      .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ))
+                      ],
+                    )),
+              ),
+
+              // Padding(
+              //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+              //   child: CardTile(
+              //     title: const Text('Yuk, Skrining!'),
+              //     subtitle: const Text(
+              //         'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
+              //     button: const Row(
+              //       children: [
+              //         Text('Skrining'),
+              //         SizedBox(width: 10),
+              //         Icon(
+              //           Icons.arrow_forward,
+              //           color: Colors.white,
+              //         )
+              //       ],
+              //     ),
+              //     image: Image.asset(
+              //       'assets/card-homepage.png',
+              //     ),
+              //     imageAlignment: CardTileAlignment.bottom,
+              //     minImageWidth: 100.0,
+              //     onPressed: () => NavigationHelper.to(MaterialPageRoute(
+              //         builder: (context) => const ScreeningPage())),
+              //   ),
+              // ),
+
+              const SizedBox(
+                height: 20,
+              ),
+
+              // SizedBox(
+              //   height: 48.0,
+              //   child: ListView(
+              //     scrollDirection: Axis.horizontal,
+              //     children: routeListView
+              //         .map(
+              //           (e) => Padding(
+              //             padding: EdgeInsets.only(
+              //                 left: e['title'] == 'ChatMe' ? 20.0 : 8.0,
+              //                 right: e['title'] == 'Tanya Ahli' ? 20.0 : 0.0),
+              //             child: ActionChip(
+              //               label: Text(e['title']!),
+              //               side: BorderSide(
+              //                 color: Theme.of(context).colorScheme.onPrimary,
+              //               ),
+              //               color: MaterialStatePropertyAll(
+              //                   Theme.of(context).colorScheme.primary),
+              //               labelStyle: Theme.of(context)
+              //                   .textTheme
+              //                   .labelLarge
+              //                   ?.copyWith(
+              //                     color:
+              //                         Theme.of(context).colorScheme.onPrimary,
+              //                   ),
+              //               onPressed: () => navigateToPage(e['route']!),
+              //             ),
+              //           ),
+              //         )
+              //         .toList(),
+              //   ),
+              // ),
+              // const SizedBox(
+              //   height: 20,
+              // ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 18),
                 child: Row(
                   children: [
                     Text(
                       'Tandai tiga kebaikanmu hari ini',
-                      style: Config.textStyleHeadlineSmall,
+                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 18,),
                     ),
                   ],
                 ),
