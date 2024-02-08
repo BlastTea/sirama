@@ -1,7 +1,7 @@
 name: sirama
 description: "A new Flutter project."
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.1.0-alpha.1
 
 environment:
   sdk: '>=3.2.3 <4.0.0'
@@ -20,7 +20,7 @@ dependencies:
   m_widget:
     git:
       url: https://github.com/BlastTea/MWidget.git
-      ref: 30a2156d944afd6eb3c75274e4b8b7f9dd9884d8
+      ref: 08d0e80e45804faf5f44e54e81457a72746759e7
   pod_player: ^0.2.1
   shared_preferences: ^2.2.2
   web_socket_channel: ^2.4.0

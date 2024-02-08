@@ -157,26 +157,30 @@ class SignUpPage extends StatelessWidget {
                           textInputAction: TextInputAction.newline,
                           textAlignVertical: TextAlignVertical.top,
                           constraints: const BoxConstraints.tightFor(height: kMaximumDescriptionHeight),
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'Masukkan Deskripsi Anda',
+                            errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.descriptionIsStillEmpty) ? InvalidType.descriptionIsStillEmpty.text : null,
                           ),
                         ),
                       ],
                     UserRole.kaderKesehatan => [
                         LabeledTextField(
+                          controller: stateAuthentication.textControllerAgeSignUp,
                           labelText: 'Usia',
                           keyboardType: TextInputType.number,
-                          inputFormatters: [textFormatterDigitsOnly],
                           textInputAction: TextInputAction.next,
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'Masukkan Usia Anda',
+                            errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.ageIsStillEmpty) ? InvalidType.ageIsStillEmpty.text : null,
                           ),
                         ),
                         const SizedBox(height: 20.0),
                         LabeledTextField(
+                          controller: stateAuthentication.textControllerBuiltAreaSignUp,
                           labelText: 'Wilayah Binaan',
-                          decoration: const InputDecoration(
+                          decoration: InputDecoration(
                             hintText: 'Masukkan Wilayah Binaan Anda',
+                            errorText: stateAuthentication.invalidSignUpTypes.contains(InvalidType.builtAreaIsStillEmpty) ? InvalidType.builtAreaIsStillEmpty.text : null,
                           ),
                         ),
                       ],

@@ -308,7 +308,10 @@ enum InvalidType {
   nameIsStillEmpty,
   phoneNumberIsStillEmpty,
   phoneNumberIsNotValid,
-  schoolIsStillEmpty;
+  schoolIsStillEmpty,
+  descriptionIsStillEmpty,
+  ageIsStillEmpty,
+  builtAreaIsStillEmpty;
 
   String get text => switch (this) {
         usernameIsStillEmpty => 'Username masih kosong',
@@ -318,6 +321,9 @@ enum InvalidType {
         phoneNumberIsStillEmpty => 'Nomor Handphone masih kosong',
         phoneNumberIsNotValid => 'Nomor Handphone tidak valid',
         schoolIsStillEmpty => 'Sekolah masih kosong',
+        descriptionIsStillEmpty => 'Deskripsi masih kosong',
+        ageIsStillEmpty => 'Umur masih kosong',
+        builtAreaIsStillEmpty => 'Wilayah Binaan masih kosong',
         _ => '',
       };
 }
