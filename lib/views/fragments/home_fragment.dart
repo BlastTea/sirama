@@ -211,21 +211,36 @@ class _HomeFragmentState extends State<HomeFragment> {
               ),
               ...checkboxHomeFragment.map(
                 (Map<String, dynamic> e) => Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
+                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 20.0),
                   child: CheckboxListTile(
                     value: e['value${e.keys.first.substring(4)}'] as bool,
                     title: Text(
                       e.values.first,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary),
+                            color: e['value${e.keys.first.substring(4)}']
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                     ),
-                    tileColor: Theme.of(context).colorScheme.primary,
-                    checkColor: Theme.of(context).colorScheme.onPrimary,
+                    tileColor: e['value${e.keys.first.substring(4)}']
+                        ? Theme.of(context).colorScheme.primary
+                        : Colors.white,
+                    checkColor: Theme.of(context).colorScheme.primary,
+                    activeColor: Colors.white,
                     side: BorderSide(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        width: 2),
+                      color: e['value${e.keys.first.substring(4)}']
+                          ? Colors.white
+                          : Colors.black,
+                      width: 2,
+                    ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      side: BorderSide(
+                        width: 5,
+                        color: e['value${e.keys.first.substring(4)}']
+                            ? const Color(0xFFBCD2F8)
+                            : Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
                     onChanged: (value) {
                       setState(() {
