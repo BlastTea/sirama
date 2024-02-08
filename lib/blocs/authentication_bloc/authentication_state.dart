@@ -17,6 +17,8 @@ class AuthenticationDataLoaded extends AuthenticationState {
     required this.textControllerPhoneNumberSignUp,
     required this.textControllerSchoolSignUp,
     required this.textControllerDescriptionSignUp,
+    required this.textControllerAgeSignUp,
+    required this.textControllerBuiltAreaSignUp,
     required this.isSingingIn,
     required this.role,
     required this.dateOfBirth,
@@ -39,6 +41,8 @@ class AuthenticationDataLoaded extends AuthenticationState {
   final TextEditingController textControllerPhoneNumberSignUp;
   final TextEditingController textControllerSchoolSignUp;
   final TextEditingController textControllerDescriptionSignUp;
+  final TextEditingControllerThousandFormat textControllerAgeSignUp;
+  final TextEditingController textControllerBuiltAreaSignUp;
 
   final bool isSingingIn;
 

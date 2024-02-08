@@ -87,14 +87,14 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       switch (_role) {
         case UserRole.remaja:
           if (_textControllerSchoolSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.schoolIsStillEmpty);
-        case UserRole.orangTua:
-        //TODO: Implement this case
         case UserRole.tenagaAhli:
-        //TODO: Implement this case
+          if (_textControllerDescriptionSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.descriptionIsStillEmpty);
         case UserRole.kaderKesehatan:
-        //TODO: Implement this case
-        case UserRole.guru:
-        //TODO: Implement this case
+          if (_textControllerAgeSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.ageIsStillEmpty);
+
+          if (_textControllerBuiltAreaSignUp.text.trim().isEmpty) _invalidSignUpTypes.add(InvalidType.builtAreaIsStillEmpty);
+        default:
+        // Do nothing
       }
 
       if (_invalidSignUpTypes.isEmpty) _invalidSignUpTypes.add(InvalidType.none);
@@ -120,12 +120,21 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
             'role': _role.serverValue,
             'nama': _textControllerNameSignUp.text.trim(),
             'no_hp': _textControllerPhoneNumberSignUp.text.trim(),
-            if (_role == UserRole.remaja) 'tgl_lahir': '${_dateOfBirth.year}-${_dateOfBirth.month}-${_dateOfBirth.day}',
-            if (_role == UserRole.remaja) 'jenis_kelamin': _gender.serverValue,
-            if (_role == UserRole.remaja) 'sekolah': _textControllerSchoolSignUp.text.trim(),
+            if (_role == UserRole.remaja) ...{
+              'tgl_lahir': '${_dateOfBirth.year}-${_dateOfBirth.month}-${_dateOfBirth.day}',
+              'jenis_kelamin': _gender.serverValue,
+              'sekolah': _textControllerSchoolSignUp.text.trim(),
+            },
             if (_role == UserRole.orangTua) 'tingkat_sekolah_anak': _childSchoolLevel.serverValue,
-            if (_role == UserRole.tenagaAhli) 'jenis_ahli': _expertsType.serverValue,
-            if (_role == UserRole.tenagaAhli) 'deskripsi_ahli': _textControllerDescriptionSignUp.text.trim(),
+            if (_role == UserRole.tenagaAhli) ...{
+              'jenis_ahli': _expertsType.serverValue,
+              'deskripsi_ahli': _textControllerDescriptionSignUp.text.trim(),
+            },
+            if (_role == UserRole.kaderKesehatan) ...{
+              'usia': _textControllerAgeSignUp.number?.toInt(),
+              'wilayah_binaan': _textControllerBuiltAreaSignUp.text.trim(),
+            },
+            if (_role == UserRole.guru) 'jenis_guru': 'BK',
           },
         );
       } catch (e) {
@@ -176,6 +185,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
   static final TextEditingController _textControllerPhoneNumberSignUp = TextEditingController();
   static final TextEditingController _textControllerSchoolSignUp = TextEditingController();
   static final TextEditingController _textControllerDescriptionSignUp = TextEditingController();
+  static final TextEditingControllerThousandFormat _textControllerAgeSignUp = TextEditingControllerThousandFormat();
+  static final TextEditingController _textControllerBuiltAreaSignUp = TextEditingController();
 
   static bool _isSigningIn = false;
 
@@ -204,6 +215,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         textControllerPhoneNumberSignUp: _textControllerPhoneNumberSignUp,
         textControllerSchoolSignUp: _textControllerSchoolSignUp,
         textControllerDescriptionSignUp: _textControllerDescriptionSignUp,
+        textControllerAgeSignUp: _textControllerAgeSignUp,
+        textControllerBuiltAreaSignUp: _textControllerBuiltAreaSignUp,
         isSingingIn: _isSigningIn,
         role: _role,
         dateOfBirth: _dateOfBirth,
