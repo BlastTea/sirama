@@ -12,6 +12,6 @@ class FavFilmDataLoaded extends FavFilmState {
     required this.favfilms,
   });
 
-  final List<FavFilm> favfilms;
+  final List<FavFilmVideo> favfilms;
 
 }

@@ -172,29 +172,29 @@ class FavInfografis with _$FavInfografis {
 }
 
 @freezed
-class FavFilm with _$FavFilm {
-  const factory FavFilm({
+class FavFilmVideo with _$FavFilmVideo {
+  const factory FavFilmVideo({
     @JsonKey(name: 'id_fav_film') int? idFavFilm,
     @JsonKey(name: 'user_id') int? idUser,
     @JsonKey(name: 'film_id') String? idFilm,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-  }) = _FavFilm;
+  }) = _FavFilmVideo;
 
-  factory FavFilm.fromJson(Map<String, dynamic> json) => _$FavFilmFromJson(json);
+  factory FavFilmVideo.fromJson(Map<String, dynamic> json) => _$FavFilmVideoFromJson(json);
 }
 
 @freezed
-class FavPodcast with _$FavPodcast {
-  const factory FavPodcast({
+class FavPodcastVideo with _$FavPodcastVideo {
+  const factory FavPodcastVideo({
     @JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
     @JsonKey(name: 'user_id') int? idUser,
     @JsonKey(name: 'podcast_id') String? idPodcast,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-  }) = _FavPodcast;
+  }) = _FavPodcastVideo;
 
-  factory FavPodcast.fromJson(Map<String, dynamic> json) => _$FavPodcastFromJson(json);
+  factory FavPodcastVideo.fromJson(Map<String, dynamic> json) => _$FavPodcastVideoFromJson(json);
 }
 
 @freezed

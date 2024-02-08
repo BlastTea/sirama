@@ -12,6 +12,6 @@ class FavPodcastDataLoaded extends FavPodcastState {
     required this.favpodcasts,
   });
 
-  final List<FavPodcast> favpodcasts;
+  final List<FavPodcastVideo> favpodcasts;
 
 }

@@ -1,14 +1,14 @@
 part of '../blocs.dart';
 
 @immutable
-abstract class PodcastEvent {}
+abstract class FavPodcastEvent {}
 
-class SetPodcastState extends PodcastEvent {
-  SetPodcastState([this.state]);
+class SetFavPodcastState extends FavPodcastEvent {
+  SetFavPodcastState([this.state]);
 
-  final PodcastState? state;
+  final FavPodcastState? state;
 }
 
-class SetPodcastToInitial extends PodcastEvent {}
+class SetFavPodcastToInitial extends FavPodcastEvent {}
 
-class InitializePodcastData extends PodcastEvent {}
+class InitializeFavPodcastData extends FavPodcastEvent {}

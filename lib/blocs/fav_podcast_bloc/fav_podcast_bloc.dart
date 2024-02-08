@@ -11,7 +11,7 @@ class FavPodcastBloc extends Bloc<FavPodcastEvent, FavPodcastState> {
       try {
         _favpodcastList = await ApiHelper.get('/api/favpodcast').then(
             (value) => (value.data['data'] as List)
-                .map((e) => FavPodcast.fromJson(e))
+                .map((e) => FavPodcastVideo.fromJson(e))
                 .toList());
       } catch (e) {
         emit(FavPodcastError());
@@ -22,7 +22,7 @@ class FavPodcastBloc extends Bloc<FavPodcastEvent, FavPodcastState> {
     });
   }
 
-  List<FavPodcast> _favpodcastList = [];
+  List<FavPodcastVideo> _favpodcastList = [];
 
   FavPodcastDataLoaded get _favPodcastDataLoaded => FavPodcastDataLoaded(
         favpodcasts: _favpodcastList,

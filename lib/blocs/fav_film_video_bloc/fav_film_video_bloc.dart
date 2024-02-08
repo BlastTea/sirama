@@ -11,7 +11,7 @@ class FavFilmBloc extends Bloc<FavFilmEvent, FavFilmState> {
       try {
         _favfilmList = await ApiHelper.get('/api/favfilm').then(
             (value) => (value.data['data'] as List)
-                .map((e) => FavFilm.fromJson(e))
+                .map((e) => FavFilmVideo.fromJson(e))
                 .toList());
       } catch (e) {
         emit(FavFilmError());
@@ -22,7 +22,7 @@ class FavFilmBloc extends Bloc<FavFilmEvent, FavFilmState> {
     });
   }
 
-  List<FavFilm> _favfilmList = [];
+  List<FavFilmVideo> _favfilmList = [];
 
   FavFilmDataLoaded get _favFilmDataLoaded => FavFilmDataLoaded(
         favfilms: _favfilmList,
