@@ -43,7 +43,7 @@ class ChooseScreeningPage extends StatelessWidget {
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             TextSpan(
                                 text:
-                                    'ayo deteksi dini perilaku bullying atau perundungan. Beranikan mengisi, lihat hasilnya, berani berubah, Ikutin langkah selanjutnya. Penasaran? Yuk'),
+                                    'ayo deteksi dini perilaku bullying. Beranikan mengisi, lihat hasilnya, berani berubah, Ikutin langkah selanjutnya. Penasaran? Yuk'),
                             TextSpan(
                                 text: ' Sobat Rama ',
                                 style: TextStyle(fontWeight: FontWeight.bold)),

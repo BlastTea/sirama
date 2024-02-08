@@ -12,7 +12,7 @@ class HistoryScreeningPage extends StatelessWidget {
               Column(children: [
                 ScreeningListItem(
                   title: 'Skrining Bullying A',
-                  score: 'Skor anda 10',
+                  score: '',
                   date: '16 Agustus 2023',
                   description:
                       'Sobat RAMA Emi Wuri Wuryaningsih cenderung sebagai korban bullying. Belajar Yuk di Fitur Video Edukasi dan Infografis serta layanan Tanya Ahli. Semoga Membantu',

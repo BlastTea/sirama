@@ -115,9 +115,6 @@ class _HomeFragmentState extends State<HomeFragment> {
               const SizedBox(
                 height: 20,
               ),
-              const SizedBox(
-                height: 20,
-              ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
