@@ -158,6 +158,58 @@ class Quote with _$Quote {
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
 }
 
+@freezed
+class FavInfografis with _$FavInfografis {
+  const factory FavInfografis({
+    @JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'infografis_id') String? idInfografis,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavInfografis;
+
+  factory FavInfografis.fromJson(Map<String, dynamic> json) => _$FavInfografisFromJson(json);
+}
+
+@freezed
+class FavFilm with _$FavFilm {
+  const factory FavFilm({
+    @JsonKey(name: 'id_fav_film') int? idFavFilm,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'film_id') String? idFilm,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavFilm;
+
+  factory FavFilm.fromJson(Map<String, dynamic> json) => _$FavFilmFromJson(json);
+}
+
+@freezed
+class FavPodcast with _$FavPodcast {
+  const factory FavPodcast({
+    @JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'podcast_id') String? idPodcast,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavPodcast;
+
+  factory FavPodcast.fromJson(Map<String, dynamic> json) => _$FavPodcastFromJson(json);
+}
+
+@freezed
+class FavVideoEdukasi with _$FavVideoEdukasi {
+  const factory FavVideoEdukasi({
+    @JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
+    @JsonKey(name: 'user_id') int? idUser,
+    @JsonKey(name: 'video_edukasi_id') String? idVideoEdukasi,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _FavVideoEdukasi;
+
+  factory FavVideoEdukasi.fromJson(Map<String, dynamic> json) => _$FavVideoEdukasiFromJson(json);
+}
+
 enum UserRole {
   remaja,
   @JsonValue('orangtua')
