@@ -22,7 +22,6 @@ class FavouritePage extends StatelessWidget {
             ),
           ),
           body: const TabBarView(
-            // children: ['Film Edukasi', 'Podcast Edukasi', 'Video Edukasi', 'Infografis'].map((e) => Center(child: Text(e))).toList(),
             children: [
               FavEducationalVideo(),
               FavFilm(),

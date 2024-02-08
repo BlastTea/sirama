@@ -1,30 +1,35 @@
 part of '../blocs.dart';
 
 class FavPodcastBloc extends Bloc<FavPodcastEvent, FavPodcastState> {
-  FavPodcastBloc() : super(FavPodcastInitial()) {
-    on<SetFavPodcastState>(
-        (event, emit) => emit(event.state ?? _favPodcastDataLoaded));
+  FavPodcastBloc() : super(FavPodcastInitial());
 
-    on<SetFavPodcastToInitial>((event, emit) => emit(FavPodcastInitial()));
+  @override
+  Stream<FavPodcastState> mapEventToState(FavPodcastEvent event) async* {
+    if (event is GetFavPodcastByUserId) {
+      yield FavPodcastLoading();
 
-    on<InitializeFavPodcastData>((event, emit) async {
       try {
-        _favpodcastList = await ApiHelper.get('/api/favpodcast').then(
-            (value) => (value.data['data'] as List)
-                .map((e) => FavPodcastVideo.fromJson(e))
-                .toList());
+        final favPodcasts =
+            await ApiHelper.get('/api/favpodcasts/${event.userId}');
+
+        final favPodcastVideos = (favPodcasts.data['data'] as List)
+            .map((e) => FavPodcastVideo.fromJson(e))
+            .toList();
+
+        final favPodcastIds =
+            favPodcastVideos.map((favPodcast) => favPodcast.idPodcast).toList();
+
+        List<Podcast> podcastList = [];
+
+        for (var id in favPodcastIds) {
+          final podcast = await ApiHelper.get('/api/podcast/$id');
+          podcastList.add(Podcast.fromJson(podcast.data['data']));
+        }
+
+        yield FavPodcastLoaded(podcastList: podcastList);
       } catch (e) {
-        emit(FavPodcastError());
-        return;
+        yield FavPodcastError();
       }
-
-      emit(_favPodcastDataLoaded);
-    });
+    }
   }
-
-  List<FavPodcastVideo> _favpodcastList = [];
-
-  FavPodcastDataLoaded get _favPodcastDataLoaded => FavPodcastDataLoaded(
-        favpodcasts: _favpodcastList,
-      );
 }

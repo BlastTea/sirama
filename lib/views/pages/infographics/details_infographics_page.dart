@@ -10,6 +10,7 @@ class DetailsInfographicsPage extends StatefulWidget {
       _DetailsInfographicsPageState();
 }
 
+
 class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
   @override
   Widget build(BuildContext context) {
@@ -62,14 +63,18 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 10),
                                     child: Column(
                                       children: [
-                                        Text(widget.infographic.judulInfografis!,
-                                            style: Config.textStyleTitleSmall.copyWith(fontSize: 14)),
+                                        Text(
+                                            widget.infographic.judulInfografis!,
+                                            style: Config.textStyleTitleSmall
+                                                .copyWith(fontSize: 14)),
                                         const SizedBox(height: 5),
                                         Text(
-                                          widget.infographic.deskripsiInfografis!,
+                                          widget
+                                              .infographic.deskripsiInfografis!,
                                         ),
                                         const SizedBox(height: 20),
                                         const Text('Diupload oleh Admin'),
@@ -83,9 +88,16 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                                   Row(
                                     children: [
                                       IconButton(
-                                        padding: EdgeInsets.zero,
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.favorite),
+                                        onPressed: () {
+                                          setState(() {
+                                            isFavorited = !isFavorited;
+                                          });
+                                        },
+                                        icon: Icon(
+                                          isFavorited
+                                              ? Icons.favorite
+                                              : Icons.favorite_border,
+                                        ),
                                       ),
                                       Text(widget.infographic.totalLikes
                                               ?.toString() ??

@@ -9,7 +9,7 @@ class FavVideoEdukasiBloc extends Bloc<FavVideoEdukasiEvent, FavVideoEdukasiStat
 
     on<InitializeFavVideoEdukasiData>((event, emit) async {
       try {
-        _favVideoEdukasiList = await ApiHelper.get('/api/fav-video-edukasi').then(
+        _favVideoEdukasiList = await ApiHelper.get('/api/videoedukasi').then(
             (value) => (value.data['data'] as List)
                 .map((e) => FavVideoEdukasi.fromJson(e))
                 .toList());

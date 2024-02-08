@@ -5,10 +5,16 @@ class FavInfographics extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Fav Info'),
-      )
+    return BlocBuilder<FavInfografisBloc, FavInfografisState>(
+      builder: (context, stateFavInfografis) {
+        if (MyApp.favInfografisBloc.state is FavInfografisInitial) {
+          MyApp.favInfografisBloc.add(InitializeFavInfografisData());
+        }
+        return const Scaffold(
+            body: Center(
+          child: Text('Fav Info'),
+        ));
+      },
     );
   }
 }

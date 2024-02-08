@@ -5,10 +5,16 @@ class FavFilm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Fav Film'),
-      )
+    return BlocBuilder<FavFilmBloc, FavFilmState>(
+      builder: (context, stateFavFilm) {
+        if (MyApp.favFilmBloc.state is FavFilmInitial) {
+          MyApp.favFilmBloc.add(InitializeFavFilmData());
+        }
+        return const Scaffold(
+            body: Center(
+          child: Text('Fav Film'),
+        ));
+      },
     );
   }
 }

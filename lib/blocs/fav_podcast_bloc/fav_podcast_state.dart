@@ -1,17 +1,15 @@
 part of '../blocs.dart';
-
 @immutable
 abstract class FavPodcastState {}
 
 class FavPodcastInitial extends FavPodcastState {}
 
-class FavPodcastError extends FavPodcastState {}
+class FavPodcastLoading extends FavPodcastState {}
 
-class FavPodcastDataLoaded extends FavPodcastState {
-  FavPodcastDataLoaded({
-    required this.favpodcasts,
-  });
+class FavPodcastLoaded extends FavPodcastState {
+  final List<Podcast> podcastList;
 
-  final List<FavPodcastVideo> favpodcasts;
-
+  FavPodcastLoaded({required this.podcastList});
 }
+
+class FavPodcastError extends FavPodcastState {}

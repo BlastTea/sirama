@@ -50,8 +50,8 @@ class AllEducationalVideoPage extends StatelessWidget {
                 ),
                 ListTile(
                   contentPadding: EdgeInsets.zero,
-                  leading: CircleAvatar(
-                    backgroundImage: NetworkImage(data[index]['profile_url']!),
+                  leading: const CircleAvatar(
+                    backgroundImage: NetworkImage('assets/person.png'),
                   ),
                   title: Text(
                     educationalVideo.judulVideoEdukasi ?? '?',

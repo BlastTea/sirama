@@ -5,10 +5,17 @@ class FavEducationalVideo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('Fav Edu'),
-      )
+    return BlocBuilder<FavVideoEdukasiBloc, FavVideoEdukasiState>(
+      builder: (context, stateFavVideoEdukasi) {
+        if (MyApp.favVideoEdukasiBloc.state is FavVideoEdukasiInitial) {
+          MyApp.favVideoEdukasiBloc.add(InitializeFavVideoEdukasiData());
+        }
+        
+        return const Scaffold(
+            body: Center(
+          child: Text('Fav Edu'),
+        ));
+      },
     );
   }
 }

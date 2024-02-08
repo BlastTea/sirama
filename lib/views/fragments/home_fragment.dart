@@ -23,22 +23,20 @@ class _HomeFragmentState extends State<HomeFragment> {
     {'title': 'Tanya Ahli', 'route': '/asktheexpert'},
   ];
 
-  Widget navigateToPage(String route) {
+  void navigateToPage(String route) {
     switch (route) {
       case '/chatme':
-        return const ChatFragment();
+        return MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 3));
       case '/screening':
-        return const ScreeningPage();
+        NavigationHelper.toNamed('/screening');
       case '/film':
-        return const FilmPage();
+        NavigationHelper.toNamed('/film');
       case '/podcast':
-        return const PodcastPage();
+        NavigationHelper.toNamed('/podcast');
       case '/educational-video':
-        return const EducationalVideoPage();
+        NavigationHelper.toNamed('/educational-video');
       case '/asktheexpert':
-        return const AskTheExpertFragment();
-      default:
-        return Container();
+        return MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 2));
     }
   }
 
@@ -187,10 +185,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                                   color:
                                       Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            onPressed: () => NavigationHelper.to(
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        navigateToPage(e['route']!))),
+                            onPressed: () => navigateToPage(e['route']!),
                           ),
                         ),
                       )

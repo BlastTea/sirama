@@ -14,6 +14,7 @@ class DetailsPodcastPage extends StatefulWidget {
 
 class DetailsPodcastPageState extends State<DetailsPodcastPage> {
   late final PodPlayerController _podPlayerController;
+  bool isFavorited = false;
 
   @override
   void initState() {
@@ -65,11 +66,18 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.favorite),
+                              onPressed: () {
+                                setState(() {
+                                  isFavorited = !isFavorited;
+                                });
+                              },
+                              icon: Icon(
+                                isFavorited
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                              ),
                             ),
-                            // Text(widget.podcast.totalLikes?.toString() ?? '0'),
-                            const Text('12'),
+                            Text(widget.podcast.totalLikes?.toString() ?? '0'),
                           ],
                         ),
                       ),

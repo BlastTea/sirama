@@ -12,6 +12,7 @@ class DetailsFilmPage extends StatefulWidget {
   State<DetailsFilmPage> createState() => DetailsFilmPageState();
 }
 
+
 class DetailsFilmPageState extends State<DetailsFilmPage> {
   late final PodPlayerController _podPlayerController;
 
@@ -44,7 +45,8 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
               child: ListView(
                 children: [
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 20),
                     child: PodVideoPlayer(controller: _podPlayerController),
                   ),
                   Column(
@@ -64,11 +66,18 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               IconButton(
-                                onPressed: () {},
-                                icon: const Icon(Icons.favorite),
+                                onPressed: () {
+                                  setState(() {
+                                    isFavorited = !isFavorited;
+                                  });
+                                },
+                                icon: Icon(
+                                  isFavorited
+                                      ? Icons.favorite
+                                      : Icons.favorite_border,
+                                ),
                               ),
-                              // Text(widget.film.totalLikes?.toString() ?? '0'),
-                              const Text('12'),
+                              Text(widget.film.totalLikes?.toString() ?? '0'),
                             ],
                           ),
                         ),
@@ -89,7 +98,8 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                   ),
                   const SizedBox(height: 20),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 30, vertical: 10),
                     child: FilmPage.listVideo(
                       context: context,
                       stateFilm: stateFilm,

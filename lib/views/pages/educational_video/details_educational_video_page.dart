@@ -9,17 +9,22 @@ class DetailsEducationalVideoPage extends StatefulWidget {
   final EducationalVideo educationalVideo;
 
   @override
-  State<DetailsEducationalVideoPage> createState() => _DetailsEducationalVideoPageState();
+  State<DetailsEducationalVideoPage> createState() =>
+      _DetailsEducationalVideoPageState();
 }
 
-class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPage> {
+bool isFavorited = false;
+
+class _DetailsEducationalVideoPageState
+    extends State<DetailsEducationalVideoPage> {
   late final PodPlayerController _podPlayerController;
 
   @override
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.educationalVideo.linkVideoEdukasi!),
+      playVideoFrom:
+          PlayVideoFrom.youtube(widget.educationalVideo.linkVideoEdukasi!),
     )..initialise();
   }
 
@@ -30,7 +35,8 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
   }
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
+  Widget build(BuildContext context) =>
+      BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
         builder: (context, stateEducationalVideo) {
           if (stateEducationalVideo is EducationalVideoDataLoaded) {
             return Scaffold(
@@ -43,7 +49,8 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                 child: ListView(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 20),
                       child: PodVideoPlayer(controller: _podPlayerController),
                     ),
                     Column(
@@ -63,10 +70,20 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
                                 IconButton(
-                                  onPressed: () {},
-                                  icon: const Icon(Icons.favorite),
+                                  onPressed: () {
+                                    setState(() {
+                                      isFavorited = !isFavorited;
+                                    });
+                                  },
+                                  icon: Icon(
+                                    isFavorited
+                                        ? Icons.favorite
+                                        : Icons.favorite_border,
+                                  ),
                                 ),
-                                Text(widget.educationalVideo.totalLikes?.toString() ?? '0'),
+                                Text(widget.educationalVideo.totalLikes
+                                        ?.toString() ??
+                                    '0'),
                               ],
                             ),
                           ),
@@ -87,12 +104,14 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                     ),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
                       child: EducationalVideoPage.listVideo(
                         context: context,
                         stateEducationalVideo: stateEducationalVideo,
                         replaceCurrentPage: true,
-                        currentEducationVideo: widget.educationalVideo.idVideoEdukasi,
+                        currentEducationVideo:
+                            widget.educationalVideo.idVideoEdukasi,
                       ),
                     ),
                   ],
