@@ -14,6 +14,34 @@ class _HomeFragmentState extends State<HomeFragment> {
     {'text3': 'Menyapa kepada teman', 'value3': false},
   ];
 
+  List<Map<String, String>> routeListView = [
+    {'title': 'ChatMe', 'route': '/chatme'},
+    {'title': 'Skrining', 'route': '/screening'},
+    {'title': 'Film', 'route': '/film'},
+    {'title': 'Podcast', 'route': '/podcast'},
+    {'title': 'Video Edukasi', 'route': '/educational-video'},
+    {'title': 'Tanya Ahli', 'route': '/asktheexpert'},
+  ];
+
+  Widget navigateToPage(String route) {
+    switch (route) {
+      case '/chatme':
+        return const ChatFragment();
+      case '/screening':
+        return const ScreeningPage();
+      case '/film':
+        return const FilmPage();
+      case '/podcast':
+        return const PodcastPage();
+      case '/educational-video':
+        return const EducationalVideoPage();
+      case '/asktheexpert':
+        return const AskTheExpertFragment();
+      default:
+        return Container();
+    }
+  }
+
   String currentDay = '';
   late SharedPreferences prefs;
 
@@ -62,12 +90,15 @@ class _HomeFragmentState extends State<HomeFragment> {
                         children: [
                           Text(
                             'Selamat datang',
-                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
+                            style: Config.textStyleHeadlineSmall
+                                .copyWith(fontSize: 14),
                           ),
                           const SizedBox(
                             height: 5,
                           ),
-                          Text('${currentUser?.username ?? 'Guest'} 👋', style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)),
+                          Text('${currentUser?.username ?? 'Guest'} 👋',
+                              style: Config.textStyleHeadlineSmall.copyWith(
+                                  fontSize: 25, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -84,7 +115,9 @@ class _HomeFragmentState extends State<HomeFragment> {
               const SizedBox(
                 height: 20,
               ),
-              const Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: MyCarouselSlider()),
+              const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 20),
+                  child: MyCarouselSlider()),
               const SizedBox(
                 height: 20,
               ),
@@ -92,7 +125,8 @@ class _HomeFragmentState extends State<HomeFragment> {
                 padding: const EdgeInsets.symmetric(horizontal: 20.0),
                 child: CardTile(
                   title: const Text('Yuk, Skrining!'),
-                  subtitle: const Text('Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
+                  subtitle: const Text(
+                      'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
                   button: const Row(
                     children: [
                       Text('Skrining'),
@@ -108,7 +142,8 @@ class _HomeFragmentState extends State<HomeFragment> {
                   ),
                   imageAlignment: CardTileAlignment.bottom,
                   minImageWidth: 100.0,
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const ScreeningPage())),
+                  onPressed: () => NavigationHelper.to(MaterialPageRoute(
+                      builder: (context) => const ScreeningPage())),
                 ),
               ),
               const SizedBox(
@@ -132,28 +167,30 @@ class _HomeFragmentState extends State<HomeFragment> {
                 height: 48.0,
                 child: ListView(
                   scrollDirection: Axis.horizontal,
-                  children: [
-                    'ChatMe',
-                    'Skrining',
-                    'Infografis',
-                    'Film',
-                    'Podcast',
-                    'Video Edukasi',
-                    'Tanya Ahli',
-                  ]
+                  children: routeListView
                       .map(
                         (e) => Padding(
-                          padding: EdgeInsets.only(left: e == 'ChatMe' ? 20.0 : 8.0, right: e == 'Tanya Ahli' ? 20.0 : 0.0),
+                          padding: EdgeInsets.only(
+                              left: e['title'] == 'ChatMe' ? 20.0 : 8.0,
+                              right: e['title'] == 'Tanya Ahli' ? 20.0 : 0.0),
                           child: ActionChip(
-                            label: Text(e),
+                            label: Text(e['title']!),
                             side: BorderSide(
                               color: Theme.of(context).colorScheme.onPrimary,
                             ),
-                            color: MaterialStatePropertyAll(Theme.of(context).colorScheme.primary),
-                            labelStyle: Theme.of(context).textTheme.labelLarge?.copyWith(
-                                  color: Theme.of(context).colorScheme.onPrimary,
+                            color: MaterialStatePropertyAll(
+                                Theme.of(context).colorScheme.primary),
+                            labelStyle: Theme.of(context)
+                                .textTheme
+                                .labelLarge
+                                ?.copyWith(
+                                  color:
+                                      Theme.of(context).colorScheme.onPrimary,
                                 ),
-                            onPressed: () => debugPrint('on $e pressed'),
+                            onPressed: () => NavigationHelper.to(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        navigateToPage(e['route']!))),
                           ),
                         ),
                       )
@@ -184,11 +221,14 @@ class _HomeFragmentState extends State<HomeFragment> {
                     value: e['value${e.keys.first.substring(4)}'] as bool,
                     title: Text(
                       e.values.first,
-                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                          color: Theme.of(context).colorScheme.onPrimary),
                     ),
                     tileColor: Theme.of(context).colorScheme.primary,
                     checkColor: Theme.of(context).colorScheme.onPrimary,
-                    side: BorderSide(color: Theme.of(context).colorScheme.onPrimary, width: 2),
+                    side: BorderSide(
+                        color: Theme.of(context).colorScheme.onPrimary,
+                        width: 2),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),

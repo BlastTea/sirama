@@ -6,6 +6,7 @@ import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
 import 'package:sirama/services/services.dart';
 import 'package:sirama/utils/utils.dart';
+import 'package:sirama/views/fragments/fragments.dart';
 import 'package:sirama/views/pages/pages.dart';
 
 void main() async {
@@ -70,6 +71,9 @@ class MyApp extends StatelessWidget {
               '/educational-video': (context) => const EducationalVideoPage(),
               '/infographics': (context) => const InfographicsPage(),
               '/mainscreening': (context) => const MainScreeningPage(),
+              '/screening': (context) => const ScreeningPage(),
+              '/chatme': (context) => const ChatFragment(),
+              '/asktheexpert': (context) => const AskTheExpertFragment(),
             },
             debugShowCheckedModeBanner: false,
             navigatorKey: navigatorKey,
