@@ -130,9 +130,9 @@ class _HomeFragmentState extends State<HomeFragment> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 20, bottom: 20),
+                padding: const EdgeInsets.only(top: 30),
                 child: SizedBox(
-                    height: 210,
+                    height: 245,
                     child: GridView.count(
                       primary: false,
                       crossAxisCount: 3,
@@ -194,10 +194,6 @@ class _HomeFragmentState extends State<HomeFragment> {
               //         builder: (context) => const ScreeningPage())),
               //   ),
               // ),
-
-              const SizedBox(
-                height: 20,
-              ),
 
               // SizedBox(
               //   height: 48.0,
