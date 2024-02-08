@@ -124,13 +124,13 @@ class _HomeFragmentState extends State<HomeFragment> {
                   children: [
                     Text(
                       'Menu',
-                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 18),
+                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
                     ),
                   ],
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 30),
+                padding: const EdgeInsets.only(top: 20),
                 child: SizedBox(
                     height: 245,
                     child: GridView.count(
@@ -230,11 +230,11 @@ class _HomeFragmentState extends State<HomeFragment> {
               //   height: 20,
               // ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
                     Text(
-                      'Tandai tiga kebaikanmu hari ini',
+                      'Tandai tiga kebaikanmu hari ini 👇',
                       style: Config.textStyleHeadlineSmall.copyWith(fontSize: 18,),
                     ),
                   ],
@@ -245,7 +245,7 @@ class _HomeFragmentState extends State<HomeFragment> {
               ),
               ...checkboxHomeFragment.map(
                 (Map<String, dynamic> e) => Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 10.0, 20.0),
+                  padding: const EdgeInsets.fromLTRB(15.0, 0.0, 10.0, 15.0),
                   child: CheckboxListTile(
                     value: e['value${e.keys.first.substring(4)}'] as bool,
                     title: Text(
