@@ -18,9 +18,9 @@ class ChooseScreeningPage extends StatelessWidget {
                 ),
                 const Text('Yuk, skrining sekarang',
                     style: TextStyle(fontSize: 20)),
-                const Text('Altamis S.Kom, M.Kom.',
+                Text('${currentUser?.username ?? 'Guest'} 🤩',
                     style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                        const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 Stack(
                   children: [
                     Image.asset(

@@ -113,7 +113,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: MyCarouselSlider()),
               const SizedBox(
-                height: 20,
+                height: 25,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -128,12 +128,11 @@ class _HomeFragmentState extends State<HomeFragment> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
-                child: SizedBox(
-                    height: 245,
+                child: SizedBox(                  
+                    height: 241,
                     child: GridView.count(
                       primary: false,
                       crossAxisCount: 3,
-                      mainAxisSpacing: 2,
                       children: [
                         ...siramaIcon.map((e) => Column(
                               children: [
@@ -153,7 +152,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                                       )),
                                 ),
                                 const SizedBox(
-                                  height: 9,
+                                  height: 10,
                                 ),
                                 Text(
                                   e['title']!,
