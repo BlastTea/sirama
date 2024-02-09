@@ -52,11 +52,14 @@ class _DetailsEducationalVideoPageState
                   title: const Text('Video Edukasi'),
                   centerTitle: true,
                   actions: [
-                    IconButton(
-                        onPressed: () {
-                          onShare(context);
-                        },
-                        icon: SvgPicture.asset('assets/icons/share-icons.svg')),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7),
+                      child: IconButton(
+                          onPressed: () {
+                            onShare(context);
+                          },
+                          icon: SvgPicture.asset('assets/icons/share-icons.svg')),
+                    ),
                   ]),
               body: SafeArea(
                 child: ListView(

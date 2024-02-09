@@ -30,6 +30,12 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
     super.dispose();
   }
 
+  void onShare(BuildContext context) async {
+    if (widget.podcast.linkPodcast!.isNotEmpty) {
+      await Share.shareUri(Uri.parse(widget.podcast.linkPodcast!));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<PodcastBloc, PodcastState>(
@@ -43,19 +49,23 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                   onPressed: () => Navigator.of(context).pop(),
                 ),
                 actions: [
-                  IconButton(
-                      onPressed: () {},
-                      // async {
-                      //   Share.share(
-                      //       'Yuk, nonton ini gaes! ${widget.educationalVideo.linkVideoEdukasi}');
-                      // },
-                      icon: SvgPicture.asset('assets/icons/share-iconss.svg')),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7),
+                    child: IconButton(
+                        onPressed: () {
+                          onShare(context);
+                        },
+                        icon: SvgPicture.asset('assets/icons/share-iconss.svg')),
+                  ),
                 ],
-                title: const Text("Video Edukasi"),
+                title: const Text("Podcast Edukasi"),
                 centerTitle: true,
               ),
               body: SafeArea(
                   child: ListView(shrinkWrap: true, children: [
+                const SizedBox(
+                  height: 20,
+                ),
                 const MyContentWidget(
                   jenisKonten: 'Podcast',
                   untukUsia: '17-21 Tahun',
@@ -64,14 +74,13 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                   height: 20,
                 ),
                 Padding(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
                       Text(widget.podcast.judulPodcast ?? '?',
                           style: Config.textStyleHeadlineSmall.copyWith(
                               fontSize: 16, fontWeight: FontWeight.bold)),
-                      const SizedBox(height: 10),
+                      const SizedBox(height: 20),
                       PodVideoPlayer(controller: _podPlayerController),
                     ],
                   ),
@@ -85,6 +94,13 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              child: Text('Disukai',
+                                  style: Config.textStyleBodyMedium
+                                      .copyWith(color: Colors.black)),
+                            ),
                             IconButton(
                               onPressed: () {
                                 setState(() {
@@ -104,11 +120,17 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                     ),
                   ],
                 ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Text(widget.podcast.deksripsiPodcast ?? '?',
+                      style: Config.textStyleBodyMedium
+                          .copyWith(color: Colors.black)),
+                ),
                 const SizedBox(
                   height: 20,
                 ),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 30),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     children: [
                       Text(
@@ -123,7 +145,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                 ),
                 Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
+                        horizontal: 20),
                     child: PodcastPage.listPodcast(
                       context: context,
                       statePodcast: statePodcast,
