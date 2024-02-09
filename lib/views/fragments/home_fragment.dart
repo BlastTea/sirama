@@ -31,6 +31,8 @@ class _HomeFragmentState extends State<HomeFragment> {
         NavigationHelper.toNamed('/podcast');
       case '/educational-video':
         NavigationHelper.toNamed('/educational-video');
+      case '/infographics':
+        NavigationHelper.toNamed('/infographics');
       case '/asktheexpert':
         return MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 2));
     }
@@ -164,67 +166,6 @@ class _HomeFragmentState extends State<HomeFragment> {
                       ],
                     )),
               ),
-
-              // Padding(
-              //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              //   child: CardTile(
-              //     title: const Text('Yuk, Skrining!'),
-              //     subtitle: const Text(
-              //         'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
-              //     button: const Row(
-              //       children: [
-              //         Text('Skrining'),
-              //         SizedBox(width: 10),
-              //         Icon(
-              //           Icons.arrow_forward,
-              //           color: Colors.white,
-              //         )
-              //       ],
-              //     ),
-              //     image: Image.asset(
-              //       'assets/card-homepage.png',
-              //     ),
-              //     imageAlignment: CardTileAlignment.bottom,
-              //     minImageWidth: 100.0,
-              //     onPressed: () => NavigationHelper.to(MaterialPageRoute(
-              //         builder: (context) => const ScreeningPage())),
-              //   ),
-              // ),
-
-              // SizedBox(
-              //   height: 48.0,
-              //   child: ListView(
-              //     scrollDirection: Axis.horizontal,
-              //     children: routeListView
-              //         .map(
-              //           (e) => Padding(
-              //             padding: EdgeInsets.only(
-              //                 left: e['title'] == 'ChatMe' ? 20.0 : 8.0,
-              //                 right: e['title'] == 'Tanya Ahli' ? 20.0 : 0.0),
-              //             child: ActionChip(
-              //               label: Text(e['title']!),
-              //               side: BorderSide(
-              //                 color: Theme.of(context).colorScheme.onPrimary,
-              //               ),
-              //               color: MaterialStatePropertyAll(
-              //                   Theme.of(context).colorScheme.primary),
-              //               labelStyle: Theme.of(context)
-              //                   .textTheme
-              //                   .labelLarge
-              //                   ?.copyWith(
-              //                     color:
-              //                         Theme.of(context).colorScheme.onPrimary,
-              //                   ),
-              //               onPressed: () => navigateToPage(e['route']!),
-              //             ),
-              //           ),
-              //         )
-              //         .toList(),
-              //   ),
-              // ),
-              // const SizedBox(
-              //   height: 20,
-              // ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
