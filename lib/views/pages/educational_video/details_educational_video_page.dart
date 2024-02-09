@@ -34,6 +34,13 @@ class _DetailsEducationalVideoPageState
     super.dispose();
   }
 
+  void onShare(BuildContext context) async {
+    if (widget.educationalVideo.linkVideoEdukasi!.isNotEmpty) {
+      await Share.shareUri(
+          Uri.parse(widget.educationalVideo.linkVideoEdukasi!));
+    }
+  }
+
   @override
   Widget build(BuildContext context) =>
       BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
@@ -41,13 +48,33 @@ class _DetailsEducationalVideoPageState
           if (stateEducationalVideo is EducationalVideoDataLoaded) {
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: Colors.white,
-                title: const Text('Video Edukasi'),
-                centerTitle: true,
-              ),
+                  backgroundColor: Colors.white,
+                  title: const Text('Video Edukasi'),
+                  centerTitle: true,
+                  actions: [
+                    IconButton(
+                        onPressed: () {
+                          onShare(context);
+                        },
+                        icon: SvgPicture.asset('assets/icons/share-icons.svg')),
+                  ]),
               body: SafeArea(
                 child: ListView(
                   children: [
+                    const MyContentWidget(
+                      jenisKonten: 'Podcast',
+                      untukUsia: '17-21 Tahun',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        widget.educationalVideo.judulVideoEdukasi ?? '?',
+                        style: Config.textStyleTitleMedium,
+                      ),
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 20),
@@ -57,18 +84,14 @@ class _DetailsEducationalVideoPageState
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         ListTile(
-                          title: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(
-                              widget.educationalVideo.judulVideoEdukasi ?? '?',
-                              style: Config.textStyleTitleMedium,
-                            ),
-                          ),
                           subtitle: Align(
                             alignment: Alignment.centerLeft,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
+                                Text('Disukai',
+                                    style: Config.textStyleBodyMedium
+                                        .copyWith(color: Colors.black)),
                                 IconButton(
                                   onPressed: () {
                                     setState(() {
@@ -90,6 +113,10 @@ class _DetailsEducationalVideoPageState
                         ),
                       ],
                     ),
+                    const SizedBox(height: 20),
+                    Text(widget.educationalVideo.deksripsiVideoEdukasi ?? '?',
+                                    style: Config.textStyleBodyMedium
+                                        .copyWith(color: Colors.black)),
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 30),

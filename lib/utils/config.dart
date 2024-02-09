@@ -38,6 +38,8 @@ class Config {
     primary: const Color(0xFF8BC0F8),
   );
 
+  static Color mainColor = const Color(0xFF8BC0F8);
+
   static TextStyle defaultStyle = GoogleFonts.plusJakartaSans();
 
   static TextStyle textStyleHeadlineLarge = defaultStyle.copyWith(

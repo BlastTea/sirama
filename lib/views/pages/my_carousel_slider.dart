@@ -33,7 +33,7 @@ class MyCarouselSlider extends StatelessWidget {
             options: CarouselOptions(
               viewportFraction: 0.9,
               // height: 70.0,
-              aspectRatio: 75/20,
+              aspectRatio: 76/20,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 6),
             ),

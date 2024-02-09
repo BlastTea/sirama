@@ -77,8 +77,8 @@ class JawabanAhli with _$JawabanAhli {
 }
 
 @unfreezed
-class Podcast with _$Podcast {
-  factory Podcast({
+class PodcastVideo with _$PodcastVideo {
+  factory PodcastVideo({
     @JsonKey(name: 'id_podcast') int? idPodcast,
     @JsonKey(name: 'judul_podcast') String? judulPodcast,
     @JsonKey(name: 'link_podcast') String? linkPodcast,
@@ -86,11 +86,12 @@ class Podcast with _$Podcast {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
-  }) = _Podcast;
+  }) = _PodcastVideo;
 
-  factory Podcast.fromJson(Map<String, dynamic> json) => _$PodcastFromJson(json);
+  factory PodcastVideo.fromJson(Map<String, dynamic> json) => _$PodcastVideoFromJson(json);
 }
 
 @unfreezed
@@ -103,6 +104,7 @@ class Film with _$Film {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'deskripsi') String? deksripsiFilm,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Film;
@@ -137,6 +139,7 @@ class EducationalVideo with _$EducationalVideo {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _EducationalVideo;
@@ -186,6 +189,8 @@ class FavFilmVideo with _$FavFilmVideo {
     @JsonKey(name: 'link_film') String? linkFilm,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'deskripsi') String? deksripsiFilm,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _FavFilmVideo;
@@ -203,6 +208,8 @@ class FavPodcastVideo with _$FavPodcastVideo {
     @JsonKey(name: 'link_podcast') String? linkPodcast,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _FavPodcastVideo;
@@ -220,6 +227,8 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
     @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
+    @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _FavVideoEdukasi;

@@ -6,7 +6,7 @@ class DetailsPodcastPage extends StatefulWidget {
     required this.podcast,
   });
 
-  final Podcast podcast;
+  final PodcastVideo podcast;
 
   @override
   State<DetailsPodcastPage> createState() => DetailsPodcastPageState();
@@ -42,24 +42,44 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                   icon: const Icon(Icons.arrow_back, color: Colors.black),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
+                actions: [
+                  IconButton(
+                      onPressed: () {},
+                      // async {
+                      //   Share.share(
+                      //       'Yuk, nonton ini gaes! ${widget.educationalVideo.linkVideoEdukasi}');
+                      // },
+                      icon: SvgPicture.asset('assets/icons/share-iconss.svg')),
+                ],
                 title: const Text("Video Edukasi"),
                 centerTitle: true,
               ),
               body: SafeArea(
                   child: ListView(shrinkWrap: true, children: [
+                const MyContentWidget(
+                  jenisKonten: 'Podcast',
+                  untukUsia: '17-21 Tahun',
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
                 Padding(
                   padding:
                       const EdgeInsets.symmetric(horizontal: 30, vertical: 20),
-                  child: PodVideoPlayer(controller: _podPlayerController),
+                  child: Column(
+                    children: [
+                      Text(widget.podcast.judulPodcast ?? '?',
+                          style: Config.textStyleHeadlineSmall.copyWith(
+                              fontSize: 16, fontWeight: FontWeight.bold)),
+                      const SizedBox(height: 10),
+                      PodVideoPlayer(controller: _podPlayerController),
+                    ],
+                  ),
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     ListTile(
-                      title: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 10),
-                        child: Text(widget.podcast.judulPodcast ?? '?'),
-                      ),
                       subtitle: Align(
                         alignment: Alignment.centerLeft,
                         child: Row(

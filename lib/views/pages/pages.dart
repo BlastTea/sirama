@@ -11,6 +11,9 @@ import 'package:sirama/models/models.dart';
 import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/fragments/fragments.dart';
 import 'package:sirama/views/widgets/widgets.dart';
+import 'package:share_plus/share_plus.dart';
+
+
 
 part 'welcome_page.dart';
 part 'user/sign_in_page.dart';

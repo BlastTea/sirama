@@ -2,6 +2,8 @@ part of '../pages.dart';
 
 class AllEducationalVideoPage extends StatelessWidget {
   const AllEducationalVideoPage({super.key});
+  
+  static get linkVideo => null;
 
   static Widget listVideo({
     required BuildContext context,

@@ -10,3 +10,4 @@ Widget counter(
       '$currentLength / $maxLength',
       semanticsLabel: 'character count',
     );
+

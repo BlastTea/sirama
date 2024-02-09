@@ -1,13 +1,5 @@
 part of 'utils.dart';
 
-// class SiramaIcon {
-//   final String icon;
-//   final String title;
-//   final Color? color;
-//   final String? route;
-
-//   SiramaIcon({required this.icon, required this.title, this.color, this.route});
-// }
 
 List<Map<String, String>> siramaIcon = [
   {'icon': 'skrining-menu-icon', 'title': 'Screening', 'route': '/screening'},
@@ -23,3 +15,9 @@ List<Map<String, dynamic>> checkboxHomeFragment = [
     {'text2': 'Berdoa sebelum belajar', 'value2': false},
     {'text3': 'Menyapa kepada teman', 'value3': false},
   ];
+
+
+List<Map<String, String>> kontenCard = [
+  {'icon': 'jenis-konten', 'title': 'Jenis Konten'},
+  {'icon': 'untuk-usia', 'title': 'Untuk Usia'},
+];

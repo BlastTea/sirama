@@ -12,7 +12,6 @@ class DetailsFilmPage extends StatefulWidget {
   State<DetailsFilmPage> createState() => DetailsFilmPageState();
 }
 
-
 class DetailsFilmPageState extends State<DetailsFilmPage> {
   late final PodPlayerController _podPlayerController;
 
@@ -44,27 +43,40 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
             body: SafeArea(
               child: ListView(
                 children: [
+                  const MyContentWidget(
+                    jenisKonten: 'Film',
+                    untukUsia: '17-21 Tahun',
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(
+                      widget.film.judulFilm ?? '?',
+                      style: Config.textStyleTitleMedium,
+                    ),
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 20),
+                        horizontal: 20, vertical: 10),
                     child: PodVideoPlayer(controller: _podPlayerController),
                   ),
                   Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       ListTile(
-                        title: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10),
-                          child: Text(
-                            widget.film.judulFilm ?? '?',
-                            style: Config.textStyleTitleMedium,
-                          ),
-                        ),
                         subtitle: Align(
                           alignment: Alignment.centerLeft,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
+                              Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                child: Text('Disukai',
+                                    style: Config.textStyleBodyMedium
+                                        .copyWith(color: Colors.black)),
+                              ),
                               IconButton(
                                 onPressed: () {
                                   setState(() {
@@ -84,9 +96,15 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                       ),
                     ],
                   ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Text(widget.film.deksripsiFilm ?? '?',
+                        style: Config.textStyleBodyMedium
+                            .copyWith(color: Colors.black)),
+                  ),
                   const SizedBox(height: 20),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 30),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: [
                         Text(
@@ -99,7 +117,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                   const SizedBox(height: 20),
                   Padding(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 30, vertical: 10),
+                        horizontal: 20, vertical: 10),
                     child: FilmPage.listVideo(
                       context: context,
                       stateFilm: stateFilm,
