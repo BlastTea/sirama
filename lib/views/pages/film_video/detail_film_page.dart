@@ -29,6 +29,12 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
     super.dispose();
   }
 
+  void onShare(BuildContext context) async {
+    if (widget.film.linkFilm!.isNotEmpty) {
+      await Share.shareUri(Uri.parse(widget.film.linkFilm!));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FilmVideoBloc, FilmVideoState>(
@@ -39,10 +45,27 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
               backgroundColor: Colors.white,
               title: const Text('Film Edukasi'),
               centerTitle: true,
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back, color: Colors.black),
+                onPressed: () => Navigator.of(context).pop(),
+              ),
+              actions: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  child: IconButton(
+                      onPressed: () {
+                        onShare(context);
+                      },
+                      icon: SvgPicture.asset('assets/icons/share-iconss.svg')),
+                ),
+              ],
             ),
             body: SafeArea(
               child: ListView(
                 children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
                   const MyContentWidget(
                     jenisKonten: 'Film',
                     untukUsia: '17-21 Tahun',
@@ -57,9 +80,11 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                       style: Config.textStyleTitleMedium,
                     ),
                   ),
+                  const SizedBox(
+                    height: 20,
+                  ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: PodVideoPlayer(controller: _podPlayerController),
                   ),
                   Column(
@@ -72,7 +97,8 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text('Disukai',
                                     style: Config.textStyleBodyMedium
                                         .copyWith(color: Colors.black)),
