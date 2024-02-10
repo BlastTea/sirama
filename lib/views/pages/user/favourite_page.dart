@@ -23,10 +23,10 @@ class FavouritePage extends StatelessWidget {
           ),
           body: const TabBarView(
             children: [
-              FavEducationalVideo(),
               FavFilm(),
+              FavPodcast(),
+              FavEducationalVideo(),
               FavInfographics(),
-              FavPodcast()
             ],
           ),
         ),

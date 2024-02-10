@@ -161,12 +161,12 @@ class Quote with _$Quote {
   factory Quote.fromJson(Map<String, dynamic> json) => _$QuoteFromJson(json);
 }
 
-@freezed
+@unfreezed
 class FavInfografis with _$FavInfografis {
-  const factory FavInfografis({
+  factory FavInfografis({
     @JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'infografis_id') String? idInfografis,
+    @JsonKey(name: 'infografis_id') int? idInfografis,
     @JsonKey(name: 'judul_infografis') String? judulInfografis,
     @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -174,17 +174,18 @@ class FavInfografis with _$FavInfografis {
     @JsonKey(name: 'upload_user_id') int? uploadUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _FavInfografis;
 
   factory FavInfografis.fromJson(Map<String, dynamic> json) => _$FavInfografisFromJson(json);
 }
 
-@freezed
+@unfreezed
 class FavFilmVideo with _$FavFilmVideo {
-  const factory FavFilmVideo({
+  factory FavFilmVideo({
     @JsonKey(name: 'id_fav_film') int? idFavFilm,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'film_id') String? idFilm,
+    @JsonKey(name: 'film_id') int? idFilm,
     @JsonKey(name: 'judul_film') String? judulFilm,
     @JsonKey(name: 'link_film') String? linkFilm,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -193,17 +194,18 @@ class FavFilmVideo with _$FavFilmVideo {
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _FavFilmVideo;
 
   factory FavFilmVideo.fromJson(Map<String, dynamic> json) => _$FavFilmVideoFromJson(json);
 }
 
-@freezed
+@unfreezed
 class FavPodcastVideo with _$FavPodcastVideo {
-  const factory FavPodcastVideo({
+  factory FavPodcastVideo({
     @JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'podcast_id') String? idPodcast,
+    @JsonKey(name: 'podcast_id') int? idPodcast,
     @JsonKey(name: 'judul_podcast') String? judulPodcast,
     @JsonKey(name: 'link_podcast') String? linkPodcast,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -212,17 +214,18 @@ class FavPodcastVideo with _$FavPodcastVideo {
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _FavPodcastVideo;
 
   factory FavPodcastVideo.fromJson(Map<String, dynamic> json) => _$FavPodcastVideoFromJson(json);
 }
 
-@freezed
+@unfreezed
 class FavVideoEdukasi with _$FavVideoEdukasi {
-  const factory FavVideoEdukasi({
+  factory FavVideoEdukasi({
     @JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'video_edukasi_id') String? idVideoEdukasi,
+    @JsonKey(name: 'video_edukasi_id') int? idVideoEdukasi,
     @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
     @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
     @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
@@ -231,6 +234,7 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _FavVideoEdukasi;
 
   factory FavVideoEdukasi.fromJson(Map<String, dynamic> json) => _$FavVideoEdukasiFromJson(json);

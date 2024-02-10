@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
   static FavVideoEdukasiBloc favVideoEdukasiBloc = FavVideoEdukasiBloc();
   static FavInfografisBloc favInfografisBloc = FavInfografisBloc();
 
+
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();

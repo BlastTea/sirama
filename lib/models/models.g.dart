@@ -275,7 +275,7 @@ _$FavInfografisImpl _$$FavInfografisImplFromJson(Map<String, dynamic> json) =>
     _$FavInfografisImpl(
       idFavInfografis: json['id_fav_infografis'] as int?,
       idUser: json['user_id'] as int?,
-      idInfografis: json['infografis_id'] as String?,
+      idInfografis: json['infografis_id'] as int?,
       judulInfografis: json['judul_infografis'] as String?,
       deskripsiInfografis: json['deskripsi_infografis'] as String?,
       tanggalUpload: json['tgl_upload'] == null
@@ -309,7 +309,7 @@ _$FavFilmVideoImpl _$$FavFilmVideoImplFromJson(Map<String, dynamic> json) =>
     _$FavFilmVideoImpl(
       idFavFilm: json['id_fav_film'] as int?,
       idUser: json['user_id'] as int?,
-      idFilm: json['film_id'] as String?,
+      idFilm: json['film_id'] as int?,
       judulFilm: json['judul_film'] as String?,
       linkFilm: json['link_film'] as String?,
       tanggalUpload: json['tgl_upload'] == null
@@ -346,7 +346,7 @@ _$FavPodcastVideoImpl _$$FavPodcastVideoImplFromJson(
     _$FavPodcastVideoImpl(
       idFavPodcast: json['id_fav_podcast'] as int?,
       idUser: json['user_id'] as int?,
-      idPodcast: json['podcast_id'] as String?,
+      idPodcast: json['podcast_id'] as int?,
       judulPodcast: json['judul_podcast'] as String?,
       linkPodcast: json['link_podcast'] as String?,
       tanggalUpload: json['tgl_upload'] == null
@@ -384,7 +384,7 @@ _$FavVideoEdukasiImpl _$$FavVideoEdukasiImplFromJson(
     _$FavVideoEdukasiImpl(
       idFavVideoEdukasi: json['id_fav_video_edukasi'] as int?,
       idUser: json['user_id'] as int?,
-      idVideoEdukasi: json['video_edukasi_id'] as String?,
+      idVideoEdukasi: json['video_edukasi_id'] as int?,
       judulVideoEdukasi: json['judul_video_edukasi'] as String?,
       linkVideoEdukasi: json['link_video_edukasi'] as String?,
       tanggalUpload: json['tgl_upload'] == null

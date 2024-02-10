@@ -9,7 +9,7 @@ class FavPodcastBloc extends Bloc<FavPodcastEvent, FavPodcastState> {
 
     on<InitializeFavPodcastData>((event, emit) async {
       try {
-        _favPodcastList = await ApiHelper.get('/api/podcast').then(
+        _favPodcastList = await ApiHelper.get('/api/favinfografis').then(
             (value) => (value.data['data'] as List)
                 .map((e) => FavPodcastVideo.fromJson(e))
                 .toList());
