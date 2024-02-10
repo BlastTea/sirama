@@ -105,7 +105,6 @@ class ContentFragment extends StatelessWidget {
                                     ),
                                   ],
                                 ),
-                                // const SizedBox(height: 20,),
                                 const Spacer(),
                                 Padding(
                                   padding: const EdgeInsets.only(left: 30),

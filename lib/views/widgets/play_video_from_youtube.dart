@@ -20,7 +20,7 @@ class PlayVideoFromYoutube extends StatefulWidget {
 
 class _PlayVideoFromYoutubeState extends State<PlayVideoFromYoutube> {
   late final PodPlayerController controller;
-  
+
   get videoUrl => null;
 
   @override

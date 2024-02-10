@@ -55,7 +55,8 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                         onPressed: () {
                           onShare(context);
                         },
-                        icon: SvgPicture.asset('assets/icons/share-iconss.svg')),
+                        icon:
+                            SvgPicture.asset('assets/icons/share-iconss.svg')),
                   ),
                 ],
                 title: const Text("Podcast Edukasi"),
@@ -144,8 +145,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                   height: 20,
                 ),
                 Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20),
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: PodcastPage.listPodcast(
                       context: context,
                       statePodcast: statePodcast,

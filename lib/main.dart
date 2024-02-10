@@ -44,6 +44,7 @@ class MyApp extends StatelessWidget {
   static FavVideoEdukasiBloc favVideoEdukasiBloc = FavVideoEdukasiBloc();
   static FavInfografisBloc favInfografisBloc = FavInfografisBloc();
 
+
   @override
   Widget build(BuildContext context) {
     FlutterNativeSplash.remove();
@@ -111,7 +112,10 @@ class MyApp extends StatelessWidget {
               ),
               chipTheme: ChipThemeData(
                 selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
+                secondaryLabelStyle: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(color: Config.colorScheme.onPrimary),
                 checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),

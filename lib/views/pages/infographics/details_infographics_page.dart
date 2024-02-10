@@ -10,7 +10,6 @@ class DetailsInfographicsPage extends StatefulWidget {
       _DetailsInfographicsPageState();
 }
 
-
 class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
   @override
   Widget build(BuildContext context) {
@@ -119,7 +118,7 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                       children: [
                         Text(
                           'Infografis lainnya',
-                          style: Config.textStyleHeadlineSmall,
+                          style: Config.textStyleTitleMedium,
                         ),
                       ],
                     ),

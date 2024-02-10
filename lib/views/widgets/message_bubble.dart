@@ -19,12 +19,15 @@ class MessageBubble extends StatelessWidget {
         alignment: isSender ? Alignment.centerRight : Alignment.centerLeft,
         child: CustomPaint(
           painter: MessageBubblePainter(
-            color: isSender ? Theme.of(context).colorScheme.primary : Config.greyColor.withOpacity(0.5),
+            color: isSender
+                ? Theme.of(context).colorScheme.primary
+                : Config.greyColor.withOpacity(0.5),
             alignment: isSender ? Alignment.topRight : Alignment.topLeft,
             tail: withTail,
           ),
           child: Padding(
-            padding: EdgeInsets.fromLTRB(isSender ? 10.0 : 20.0, 10.0, isSender ? 20.0 : 10.0, 10.0),
+            padding: EdgeInsets.fromLTRB(
+                isSender ? 10.0 : 20.0, 10.0, isSender ? 20.0 : 10.0, 10.0),
             child: _MessageBubble(
               message: message,
               sentAt: sentAt,
@@ -148,7 +151,10 @@ class MessageBubblePainter extends CustomPainter {
   }
 
   @override
-  bool shouldRepaint(MessageBubblePainter oldDelegate) => oldDelegate.color != color || oldDelegate.alignment != alignment || oldDelegate.tail != tail;
+  bool shouldRepaint(MessageBubblePainter oldDelegate) =>
+      oldDelegate.color != color ||
+      oldDelegate.alignment != alignment ||
+      oldDelegate.tail != tail;
 }
 
 class _MessageBubble extends LeafRenderObjectWidget {
@@ -169,9 +175,11 @@ class _MessageBubble extends LeafRenderObjectWidget {
       );
 
   @override
-  void updateRenderObject(BuildContext context, _RenderMessageBubble renderObject) => renderObject
-    ..message = message
-    ..sentAt = sentAt;
+  void updateRenderObject(
+          BuildContext context, _RenderMessageBubble renderObject) =>
+      renderObject
+        ..message = message
+        ..sentAt = sentAt;
 }
 
 class _RenderMessageBubble extends RenderBox {
@@ -225,18 +233,26 @@ class _RenderMessageBubble extends RenderBox {
     markNeedsLayout();
   }
 
-  TextSpan get _messageTextSpan => TextSpan(text: message, style: Config.textStyleTitleSmall.copyWith(color: colorScheme.onPrimary));
+  TextSpan get _messageTextSpan => TextSpan(
+      text: message,
+      style: Config.textStyleTitleSmall.copyWith(color: colorScheme.onPrimary));
 
-  TextSpan get _sentAtTextSpan => TextSpan(text: sentAt.toFormattedString(), style: Config.textStyleBodyMedium.copyWith(color: colorScheme.onPrimary));
+  TextSpan get _sentAtTextSpan => TextSpan(
+      text: sentAt.toFormattedString(),
+      style: Config.textStyleBodyMedium.copyWith(color: colorScheme.onPrimary));
 
   @override
   void performLayout() {
     BoxConstraints contentConstraints = constraints.copyWith(minWidth: 100.0);
 
-    _messageTextPainter.layout(maxWidth: contentConstraints.maxWidth, minWidth: contentConstraints.minWidth);
+    _messageTextPainter.layout(
+        maxWidth: contentConstraints.maxWidth,
+        minWidth: contentConstraints.minWidth);
     final messageTextLines = _messageTextPainter.computeLineMetrics();
 
-    _sentAtTextPainter.layout(maxWidth: contentConstraints.maxWidth, minWidth: contentConstraints.minWidth);
+    _sentAtTextPainter.layout(
+        maxWidth: contentConstraints.maxWidth,
+        minWidth: contentConstraints.minWidth);
     final sentAtTextLine = _sentAtTextPainter.computeLineMetrics().single;
 
     double longestLineWidth = 0.0;
@@ -244,17 +260,20 @@ class _RenderMessageBubble extends RenderBox {
       longestLineWidth = max(longestLineWidth, line.width);
     }
 
-    final double messageHeight = messageTextLines.first.height * messageTextLines.length;
+    final double messageHeight =
+        messageTextLines.first.height * messageTextLines.length;
 
     sentAtWidth = sentAtTextLine.width;
     sentAtHeight = sentAtTextLine.height;
 
-    size = contentConstraints.constrain(Size(longestLineWidth, messageHeight + sentAtHeight + 2.0));
+    size = contentConstraints
+        .constrain(Size(longestLineWidth, messageHeight + sentAtHeight + 2.0));
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
     _messageTextPainter.paint(context.canvas, offset);
-    _sentAtTextPainter.paint(context.canvas, offset + Offset(size.width - sentAtWidth, size.height - sentAtHeight));
+    _sentAtTextPainter.paint(context.canvas,
+        offset + Offset(size.width - sentAtWidth, size.height - sentAtHeight));
   }
 }

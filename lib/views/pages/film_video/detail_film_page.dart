@@ -156,7 +156,6 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
             ),
           );
         }
-
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,

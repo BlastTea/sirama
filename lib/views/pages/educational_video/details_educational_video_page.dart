@@ -4,9 +4,11 @@ class DetailsEducationalVideoPage extends StatefulWidget {
   const DetailsEducationalVideoPage({
     super.key,
     required this.educationalVideo,
+    this.favEducationalVideo,
   });
 
   final EducationalVideo educationalVideo;
+  final FavVideoEdukasi? favEducationalVideo;
 
   @override
   State<DetailsEducationalVideoPage> createState() =>

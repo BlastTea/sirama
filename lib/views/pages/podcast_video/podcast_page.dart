@@ -53,7 +53,8 @@ class PodcastPage extends StatelessWidget {
                   ),
                   title: Text(
                     podcast.judulPodcast ?? '?',
-                    style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: Config.textStyleHeadlineSmall
+                        .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'Admin . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
@@ -62,7 +63,9 @@ class PodcastPage extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SizedBox(height: 15,),
+                const SizedBox(
+                  height: 15,
+                ),
               ],
             ),
           );
@@ -120,7 +123,8 @@ class PodcastPage extends StatelessWidget {
                       children: [
                         Text(
                           'Video edukasi terbaru',
-                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
+                          style: Config.textStyleHeadlineSmall
+                              .copyWith(fontSize: 20),
                         ),
                       ],
                     ),

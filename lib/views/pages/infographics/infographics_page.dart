@@ -15,7 +15,8 @@ class InfographicsPage extends StatelessWidget {
         itemBuilder: (context, index) {
           Infografis infographic = stateInfographics.infografis[index];
 
-          if (infographic.idInfografis == currentInfographics) return Container();
+          if (infographic.idInfografis == currentInfographics)
+            return Container();
 
           return InkWell(
             onTap: () {
@@ -48,7 +49,8 @@ class InfographicsPage extends StatelessWidget {
                     ),
                     title: infographic.judulInfografis!,
                     user: infographic.uploadUserId.toString(),
-                    tanggalUpload: infographic.tanggalUpload!.toFormattedDate(withWeekday: true, withMonthName: true),
+                    tanggalUpload: infographic.tanggalUpload!.toFormattedDate(
+                        withWeekday: true, withMonthName: true),
                   ),
                 ),
               ],
@@ -56,6 +58,50 @@ class InfographicsPage extends StatelessWidget {
           );
         },
         itemCount: stateInfographics.infografis.length,
+      );
+
+  static Widget carouselSlider({
+    required BuildContext context,
+    required InfographicsDataLoaded state,
+    bool replaceCurrentPage = false,
+    int? currentInfographics,
+  }) =>
+      CarouselSlider.builder(
+        itemCount: state.infografis.length,
+        itemBuilder: (context, index, realIdx) {
+          Infografis infographic = state.infografis[index];
+
+          if (infographic.idInfografis == currentInfographics) return Container();
+
+          return InkWell(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => DetailsInfographicsPage(
+                    infographic: infographic,
+                  ),
+                ),
+              );
+            },
+            child: ImageContainer.hero(
+              margin: const EdgeInsets.symmetric(horizontal: 5.0),
+              tag:
+                  'https://dev-sirama.propertiideal.id/storage/infografis/${infographic.gambarInfografis}',
+              image: NetworkImage(
+                  'https://dev-sirama.propertiideal.id/storage/infografis/${infographic.gambarInfografis}'),
+              border: const Border(),
+              borderRadius: BorderRadius.circular(5.0),
+              extendedAppBar: AppBar(),
+            ),
+          );
+        },
+        options: CarouselOptions(
+          viewportFraction: 0.8,
+          aspectRatio: 20 / 21,
+          autoPlay: true,
+          autoPlayInterval: const Duration(seconds: 3),
+        ),
       );
 
   @override
@@ -84,26 +130,21 @@ class InfographicsPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: CardTile(
-                      title: Text(
-                          'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                      button: Text(
-                          'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-                    ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                    child: carouselSlider(
+                        context: context, state: stateInfographics),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: [
                         Text(
                           'Infografis terbaru',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                          style: Config.textStyleTitleMedium,
                         ),
                       ],
                     ),

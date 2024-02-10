@@ -20,7 +20,8 @@ class MyFilledButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ButtonStyle effectiveButtonStyle = (buttonStyle ?? FilledButton.styleFrom()).merge(
+    ButtonStyle effectiveButtonStyle =
+        (buttonStyle ?? FilledButton.styleFrom()).merge(
       FilledButton.styleFrom(
         fixedSize: const Size.fromHeight(60.0),
         padding: const EdgeInsets.symmetric(

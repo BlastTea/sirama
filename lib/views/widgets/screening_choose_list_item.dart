@@ -15,16 +15,11 @@ class ScreeningChooseListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       title: Container(
-        // margin: const EdgeInsets.only(left: 30, top: 100, right: 30, bottom: 50),
         height: 50,
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: const BorderRadius.only(
-              topLeft: Radius.circular(10),
-              topRight: Radius.circular(10),
-              bottomLeft: Radius.circular(10),
-              bottomRight: Radius.circular(10)),
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
           boxShadow: [
             BoxShadow(
               color: Colors.blue.withOpacity(0.1),

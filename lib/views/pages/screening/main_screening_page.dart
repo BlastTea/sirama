@@ -49,14 +49,19 @@ class MainScreeningPage extends StatelessWidget {
                     padding: EdgeInsets.symmetric(horizontal: 5),
                     child: Text(
                       'Bagian A',
-                      style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                      style:
+                          TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ),
-                const ScreeningListAnswer(titleQuestion: '1. Memanggil saya dengan julukan'),
-                const ScreeningListAnswer(titleQuestion: '2. Mengolok-olok saya'),
-                const ScreeningListAnswer(titleQuestion: '3. Mengancam menyakiti saya'),
-                const ScreeningListAnswer(titleQuestion: '4. Mempermainkan saya'),
+                const ScreeningListAnswer(
+                    titleQuestion: '1. Memanggil saya dengan julukan'),
+                const ScreeningListAnswer(
+                    titleQuestion: '2. Mengolok-olok saya'),
+                const ScreeningListAnswer(
+                    titleQuestion: '3. Mengancam menyakiti saya'),
+                const ScreeningListAnswer(
+                    titleQuestion: '4. Mempermainkan saya'),
               ],
             ),
           ),
