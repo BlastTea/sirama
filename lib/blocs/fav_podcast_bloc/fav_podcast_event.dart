@@ -3,9 +3,12 @@ part of '../blocs.dart';
 @immutable
 abstract class FavPodcastEvent {}
 
-class GetFavPodcastByUserId extends FavPodcastEvent {
-  final int userId;
+class SetFavPodcastState extends FavPodcastEvent {
+  SetFavPodcastState([this.state]);
 
-  GetFavPodcastByUserId(this.userId);
+  final FavPodcastState? state;
 }
 
+class SetFavPodcastToInitial extends FavPodcastEvent {}
+
+class InitializeFavPodcastData extends FavPodcastEvent {}

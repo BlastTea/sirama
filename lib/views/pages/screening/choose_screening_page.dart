@@ -18,9 +18,9 @@ class ChooseScreeningPage extends StatelessWidget {
                 ),
                 const Text('Yuk, skrining sekarang',
                     style: TextStyle(fontSize: 20)),
-                const Text('Altamis S.Kom, M.Kom.',
+                Text('${currentUser?.username ?? 'Guest'} 🤩',
                     style:
-                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                        const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 Stack(
                   children: [
                     Image.asset(
@@ -43,7 +43,7 @@ class ChooseScreeningPage extends StatelessWidget {
                                 style: TextStyle(fontWeight: FontWeight.bold)),
                             TextSpan(
                                 text:
-                                    'ayo deteksi dini perilaku bullying atau perundungan. Beranikan mengisi, lihat hasilnya, berani berubah, Ikutin langkah selanjutnya. Penasaran? Yuk'),
+                                    'ayo deteksi dini perilaku bullying. Beranikan mengisi, lihat hasilnya, berani berubah, Ikutin langkah selanjutnya. Penasaran? Yuk'),
                             TextSpan(
                                 text: ' Sobat Rama ',
                                 style: TextStyle(fontWeight: FontWeight.bold)),

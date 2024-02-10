@@ -20,7 +20,7 @@ class MyCarouselSlider extends StatelessWidget {
           final List<Widget> imageSliders = imgList
               .map(
                 (item) => ImageContainer.hero(
-                  margin: const EdgeInsets.symmetric(horizontal: 10.0),
+                  margin: const EdgeInsets.symmetric(horizontal: 5.0),
                   tag: item,
                   image: NetworkImage(item),
                   border: const Border(),
@@ -31,7 +31,9 @@ class MyCarouselSlider extends StatelessWidget {
               .toList();
           return CarouselSlider(
             options: CarouselOptions(
-              height: 90.0,
+              viewportFraction: 0.9,
+              // height: 70.0,
+              aspectRatio: 76/20,
               autoPlay: true,
               autoPlayInterval: const Duration(seconds: 6),
             ),

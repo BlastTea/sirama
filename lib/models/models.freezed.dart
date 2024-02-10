@@ -1205,12 +1205,12 @@ abstract class _JawabanAhli implements JawabanAhli {
       throw _privateConstructorUsedError;
 }
 
-Podcast _$PodcastFromJson(Map<String, dynamic> json) {
-  return _Podcast.fromJson(json);
+PodcastVideo _$PodcastVideoFromJson(Map<String, dynamic> json) {
+  return _PodcastVideo.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Podcast {
+mixin _$PodcastVideo {
   @JsonKey(name: 'id_podcast')
   int? get idPodcast => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_podcast')
@@ -1239,6 +1239,10 @@ mixin _$Podcast {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  set deksripsiPodcast(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
@@ -1251,13 +1255,15 @@ mixin _$Podcast {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PodcastCopyWith<Podcast> get copyWith => throw _privateConstructorUsedError;
+  $PodcastVideoCopyWith<PodcastVideo> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PodcastCopyWith<$Res> {
-  factory $PodcastCopyWith(Podcast value, $Res Function(Podcast) then) =
-      _$PodcastCopyWithImpl<$Res, Podcast>;
+abstract class $PodcastVideoCopyWith<$Res> {
+  factory $PodcastVideoCopyWith(
+          PodcastVideo value, $Res Function(PodcastVideo) then) =
+      _$PodcastVideoCopyWithImpl<$Res, PodcastVideo>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_podcast') int? idPodcast,
@@ -1267,15 +1273,16 @@ abstract class $PodcastCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
 
 /// @nodoc
-class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
-    implements $PodcastCopyWith<$Res> {
-  _$PodcastCopyWithImpl(this._value, this._then);
+class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
+    implements $PodcastVideoCopyWith<$Res> {
+  _$PodcastVideoCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1292,6 +1299,7 @@ class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? deksripsiPodcast = freezed,
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
@@ -1324,6 +1332,10 @@ class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deksripsiPodcast: freezed == deksripsiPodcast
+          ? _value.deksripsiPodcast
+          : deksripsiPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
       totalLikes: freezed == totalLikes
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
@@ -1337,10 +1349,11 @@ class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
 }
 
 /// @nodoc
-abstract class _$$PodcastImplCopyWith<$Res> implements $PodcastCopyWith<$Res> {
-  factory _$$PodcastImplCopyWith(
-          _$PodcastImpl value, $Res Function(_$PodcastImpl) then) =
-      __$$PodcastImplCopyWithImpl<$Res>;
+abstract class _$$PodcastVideoImplCopyWith<$Res>
+    implements $PodcastVideoCopyWith<$Res> {
+  factory _$$PodcastVideoImplCopyWith(
+          _$PodcastVideoImpl value, $Res Function(_$PodcastVideoImpl) then) =
+      __$$PodcastVideoImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1351,17 +1364,18 @@ abstract class _$$PodcastImplCopyWith<$Res> implements $PodcastCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
 
 /// @nodoc
-class __$$PodcastImplCopyWithImpl<$Res>
-    extends _$PodcastCopyWithImpl<$Res, _$PodcastImpl>
-    implements _$$PodcastImplCopyWith<$Res> {
-  __$$PodcastImplCopyWithImpl(
-      _$PodcastImpl _value, $Res Function(_$PodcastImpl) _then)
+class __$$PodcastVideoImplCopyWithImpl<$Res>
+    extends _$PodcastVideoCopyWithImpl<$Res, _$PodcastVideoImpl>
+    implements _$$PodcastVideoImplCopyWith<$Res> {
+  __$$PodcastVideoImplCopyWithImpl(
+      _$PodcastVideoImpl _value, $Res Function(_$PodcastVideoImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1374,10 +1388,11 @@ class __$$PodcastImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? deksripsiPodcast = freezed,
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
-    return _then(_$PodcastImpl(
+    return _then(_$PodcastVideoImpl(
       idPodcast: freezed == idPodcast
           ? _value.idPodcast
           : idPodcast // ignore: cast_nullable_to_non_nullable
@@ -1406,6 +1421,10 @@ class __$$PodcastImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deksripsiPodcast: freezed == deksripsiPodcast
+          ? _value.deksripsiPodcast
+          : deksripsiPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
       totalLikes: freezed == totalLikes
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
@@ -1420,8 +1439,8 @@ class __$$PodcastImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PodcastImpl implements _Podcast {
-  _$PodcastImpl(
+class _$PodcastVideoImpl implements _PodcastVideo {
+  _$PodcastVideoImpl(
       {@JsonKey(name: 'id_podcast') this.idPodcast,
       @JsonKey(name: 'judul_podcast') this.judulPodcast,
       @JsonKey(name: 'link_podcast') this.linkPodcast,
@@ -1429,12 +1448,13 @@ class _$PodcastImpl implements _Podcast {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'deskripsi') this.deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
-  factory _$PodcastImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PodcastImplFromJson(json);
+  factory _$PodcastVideoImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PodcastVideoImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_podcast')
@@ -1458,6 +1478,9 @@ class _$PodcastImpl implements _Podcast {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
+  @JsonKey(name: 'deskripsi')
+  String? deksripsiPodcast;
+  @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
@@ -1466,25 +1489,25 @@ class _$PodcastImpl implements _Podcast {
 
   @override
   String toString() {
-    return 'Podcast(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'PodcastVideo(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiPodcast: $deksripsiPodcast, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
-      __$$PodcastImplCopyWithImpl<_$PodcastImpl>(this, _$identity);
+  _$$PodcastVideoImplCopyWith<_$PodcastVideoImpl> get copyWith =>
+      __$$PodcastVideoImplCopyWithImpl<_$PodcastVideoImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PodcastImplToJson(
+    return _$$PodcastVideoImplToJson(
       this,
     );
   }
 }
 
-abstract class _Podcast implements Podcast {
-  factory _Podcast(
+abstract class _PodcastVideo implements PodcastVideo {
+  factory _PodcastVideo(
       {@JsonKey(name: 'id_podcast') int? idPodcast,
       @JsonKey(name: 'judul_podcast') String? judulPodcast,
       @JsonKey(name: 'link_podcast') String? linkPodcast,
@@ -1492,11 +1515,13 @@ abstract class _Podcast implements Podcast {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData}) = _$PodcastImpl;
+      List<int>? thumbnailImageData}) = _$PodcastVideoImpl;
 
-  factory _Podcast.fromJson(Map<String, dynamic> json) = _$PodcastImpl.fromJson;
+  factory _PodcastVideo.fromJson(Map<String, dynamic> json) =
+      _$PodcastVideoImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_podcast')
@@ -1534,6 +1559,11 @@ abstract class _Podcast implements Podcast {
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
   @override
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiPodcast;
+  @JsonKey(name: 'deskripsi')
+  set deksripsiPodcast(String? value);
+  @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
@@ -1545,7 +1575,7 @@ abstract class _Podcast implements Podcast {
   set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
-  _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
+  _$$PodcastVideoImplCopyWith<_$PodcastVideoImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1583,6 +1613,10 @@ mixin _$Film {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  set deksripsiFilm(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
@@ -1611,6 +1645,7 @@ abstract class $FilmCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
@@ -1636,6 +1671,7 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? deksripsiFilm = freezed,
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
@@ -1668,6 +1704,10 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deksripsiFilm: freezed == deksripsiFilm
+          ? _value.deksripsiFilm
+          : deksripsiFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
       totalLikes: freezed == totalLikes
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
@@ -1695,6 +1735,7 @@ abstract class _$$FilmImplCopyWith<$Res> implements $FilmCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
@@ -1717,6 +1758,7 @@ class __$$FilmImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? deksripsiFilm = freezed,
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
@@ -1749,6 +1791,10 @@ class __$$FilmImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deksripsiFilm: freezed == deksripsiFilm
+          ? _value.deksripsiFilm
+          : deksripsiFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
       totalLikes: freezed == totalLikes
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
@@ -1772,6 +1818,7 @@ class _$FilmImpl implements _Film {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'deskripsi') this.deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
@@ -1801,6 +1848,9 @@ class _$FilmImpl implements _Film {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
+  @JsonKey(name: 'deskripsi')
+  String? deksripsiFilm;
+  @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
@@ -1809,7 +1859,7 @@ class _$FilmImpl implements _Film {
 
   @override
   String toString() {
-    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiFilm: $deksripsiFilm, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -1835,6 +1885,7 @@ abstract class _Film implements Film {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$FilmImpl;
@@ -1876,6 +1927,11 @@ abstract class _Film implements Film {
   DateTime? get updatedAt;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
+  @override
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiFilm;
+  @JsonKey(name: 'deskripsi')
+  set deksripsiFilm(String? value);
   @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
@@ -2273,6 +2329,11 @@ mixin _$EducationalVideo {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  set deksripsiVideoEdukasi(String? value) =>
+      throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
@@ -2303,6 +2364,7 @@ abstract class $EducationalVideoCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
@@ -2328,6 +2390,7 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? deksripsiVideoEdukasi = freezed,
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
@@ -2360,6 +2423,10 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deksripsiVideoEdukasi: freezed == deksripsiVideoEdukasi
+          ? _value.deksripsiVideoEdukasi
+          : deksripsiVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
       totalLikes: freezed == totalLikes
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
@@ -2388,6 +2455,7 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
@@ -2411,6 +2479,7 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
     Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? deksripsiVideoEdukasi = freezed,
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
@@ -2443,6 +2512,10 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      deksripsiVideoEdukasi: freezed == deksripsiVideoEdukasi
+          ? _value.deksripsiVideoEdukasi
+          : deksripsiVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
       totalLikes: freezed == totalLikes
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
@@ -2466,6 +2539,7 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'deskripsi') this.deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
@@ -2495,6 +2569,9 @@ class _$EducationalVideoImpl implements _EducationalVideo {
   @JsonKey(name: 'updated_at')
   DateTime? updatedAt;
   @override
+  @JsonKey(name: 'deskripsi')
+  String? deksripsiVideoEdukasi;
+  @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
@@ -2503,7 +2580,7 @@ class _$EducationalVideoImpl implements _EducationalVideo {
 
   @override
   String toString() {
-    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiVideoEdukasi: $deksripsiVideoEdukasi, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -2530,6 +2607,7 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
@@ -2572,6 +2650,11 @@ abstract class _EducationalVideo implements EducationalVideo {
   DateTime? get updatedAt;
   @JsonKey(name: 'updated_at')
   set updatedAt(DateTime? value);
+  @override
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiVideoEdukasi;
+  @JsonKey(name: 'deskripsi')
+  set deksripsiVideoEdukasi(String? value);
   @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
@@ -2860,6 +2943,16 @@ mixin _$FavInfografis {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'infografis_id')
   String? get idInfografis => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_infografis')
+  String? get judulInfografis => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi_infografis')
+  String? get deskripsiInfografis => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'gambar_infografis')
+  String? get gambarInfografis => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -2881,6 +2974,11 @@ abstract class $FavInfografisCopyWith<$Res> {
       {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'infografis_id') String? idInfografis,
+      @JsonKey(name: 'judul_infografis') String? judulInfografis,
+      @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -2901,6 +2999,11 @@ class _$FavInfografisCopyWithImpl<$Res, $Val extends FavInfografis>
     Object? idFavInfografis = freezed,
     Object? idUser = freezed,
     Object? idInfografis = freezed,
+    Object? judulInfografis = freezed,
+    Object? deskripsiInfografis = freezed,
+    Object? tanggalUpload = freezed,
+    Object? gambarInfografis = freezed,
+    Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -2917,6 +3020,26 @@ class _$FavInfografisCopyWithImpl<$Res, $Val extends FavInfografis>
           ? _value.idInfografis
           : idInfografis // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulInfografis: freezed == judulInfografis
+          ? _value.judulInfografis
+          : judulInfografis // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deskripsiInfografis: freezed == deskripsiInfografis
+          ? _value.deskripsiInfografis
+          : deskripsiInfografis // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      gambarInfografis: freezed == gambarInfografis
+          ? _value.gambarInfografis
+          : gambarInfografis // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -2941,6 +3064,11 @@ abstract class _$$FavInfografisImplCopyWith<$Res>
       {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'infografis_id') String? idInfografis,
+      @JsonKey(name: 'judul_infografis') String? judulInfografis,
+      @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -2959,6 +3087,11 @@ class __$$FavInfografisImplCopyWithImpl<$Res>
     Object? idFavInfografis = freezed,
     Object? idUser = freezed,
     Object? idInfografis = freezed,
+    Object? judulInfografis = freezed,
+    Object? deskripsiInfografis = freezed,
+    Object? tanggalUpload = freezed,
+    Object? gambarInfografis = freezed,
+    Object? uploadUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -2975,6 +3108,26 @@ class __$$FavInfografisImplCopyWithImpl<$Res>
           ? _value.idInfografis
           : idInfografis // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulInfografis: freezed == judulInfografis
+          ? _value.judulInfografis
+          : judulInfografis // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deskripsiInfografis: freezed == deskripsiInfografis
+          ? _value.deskripsiInfografis
+          : deskripsiInfografis // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      gambarInfografis: freezed == gambarInfografis
+          ? _value.gambarInfografis
+          : gambarInfografis // ignore: cast_nullable_to_non_nullable
+              as String?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -2994,6 +3147,11 @@ class _$FavInfografisImpl implements _FavInfografis {
       {@JsonKey(name: 'id_fav_infografis') this.idFavInfografis,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'infografis_id') this.idInfografis,
+      @JsonKey(name: 'judul_infografis') this.judulInfografis,
+      @JsonKey(name: 'deskripsi_infografis') this.deskripsiInfografis,
+      @JsonKey(name: 'tgl_upload') this.tanggalUpload,
+      @JsonKey(name: 'gambar_infografis') this.gambarInfografis,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt});
 
@@ -3010,6 +3168,21 @@ class _$FavInfografisImpl implements _FavInfografis {
   @JsonKey(name: 'infografis_id')
   final String? idInfografis;
   @override
+  @JsonKey(name: 'judul_infografis')
+  final String? judulInfografis;
+  @override
+  @JsonKey(name: 'deskripsi_infografis')
+  final String? deskripsiInfografis;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  final DateTime? tanggalUpload;
+  @override
+  @JsonKey(name: 'gambar_infografis')
+  final String? gambarInfografis;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
@@ -3018,7 +3191,7 @@ class _$FavInfografisImpl implements _FavInfografis {
 
   @override
   String toString() {
-    return 'FavInfografis(idFavInfografis: $idFavInfografis, idUser: $idUser, idInfografis: $idInfografis, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'FavInfografis(idFavInfografis: $idFavInfografis, idUser: $idUser, idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -3031,6 +3204,16 @@ class _$FavInfografisImpl implements _FavInfografis {
             (identical(other.idUser, idUser) || other.idUser == idUser) &&
             (identical(other.idInfografis, idInfografis) ||
                 other.idInfografis == idInfografis) &&
+            (identical(other.judulInfografis, judulInfografis) ||
+                other.judulInfografis == judulInfografis) &&
+            (identical(other.deskripsiInfografis, deskripsiInfografis) ||
+                other.deskripsiInfografis == deskripsiInfografis) &&
+            (identical(other.tanggalUpload, tanggalUpload) ||
+                other.tanggalUpload == tanggalUpload) &&
+            (identical(other.gambarInfografis, gambarInfografis) ||
+                other.gambarInfografis == gambarInfografis) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -3040,7 +3223,17 @@ class _$FavInfografisImpl implements _FavInfografis {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, idFavInfografis, idUser, idInfografis, createdAt, updatedAt);
+      runtimeType,
+      idFavInfografis,
+      idUser,
+      idInfografis,
+      judulInfografis,
+      deskripsiInfografis,
+      tanggalUpload,
+      gambarInfografis,
+      uploadUserId,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -3058,12 +3251,17 @@ class _$FavInfografisImpl implements _FavInfografis {
 
 abstract class _FavInfografis implements FavInfografis {
   const factory _FavInfografis(
-          {@JsonKey(name: 'id_fav_infografis') final int? idFavInfografis,
-          @JsonKey(name: 'user_id') final int? idUser,
-          @JsonKey(name: 'infografis_id') final String? idInfografis,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
-      _$FavInfografisImpl;
+      {@JsonKey(name: 'id_fav_infografis') final int? idFavInfografis,
+      @JsonKey(name: 'user_id') final int? idUser,
+      @JsonKey(name: 'infografis_id') final String? idInfografis,
+      @JsonKey(name: 'judul_infografis') final String? judulInfografis,
+      @JsonKey(name: 'deskripsi_infografis') final String? deskripsiInfografis,
+      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
+      @JsonKey(name: 'gambar_infografis') final String? gambarInfografis,
+      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at')
+      final DateTime? updatedAt}) = _$FavInfografisImpl;
 
   factory _FavInfografis.fromJson(Map<String, dynamic> json) =
       _$FavInfografisImpl.fromJson;
@@ -3077,6 +3275,21 @@ abstract class _FavInfografis implements FavInfografis {
   @override
   @JsonKey(name: 'infografis_id')
   String? get idInfografis;
+  @override
+  @JsonKey(name: 'judul_infografis')
+  String? get judulInfografis;
+  @override
+  @JsonKey(name: 'deskripsi_infografis')
+  String? get deskripsiInfografis;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload;
+  @override
+  @JsonKey(name: 'gambar_infografis')
+  String? get gambarInfografis;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
@@ -3101,6 +3314,18 @@ mixin _$FavFilmVideo {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'film_id')
   String? get idFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_film')
+  String? get judulFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_film')
+  String? get linkFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiFilm => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -3122,6 +3347,12 @@ abstract class $FavFilmVideoCopyWith<$Res> {
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'film_id') String? idFilm,
+      @JsonKey(name: 'judul_film') String? judulFilm,
+      @JsonKey(name: 'link_film') String? linkFilm,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'deskripsi') String? deksripsiFilm,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -3142,6 +3373,12 @@ class _$FavFilmVideoCopyWithImpl<$Res, $Val extends FavFilmVideo>
     Object? idFavFilm = freezed,
     Object? idUser = freezed,
     Object? idFilm = freezed,
+    Object? judulFilm = freezed,
+    Object? linkFilm = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? deksripsiFilm = freezed,
+    Object? totalLikes = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -3158,6 +3395,30 @@ class _$FavFilmVideoCopyWithImpl<$Res, $Val extends FavFilmVideo>
           ? _value.idFilm
           : idFilm // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulFilm: freezed == judulFilm
+          ? _value.judulFilm
+          : judulFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkFilm: freezed == linkFilm
+          ? _value.linkFilm
+          : linkFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deksripsiFilm: freezed == deksripsiFilm
+          ? _value.deksripsiFilm
+          : deksripsiFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3182,6 +3443,12 @@ abstract class _$$FavFilmVideoImplCopyWith<$Res>
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'film_id') String? idFilm,
+      @JsonKey(name: 'judul_film') String? judulFilm,
+      @JsonKey(name: 'link_film') String? linkFilm,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'deskripsi') String? deksripsiFilm,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -3200,6 +3467,12 @@ class __$$FavFilmVideoImplCopyWithImpl<$Res>
     Object? idFavFilm = freezed,
     Object? idUser = freezed,
     Object? idFilm = freezed,
+    Object? judulFilm = freezed,
+    Object? linkFilm = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? deksripsiFilm = freezed,
+    Object? totalLikes = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -3216,6 +3489,30 @@ class __$$FavFilmVideoImplCopyWithImpl<$Res>
           ? _value.idFilm
           : idFilm // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulFilm: freezed == judulFilm
+          ? _value.judulFilm
+          : judulFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkFilm: freezed == linkFilm
+          ? _value.linkFilm
+          : linkFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deksripsiFilm: freezed == deksripsiFilm
+          ? _value.deksripsiFilm
+          : deksripsiFilm // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3235,6 +3532,12 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
       {@JsonKey(name: 'id_fav_film') this.idFavFilm,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'film_id') this.idFilm,
+      @JsonKey(name: 'judul_film') this.judulFilm,
+      @JsonKey(name: 'link_film') this.linkFilm,
+      @JsonKey(name: 'tgl_upload') this.tanggalUpload,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
+      @JsonKey(name: 'deskripsi') this.deksripsiFilm,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt});
 
@@ -3251,6 +3554,24 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
   @JsonKey(name: 'film_id')
   final String? idFilm;
   @override
+  @JsonKey(name: 'judul_film')
+  final String? judulFilm;
+  @override
+  @JsonKey(name: 'link_film')
+  final String? linkFilm;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  final DateTime? tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
+  @JsonKey(name: 'deskripsi')
+  final String? deksripsiFilm;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  final int? totalLikes;
+  @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
@@ -3259,7 +3580,7 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
 
   @override
   String toString() {
-    return 'FavFilmVideo(idFavFilm: $idFavFilm, idUser: $idUser, idFilm: $idFilm, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'FavFilmVideo(idFavFilm: $idFavFilm, idUser: $idUser, idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, deksripsiFilm: $deksripsiFilm, totalLikes: $totalLikes, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -3271,6 +3592,18 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
                 other.idFavFilm == idFavFilm) &&
             (identical(other.idUser, idUser) || other.idUser == idUser) &&
             (identical(other.idFilm, idFilm) || other.idFilm == idFilm) &&
+            (identical(other.judulFilm, judulFilm) ||
+                other.judulFilm == judulFilm) &&
+            (identical(other.linkFilm, linkFilm) ||
+                other.linkFilm == linkFilm) &&
+            (identical(other.tanggalUpload, tanggalUpload) ||
+                other.tanggalUpload == tanggalUpload) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
+            (identical(other.deksripsiFilm, deksripsiFilm) ||
+                other.deksripsiFilm == deksripsiFilm) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -3279,8 +3612,19 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, idFavFilm, idUser, idFilm, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      idFavFilm,
+      idUser,
+      idFilm,
+      judulFilm,
+      linkFilm,
+      tanggalUpload,
+      uploadUserId,
+      deksripsiFilm,
+      totalLikes,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -3298,12 +3642,18 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
 
 abstract class _FavFilmVideo implements FavFilmVideo {
   const factory _FavFilmVideo(
-          {@JsonKey(name: 'id_fav_film') final int? idFavFilm,
-          @JsonKey(name: 'user_id') final int? idUser,
-          @JsonKey(name: 'film_id') final String? idFilm,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
-      _$FavFilmVideoImpl;
+      {@JsonKey(name: 'id_fav_film') final int? idFavFilm,
+      @JsonKey(name: 'user_id') final int? idUser,
+      @JsonKey(name: 'film_id') final String? idFilm,
+      @JsonKey(name: 'judul_film') final String? judulFilm,
+      @JsonKey(name: 'link_film') final String? linkFilm,
+      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+      @JsonKey(name: 'deskripsi') final String? deksripsiFilm,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) final int? totalLikes,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at')
+      final DateTime? updatedAt}) = _$FavFilmVideoImpl;
 
   factory _FavFilmVideo.fromJson(Map<String, dynamic> json) =
       _$FavFilmVideoImpl.fromJson;
@@ -3317,6 +3667,24 @@ abstract class _FavFilmVideo implements FavFilmVideo {
   @override
   @JsonKey(name: 'film_id')
   String? get idFilm;
+  @override
+  @JsonKey(name: 'judul_film')
+  String? get judulFilm;
+  @override
+  @JsonKey(name: 'link_film')
+  String? get linkFilm;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
+  @override
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiFilm;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
@@ -3341,6 +3709,18 @@ mixin _$FavPodcastVideo {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'podcast_id')
   String? get idPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_podcast')
+  String? get judulPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_podcast')
+  String? get linkPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiPodcast => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -3362,6 +3742,12 @@ abstract class $FavPodcastVideoCopyWith<$Res> {
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'podcast_id') String? idPodcast,
+      @JsonKey(name: 'judul_podcast') String? judulPodcast,
+      @JsonKey(name: 'link_podcast') String? linkPodcast,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -3382,6 +3768,12 @@ class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
     Object? idFavPodcast = freezed,
     Object? idUser = freezed,
     Object? idPodcast = freezed,
+    Object? judulPodcast = freezed,
+    Object? linkPodcast = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? deksripsiPodcast = freezed,
+    Object? totalLikes = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -3398,6 +3790,30 @@ class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
           ? _value.idPodcast
           : idPodcast // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulPodcast: freezed == judulPodcast
+          ? _value.judulPodcast
+          : judulPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkPodcast: freezed == linkPodcast
+          ? _value.linkPodcast
+          : linkPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deksripsiPodcast: freezed == deksripsiPodcast
+          ? _value.deksripsiPodcast
+          : deksripsiPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3422,6 +3838,12 @@ abstract class _$$FavPodcastVideoImplCopyWith<$Res>
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'podcast_id') String? idPodcast,
+      @JsonKey(name: 'judul_podcast') String? judulPodcast,
+      @JsonKey(name: 'link_podcast') String? linkPodcast,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -3440,6 +3862,12 @@ class __$$FavPodcastVideoImplCopyWithImpl<$Res>
     Object? idFavPodcast = freezed,
     Object? idUser = freezed,
     Object? idPodcast = freezed,
+    Object? judulPodcast = freezed,
+    Object? linkPodcast = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? deksripsiPodcast = freezed,
+    Object? totalLikes = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -3456,6 +3884,30 @@ class __$$FavPodcastVideoImplCopyWithImpl<$Res>
           ? _value.idPodcast
           : idPodcast // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulPodcast: freezed == judulPodcast
+          ? _value.judulPodcast
+          : judulPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkPodcast: freezed == linkPodcast
+          ? _value.linkPodcast
+          : linkPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deksripsiPodcast: freezed == deksripsiPodcast
+          ? _value.deksripsiPodcast
+          : deksripsiPodcast // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3475,6 +3927,12 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
       {@JsonKey(name: 'id_fav_podcast') this.idFavPodcast,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'podcast_id') this.idPodcast,
+      @JsonKey(name: 'judul_podcast') this.judulPodcast,
+      @JsonKey(name: 'link_podcast') this.linkPodcast,
+      @JsonKey(name: 'tgl_upload') this.tanggalUpload,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
+      @JsonKey(name: 'deskripsi') this.deksripsiPodcast,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt});
 
@@ -3491,6 +3949,24 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
   @JsonKey(name: 'podcast_id')
   final String? idPodcast;
   @override
+  @JsonKey(name: 'judul_podcast')
+  final String? judulPodcast;
+  @override
+  @JsonKey(name: 'link_podcast')
+  final String? linkPodcast;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  final DateTime? tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
+  @JsonKey(name: 'deskripsi')
+  final String? deksripsiPodcast;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  final int? totalLikes;
+  @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
@@ -3499,7 +3975,7 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
 
   @override
   String toString() {
-    return 'FavPodcastVideo(idFavPodcast: $idFavPodcast, idUser: $idUser, idPodcast: $idPodcast, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'FavPodcastVideo(idFavPodcast: $idFavPodcast, idUser: $idUser, idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, deksripsiPodcast: $deksripsiPodcast, totalLikes: $totalLikes, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -3512,6 +3988,18 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
             (identical(other.idUser, idUser) || other.idUser == idUser) &&
             (identical(other.idPodcast, idPodcast) ||
                 other.idPodcast == idPodcast) &&
+            (identical(other.judulPodcast, judulPodcast) ||
+                other.judulPodcast == judulPodcast) &&
+            (identical(other.linkPodcast, linkPodcast) ||
+                other.linkPodcast == linkPodcast) &&
+            (identical(other.tanggalUpload, tanggalUpload) ||
+                other.tanggalUpload == tanggalUpload) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
+            (identical(other.deksripsiPodcast, deksripsiPodcast) ||
+                other.deksripsiPodcast == deksripsiPodcast) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -3521,7 +4009,18 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, idFavPodcast, idUser, idPodcast, createdAt, updatedAt);
+      runtimeType,
+      idFavPodcast,
+      idUser,
+      idPodcast,
+      judulPodcast,
+      linkPodcast,
+      tanggalUpload,
+      uploadUserId,
+      deksripsiPodcast,
+      totalLikes,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -3540,12 +4039,18 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
 
 abstract class _FavPodcastVideo implements FavPodcastVideo {
   const factory _FavPodcastVideo(
-          {@JsonKey(name: 'id_fav_podcast') final int? idFavPodcast,
-          @JsonKey(name: 'user_id') final int? idUser,
-          @JsonKey(name: 'podcast_id') final String? idPodcast,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
-      _$FavPodcastVideoImpl;
+      {@JsonKey(name: 'id_fav_podcast') final int? idFavPodcast,
+      @JsonKey(name: 'user_id') final int? idUser,
+      @JsonKey(name: 'podcast_id') final String? idPodcast,
+      @JsonKey(name: 'judul_podcast') final String? judulPodcast,
+      @JsonKey(name: 'link_podcast') final String? linkPodcast,
+      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+      @JsonKey(name: 'deskripsi') final String? deksripsiPodcast,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) final int? totalLikes,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at')
+      final DateTime? updatedAt}) = _$FavPodcastVideoImpl;
 
   factory _FavPodcastVideo.fromJson(Map<String, dynamic> json) =
       _$FavPodcastVideoImpl.fromJson;
@@ -3559,6 +4064,24 @@ abstract class _FavPodcastVideo implements FavPodcastVideo {
   @override
   @JsonKey(name: 'podcast_id')
   String? get idPodcast;
+  @override
+  @JsonKey(name: 'judul_podcast')
+  String? get judulPodcast;
+  @override
+  @JsonKey(name: 'link_podcast')
+  String? get linkPodcast;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
+  @override
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiPodcast;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
@@ -3583,6 +4106,18 @@ mixin _$FavVideoEdukasi {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'video_edukasi_id')
   String? get idVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'judul_video_edukasi')
+  String? get judulVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'link_video_edukasi')
+  String? get linkVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload => throw _privateConstructorUsedError;
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiVideoEdukasi => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -3604,6 +4139,12 @@ abstract class $FavVideoEdukasiCopyWith<$Res> {
       {@JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'video_edukasi_id') String? idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -3624,6 +4165,12 @@ class _$FavVideoEdukasiCopyWithImpl<$Res, $Val extends FavVideoEdukasi>
     Object? idFavVideoEdukasi = freezed,
     Object? idUser = freezed,
     Object? idVideoEdukasi = freezed,
+    Object? judulVideoEdukasi = freezed,
+    Object? linkVideoEdukasi = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? deksripsiVideoEdukasi = freezed,
+    Object? totalLikes = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -3640,6 +4187,30 @@ class _$FavVideoEdukasiCopyWithImpl<$Res, $Val extends FavVideoEdukasi>
           ? _value.idVideoEdukasi
           : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulVideoEdukasi: freezed == judulVideoEdukasi
+          ? _value.judulVideoEdukasi
+          : judulVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkVideoEdukasi: freezed == linkVideoEdukasi
+          ? _value.linkVideoEdukasi
+          : linkVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deksripsiVideoEdukasi: freezed == deksripsiVideoEdukasi
+          ? _value.deksripsiVideoEdukasi
+          : deksripsiVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3664,6 +4235,12 @@ abstract class _$$FavVideoEdukasiImplCopyWith<$Res>
       {@JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'video_edukasi_id') String? idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') int? uploadUserId,
+      @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -3682,6 +4259,12 @@ class __$$FavVideoEdukasiImplCopyWithImpl<$Res>
     Object? idFavVideoEdukasi = freezed,
     Object? idUser = freezed,
     Object? idVideoEdukasi = freezed,
+    Object? judulVideoEdukasi = freezed,
+    Object? linkVideoEdukasi = freezed,
+    Object? tanggalUpload = freezed,
+    Object? uploadUserId = freezed,
+    Object? deksripsiVideoEdukasi = freezed,
+    Object? totalLikes = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
   }) {
@@ -3698,6 +4281,30 @@ class __$$FavVideoEdukasiImplCopyWithImpl<$Res>
           ? _value.idVideoEdukasi
           : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
               as String?,
+      judulVideoEdukasi: freezed == judulVideoEdukasi
+          ? _value.judulVideoEdukasi
+          : judulVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      linkVideoEdukasi: freezed == linkVideoEdukasi
+          ? _value.linkVideoEdukasi
+          : linkVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tanggalUpload: freezed == tanggalUpload
+          ? _value.tanggalUpload
+          : tanggalUpload // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      uploadUserId: freezed == uploadUserId
+          ? _value.uploadUserId
+          : uploadUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      deksripsiVideoEdukasi: freezed == deksripsiVideoEdukasi
+          ? _value.deksripsiVideoEdukasi
+          : deksripsiVideoEdukasi // ignore: cast_nullable_to_non_nullable
+              as String?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -3717,6 +4324,12 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
       {@JsonKey(name: 'id_fav_video_edukasi') this.idFavVideoEdukasi,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'video_edukasi_id') this.idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') this.judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') this.linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') this.tanggalUpload,
+      @JsonKey(name: 'upload_user_id') this.uploadUserId,
+      @JsonKey(name: 'deskripsi') this.deksripsiVideoEdukasi,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt});
 
@@ -3733,6 +4346,24 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
   @JsonKey(name: 'video_edukasi_id')
   final String? idVideoEdukasi;
   @override
+  @JsonKey(name: 'judul_video_edukasi')
+  final String? judulVideoEdukasi;
+  @override
+  @JsonKey(name: 'link_video_edukasi')
+  final String? linkVideoEdukasi;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  final DateTime? tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  final int? uploadUserId;
+  @override
+  @JsonKey(name: 'deskripsi')
+  final String? deksripsiVideoEdukasi;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  final int? totalLikes;
+  @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
   @override
@@ -3741,7 +4372,7 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
 
   @override
   String toString() {
-    return 'FavVideoEdukasi(idFavVideoEdukasi: $idFavVideoEdukasi, idUser: $idUser, idVideoEdukasi: $idVideoEdukasi, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'FavVideoEdukasi(idFavVideoEdukasi: $idFavVideoEdukasi, idUser: $idUser, idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, deksripsiVideoEdukasi: $deksripsiVideoEdukasi, totalLikes: $totalLikes, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
 
   @override
@@ -3754,6 +4385,18 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
             (identical(other.idUser, idUser) || other.idUser == idUser) &&
             (identical(other.idVideoEdukasi, idVideoEdukasi) ||
                 other.idVideoEdukasi == idVideoEdukasi) &&
+            (identical(other.judulVideoEdukasi, judulVideoEdukasi) ||
+                other.judulVideoEdukasi == judulVideoEdukasi) &&
+            (identical(other.linkVideoEdukasi, linkVideoEdukasi) ||
+                other.linkVideoEdukasi == linkVideoEdukasi) &&
+            (identical(other.tanggalUpload, tanggalUpload) ||
+                other.tanggalUpload == tanggalUpload) &&
+            (identical(other.uploadUserId, uploadUserId) ||
+                other.uploadUserId == uploadUserId) &&
+            (identical(other.deksripsiVideoEdukasi, deksripsiVideoEdukasi) ||
+                other.deksripsiVideoEdukasi == deksripsiVideoEdukasi) &&
+            (identical(other.totalLikes, totalLikes) ||
+                other.totalLikes == totalLikes) &&
             (identical(other.createdAt, createdAt) ||
                 other.createdAt == createdAt) &&
             (identical(other.updatedAt, updatedAt) ||
@@ -3762,8 +4405,19 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, idFavVideoEdukasi, idUser,
-      idVideoEdukasi, createdAt, updatedAt);
+  int get hashCode => Object.hash(
+      runtimeType,
+      idFavVideoEdukasi,
+      idUser,
+      idVideoEdukasi,
+      judulVideoEdukasi,
+      linkVideoEdukasi,
+      tanggalUpload,
+      uploadUserId,
+      deksripsiVideoEdukasi,
+      totalLikes,
+      createdAt,
+      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -3782,12 +4436,18 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
 
 abstract class _FavVideoEdukasi implements FavVideoEdukasi {
   const factory _FavVideoEdukasi(
-          {@JsonKey(name: 'id_fav_video_edukasi') final int? idFavVideoEdukasi,
-          @JsonKey(name: 'user_id') final int? idUser,
-          @JsonKey(name: 'video_edukasi_id') final String? idVideoEdukasi,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
-      _$FavVideoEdukasiImpl;
+      {@JsonKey(name: 'id_fav_video_edukasi') final int? idFavVideoEdukasi,
+      @JsonKey(name: 'user_id') final int? idUser,
+      @JsonKey(name: 'video_edukasi_id') final String? idVideoEdukasi,
+      @JsonKey(name: 'judul_video_edukasi') final String? judulVideoEdukasi,
+      @JsonKey(name: 'link_video_edukasi') final String? linkVideoEdukasi,
+      @JsonKey(name: 'tgl_upload') final DateTime? tanggalUpload,
+      @JsonKey(name: 'upload_user_id') final int? uploadUserId,
+      @JsonKey(name: 'deskripsi') final String? deksripsiVideoEdukasi,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) final int? totalLikes,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at')
+      final DateTime? updatedAt}) = _$FavVideoEdukasiImpl;
 
   factory _FavVideoEdukasi.fromJson(Map<String, dynamic> json) =
       _$FavVideoEdukasiImpl.fromJson;
@@ -3801,6 +4461,24 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
   @override
   @JsonKey(name: 'video_edukasi_id')
   String? get idVideoEdukasi;
+  @override
+  @JsonKey(name: 'judul_video_edukasi')
+  String? get judulVideoEdukasi;
+  @override
+  @JsonKey(name: 'link_video_edukasi')
+  String? get linkVideoEdukasi;
+  @override
+  @JsonKey(name: 'tgl_upload')
+  DateTime? get tanggalUpload;
+  @override
+  @JsonKey(name: 'upload_user_id')
+  int? get uploadUserId;
+  @override
+  @JsonKey(name: 'deskripsi')
+  String? get deksripsiVideoEdukasi;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;

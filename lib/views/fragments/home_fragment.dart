@@ -7,21 +7,17 @@ class HomeFragment extends StatefulWidget {
   State<HomeFragment> createState() => _HomeFragmentState();
 }
 
-class _HomeFragmentState extends State<HomeFragment> {
-  List<Map<String, dynamic>> checkboxHomeFragment = [
-    {'text1': 'Berpamitan kepada orang tua', 'value1': false},
-    {'text2': 'Berdoa sebelum belajar', 'value2': false},
-    {'text3': 'Menyapa kepada teman', 'value3': false},
-  ];
+List<Map<String, String>> siramaIcon = [
+  {'icon': 'skrining-menu-icon', 'title': 'Screening', 'route': '/screening'},
+  {'icon': 'infografis-menu-icon', 'title': 'Infografis', 'route': '/infographics'},
+  {'icon': 'film-menu-icon', 'title': 'Film', 'route': '/film'},
+  {'icon': 'podcast-menu-icon', 'title': 'Podcast', 'route': '/podcast'},
+  {'icon': 'video-edukasi-menu-icon', 'title': 'Video Edukasi', 'route': '/educational-video'},
+  {'icon': 'tanya-ahli-menu-icon', 'title': 'Tanya Ahli', 'route': '/asktheexpert'},
+];
 
-  List<Map<String, String>> routeListView = [
-    {'title': 'ChatMe', 'route': '/chatme'},
-    {'title': 'Skrining', 'route': '/screening'},
-    {'title': 'Film', 'route': '/film'},
-    {'title': 'Podcast', 'route': '/podcast'},
-    {'title': 'Video Edukasi', 'route': '/educational-video'},
-    {'title': 'Tanya Ahli', 'route': '/asktheexpert'},
-  ];
+class _HomeFragmentState extends State<HomeFragment> {
+  
 
   void navigateToPage(String route) {
     switch (route) {
@@ -35,6 +31,8 @@ class _HomeFragmentState extends State<HomeFragment> {
         NavigationHelper.toNamed('/podcast');
       case '/educational-video':
         NavigationHelper.toNamed('/educational-video');
+      case '/infographics':
+        NavigationHelper.toNamed('/infographics');
       case '/asktheexpert':
         return MyApp.homepageBloc.add(SetHomepageSelectedIndex(index: 2));
     }
@@ -117,35 +115,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                   padding: EdgeInsets.symmetric(horizontal: 20),
                   child: MyCarouselSlider()),
               const SizedBox(
-                height: 20,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                child: CardTile(
-                  title: const Text('Yuk, Skrining!'),
-                  subtitle: const Text(
-                      'Ayo deteksi dini perilaku pencegahan bullying atau perundungan Sobat RAMA'),
-                  button: const Row(
-                    children: [
-                      Text('Skrining'),
-                      SizedBox(width: 10),
-                      Icon(
-                        Icons.arrow_forward,
-                        color: Colors.white,
-                      )
-                    ],
-                  ),
-                  image: Image.asset(
-                    'assets/card-homepage.png',
-                  ),
-                  imageAlignment: CardTileAlignment.bottom,
-                  minImageWidth: 100.0,
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(
-                      builder: (context) => const ScreeningPage())),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+                height: 25,
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -153,55 +123,56 @@ class _HomeFragmentState extends State<HomeFragment> {
                   children: [
                     Text(
                       'Menu',
-                      style: Config.textStyleHeadlineSmall,
+                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              SizedBox(
-                height: 48.0,
-                child: ListView(
-                  scrollDirection: Axis.horizontal,
-                  children: routeListView
-                      .map(
-                        (e) => Padding(
-                          padding: EdgeInsets.only(
-                              left: e['title'] == 'ChatMe' ? 20.0 : 8.0,
-                              right: e['title'] == 'Tanya Ahli' ? 20.0 : 0.0),
-                          child: ActionChip(
-                            label: Text(e['title']!),
-                            side: BorderSide(
-                              color: Theme.of(context).colorScheme.onPrimary,
-                            ),
-                            color: MaterialStatePropertyAll(
-                                Theme.of(context).colorScheme.primary),
-                            labelStyle: Theme.of(context)
-                                .textTheme
-                                .labelLarge
-                                ?.copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+              Padding(
+                padding: const EdgeInsets.only(top: 20),
+                child: SizedBox(                  
+                    height: 241,
+                    child: GridView.count(
+                      primary: false,
+                      crossAxisCount: 3,
+                      children: [
+                        ...siramaIcon.map((e) => Column(
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 3),
+                                  height: 50,
+                                  width: 50,
+                                  decoration: BoxDecoration(
+                                      color:
+                                          Theme.of(context).colorScheme.primary,
+                                      borderRadius: BorderRadius.circular(20)),
+                                  child: IconButton(
+                                      onPressed: () => navigateToPage(e['route']!),
+                                      icon: SvgPicture.asset(
+                                        'assets/icons/${e['icon']!}.svg',
+                                      )),
                                 ),
-                            onPressed: () => navigateToPage(e['route']!),
-                          ),
-                        ),
-                      )
-                      .toList(),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
+                                const SizedBox(
+                                  height: 10,
+                                ),
+                                Text(
+                                  e['title']!,
+                                  style: Config.textStyleBodyLarge
+                                      .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
+                                ),
+                              ],
+                            ))
+                      ],
+                    )),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
                     Text(
-                      'Tandai tiga kebaikanmu hari ini',
-                      style: Config.textStyleHeadlineSmall,
+                      'Tandai tiga kebaikanmu hari ini 👇',
+                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 18,),
                     ),
                   ],
                 ),
@@ -211,21 +182,36 @@ class _HomeFragmentState extends State<HomeFragment> {
               ),
               ...checkboxHomeFragment.map(
                 (Map<String, dynamic> e) => Padding(
-                  padding: const EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 20.0),
+                  padding: const EdgeInsets.fromLTRB(15.0, 0.0, 10.0, 15.0),
                   child: CheckboxListTile(
                     value: e['value${e.keys.first.substring(4)}'] as bool,
                     title: Text(
                       e.values.first,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                          color: Theme.of(context).colorScheme.onPrimary),
+                            color: e['value${e.keys.first.substring(4)}']
+                                ? Colors.white
+                                : Colors.black,
+                          ),
                     ),
-                    tileColor: Theme.of(context).colorScheme.primary,
-                    checkColor: Theme.of(context).colorScheme.onPrimary,
+                    tileColor: e['value${e.keys.first.substring(4)}']
+                        ? Theme.of(context).colorScheme.primary
+                        : Colors.white,
+                    checkColor: Theme.of(context).colorScheme.primary,
+                    activeColor: Colors.white,
                     side: BorderSide(
-                        color: Theme.of(context).colorScheme.onPrimary,
-                        width: 2),
+                      color: e['value${e.keys.first.substring(4)}']
+                          ? Colors.white
+                          : Colors.black,
+                      width: 2,
+                    ),
                     shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0),
+                      side: BorderSide(
+                        width: 5,
+                        color: e['value${e.keys.first.substring(4)}']
+                            ? const Color(0xFFBCD2F8)
+                            : Colors.white,
+                      ),
+                      borderRadius: BorderRadius.circular(15.0),
                     ),
                     onChanged: (value) {
                       setState(() {

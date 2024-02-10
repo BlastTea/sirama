@@ -93,8 +93,10 @@ class FilmPage extends StatelessWidget {
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 20.0),
                     child: CardTile(
-                      title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                      button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                      title: Text(
+                          'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                      button: Text(
+                          'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
                     ),
                   ),
                   const SizedBox(
@@ -106,13 +108,15 @@ class FilmPage extends StatelessWidget {
                       children: [
                         Text(
                           'Video edukasi terbaru',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold),
                         ),
                       ],
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 20, vertical: 10),
                     child: listVideo(
                       context: context,
                       stateFilm: stateFilm,
@@ -130,7 +134,8 @@ class FilmPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.filmVideoBloc.add(InitializeFilmVideoData()),
+              onRetryPressed: () =>
+                  MyApp.filmVideoBloc.add(InitializeFilmVideoData()),
             ),
           );
         }

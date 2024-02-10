@@ -8,11 +8,11 @@ class PodcastBloc extends Bloc<PodcastEvent, PodcastState> {
 
     on<InitializePodcastData>((event, emit) async {
       try {
-        _podcasts = await ApiHelper.get('/api/podcast').then((value) => (value.data['data'] as List).map((e) => Podcast.fromJson(e)).toList());
+        _podcasts = await ApiHelper.get('/api/podcast').then((value) => (value.data['data'] as List).map((e) => PodcastVideo.fromJson(e)).toList());
 
         emit(_podcastDataLoaded);
 
-        await for (Podcast podcast in Stream.fromIterable(_podcasts)) {
+        await for (PodcastVideo podcast in Stream.fromIterable(_podcasts)) {
           String? id = Uri.parse(podcast.linkPodcast ?? '').queryParameters['v'];
 
           if (id == null) continue;
@@ -40,7 +40,7 @@ class PodcastBloc extends Bloc<PodcastEvent, PodcastState> {
     });
   }
 
-  List<Podcast> _podcasts = [];
+  List<PodcastVideo> _podcasts = [];
 
   PodcastDataLoaded get _podcastDataLoaded => PodcastDataLoaded(
         podcasts: _podcasts,

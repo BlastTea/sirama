@@ -34,6 +34,13 @@ class _DetailsEducationalVideoPageState
     super.dispose();
   }
 
+  void onShare(BuildContext context) async {
+    if (widget.educationalVideo.linkVideoEdukasi!.isNotEmpty) {
+      await Share.shareUri(
+          Uri.parse(widget.educationalVideo.linkVideoEdukasi!));
+    }
+  }
+
   @override
   Widget build(BuildContext context) =>
       BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
@@ -41,58 +48,102 @@ class _DetailsEducationalVideoPageState
           if (stateEducationalVideo is EducationalVideoDataLoaded) {
             return Scaffold(
               appBar: AppBar(
-                backgroundColor: Colors.white,
-                title: const Text('Video Edukasi'),
-                centerTitle: true,
-              ),
+                  backgroundColor: Colors.white,
+                  title: const Text('Video Edukasi'),
+                  centerTitle: true,
+                  actions: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 7),
+                      child: IconButton(
+                          onPressed: () {
+                            onShare(context);
+                          },
+                          icon:
+                              SvgPicture.asset('assets/icons/share-icons.svg')),
+                    ),
+                  ]),
               body: SafeArea(
                 child: ListView(
                   children: [
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    const MyContentWidget(
+                      jenisKonten: 'Podcast',
+                      untukUsia: '17-21 Tahun',
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 20),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Text(
+                        widget.educationalVideo.judulVideoEdukasi ?? '?',
+                        style: Config.textStyleTitleMedium,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: PodVideoPlayer(controller: _podPlayerController),
                     ),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        ListTile(
-                          title: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 10),
-                            child: Text(
-                              widget.educationalVideo.judulVideoEdukasi ?? '?',
-                              style: Config.textStyleTitleMedium,
-                            ),
-                          ),
-                          subtitle: Align(
-                            alignment: Alignment.centerLeft,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isFavorited = !isFavorited;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    isFavorited
-                                        ? Icons.favorite
-                                        : Icons.favorite_border,
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 5),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          ListTile(
+                            subtitle: Align(
+                              alignment: Alignment.centerLeft,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('Disukai',
+                                      style: Config.textStyleBodyMedium
+                                          .copyWith(color: Colors.black)),
+                                  IconButton(
+                                    onPressed: () {
+                                      setState(() {
+                                        isFavorited = !isFavorited;
+                                      });
+                                    },
+                                    icon: Icon(
+                                      isFavorited
+                                          ? Icons.favorite
+                                          : Icons.favorite_border,
+                                    ),
                                   ),
-                                ),
-                                Text(widget.educationalVideo.totalLikes
-                                        ?.toString() ??
-                                    '0'),
-                              ],
+                                  Text(widget.educationalVideo.totalLikes
+                                          ?.toString() ??
+                                      '0'),
+                                ],
+                              ),
                             ),
                           ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: RichText(
+                        text: TextSpan(
+                          text: (widget.educationalVideo
+                                          .deksripsiVideoEdukasi ??
+                                      '')
+                                  .trim()
+                                  .isEmpty
+                              ? 'Tidak ada deskripsi'
+                              : widget.educationalVideo.deksripsiVideoEdukasi!,
+                          style: Config.textStyleBodyMedium
+                              .copyWith(color: Colors.black),
                         ),
-                      ],
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           Text(
@@ -105,7 +156,7 @@ class _DetailsEducationalVideoPageState
                     const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 30, vertical: 10),
+                          horizontal: 20, vertical: 10),
                       child: EducationalVideoPage.listVideo(
                         context: context,
                         stateEducationalVideo: stateEducationalVideo,

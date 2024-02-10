@@ -11,7 +11,7 @@ class PodcastPage extends StatelessWidget {
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          Podcast podcast = statePodcast.podcasts[index];
+          PodcastVideo podcast = statePodcast.podcasts[index];
 
           if (podcast.idPodcast == currentPodcast) return Container();
 
@@ -53,7 +53,7 @@ class PodcastPage extends StatelessWidget {
                   ),
                   title: Text(
                     podcast.judulPodcast ?? '?',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
+                    style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'Admin . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
@@ -62,6 +62,7 @@ class PodcastPage extends StatelessWidget {
                     ),
                   ),
                 ),
+                const SizedBox(height: 15,),
               ],
             ),
           );
@@ -95,26 +96,31 @@ class PodcastPage extends StatelessWidget {
                   const SizedBox(
                     height: 20,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
                     child: CardTile(
                       title: Text(
-                          'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                        'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm... 🤔',
+                        style: Config.textStyleTitleLarge
+                            .copyWith(color: Colors.white),
+                      ),
                       button: Text(
-                          'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton podcast!'),
+                        'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton podcast!',
+                        style: Config.textStyleBodyLarge
+                            .copyWith(color: Colors.white),
+                      ),
                     ),
                   ),
                   const SizedBox(
                     height: 20,
                   ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Row(
                       children: [
                         Text(
                           'Video edukasi terbaru',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
+                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
                         ),
                       ],
                     ),
@@ -130,15 +136,15 @@ class PodcastPage extends StatelessWidget {
           );
         } else if (statePodcast is PodcastInitial) {
           return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text('Film Edukasi'),
-            centerTitle: true,
-          ),
-          body: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: const Text('Film Edukasi'),
+              centerTitle: true,
+            ),
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         } else if (statePodcast is PodcastError) {
           return Scaffold(
             appBar: AppBar(
@@ -147,7 +153,8 @@ class PodcastPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.podcastBloc.add(InitializePodcastData()),
+              onRetryPressed: () =>
+                  MyApp.podcastBloc.add(InitializePodcastData()),
             ),
           );
         } else {
