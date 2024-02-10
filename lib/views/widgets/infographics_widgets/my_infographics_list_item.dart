@@ -37,20 +37,17 @@ class InfographicsListItem extends StatelessWidget {
                 children: <Widget>[
                   Text(
                     title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w500,
-                      fontSize: 14.0,
-                    ),
+                    style: Config.textStyleTitleSmall,
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 2.0)),
-                  const Text(
+                  Text(
                     'Diupload oleh Admin',
-                    style: TextStyle(fontSize: 12.0),
+                    style: Config.textStyleBodyMedium,
                   ),
                   const Padding(padding: EdgeInsets.symmetric(vertical: 1.0)),
                   Text(
                     tanggalUpload,
-                    style: const TextStyle(fontSize: 12.0),
+                    style: Config.textStyleBodyMedium,
                   ),
                 ],
               ),

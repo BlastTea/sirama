@@ -118,7 +118,7 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                       children: [
                         Text(
                           'Infografis lainnya',
-                          style: Config.textStyleHeadlineSmall,
+                          style: Config.textStyleTitleMedium,
                         ),
                       ],
                     ),

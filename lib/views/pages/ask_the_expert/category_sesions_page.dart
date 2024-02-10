@@ -12,27 +12,6 @@ class CategorySessionsPage extends StatelessWidget {
               title: Text('Yuk, Tanya Ahli!'),
               centerTitle: true,
             ),
-            // SliverPadding(
-            //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-            //   sliver: SliverToBoxAdapter(
-            //     child: CardTile(
-            //       title: const Text('Upcoming Session'),
-            //       subtitle: Text(
-            //           'Sahana V. Msc in Clicinal Psychology\n${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}'),
-            //       button: Row(
-            //         crossAxisAlignment: CrossAxisAlignment.start,
-            //         children: [
-            //           const Text('Join Now'),
-            //           const SizedBox(width: 8.0),
-            //           Icon(Icons.play_circle,
-            //               color: Theme.of(context).colorScheme.onPrimary),
-            //         ],
-            //       ),
-            //       onPressed: () => NavigationHelper.to(MaterialPageRoute(
-            //           builder: (context) => const InputAskPage())),
-            //     ),
-            //   ),
-            // ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
