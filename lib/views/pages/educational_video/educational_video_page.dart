@@ -71,8 +71,6 @@ class EducationalVideoPage extends StatelessWidget {
         itemCount: stateEducationalVideo.educationalVideos.length,
       );
 
-    
-
   @override
   Widget build(BuildContext context) {
     if (MyApp.educationavideoBloc.state is EducationalVideoInitial) {

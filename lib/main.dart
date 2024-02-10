@@ -111,7 +111,10 @@ class MyApp extends StatelessWidget {
               ),
               chipTheme: ChipThemeData(
                 selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
+                secondaryLabelStyle: Theme.of(context)
+                    .textTheme
+                    .labelLarge!
+                    .copyWith(color: Config.colorScheme.onPrimary),
                 checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),

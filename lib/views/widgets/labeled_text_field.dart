@@ -178,17 +178,23 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
   void initState() {
     super.initState();
     _textController = widget.controller ?? TextEditingController();
-    _showPassword = widget._type == _LabeledTextFieldType.password ? false : true;
+    _showPassword =
+        widget._type == _LabeledTextFieldType.password ? false : true;
   }
 
   void _handleTap() => setState(() => _showPassword = !_showPassword);
 
   InputDecoration _getEffectiveDecoration(BuildContext context) {
-    InputDecorationTheme inputDecorationTheme = Theme.of(context).inputDecorationTheme;
-    EdgeInsets effectivePadding = inputDecorationTheme.contentPadding?.resolve(Directionality.of(context)) ?? const EdgeInsets.fromLTRB(12.0, 20.0, 12.0, 12.0);
+    InputDecorationTheme inputDecorationTheme =
+        Theme.of(context).inputDecorationTheme;
+    EdgeInsets effectivePadding = inputDecorationTheme.contentPadding
+            ?.resolve(Directionality.of(context)) ??
+        const EdgeInsets.fromLTRB(12.0, 20.0, 12.0, 12.0);
 
-    InputDecoration effectiveDecoration = widget.decoration ?? const InputDecoration();
-    if (effectiveDecoration.suffixIcon == null && widget._type == _LabeledTextFieldType.password) {
+    InputDecoration effectiveDecoration =
+        widget.decoration ?? const InputDecoration();
+    if (effectiveDecoration.suffixIcon == null &&
+        widget._type == _LabeledTextFieldType.password) {
       effectiveDecoration = effectiveDecoration.copyWith(
         suffixIcon: IconButton(
           onPressed: _handleTap,
@@ -205,7 +211,8 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
             effectivePadding.bottom,
           ),
       filled: widget.decoration?.filled ?? true,
-      fillColor: widget.decoration?.fillColor ?? const Color(0xFFD9D9D9).withOpacity(0.3),
+      fillColor: widget.decoration?.fillColor ??
+          const Color(0xFFD9D9D9).withOpacity(0.3),
       hintStyle: widget.decoration?.hintStyle ?? Config.textStyleBodyLarge,
     );
 
@@ -253,17 +260,22 @@ class _LabeledTextFieldState extends State<LabeledTextField> {
                 width: widget.width,
                 controller: _textController,
                 dropdownMenuEntries: widget.items,
-                inputDecorationTheme: Theme.of(context).inputDecorationTheme.copyWith(
-                      contentPadding: effectiveDecoration.contentPadding,
-                      filled: effectiveDecoration.filled,
-                      fillColor: effectiveDecoration.fillColor,
-                      hintStyle: effectiveDecoration.hintStyle,
-                    ),
+                inputDecorationTheme:
+                    Theme.of(context).inputDecorationTheme.copyWith(
+                          contentPadding: effectiveDecoration.contentPadding,
+                          filled: effectiveDecoration.filled,
+                          fillColor: effectiveDecoration.fillColor,
+                          hintStyle: effectiveDecoration.hintStyle,
+                        ),
                 trailingIcon: effectiveDecoration.suffixIcon,
                 enableSearch: !widget.readOnly,
                 enableFilter: !widget.readOnly,
-                label: effectiveDecoration.labelText != null ? Text(effectiveDecoration.labelText!) : effectiveDecoration.label,
-                onSelected: (value) => widget.onSelected != null ? widget.onSelected!(value) : null,
+                label: effectiveDecoration.labelText != null
+                    ? Text(effectiveDecoration.labelText!)
+                    : effectiveDecoration.label,
+                onSelected: (value) => widget.onSelected != null
+                    ? widget.onSelected!(value)
+                    : null,
               ),
             _ => TextField(
                 focusNode: widget.focusNode,

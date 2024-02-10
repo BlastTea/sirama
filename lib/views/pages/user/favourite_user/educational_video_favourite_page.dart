@@ -10,7 +10,7 @@ class FavEducationalVideo extends StatelessWidget {
         if (MyApp.favVideoEdukasiBloc.state is FavVideoEdukasiInitial) {
           MyApp.favVideoEdukasiBloc.add(InitializeFavVideoEdukasiData());
         }
-        
+
         return const Scaffold(
             body: Center(
           child: Text('Fav Edu'),

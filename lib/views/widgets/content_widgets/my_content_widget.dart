@@ -1,11 +1,12 @@
 part of '../widgets.dart';
 
 class MyContentWidget extends StatelessWidget {
-  const MyContentWidget(
-      {super.key,
-      this.jenisKonten,
-      this.untukUsia,});
-      
+  const MyContentWidget({
+    super.key,
+    this.jenisKonten,
+    this.untukUsia,
+  });
+
   final String? jenisKonten;
   final String? untukUsia;
 
@@ -45,8 +46,8 @@ class MyContentWidget extends StatelessWidget {
                           'assets/icons/jenis-konten.svg',
                         ),
                         const SizedBox(width: 5),
-                        Text(jenisKonten!
-                          ,
+                        Text(
+                          jenisKonten!,
                           style: Config.textStyleBodyLarge.copyWith(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),
@@ -84,7 +85,8 @@ class MyContentWidget extends StatelessWidget {
                           'assets/icons/untuk-usia.svg',
                         ),
                         const SizedBox(width: 5),
-                        Text(untukUsia!,
+                        Text(
+                          untukUsia!,
                           style: Config.textStyleBodyLarge.copyWith(
                               color: Colors.white, fontWeight: FontWeight.w600),
                         ),

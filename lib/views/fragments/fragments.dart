@@ -1,4 +1,4 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +12,6 @@ import 'package:sirama/utils/utils.dart';
 import 'package:sirama/views/pages/pages.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 import 'package:intl/intl.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 

@@ -15,7 +15,8 @@ class InfographicsPage extends StatelessWidget {
         itemBuilder: (context, index) {
           Infografis infographic = stateInfographics.infografis[index];
 
-          if (infographic.idInfografis == currentInfographics) return Container();
+          if (infographic.idInfografis == currentInfographics)
+            return Container();
 
           return InkWell(
             onTap: () {
@@ -48,7 +49,8 @@ class InfographicsPage extends StatelessWidget {
                     ),
                     title: infographic.judulInfografis!,
                     user: infographic.uploadUserId.toString(),
-                    tanggalUpload: infographic.tanggalUpload!.toFormattedDate(withWeekday: true, withMonthName: true),
+                    tanggalUpload: infographic.tanggalUpload!.toFormattedDate(
+                        withWeekday: true, withMonthName: true),
                   ),
                 ),
               ],

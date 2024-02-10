@@ -36,7 +36,8 @@ class CardTile extends StatelessWidget {
   final CardTileAlignment imageAlignment;
   final VoidCallback? onPressed;
 
-  Color onPrimaryColor(BuildContext context) => Theme.of(context).colorScheme.onPrimary;
+  Color onPrimaryColor(BuildContext context) =>
+      Theme.of(context).colorScheme.onPrimary;
 
   @override
   Widget build(BuildContext context) => Container(
@@ -55,9 +56,15 @@ class CardTile extends StatelessWidget {
               subtitle: subtitle,
               button: button,
               image: image,
-              titleStyle: titleStyle ?? Config.textStyleHeadlineSmall.copyWith(color: onPrimaryColor(context)),
-              subtitleStyle: subtitleStyle ?? Config.textStyleBodyMedium.copyWith(color: onPrimaryColor(context)),
-              buttonStyle: buttonStyle ?? Config.textStyleTitleSmall.copyWith(color: onPrimaryColor(context)),
+              titleStyle: titleStyle ??
+                  Config.textStyleHeadlineSmall
+                      .copyWith(color: onPrimaryColor(context)),
+              subtitleStyle: subtitleStyle ??
+                  Config.textStyleBodyMedium
+                      .copyWith(color: onPrimaryColor(context)),
+              buttonStyle: buttonStyle ??
+                  Config.textStyleTitleSmall
+                      .copyWith(color: onPrimaryColor(context)),
               minImageWidth: minImageWidth,
               spacing: spacing,
               contentPadding: contentPadding,
@@ -75,7 +82,8 @@ enum _CardTileSlot {
   image,
 }
 
-class _CardTile extends SlottedMultiChildRenderObjectWidget<_CardTileSlot, RenderBox> {
+class _CardTile
+    extends SlottedMultiChildRenderObjectWidget<_CardTileSlot, RenderBox> {
   const _CardTile({
     required this.title,
     required this.subtitle,
@@ -135,25 +143,28 @@ class _CardTile extends SlottedMultiChildRenderObjectWidget<_CardTileSlot, Rende
   }
 
   @override
-  SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox> createRenderObject(BuildContext context) => _RenderCardTile(
-        minImageWidth: minImageWidth,
-        spacing: spacing,
-        contentPadding: contentPadding.resolve(Directionality.of(context)),
-        imageAlignment: imageAlignment,
-      );
+  SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox>
+      createRenderObject(BuildContext context) => _RenderCardTile(
+            minImageWidth: minImageWidth,
+            spacing: spacing,
+            contentPadding: contentPadding.resolve(Directionality.of(context)),
+            imageAlignment: imageAlignment,
+          );
 
   @override
-  void updateRenderObject(BuildContext context, _RenderCardTile renderObject) => renderObject
-    ..minImageWidth = minImageWidth
-    ..spacing = spacing
-    ..contentPadding = contentPadding.resolve(Directionality.of(context))
-    ..imageAlignment = imageAlignment;
+  void updateRenderObject(BuildContext context, _RenderCardTile renderObject) =>
+      renderObject
+        ..minImageWidth = minImageWidth
+        ..spacing = spacing
+        ..contentPadding = contentPadding.resolve(Directionality.of(context))
+        ..imageAlignment = imageAlignment;
 
   @override
   Iterable<_CardTileSlot> get slots => _CardTileSlot.values;
 }
 
-class _RenderCardTile extends RenderBox with SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox> {
+class _RenderCardTile extends RenderBox
+    with SlottedContainerRenderObjectMixin<_CardTileSlot, RenderBox> {
   _RenderCardTile({
     required double minImageWidth,
     required double spacing,
@@ -223,32 +234,78 @@ class _RenderCardTile extends RenderBox with SlottedContainerRenderObjectMixin<_
 
   @override
   void performLayout() {
-    EdgeInsets effectivePadding = EdgeInsets.fromLTRB(contentPadding.left, contentPadding.top, _image == null ? contentPadding.right : 0.0, contentPadding.bottom);
+    EdgeInsets effectivePadding = EdgeInsets.fromLTRB(
+        contentPadding.left,
+        contentPadding.top,
+        _image == null ? contentPadding.right : 0.0,
+        contentPadding.bottom);
 
-    BoxConstraints effectiveContstraints = constraints.deflate(effectivePadding);
-    final double effectiveSpacing = (_title != null && (_subtitle != null || _button != null) ? spacing : 0.0) + (_subtitle != null && _button != null ? spacing : 0.0);
+    BoxConstraints effectiveContstraints =
+        constraints.deflate(effectivePadding);
+    final double effectiveSpacing =
+        (_title != null && (_subtitle != null || _button != null)
+                ? spacing
+                : 0.0) +
+            (_subtitle != null && _button != null ? spacing : 0.0);
 
-    double nonImageWidth = effectiveContstraints.maxWidth - (_image != null ? minImageWidth : 0.0);
+    double nonImageWidth =
+        effectiveContstraints.maxWidth - (_image != null ? minImageWidth : 0.0);
 
-    _title?.layout(effectiveContstraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
-    _subtitle?.layout(effectiveContstraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
-    _button?.layout(effectiveContstraints.copyWith(minWidth: nonImageWidth, maxWidth: nonImageWidth), parentUsesSize: true);
+    _title?.layout(
+        effectiveContstraints.copyWith(
+            minWidth: nonImageWidth, maxWidth: nonImageWidth),
+        parentUsesSize: true);
+    _subtitle?.layout(
+        effectiveContstraints.copyWith(
+            minWidth: nonImageWidth, maxWidth: nonImageWidth),
+        parentUsesSize: true);
+    _button?.layout(
+        effectiveContstraints.copyWith(
+            minWidth: nonImageWidth, maxWidth: nonImageWidth),
+        parentUsesSize: true);
 
-    double nonImageHeight = (_title?.size.height ?? 0.0) + (_subtitle?.size.height ?? 0.0) + (_button?.size.height ?? 0.0);
+    double nonImageHeight = (_title?.size.height ?? 0.0) +
+        (_subtitle?.size.height ?? 0.0) +
+        (_button?.size.height ?? 0.0);
     if (nonImageHeight < _minImageWidth) {
       nonImageHeight = _minImageWidth;
     }
 
-    _image?.layout(effectiveContstraints.copyWith(minWidth: minImageWidth, maxWidth: minImageWidth, minHeight: nonImageHeight, maxHeight: nonImageHeight), parentUsesSize: true);
+    _image?.layout(
+        effectiveContstraints.copyWith(
+            minWidth: minImageWidth,
+            maxWidth: minImageWidth,
+            minHeight: nonImageHeight,
+            maxHeight: nonImageHeight),
+        parentUsesSize: true);
 
-    size = constraints.constrain(Size(constraints.maxWidth + contentPadding.horizontal, nonImageHeight + contentPadding.vertical + effectiveSpacing));
+    size = constraints.constrain(Size(
+        constraints.maxWidth + contentPadding.horizontal,
+        nonImageHeight + contentPadding.vertical + effectiveSpacing));
   }
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    _title?.paint(context, offset + Offset(contentPadding.left, contentPadding.top));
-    _subtitle?.paint(context, offset + Offset(contentPadding.left, (_title?.size.height ?? 0.0) + contentPadding.top + (_title != null ? spacing : 0.0)));
-    _button?.paint(context, offset + Offset(contentPadding.left, (_title?.size.height ?? 0.0) + (_subtitle?.size.height ?? 0.0) + contentPadding.top + (_title != null ? spacing : 0.0) + (_subtitle != null ? spacing : 0.0)));
+    _title?.paint(
+        context, offset + Offset(contentPadding.left, contentPadding.top));
+    _subtitle?.paint(
+        context,
+        offset +
+            Offset(
+                contentPadding.left,
+                (_title?.size.height ?? 0.0) +
+                    contentPadding.top +
+                    (_title != null ? spacing : 0.0)));
+    _button?.paint(
+        context,
+        offset +
+            Offset(
+                contentPadding.left,
+                (_title?.size.height ?? 0.0) +
+                    (_subtitle?.size.height ?? 0.0) +
+                    contentPadding.top +
+                    (_title != null ? spacing : 0.0) +
+                    (_subtitle != null ? spacing : 0.0)));
 
     double imageYOffset = 0.0;
     switch (imageAlignment) {
@@ -260,6 +317,7 @@ class _RenderCardTile extends RenderBox with SlottedContainerRenderObjectMixin<_
       // Do nothing
     }
 
-    _image?.paint(context, offset + Offset(size.width - minImageWidth, imageYOffset));
+    _image?.paint(
+        context, offset + Offset(size.width - minImageWidth, imageYOffset));
   }
 }

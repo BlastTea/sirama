@@ -19,8 +19,8 @@ class ChooseScreeningPage extends StatelessWidget {
                 const Text('Yuk, skrining sekarang',
                     style: TextStyle(fontSize: 20)),
                 Text('${currentUser?.username ?? 'Guest'} 🤩',
-                    style:
-                        const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold)),
                 Stack(
                   children: [
                     Image.asset(
@@ -50,7 +50,9 @@ class ChooseScreeningPage extends StatelessWidget {
                             TextSpan(text: 'klik dan jawab pertanyaannya!'),
                           ])),
                 ),
-                const SizedBox(height: 20,),
+                const SizedBox(
+                  height: 20,
+                ),
                 const ScreeningChooseListItem(
                   title: 'Skrining Bullying',
                   route: '/mainscreening',

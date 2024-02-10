@@ -1,7 +1,8 @@
 part of '../widgets.dart';
 
 class InfographicsDescription extends StatelessWidget {
-  const InfographicsDescription({super.key, 
+  const InfographicsDescription({
+    super.key,
     required this.title,
     required this.user,
     required this.viewCount,

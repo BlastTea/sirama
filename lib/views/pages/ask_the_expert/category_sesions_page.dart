@@ -9,33 +9,35 @@ class CategorySessionsPage extends StatelessWidget {
           slivers: [
             const SliverAppBar(
               floating: true,
-              title: Text('1 on 1 Sessions'),
+              title: Text('Yuk, Tanya Ahli!'),
               centerTitle: true,
             ),
-            SliverPadding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              sliver: SliverToBoxAdapter(
-                child: CardTile(
-                  title: const Text('Upcoming Session'),
-                  subtitle: Text('Sahana V. Msc in Clicinal Psychology\n${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}'),
-                  button: Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      const Text('Join Now'),
-                      const SizedBox(width: 8.0),
-                      Icon(Icons.play_circle, color: Theme.of(context).colorScheme.onPrimary),
-                    ],
-                  ),
-                  onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const InputAskPage())),
-                ),
-              ),
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+            // SliverPadding(
+            //   padding: const EdgeInsets.symmetric(horizontal: 20.0),
+            //   sliver: SliverToBoxAdapter(
+            //     child: CardTile(
+            //       title: const Text('Upcoming Session'),
+            //       subtitle: Text(
+            //           'Sahana V. Msc in Clicinal Psychology\n${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}'),
+            //       button: Row(
+            //         crossAxisAlignment: CrossAxisAlignment.start,
+            //         children: [
+            //           const Text('Join Now'),
+            //           const SizedBox(width: 8.0),
+            //           Icon(Icons.play_circle,
+            //               color: Theme.of(context).colorScheme.onPrimary),
+            //         ],
+            //       ),
+            //       onPressed: () => NavigationHelper.to(MaterialPageRoute(
+            //           builder: (context) => const InputAskPage())),
+            //     ),
+            //   ),
+            // ),
             SliverPadding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               sliver: SliverToBoxAdapter(
                 child: Text(
-                  'All Sessions',
+                  'Daftar ahli yang tersedia',
                   style: Config.textStyleHeadlineSmall,
                 ),
               ),
@@ -54,10 +56,16 @@ class CategorySessionsPage extends StatelessWidget {
                     children: [
                       Material(
                         color: Colors.transparent,
-                        borderRadius: const BorderRadius.horizontal(left: Radius.circular(24.0), right: Radius.circular(kShapeLarge)),
+                        borderRadius: const BorderRadius.horizontal(
+                            left: Radius.circular(24.0),
+                            right: Radius.circular(kShapeLarge)),
                         child: InkWell(
-                          borderRadius: const BorderRadius.horizontal(left: Radius.circular(24.0), right: Radius.circular(kShapeLarge)),
-                          onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => DoctorProfilePage(index: index))),
+                          borderRadius: const BorderRadius.horizontal(
+                              left: Radius.circular(24.0),
+                              right: Radius.circular(kShapeLarge)),
+                          onTap: () => NavigationHelper.to(MaterialPageRoute(
+                              builder: (context) =>
+                                  DoctorProfilePage(index: index))),
                           child: Row(
                             children: [
                               ImageContainer.hero(
@@ -67,7 +75,8 @@ class CategorySessionsPage extends StatelessWidget {
                                 iconSize: 24.0,
                                 icon: Icons.person,
                                 border: const Border(),
-                                image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                                image: const NetworkImage(
+                                    'https://avatars.githubusercontent.com/u/75353116?v=4'),
                                 borderRadius: BorderRadius.circular(24.0),
                               ),
                               const SizedBox(width: 10.0),
@@ -77,14 +86,18 @@ class CategorySessionsPage extends StatelessWidget {
                                   Text(
                                     'Sahana V',
                                     style: Config.textStyleBodyLarge.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimary,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
                                     ),
                                   ),
                                   const SizedBox(height: 4.0),
                                   Text(
                                     'Msc in Clinical Psychology',
                                     style: Config.textStyleBodyMedium.copyWith(
-                                      color: Theme.of(context).colorScheme.onPrimary,
+                                      color: Theme.of(context)
+                                          .colorScheme
+                                          .onPrimary,
                                     ),
                                   )
                                 ],
@@ -104,12 +117,17 @@ class CategorySessionsPage extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.calendar_month_outlined,
-                                    color: Theme.of(context).colorScheme.onPrimary,
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
                                   ),
                                   const SizedBox(width: 4.0),
                                   Text(
-                                    DateTime.now().toFormattedDate(withMonthName: true),
-                                    style: Config.textStyleBodyMedium.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                                    DateTime.now()
+                                        .toFormattedDate(withMonthName: true),
+                                    style: Config.textStyleBodyMedium.copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary),
                                   ),
                                 ],
                               ),
@@ -118,22 +136,31 @@ class CategorySessionsPage extends StatelessWidget {
                                 children: [
                                   Icon(
                                     Icons.schedule,
-                                    color: Theme.of(context).colorScheme.onPrimary,
+                                    color:
+                                        Theme.of(context).colorScheme.onPrimary,
                                   ),
                                   const SizedBox(width: 4.0),
                                   Text(
                                     '${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()} - ${TimeOfDay.fromDateTime(DateTime.now()).toFormattedString()}',
-                                    style: Config.textStyleBodyMedium.copyWith(color: Theme.of(context).colorScheme.onPrimary),
+                                    style: Config.textStyleBodyMedium.copyWith(
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .onPrimary),
                                   ),
                                 ],
                               ),
                             ],
                           ),
                           FilledButton(
-                            onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const InputAskPage())),
+                            onPressed: () => NavigationHelper.to(
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const InputAskPage())),
                             style: FilledButton.styleFrom(
-                              backgroundColor: Theme.of(context).colorScheme.onPrimary,
-                              foregroundColor: Theme.of(context).colorScheme.primary,
+                              backgroundColor:
+                                  Theme.of(context).colorScheme.onPrimary,
+                              foregroundColor:
+                                  Theme.of(context).colorScheme.primary,
                             ),
                             child: const Text('Chat sekarang'),
                           ),
