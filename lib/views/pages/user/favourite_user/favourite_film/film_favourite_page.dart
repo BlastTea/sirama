@@ -1,26 +1,26 @@
-part of '../../pages.dart';
+part of '../../../pages.dart';
 
-class FavPodcast extends StatelessWidget {
-  const FavPodcast({super.key});
-  static Widget listPodcast({
+class FavFilm extends StatelessWidget {
+  const FavFilm({super.key});
+  static Widget listVideo({
     required BuildContext context,
-    required PodcastDataLoaded statePodcast,
+    required FavFilmDataLoaded stateFavFilm,
     bool replaceCurrentPage = false,
-    int? currentPodcast,
+    int? currentFilm,
   }) =>
       ListView.builder(
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          PodcastVideo podcast = statePodcast.podcasts[index];
+          FavFilmVideo favfilm = stateFavFilm.favfilms[index];
 
-          if (podcast.idPodcast == currentPodcast) return Container();
+          if (favfilm.idFilm == currentFilm) return Container();
 
           return InkWell(
             onTap: () {
               Route route = MaterialPageRoute(
-                builder: (context) => DetailsPodcastPage(
-                  podcast: podcast,
+                builder: (context) => DetailFavFilmPage(
+                  favfilm: favfilm,
                 ),
               );
 
@@ -36,9 +36,9 @@ class FavPodcast extends StatelessWidget {
                   aspectRatio: 16 / 9,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
-                    child: podcast.thumbnailImageData != null
+                    child: favfilm.thumbnailImageData != null
                         ? Image.memory(
-                            Uint8List.fromList(podcast.thumbnailImageData!),
+                            Uint8List.fromList(favfilm.thumbnailImageData!),
                             fit: BoxFit.cover,
                           )
                         : Image.network(
@@ -53,38 +53,49 @@ class FavPodcast extends StatelessWidget {
                     backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
-                    podcast.judulPodcast ?? '?',
-                    style: Config.textStyleHeadlineSmall
-                        .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                    favfilm.judulFilm ?? '?',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Admin . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${stateFavFilm.favfilms[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
               ],
             ),
           );
         },
-        itemCount: statePodcast.podcasts.length,
+        itemCount: stateFavFilm.favfilms.length,
       );
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FavPodcastBloc, FavPodcastState>(
-      builder: (context, stateFavPodcast) {
-        if (MyApp.favPodcastBloc.state is FavPodcastInitial) {
-          MyApp.favPodcastBloc.add(InitializeFavPodcastData());
+    if (MyApp.favFilmBloc.state is FavFilmInitial) {
+      MyApp.favFilmBloc.add(InitializeFavFilmData());
+    }
+    return BlocBuilder<FavFilmBloc, FavFilmState>(
+      builder: (context, stateFavFilm) {
+        if (stateFavFilm is FavFilmDataLoaded) {
+          return Scaffold(
+              body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: listVideo(
+              context: context,
+              stateFavFilm: stateFavFilm,
+            ),
+          ));
+        } else if (stateFavFilm is FavFilmError) {
+          return Scaffold(
+            body: ErrorOccuredButton(
+              onRetryPressed: () =>
+                  MyApp.favFilmBloc.add(InitializeFavFilmData()),
+            ),
+          );
+        } else {
+          return Container();
         }
-        return const Scaffold(
-            body: Center(
-          child: Text('Fav Podcast'),
-        ));
       },
     );
   }

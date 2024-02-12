@@ -48,7 +48,11 @@ part 'podcast_video/details_podcast_page.dart';
 part 'infographics/infographics_page.dart';
 part 'infographics/details_infographics_page.dart';
 
-part 'user/favourite_user/educational_video_favourite_page.dart';
-part 'user/favourite_user/film_favourite_page.dart';
-part 'user/favourite_user/infographics_favourite_page.dart';
-part 'user/favourite_user/podcast_favourite_page.dart';
+part 'user/favourite_user/favourite_educational_video/educational_video_favourite_page.dart';
+part 'user/favourite_user/favourite_educational_video/detail_educational_video_favourite_page.dart';
+part 'user/favourite_user/favourite_film/film_favourite_page.dart';
+part 'user/favourite_user/favourite_film/detail_film_favourite_page.dart';
+part 'user/favourite_user/favourite_infographics/infographics_favourite_page.dart';
+part 'user/favourite_user/favourite_infographics/detail_infographics_favourite_page.dart';
+part 'user/favourite_user/favourite_podcast/podcast_favourite_page.dart';
+part 'user/favourite_user/favourite_podcast/detail_podcast_favourite_page.dart';

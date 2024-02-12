@@ -15,7 +15,7 @@ class DetailsEducationalVideoPage extends StatefulWidget {
       _DetailsEducationalVideoPageState();
 }
 
-bool isFavorited = false;
+bool isFavorited = true;
 
 class _DetailsEducationalVideoPageState
     extends State<DetailsEducationalVideoPage> {
