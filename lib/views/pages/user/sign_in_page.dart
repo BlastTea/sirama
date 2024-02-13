@@ -9,9 +9,10 @@ class SignInPage extends StatelessWidget {
           stateAuthentication as AuthenticationDataLoaded;
 
           // if (kDebugMode) {
-          // stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
-          stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
+          stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
+          // stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
           stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
+          stateAuthentication.textControllerPasswordSignIn.text = '123';
           // }
 
           return Scaffold(

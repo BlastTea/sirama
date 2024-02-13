@@ -1,4 +1,4 @@
-part of '../../pages.dart';
+part of '../../../pages.dart';
 
 class FavInfographics extends StatelessWidget {
   const FavInfographics({super.key});
