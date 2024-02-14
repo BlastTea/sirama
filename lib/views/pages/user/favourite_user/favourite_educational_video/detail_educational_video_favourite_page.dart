@@ -43,7 +43,7 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text('Film Edukasi'),
+              title: const Text('Favorit Video Edukasi'),
               centerTitle: true,
               leading: IconButton(
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
@@ -159,7 +159,7 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
         return Scaffold(
           appBar: AppBar(
             backgroundColor: Colors.white,
-            title: const Text('Film Edukasi'),
+            title: const Text('Favorit Video Edukasi'),
             centerTitle: true,
           ),
           body: const Center(
