@@ -289,6 +289,7 @@ _$FavInfografisImpl _$$FavInfografisImplFromJson(Map<String, dynamic> json) =>
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      totalLikes: _parseInt(json['total_likes']),
     );
 
 Map<String, dynamic> _$$FavInfografisImplToJson(_$FavInfografisImpl instance) =>
@@ -303,6 +304,7 @@ Map<String, dynamic> _$$FavInfografisImplToJson(_$FavInfografisImpl instance) =>
       'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'total_likes': instance.totalLikes,
     };
 
 _$FavFilmVideoImpl _$$FavFilmVideoImplFromJson(Map<String, dynamic> json) =>

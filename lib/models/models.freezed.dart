@@ -2982,6 +2982,10 @@ mixin _$FavInfografis {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value) =>
       throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  set totalLikes(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3007,7 +3011,8 @@ abstract class $FavInfografisCopyWith<$Res> {
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData});
+      List<int>? thumbnailImageData,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes});
 }
 
 /// @nodoc
@@ -3034,6 +3039,7 @@ class _$FavInfografisCopyWithImpl<$Res, $Val extends FavInfografis>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
+    Object? totalLikes = freezed,
   }) {
     return _then(_value.copyWith(
       idFavInfografis: freezed == idFavInfografis
@@ -3080,6 +3086,10 @@ class _$FavInfografisCopyWithImpl<$Res, $Val extends FavInfografis>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -3104,7 +3114,8 @@ abstract class _$$FavInfografisImplCopyWith<$Res>
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData});
+      List<int>? thumbnailImageData,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes});
 }
 
 /// @nodoc
@@ -3129,6 +3140,7 @@ class __$$FavInfografisImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
+    Object? totalLikes = freezed,
   }) {
     return _then(_$FavInfografisImpl(
       idFavInfografis: freezed == idFavInfografis
@@ -3175,6 +3187,10 @@ class __$$FavInfografisImplCopyWithImpl<$Res>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
+      totalLikes: freezed == totalLikes
+          ? _value.totalLikes
+          : totalLikes // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -3194,7 +3210,8 @@ class _$FavInfografisImpl implements _FavInfografis {
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      this.thumbnailImageData});
+      this.thumbnailImageData,
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes});
 
   factory _$FavInfografisImpl.fromJson(Map<String, dynamic> json) =>
       _$$FavInfografisImplFromJson(json);
@@ -3232,10 +3249,13 @@ class _$FavInfografisImpl implements _FavInfografis {
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? totalLikes;
 
   @override
   String toString() {
-    return 'FavInfografis(idFavInfografis: $idFavInfografis, idUser: $idUser, idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData)';
+    return 'FavInfografis(idFavInfografis: $idFavInfografis, idUser: $idUser, idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, totalLikes: $totalLikes)';
   }
 
   @JsonKey(ignore: true)
@@ -3254,18 +3274,20 @@ class _$FavInfografisImpl implements _FavInfografis {
 
 abstract class _FavInfografis implements FavInfografis {
   factory _FavInfografis(
-      {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
-      @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'infografis_id') int? idInfografis,
-      @JsonKey(name: 'judul_infografis') String? judulInfografis,
-      @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
-      @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
-      @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
-      @JsonKey(name: 'upload_user_id') int? uploadUserId,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData}) = _$FavInfografisImpl;
+          {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
+          @JsonKey(name: 'user_id') int? idUser,
+          @JsonKey(name: 'infografis_id') int? idInfografis,
+          @JsonKey(name: 'judul_infografis') String? judulInfografis,
+          @JsonKey(name: 'deskripsi_infografis') String? deskripsiInfografis,
+          @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
+          @JsonKey(name: 'gambar_infografis') String? gambarInfografis,
+          @JsonKey(name: 'upload_user_id') int? uploadUserId,
+          @JsonKey(name: 'created_at') DateTime? createdAt,
+          @JsonKey(name: 'updated_at') DateTime? updatedAt,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          List<int>? thumbnailImageData,
+          @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes}) =
+      _$FavInfografisImpl;
 
   factory _FavInfografis.fromJson(Map<String, dynamic> json) =
       _$FavInfografisImpl.fromJson;
@@ -3325,6 +3347,11 @@ abstract class _FavInfografis implements FavInfografis {
   List<int>? get thumbnailImageData;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
+  @override
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  int? get totalLikes;
+  @JsonKey(name: 'total_likes', fromJson: _parseInt)
+  set totalLikes(int? value);
   @override
   @JsonKey(ignore: true)
   _$$FavInfografisImplCopyWith<_$FavInfografisImpl> get copyWith =>

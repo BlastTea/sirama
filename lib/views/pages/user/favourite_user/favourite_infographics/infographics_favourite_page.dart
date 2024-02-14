@@ -2,26 +2,26 @@ part of '../../../pages.dart';
 
 class FavInfographics extends StatelessWidget {
   const FavInfographics({super.key});
-  static Widget listInfgraphics({
+
+  static Widget listFavInfographics({
     required BuildContext context,
-    required InfographicsDataLoaded stateInfographics,
+    required FavInfografisDataLoaded stateFavInfographics,
     bool replaceCurrentPage = false,
-    int? currentInfographics,
+    int? currentFavInfographics,
   }) =>
       ListView.builder(
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          Infografis infographic = stateInfographics.infografis[index];
+          FavInfografis favinfografis = stateFavInfographics.favinfografiss[index];
 
-          if (infographic.idInfografis == currentInfographics)
-            return Container();
+          if (favinfografis.idFavInfografis == currentFavInfographics) return Container();
 
           return InkWell(
             onTap: () {
               Route route = MaterialPageRoute(
-                builder: (context) => DetailsInfographicsPage(
-                  infographic: infographic,
+                builder: (context) => DetailsFavfavinfografisPage(
+                  favinfografis: favinfografis,
                 ),
               );
 
@@ -41,14 +41,14 @@ class FavInfographics extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
                         child: Image.network(
-                          'https://dev-sirama.propertiideal.id/storage/infografis/${infographic.gambarInfografis}',
+                          'https://dev-sirama.propertiideal.id/storage/infografis/${favinfografis.gambarInfografis}',
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    title: infographic.judulInfografis!,
-                    user: infographic.uploadUserId.toString(),
-                    tanggalUpload: infographic.tanggalUpload!.toFormattedDate(
+                    title: favinfografis.judulInfografis!,
+                    user: favinfografis.uploadUserId.toString(),
+                    tanggalUpload: favinfografis.tanggalUpload!.toFormattedDate(
                         withWeekday: true, withMonthName: true),
                   ),
                 ),
@@ -56,20 +56,62 @@ class FavInfographics extends StatelessWidget {
             ),
           );
         },
-        itemCount: stateInfographics.infografis.length,
+        itemCount: stateFavInfographics.favinfografiss.length,
       );
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavInfografisBloc, FavInfografisState>(
-      builder: (context, stateFavInfografis) {
+      builder: (context, stateFavInfographics) {
         if (MyApp.favInfografisBloc.state is FavInfografisInitial) {
           MyApp.favInfografisBloc.add(InitializeFavInfografisData());
         }
-        return const Scaffold(
+
+        if (stateFavInfographics is FavInfografisDataLoaded) {
+          return Scaffold(
+            body: SafeArea(
+              child: ListView(
+                shrinkWrap: true,
+                children: [
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 20),
+                    child: Row(
+                      children: [
+                        Text(
+                          'Infografis terbaru',
+                          style: Config.textStyleTitleMedium,
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  listFavInfographics(
+                      context: context, stateFavInfographics: stateFavInfographics),
+                ],
+              ),
+            ),
+          );
+        } else if (stateFavInfographics is FavInfografisInitial) {
+          return const Scaffold(
             body: Center(
-          child: Text('Fav Info'),
-        ));
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (stateFavInfographics is FavInfografisError) {
+          return Scaffold(
+            body: ErrorOccuredButton(
+              onRetryPressed: () =>
+                  MyApp.favInfografisBloc.add(InitializeFavInfografisData()),
+            ),
+          );
+        } else {
+          return Container();
+        }
       },
     );
   }

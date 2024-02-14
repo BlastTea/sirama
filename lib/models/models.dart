@@ -175,6 +175,7 @@ class FavInfografis with _$FavInfografis {
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
   }) = _FavInfografis;
 
   factory FavInfografis.fromJson(Map<String, dynamic> json) => _$FavInfografisFromJson(json);
