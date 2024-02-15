@@ -276,20 +276,15 @@ _$FavInfografisImpl _$$FavInfografisImplFromJson(Map<String, dynamic> json) =>
       idFavInfografis: json['id_fav_infografis'] as int?,
       idUser: json['user_id'] as int?,
       idInfografis: json['infografis_id'] as int?,
-      judulInfografis: json['judul_infografis'] as String?,
-      deskripsiInfografis: json['deskripsi_infografis'] as String?,
-      tanggalUpload: json['tgl_upload'] == null
-          ? null
-          : DateTime.parse(json['tgl_upload'] as String),
-      gambarInfografis: json['gambar_infografis'] as String?,
-      uploadUserId: json['upload_user_id'] as int?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      totalLikes: _parseInt(json['total_likes']),
+      infografis: json['infografis'] == null
+          ? null
+          : Infografis.fromJson(json['infografis'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FavInfografisImplToJson(_$FavInfografisImpl instance) =>
@@ -297,14 +292,9 @@ Map<String, dynamic> _$$FavInfografisImplToJson(_$FavInfografisImpl instance) =>
       'id_fav_infografis': instance.idFavInfografis,
       'user_id': instance.idUser,
       'infografis_id': instance.idInfografis,
-      'judul_infografis': instance.judulInfografis,
-      'deskripsi_infografis': instance.deskripsiInfografis,
-      'tgl_upload': instance.tanggalUpload?.toIso8601String(),
-      'gambar_infografis': instance.gambarInfografis,
-      'upload_user_id': instance.uploadUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
-      'total_likes': instance.totalLikes,
+      'infografis': instance.infografis,
     };
 
 _$FavFilmVideoImpl _$$FavFilmVideoImplFromJson(Map<String, dynamic> json) =>
@@ -312,20 +302,15 @@ _$FavFilmVideoImpl _$$FavFilmVideoImplFromJson(Map<String, dynamic> json) =>
       idFavFilm: json['id_fav_film'] as int?,
       idUser: json['user_id'] as int?,
       idFilm: json['film_id'] as int?,
-      judulFilm: json['judul_film'] as String?,
-      linkFilm: json['link_film'] as String?,
-      tanggalUpload: json['tgl_upload'] == null
-          ? null
-          : DateTime.parse(json['tgl_upload'] as String),
-      uploadUserId: json['upload_user_id'] as int?,
-      deksripsiFilm: json['deskripsi'] as String?,
-      totalLikes: _parseInt(json['total_likes']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      film: json['film'] == null
+          ? null
+          : Film.fromJson(json['film'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FavFilmVideoImplToJson(_$FavFilmVideoImpl instance) =>
@@ -333,14 +318,9 @@ Map<String, dynamic> _$$FavFilmVideoImplToJson(_$FavFilmVideoImpl instance) =>
       'id_fav_film': instance.idFavFilm,
       'user_id': instance.idUser,
       'film_id': instance.idFilm,
-      'judul_film': instance.judulFilm,
-      'link_film': instance.linkFilm,
-      'tgl_upload': instance.tanggalUpload?.toIso8601String(),
-      'upload_user_id': instance.uploadUserId,
-      'deskripsi': instance.deksripsiFilm,
-      'total_likes': instance.totalLikes,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'film': instance.film,
     };
 
 _$FavPodcastVideoImpl _$$FavPodcastVideoImplFromJson(
@@ -349,20 +329,15 @@ _$FavPodcastVideoImpl _$$FavPodcastVideoImplFromJson(
       idFavPodcast: json['id_fav_podcast'] as int?,
       idUser: json['user_id'] as int?,
       idPodcast: json['podcast_id'] as int?,
-      judulPodcast: json['judul_podcast'] as String?,
-      linkPodcast: json['link_podcast'] as String?,
-      tanggalUpload: json['tgl_upload'] == null
-          ? null
-          : DateTime.parse(json['tgl_upload'] as String),
-      uploadUserId: json['upload_user_id'] as int?,
-      deksripsiPodcast: json['deskripsi'] as String?,
-      totalLikes: _parseInt(json['total_likes']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      podcastVideo: json['podcastVideo'] == null
+          ? null
+          : PodcastVideo.fromJson(json['podcastVideo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FavPodcastVideoImplToJson(
@@ -371,14 +346,9 @@ Map<String, dynamic> _$$FavPodcastVideoImplToJson(
       'id_fav_podcast': instance.idFavPodcast,
       'user_id': instance.idUser,
       'podcast_id': instance.idPodcast,
-      'judul_podcast': instance.judulPodcast,
-      'link_podcast': instance.linkPodcast,
-      'tgl_upload': instance.tanggalUpload?.toIso8601String(),
-      'upload_user_id': instance.uploadUserId,
-      'deskripsi': instance.deksripsiPodcast,
-      'total_likes': instance.totalLikes,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'podcastVideo': instance.podcastVideo,
     };
 
 _$FavVideoEdukasiImpl _$$FavVideoEdukasiImplFromJson(
@@ -387,20 +357,16 @@ _$FavVideoEdukasiImpl _$$FavVideoEdukasiImplFromJson(
       idFavVideoEdukasi: json['id_fav_video_edukasi'] as int?,
       idUser: json['user_id'] as int?,
       idVideoEdukasi: json['video_edukasi_id'] as int?,
-      judulVideoEdukasi: json['judul_video_edukasi'] as String?,
-      linkVideoEdukasi: json['link_video_edukasi'] as String?,
-      tanggalUpload: json['tgl_upload'] == null
-          ? null
-          : DateTime.parse(json['tgl_upload'] as String),
-      uploadUserId: json['upload_user_id'] as int?,
-      deksripsiVideoEdukasi: json['deskripsi'] as String?,
-      totalLikes: _parseInt(json['total_likes']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      educationalVideo: json['educationalVideo'] == null
+          ? null
+          : EducationalVideo.fromJson(
+              json['educationalVideo'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FavVideoEdukasiImplToJson(
@@ -409,12 +375,7 @@ Map<String, dynamic> _$$FavVideoEdukasiImplToJson(
       'id_fav_video_edukasi': instance.idFavVideoEdukasi,
       'user_id': instance.idUser,
       'video_edukasi_id': instance.idVideoEdukasi,
-      'judul_video_edukasi': instance.judulVideoEdukasi,
-      'link_video_edukasi': instance.linkVideoEdukasi,
-      'tgl_upload': instance.tanggalUpload?.toIso8601String(),
-      'upload_user_id': instance.uploadUserId,
-      'deskripsi': instance.deksripsiVideoEdukasi,
-      'total_likes': instance.totalLikes,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'educationalVideo': instance.educationalVideo,
     };
