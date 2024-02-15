@@ -53,11 +53,11 @@ class FavPodcast extends StatelessWidget {
                     backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
-                    favPodcast.judulPodcast ?? '?',
+                    favPodcast.podcastVideo!.judulPodcast ?? '?',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Admin . ${stateFavPodcast.favPodcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${stateFavPodcast.favPodcasts[index].podcastVideo!.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

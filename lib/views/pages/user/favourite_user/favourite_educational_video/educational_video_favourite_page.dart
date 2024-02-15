@@ -53,11 +53,11 @@ class FavEducationalVideo extends StatelessWidget {
                     backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
-                    favvideoedukasi.judulVideoEdukasi ?? '?',
+                    favvideoedukasi.educationalVideo!.judulVideoEdukasi ?? '?',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Admin . ${stateFavVideoEdukasi.favvideoedukasis[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${stateFavVideoEdukasi.favvideoedukasis[index].educationalVideo!.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),

@@ -19,7 +19,7 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.favvideoedukasi.linkVideoEdukasi!),
+      playVideoFrom: PlayVideoFrom.youtube(widget.favvideoedukasi.educationalVideo!.judulVideoEdukasi!),
     )..initialise();
   }
 
@@ -30,8 +30,8 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
   }
 
   void onShare(BuildContext context) async {
-    if (widget.favvideoedukasi.linkVideoEdukasi!.isNotEmpty) {
-      await Share.shareUri(Uri.parse(widget.favvideoedukasi.linkVideoEdukasi!));
+    if (widget.favvideoedukasi.educationalVideo!.linkVideoEdukasi!.isNotEmpty) {
+      await Share.shareUri(Uri.parse(widget.favvideoedukasi.educationalVideo!.linkVideoEdukasi!));
     }
   }
 
@@ -76,7 +76,7 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.favvideoedukasi.judulVideoEdukasi ?? '?',
+                      widget.favvideoedukasi.educationalVideo!.judulVideoEdukasi ?? '?',
                       style: Config.textStyleTitleMedium,
                     ),
                   ),
@@ -115,7 +115,7 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
                                       : Icons.favorite_border,
                                 ),
                               ),
-                              Text(widget.favvideoedukasi.totalLikes?.toString() ?? '0'),
+                              Text(widget.favvideoedukasi.educationalVideo!.totalLikes?.toString() ?? '0'),
                             ],
                           ),
                         ),
@@ -124,7 +124,7 @@ class DetailFavEducationalVideoPageState extends State<DetailFavEducationalVideo
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(widget.favvideoedukasi.deksripsiVideoEdukasi ?? '?',
+                    child: Text(widget.favvideoedukasi.educationalVideo!.deksripsiVideoEdukasi ?? '?',
                         style: Config.textStyleBodyMedium
                             .copyWith(color: Colors.black)),
                   ),

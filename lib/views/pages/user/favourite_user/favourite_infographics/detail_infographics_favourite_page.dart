@@ -24,7 +24,7 @@ class _DetailsFavfavinfografisPageState
                   icon: const Icon(Icons.arrow_back, color: Colors.black),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
-                title: Text(widget.favinfografis.judulInfografis!),
+                title: Text(widget.favinfografis.infografis!.judulInfografis!),
                 centerTitle: true,
               ),
               body: SafeArea(
@@ -49,7 +49,7 @@ class _DetailsFavfavinfografisPageState
                             borderRadius: BorderRadius.circular(10.0),
                             image: DecorationImage(
                               image: NetworkImage(
-                                'https://dev-sirama.propertiideal.id/storage/infografis/${widget.favinfografis.gambarInfografis}',
+                                'https://dev-sirama.propertiideal.id/storage/infografis/${widget.favinfografis.infografis!.gambarInfografis}',
                               ),
                               fit: BoxFit.cover,
                             ),
@@ -69,17 +69,17 @@ class _DetailsFavfavinfografisPageState
                                       children: [
                                         Text(
                                             widget
-                                                .favinfografis.judulInfografis!,
+                                                .favinfografis.infografis!.judulInfografis!,
                                             style: Config.textStyleTitleSmall
                                                 .copyWith(fontSize: 14)),
                                         const SizedBox(height: 5),
                                         Text(
                                           widget.favinfografis
-                                              .deskripsiInfografis!,
+                                              .infografis!.deskripsiInfografis!,
                                         ),
                                         const SizedBox(height: 20),
                                         const Text('Diupload oleh Admin'),
-                                        Text(widget.favinfografis.tanggalUpload!
+                                        Text(widget.favinfografis.infografis!.tanggalUpload!
                                             .toFormattedDate(
                                                 withWeekday: true,
                                                 withMonthName: true)),
@@ -100,7 +100,7 @@ class _DetailsFavfavinfografisPageState
                                               : Icons.favorite_border,
                                         ),
                                       ),
-                                      Text(widget.favinfografis.totalLikes
+                                      Text(widget.favinfografis.infografis!.totalLikes
                                               ?.toString() ??
                                           '0'),
                                     ],
@@ -140,7 +140,7 @@ class _DetailsFavfavinfografisPageState
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: Text(widget.favinfografis.judulInfografis!),
+              title: Text(widget.favinfografis.infografis!.judulInfografis!),
               centerTitle: true,
             ),
             body: const Center(
@@ -151,7 +151,7 @@ class _DetailsFavfavinfografisPageState
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: Text(widget.favinfografis.judulInfografis!),
+              title: Text(widget.favinfografis.infografis!.judulInfografis!),
               centerTitle: true,
             ),
             body: ErrorOccuredButton(

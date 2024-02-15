@@ -41,14 +41,14 @@ class FavInfographics extends StatelessWidget {
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(10.0),
                         child: Image.network(
-                          'https://dev-sirama.propertiideal.id/storage/infografis/${favinfografis.gambarInfografis}',
+                          'https://dev-sirama.propertiideal.id/storage/infografis/${favinfografis.infografis!.gambarInfografis}',
                           fit: BoxFit.cover,
                         ),
                       ),
                     ),
-                    title: favinfografis.judulInfografis ?? '?',
-                    user: favinfografis.uploadUserId.toString(),
-                    tanggalUpload: favinfografis.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?',
+                    title: favinfografis.infografis!.judulInfografis ?? '?',
+                    user: favinfografis.infografis!.uploadUserId.toString(),
+                    tanggalUpload: favinfografis.infografis!.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?',
                   ),
                 ),
               ],

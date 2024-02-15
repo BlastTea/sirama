@@ -19,7 +19,7 @@ class DetailFavPodcastPageState extends State<DetailFavPodcastPage> {
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.favpodcast.linkPodcast!),
+      playVideoFrom: PlayVideoFrom.youtube(widget.favpodcast.podcastVideo!.linkPodcast!),
     )..initialise();
   }
 
@@ -30,8 +30,8 @@ class DetailFavPodcastPageState extends State<DetailFavPodcastPage> {
   }
 
   void onShare(BuildContext context) async {
-    if (widget.favpodcast.linkPodcast!.isNotEmpty) {
-      await Share.shareUri(Uri.parse(widget.favpodcast.linkPodcast!));
+    if (widget.favpodcast.podcastVideo!.linkPodcast!.isNotEmpty) {
+      await Share.shareUri(Uri.parse(widget.favpodcast.podcastVideo!.linkPodcast!));
     }
   }
 
@@ -76,7 +76,7 @@ class DetailFavPodcastPageState extends State<DetailFavPodcastPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.favpodcast.judulPodcast ?? '?',
+                      widget.favpodcast.podcastVideo!.judulPodcast ?? '?',
                       style: Config.textStyleTitleMedium,
                     ),
                   ),
@@ -115,7 +115,7 @@ class DetailFavPodcastPageState extends State<DetailFavPodcastPage> {
                                       : Icons.favorite_border,
                                 ),
                               ),
-                              Text(widget.favpodcast.totalLikes?.toString() ?? '0'),
+                              Text(widget.favpodcast.podcastVideo!.totalLikes?.toString() ?? '0'),
                             ],
                           ),
                         ),
@@ -124,7 +124,7 @@ class DetailFavPodcastPageState extends State<DetailFavPodcastPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(widget.favpodcast.deksripsiPodcast ?? '?',
+                    child: Text(widget.favpodcast.podcastVideo!.deksripsiPodcast ?? '?',
                         style: Config.textStyleBodyMedium
                             .copyWith(color: Colors.black)),
                   ),
@@ -148,7 +148,7 @@ class DetailFavPodcastPageState extends State<DetailFavPodcastPage> {
                       context: context,
                       stateFavPodcast: statefavpodcast,
                       replaceCurrentPage: true,
-                      currentPodcast: widget.favpodcast.idPodcast,
+                      currentPodcast: widget.favpodcast.podcastVideo!.idPodcast,
                     ),
                   )
                 ],

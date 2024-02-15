@@ -19,7 +19,7 @@ class DetailFavFilmPageState extends State<DetailFavFilmPage> {
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.favfilm.linkFilm!),
+      playVideoFrom: PlayVideoFrom.youtube(widget.favfilm.film!.linkFilm!),
     )..initialise();
   }
 
@@ -30,8 +30,8 @@ class DetailFavFilmPageState extends State<DetailFavFilmPage> {
   }
 
   void onShare(BuildContext context) async {
-    if (widget.favfilm.linkFilm!.isNotEmpty) {
-      await Share.shareUri(Uri.parse(widget.favfilm.linkFilm!));
+    if (widget.favfilm.film!.linkFilm!.isNotEmpty) {
+      await Share.shareUri(Uri.parse(widget.favfilm.film!.linkFilm!));
     }
   }
 
@@ -76,7 +76,7 @@ class DetailFavFilmPageState extends State<DetailFavFilmPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
                     child: Text(
-                      widget.favfilm.judulFilm ?? '?',
+                      widget.favfilm.film!.judulFilm ?? '?',
                       style: Config.textStyleTitleMedium,
                     ),
                   ),
@@ -115,7 +115,7 @@ class DetailFavFilmPageState extends State<DetailFavFilmPage> {
                                       : Icons.favorite_border,
                                 ),
                               ),
-                              Text(widget.favfilm.totalLikes?.toString() ?? '0'),
+                              Text(widget.favfilm.film!.totalLikes?.toString() ?? '0'),
                             ],
                           ),
                         ),
@@ -124,7 +124,7 @@ class DetailFavFilmPageState extends State<DetailFavFilmPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(widget.favfilm.deksripsiFilm ?? '?',
+                    child: Text(widget.favfilm.film!.deksripsiFilm ?? '?',
                         style: Config.textStyleBodyMedium
                             .copyWith(color: Colors.black)),
                   ),

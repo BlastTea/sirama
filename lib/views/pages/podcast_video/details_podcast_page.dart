@@ -28,7 +28,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.podcast?.linkPodcast ?? widget.favPodcast?.linkPodcast ?? '?'),
+      playVideoFrom: PlayVideoFrom.youtube(widget.podcast?.linkPodcast ?? widget.favPodcast?.podcastVideo!.linkPodcast ?? '?'),
     )..initialise();
   }
 
@@ -39,8 +39,8 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
   }
 
   void onShare(BuildContext context) async {
-    if (widget.podcast?.linkPodcast?.isNotEmpty ?? widget.favPodcast?.linkPodcast?.isNotEmpty ?? false) {
-      await Share.shareUri(Uri.parse(widget.podcast?.linkPodcast ?? widget.favPodcast?.linkPodcast ?? '?'));
+    if (widget.podcast?.linkPodcast?.isNotEmpty ?? widget.favPodcast?.podcastVideo!.linkPodcast?.isNotEmpty ?? false) {
+      await Share.shareUri(Uri.parse(widget.podcast?.linkPodcast ?? widget.favPodcast?.podcastVideo!.linkPodcast ?? '?'));
     }
   }
 
@@ -85,7 +85,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Column(
                     children: [
-                      Text(widget.podcast?.judulPodcast ?? widget.favPodcast?.judulPodcast ?? '?', style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold)),
+                      Text(widget.podcast?.judulPodcast ?? widget.favPodcast?.podcastVideo!.judulPodcast ?? '?', style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 20),
                       PodVideoPlayer(controller: _podPlayerController),
                     ],
@@ -114,7 +114,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                                 isFavorited ? Icons.favorite : Icons.favorite_border,
                               ),
                             ),
-                            Text(widget.podcast?.totalLikes?.toThousandFormat() ?? widget.favPodcast?.totalLikes?.toThousandFormat() ?? '0'),
+                            Text(widget.podcast?.totalLikes?.toThousandFormat() ?? widget.favPodcast?.podcastVideo!.totalLikes?.toThousandFormat() ?? '0'),
                           ],
                         ),
                       ),
@@ -123,7 +123,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
-                  child: Text(widget.podcast?.deksripsiPodcast ?? widget.favPodcast?.deksripsiPodcast ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
+                  child: Text(widget.podcast?.deksripsiPodcast ?? widget.favPodcast?.podcastVideo!.deksripsiPodcast ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                 ),
                 const SizedBox(
                   height: 20,
