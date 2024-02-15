@@ -187,15 +187,10 @@ class FavFilmVideo with _$FavFilmVideo {
     @JsonKey(name: 'id_fav_film') int? idFavFilm,
     @JsonKey(name: 'user_id') int? idUser,
     @JsonKey(name: 'film_id') int? idFilm,
-    @JsonKey(name: 'judul_film') String? judulFilm,
-    @JsonKey(name: 'link_film') String? linkFilm,
-    @JsonKey(name: 'tgl_upload') DateTime? tanggalUpload,
-    @JsonKey(name: 'upload_user_id') int? uploadUserId,
-    @JsonKey(name: 'deskripsi') String? deksripsiFilm,
-    @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    Film? film,
   }) = _FavFilmVideo;
 
   factory FavFilmVideo.fromJson(Map<String, dynamic> json) => _$FavFilmVideoFromJson(json);

@@ -46,10 +46,9 @@ class FavInfographics extends StatelessWidget {
                         ),
                       ),
                     ),
-                    title: favinfografis.judulInfografis!,
+                    title: favinfografis.judulInfografis ?? '?',
                     user: favinfografis.uploadUserId.toString(),
-                    tanggalUpload: favinfografis.tanggalUpload!.toFormattedDate(
-                        withWeekday: true, withMonthName: true),
+                    tanggalUpload: favinfografis.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?',
                   ),
                 ),
               ],
@@ -90,8 +89,7 @@ class FavInfographics extends StatelessWidget {
                   const SizedBox(
                     height: 10,
                   ),
-                  listFavInfographics(
-                      context: context, stateFavInfographics: stateFavInfographics),
+                  listFavInfographics(context: context, stateFavInfographics: stateFavInfographics),
                 ],
               ),
             ),
@@ -105,8 +103,7 @@ class FavInfographics extends StatelessWidget {
         } else if (stateFavInfographics is FavInfografisError) {
           return Scaffold(
             body: ErrorOccuredButton(
-              onRetryPressed: () =>
-                  MyApp.favInfografisBloc.add(InitializeFavInfografisData()),
+              onRetryPressed: () => MyApp.favInfografisBloc.add(InitializeFavInfografisData()),
             ),
           );
         } else {

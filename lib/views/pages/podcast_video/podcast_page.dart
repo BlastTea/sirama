@@ -6,6 +6,7 @@ class PodcastPage extends StatelessWidget {
     required PodcastDataLoaded statePodcast,
     bool replaceCurrentPage = false,
     int? currentPodcast,
+    int? currentFavPodcast,
   }) =>
       ListView.builder(
         shrinkWrap: true,
@@ -53,8 +54,7 @@ class PodcastPage extends StatelessWidget {
                   ),
                   title: Text(
                     podcast.judulPodcast ?? '?',
-                    style: Config.textStyleHeadlineSmall
-                        .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                    style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
                     'Admin . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
@@ -104,13 +104,11 @@ class PodcastPage extends StatelessWidget {
                     child: CardTile(
                       title: Text(
                         'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm... 🤔',
-                        style: Config.textStyleTitleLarge
-                            .copyWith(color: Colors.white),
+                        style: Config.textStyleTitleLarge.copyWith(color: Colors.white),
                       ),
                       button: Text(
                         'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton podcast!',
-                        style: Config.textStyleBodyLarge
-                            .copyWith(color: Colors.white),
+                        style: Config.textStyleBodyLarge.copyWith(color: Colors.white),
                       ),
                     ),
                   ),
@@ -123,17 +121,12 @@ class PodcastPage extends StatelessWidget {
                       children: [
                         Text(
                           'Video edukasi terbaru',
-                          style: Config.textStyleHeadlineSmall
-                              .copyWith(fontSize: 20),
+                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
                         ),
                       ],
                     ),
                   ),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
-                      child: listPodcast(
-                          context: context, statePodcast: statePodcast))
+                  Padding(padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10), child: listPodcast(context: context, statePodcast: statePodcast))
                 ],
               ),
             ),
@@ -157,8 +150,7 @@ class PodcastPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () =>
-                  MyApp.podcastBloc.add(InitializePodcastData()),
+              onRetryPressed: () => MyApp.podcastBloc.add(InitializePodcastData()),
             ),
           );
         } else {

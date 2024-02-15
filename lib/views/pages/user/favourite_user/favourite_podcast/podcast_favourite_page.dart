@@ -19,8 +19,8 @@ class FavPodcast extends StatelessWidget {
           return InkWell(
             onTap: () {
               Route route = MaterialPageRoute(
-                builder: (context) => DetailFavPodcastPage(
-                  favpodcast: favPodcast,
+                builder: (context) => DetailsPodcastPage.favorite(
+                  favPodcast: favPodcast,
                 ),
               );
 
@@ -89,8 +89,7 @@ class FavPodcast extends StatelessWidget {
         } else if (stateFavPodcast is FavPodcastError) {
           return Scaffold(
             body: ErrorOccuredButton(
-              onRetryPressed: () =>
-                  MyApp.favPodcastBloc.add(InitializeFavPodcastData()),
+              onRetryPressed: () => MyApp.favPodcastBloc.add(InitializeFavPodcastData()),
             ),
           );
         } else {

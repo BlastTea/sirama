@@ -2,17 +2,13 @@ part of '../blocs.dart';
 
 class FavPodcastBloc extends Bloc<FavPodcastEvent, FavPodcastState> {
   FavPodcastBloc() : super(FavPodcastInitial()) {
-    on<SetFavPodcastState>(
-        (event, emit) => emit(event.state ?? _favPodcastDataLoaded));
+    on<SetFavPodcastState>((event, emit) => emit(event.state ?? _favPodcastDataLoaded));
 
     on<SetFavPodcastToInitial>((event, emit) => emit(FavPodcastInitial()));
 
     on<InitializeFavPodcastData>((event, emit) async {
       try {
-        _favPodcastList = await ApiHelper.get('/api/favinfografis').then(
-            (value) => (value.data['data'] as List)
-                .map((e) => FavPodcastVideo.fromJson(e))
-                .toList());
+        _favPodcastList = await ApiHelper.get('/api/favpodcast').then((value) => (value.data['data'] as List).map((e) => FavPodcastVideo.fromJson(e)).toList());
       } catch (e) {
         emit(FavPodcastError());
         return;
