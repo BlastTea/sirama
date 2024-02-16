@@ -42,6 +42,10 @@ class ContentFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.educationaVideoBloc.state is EducationalVideoInitial) {
+      MyApp.educationaVideoBloc.add(InitializeEducationalVideoData());
+    }
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -136,7 +140,26 @@ class ContentFragment extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const AllEducationalVideoPage()
+            BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
+              builder: (context, stateEducationalVideo) {
+                if (stateEducationalVideo is EducationalVideoDataLoaded) {
+                  return EducationalVideoPage.listVideo(
+                    context: context,
+                    videoEdukasis: stateEducationalVideo.educationalVideos,
+                  );
+                } else if (stateEducationalVideo is EducationalVideoError) {
+                  return ErrorOccuredButton(
+                    onRetryPressed: () => MyApp.educationaVideoBloc.add(
+                      InitializeEducationalVideoData(),
+                    ),
+                  );
+                }
+
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            )
           ],
         ),
       ),

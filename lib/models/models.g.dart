@@ -119,8 +119,8 @@ Map<String, dynamic> _$$JawabanAhliImplToJson(_$JawabanAhliImpl instance) =>
       'status_pertanyaan': instance.statusPertanyaan,
     };
 
-_$PodcastVideoImpl _$$PodcastVideoImplFromJson(Map<String, dynamic> json) =>
-    _$PodcastVideoImpl(
+_$PodcastImpl _$$PodcastImplFromJson(Map<String, dynamic> json) =>
+    _$PodcastImpl(
       idPodcast: json['id_podcast'] as int?,
       judulPodcast: json['judul_podcast'] as String?,
       linkPodcast: json['link_podcast'] as String?,
@@ -138,7 +138,7 @@ _$PodcastVideoImpl _$$PodcastVideoImplFromJson(Map<String, dynamic> json) =>
       totalLikes: _parseInt(json['total_likes']),
     );
 
-Map<String, dynamic> _$$PodcastVideoImplToJson(_$PodcastVideoImpl instance) =>
+Map<String, dynamic> _$$PodcastImplToJson(_$PodcastImpl instance) =>
     <String, dynamic>{
       'id_podcast': instance.idPodcast,
       'judul_podcast': instance.judulPodcast,
@@ -214,9 +214,8 @@ Map<String, dynamic> _$$InfografisImplToJson(_$InfografisImpl instance) =>
       'total_likes': instance.totalLikes,
     };
 
-_$EducationalVideoImpl _$$EducationalVideoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$EducationalVideoImpl(
+_$VideoEdukasiImpl _$$VideoEdukasiImplFromJson(Map<String, dynamic> json) =>
+    _$VideoEdukasiImpl(
       idVideoEdukasi: json['id_video_edukasi'] as int?,
       judulVideoEdukasi: json['judul_video_edukasi'] as String?,
       linkVideoEdukasi: json['link_video_edukasi'] as String?,
@@ -234,8 +233,7 @@ _$EducationalVideoImpl _$$EducationalVideoImplFromJson(
       totalLikes: _parseInt(json['total_likes']),
     );
 
-Map<String, dynamic> _$$EducationalVideoImplToJson(
-        _$EducationalVideoImpl instance) =>
+Map<String, dynamic> _$$VideoEdukasiImplToJson(_$VideoEdukasiImpl instance) =>
     <String, dynamic>{
       'id_video_edukasi': instance.idVideoEdukasi,
       'judul_video_edukasi': instance.judulVideoEdukasi,
@@ -297,8 +295,8 @@ Map<String, dynamic> _$$FavInfografisImplToJson(_$FavInfografisImpl instance) =>
       'infografis': instance.infografis,
     };
 
-_$FavFilmVideoImpl _$$FavFilmVideoImplFromJson(Map<String, dynamic> json) =>
-    _$FavFilmVideoImpl(
+_$FavFilmImpl _$$FavFilmImplFromJson(Map<String, dynamic> json) =>
+    _$FavFilmImpl(
       idFavFilm: json['id_fav_film'] as int?,
       idUser: json['user_id'] as int?,
       idFilm: json['film_id'] as int?,
@@ -313,7 +311,7 @@ _$FavFilmVideoImpl _$$FavFilmVideoImplFromJson(Map<String, dynamic> json) =>
           : Film.fromJson(json['film'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$FavFilmVideoImplToJson(_$FavFilmVideoImpl instance) =>
+Map<String, dynamic> _$$FavFilmImplToJson(_$FavFilmImpl instance) =>
     <String, dynamic>{
       'id_fav_film': instance.idFavFilm,
       'user_id': instance.idUser,
@@ -323,9 +321,8 @@ Map<String, dynamic> _$$FavFilmVideoImplToJson(_$FavFilmVideoImpl instance) =>
       'film': instance.film,
     };
 
-_$FavPodcastVideoImpl _$$FavPodcastVideoImplFromJson(
-        Map<String, dynamic> json) =>
-    _$FavPodcastVideoImpl(
+_$FavPodcastImpl _$$FavPodcastImplFromJson(Map<String, dynamic> json) =>
+    _$FavPodcastImpl(
       idFavPodcast: json['id_fav_podcast'] as int?,
       idUser: json['user_id'] as int?,
       idPodcast: json['podcast_id'] as int?,
@@ -335,20 +332,19 @@ _$FavPodcastVideoImpl _$$FavPodcastVideoImplFromJson(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      podcastVideo: json['podcastVideo'] == null
+      podcast: json['podcast'] == null
           ? null
-          : PodcastVideo.fromJson(json['podcastVideo'] as Map<String, dynamic>),
+          : Podcast.fromJson(json['podcast'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$FavPodcastVideoImplToJson(
-        _$FavPodcastVideoImpl instance) =>
+Map<String, dynamic> _$$FavPodcastImplToJson(_$FavPodcastImpl instance) =>
     <String, dynamic>{
       'id_fav_podcast': instance.idFavPodcast,
       'user_id': instance.idUser,
       'podcast_id': instance.idPodcast,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
-      'podcastVideo': instance.podcastVideo,
+      'podcast': instance.podcast,
     };
 
 _$FavVideoEdukasiImpl _$$FavVideoEdukasiImplFromJson(
@@ -363,10 +359,9 @@ _$FavVideoEdukasiImpl _$$FavVideoEdukasiImplFromJson(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
-      educationalVideo: json['educationalVideo'] == null
+      videoEdukasi: json['videoEdukasi'] == null
           ? null
-          : EducationalVideo.fromJson(
-              json['educationalVideo'] as Map<String, dynamic>),
+          : VideoEdukasi.fromJson(json['videoEdukasi'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$FavVideoEdukasiImplToJson(
@@ -377,5 +372,5 @@ Map<String, dynamic> _$$FavVideoEdukasiImplToJson(
       'video_edukasi_id': instance.idVideoEdukasi,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
-      'educationalVideo': instance.educationalVideo,
+      'videoEdukasi': instance.videoEdukasi,
     };

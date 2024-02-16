@@ -12,6 +12,5 @@ class PodcastDataLoaded extends PodcastState {
     required this.podcasts,
   });
 
-  final List<PodcastVideo> podcasts;
-
+  final List<Podcast> podcasts;
 }

@@ -7,7 +7,7 @@ class DetailsEducationalVideoPage extends StatefulWidget {
     this.favEducationalVideo,
   });
 
-  final EducationalVideo educationalVideo;
+  final VideoEdukasi educationalVideo;
   final FavVideoEdukasi? favEducationalVideo;
 
   @override
@@ -33,27 +33,22 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
     super.dispose();
   }
 
-  void onShare(BuildContext context) async {
-    if (widget.educationalVideo.linkVideoEdukasi!.isNotEmpty) {
-      await Share.shareUri(Uri.parse(widget.educationalVideo.linkVideoEdukasi!));
-    }
-  }
-
   @override
   Widget build(BuildContext context) => BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
         builder: (context, stateEducationalVideo) {
           if (stateEducationalVideo is EducationalVideoDataLoaded) {
             return Scaffold(
-              appBar: AppBar(backgroundColor: Colors.white, title: const Text('Video Edukasi'), centerTitle: true, actions: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 7),
-                  child: IconButton(
-                      onPressed: () {
-                        onShare(context);
-                      },
-                      icon: SvgPicture.asset('assets/icons/share-icons.svg')),
-                ),
-              ]),
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Video Edukasi'),
+                centerTitle: true,
+                actions: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 7),
+                    child: IconButton(onPressed: () => (widget.educationalVideo.linkVideoEdukasi!.isNotEmpty) ? Share.shareUri(Uri.parse(widget.educationalVideo.linkVideoEdukasi!)) : null, icon: SvgPicture.asset('assets/icons/share-icons.svg')),
+                  ),
+                ],
+              ),
               body: SafeArea(
                 child: ListView(
                   children: [
@@ -134,14 +129,11 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                      child: EducationalVideoPage.listVideo(
-                        context: context,
-                        stateEducationalVideo: stateEducationalVideo,
-                        replaceCurrentPage: true,
-                        currentEducationVideo: widget.educationalVideo.idVideoEdukasi,
-                      ),
+                    EducationalVideoPage.listVideo(
+                      context: context,
+                      videoEdukasis: stateEducationalVideo.educationalVideos,
+                      replaceCurrentPage: true,
+                      currentEducationVideo: widget.educationalVideo.idVideoEdukasi,
                     ),
                   ],
                 ),

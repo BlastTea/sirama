@@ -29,17 +29,11 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
     super.dispose();
   }
 
-  void onShare(BuildContext context) async {
-    if (widget.film.linkFilm!.isNotEmpty) {
-      await Share.shareUri(Uri.parse(widget.film.linkFilm!));
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<FilmVideoBloc, FilmVideoState>(
+    return BlocBuilder<FilmBloc, FilmState>(
       builder: (context, stateFilm) {
-        if (stateFilm is FilmVideoDataLoaded) {
+        if (stateFilm is FilmDataLoaded) {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -53,10 +47,9 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 7),
                   child: IconButton(
-                      onPressed: () {
-                        onShare(context);
-                      },
-                      icon: SvgPicture.asset('assets/icons/share-iconss.svg')),
+                    onPressed: () => (widget.film.linkFilm!.isNotEmpty) ? Share.shareUri(Uri.parse(widget.film.linkFilm!)) : null,
+                    icon: SvgPicture.asset('assets/icons/share-iconss.svg'),
+                  ),
                 ),
               ],
             ),
@@ -97,11 +90,8 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsets.symmetric(horizontal: 5),
-                                child: Text('Disukai',
-                                    style: Config.textStyleBodyMedium
-                                        .copyWith(color: Colors.black)),
+                                padding: const EdgeInsets.symmetric(horizontal: 5),
+                                child: Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                               ),
                               IconButton(
                                 onPressed: () {
@@ -110,9 +100,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                                   });
                                 },
                                 icon: Icon(
-                                  isFavorited
-                                      ? Icons.favorite
-                                      : Icons.favorite_border,
+                                  isFavorited ? Icons.favorite : Icons.favorite_border,
                                 ),
                               ),
                               Text(widget.film.totalLikes?.toString() ?? '0'),
@@ -124,9 +112,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Text(widget.film.deksripsiFilm ?? '?',
-                        style: Config.textStyleBodyMedium
-                            .copyWith(color: Colors.black)),
+                    child: Text(widget.film.deksripsiFilm ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                   ),
                   const SizedBox(height: 20),
                   Padding(
@@ -141,15 +127,11 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                     ),
                   ),
                   const SizedBox(height: 20),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 20, vertical: 10),
-                    child: FilmPage.listVideo(
-                      context: context,
-                      stateFilm: stateFilm,
-                      replaceCurrentPage: true,
-                      currentFilm: widget.film.idFilm,
-                    ),
+                  FilmPage.listVideo(
+                    context: context,
+                    films: stateFilm.films,
+                    replaceCurrentPage: true,
+                    currentFilm: widget.film.idFilm,
                   )
                 ],
               ),

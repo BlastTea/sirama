@@ -1205,12 +1205,12 @@ abstract class _JawabanAhli implements JawabanAhli {
       throw _privateConstructorUsedError;
 }
 
-PodcastVideo _$PodcastVideoFromJson(Map<String, dynamic> json) {
-  return _PodcastVideo.fromJson(json);
+Podcast _$PodcastFromJson(Map<String, dynamic> json) {
+  return _Podcast.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PodcastVideo {
+mixin _$Podcast {
   @JsonKey(name: 'id_podcast')
   int? get idPodcast => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_podcast')
@@ -1255,15 +1255,13 @@ mixin _$PodcastVideo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PodcastVideoCopyWith<PodcastVideo> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PodcastCopyWith<Podcast> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PodcastVideoCopyWith<$Res> {
-  factory $PodcastVideoCopyWith(
-          PodcastVideo value, $Res Function(PodcastVideo) then) =
-      _$PodcastVideoCopyWithImpl<$Res, PodcastVideo>;
+abstract class $PodcastCopyWith<$Res> {
+  factory $PodcastCopyWith(Podcast value, $Res Function(Podcast) then) =
+      _$PodcastCopyWithImpl<$Res, Podcast>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_podcast') int? idPodcast,
@@ -1280,9 +1278,9 @@ abstract class $PodcastVideoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
-    implements $PodcastVideoCopyWith<$Res> {
-  _$PodcastVideoCopyWithImpl(this._value, this._then);
+class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
+    implements $PodcastCopyWith<$Res> {
+  _$PodcastCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1349,11 +1347,10 @@ class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
 }
 
 /// @nodoc
-abstract class _$$PodcastVideoImplCopyWith<$Res>
-    implements $PodcastVideoCopyWith<$Res> {
-  factory _$$PodcastVideoImplCopyWith(
-          _$PodcastVideoImpl value, $Res Function(_$PodcastVideoImpl) then) =
-      __$$PodcastVideoImplCopyWithImpl<$Res>;
+abstract class _$$PodcastImplCopyWith<$Res> implements $PodcastCopyWith<$Res> {
+  factory _$$PodcastImplCopyWith(
+          _$PodcastImpl value, $Res Function(_$PodcastImpl) then) =
+      __$$PodcastImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1371,11 +1368,11 @@ abstract class _$$PodcastVideoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$PodcastVideoImplCopyWithImpl<$Res>
-    extends _$PodcastVideoCopyWithImpl<$Res, _$PodcastVideoImpl>
-    implements _$$PodcastVideoImplCopyWith<$Res> {
-  __$$PodcastVideoImplCopyWithImpl(
-      _$PodcastVideoImpl _value, $Res Function(_$PodcastVideoImpl) _then)
+class __$$PodcastImplCopyWithImpl<$Res>
+    extends _$PodcastCopyWithImpl<$Res, _$PodcastImpl>
+    implements _$$PodcastImplCopyWith<$Res> {
+  __$$PodcastImplCopyWithImpl(
+      _$PodcastImpl _value, $Res Function(_$PodcastImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1392,7 +1389,7 @@ class __$$PodcastVideoImplCopyWithImpl<$Res>
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
-    return _then(_$PodcastVideoImpl(
+    return _then(_$PodcastImpl(
       idPodcast: freezed == idPodcast
           ? _value.idPodcast
           : idPodcast // ignore: cast_nullable_to_non_nullable
@@ -1439,8 +1436,8 @@ class __$$PodcastVideoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PodcastVideoImpl implements _PodcastVideo {
-  _$PodcastVideoImpl(
+class _$PodcastImpl implements _Podcast {
+  _$PodcastImpl(
       {@JsonKey(name: 'id_podcast') this.idPodcast,
       @JsonKey(name: 'judul_podcast') this.judulPodcast,
       @JsonKey(name: 'link_podcast') this.linkPodcast,
@@ -1453,8 +1450,8 @@ class _$PodcastVideoImpl implements _PodcastVideo {
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
-  factory _$PodcastVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PodcastVideoImplFromJson(json);
+  factory _$PodcastImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PodcastImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_podcast')
@@ -1489,25 +1486,25 @@ class _$PodcastVideoImpl implements _PodcastVideo {
 
   @override
   String toString() {
-    return 'PodcastVideo(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiPodcast: $deksripsiPodcast, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'Podcast(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiPodcast: $deksripsiPodcast, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PodcastVideoImplCopyWith<_$PodcastVideoImpl> get copyWith =>
-      __$$PodcastVideoImplCopyWithImpl<_$PodcastVideoImpl>(this, _$identity);
+  _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
+      __$$PodcastImplCopyWithImpl<_$PodcastImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PodcastVideoImplToJson(
+    return _$$PodcastImplToJson(
       this,
     );
   }
 }
 
-abstract class _PodcastVideo implements PodcastVideo {
-  factory _PodcastVideo(
+abstract class _Podcast implements Podcast {
+  factory _Podcast(
       {@JsonKey(name: 'id_podcast') int? idPodcast,
       @JsonKey(name: 'judul_podcast') String? judulPodcast,
       @JsonKey(name: 'link_podcast') String? linkPodcast,
@@ -1518,10 +1515,9 @@ abstract class _PodcastVideo implements PodcastVideo {
       @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData}) = _$PodcastVideoImpl;
+      List<int>? thumbnailImageData}) = _$PodcastImpl;
 
-  factory _PodcastVideo.fromJson(Map<String, dynamic> json) =
-      _$PodcastVideoImpl.fromJson;
+  factory _Podcast.fromJson(Map<String, dynamic> json) = _$PodcastImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_podcast')
@@ -1575,7 +1571,7 @@ abstract class _PodcastVideo implements PodcastVideo {
   set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
-  _$$PodcastVideoImplCopyWith<_$PodcastVideoImpl> get copyWith =>
+  _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -2295,12 +2291,12 @@ abstract class _Infografis implements Infografis {
       throw _privateConstructorUsedError;
 }
 
-EducationalVideo _$EducationalVideoFromJson(Map<String, dynamic> json) {
-  return _EducationalVideo.fromJson(json);
+VideoEdukasi _$VideoEdukasiFromJson(Map<String, dynamic> json) {
+  return _VideoEdukasi.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EducationalVideo {
+mixin _$VideoEdukasi {
   @JsonKey(name: 'id_video_edukasi')
   int? get idVideoEdukasi => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_video_edukasi')
@@ -2346,15 +2342,15 @@ mixin _$EducationalVideo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EducationalVideoCopyWith<EducationalVideo> get copyWith =>
+  $VideoEdukasiCopyWith<VideoEdukasi> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EducationalVideoCopyWith<$Res> {
-  factory $EducationalVideoCopyWith(
-          EducationalVideo value, $Res Function(EducationalVideo) then) =
-      _$EducationalVideoCopyWithImpl<$Res, EducationalVideo>;
+abstract class $VideoEdukasiCopyWith<$Res> {
+  factory $VideoEdukasiCopyWith(
+          VideoEdukasi value, $Res Function(VideoEdukasi) then) =
+      _$VideoEdukasiCopyWithImpl<$Res, VideoEdukasi>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
@@ -2371,9 +2367,9 @@ abstract class $EducationalVideoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
-    implements $EducationalVideoCopyWith<$Res> {
-  _$EducationalVideoCopyWithImpl(this._value, this._then);
+class _$VideoEdukasiCopyWithImpl<$Res, $Val extends VideoEdukasi>
+    implements $VideoEdukasiCopyWith<$Res> {
+  _$VideoEdukasiCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -2440,11 +2436,11 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
 }
 
 /// @nodoc
-abstract class _$$EducationalVideoImplCopyWith<$Res>
-    implements $EducationalVideoCopyWith<$Res> {
-  factory _$$EducationalVideoImplCopyWith(_$EducationalVideoImpl value,
-          $Res Function(_$EducationalVideoImpl) then) =
-      __$$EducationalVideoImplCopyWithImpl<$Res>;
+abstract class _$$VideoEdukasiImplCopyWith<$Res>
+    implements $VideoEdukasiCopyWith<$Res> {
+  factory _$$VideoEdukasiImplCopyWith(
+          _$VideoEdukasiImpl value, $Res Function(_$VideoEdukasiImpl) then) =
+      __$$VideoEdukasiImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2462,11 +2458,11 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$EducationalVideoImplCopyWithImpl<$Res>
-    extends _$EducationalVideoCopyWithImpl<$Res, _$EducationalVideoImpl>
-    implements _$$EducationalVideoImplCopyWith<$Res> {
-  __$$EducationalVideoImplCopyWithImpl(_$EducationalVideoImpl _value,
-      $Res Function(_$EducationalVideoImpl) _then)
+class __$$VideoEdukasiImplCopyWithImpl<$Res>
+    extends _$VideoEdukasiCopyWithImpl<$Res, _$VideoEdukasiImpl>
+    implements _$$VideoEdukasiImplCopyWith<$Res> {
+  __$$VideoEdukasiImplCopyWithImpl(
+      _$VideoEdukasiImpl _value, $Res Function(_$VideoEdukasiImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2483,7 +2479,7 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
     Object? totalLikes = freezed,
     Object? thumbnailImageData = freezed,
   }) {
-    return _then(_$EducationalVideoImpl(
+    return _then(_$VideoEdukasiImpl(
       idVideoEdukasi: freezed == idVideoEdukasi
           ? _value.idVideoEdukasi
           : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
@@ -2530,8 +2526,8 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$EducationalVideoImpl implements _EducationalVideo {
-  _$EducationalVideoImpl(
+class _$VideoEdukasiImpl implements _VideoEdukasi {
+  _$VideoEdukasiImpl(
       {@JsonKey(name: 'id_video_edukasi') this.idVideoEdukasi,
       @JsonKey(name: 'judul_video_edukasi') this.judulVideoEdukasi,
       @JsonKey(name: 'link_video_edukasi') this.linkVideoEdukasi,
@@ -2544,8 +2540,8 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
-  factory _$EducationalVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EducationalVideoImplFromJson(json);
+  factory _$VideoEdukasiImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VideoEdukasiImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_video_edukasi')
@@ -2580,26 +2576,25 @@ class _$EducationalVideoImpl implements _EducationalVideo {
 
   @override
   String toString() {
-    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiVideoEdukasi: $deksripsiVideoEdukasi, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'VideoEdukasi(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiVideoEdukasi: $deksripsiVideoEdukasi, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
-      __$$EducationalVideoImplCopyWithImpl<_$EducationalVideoImpl>(
-          this, _$identity);
+  _$$VideoEdukasiImplCopyWith<_$VideoEdukasiImpl> get copyWith =>
+      __$$VideoEdukasiImplCopyWithImpl<_$VideoEdukasiImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EducationalVideoImplToJson(
+    return _$$VideoEdukasiImplToJson(
       this,
     );
   }
 }
 
-abstract class _EducationalVideo implements EducationalVideo {
-  factory _EducationalVideo(
+abstract class _VideoEdukasi implements VideoEdukasi {
+  factory _VideoEdukasi(
       {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
       @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
       @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
@@ -2610,10 +2605,10 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
+      List<int>? thumbnailImageData}) = _$VideoEdukasiImpl;
 
-  factory _EducationalVideo.fromJson(Map<String, dynamic> json) =
-      _$EducationalVideoImpl.fromJson;
+  factory _VideoEdukasi.fromJson(Map<String, dynamic> json) =
+      _$VideoEdukasiImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_video_edukasi')
@@ -2667,7 +2662,7 @@ abstract class _EducationalVideo implements EducationalVideo {
   set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
-  _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
+  _$$VideoEdukasiImplCopyWith<_$VideoEdukasiImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3239,12 +3234,12 @@ abstract class _FavInfografis implements FavInfografis {
       throw _privateConstructorUsedError;
 }
 
-FavFilmVideo _$FavFilmVideoFromJson(Map<String, dynamic> json) {
-  return _FavFilmVideo.fromJson(json);
+FavFilm _$FavFilmFromJson(Map<String, dynamic> json) {
+  return _FavFilm.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FavFilmVideo {
+mixin _$FavFilm {
   @JsonKey(name: 'id_fav_film')
   int? get idFavFilm => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_fav_film')
@@ -3275,15 +3270,13 @@ mixin _$FavFilmVideo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FavFilmVideoCopyWith<FavFilmVideo> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FavFilmCopyWith<FavFilm> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavFilmVideoCopyWith<$Res> {
-  factory $FavFilmVideoCopyWith(
-          FavFilmVideo value, $Res Function(FavFilmVideo) then) =
-      _$FavFilmVideoCopyWithImpl<$Res, FavFilmVideo>;
+abstract class $FavFilmCopyWith<$Res> {
+  factory $FavFilmCopyWith(FavFilm value, $Res Function(FavFilm) then) =
+      _$FavFilmCopyWithImpl<$Res, FavFilm>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
@@ -3299,9 +3292,9 @@ abstract class $FavFilmVideoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FavFilmVideoCopyWithImpl<$Res, $Val extends FavFilmVideo>
-    implements $FavFilmVideoCopyWith<$Res> {
-  _$FavFilmVideoCopyWithImpl(this._value, this._then);
+class _$FavFilmCopyWithImpl<$Res, $Val extends FavFilm>
+    implements $FavFilmCopyWith<$Res> {
+  _$FavFilmCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -3365,11 +3358,10 @@ class _$FavFilmVideoCopyWithImpl<$Res, $Val extends FavFilmVideo>
 }
 
 /// @nodoc
-abstract class _$$FavFilmVideoImplCopyWith<$Res>
-    implements $FavFilmVideoCopyWith<$Res> {
-  factory _$$FavFilmVideoImplCopyWith(
-          _$FavFilmVideoImpl value, $Res Function(_$FavFilmVideoImpl) then) =
-      __$$FavFilmVideoImplCopyWithImpl<$Res>;
+abstract class _$$FavFilmImplCopyWith<$Res> implements $FavFilmCopyWith<$Res> {
+  factory _$$FavFilmImplCopyWith(
+          _$FavFilmImpl value, $Res Function(_$FavFilmImpl) then) =
+      __$$FavFilmImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3387,11 +3379,11 @@ abstract class _$$FavFilmVideoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FavFilmVideoImplCopyWithImpl<$Res>
-    extends _$FavFilmVideoCopyWithImpl<$Res, _$FavFilmVideoImpl>
-    implements _$$FavFilmVideoImplCopyWith<$Res> {
-  __$$FavFilmVideoImplCopyWithImpl(
-      _$FavFilmVideoImpl _value, $Res Function(_$FavFilmVideoImpl) _then)
+class __$$FavFilmImplCopyWithImpl<$Res>
+    extends _$FavFilmCopyWithImpl<$Res, _$FavFilmImpl>
+    implements _$$FavFilmImplCopyWith<$Res> {
+  __$$FavFilmImplCopyWithImpl(
+      _$FavFilmImpl _value, $Res Function(_$FavFilmImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3405,7 +3397,7 @@ class __$$FavFilmVideoImplCopyWithImpl<$Res>
     Object? thumbnailImageData = freezed,
     Object? film = freezed,
   }) {
-    return _then(_$FavFilmVideoImpl(
+    return _then(_$FavFilmImpl(
       idFavFilm: freezed == idFavFilm
           ? _value.idFavFilm
           : idFavFilm // ignore: cast_nullable_to_non_nullable
@@ -3440,8 +3432,8 @@ class __$$FavFilmVideoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FavFilmVideoImpl implements _FavFilmVideo {
-  _$FavFilmVideoImpl(
+class _$FavFilmImpl implements _FavFilm {
+  _$FavFilmImpl(
       {@JsonKey(name: 'id_fav_film') this.idFavFilm,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'film_id') this.idFilm,
@@ -3451,8 +3443,8 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
       this.thumbnailImageData,
       this.film});
 
-  factory _$FavFilmVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FavFilmVideoImplFromJson(json);
+  factory _$FavFilmImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavFilmImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_fav_film')
@@ -3477,25 +3469,25 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
 
   @override
   String toString() {
-    return 'FavFilmVideo(idFavFilm: $idFavFilm, idUser: $idUser, idFilm: $idFilm, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, film: $film)';
+    return 'FavFilm(idFavFilm: $idFavFilm, idUser: $idUser, idFilm: $idFilm, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, film: $film)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavFilmVideoImplCopyWith<_$FavFilmVideoImpl> get copyWith =>
-      __$$FavFilmVideoImplCopyWithImpl<_$FavFilmVideoImpl>(this, _$identity);
+  _$$FavFilmImplCopyWith<_$FavFilmImpl> get copyWith =>
+      __$$FavFilmImplCopyWithImpl<_$FavFilmImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FavFilmVideoImplToJson(
+    return _$$FavFilmImplToJson(
       this,
     );
   }
 }
 
-abstract class _FavFilmVideo implements FavFilmVideo {
-  factory _FavFilmVideo(
+abstract class _FavFilm implements FavFilm {
+  factory _FavFilm(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'film_id') int? idFilm,
@@ -3503,10 +3495,9 @@ abstract class _FavFilmVideo implements FavFilmVideo {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      Film? film}) = _$FavFilmVideoImpl;
+      Film? film}) = _$FavFilmImpl;
 
-  factory _FavFilmVideo.fromJson(Map<String, dynamic> json) =
-      _$FavFilmVideoImpl.fromJson;
+  factory _FavFilm.fromJson(Map<String, dynamic> json) = _$FavFilmImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_fav_film')
@@ -3543,16 +3534,16 @@ abstract class _FavFilmVideo implements FavFilmVideo {
   set film(Film? value);
   @override
   @JsonKey(ignore: true)
-  _$$FavFilmVideoImplCopyWith<_$FavFilmVideoImpl> get copyWith =>
+  _$$FavFilmImplCopyWith<_$FavFilmImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-FavPodcastVideo _$FavPodcastVideoFromJson(Map<String, dynamic> json) {
-  return _FavPodcastVideo.fromJson(json);
+FavPodcast _$FavPodcastFromJson(Map<String, dynamic> json) {
+  return _FavPodcast.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FavPodcastVideo {
+mixin _$FavPodcast {
   @JsonKey(name: 'id_fav_podcast')
   int? get idFavPodcast => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_fav_podcast')
@@ -3578,20 +3569,20 @@ mixin _$FavPodcastVideo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value) =>
       throw _privateConstructorUsedError;
-  PodcastVideo? get podcastVideo => throw _privateConstructorUsedError;
-  set podcastVideo(PodcastVideo? value) => throw _privateConstructorUsedError;
+  Podcast? get podcast => throw _privateConstructorUsedError;
+  set podcast(Podcast? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FavPodcastVideoCopyWith<FavPodcastVideo> get copyWith =>
+  $FavPodcastCopyWith<FavPodcast> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavPodcastVideoCopyWith<$Res> {
-  factory $FavPodcastVideoCopyWith(
-          FavPodcastVideo value, $Res Function(FavPodcastVideo) then) =
-      _$FavPodcastVideoCopyWithImpl<$Res, FavPodcastVideo>;
+abstract class $FavPodcastCopyWith<$Res> {
+  factory $FavPodcastCopyWith(
+          FavPodcast value, $Res Function(FavPodcast) then) =
+      _$FavPodcastCopyWithImpl<$Res, FavPodcast>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
@@ -3601,15 +3592,15 @@ abstract class $FavPodcastVideoCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      PodcastVideo? podcastVideo});
+      Podcast? podcast});
 
-  $PodcastVideoCopyWith<$Res>? get podcastVideo;
+  $PodcastCopyWith<$Res>? get podcast;
 }
 
 /// @nodoc
-class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
-    implements $FavPodcastVideoCopyWith<$Res> {
-  _$FavPodcastVideoCopyWithImpl(this._value, this._then);
+class _$FavPodcastCopyWithImpl<$Res, $Val extends FavPodcast>
+    implements $FavPodcastCopyWith<$Res> {
+  _$FavPodcastCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -3625,7 +3616,7 @@ class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? podcastVideo = freezed,
+    Object? podcast = freezed,
   }) {
     return _then(_value.copyWith(
       idFavPodcast: freezed == idFavPodcast
@@ -3652,32 +3643,32 @@ class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      podcastVideo: freezed == podcastVideo
-          ? _value.podcastVideo
-          : podcastVideo // ignore: cast_nullable_to_non_nullable
-              as PodcastVideo?,
+      podcast: freezed == podcast
+          ? _value.podcast
+          : podcast // ignore: cast_nullable_to_non_nullable
+              as Podcast?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PodcastVideoCopyWith<$Res>? get podcastVideo {
-    if (_value.podcastVideo == null) {
+  $PodcastCopyWith<$Res>? get podcast {
+    if (_value.podcast == null) {
       return null;
     }
 
-    return $PodcastVideoCopyWith<$Res>(_value.podcastVideo!, (value) {
-      return _then(_value.copyWith(podcastVideo: value) as $Val);
+    return $PodcastCopyWith<$Res>(_value.podcast!, (value) {
+      return _then(_value.copyWith(podcast: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$FavPodcastVideoImplCopyWith<$Res>
-    implements $FavPodcastVideoCopyWith<$Res> {
-  factory _$$FavPodcastVideoImplCopyWith(_$FavPodcastVideoImpl value,
-          $Res Function(_$FavPodcastVideoImpl) then) =
-      __$$FavPodcastVideoImplCopyWithImpl<$Res>;
+abstract class _$$FavPodcastImplCopyWith<$Res>
+    implements $FavPodcastCopyWith<$Res> {
+  factory _$$FavPodcastImplCopyWith(
+          _$FavPodcastImpl value, $Res Function(_$FavPodcastImpl) then) =
+      __$$FavPodcastImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3688,18 +3679,18 @@ abstract class _$$FavPodcastVideoImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      PodcastVideo? podcastVideo});
+      Podcast? podcast});
 
   @override
-  $PodcastVideoCopyWith<$Res>? get podcastVideo;
+  $PodcastCopyWith<$Res>? get podcast;
 }
 
 /// @nodoc
-class __$$FavPodcastVideoImplCopyWithImpl<$Res>
-    extends _$FavPodcastVideoCopyWithImpl<$Res, _$FavPodcastVideoImpl>
-    implements _$$FavPodcastVideoImplCopyWith<$Res> {
-  __$$FavPodcastVideoImplCopyWithImpl(
-      _$FavPodcastVideoImpl _value, $Res Function(_$FavPodcastVideoImpl) _then)
+class __$$FavPodcastImplCopyWithImpl<$Res>
+    extends _$FavPodcastCopyWithImpl<$Res, _$FavPodcastImpl>
+    implements _$$FavPodcastImplCopyWith<$Res> {
+  __$$FavPodcastImplCopyWithImpl(
+      _$FavPodcastImpl _value, $Res Function(_$FavPodcastImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3711,9 +3702,9 @@ class __$$FavPodcastVideoImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? podcastVideo = freezed,
+    Object? podcast = freezed,
   }) {
-    return _then(_$FavPodcastVideoImpl(
+    return _then(_$FavPodcastImpl(
       idFavPodcast: freezed == idFavPodcast
           ? _value.idFavPodcast
           : idFavPodcast // ignore: cast_nullable_to_non_nullable
@@ -3738,18 +3729,18 @@ class __$$FavPodcastVideoImplCopyWithImpl<$Res>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      podcastVideo: freezed == podcastVideo
-          ? _value.podcastVideo
-          : podcastVideo // ignore: cast_nullable_to_non_nullable
-              as PodcastVideo?,
+      podcast: freezed == podcast
+          ? _value.podcast
+          : podcast // ignore: cast_nullable_to_non_nullable
+              as Podcast?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FavPodcastVideoImpl implements _FavPodcastVideo {
-  _$FavPodcastVideoImpl(
+class _$FavPodcastImpl implements _FavPodcast {
+  _$FavPodcastImpl(
       {@JsonKey(name: 'id_fav_podcast') this.idFavPodcast,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'podcast_id') this.idPodcast,
@@ -3757,10 +3748,10 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData,
-      this.podcastVideo});
+      this.podcast});
 
-  factory _$FavPodcastVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FavPodcastVideoImplFromJson(json);
+  factory _$FavPodcastImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavPodcastImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_fav_podcast')
@@ -3781,30 +3772,29 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
   @override
-  PodcastVideo? podcastVideo;
+  Podcast? podcast;
 
   @override
   String toString() {
-    return 'FavPodcastVideo(idFavPodcast: $idFavPodcast, idUser: $idUser, idPodcast: $idPodcast, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, podcastVideo: $podcastVideo)';
+    return 'FavPodcast(idFavPodcast: $idFavPodcast, idUser: $idUser, idPodcast: $idPodcast, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, podcast: $podcast)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavPodcastVideoImplCopyWith<_$FavPodcastVideoImpl> get copyWith =>
-      __$$FavPodcastVideoImplCopyWithImpl<_$FavPodcastVideoImpl>(
-          this, _$identity);
+  _$$FavPodcastImplCopyWith<_$FavPodcastImpl> get copyWith =>
+      __$$FavPodcastImplCopyWithImpl<_$FavPodcastImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FavPodcastVideoImplToJson(
+    return _$$FavPodcastImplToJson(
       this,
     );
   }
 }
 
-abstract class _FavPodcastVideo implements FavPodcastVideo {
-  factory _FavPodcastVideo(
+abstract class _FavPodcast implements FavPodcast {
+  factory _FavPodcast(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'podcast_id') int? idPodcast,
@@ -3812,10 +3802,10 @@ abstract class _FavPodcastVideo implements FavPodcastVideo {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      PodcastVideo? podcastVideo}) = _$FavPodcastVideoImpl;
+      Podcast? podcast}) = _$FavPodcastImpl;
 
-  factory _FavPodcastVideo.fromJson(Map<String, dynamic> json) =
-      _$FavPodcastVideoImpl.fromJson;
+  factory _FavPodcast.fromJson(Map<String, dynamic> json) =
+      _$FavPodcastImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_fav_podcast')
@@ -3848,11 +3838,11 @@ abstract class _FavPodcastVideo implements FavPodcastVideo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
   @override
-  PodcastVideo? get podcastVideo;
-  set podcastVideo(PodcastVideo? value);
+  Podcast? get podcast;
+  set podcast(Podcast? value);
   @override
   @JsonKey(ignore: true)
-  _$$FavPodcastVideoImplCopyWith<_$FavPodcastVideoImpl> get copyWith =>
+  _$$FavPodcastImplCopyWith<_$FavPodcastImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3887,9 +3877,8 @@ mixin _$FavVideoEdukasi {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value) =>
       throw _privateConstructorUsedError;
-  EducationalVideo? get educationalVideo => throw _privateConstructorUsedError;
-  set educationalVideo(EducationalVideo? value) =>
-      throw _privateConstructorUsedError;
+  VideoEdukasi? get videoEdukasi => throw _privateConstructorUsedError;
+  set videoEdukasi(VideoEdukasi? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3911,9 +3900,9 @@ abstract class $FavVideoEdukasiCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      EducationalVideo? educationalVideo});
+      VideoEdukasi? videoEdukasi});
 
-  $EducationalVideoCopyWith<$Res>? get educationalVideo;
+  $VideoEdukasiCopyWith<$Res>? get videoEdukasi;
 }
 
 /// @nodoc
@@ -3935,7 +3924,7 @@ class _$FavVideoEdukasiCopyWithImpl<$Res, $Val extends FavVideoEdukasi>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? educationalVideo = freezed,
+    Object? videoEdukasi = freezed,
   }) {
     return _then(_value.copyWith(
       idFavVideoEdukasi: freezed == idFavVideoEdukasi
@@ -3962,22 +3951,22 @@ class _$FavVideoEdukasiCopyWithImpl<$Res, $Val extends FavVideoEdukasi>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      educationalVideo: freezed == educationalVideo
-          ? _value.educationalVideo
-          : educationalVideo // ignore: cast_nullable_to_non_nullable
-              as EducationalVideo?,
+      videoEdukasi: freezed == videoEdukasi
+          ? _value.videoEdukasi
+          : videoEdukasi // ignore: cast_nullable_to_non_nullable
+              as VideoEdukasi?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EducationalVideoCopyWith<$Res>? get educationalVideo {
-    if (_value.educationalVideo == null) {
+  $VideoEdukasiCopyWith<$Res>? get videoEdukasi {
+    if (_value.videoEdukasi == null) {
       return null;
     }
 
-    return $EducationalVideoCopyWith<$Res>(_value.educationalVideo!, (value) {
-      return _then(_value.copyWith(educationalVideo: value) as $Val);
+    return $VideoEdukasiCopyWith<$Res>(_value.videoEdukasi!, (value) {
+      return _then(_value.copyWith(videoEdukasi: value) as $Val);
     });
   }
 }
@@ -3998,10 +3987,10 @@ abstract class _$$FavVideoEdukasiImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      EducationalVideo? educationalVideo});
+      VideoEdukasi? videoEdukasi});
 
   @override
-  $EducationalVideoCopyWith<$Res>? get educationalVideo;
+  $VideoEdukasiCopyWith<$Res>? get videoEdukasi;
 }
 
 /// @nodoc
@@ -4021,7 +4010,7 @@ class __$$FavVideoEdukasiImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? educationalVideo = freezed,
+    Object? videoEdukasi = freezed,
   }) {
     return _then(_$FavVideoEdukasiImpl(
       idFavVideoEdukasi: freezed == idFavVideoEdukasi
@@ -4048,10 +4037,10 @@ class __$$FavVideoEdukasiImplCopyWithImpl<$Res>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      educationalVideo: freezed == educationalVideo
-          ? _value.educationalVideo
-          : educationalVideo // ignore: cast_nullable_to_non_nullable
-              as EducationalVideo?,
+      videoEdukasi: freezed == videoEdukasi
+          ? _value.videoEdukasi
+          : videoEdukasi // ignore: cast_nullable_to_non_nullable
+              as VideoEdukasi?,
     ));
   }
 }
@@ -4067,7 +4056,7 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData,
-      this.educationalVideo});
+      this.videoEdukasi});
 
   factory _$FavVideoEdukasiImpl.fromJson(Map<String, dynamic> json) =>
       _$$FavVideoEdukasiImplFromJson(json);
@@ -4091,11 +4080,11 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
   @override
-  EducationalVideo? educationalVideo;
+  VideoEdukasi? videoEdukasi;
 
   @override
   String toString() {
-    return 'FavVideoEdukasi(idFavVideoEdukasi: $idFavVideoEdukasi, idUser: $idUser, idVideoEdukasi: $idVideoEdukasi, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, educationalVideo: $educationalVideo)';
+    return 'FavVideoEdukasi(idFavVideoEdukasi: $idFavVideoEdukasi, idUser: $idUser, idVideoEdukasi: $idVideoEdukasi, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, videoEdukasi: $videoEdukasi)';
   }
 
   @JsonKey(ignore: true)
@@ -4122,7 +4111,7 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      EducationalVideo? educationalVideo}) = _$FavVideoEdukasiImpl;
+      VideoEdukasi? videoEdukasi}) = _$FavVideoEdukasiImpl;
 
   factory _FavVideoEdukasi.fromJson(Map<String, dynamic> json) =
       _$FavVideoEdukasiImpl.fromJson;
@@ -4158,8 +4147,8 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
   @override
-  EducationalVideo? get educationalVideo;
-  set educationalVideo(EducationalVideo? value);
+  VideoEdukasi? get videoEdukasi;
+  set videoEdukasi(VideoEdukasi? value);
   @override
   @JsonKey(ignore: true)
   _$$FavVideoEdukasiImplCopyWith<_$FavVideoEdukasiImpl> get copyWith =>

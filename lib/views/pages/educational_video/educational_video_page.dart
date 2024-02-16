@@ -5,76 +5,84 @@ class EducationalVideoPage extends StatelessWidget {
 
   static Widget listVideo({
     required BuildContext context,
-    required EducationalVideoDataLoaded stateEducationalVideo,
+    required List<VideoEdukasi> videoEdukasis,
     bool replaceCurrentPage = false,
     int? currentEducationVideo,
   }) =>
-      ListView.builder(
-        shrinkWrap: true,
-        primary: false,
-        itemBuilder: (context, index) {
-          EducationalVideo educationalVideo = stateEducationalVideo.educationalVideos[index];
+      videoEdukasis.isEmpty
+          ? Center(
+              child: Text(
+                'Tidak ada data',
+                style: Theme.of(context).textTheme.bodyLarge,
+              ),
+            )
+          : ListView.builder(
+              shrinkWrap: true,
+              primary: false,
+              padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+              itemBuilder: (context, index) {
+                VideoEdukasi videoEdukasi = videoEdukasis[index];
 
-          if (educationalVideo.idVideoEdukasi == currentEducationVideo) return Container();
+                if (videoEdukasi.idVideoEdukasi == currentEducationVideo) return Container();
 
-          return InkWell(
-            onTap: () {
-              Route route = MaterialPageRoute(
-                builder: (context) => DetailsEducationalVideoPage(
-                  educationalVideo: educationalVideo,
-                ),
-              );
+                return InkWell(
+                  onTap: () {
+                    Route route = MaterialPageRoute(
+                      builder: (context) => DetailsEducationalVideoPage(
+                        educationalVideo: videoEdukasi,
+                      ),
+                    );
 
-              if (replaceCurrentPage) {
-                NavigationHelper.toReplacement(route);
-              } else {
-                NavigationHelper.to(route);
-              }
-            },
-            child: Column(
-              children: <Widget>[
-                AspectRatio(
-                  aspectRatio: 16 / 9,
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(10.0),
-                    child: educationalVideo.thumbnailImageData != null
-                        ? Image.memory(
-                            Uint8List.fromList(educationalVideo.thumbnailImageData!),
-                            fit: BoxFit.cover,
-                          )
-                        : Image.network(
-                            'https://dev-sirama.propertiideal.id/test/image not found.png',
-                            fit: BoxFit.cover,
+                    if (replaceCurrentPage) {
+                      NavigationHelper.toReplacement(route);
+                    } else {
+                      NavigationHelper.to(route);
+                    }
+                  },
+                  child: Column(
+                    children: <Widget>[
+                      AspectRatio(
+                        aspectRatio: 16 / 9,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(10.0),
+                          child: videoEdukasi.thumbnailImageData != null
+                              ? Image.memory(
+                                  Uint8List.fromList(videoEdukasi.thumbnailImageData!),
+                                  fit: BoxFit.cover,
+                                )
+                              : Image.network(
+                                  'https://dev-sirama.propertiideal.id/test/image not found.png',
+                                  fit: BoxFit.cover,
+                                ),
+                        ),
+                      ),
+                      ListTile(
+                        contentPadding: EdgeInsets.zero,
+                        leading: const CircleAvatar(
+                          backgroundImage: AssetImage('assets/user.png'),
+                        ),
+                        title: Text(
+                          videoEdukasi.judulVideoEdukasi ?? '?',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: Text(
+                          'Admin . ${videoEdukasi.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                          style: const TextStyle(
+                            color: Colors.grey,
                           ),
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                ListTile(
-                  contentPadding: EdgeInsets.zero,
-                  leading: const CircleAvatar(
-                    backgroundImage: AssetImage('assets/user.png'),
-                  ),
-                  title: Text(
-                    educationalVideo.judulVideoEdukasi ?? '?',
-                    style: const TextStyle(fontWeight: FontWeight.bold),
-                  ),
-                  subtitle: Text(
-                    'Admin . ${educationalVideo.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
-                    style: const TextStyle(
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          );
-        },
-        itemCount: stateEducationalVideo.educationalVideos.length,
-      );
+                );
+              },
+              itemCount: videoEdukasis.length,
+            );
 
   @override
   Widget build(BuildContext context) {
-    if (MyApp.educationavideoBloc.state is EducationalVideoInitial) {
-      MyApp.educationavideoBloc.add(InitializeEducationalVideoData());
+    if (MyApp.educationaVideoBloc.state is EducationalVideoInitial) {
+      MyApp.educationaVideoBloc.add(InitializeEducationalVideoData());
     }
 
     return BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
@@ -109,12 +117,9 @@ class EducationalVideoPage extends StatelessWidget {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                    child: listVideo(
-                      context: context,
-                      stateEducationalVideo: stateEducationalVideo,
-                    ),
+                  listVideo(
+                    context: context,
+                    videoEdukasis: stateEducationalVideo.educationalVideos,
                   )
                 ],
               ),
@@ -128,7 +133,7 @@ class EducationalVideoPage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.educationavideoBloc.add(InitializeEducationalVideoData()),
+              onRetryPressed: () => MyApp.educationaVideoBloc.add(InitializeEducationalVideoData()),
             ),
           );
         }

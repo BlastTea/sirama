@@ -10,5 +10,5 @@ class EducationalVideoError extends EducationalVideoState {}
 class EducationalVideoDataLoaded extends EducationalVideoState {
   EducationalVideoDataLoaded({required this.educationalVideos});
 
-  final List<EducationalVideo> educationalVideos;
+  final List<VideoEdukasi> educationalVideos;
 }

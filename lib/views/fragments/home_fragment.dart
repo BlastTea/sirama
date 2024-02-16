@@ -17,8 +17,6 @@ List<Map<String, String>> siramaIcon = [
 ];
 
 class _HomeFragmentState extends State<HomeFragment> {
-  
-
   void navigateToPage(String route) {
     switch (route) {
       case '/chatme':
@@ -71,9 +69,7 @@ class _HomeFragmentState extends State<HomeFragment> {
         body: SafeArea(
           child: ListView(
             children: [
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -86,15 +82,12 @@ class _HomeFragmentState extends State<HomeFragment> {
                         children: [
                           Text(
                             'Selamat datang',
-                            style: Config.textStyleHeadlineSmall
-                                .copyWith(fontSize: 14),
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 14),
                           ),
                           const SizedBox(
                             height: 5,
                           ),
-                          Text('${currentUser?.username ?? 'Guest'} 👋',
-                              style: Config.textStyleHeadlineSmall.copyWith(
-                                  fontSize: 25, fontWeight: FontWeight.bold)),
+                          Text('${currentUser?.username ?? 'Guest'} 👋', style: Config.textStyleHeadlineSmall.copyWith(fontSize: 25, fontWeight: FontWeight.bold)),
                         ],
                       ),
                     ),
@@ -108,15 +101,9 @@ class _HomeFragmentState extends State<HomeFragment> {
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
-              const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 20),
-                  child: MyCarouselSlider()),
-              const SizedBox(
-                height: 25,
-              ),
+              const SizedBox(height: 20),
+              const Padding(padding: EdgeInsets.symmetric(horizontal: 20), child: MyCarouselSlider()),
+              const SizedBox(height: 25),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
@@ -130,41 +117,39 @@ class _HomeFragmentState extends State<HomeFragment> {
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20),
-                child: SizedBox(                  
-                    height: 241,
-                    child: GridView.count(
-                      primary: false,
-                      crossAxisCount: 3,
-                      children: [
-                        ...siramaIcon.map((e) => Column(
-                              children: [
-                                Container(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 3),
-                                  height: 50,
-                                  width: 50,
-                                  decoration: BoxDecoration(
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                      borderRadius: BorderRadius.circular(20)),
-                                  child: IconButton(
-                                      onPressed: () => navigateToPage(e['route']!),
-                                      icon: SvgPicture.asset(
-                                        'assets/icons/${e['icon']!}.svg',
-                                      )),
+                child: SizedBox(
+                  height: 241,
+                  child: GridView.count(
+                    primary: false,
+                    crossAxisCount: 3,
+                    physics: const NeverScrollableScrollPhysics(),
+                    children: [
+                      ...siramaIcon.map(
+                        (e) => Column(
+                          children: [
+                            Container(
+                              padding: const EdgeInsets.symmetric(horizontal: 3),
+                              height: 50,
+                              width: 50,
+                              decoration: BoxDecoration(color: Theme.of(context).colorScheme.primary, borderRadius: BorderRadius.circular(20)),
+                              child: IconButton(
+                                onPressed: () => navigateToPage(e['route']!),
+                                icon: SvgPicture.asset(
+                                  'assets/icons/${e['icon']!}.svg',
                                 ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Text(
-                                  e['title']!,
-                                  style: Config.textStyleBodyLarge
-                                      .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
-                                ),
-                              ],
-                            ))
-                      ],
-                    )),
+                              ),
+                            ),
+                            const SizedBox(height: 10),
+                            Text(
+                              e['title']!,
+                              style: Config.textStyleBodyLarge.copyWith(color: Colors.black, fontWeight: FontWeight.w600),
+                            ),
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -172,14 +157,14 @@ class _HomeFragmentState extends State<HomeFragment> {
                   children: [
                     Text(
                       'Tandai tiga kebaikanmu hari ini 👇',
-                      style: Config.textStyleHeadlineSmall.copyWith(fontSize: 18,),
+                      style: Config.textStyleHeadlineSmall.copyWith(
+                        fontSize: 18,
+                      ),
                     ),
                   ],
                 ),
               ),
-              const SizedBox(
-                height: 20,
-              ),
+              const SizedBox(height: 20),
               ...checkboxHomeFragment.map(
                 (Map<String, dynamic> e) => Padding(
                   padding: const EdgeInsets.fromLTRB(15.0, 0.0, 10.0, 15.0),
@@ -188,28 +173,20 @@ class _HomeFragmentState extends State<HomeFragment> {
                     title: Text(
                       e.values.first,
                       style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                            color: e['value${e.keys.first.substring(4)}']
-                                ? Colors.white
-                                : Colors.black,
+                            color: e['value${e.keys.first.substring(4)}'] ? Colors.white : Colors.black,
                           ),
                     ),
-                    tileColor: e['value${e.keys.first.substring(4)}']
-                        ? Theme.of(context).colorScheme.primary
-                        : Colors.white,
+                    tileColor: e['value${e.keys.first.substring(4)}'] ? Theme.of(context).colorScheme.primary : Colors.white,
                     checkColor: Theme.of(context).colorScheme.primary,
                     activeColor: Colors.white,
                     side: BorderSide(
-                      color: e['value${e.keys.first.substring(4)}']
-                          ? Colors.white
-                          : Colors.black,
+                      color: e['value${e.keys.first.substring(4)}'] ? Colors.white : Colors.black,
                       width: 2,
                     ),
                     shape: RoundedRectangleBorder(
                       side: BorderSide(
                         width: 5,
-                        color: e['value${e.keys.first.substring(4)}']
-                            ? const Color(0xFFBCD2F8)
-                            : Colors.white,
+                        color: e['value${e.keys.first.substring(4)}'] ? const Color(0xFFBCD2F8) : Colors.white,
                       ),
                       borderRadius: BorderRadius.circular(15.0),
                     ),
