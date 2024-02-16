@@ -51,7 +51,7 @@ class ApiHelper {
             );
           }
 
-          if (options.method != 'GET') options.headers['Authorization'] = 'Bearer $token';
+          if (options.method != 'GET' || options.path.contains('/api/fav')) options.headers['Authorization'] = 'Bearer $token';
 
           dynamic data;
 
@@ -125,7 +125,11 @@ class ApiHelper {
   }
 
   static Future<void> signOut() async {
-    await post('/api/logout');
+    try {
+      await post('/api/logout');
+    } catch (e) {
+      // Ignored, really
+    }
 
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
 

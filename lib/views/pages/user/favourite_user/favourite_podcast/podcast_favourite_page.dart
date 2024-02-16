@@ -4,7 +4,7 @@ class FavPodcast extends StatelessWidget {
   const FavPodcast({super.key});
   static Widget listPodcast({
     required BuildContext context,
-    required PodcastDataLoaded statePodcast,
+    required FavPodcastDataLoaded stateFavPodcast,
     bool replaceCurrentPage = false,
     int? currentPodcast,
   }) =>
@@ -12,15 +12,15 @@ class FavPodcast extends StatelessWidget {
         shrinkWrap: true,
         primary: false,
         itemBuilder: (context, index) {
-          PodcastVideo podcast = statePodcast.podcasts[index];
+          FavPodcastVideo favPodcast = stateFavPodcast.favPodcasts[index];
 
-          if (podcast.idPodcast == currentPodcast) return Container();
+          if (favPodcast.idFavPodcast == currentPodcast) return Container();
 
           return InkWell(
             onTap: () {
               Route route = MaterialPageRoute(
-                builder: (context) => DetailsPodcastPage(
-                  podcast: podcast,
+                builder: (context) => DetailsPodcastPage.favorite(
+                  favPodcast: favPodcast,
                 ),
               );
 
@@ -36,9 +36,9 @@ class FavPodcast extends StatelessWidget {
                   aspectRatio: 16 / 9,
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(10.0),
-                    child: podcast.thumbnailImageData != null
+                    child: favPodcast.thumbnailImageData != null
                         ? Image.memory(
-                            Uint8List.fromList(podcast.thumbnailImageData!),
+                            Uint8List.fromList(favPodcast.thumbnailImageData!),
                             fit: BoxFit.cover,
                           )
                         : Image.network(
@@ -53,38 +53,48 @@ class FavPodcast extends StatelessWidget {
                     backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
-                    podcast.judulPodcast ?? '?',
-                    style: Config.textStyleHeadlineSmall
-                        .copyWith(fontSize: 16, fontWeight: FontWeight.bold),
+                    favPodcast.podcastVideo!.judulPodcast ?? '?',
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Admin . ${statePodcast.podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${stateFavPodcast.favPodcasts[index].podcastVideo!.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 15,
-                ),
               ],
             ),
           );
         },
-        itemCount: statePodcast.podcasts.length,
+        itemCount: stateFavPodcast.favPodcasts.length,
       );
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.favPodcastBloc.state is FavPodcastInitial) {
+      MyApp.favPodcastBloc.add(InitializeFavPodcastData());
+    }
     return BlocBuilder<FavPodcastBloc, FavPodcastState>(
       builder: (context, stateFavPodcast) {
-        if (MyApp.favPodcastBloc.state is FavPodcastInitial) {
-          MyApp.favPodcastBloc.add(InitializeFavPodcastData());
+        if (stateFavPodcast is FavPodcastDataLoaded) {
+          return Scaffold(
+              body: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+            child: listPodcast(
+              context: context,
+              stateFavPodcast: stateFavPodcast,
+            ),
+          ));
+        } else if (stateFavPodcast is FavPodcastError) {
+          return Scaffold(
+            body: ErrorOccuredButton(
+              onRetryPressed: () => MyApp.favPodcastBloc.add(InitializeFavPodcastData()),
+            ),
+          );
+        } else {
+          return Container();
         }
-        return const Scaffold(
-            body: Center(
-          child: Text('Fav Podcast'),
-        ));
       },
     );
   }

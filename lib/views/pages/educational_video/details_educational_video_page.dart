@@ -11,22 +11,19 @@ class DetailsEducationalVideoPage extends StatefulWidget {
   final FavVideoEdukasi? favEducationalVideo;
 
   @override
-  State<DetailsEducationalVideoPage> createState() =>
-      _DetailsEducationalVideoPageState();
+  State<DetailsEducationalVideoPage> createState() => _DetailsEducationalVideoPageState();
 }
 
 bool isFavorited = true;
 
-class _DetailsEducationalVideoPageState
-    extends State<DetailsEducationalVideoPage> {
+class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPage> {
   late final PodPlayerController _podPlayerController;
 
   @override
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom:
-          PlayVideoFrom.youtube(widget.educationalVideo.linkVideoEdukasi!),
+      playVideoFrom: PlayVideoFrom.youtube(widget.educationalVideo.linkVideoEdukasi!),
     )..initialise();
   }
 
@@ -38,32 +35,25 @@ class _DetailsEducationalVideoPageState
 
   void onShare(BuildContext context) async {
     if (widget.educationalVideo.linkVideoEdukasi!.isNotEmpty) {
-      await Share.shareUri(
-          Uri.parse(widget.educationalVideo.linkVideoEdukasi!));
+      await Share.shareUri(Uri.parse(widget.educationalVideo.linkVideoEdukasi!));
     }
   }
 
   @override
-  Widget build(BuildContext context) =>
-      BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
+  Widget build(BuildContext context) => BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
         builder: (context, stateEducationalVideo) {
           if (stateEducationalVideo is EducationalVideoDataLoaded) {
             return Scaffold(
-              appBar: AppBar(
-                  backgroundColor: Colors.white,
-                  title: const Text('Video Edukasi'),
-                  centerTitle: true,
-                  actions: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 7),
-                      child: IconButton(
-                          onPressed: () {
-                            onShare(context);
-                          },
-                          icon:
-                              SvgPicture.asset('assets/icons/share-icons.svg')),
-                    ),
-                  ]),
+              appBar: AppBar(backgroundColor: Colors.white, title: const Text('Video Edukasi'), centerTitle: true, actions: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 7),
+                  child: IconButton(
+                      onPressed: () {
+                        onShare(context);
+                      },
+                      icon: SvgPicture.asset('assets/icons/share-icons.svg')),
+                ),
+              ]),
               body: SafeArea(
                 child: ListView(
                   children: [
@@ -102,9 +92,7 @@ class _DetailsEducationalVideoPageState
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
-                                  Text('Disukai',
-                                      style: Config.textStyleBodyMedium
-                                          .copyWith(color: Colors.black)),
+                                  Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                   IconButton(
                                     onPressed: () {
                                       setState(() {
@@ -112,14 +100,11 @@ class _DetailsEducationalVideoPageState
                                       });
                                     },
                                     icon: Icon(
-                                      isFavorited
-                                          ? Icons.favorite
-                                          : Icons.favorite_border,
+                                      isFavorited ? Icons.favorite : Icons.favorite_border,
+                                      color: Theme.of(context).colorScheme.primary,
                                     ),
                                   ),
-                                  Text(widget.educationalVideo.totalLikes
-                                          ?.toString() ??
-                                      '0'),
+                                  Text(widget.educationalVideo.totalLikes?.toString() ?? '0'),
                                 ],
                               ),
                             ),
@@ -131,15 +116,8 @@ class _DetailsEducationalVideoPageState
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: RichText(
                         text: TextSpan(
-                          text: (widget.educationalVideo
-                                          .deksripsiVideoEdukasi ??
-                                      '')
-                                  .trim()
-                                  .isEmpty
-                              ? 'Tidak ada deskripsi'
-                              : widget.educationalVideo.deksripsiVideoEdukasi!,
-                          style: Config.textStyleBodyMedium
-                              .copyWith(color: Colors.black),
+                          text: (widget.educationalVideo.deksripsiVideoEdukasi ?? '').trim().isEmpty ? 'Tidak ada deskripsi' : widget.educationalVideo.deksripsiVideoEdukasi!,
+                          style: Config.textStyleBodyMedium.copyWith(color: Colors.black),
                         ),
                       ),
                     ),
@@ -157,14 +135,12 @@ class _DetailsEducationalVideoPageState
                     ),
                     const SizedBox(height: 20),
                     Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20, vertical: 10),
+                      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                       child: EducationalVideoPage.listVideo(
                         context: context,
                         stateEducationalVideo: stateEducationalVideo,
                         replaceCurrentPage: true,
-                        currentEducationVideo:
-                            widget.educationalVideo.idVideoEdukasi,
+                        currentEducationVideo: widget.educationalVideo.idVideoEdukasi,
                       ),
                     ),
                   ],

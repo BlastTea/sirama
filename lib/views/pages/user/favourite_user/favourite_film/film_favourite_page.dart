@@ -53,11 +53,11 @@ class FavFilm extends StatelessWidget {
                     backgroundImage: AssetImage('assets/user.png'),
                   ),
                   title: Text(
-                    favfilm.judulFilm ?? '?',
+                    favfilm.film!.judulFilm ?? '?',
                     style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Text(
-                    'Admin . ${stateFavFilm.favfilms[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                    'Admin . ${stateFavFilm.favfilms[index].film!.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                     style: const TextStyle(
                       color: Colors.grey,
                     ),
