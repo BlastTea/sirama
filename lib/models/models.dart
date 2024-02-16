@@ -221,6 +221,40 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
   factory FavVideoEdukasi.fromJson(Map<String, dynamic> json) => _$FavVideoEdukasiFromJson(json);
 }
 
+@unfreezed
+class Skrinning with _$Skrinning {
+  factory Skrinning({
+  @JsonKey(name: 'id_skrinning') int? idSkrinning,
+  @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+  @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+  @JsonKey(name: 'created_at') DateTime? createdAt,
+  @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = _Skrinning;
+
+  factory Skrinning.fromJson(Map<String, dynamic> json) => _$SkrinningFromJson(json);
+}
+
+@unfreezed
+class RiwayatSkrinning with _$RiwayatSkrinning {
+  factory RiwayatSkrinning({
+  @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
+  @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+  @JsonKey(name: 'skrinning_id') int? skrinningId,
+  @JsonKey(name: 'user_id') int? userId,
+  @JsonKey(name: 'id_user') int? idUser,
+  @JsonKey(name: 'username') String? username,
+  @JsonKey(name: 'email') String? email,
+  @JsonKey(name: 'password') String? password,
+  @JsonKey(name: 'role') String? role,
+  @JsonKey(name: 'created_at') DateTime? createdAt,
+  @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  Skrinning? skrinning
+  }) = _RiwayatSkrinning;
+
+  factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
+}
+
+
 enum UserRole {
   remaja,
   @JsonValue('orangtua')

@@ -379,3 +379,67 @@ Map<String, dynamic> _$$FavVideoEdukasiImplToJson(
       'updated_at': instance.updatedAt?.toIso8601String(),
       'educationalVideo': instance.educationalVideo,
     };
+
+_$SkrinningImpl _$$SkrinningImplFromJson(Map<String, dynamic> json) =>
+    _$SkrinningImpl(
+      idSkrinning: json['id_skrinning'] as int?,
+      jenisSkrinning: json['jenis_skrinning'] as String?,
+      deskripsiSkrinning: json['deskripsi_skrinning'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+    );
+
+Map<String, dynamic> _$$SkrinningImplToJson(_$SkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_skrinning': instance.idSkrinning,
+      'jenis_skrinning': instance.jenisSkrinning,
+      'deskripsi_skrinning': instance.deskripsiSkrinning,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+    };
+
+_$RiwayatSkrinningImpl _$$RiwayatSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$RiwayatSkrinningImpl(
+      idSkrinUser: json['id_skrin_user'] as int?,
+      tglPengisian: json['tgl_pengisian'] == null
+          ? null
+          : DateTime.parse(json['tgl_pengisian'] as String),
+      skrinningId: json['skrinning_id'] as int?,
+      userId: json['user_id'] as int?,
+      idUser: json['id_user'] as int?,
+      username: json['username'] as String?,
+      email: json['email'] as String?,
+      password: json['password'] as String?,
+      role: json['role'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      skrinning: json['skrinning'] == null
+          ? null
+          : Skrinning.fromJson(json['skrinning'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$RiwayatSkrinningImplToJson(
+        _$RiwayatSkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_skrin_user': instance.idSkrinUser,
+      'tgl_pengisian': instance.tglPengisian?.toIso8601String(),
+      'skrinning_id': instance.skrinningId,
+      'user_id': instance.userId,
+      'id_user': instance.idUser,
+      'username': instance.username,
+      'email': instance.email,
+      'password': instance.password,
+      'role': instance.role,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'skrinning': instance.skrinning,
+    };
