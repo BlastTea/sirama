@@ -1,13 +1,15 @@
 part of '../pages.dart';
 
 class PodcastPage extends StatelessWidget {
+  const PodcastPage({super.key});
+
   static Widget listPodcast({
     required BuildContext context,
-    required List<Podcast> podcasts,
+    required List<FavPodcast> favPodcasts,
     bool replaceCurrentPage = false,
     int? currentPodcast,
   }) =>
-      podcasts.isEmpty
+      favPodcasts.isEmpty
           ? Center(
               child: Text(
                 'Tidak ada data',
@@ -19,7 +21,7 @@ class PodcastPage extends StatelessWidget {
               primary: false,
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               itemBuilder: (context, index) {
-                Podcast podcast = podcasts[index];
+                Podcast podcast = favPodcasts[index].podcast!;
 
                 if (podcast.idPodcast == currentPodcast) return Container();
 
@@ -64,7 +66,7 @@ class PodcastPage extends StatelessWidget {
                           style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          'Admin . ${podcasts[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                          'Admin . ${podcast.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
@@ -77,71 +79,78 @@ class PodcastPage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: podcasts.length,
+              itemCount: favPodcasts.length,
             );
 
-  const PodcastPage({super.key});
   @override
-  Widget build(BuildContext context) {
-    if (MyApp.podcastBloc.state is PodcastInitial) {
-      MyApp.podcastBloc.add(InitializePodcastData());
-    }
-    return BlocBuilder<PodcastBloc, PodcastState>(
-      builder: (context, statePodcast) {
-        if (statePodcast is PodcastDataLoaded) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.of(context).pop(),
+  Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.black),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                title: const Text("Podcast Edukasi"),
+                centerTitle: true,
               ),
-              title: const Text("Podcast Edukasi"),
-              centerTitle: true,
-            ),
-            body: SafeArea(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: CardTile(
-                      title: Text(
-                        'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm... 🤔',
-                        style: Config.textStyleTitleLarge.copyWith(color: Colors.white),
-                      ),
-                      button: Text(
-                        'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton podcast!',
-                        style: Config.textStyleBodyLarge.copyWith(color: Colors.white),
-                      ),
+              body: SafeArea(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Video edukasi terbaru',
-                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: CardTile(
+                        title: Text(
+                          'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm... 🤔',
+                          style: Config.textStyleTitleLarge.copyWith(color: Colors.white),
                         ),
-                      ],
+                        button: Text(
+                          'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton podcast!',
+                          style: Config.textStyleBodyLarge.copyWith(color: Colors.white),
+                        ),
+                      ),
                     ),
-                  ),
-                  listPodcast(
-                    context: context,
-                    podcasts: statePodcast.podcasts,
-                  )
-                ],
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Video edukasi terbaru',
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
+                          ),
+                        ],
+                      ),
+                    ),
+                    listPodcast(
+                      context: context,
+                      favPodcasts: stateContentFavorite.podcasts,
+                    )
+                  ],
+                ),
               ),
-            ),
-          );
-        } else if (statePodcast is PodcastInitial) {
+            );
+          } else if (stateContentFavorite is ContentFavoriteError) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Podcast Edukasi'),
+                centerTitle: true,
+              ),
+              body: ErrorOccuredButton(
+                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+              ),
+            );
+          }
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -152,23 +161,6 @@ class PodcastPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (statePodcast is PodcastError) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Podcast Edukasi'),
-              centerTitle: true,
-            ),
-            body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.podcastBloc.add(InitializePodcastData()),
-            ),
-          );
-        } else {
-          return Container();
-        }
-      },
-    );
-    //   },
-    // );
-  }
+        },
+      );
 }

@@ -5,11 +5,11 @@ class InfographicsPage extends StatelessWidget {
 
   static Widget listInfgraphics({
     required BuildContext context,
-    required List<Infografis> infografis,
+    required List<FavInfografis> favInfografis,
     bool replaceCurrentPage = false,
     int? currentInfographics,
   }) =>
-      infografis.isEmpty
+      favInfografis.isEmpty
           ? Center(
               child: Text(
                 'Tidak ada data',
@@ -20,7 +20,7 @@ class InfographicsPage extends StatelessWidget {
               shrinkWrap: true,
               primary: false,
               itemBuilder: (context, index) {
-                Infografis infographic = infografis[index];
+                Infografis infographic = favInfografis[index].infografis!;
 
                 if (infographic.idInfografis == currentInfographics) return Container();
 
@@ -65,19 +65,19 @@ class InfographicsPage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: infografis.length,
+              itemCount: favInfografis.length,
             );
 
   static Widget carouselSlider({
     required BuildContext context,
-    required InfographicsDataLoaded state,
+    required List<FavInfografis> favInfografis,
     bool replaceCurrentPage = false,
     int? currentInfographics,
   }) =>
       CarouselSlider.builder(
-        itemCount: state.infografis.length,
+        itemCount: favInfografis.length,
         itemBuilder: (context, index, realIdx) {
-          Infografis infographic = state.infografis[index];
+          Infografis infographic = favInfografis[index].infografis!;
 
           if (infographic.idInfografis == currentInfographics) return Container();
 
@@ -111,61 +111,67 @@ class InfographicsPage extends StatelessWidget {
       );
 
   @override
-  Widget build(BuildContext context) {
-    return BlocBuilder<InfographicsBloc, InfographicsState>(
-      builder: (context, stateInfographics) {
-        if (MyApp.infografisBloc.state is InfographicsInitial) {
-          MyApp.infografisBloc.add(InitializeInfographicsData());
-        }
-
-        if (stateInfographics is InfographicsDataLoaded) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              leading: IconButton(
-                icon: const Icon(Icons.arrow_back, color: Colors.black),
-                onPressed: () => Navigator.of(context).pop(),
+  Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text("Infografis Edukasi"),
+                centerTitle: true,
               ),
-              title: const Text("Infografis Edukasi"),
-              centerTitle: true,
-            ),
-            body: SafeArea(
-              child: ListView(
-                shrinkWrap: true,
-                children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                    child: carouselSlider(context: context, state: stateInfographics),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Infografis terbaru',
-                          style: Config.textStyleTitleMedium,
-                        ),
-                      ],
+              body: SafeArea(
+                child: ListView(
+                  shrinkWrap: true,
+                  children: [
+                    const SizedBox(
+                      height: 20,
                     ),
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  listInfgraphics(
-                    context: context,
-                    infografis: stateInfographics.infografis,
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                      child: carouselSlider(
+                        context: context,
+                        favInfografis: stateContentFavorite.infografis,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Infografis terbaru',
+                            style: Config.textStyleTitleMedium,
+                          ),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    listInfgraphics(
+                      context: context,
+                      favInfografis: stateContentFavorite.infografis,
+                    ),
+                  ],
+                ),
               ),
-            ),
-          );
-        } else if (stateInfographics is InfographicsInitial) {
+            );
+          } else if (stateContentFavorite is ContentFavoriteError) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Infografis Edukasi'),
+                centerTitle: true,
+              ),
+              body: ErrorOccuredButton(
+                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+              ),
+            );
+          }
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -176,21 +182,6 @@ class InfographicsPage extends StatelessWidget {
               child: CircularProgressIndicator(),
             ),
           );
-        } else if (stateInfographics is InfographicsError) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Infografis Edukasi'),
-              centerTitle: true,
-            ),
-            body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.infografisBloc.add(InitializeInfographicsData()),
-            ),
-          );
-        } else {
-          return Container();
-        }
-      },
-    );
-  }
+        },
+      );
 }

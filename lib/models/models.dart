@@ -88,6 +88,7 @@ class Podcast with _$Podcast {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Podcast;
 
@@ -106,6 +107,7 @@ class Film with _$Film {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'deskripsi') String? deksripsiFilm,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _Film;
 
@@ -124,6 +126,7 @@ class Infografis with _$Infografis {
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
   }) = _Infografis;
 
   factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
@@ -141,6 +144,7 @@ class VideoEdukasi with _$VideoEdukasi {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
   }) = _VideoEdukasi;
 
@@ -224,11 +228,11 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
 @unfreezed
 class Skrinning with _$Skrinning {
   factory Skrinning({
-  @JsonKey(name: 'id_skrinning') int? idSkrinning,
-  @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
-  @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
-  @JsonKey(name: 'created_at') DateTime? createdAt,
-  @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _Skrinning;
 
   factory Skrinning.fromJson(Map<String, dynamic> json) => _$SkrinningFromJson(json);
@@ -236,24 +240,10 @@ class Skrinning with _$Skrinning {
 
 @unfreezed
 class RiwayatSkrinning with _$RiwayatSkrinning {
-  factory RiwayatSkrinning({
-  @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-  @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-  @JsonKey(name: 'skrinning_id') int? skrinningId,
-  @JsonKey(name: 'user_id') int? userId,
-  @JsonKey(name: 'id_user') int? idUser,
-  @JsonKey(name: 'username') String? username,
-  @JsonKey(name: 'email') String? email,
-  @JsonKey(name: 'password') String? password,
-  @JsonKey(name: 'role') String? role,
-  @JsonKey(name: 'created_at') DateTime? createdAt,
-  @JsonKey(name: 'updated_at') DateTime? updatedAt,
-  Skrinning? skrinning
-  }) = _RiwayatSkrinning;
+  factory RiwayatSkrinning({@JsonKey(name: 'id_skrin_user') int? idSkrinUser, @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian, @JsonKey(name: 'skrinning_id') int? skrinningId, @JsonKey(name: 'user_id') int? userId, @JsonKey(name: 'id_user') int? idUser, @JsonKey(name: 'username') String? username, @JsonKey(name: 'email') String? email, @JsonKey(name: 'password') String? password, @JsonKey(name: 'role') String? role, @JsonKey(name: 'created_at') DateTime? createdAt, @JsonKey(name: 'updated_at') DateTime? updatedAt, Skrinning? skrinning}) = _RiwayatSkrinning;
 
   factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
 }
-
 
 enum UserRole {
   remaja,

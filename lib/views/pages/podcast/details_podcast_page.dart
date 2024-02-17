@@ -1,25 +1,26 @@
 part of '../pages.dart';
 
-class DetailsFilmPage extends StatefulWidget {
-  const DetailsFilmPage({
+class DetailsPodcastPage extends StatefulWidget {
+  const DetailsPodcastPage({
     super.key,
-    required this.film,
+    required this.podcast,
   });
 
-  final Film film;
+  final Podcast podcast;
 
   @override
-  State<DetailsFilmPage> createState() => DetailsFilmPageState();
+  State<DetailsPodcastPage> createState() => DetailsPodcastPageState();
 }
 
-class DetailsFilmPageState extends State<DetailsFilmPage> {
+class DetailsPodcastPageState extends State<DetailsPodcastPage> {
   late final PodPlayerController _podPlayerController;
+  bool isFavorited = false;
 
   @override
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.film.linkFilm!),
+      playVideoFrom: PlayVideoFrom.youtube(widget.podcast.linkPodcast ?? '?'),
     )..initialise();
   }
 
@@ -31,18 +32,18 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
 
   @override
   Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
-        builder: (context, contentFavoriteState) {
-          if (contentFavoriteState is ContentFavoriteDataLoaded) {
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
-                title: const Text('Film Edukasi'),
+                title: const Text("Podcast Edukasi"),
                 centerTitle: true,
                 actions: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7),
                     child: IconButton(
-                      onPressed: () => (widget.film.linkFilm!.isNotEmpty) ? Share.shareUri(Uri.parse(widget.film.linkFilm!)) : null,
+                      onPressed: () => (widget.podcast.linkPodcast?.isNotEmpty ?? false) ? Share.shareUri(Uri.parse(widget.podcast.linkPodcast!)) : null,
                       icon: SvgPicture.asset('assets/icons/share-iconss.svg'),
                     ),
                   ),
@@ -50,24 +51,33 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
               ),
               body: SafeArea(
                 child: ListView(
+                  shrinkWrap: true,
                   children: [
-                    const SizedBox(height: 20),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     const MyContentWidget(
-                      jenisKonten: 'Film',
+                      jenisKonten: 'Podcast',
                       untukUsia: '17-21 Tahun',
                     ),
-                    const SizedBox(height: 20),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(
-                        widget.film.judulFilm ?? '?',
-                        style: Config.textStyleTitleMedium,
-                      ),
+                    const SizedBox(
+                      height: 20,
                     ),
-                    const SizedBox(height: 20),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: PodVideoPlayer(controller: _podPlayerController),
+                      child: Column(
+                        children: [
+                          Text(
+                            widget.podcast.judulPodcast ?? '?',
+                            style: Config.textStyleHeadlineSmall.copyWith(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          PodVideoPlayer(controller: _podPlayerController),
+                        ],
+                      ),
                     ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -92,7 +102,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                                     isFavorited ? Icons.favorite : Icons.favorite_border,
                                   ),
                                 ),
-                                Text(widget.film.totalLikes?.toString() ?? '0'),
+                                Text(widget.podcast.totalLikes?.toThousandFormat() ?? '0'),
                               ],
                             ),
                           ),
@@ -101,9 +111,11 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(widget.film.deksripsiFilm ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
+                      child: Text(widget.podcast.deksripsiPodcast ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                     ),
-                    const SizedBox(height: 20),
+                    const SizedBox(
+                      height: 20,
+                    ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
@@ -115,28 +127,21 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                         ],
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    FilmPage.listVideo(
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    PodcastPage.listPodcast(
                       context: context,
-                      favFilms: contentFavoriteState.films,
+                      favPodcasts: stateContentFavorite.podcasts,
                       replaceCurrentPage: true,
-                      currentFilm: widget.film.idFilm,
+                      currentPodcast: widget.podcast.idPodcast,
                     )
                   ],
                 ),
               ),
             );
           }
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Film Edukasi'),
-              centerTitle: true,
-            ),
-            body: const Center(
-              child: CircularProgressIndicator(),
-            ),
-          );
+          return const Center(child: CircularProgressIndicator());
         },
       );
 }

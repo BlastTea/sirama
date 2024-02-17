@@ -5,11 +5,11 @@ class EducationalVideoPage extends StatelessWidget {
 
   static Widget listVideo({
     required BuildContext context,
-    required List<VideoEdukasi> videoEdukasis,
+    required List<FavVideoEdukasi> favVideoEdukasis,
     bool replaceCurrentPage = false,
     int? currentEducationVideo,
   }) =>
-      videoEdukasis.isEmpty
+      favVideoEdukasis.isEmpty
           ? Center(
               child: Text(
                 'Tidak ada data',
@@ -21,7 +21,7 @@ class EducationalVideoPage extends StatelessWidget {
               primary: false,
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               itemBuilder: (context, index) {
-                VideoEdukasi videoEdukasi = videoEdukasis[index];
+                VideoEdukasi videoEdukasi = favVideoEdukasis[index].videoEdukasi!;
 
                 if (videoEdukasi.idVideoEdukasi == currentEducationVideo) return Container();
 
@@ -76,79 +76,73 @@ class EducationalVideoPage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: videoEdukasis.length,
+              itemCount: favVideoEdukasis.length,
             );
 
   @override
-  Widget build(BuildContext context) {
-    if (MyApp.educationaVideoBloc.state is EducationalVideoInitial) {
-      MyApp.educationaVideoBloc.add(InitializeEducationalVideoData());
-    }
-
-    return BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
-      builder: (context, stateEducationalVideo) {
-        if (stateEducationalVideo is EducationalVideoDataLoaded) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Video Edukasi'),
-              centerTitle: true,
-            ),
-            body: SafeArea(
-              child: ListView(
-                children: [
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: CardTile(
-                      title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                      button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-                    ),
-                  ),
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Video edukasi terbaru',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  listVideo(
-                    context: context,
-                    videoEdukasis: stateEducationalVideo.educationalVideos,
-                  )
-                ],
+  Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Video Edukasi'),
+                centerTitle: true,
               ),
-            ),
-          );
-        } else if (stateEducationalVideo is EducationalVideoError) {
+              body: SafeArea(
+                child: ListView(
+                  children: [
+                    const SizedBox(height: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: CardTile(
+                        title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                        button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Video edukasi terbaru',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    listVideo(
+                      context: context,
+                      favVideoEdukasis: stateContentFavorite.videoEdukasis,
+                    )
+                  ],
+                ),
+              ),
+            );
+          } else if (stateContentFavorite is ContentFavoriteError) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Video Edukasi'),
+                centerTitle: true,
+              ),
+              body: ErrorOccuredButton(
+                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+              ),
+            );
+          }
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
               title: const Text('Video Edukasi'),
               centerTitle: true,
             ),
-            body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.educationaVideoBloc.add(InitializeEducationalVideoData()),
+            body: const Center(
+              child: CircularProgressIndicator(),
             ),
           );
-        }
-
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text('Video Edukasi'),
-            centerTitle: true,
-          ),
-          body: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
-    );
-  }
+        },
+      );
 }

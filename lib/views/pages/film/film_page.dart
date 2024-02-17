@@ -5,11 +5,11 @@ class FilmPage extends StatelessWidget {
 
   static Widget listVideo({
     required BuildContext context,
-    required List<Film> films,
+    required List<FavFilm> favFilms,
     bool replaceCurrentPage = false,
     int? currentFilm,
   }) =>
-      films.isEmpty
+      favFilms.isEmpty
           ? Center(
               child: Text(
                 'Tidak ada data',
@@ -21,7 +21,7 @@ class FilmPage extends StatelessWidget {
               primary: false,
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               itemBuilder: (context, index) {
-                Film film = films[index];
+                Film film = favFilms[index].film!;
 
                 if (film.idFilm == currentFilm) return Container();
 
@@ -66,7 +66,7 @@ class FilmPage extends StatelessWidget {
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          'Admin . ${films[index].tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                          'Admin . ${film.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
@@ -76,81 +76,73 @@ class FilmPage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: films.length,
+              itemCount: favFilms.length,
             );
 
   @override
-  Widget build(BuildContext context) {
-    if (MyApp.filmBloc.state is FilmInitial) {
-      MyApp.filmBloc.add(InitializeFilmData());
-    }
-
-    return BlocBuilder<FilmBloc, FilmState>(
-      builder: (context, stateFilm) {
-        if (stateFilm is FilmDataLoaded) {
-          return Scaffold(
-            appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: const Text('Film Edukasi'),
-              centerTitle: true,
-            ),
-            body: SafeArea(
-              child: ListView(
-                children: [
-                  const SizedBox(height: 20),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20.0),
-                    child: CardTile(
-                      title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                      button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Row(
-                      children: [
-                        Text(
-                          'Video edukasi terbaru',
-                          style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                  listVideo(
-                    context: context,
-                    films: stateFilm.films,
-                  )
-                ],
+  Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Film Edukasi'),
+                centerTitle: true,
               ),
-            ),
-          );
-        } else if (stateFilm is FilmError) {
+              body: SafeArea(
+                child: ListView(
+                  children: [
+                    const SizedBox(height: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                      child: CardTile(
+                        title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
+                        button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                      ),
+                    ),
+                    const SizedBox(height: 20),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 20),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Video edukasi terbaru',
+                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                          ),
+                        ],
+                      ),
+                    ),
+                    listVideo(
+                      context: context,
+                      favFilms: stateContentFavorite.films,
+                    )
+                  ],
+                ),
+              ),
+            );
+          } else if (stateContentFavorite is ContentFavoriteError) {
+            return Scaffold(
+              appBar: AppBar(
+                backgroundColor: Colors.white,
+                title: const Text('Film Edukasi'),
+                centerTitle: true,
+              ),
+              body: ErrorOccuredButton(
+                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+              ),
+            );
+          }
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
               title: const Text('Film Edukasi'),
               centerTitle: true,
             ),
-            body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.filmBloc.add(InitializeFilmData()),
+            body: const Center(
+              child: CircularProgressIndicator(),
             ),
           );
-        }
-
-        return Scaffold(
-          appBar: AppBar(
-            backgroundColor: Colors.white,
-            title: const Text('Film Edukasi'),
-            centerTitle: true,
-          ),
-          body: const Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
-      },
-    );
-  }
+        },
+      );
 }

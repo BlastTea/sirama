@@ -11,16 +11,12 @@ class DetailsInfographicsPage extends StatefulWidget {
 
 class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
   @override
-  Widget build(BuildContext context) => BlocBuilder<InfographicsBloc, InfographicsState>(
-        builder: (context, stateInfographics) {
-          if (stateInfographics is InfographicsDataLoaded) {
+  Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
-                leading: IconButton(
-                  icon: const Icon(Icons.arrow_back, color: Colors.black),
-                  onPressed: () => Navigator.of(context).pop(),
-                ),
                 title: Text(widget.infographic.judulInfografis!),
                 centerTitle: true,
               ),
@@ -115,7 +111,7 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                     const SizedBox(height: 20),
                     InfographicsPage.listInfgraphics(
                       context: context,
-                      infografis: stateInfographics.infografis,
+                      favInfografis: stateContentFavorite.infografis,
                       replaceCurrentPage: true,
                       currentInfographics: widget.infographic.idInfografis,
                     )
@@ -123,18 +119,7 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                 ),
               ),
             );
-          } else if (stateInfographics is InfographicsInitial) {
-            return Scaffold(
-              appBar: AppBar(
-                backgroundColor: Colors.white,
-                title: Text(widget.infographic.judulInfografis!),
-                centerTitle: true,
-              ),
-              body: const Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          } else if (stateInfographics is InfographicsError) {
+          } else if (stateContentFavorite is ContentFavoriteError) {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
@@ -142,12 +127,21 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.infografisBloc.add(InitializeInfographicsData()),
+                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
               ),
             );
-          } else {
-            return Container();
           }
+
+          return Scaffold(
+            appBar: AppBar(
+              backgroundColor: Colors.white,
+              title: Text(widget.infographic.judulInfografis!),
+              centerTitle: true,
+            ),
+            body: const Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
         },
       );
 }

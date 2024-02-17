@@ -5,15 +5,11 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MyApp.filmBloc.state is FilmInitial) MyApp.filmBloc.add(InitializeFilmData());
-    if (MyApp.podcastBloc.state is PodcastInitial) MyApp.podcastBloc.add(InitializePodcastData());
-    if (MyApp.educationaVideoBloc.state is EducationalVideoInitial) MyApp.educationaVideoBloc.add(InitializeEducationalVideoData());
-    if (MyApp.infografisBloc.state is InfographicsInitial) MyApp.infografisBloc.add(InitializeInfographicsData());
-    if (MyApp.favoriteBloc.state is FavoriteInitial) MyApp.favoriteBloc.add(InitializeFavoriteData());
+    if (MyApp.contentFavorite.state is ContentFavoriteInitial) MyApp.contentFavorite.add(InitializeContentFavoriteData());
 
-    return BlocBuilder<FavoriteBloc, FavoriteState>(
+    return BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
       builder: (context, stateFavorite) {
-        if (stateFavorite is FavoriteDataLoaded) {
+        if (stateFavorite is ContentFavoriteDataLoaded) {
           return DefaultTabController(
             length: 4,
             child: Scaffold(
@@ -35,32 +31,32 @@ class FavoritePage extends StatelessWidget {
                 children: [
                   FilmPage.listVideo(
                     context: context,
-                    films: stateFavorite.favFilms.map((e) => e.film!).toList(),
+                    favFilms: stateFavorite.films.where((element) => element.film!.isFavorited).toList(),
                   ),
                   PodcastPage.listPodcast(
                     context: context,
-                    podcasts: stateFavorite.favPodcasts.map((e) => e.podcast!).toList(),
+                    favPodcasts: stateFavorite.podcasts.where((element) => element.podcast!.isFavorited).toList(),
                   ),
                   EducationalVideoPage.listVideo(
                     context: context,
-                    videoEdukasis: stateFavorite.favVideoEdukasis.map((e) => e.videoEdukasi!).toList(),
+                    favVideoEdukasis: stateFavorite.videoEdukasis.where((element) => element.videoEdukasi!.isFavorited).toList(),
                   ),
                   InfographicsPage.listInfgraphics(
                     context: context,
-                    infografis: stateFavorite.favInfografis.map((e) => e.infografis!).toList(),
+                    favInfografis: stateFavorite.infografis.where((element) => element.infografis!.isFavorited).toList(),
                   ),
                 ],
               ),
             ),
           );
-        } else if (stateFavorite is FavoriteError) {
+        } else if (stateFavorite is ContentFavoriteError) {
           return Scaffold(
             appBar: AppBar(
               title: const Text('Favorit'),
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.favoriteBloc.add(InitializeFavoriteData()),
+              onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
             ),
           );
         }

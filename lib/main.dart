@@ -34,12 +34,8 @@ class MyApp extends StatelessWidget {
   static ChatmeBloc chatmeBloc = ChatmeBloc();
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
-  static PodcastBloc podcastBloc = PodcastBloc();
-  static FilmBloc filmBloc = FilmBloc();
-  static InfographicsBloc infografisBloc = InfographicsBloc();
-  static EducationalVideoBloc educationaVideoBloc = EducationalVideoBloc();
   static QuoteBloc quoteBloc = QuoteBloc();
-  static FavoriteBloc favoriteBloc = FavoriteBloc();
+  static ContentFavoriteBloc contentFavorite = ContentFavoriteBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +47,8 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => chatmeBloc),
         BlocProvider(create: (context) => authenticationBloc),
         BlocProvider(create: (context) => askTheExpertBloc),
-        BlocProvider(create: (context) => podcastBloc),
-        BlocProvider(create: (context) => filmBloc),
-        BlocProvider(create: (context) => infografisBloc),
-        BlocProvider(create: (context) => educationaVideoBloc),
         BlocProvider(create: (context) => quoteBloc),
-        BlocProvider(create: (context) => favoriteBloc),
+        BlocProvider(create: (context) => contentFavorite),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(

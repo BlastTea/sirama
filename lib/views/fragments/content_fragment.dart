@@ -42,9 +42,7 @@ class ContentFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MyApp.educationaVideoBloc.state is EducationalVideoInitial) {
-      MyApp.educationaVideoBloc.add(InitializeEducationalVideoData());
-    }
+    if (MyApp.contentFavorite.state is ContentFavoriteInitial) MyApp.contentFavorite.add(InitializeContentFavoriteData());
 
     return Scaffold(
       appBar: AppBar(
@@ -140,18 +138,16 @@ class ContentFragment extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            BlocBuilder<EducationalVideoBloc, EducationalVideoState>(
-              builder: (context, stateEducationalVideo) {
-                if (stateEducationalVideo is EducationalVideoDataLoaded) {
+            BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+              builder: (context, stateContentFavorite) {
+                if (stateContentFavorite is ContentFavoriteDataLoaded) {
                   return EducationalVideoPage.listVideo(
                     context: context,
-                    videoEdukasis: stateEducationalVideo.educationalVideos,
+                    favVideoEdukasis: stateContentFavorite.videoEdukasis,
                   );
-                } else if (stateEducationalVideo is EducationalVideoError) {
+                } else if (stateContentFavorite is ContentFavoriteError) {
                   return ErrorOccuredButton(
-                    onRetryPressed: () => MyApp.educationaVideoBloc.add(
-                      InitializeEducationalVideoData(),
-                    ),
+                    onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
                   );
                 }
 

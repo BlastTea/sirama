@@ -18,22 +18,6 @@ part 'authentication_bloc/authentication_bloc.dart';
 part 'authentication_bloc/authentication_event.dart';
 part 'authentication_bloc/authentication_state.dart';
 
-part 'infographics_bloc/infographics_bloc.dart';
-part 'infographics_bloc/infographics_event.dart';
-part 'infographics_bloc/infographics_state.dart';
-
-part 'educational_video_bloc/educational_video_bloc.dart';
-part 'educational_video_bloc/educational_video_event.dart';
-part 'educational_video_bloc/educational_video_state.dart';
-
-part 'film_bloc/film_bloc.dart';
-part 'film_bloc/film_event.dart';
-part 'film_bloc/film_state.dart';
-
-part 'podcast_bloc/podcast_bloc.dart';
-part 'podcast_bloc/podcast_event.dart';
-part 'podcast_bloc/podcast_state.dart';
-
 part 'ask_the_expert_bloc/ask_the_expert_bloc.dart';
 part 'ask_the_expert_bloc/ask_the_expert_event.dart';
 part 'ask_the_expert_bloc/ask_the_expert_state.dart';
@@ -42,6 +26,6 @@ part 'quote_bloc/quote_bloc.dart';
 part 'quote_bloc/quote_event.dart';
 part 'quote_bloc/quote_state.dart';
 
-part 'favorite_bloc/favorite_bloc.dart';
-part 'favorite_bloc/favorite_event.dart';
-part 'favorite_bloc/favorite_state.dart';
+part 'content_favorite_bloc/content_favorite_bloc.dart';
+part 'content_favorite_bloc/content_favorite_event.dart';
+part 'content_favorite_bloc/content_favorite_state.dart';
