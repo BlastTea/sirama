@@ -1,3 +1,4 @@
 void main() async {
-  await print('hahahahahahaha');
+  blade = await print('hahahahahahaha');
+  blade.map((e) => reduce(e : e + 1)
 }
