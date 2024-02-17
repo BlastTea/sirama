@@ -438,3 +438,84 @@ Map<String, dynamic> _$$RiwayatSkrinningImplToJson(
       'updated_at': instance.updatedAt?.toIso8601String(),
       'skrinning': instance.skrinning,
     };
+
+_$DetailSkrinningImpl _$$DetailSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DetailSkrinningImpl(
+      data: json['data'] == null
+          ? null
+          : DataBagianSkrinning.fromJson(json['data'] as Map<String, dynamic>),
+      skrinUser: json['skrin_user'] as int?,
+    );
+
+Map<String, dynamic> _$$DetailSkrinningImplToJson(
+        _$DetailSkrinningImpl instance) =>
+    <String, dynamic>{
+      'data': instance.data,
+      'skrin_user': instance.skrinUser,
+    };
+
+_$DataBagianSkrinningImpl _$$DataBagianSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DataBagianSkrinningImpl(
+      idBagianSkrinning: json['id_bagian_skrinning'] as int?,
+      namaBagian: json['nama_bagian'] as String?,
+      soalJawabanSkrinning: json['soalJawabanSkrinning'] == null
+          ? null
+          : SoalJawabanSkrinning.fromJson(
+              json['soalJawabanSkrinning'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$DataBagianSkrinningImplToJson(
+        _$DataBagianSkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_bagian_skrinning': instance.idBagianSkrinning,
+      'nama_bagian': instance.namaBagian,
+      'soalJawabanSkrinning': instance.soalJawabanSkrinning,
+    };
+
+_$SoalJawabanSkrinningImpl _$$SoalJawabanSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SoalJawabanSkrinningImpl(
+      soal: json['soal'] == null
+          ? null
+          : SoalSkrinning.fromJson(json['soal'] as Map<String, dynamic>),
+      jawaban: json['jawaban'] == null
+          ? null
+          : JawabanSkrinning.fromJson(json['jawaban'] as Map<String, dynamic>),
+    );
+
+Map<String, dynamic> _$$SoalJawabanSkrinningImplToJson(
+        _$SoalJawabanSkrinningImpl instance) =>
+    <String, dynamic>{
+      'soal': instance.soal,
+      'jawaban': instance.jawaban,
+    };
+
+_$SoalSkrinningImpl _$$SoalSkrinningImplFromJson(Map<String, dynamic> json) =>
+    _$SoalSkrinningImpl(
+      idSoal: json['id_soal'] as int?,
+      soalSkrinning: json['soal'] as String?,
+    );
+
+Map<String, dynamic> _$$SoalSkrinningImplToJson(_$SoalSkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_soal': instance.idSoal,
+      'soal': instance.soalSkrinning,
+    };
+
+_$JawabanSkrinningImpl _$$JawabanSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$JawabanSkrinningImpl(
+      idJawabanSkrinning: json['id_jawaban_skrinning'] as int?,
+      jawabanSkrinning: json['jawaban'] as String?,
+      poinJawaban: json['poin_jawaban'] as int?,
+    );
+
+Map<String, dynamic> _$$JawabanSkrinningImplToJson(
+        _$JawabanSkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_jawaban_skrinning': instance.idJawabanSkrinning,
+      'jawaban': instance.jawabanSkrinning,
+      'poin_jawaban': instance.poinJawaban,
+    };

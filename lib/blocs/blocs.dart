@@ -45,3 +45,7 @@ part 'quote_bloc/quote_state.dart';
 part 'favorite_bloc/favorite_bloc.dart';
 part 'favorite_bloc/favorite_event.dart';
 part 'favorite_bloc/favorite_state.dart';
+
+part 'skrinning_bloc/skrinning_bloc.dart';
+part 'skrinning_bloc/skrinning_event.dart';
+part 'skrinning_bloc/skrinning_state.dart';

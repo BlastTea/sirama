@@ -254,6 +254,58 @@ class RiwayatSkrinning with _$RiwayatSkrinning {
   factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
 }
 
+@unfreezed
+class DetailSkrinning with _$DetailSkrinning {
+  factory DetailSkrinning({
+    DataBagianSkrinning? data,
+    @JsonKey(name: 'skrin_user') int? skrinUser,
+  }) = _DetailSkrinning;
+
+  factory DetailSkrinning.fromJson(Map<String, dynamic> json) => _$DetailSkrinningFromJson(json);
+}
+
+@unfreezed
+class DataBagianSkrinning with _$DataBagianSkrinning {
+  factory DataBagianSkrinning ({
+    @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
+    SoalJawabanSkrinning? soalJawabanSkrinning
+  }) = _DataBagianSkrinning;
+
+  factory DataBagianSkrinning.fromJson(Map<String, dynamic> json) => _$DataBagianSkrinningFromJson(json);
+}
+
+
+@unfreezed
+class SoalJawabanSkrinning with _$SoalJawabanSkrinning {
+  factory SoalJawabanSkrinning ({
+    SoalSkrinning? soal,
+    JawabanSkrinning? jawaban,
+  }) = _SoalJawabanSkrinning;
+
+  factory SoalJawabanSkrinning.fromJson(Map<String, dynamic> json) => _$SoalJawabanSkrinningFromJson(json);
+}
+
+@unfreezed
+class SoalSkrinning with _$SoalSkrinning {
+  factory SoalSkrinning ({
+    @JsonKey(name: 'id_soal') int? idSoal,
+    @JsonKey(name: 'soal') String? soalSkrinning,
+  }) = _SoalSkrinning;
+
+  factory SoalSkrinning.fromJson(Map<String, dynamic> json) => _$SoalSkrinningFromJson(json);
+}
+
+@unfreezed
+class JawabanSkrinning with _$JawabanSkrinning {
+  factory JawabanSkrinning ({
+    @JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+    @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
+  }) = _JawabanSkrinning;
+
+  factory JawabanSkrinning.fromJson(Map<String, dynamic> json) => _$JawabanSkrinningFromJson(json);
+}
 
 enum UserRole {
   remaja,
