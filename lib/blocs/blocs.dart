@@ -26,6 +26,10 @@ part 'quote_bloc/quote_bloc.dart';
 part 'quote_bloc/quote_event.dart';
 part 'quote_bloc/quote_state.dart';
 
+part 'skrinning_bloc/skrinning_bloc.dart';
+part 'skrinning_bloc/skrinning_event.dart';
+part 'skrinning_bloc/skrinning_state.dart';
+
 part 'content_favorite_bloc/content_favorite_bloc.dart';
 part 'content_favorite_bloc/content_favorite_event.dart';
 part 'content_favorite_bloc/content_favorite_state.dart';

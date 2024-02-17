@@ -35,6 +35,7 @@ class MyApp extends StatelessWidget {
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
   static QuoteBloc quoteBloc = QuoteBloc();
+  static SkrinningBloc skrinningBloc = SkrinningBloc();
   static ContentFavoriteBloc contentFavorite = ContentFavoriteBloc();
 
   @override
@@ -48,6 +49,7 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => authenticationBloc),
         BlocProvider(create: (context) => askTheExpertBloc),
         BlocProvider(create: (context) => quoteBloc),
+        BlocProvider(create: (context) => skrinningBloc),
         BlocProvider(create: (context) => contentFavorite),
       ],
       child: MediaQuery(

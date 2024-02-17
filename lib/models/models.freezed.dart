@@ -4960,3 +4960,907 @@ abstract class _RiwayatSkrinning implements RiwayatSkrinning {
   _$$RiwayatSkrinningImplCopyWith<_$RiwayatSkrinningImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+DetailSkrinning _$DetailSkrinningFromJson(Map<String, dynamic> json) {
+  return _DetailSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DetailSkrinning {
+  DataBagianSkrinning? get data => throw _privateConstructorUsedError;
+  set data(DataBagianSkrinning? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'skrin_user')
+  int? get skrinUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'skrin_user')
+  set skrinUser(int? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DetailSkrinningCopyWith<DetailSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DetailSkrinningCopyWith<$Res> {
+  factory $DetailSkrinningCopyWith(
+          DetailSkrinning value, $Res Function(DetailSkrinning) then) =
+      _$DetailSkrinningCopyWithImpl<$Res, DetailSkrinning>;
+  @useResult
+  $Res call(
+      {DataBagianSkrinning? data, @JsonKey(name: 'skrin_user') int? skrinUser});
+
+  $DataBagianSkrinningCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class _$DetailSkrinningCopyWithImpl<$Res, $Val extends DetailSkrinning>
+    implements $DetailSkrinningCopyWith<$Res> {
+  _$DetailSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+    Object? skrinUser = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as DataBagianSkrinning?,
+      skrinUser: freezed == skrinUser
+          ? _value.skrinUser
+          : skrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataBagianSkrinningCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $DataBagianSkrinningCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$DetailSkrinningImplCopyWith<$Res>
+    implements $DetailSkrinningCopyWith<$Res> {
+  factory _$$DetailSkrinningImplCopyWith(_$DetailSkrinningImpl value,
+          $Res Function(_$DetailSkrinningImpl) then) =
+      __$$DetailSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {DataBagianSkrinning? data, @JsonKey(name: 'skrin_user') int? skrinUser});
+
+  @override
+  $DataBagianSkrinningCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$$DetailSkrinningImplCopyWithImpl<$Res>
+    extends _$DetailSkrinningCopyWithImpl<$Res, _$DetailSkrinningImpl>
+    implements _$$DetailSkrinningImplCopyWith<$Res> {
+  __$$DetailSkrinningImplCopyWithImpl(
+      _$DetailSkrinningImpl _value, $Res Function(_$DetailSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+    Object? skrinUser = freezed,
+  }) {
+    return _then(_$DetailSkrinningImpl(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as DataBagianSkrinning?,
+      skrinUser: freezed == skrinUser
+          ? _value.skrinUser
+          : skrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DetailSkrinningImpl implements _DetailSkrinning {
+  _$DetailSkrinningImpl(
+      {this.data, @JsonKey(name: 'skrin_user') this.skrinUser});
+
+  factory _$DetailSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DetailSkrinningImplFromJson(json);
+
+  @override
+  DataBagianSkrinning? data;
+  @override
+  @JsonKey(name: 'skrin_user')
+  int? skrinUser;
+
+  @override
+  String toString() {
+    return 'DetailSkrinning(data: $data, skrinUser: $skrinUser)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DetailSkrinningImplCopyWith<_$DetailSkrinningImpl> get copyWith =>
+      __$$DetailSkrinningImplCopyWithImpl<_$DetailSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DetailSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DetailSkrinning implements DetailSkrinning {
+  factory _DetailSkrinning(
+      {DataBagianSkrinning? data,
+      @JsonKey(name: 'skrin_user') int? skrinUser}) = _$DetailSkrinningImpl;
+
+  factory _DetailSkrinning.fromJson(Map<String, dynamic> json) =
+      _$DetailSkrinningImpl.fromJson;
+
+  @override
+  DataBagianSkrinning? get data;
+  set data(DataBagianSkrinning? value);
+  @override
+  @JsonKey(name: 'skrin_user')
+  int? get skrinUser;
+  @JsonKey(name: 'skrin_user')
+  set skrinUser(int? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$DetailSkrinningImplCopyWith<_$DetailSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DataBagianSkrinning _$DataBagianSkrinningFromJson(Map<String, dynamic> json) {
+  return _DataBagianSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DataBagianSkrinning {
+  @JsonKey(name: 'id_bagian_skrinning')
+  int? get idBagianSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_bagian_skrinning')
+  set idBagianSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value) => throw _privateConstructorUsedError;
+  SoalJawabanSkrinning? get soalJawabanSkrinning =>
+      throw _privateConstructorUsedError;
+  set soalJawabanSkrinning(SoalJawabanSkrinning? value) =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DataBagianSkrinningCopyWith<DataBagianSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DataBagianSkrinningCopyWith<$Res> {
+  factory $DataBagianSkrinningCopyWith(
+          DataBagianSkrinning value, $Res Function(DataBagianSkrinning) then) =
+      _$DataBagianSkrinningCopyWithImpl<$Res, DataBagianSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      SoalJawabanSkrinning? soalJawabanSkrinning});
+
+  $SoalJawabanSkrinningCopyWith<$Res>? get soalJawabanSkrinning;
+}
+
+/// @nodoc
+class _$DataBagianSkrinningCopyWithImpl<$Res, $Val extends DataBagianSkrinning>
+    implements $DataBagianSkrinningCopyWith<$Res> {
+  _$DataBagianSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idBagianSkrinning = freezed,
+    Object? namaBagian = freezed,
+    Object? soalJawabanSkrinning = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idBagianSkrinning: freezed == idBagianSkrinning
+          ? _value.idBagianSkrinning
+          : idBagianSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
+              as String?,
+      soalJawabanSkrinning: freezed == soalJawabanSkrinning
+          ? _value.soalJawabanSkrinning
+          : soalJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as SoalJawabanSkrinning?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SoalJawabanSkrinningCopyWith<$Res>? get soalJawabanSkrinning {
+    if (_value.soalJawabanSkrinning == null) {
+      return null;
+    }
+
+    return $SoalJawabanSkrinningCopyWith<$Res>(_value.soalJawabanSkrinning!,
+        (value) {
+      return _then(_value.copyWith(soalJawabanSkrinning: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$DataBagianSkrinningImplCopyWith<$Res>
+    implements $DataBagianSkrinningCopyWith<$Res> {
+  factory _$$DataBagianSkrinningImplCopyWith(_$DataBagianSkrinningImpl value,
+          $Res Function(_$DataBagianSkrinningImpl) then) =
+      __$$DataBagianSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      SoalJawabanSkrinning? soalJawabanSkrinning});
+
+  @override
+  $SoalJawabanSkrinningCopyWith<$Res>? get soalJawabanSkrinning;
+}
+
+/// @nodoc
+class __$$DataBagianSkrinningImplCopyWithImpl<$Res>
+    extends _$DataBagianSkrinningCopyWithImpl<$Res, _$DataBagianSkrinningImpl>
+    implements _$$DataBagianSkrinningImplCopyWith<$Res> {
+  __$$DataBagianSkrinningImplCopyWithImpl(_$DataBagianSkrinningImpl _value,
+      $Res Function(_$DataBagianSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idBagianSkrinning = freezed,
+    Object? namaBagian = freezed,
+    Object? soalJawabanSkrinning = freezed,
+  }) {
+    return _then(_$DataBagianSkrinningImpl(
+      idBagianSkrinning: freezed == idBagianSkrinning
+          ? _value.idBagianSkrinning
+          : idBagianSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
+              as String?,
+      soalJawabanSkrinning: freezed == soalJawabanSkrinning
+          ? _value.soalJawabanSkrinning
+          : soalJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as SoalJawabanSkrinning?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DataBagianSkrinningImpl implements _DataBagianSkrinning {
+  _$DataBagianSkrinningImpl(
+      {@JsonKey(name: 'id_bagian_skrinning') this.idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') this.namaBagian,
+      this.soalJawabanSkrinning});
+
+  factory _$DataBagianSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DataBagianSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_bagian_skrinning')
+  int? idBagianSkrinning;
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? namaBagian;
+  @override
+  SoalJawabanSkrinning? soalJawabanSkrinning;
+
+  @override
+  String toString() {
+    return 'DataBagianSkrinning(idBagianSkrinning: $idBagianSkrinning, namaBagian: $namaBagian, soalJawabanSkrinning: $soalJawabanSkrinning)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataBagianSkrinningImplCopyWith<_$DataBagianSkrinningImpl> get copyWith =>
+      __$$DataBagianSkrinningImplCopyWithImpl<_$DataBagianSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DataBagianSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DataBagianSkrinning implements DataBagianSkrinning {
+  factory _DataBagianSkrinning(
+      {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      SoalJawabanSkrinning? soalJawabanSkrinning}) = _$DataBagianSkrinningImpl;
+
+  factory _DataBagianSkrinning.fromJson(Map<String, dynamic> json) =
+      _$DataBagianSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_bagian_skrinning')
+  int? get idBagianSkrinning;
+  @JsonKey(name: 'id_bagian_skrinning')
+  set idBagianSkrinning(int? value);
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value);
+  @override
+  SoalJawabanSkrinning? get soalJawabanSkrinning;
+  set soalJawabanSkrinning(SoalJawabanSkrinning? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$DataBagianSkrinningImplCopyWith<_$DataBagianSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SoalJawabanSkrinning _$SoalJawabanSkrinningFromJson(Map<String, dynamic> json) {
+  return _SoalJawabanSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SoalJawabanSkrinning {
+  SoalSkrinning? get soal => throw _privateConstructorUsedError;
+  set soal(SoalSkrinning? value) => throw _privateConstructorUsedError;
+  JawabanSkrinning? get jawaban => throw _privateConstructorUsedError;
+  set jawaban(JawabanSkrinning? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SoalJawabanSkrinningCopyWith<SoalJawabanSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SoalJawabanSkrinningCopyWith<$Res> {
+  factory $SoalJawabanSkrinningCopyWith(SoalJawabanSkrinning value,
+          $Res Function(SoalJawabanSkrinning) then) =
+      _$SoalJawabanSkrinningCopyWithImpl<$Res, SoalJawabanSkrinning>;
+  @useResult
+  $Res call({SoalSkrinning? soal, JawabanSkrinning? jawaban});
+
+  $SoalSkrinningCopyWith<$Res>? get soal;
+  $JawabanSkrinningCopyWith<$Res>? get jawaban;
+}
+
+/// @nodoc
+class _$SoalJawabanSkrinningCopyWithImpl<$Res,
+        $Val extends SoalJawabanSkrinning>
+    implements $SoalJawabanSkrinningCopyWith<$Res> {
+  _$SoalJawabanSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? soal = freezed,
+    Object? jawaban = freezed,
+  }) {
+    return _then(_value.copyWith(
+      soal: freezed == soal
+          ? _value.soal
+          : soal // ignore: cast_nullable_to_non_nullable
+              as SoalSkrinning?,
+      jawaban: freezed == jawaban
+          ? _value.jawaban
+          : jawaban // ignore: cast_nullable_to_non_nullable
+              as JawabanSkrinning?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SoalSkrinningCopyWith<$Res>? get soal {
+    if (_value.soal == null) {
+      return null;
+    }
+
+    return $SoalSkrinningCopyWith<$Res>(_value.soal!, (value) {
+      return _then(_value.copyWith(soal: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $JawabanSkrinningCopyWith<$Res>? get jawaban {
+    if (_value.jawaban == null) {
+      return null;
+    }
+
+    return $JawabanSkrinningCopyWith<$Res>(_value.jawaban!, (value) {
+      return _then(_value.copyWith(jawaban: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SoalJawabanSkrinningImplCopyWith<$Res>
+    implements $SoalJawabanSkrinningCopyWith<$Res> {
+  factory _$$SoalJawabanSkrinningImplCopyWith(_$SoalJawabanSkrinningImpl value,
+          $Res Function(_$SoalJawabanSkrinningImpl) then) =
+      __$$SoalJawabanSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({SoalSkrinning? soal, JawabanSkrinning? jawaban});
+
+  @override
+  $SoalSkrinningCopyWith<$Res>? get soal;
+  @override
+  $JawabanSkrinningCopyWith<$Res>? get jawaban;
+}
+
+/// @nodoc
+class __$$SoalJawabanSkrinningImplCopyWithImpl<$Res>
+    extends _$SoalJawabanSkrinningCopyWithImpl<$Res, _$SoalJawabanSkrinningImpl>
+    implements _$$SoalJawabanSkrinningImplCopyWith<$Res> {
+  __$$SoalJawabanSkrinningImplCopyWithImpl(_$SoalJawabanSkrinningImpl _value,
+      $Res Function(_$SoalJawabanSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? soal = freezed,
+    Object? jawaban = freezed,
+  }) {
+    return _then(_$SoalJawabanSkrinningImpl(
+      soal: freezed == soal
+          ? _value.soal
+          : soal // ignore: cast_nullable_to_non_nullable
+              as SoalSkrinning?,
+      jawaban: freezed == jawaban
+          ? _value.jawaban
+          : jawaban // ignore: cast_nullable_to_non_nullable
+              as JawabanSkrinning?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SoalJawabanSkrinningImpl implements _SoalJawabanSkrinning {
+  _$SoalJawabanSkrinningImpl({this.soal, this.jawaban});
+
+  factory _$SoalJawabanSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoalJawabanSkrinningImplFromJson(json);
+
+  @override
+  SoalSkrinning? soal;
+  @override
+  JawabanSkrinning? jawaban;
+
+  @override
+  String toString() {
+    return 'SoalJawabanSkrinning(soal: $soal, jawaban: $jawaban)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SoalJawabanSkrinningImplCopyWith<_$SoalJawabanSkrinningImpl>
+      get copyWith =>
+          __$$SoalJawabanSkrinningImplCopyWithImpl<_$SoalJawabanSkrinningImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SoalJawabanSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SoalJawabanSkrinning implements SoalJawabanSkrinning {
+  factory _SoalJawabanSkrinning(
+      {SoalSkrinning? soal,
+      JawabanSkrinning? jawaban}) = _$SoalJawabanSkrinningImpl;
+
+  factory _SoalJawabanSkrinning.fromJson(Map<String, dynamic> json) =
+      _$SoalJawabanSkrinningImpl.fromJson;
+
+  @override
+  SoalSkrinning? get soal;
+  set soal(SoalSkrinning? value);
+  @override
+  JawabanSkrinning? get jawaban;
+  set jawaban(JawabanSkrinning? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$SoalJawabanSkrinningImplCopyWith<_$SoalJawabanSkrinningImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SoalSkrinning _$SoalSkrinningFromJson(Map<String, dynamic> json) {
+  return _SoalSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SoalSkrinning {
+  @JsonKey(name: 'id_soal')
+  int? get idSoal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_soal')
+  set idSoal(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal')
+  String? get soalSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal')
+  set soalSkrinning(String? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SoalSkrinningCopyWith<SoalSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SoalSkrinningCopyWith<$Res> {
+  factory $SoalSkrinningCopyWith(
+          SoalSkrinning value, $Res Function(SoalSkrinning) then) =
+      _$SoalSkrinningCopyWithImpl<$Res, SoalSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_soal') int? idSoal,
+      @JsonKey(name: 'soal') String? soalSkrinning});
+}
+
+/// @nodoc
+class _$SoalSkrinningCopyWithImpl<$Res, $Val extends SoalSkrinning>
+    implements $SoalSkrinningCopyWith<$Res> {
+  _$SoalSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSoal = freezed,
+    Object? soalSkrinning = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idSoal: freezed == idSoal
+          ? _value.idSoal
+          : idSoal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      soalSkrinning: freezed == soalSkrinning
+          ? _value.soalSkrinning
+          : soalSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SoalSkrinningImplCopyWith<$Res>
+    implements $SoalSkrinningCopyWith<$Res> {
+  factory _$$SoalSkrinningImplCopyWith(
+          _$SoalSkrinningImpl value, $Res Function(_$SoalSkrinningImpl) then) =
+      __$$SoalSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_soal') int? idSoal,
+      @JsonKey(name: 'soal') String? soalSkrinning});
+}
+
+/// @nodoc
+class __$$SoalSkrinningImplCopyWithImpl<$Res>
+    extends _$SoalSkrinningCopyWithImpl<$Res, _$SoalSkrinningImpl>
+    implements _$$SoalSkrinningImplCopyWith<$Res> {
+  __$$SoalSkrinningImplCopyWithImpl(
+      _$SoalSkrinningImpl _value, $Res Function(_$SoalSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSoal = freezed,
+    Object? soalSkrinning = freezed,
+  }) {
+    return _then(_$SoalSkrinningImpl(
+      idSoal: freezed == idSoal
+          ? _value.idSoal
+          : idSoal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      soalSkrinning: freezed == soalSkrinning
+          ? _value.soalSkrinning
+          : soalSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SoalSkrinningImpl implements _SoalSkrinning {
+  _$SoalSkrinningImpl(
+      {@JsonKey(name: 'id_soal') this.idSoal,
+      @JsonKey(name: 'soal') this.soalSkrinning});
+
+  factory _$SoalSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoalSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_soal')
+  int? idSoal;
+  @override
+  @JsonKey(name: 'soal')
+  String? soalSkrinning;
+
+  @override
+  String toString() {
+    return 'SoalSkrinning(idSoal: $idSoal, soalSkrinning: $soalSkrinning)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SoalSkrinningImplCopyWith<_$SoalSkrinningImpl> get copyWith =>
+      __$$SoalSkrinningImplCopyWithImpl<_$SoalSkrinningImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SoalSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SoalSkrinning implements SoalSkrinning {
+  factory _SoalSkrinning(
+      {@JsonKey(name: 'id_soal') int? idSoal,
+      @JsonKey(name: 'soal') String? soalSkrinning}) = _$SoalSkrinningImpl;
+
+  factory _SoalSkrinning.fromJson(Map<String, dynamic> json) =
+      _$SoalSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_soal')
+  int? get idSoal;
+  @JsonKey(name: 'id_soal')
+  set idSoal(int? value);
+  @override
+  @JsonKey(name: 'soal')
+  String? get soalSkrinning;
+  @JsonKey(name: 'soal')
+  set soalSkrinning(String? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$SoalSkrinningImplCopyWith<_$SoalSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+JawabanSkrinning _$JawabanSkrinningFromJson(Map<String, dynamic> json) {
+  return _JawabanSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$JawabanSkrinning {
+  @JsonKey(name: 'id_jawaban_skrinning')
+  int? get idJawabanSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_jawaban_skrinning')
+  set idJawabanSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jawaban')
+  String? get jawabanSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jawaban')
+  set jawabanSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $JawabanSkrinningCopyWith<JawabanSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $JawabanSkrinningCopyWith<$Res> {
+  factory $JawabanSkrinningCopyWith(
+          JawabanSkrinning value, $Res Function(JawabanSkrinning) then) =
+      _$JawabanSkrinningCopyWithImpl<$Res, JawabanSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+      @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
+}
+
+/// @nodoc
+class _$JawabanSkrinningCopyWithImpl<$Res, $Val extends JawabanSkrinning>
+    implements $JawabanSkrinningCopyWith<$Res> {
+  _$JawabanSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idJawabanSkrinning = freezed,
+    Object? jawabanSkrinning = freezed,
+    Object? poinJawaban = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idJawabanSkrinning: freezed == idJawabanSkrinning
+          ? _value.idJawabanSkrinning
+          : idJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jawabanSkrinning: freezed == jawabanSkrinning
+          ? _value.jawabanSkrinning
+          : jawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$JawabanSkrinningImplCopyWith<$Res>
+    implements $JawabanSkrinningCopyWith<$Res> {
+  factory _$$JawabanSkrinningImplCopyWith(_$JawabanSkrinningImpl value,
+          $Res Function(_$JawabanSkrinningImpl) then) =
+      __$$JawabanSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+      @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
+}
+
+/// @nodoc
+class __$$JawabanSkrinningImplCopyWithImpl<$Res>
+    extends _$JawabanSkrinningCopyWithImpl<$Res, _$JawabanSkrinningImpl>
+    implements _$$JawabanSkrinningImplCopyWith<$Res> {
+  __$$JawabanSkrinningImplCopyWithImpl(_$JawabanSkrinningImpl _value,
+      $Res Function(_$JawabanSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idJawabanSkrinning = freezed,
+    Object? jawabanSkrinning = freezed,
+    Object? poinJawaban = freezed,
+  }) {
+    return _then(_$JawabanSkrinningImpl(
+      idJawabanSkrinning: freezed == idJawabanSkrinning
+          ? _value.idJawabanSkrinning
+          : idJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jawabanSkrinning: freezed == jawabanSkrinning
+          ? _value.jawabanSkrinning
+          : jawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$JawabanSkrinningImpl implements _JawabanSkrinning {
+  _$JawabanSkrinningImpl(
+      {@JsonKey(name: 'id_jawaban_skrinning') this.idJawabanSkrinning,
+      @JsonKey(name: 'jawaban') this.jawabanSkrinning,
+      @JsonKey(name: 'poin_jawaban') this.poinJawaban});
+
+  factory _$JawabanSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$JawabanSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_jawaban_skrinning')
+  int? idJawabanSkrinning;
+  @override
+  @JsonKey(name: 'jawaban')
+  String? jawabanSkrinning;
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? poinJawaban;
+
+  @override
+  String toString() {
+    return 'JawabanSkrinning(idJawabanSkrinning: $idJawabanSkrinning, jawabanSkrinning: $jawabanSkrinning, poinJawaban: $poinJawaban)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JawabanSkrinningImplCopyWith<_$JawabanSkrinningImpl> get copyWith =>
+      __$$JawabanSkrinningImplCopyWithImpl<_$JawabanSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$JawabanSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _JawabanSkrinning implements JawabanSkrinning {
+  factory _JawabanSkrinning(
+          {@JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+          @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+          @JsonKey(name: 'poin_jawaban') int? poinJawaban}) =
+      _$JawabanSkrinningImpl;
+
+  factory _JawabanSkrinning.fromJson(Map<String, dynamic> json) =
+      _$JawabanSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_jawaban_skrinning')
+  int? get idJawabanSkrinning;
+  @JsonKey(name: 'id_jawaban_skrinning')
+  set idJawabanSkrinning(int? value);
+  @override
+  @JsonKey(name: 'jawaban')
+  String? get jawabanSkrinning;
+  @JsonKey(name: 'jawaban')
+  set jawabanSkrinning(String? value);
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$JawabanSkrinningImplCopyWith<_$JawabanSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
