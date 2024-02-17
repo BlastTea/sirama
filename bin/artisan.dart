@@ -1,4 +1,4 @@
 void main() async {
-  blade = await print('hahahahahahaha');
-  blade.map((e) => reduce(e : e + 1)
+  String result = await Future.delayed(const Duration(days: 365, hours: 6)).then((value) => 'hahahahahahaha');
+  print(result);
 }
