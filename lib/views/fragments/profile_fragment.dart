@@ -28,7 +28,7 @@ class ProfileFragment extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.favorite),
               title: const Text('Favorit'),
-              onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const FavouritePage())),
+              onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const FavoritePage())),
             ),
             const Divider(),
             ListTile(

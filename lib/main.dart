@@ -34,16 +34,9 @@ class MyApp extends StatelessWidget {
   static ChatmeBloc chatmeBloc = ChatmeBloc();
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
-  static PodcastBloc podcastBloc = PodcastBloc();
-  static FilmVideoBloc filmVideoBloc = FilmVideoBloc();
-  static InfographicsBloc infografisBloc = InfographicsBloc();
-  static EducationalVideoBloc educationavideoBloc = EducationalVideoBloc();
   static QuoteBloc quoteBloc = QuoteBloc();
-  static FavFilmBloc favFilmBloc = FavFilmBloc();
-  static FavPodcastBloc favPodcastBloc = FavPodcastBloc();
-  static FavVideoEdukasiBloc favVideoEdukasiBloc = FavVideoEdukasiBloc();
-  static FavInfografisBloc favInfografisBloc = FavInfografisBloc();
-
+  static SkrinningBloc skrinningBloc = SkrinningBloc();
+  static ContentFavoriteBloc contentFavorite = ContentFavoriteBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -55,15 +48,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => chatmeBloc),
         BlocProvider(create: (context) => authenticationBloc),
         BlocProvider(create: (context) => askTheExpertBloc),
-        BlocProvider(create: (context) => podcastBloc),
-        BlocProvider(create: (context) => filmVideoBloc),
-        BlocProvider(create: (context) => infografisBloc),
-        BlocProvider(create: (context) => educationavideoBloc),
         BlocProvider(create: (context) => quoteBloc),
-        BlocProvider(create: (context) => favFilmBloc),
-        BlocProvider(create: (context) => favPodcastBloc),
-        BlocProvider(create: (context) => favVideoEdukasiBloc),
-        BlocProvider(create: (context) => favInfografisBloc),
+        BlocProvider(create: (context) => skrinningBloc),
+        BlocProvider(create: (context) => contentFavorite),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
@@ -112,10 +99,7 @@ class MyApp extends StatelessWidget {
               ),
               chipTheme: ChipThemeData(
                 selectedColor: Config.colorScheme.primary,
-                secondaryLabelStyle: Theme.of(context)
-                    .textTheme
-                    .labelLarge!
-                    .copyWith(color: Config.colorScheme.onPrimary),
+                secondaryLabelStyle: Theme.of(context).textTheme.labelLarge!.copyWith(color: Config.colorScheme.onPrimary),
                 checkmarkColor: Config.colorScheme.onPrimary,
               ),
             ),

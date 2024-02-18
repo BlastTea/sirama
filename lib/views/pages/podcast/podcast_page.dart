@@ -1,15 +1,15 @@
 part of '../pages.dart';
 
-class EducationalVideoPage extends StatelessWidget {
-  const EducationalVideoPage({super.key});
+class PodcastPage extends StatelessWidget {
+  const PodcastPage({super.key});
 
-  static Widget listVideo({
+  static Widget listPodcast({
     required BuildContext context,
-    required List<FavVideoEdukasi> favVideoEdukasis,
+    required List<FavPodcast> favPodcasts,
     bool replaceCurrentPage = false,
-    int? currentEducationVideo,
+    int? currentPodcast,
   }) =>
-      favVideoEdukasis.isEmpty
+      favPodcasts.isEmpty
           ? Center(
               child: Text(
                 'Tidak ada data',
@@ -21,15 +21,15 @@ class EducationalVideoPage extends StatelessWidget {
               primary: false,
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               itemBuilder: (context, index) {
-                VideoEdukasi videoEdukasi = favVideoEdukasis[index].videoEdukasi!;
+                Podcast podcast = favPodcasts[index].podcast!;
 
-                if (videoEdukasi.idVideoEdukasi == currentEducationVideo) return Container();
+                if (podcast.idPodcast == currentPodcast) return Container();
 
                 return InkWell(
                   onTap: () {
                     Route route = MaterialPageRoute(
-                      builder: (context) => DetailsEducationalVideoPage(
-                        educationalVideo: videoEdukasi,
+                      builder: (context) => DetailsPodcastPage(
+                        podcast: podcast,
                       ),
                     );
 
@@ -45,13 +45,13 @@ class EducationalVideoPage extends StatelessWidget {
                         aspectRatio: 16 / 9,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: videoEdukasi.thumbnailImageData != null
+                          child: podcast.thumbnailImageData != null
                               ? Image.memory(
-                                  Uint8List.fromList(videoEdukasi.thumbnailImageData!),
+                                  Uint8List.fromList(podcast.thumbnailImageData!),
                                   fit: BoxFit.cover,
                                 )
                               : Image.network(
-                                  'https://dev-sirama.propertiideal.id/test/image not found.png',
+                                  'https://dev-sirama.propertiideal.id/storage/test/image not found.png',
                                   fit: BoxFit.cover,
                                 ),
                         ),
@@ -62,21 +62,24 @@ class EducationalVideoPage extends StatelessWidget {
                           backgroundImage: AssetImage('assets/user.png'),
                         ),
                         title: Text(
-                          videoEdukasi.judulVideoEdukasi ?? '?',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          podcast.judulPodcast ?? '?',
+                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 16, fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          'Admin . ${videoEdukasi.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                          'Admin . ${podcast.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
                         ),
                       ),
+                      const SizedBox(
+                        height: 15,
+                      ),
                     ],
                   ),
                 );
               },
-              itemCount: favVideoEdukasis.length,
+              itemCount: favPodcasts.length,
             );
 
   @override
@@ -86,35 +89,50 @@ class EducationalVideoPage extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
-                title: const Text('Video Edukasi'),
+                leading: IconButton(
+                  icon: const Icon(Icons.arrow_back, color: Colors.black),
+                  onPressed: () => Navigator.of(context).pop(),
+                ),
+                title: const Text("Podcast Edukasi"),
                 centerTitle: true,
               ),
               body: SafeArea(
                 child: ListView(
+                  shrinkWrap: true,
                   children: [
-                    const SizedBox(height: 20),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20.0),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20.0),
                       child: CardTile(
-                        title: Text('Bagaimana sih gambaran Bullying di dunia nyata? Hmmm...'),
-                        button: Text('Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton Film!'),
+                        title: Text(
+                          'Bagaimana sih gambaran Bullying di dunia nyata? Hmmm... 🤔',
+                          style: Config.textStyleTitleLarge.copyWith(color: Colors.white),
+                        ),
+                        button: Text(
+                          'Yuk! biar Sobat RAMA ngga bosan luangkan waktu untuk menonton podcast!',
+                          style: Config.textStyleBodyLarge.copyWith(color: Colors.white),
+                        ),
                       ),
                     ),
-                    const SizedBox(height: 20),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 20),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Row(
                         children: [
                           Text(
                             'Video edukasi terbaru',
-                            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
                           ),
                         ],
                       ),
                     ),
-                    listVideo(
+                    listPodcast(
                       context: context,
-                      favVideoEdukasis: stateContentFavorite.videoEdukasis,
+                      favPodcasts: stateContentFavorite.podcasts,
                     )
                   ],
                 ),
@@ -124,7 +142,7 @@ class EducationalVideoPage extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
-                title: const Text('Video Edukasi'),
+                title: const Text('Podcast Edukasi'),
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
@@ -136,7 +154,7 @@ class EducationalVideoPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text('Video Edukasi'),
+              title: const Text('Film Edukasi'),
               centerTitle: true,
             ),
             body: const Center(

@@ -42,6 +42,8 @@ class ContentFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.contentFavorite.state is ContentFavoriteInitial) MyApp.contentFavorite.add(InitializeContentFavoriteData());
+
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -136,7 +138,24 @@ class ContentFragment extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 20),
-            const AllEducationalVideoPage()
+            BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
+              builder: (context, stateContentFavorite) {
+                if (stateContentFavorite is ContentFavoriteDataLoaded) {
+                  return EducationalVideoPage.listVideo(
+                    context: context,
+                    favVideoEdukasis: stateContentFavorite.videoEdukasis,
+                  );
+                } else if (stateContentFavorite is ContentFavoriteError) {
+                  return ErrorOccuredButton(
+                    onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                  );
+                }
+
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              },
+            )
           ],
         ),
       ),

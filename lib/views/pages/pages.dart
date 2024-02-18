@@ -13,8 +13,6 @@ import 'package:sirama/views/fragments/fragments.dart';
 import 'package:sirama/views/widgets/widgets.dart';
 import 'package:share_plus/share_plus.dart';
 
-
-
 part 'welcome_page.dart';
 part 'user/sign_in_page.dart';
 part 'user/sign_up_page.dart';
@@ -23,11 +21,12 @@ part 'chatme_page.dart';
 part 'doctor_profile_page.dart';
 part 'user/edit_profile_page.dart';
 part 'user/sign_up_role_page.dart';
-part 'user/favourite_page.dart';
+part 'user/favorite_page.dart';
 part 'my_carousel_slider.dart';
 
 part 'screening/screening_page.dart';
 part 'screening/choose_screening_page.dart';
+part 'screening/screening_choose_list_item.dart';
 part 'screening/main_screening_page.dart';
 part 'screening/history_screening_page.dart';
 
@@ -36,23 +35,13 @@ part 'ask_the_expert/input_ask_page.dart';
 part 'ask_the_expert/chat_ask_the_expert_page.dart';
 
 part 'educational_video/educational_video_page.dart';
-part 'educational_video/all_educational_video_page.dart';
 part 'educational_video/details_educational_video_page.dart';
 
-part 'film_video/detail_film_page.dart';
-part 'film_video/film_page.dart';
+part 'film/detail_film_page.dart';
+part 'film/film_page.dart';
 
-part 'podcast_video/podcast_page.dart';
-part 'podcast_video/details_podcast_page.dart';
+part 'podcast/podcast_page.dart';
+part 'podcast/details_podcast_page.dart';
 
 part 'infographics/infographics_page.dart';
 part 'infographics/details_infographics_page.dart';
-
-part 'user/favourite_user/favourite_educational_video/educational_video_favourite_page.dart';
-part 'user/favourite_user/favourite_educational_video/detail_educational_video_favourite_page.dart';
-part 'user/favourite_user/favourite_film/film_favourite_page.dart';
-part 'user/favourite_user/favourite_film/detail_film_favourite_page.dart';
-part 'user/favourite_user/favourite_infographics/infographics_favourite_page.dart';
-part 'user/favourite_user/favourite_infographics/detail_infographics_favourite_page.dart';
-part 'user/favourite_user/favourite_podcast/podcast_favourite_page.dart';
-part 'user/favourite_user/favourite_podcast/detail_podcast_favourite_page.dart';

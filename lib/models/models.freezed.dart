@@ -1205,12 +1205,12 @@ abstract class _JawabanAhli implements JawabanAhli {
       throw _privateConstructorUsedError;
 }
 
-PodcastVideo _$PodcastVideoFromJson(Map<String, dynamic> json) {
-  return _PodcastVideo.fromJson(json);
+Podcast _$PodcastFromJson(Map<String, dynamic> json) {
+  return _Podcast.fromJson(json);
 }
 
 /// @nodoc
-mixin _$PodcastVideo {
+mixin _$Podcast {
   @JsonKey(name: 'id_podcast')
   int? get idPodcast => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_podcast')
@@ -1247,6 +1247,10 @@ mixin _$PodcastVideo {
   int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  set isFavorited(bool value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1255,15 +1259,13 @@ mixin _$PodcastVideo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $PodcastVideoCopyWith<PodcastVideo> get copyWith =>
-      throw _privateConstructorUsedError;
+  $PodcastCopyWith<Podcast> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $PodcastVideoCopyWith<$Res> {
-  factory $PodcastVideoCopyWith(
-          PodcastVideo value, $Res Function(PodcastVideo) then) =
-      _$PodcastVideoCopyWithImpl<$Res, PodcastVideo>;
+abstract class $PodcastCopyWith<$Res> {
+  factory $PodcastCopyWith(Podcast value, $Res Function(Podcast) then) =
+      _$PodcastCopyWithImpl<$Res, Podcast>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_podcast') int? idPodcast,
@@ -1275,14 +1277,17 @@ abstract class $PodcastVideoCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
 
 /// @nodoc
-class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
-    implements $PodcastVideoCopyWith<$Res> {
-  _$PodcastVideoCopyWithImpl(this._value, this._then);
+class _$PodcastCopyWithImpl<$Res, $Val extends Podcast>
+    implements $PodcastCopyWith<$Res> {
+  _$PodcastCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -1301,6 +1306,7 @@ class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
     Object? updatedAt = freezed,
     Object? deksripsiPodcast = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1340,6 +1346,10 @@ class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -1349,11 +1359,10 @@ class _$PodcastVideoCopyWithImpl<$Res, $Val extends PodcastVideo>
 }
 
 /// @nodoc
-abstract class _$$PodcastVideoImplCopyWith<$Res>
-    implements $PodcastVideoCopyWith<$Res> {
-  factory _$$PodcastVideoImplCopyWith(
-          _$PodcastVideoImpl value, $Res Function(_$PodcastVideoImpl) then) =
-      __$$PodcastVideoImplCopyWithImpl<$Res>;
+abstract class _$$PodcastImplCopyWith<$Res> implements $PodcastCopyWith<$Res> {
+  factory _$$PodcastImplCopyWith(
+          _$PodcastImpl value, $Res Function(_$PodcastImpl) then) =
+      __$$PodcastImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -1366,16 +1375,19 @@ abstract class _$$PodcastVideoImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
 
 /// @nodoc
-class __$$PodcastVideoImplCopyWithImpl<$Res>
-    extends _$PodcastVideoCopyWithImpl<$Res, _$PodcastVideoImpl>
-    implements _$$PodcastVideoImplCopyWith<$Res> {
-  __$$PodcastVideoImplCopyWithImpl(
-      _$PodcastVideoImpl _value, $Res Function(_$PodcastVideoImpl) _then)
+class __$$PodcastImplCopyWithImpl<$Res>
+    extends _$PodcastCopyWithImpl<$Res, _$PodcastImpl>
+    implements _$$PodcastImplCopyWith<$Res> {
+  __$$PodcastImplCopyWithImpl(
+      _$PodcastImpl _value, $Res Function(_$PodcastImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -1390,9 +1402,10 @@ class __$$PodcastVideoImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? deksripsiPodcast = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
     Object? thumbnailImageData = freezed,
   }) {
-    return _then(_$PodcastVideoImpl(
+    return _then(_$PodcastImpl(
       idPodcast: freezed == idPodcast
           ? _value.idPodcast
           : idPodcast // ignore: cast_nullable_to_non_nullable
@@ -1429,6 +1442,10 @@ class __$$PodcastVideoImplCopyWithImpl<$Res>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -1439,8 +1456,8 @@ class __$$PodcastVideoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$PodcastVideoImpl implements _PodcastVideo {
-  _$PodcastVideoImpl(
+class _$PodcastImpl implements _Podcast {
+  _$PodcastImpl(
       {@JsonKey(name: 'id_podcast') this.idPodcast,
       @JsonKey(name: 'judul_podcast') this.judulPodcast,
       @JsonKey(name: 'link_podcast') this.linkPodcast,
@@ -1450,11 +1467,14 @@ class _$PodcastVideoImpl implements _PodcastVideo {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'deskripsi') this.deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      this.isFavorited = false,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
-  factory _$PodcastVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$PodcastVideoImplFromJson(json);
+  factory _$PodcastImpl.fromJson(Map<String, dynamic> json) =>
+      _$$PodcastImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_podcast')
@@ -1484,30 +1504,33 @@ class _$PodcastVideoImpl implements _PodcastVideo {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool isFavorited;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'PodcastVideo(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiPodcast: $deksripsiPodcast, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'Podcast(idPodcast: $idPodcast, judulPodcast: $judulPodcast, linkPodcast: $linkPodcast, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiPodcast: $deksripsiPodcast, totalLikes: $totalLikes, isFavorited: $isFavorited, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$PodcastVideoImplCopyWith<_$PodcastVideoImpl> get copyWith =>
-      __$$PodcastVideoImplCopyWithImpl<_$PodcastVideoImpl>(this, _$identity);
+  _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
+      __$$PodcastImplCopyWithImpl<_$PodcastImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$PodcastVideoImplToJson(
+    return _$$PodcastImplToJson(
       this,
     );
   }
 }
 
-abstract class _PodcastVideo implements PodcastVideo {
-  factory _PodcastVideo(
+abstract class _Podcast implements Podcast {
+  factory _Podcast(
       {@JsonKey(name: 'id_podcast') int? idPodcast,
       @JsonKey(name: 'judul_podcast') String? judulPodcast,
       @JsonKey(name: 'link_podcast') String? linkPodcast,
@@ -1517,11 +1540,13 @@ abstract class _PodcastVideo implements PodcastVideo {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData}) = _$PodcastVideoImpl;
+      List<int>? thumbnailImageData}) = _$PodcastImpl;
 
-  factory _PodcastVideo.fromJson(Map<String, dynamic> json) =
-      _$PodcastVideoImpl.fromJson;
+  factory _Podcast.fromJson(Map<String, dynamic> json) = _$PodcastImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_podcast')
@@ -1569,13 +1594,18 @@ abstract class _PodcastVideo implements PodcastVideo {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value);
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  set isFavorited(bool value);
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
-  _$$PodcastVideoImplCopyWith<_$PodcastVideoImpl> get copyWith =>
+  _$$PodcastImplCopyWith<_$PodcastImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -1621,6 +1651,10 @@ mixin _$Film {
   int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  set isFavorited(bool value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1647,6 +1681,9 @@ abstract class $FilmCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1673,6 +1710,7 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
     Object? updatedAt = freezed,
     Object? deksripsiFilm = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -1712,6 +1750,10 @@ class _$FilmCopyWithImpl<$Res, $Val extends Film>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -1737,6 +1779,9 @@ abstract class _$$FilmImplCopyWith<$Res> implements $FilmCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
@@ -1760,6 +1805,7 @@ class __$$FilmImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? deksripsiFilm = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_$FilmImpl(
@@ -1799,6 +1845,10 @@ class __$$FilmImplCopyWithImpl<$Res>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -1820,6 +1870,9 @@ class _$FilmImpl implements _Film {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'deskripsi') this.deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      this.isFavorited = false,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
@@ -1854,12 +1907,15 @@ class _$FilmImpl implements _Film {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool isFavorited;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiFilm: $deksripsiFilm, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'Film(idFilm: $idFilm, judulFilm: $judulFilm, linkFilm: $linkFilm, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiFilm: $deksripsiFilm, totalLikes: $totalLikes, isFavorited: $isFavorited, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
@@ -1887,6 +1943,9 @@ abstract class _Film implements Film {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiFilm,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData}) = _$FilmImpl;
 
@@ -1938,6 +1997,11 @@ abstract class _Film implements Film {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value);
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  set isFavorited(bool value);
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1972,6 +2036,8 @@ mixin _$Infografis {
   DateTime? get updatedAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -1994,7 +2060,10 @@ abstract class $InfografisCopyWith<$Res> {
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes});
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited});
 }
 
 /// @nodoc
@@ -2019,6 +2088,7 @@ class _$InfografisCopyWithImpl<$Res, $Val extends Infografis>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
   }) {
     return _then(_value.copyWith(
       idInfografis: freezed == idInfografis
@@ -2057,6 +2127,10 @@ class _$InfografisCopyWithImpl<$Res, $Val extends Infografis>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
     ) as $Val);
   }
 }
@@ -2078,7 +2152,10 @@ abstract class _$$InfografisImplCopyWith<$Res>
       @JsonKey(name: 'upload_user_id') int? uploadUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes});
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited});
 }
 
 /// @nodoc
@@ -2101,6 +2178,7 @@ class __$$InfografisImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
   }) {
     return _then(_$InfografisImpl(
       idInfografis: freezed == idInfografis
@@ -2139,6 +2217,10 @@ class __$$InfografisImplCopyWithImpl<$Res>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
     ));
   }
 }
@@ -2155,7 +2237,10 @@ class _$InfografisImpl implements _Infografis {
       @JsonKey(name: 'upload_user_id') this.uploadUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
-      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes});
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      this.isFavorited = false});
 
   factory _$InfografisImpl.fromJson(Map<String, dynamic> json) =>
       _$$InfografisImplFromJson(json);
@@ -2187,10 +2272,13 @@ class _$InfografisImpl implements _Infografis {
   @override
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   final int? totalLikes;
+  @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  final bool isFavorited;
 
   @override
   String toString() {
-    return 'Infografis(idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes)';
+    return 'Infografis(idInfografis: $idInfografis, judulInfografis: $judulInfografis, deskripsiInfografis: $deskripsiInfografis, tanggalUpload: $tanggalUpload, gambarInfografis: $gambarInfografis, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, totalLikes: $totalLikes, isFavorited: $isFavorited)';
   }
 
   @override
@@ -2215,7 +2303,9 @@ class _$InfografisImpl implements _Infografis {
             (identical(other.updatedAt, updatedAt) ||
                 other.updatedAt == updatedAt) &&
             (identical(other.totalLikes, totalLikes) ||
-                other.totalLikes == totalLikes));
+                other.totalLikes == totalLikes) &&
+            (identical(other.isFavorited, isFavorited) ||
+                other.isFavorited == isFavorited));
   }
 
   @JsonKey(ignore: true)
@@ -2230,7 +2320,8 @@ class _$InfografisImpl implements _Infografis {
       uploadUserId,
       createdAt,
       updatedAt,
-      totalLikes);
+      totalLikes,
+      isFavorited);
 
   @JsonKey(ignore: true)
   @override
@@ -2256,8 +2347,10 @@ abstract class _Infografis implements Infografis {
       @JsonKey(name: 'upload_user_id') final int? uploadUserId,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       @JsonKey(name: 'updated_at') final DateTime? updatedAt,
-      @JsonKey(name: 'total_likes', fromJson: _parseInt)
-      final int? totalLikes}) = _$InfografisImpl;
+      @JsonKey(name: 'total_likes', fromJson: _parseInt) final int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      final bool isFavorited}) = _$InfografisImpl;
 
   factory _Infografis.fromJson(Map<String, dynamic> json) =
       _$InfografisImpl.fromJson;
@@ -2290,17 +2383,20 @@ abstract class _Infografis implements Infografis {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? get totalLikes;
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited;
+  @override
   @JsonKey(ignore: true)
   _$$InfografisImplCopyWith<_$InfografisImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-EducationalVideo _$EducationalVideoFromJson(Map<String, dynamic> json) {
-  return _EducationalVideo.fromJson(json);
+VideoEdukasi _$VideoEdukasiFromJson(Map<String, dynamic> json) {
+  return _VideoEdukasi.fromJson(json);
 }
 
 /// @nodoc
-mixin _$EducationalVideo {
+mixin _$VideoEdukasi {
   @JsonKey(name: 'id_video_edukasi')
   int? get idVideoEdukasi => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_video_edukasi')
@@ -2338,6 +2434,10 @@ mixin _$EducationalVideo {
   int? get totalLikes => throw _privateConstructorUsedError;
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited => throw _privateConstructorUsedError;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  set isFavorited(bool value) => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData => throw _privateConstructorUsedError;
   @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2346,15 +2446,15 @@ mixin _$EducationalVideo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $EducationalVideoCopyWith<EducationalVideo> get copyWith =>
+  $VideoEdukasiCopyWith<VideoEdukasi> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $EducationalVideoCopyWith<$Res> {
-  factory $EducationalVideoCopyWith(
-          EducationalVideo value, $Res Function(EducationalVideo) then) =
-      _$EducationalVideoCopyWithImpl<$Res, EducationalVideo>;
+abstract class $VideoEdukasiCopyWith<$Res> {
+  factory $VideoEdukasiCopyWith(
+          VideoEdukasi value, $Res Function(VideoEdukasi) then) =
+      _$VideoEdukasiCopyWithImpl<$Res, VideoEdukasi>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
@@ -2366,14 +2466,17 @@ abstract class $EducationalVideoCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
 
 /// @nodoc
-class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
-    implements $EducationalVideoCopyWith<$Res> {
-  _$EducationalVideoCopyWithImpl(this._value, this._then);
+class _$VideoEdukasiCopyWithImpl<$Res, $Val extends VideoEdukasi>
+    implements $VideoEdukasiCopyWith<$Res> {
+  _$VideoEdukasiCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -2392,6 +2495,7 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
     Object? updatedAt = freezed,
     Object? deksripsiVideoEdukasi = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
     Object? thumbnailImageData = freezed,
   }) {
     return _then(_value.copyWith(
@@ -2431,6 +2535,10 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2440,11 +2548,11 @@ class _$EducationalVideoCopyWithImpl<$Res, $Val extends EducationalVideo>
 }
 
 /// @nodoc
-abstract class _$$EducationalVideoImplCopyWith<$Res>
-    implements $EducationalVideoCopyWith<$Res> {
-  factory _$$EducationalVideoImplCopyWith(_$EducationalVideoImpl value,
-          $Res Function(_$EducationalVideoImpl) then) =
-      __$$EducationalVideoImplCopyWithImpl<$Res>;
+abstract class _$$VideoEdukasiImplCopyWith<$Res>
+    implements $VideoEdukasiCopyWith<$Res> {
+  factory _$$VideoEdukasiImplCopyWith(
+          _$VideoEdukasiImpl value, $Res Function(_$VideoEdukasiImpl) then) =
+      __$$VideoEdukasiImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -2457,16 +2565,19 @@ abstract class _$$EducationalVideoImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData});
 }
 
 /// @nodoc
-class __$$EducationalVideoImplCopyWithImpl<$Res>
-    extends _$EducationalVideoCopyWithImpl<$Res, _$EducationalVideoImpl>
-    implements _$$EducationalVideoImplCopyWith<$Res> {
-  __$$EducationalVideoImplCopyWithImpl(_$EducationalVideoImpl _value,
-      $Res Function(_$EducationalVideoImpl) _then)
+class __$$VideoEdukasiImplCopyWithImpl<$Res>
+    extends _$VideoEdukasiCopyWithImpl<$Res, _$VideoEdukasiImpl>
+    implements _$$VideoEdukasiImplCopyWith<$Res> {
+  __$$VideoEdukasiImplCopyWithImpl(
+      _$VideoEdukasiImpl _value, $Res Function(_$VideoEdukasiImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -2481,9 +2592,10 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
     Object? updatedAt = freezed,
     Object? deksripsiVideoEdukasi = freezed,
     Object? totalLikes = freezed,
+    Object? isFavorited = null,
     Object? thumbnailImageData = freezed,
   }) {
-    return _then(_$EducationalVideoImpl(
+    return _then(_$VideoEdukasiImpl(
       idVideoEdukasi: freezed == idVideoEdukasi
           ? _value.idVideoEdukasi
           : idVideoEdukasi // ignore: cast_nullable_to_non_nullable
@@ -2520,6 +2632,10 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
           ? _value.totalLikes
           : totalLikes // ignore: cast_nullable_to_non_nullable
               as int?,
+      isFavorited: null == isFavorited
+          ? _value.isFavorited
+          : isFavorited // ignore: cast_nullable_to_non_nullable
+              as bool,
       thumbnailImageData: freezed == thumbnailImageData
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
@@ -2530,8 +2646,8 @@ class __$$EducationalVideoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$EducationalVideoImpl implements _EducationalVideo {
-  _$EducationalVideoImpl(
+class _$VideoEdukasiImpl implements _VideoEdukasi {
+  _$VideoEdukasiImpl(
       {@JsonKey(name: 'id_video_edukasi') this.idVideoEdukasi,
       @JsonKey(name: 'judul_video_edukasi') this.judulVideoEdukasi,
       @JsonKey(name: 'link_video_edukasi') this.linkVideoEdukasi,
@@ -2541,11 +2657,14 @@ class _$EducationalVideoImpl implements _EducationalVideo {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(name: 'deskripsi') this.deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) this.totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      this.isFavorited = false,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData});
 
-  factory _$EducationalVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$EducationalVideoImplFromJson(json);
+  factory _$VideoEdukasiImpl.fromJson(Map<String, dynamic> json) =>
+      _$$VideoEdukasiImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_video_edukasi')
@@ -2575,31 +2694,33 @@ class _$EducationalVideoImpl implements _EducationalVideo {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   int? totalLikes;
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool isFavorited;
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
 
   @override
   String toString() {
-    return 'EducationalVideo(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiVideoEdukasi: $deksripsiVideoEdukasi, totalLikes: $totalLikes, thumbnailImageData: $thumbnailImageData)';
+    return 'VideoEdukasi(idVideoEdukasi: $idVideoEdukasi, judulVideoEdukasi: $judulVideoEdukasi, linkVideoEdukasi: $linkVideoEdukasi, tanggalUpload: $tanggalUpload, uploadUserId: $uploadUserId, createdAt: $createdAt, updatedAt: $updatedAt, deksripsiVideoEdukasi: $deksripsiVideoEdukasi, totalLikes: $totalLikes, isFavorited: $isFavorited, thumbnailImageData: $thumbnailImageData)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
-      __$$EducationalVideoImplCopyWithImpl<_$EducationalVideoImpl>(
-          this, _$identity);
+  _$$VideoEdukasiImplCopyWith<_$VideoEdukasiImpl> get copyWith =>
+      __$$VideoEdukasiImplCopyWithImpl<_$VideoEdukasiImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$EducationalVideoImplToJson(
+    return _$$VideoEdukasiImplToJson(
       this,
     );
   }
 }
 
-abstract class _EducationalVideo implements EducationalVideo {
-  factory _EducationalVideo(
+abstract class _VideoEdukasi implements VideoEdukasi {
+  factory _VideoEdukasi(
       {@JsonKey(name: 'id_video_edukasi') int? idVideoEdukasi,
       @JsonKey(name: 'judul_video_edukasi') String? judulVideoEdukasi,
       @JsonKey(name: 'link_video_edukasi') String? linkVideoEdukasi,
@@ -2609,11 +2730,14 @@ abstract class _EducationalVideo implements EducationalVideo {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
       @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
+      @JsonKey(
+          name: 'is_favorited', includeFromJson: false, includeToJson: false)
+      bool isFavorited,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      List<int>? thumbnailImageData}) = _$EducationalVideoImpl;
+      List<int>? thumbnailImageData}) = _$VideoEdukasiImpl;
 
-  factory _EducationalVideo.fromJson(Map<String, dynamic> json) =
-      _$EducationalVideoImpl.fromJson;
+  factory _VideoEdukasi.fromJson(Map<String, dynamic> json) =
+      _$VideoEdukasiImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_video_edukasi')
@@ -2661,13 +2785,18 @@ abstract class _EducationalVideo implements EducationalVideo {
   @JsonKey(name: 'total_likes', fromJson: _parseInt)
   set totalLikes(int? value);
   @override
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  bool get isFavorited;
+  @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+  set isFavorited(bool value);
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get thumbnailImageData;
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
   @override
   @JsonKey(ignore: true)
-  _$$EducationalVideoImplCopyWith<_$EducationalVideoImpl> get copyWith =>
+  _$$VideoEdukasiImplCopyWith<_$VideoEdukasiImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3239,12 +3368,12 @@ abstract class _FavInfografis implements FavInfografis {
       throw _privateConstructorUsedError;
 }
 
-FavFilmVideo _$FavFilmVideoFromJson(Map<String, dynamic> json) {
-  return _FavFilmVideo.fromJson(json);
+FavFilm _$FavFilmFromJson(Map<String, dynamic> json) {
+  return _FavFilm.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FavFilmVideo {
+mixin _$FavFilm {
   @JsonKey(name: 'id_fav_film')
   int? get idFavFilm => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_fav_film')
@@ -3275,15 +3404,13 @@ mixin _$FavFilmVideo {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FavFilmVideoCopyWith<FavFilmVideo> get copyWith =>
-      throw _privateConstructorUsedError;
+  $FavFilmCopyWith<FavFilm> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavFilmVideoCopyWith<$Res> {
-  factory $FavFilmVideoCopyWith(
-          FavFilmVideo value, $Res Function(FavFilmVideo) then) =
-      _$FavFilmVideoCopyWithImpl<$Res, FavFilmVideo>;
+abstract class $FavFilmCopyWith<$Res> {
+  factory $FavFilmCopyWith(FavFilm value, $Res Function(FavFilm) then) =
+      _$FavFilmCopyWithImpl<$Res, FavFilm>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
@@ -3299,9 +3426,9 @@ abstract class $FavFilmVideoCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FavFilmVideoCopyWithImpl<$Res, $Val extends FavFilmVideo>
-    implements $FavFilmVideoCopyWith<$Res> {
-  _$FavFilmVideoCopyWithImpl(this._value, this._then);
+class _$FavFilmCopyWithImpl<$Res, $Val extends FavFilm>
+    implements $FavFilmCopyWith<$Res> {
+  _$FavFilmCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -3365,11 +3492,10 @@ class _$FavFilmVideoCopyWithImpl<$Res, $Val extends FavFilmVideo>
 }
 
 /// @nodoc
-abstract class _$$FavFilmVideoImplCopyWith<$Res>
-    implements $FavFilmVideoCopyWith<$Res> {
-  factory _$$FavFilmVideoImplCopyWith(
-          _$FavFilmVideoImpl value, $Res Function(_$FavFilmVideoImpl) then) =
-      __$$FavFilmVideoImplCopyWithImpl<$Res>;
+abstract class _$$FavFilmImplCopyWith<$Res> implements $FavFilmCopyWith<$Res> {
+  factory _$$FavFilmImplCopyWith(
+          _$FavFilmImpl value, $Res Function(_$FavFilmImpl) then) =
+      __$$FavFilmImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3387,11 +3513,11 @@ abstract class _$$FavFilmVideoImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FavFilmVideoImplCopyWithImpl<$Res>
-    extends _$FavFilmVideoCopyWithImpl<$Res, _$FavFilmVideoImpl>
-    implements _$$FavFilmVideoImplCopyWith<$Res> {
-  __$$FavFilmVideoImplCopyWithImpl(
-      _$FavFilmVideoImpl _value, $Res Function(_$FavFilmVideoImpl) _then)
+class __$$FavFilmImplCopyWithImpl<$Res>
+    extends _$FavFilmCopyWithImpl<$Res, _$FavFilmImpl>
+    implements _$$FavFilmImplCopyWith<$Res> {
+  __$$FavFilmImplCopyWithImpl(
+      _$FavFilmImpl _value, $Res Function(_$FavFilmImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3405,7 +3531,7 @@ class __$$FavFilmVideoImplCopyWithImpl<$Res>
     Object? thumbnailImageData = freezed,
     Object? film = freezed,
   }) {
-    return _then(_$FavFilmVideoImpl(
+    return _then(_$FavFilmImpl(
       idFavFilm: freezed == idFavFilm
           ? _value.idFavFilm
           : idFavFilm // ignore: cast_nullable_to_non_nullable
@@ -3440,8 +3566,8 @@ class __$$FavFilmVideoImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FavFilmVideoImpl implements _FavFilmVideo {
-  _$FavFilmVideoImpl(
+class _$FavFilmImpl implements _FavFilm {
+  _$FavFilmImpl(
       {@JsonKey(name: 'id_fav_film') this.idFavFilm,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'film_id') this.idFilm,
@@ -3451,8 +3577,8 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
       this.thumbnailImageData,
       this.film});
 
-  factory _$FavFilmVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FavFilmVideoImplFromJson(json);
+  factory _$FavFilmImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavFilmImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_fav_film')
@@ -3477,25 +3603,25 @@ class _$FavFilmVideoImpl implements _FavFilmVideo {
 
   @override
   String toString() {
-    return 'FavFilmVideo(idFavFilm: $idFavFilm, idUser: $idUser, idFilm: $idFilm, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, film: $film)';
+    return 'FavFilm(idFavFilm: $idFavFilm, idUser: $idUser, idFilm: $idFilm, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, film: $film)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavFilmVideoImplCopyWith<_$FavFilmVideoImpl> get copyWith =>
-      __$$FavFilmVideoImplCopyWithImpl<_$FavFilmVideoImpl>(this, _$identity);
+  _$$FavFilmImplCopyWith<_$FavFilmImpl> get copyWith =>
+      __$$FavFilmImplCopyWithImpl<_$FavFilmImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FavFilmVideoImplToJson(
+    return _$$FavFilmImplToJson(
       this,
     );
   }
 }
 
-abstract class _FavFilmVideo implements FavFilmVideo {
-  factory _FavFilmVideo(
+abstract class _FavFilm implements FavFilm {
+  factory _FavFilm(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'film_id') int? idFilm,
@@ -3503,10 +3629,9 @@ abstract class _FavFilmVideo implements FavFilmVideo {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      Film? film}) = _$FavFilmVideoImpl;
+      Film? film}) = _$FavFilmImpl;
 
-  factory _FavFilmVideo.fromJson(Map<String, dynamic> json) =
-      _$FavFilmVideoImpl.fromJson;
+  factory _FavFilm.fromJson(Map<String, dynamic> json) = _$FavFilmImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_fav_film')
@@ -3543,16 +3668,16 @@ abstract class _FavFilmVideo implements FavFilmVideo {
   set film(Film? value);
   @override
   @JsonKey(ignore: true)
-  _$$FavFilmVideoImplCopyWith<_$FavFilmVideoImpl> get copyWith =>
+  _$$FavFilmImplCopyWith<_$FavFilmImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
-FavPodcastVideo _$FavPodcastVideoFromJson(Map<String, dynamic> json) {
-  return _FavPodcastVideo.fromJson(json);
+FavPodcast _$FavPodcastFromJson(Map<String, dynamic> json) {
+  return _FavPodcast.fromJson(json);
 }
 
 /// @nodoc
-mixin _$FavPodcastVideo {
+mixin _$FavPodcast {
   @JsonKey(name: 'id_fav_podcast')
   int? get idFavPodcast => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_fav_podcast')
@@ -3578,20 +3703,20 @@ mixin _$FavPodcastVideo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value) =>
       throw _privateConstructorUsedError;
-  PodcastVideo? get podcastVideo => throw _privateConstructorUsedError;
-  set podcastVideo(PodcastVideo? value) => throw _privateConstructorUsedError;
+  Podcast? get podcast => throw _privateConstructorUsedError;
+  set podcast(Podcast? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $FavPodcastVideoCopyWith<FavPodcastVideo> get copyWith =>
+  $FavPodcastCopyWith<FavPodcast> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $FavPodcastVideoCopyWith<$Res> {
-  factory $FavPodcastVideoCopyWith(
-          FavPodcastVideo value, $Res Function(FavPodcastVideo) then) =
-      _$FavPodcastVideoCopyWithImpl<$Res, FavPodcastVideo>;
+abstract class $FavPodcastCopyWith<$Res> {
+  factory $FavPodcastCopyWith(
+          FavPodcast value, $Res Function(FavPodcast) then) =
+      _$FavPodcastCopyWithImpl<$Res, FavPodcast>;
   @useResult
   $Res call(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
@@ -3601,15 +3726,15 @@ abstract class $FavPodcastVideoCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      PodcastVideo? podcastVideo});
+      Podcast? podcast});
 
-  $PodcastVideoCopyWith<$Res>? get podcastVideo;
+  $PodcastCopyWith<$Res>? get podcast;
 }
 
 /// @nodoc
-class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
-    implements $FavPodcastVideoCopyWith<$Res> {
-  _$FavPodcastVideoCopyWithImpl(this._value, this._then);
+class _$FavPodcastCopyWithImpl<$Res, $Val extends FavPodcast>
+    implements $FavPodcastCopyWith<$Res> {
+  _$FavPodcastCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -3625,7 +3750,7 @@ class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? podcastVideo = freezed,
+    Object? podcast = freezed,
   }) {
     return _then(_value.copyWith(
       idFavPodcast: freezed == idFavPodcast
@@ -3652,32 +3777,32 @@ class _$FavPodcastVideoCopyWithImpl<$Res, $Val extends FavPodcastVideo>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      podcastVideo: freezed == podcastVideo
-          ? _value.podcastVideo
-          : podcastVideo // ignore: cast_nullable_to_non_nullable
-              as PodcastVideo?,
+      podcast: freezed == podcast
+          ? _value.podcast
+          : podcast // ignore: cast_nullable_to_non_nullable
+              as Podcast?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $PodcastVideoCopyWith<$Res>? get podcastVideo {
-    if (_value.podcastVideo == null) {
+  $PodcastCopyWith<$Res>? get podcast {
+    if (_value.podcast == null) {
       return null;
     }
 
-    return $PodcastVideoCopyWith<$Res>(_value.podcastVideo!, (value) {
-      return _then(_value.copyWith(podcastVideo: value) as $Val);
+    return $PodcastCopyWith<$Res>(_value.podcast!, (value) {
+      return _then(_value.copyWith(podcast: value) as $Val);
     });
   }
 }
 
 /// @nodoc
-abstract class _$$FavPodcastVideoImplCopyWith<$Res>
-    implements $FavPodcastVideoCopyWith<$Res> {
-  factory _$$FavPodcastVideoImplCopyWith(_$FavPodcastVideoImpl value,
-          $Res Function(_$FavPodcastVideoImpl) then) =
-      __$$FavPodcastVideoImplCopyWithImpl<$Res>;
+abstract class _$$FavPodcastImplCopyWith<$Res>
+    implements $FavPodcastCopyWith<$Res> {
+  factory _$$FavPodcastImplCopyWith(
+          _$FavPodcastImpl value, $Res Function(_$FavPodcastImpl) then) =
+      __$$FavPodcastImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
@@ -3688,18 +3813,18 @@ abstract class _$$FavPodcastVideoImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      PodcastVideo? podcastVideo});
+      Podcast? podcast});
 
   @override
-  $PodcastVideoCopyWith<$Res>? get podcastVideo;
+  $PodcastCopyWith<$Res>? get podcast;
 }
 
 /// @nodoc
-class __$$FavPodcastVideoImplCopyWithImpl<$Res>
-    extends _$FavPodcastVideoCopyWithImpl<$Res, _$FavPodcastVideoImpl>
-    implements _$$FavPodcastVideoImplCopyWith<$Res> {
-  __$$FavPodcastVideoImplCopyWithImpl(
-      _$FavPodcastVideoImpl _value, $Res Function(_$FavPodcastVideoImpl) _then)
+class __$$FavPodcastImplCopyWithImpl<$Res>
+    extends _$FavPodcastCopyWithImpl<$Res, _$FavPodcastImpl>
+    implements _$$FavPodcastImplCopyWith<$Res> {
+  __$$FavPodcastImplCopyWithImpl(
+      _$FavPodcastImpl _value, $Res Function(_$FavPodcastImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -3711,9 +3836,9 @@ class __$$FavPodcastVideoImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? podcastVideo = freezed,
+    Object? podcast = freezed,
   }) {
-    return _then(_$FavPodcastVideoImpl(
+    return _then(_$FavPodcastImpl(
       idFavPodcast: freezed == idFavPodcast
           ? _value.idFavPodcast
           : idFavPodcast // ignore: cast_nullable_to_non_nullable
@@ -3738,18 +3863,18 @@ class __$$FavPodcastVideoImplCopyWithImpl<$Res>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      podcastVideo: freezed == podcastVideo
-          ? _value.podcastVideo
-          : podcastVideo // ignore: cast_nullable_to_non_nullable
-              as PodcastVideo?,
+      podcast: freezed == podcast
+          ? _value.podcast
+          : podcast // ignore: cast_nullable_to_non_nullable
+              as Podcast?,
     ));
   }
 }
 
 /// @nodoc
 @JsonSerializable()
-class _$FavPodcastVideoImpl implements _FavPodcastVideo {
-  _$FavPodcastVideoImpl(
+class _$FavPodcastImpl implements _FavPodcast {
+  _$FavPodcastImpl(
       {@JsonKey(name: 'id_fav_podcast') this.idFavPodcast,
       @JsonKey(name: 'user_id') this.idUser,
       @JsonKey(name: 'podcast_id') this.idPodcast,
@@ -3757,10 +3882,10 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData,
-      this.podcastVideo});
+      this.podcast});
 
-  factory _$FavPodcastVideoImpl.fromJson(Map<String, dynamic> json) =>
-      _$$FavPodcastVideoImplFromJson(json);
+  factory _$FavPodcastImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavPodcastImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_fav_podcast')
@@ -3781,30 +3906,29 @@ class _$FavPodcastVideoImpl implements _FavPodcastVideo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
   @override
-  PodcastVideo? podcastVideo;
+  Podcast? podcast;
 
   @override
   String toString() {
-    return 'FavPodcastVideo(idFavPodcast: $idFavPodcast, idUser: $idUser, idPodcast: $idPodcast, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, podcastVideo: $podcastVideo)';
+    return 'FavPodcast(idFavPodcast: $idFavPodcast, idUser: $idUser, idPodcast: $idPodcast, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, podcast: $podcast)';
   }
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavPodcastVideoImplCopyWith<_$FavPodcastVideoImpl> get copyWith =>
-      __$$FavPodcastVideoImplCopyWithImpl<_$FavPodcastVideoImpl>(
-          this, _$identity);
+  _$$FavPodcastImplCopyWith<_$FavPodcastImpl> get copyWith =>
+      __$$FavPodcastImplCopyWithImpl<_$FavPodcastImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FavPodcastVideoImplToJson(
+    return _$$FavPodcastImplToJson(
       this,
     );
   }
 }
 
-abstract class _FavPodcastVideo implements FavPodcastVideo {
-  factory _FavPodcastVideo(
+abstract class _FavPodcast implements FavPodcast {
+  factory _FavPodcast(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
       @JsonKey(name: 'podcast_id') int? idPodcast,
@@ -3812,10 +3936,10 @@ abstract class _FavPodcastVideo implements FavPodcastVideo {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      PodcastVideo? podcastVideo}) = _$FavPodcastVideoImpl;
+      Podcast? podcast}) = _$FavPodcastImpl;
 
-  factory _FavPodcastVideo.fromJson(Map<String, dynamic> json) =
-      _$FavPodcastVideoImpl.fromJson;
+  factory _FavPodcast.fromJson(Map<String, dynamic> json) =
+      _$FavPodcastImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_fav_podcast')
@@ -3848,11 +3972,11 @@ abstract class _FavPodcastVideo implements FavPodcastVideo {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
   @override
-  PodcastVideo? get podcastVideo;
-  set podcastVideo(PodcastVideo? value);
+  Podcast? get podcast;
+  set podcast(Podcast? value);
   @override
   @JsonKey(ignore: true)
-  _$$FavPodcastVideoImplCopyWith<_$FavPodcastVideoImpl> get copyWith =>
+  _$$FavPodcastImplCopyWith<_$FavPodcastImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -3887,9 +4011,8 @@ mixin _$FavVideoEdukasi {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value) =>
       throw _privateConstructorUsedError;
-  EducationalVideo? get educationalVideo => throw _privateConstructorUsedError;
-  set educationalVideo(EducationalVideo? value) =>
-      throw _privateConstructorUsedError;
+  VideoEdukasi? get videoEdukasi => throw _privateConstructorUsedError;
+  set videoEdukasi(VideoEdukasi? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -3911,9 +4034,9 @@ abstract class $FavVideoEdukasiCopyWith<$Res> {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      EducationalVideo? educationalVideo});
+      VideoEdukasi? videoEdukasi});
 
-  $EducationalVideoCopyWith<$Res>? get educationalVideo;
+  $VideoEdukasiCopyWith<$Res>? get videoEdukasi;
 }
 
 /// @nodoc
@@ -3935,7 +4058,7 @@ class _$FavVideoEdukasiCopyWithImpl<$Res, $Val extends FavVideoEdukasi>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? educationalVideo = freezed,
+    Object? videoEdukasi = freezed,
   }) {
     return _then(_value.copyWith(
       idFavVideoEdukasi: freezed == idFavVideoEdukasi
@@ -3962,22 +4085,22 @@ class _$FavVideoEdukasiCopyWithImpl<$Res, $Val extends FavVideoEdukasi>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      educationalVideo: freezed == educationalVideo
-          ? _value.educationalVideo
-          : educationalVideo // ignore: cast_nullable_to_non_nullable
-              as EducationalVideo?,
+      videoEdukasi: freezed == videoEdukasi
+          ? _value.videoEdukasi
+          : videoEdukasi // ignore: cast_nullable_to_non_nullable
+              as VideoEdukasi?,
     ) as $Val);
   }
 
   @override
   @pragma('vm:prefer-inline')
-  $EducationalVideoCopyWith<$Res>? get educationalVideo {
-    if (_value.educationalVideo == null) {
+  $VideoEdukasiCopyWith<$Res>? get videoEdukasi {
+    if (_value.videoEdukasi == null) {
       return null;
     }
 
-    return $EducationalVideoCopyWith<$Res>(_value.educationalVideo!, (value) {
-      return _then(_value.copyWith(educationalVideo: value) as $Val);
+    return $VideoEdukasiCopyWith<$Res>(_value.videoEdukasi!, (value) {
+      return _then(_value.copyWith(videoEdukasi: value) as $Val);
     });
   }
 }
@@ -3998,10 +4121,10 @@ abstract class _$$FavVideoEdukasiImplCopyWith<$Res>
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      EducationalVideo? educationalVideo});
+      VideoEdukasi? videoEdukasi});
 
   @override
-  $EducationalVideoCopyWith<$Res>? get educationalVideo;
+  $VideoEdukasiCopyWith<$Res>? get videoEdukasi;
 }
 
 /// @nodoc
@@ -4021,7 +4144,7 @@ class __$$FavVideoEdukasiImplCopyWithImpl<$Res>
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? thumbnailImageData = freezed,
-    Object? educationalVideo = freezed,
+    Object? videoEdukasi = freezed,
   }) {
     return _then(_$FavVideoEdukasiImpl(
       idFavVideoEdukasi: freezed == idFavVideoEdukasi
@@ -4048,10 +4171,10 @@ class __$$FavVideoEdukasiImplCopyWithImpl<$Res>
           ? _value.thumbnailImageData
           : thumbnailImageData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
-      educationalVideo: freezed == educationalVideo
-          ? _value.educationalVideo
-          : educationalVideo // ignore: cast_nullable_to_non_nullable
-              as EducationalVideo?,
+      videoEdukasi: freezed == videoEdukasi
+          ? _value.videoEdukasi
+          : videoEdukasi // ignore: cast_nullable_to_non_nullable
+              as VideoEdukasi?,
     ));
   }
 }
@@ -4067,7 +4190,7 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       this.thumbnailImageData,
-      this.educationalVideo});
+      this.videoEdukasi});
 
   factory _$FavVideoEdukasiImpl.fromJson(Map<String, dynamic> json) =>
       _$$FavVideoEdukasiImplFromJson(json);
@@ -4091,11 +4214,11 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? thumbnailImageData;
   @override
-  EducationalVideo? educationalVideo;
+  VideoEdukasi? videoEdukasi;
 
   @override
   String toString() {
-    return 'FavVideoEdukasi(idFavVideoEdukasi: $idFavVideoEdukasi, idUser: $idUser, idVideoEdukasi: $idVideoEdukasi, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, educationalVideo: $educationalVideo)';
+    return 'FavVideoEdukasi(idFavVideoEdukasi: $idFavVideoEdukasi, idUser: $idUser, idVideoEdukasi: $idVideoEdukasi, createdAt: $createdAt, updatedAt: $updatedAt, thumbnailImageData: $thumbnailImageData, videoEdukasi: $videoEdukasi)';
   }
 
   @JsonKey(ignore: true)
@@ -4122,7 +4245,7 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
       List<int>? thumbnailImageData,
-      EducationalVideo? educationalVideo}) = _$FavVideoEdukasiImpl;
+      VideoEdukasi? videoEdukasi}) = _$FavVideoEdukasiImpl;
 
   factory _FavVideoEdukasi.fromJson(Map<String, dynamic> json) =
       _$FavVideoEdukasiImpl.fromJson;
@@ -4158,10 +4281,1586 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
   @JsonKey(includeFromJson: false, includeToJson: false)
   set thumbnailImageData(List<int>? value);
   @override
-  EducationalVideo? get educationalVideo;
-  set educationalVideo(EducationalVideo? value);
+  VideoEdukasi? get videoEdukasi;
+  set videoEdukasi(VideoEdukasi? value);
   @override
   @JsonKey(ignore: true)
   _$$FavVideoEdukasiImplCopyWith<_$FavVideoEdukasiImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Skrinning _$SkrinningFromJson(Map<String, dynamic> json) {
+  return _Skrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Skrinning {
+  @JsonKey(name: 'id_skrinning')
+  int? get idSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_skrinning')
+  set idSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_skrinning')
+  String? get jenisSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_skrinning')
+  set jenisSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi_skrinning')
+  String? get deskripsiSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'deskripsi_skrinning')
+  set deskripsiSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SkrinningCopyWith<Skrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SkrinningCopyWith<$Res> {
+  factory $SkrinningCopyWith(Skrinning value, $Res Function(Skrinning) then) =
+      _$SkrinningCopyWithImpl<$Res, Skrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class _$SkrinningCopyWithImpl<$Res, $Val extends Skrinning>
+    implements $SkrinningCopyWith<$Res> {
+  _$SkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSkrinning = freezed,
+    Object? jenisSkrinning = freezed,
+    Object? deskripsiSkrinning = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idSkrinning: freezed == idSkrinning
+          ? _value.idSkrinning
+          : idSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jenisSkrinning: freezed == jenisSkrinning
+          ? _value.jenisSkrinning
+          : jenisSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deskripsiSkrinning: freezed == deskripsiSkrinning
+          ? _value.deskripsiSkrinning
+          : deskripsiSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SkrinningImplCopyWith<$Res>
+    implements $SkrinningCopyWith<$Res> {
+  factory _$$SkrinningImplCopyWith(
+          _$SkrinningImpl value, $Res Function(_$SkrinningImpl) then) =
+      __$$SkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$SkrinningImplCopyWithImpl<$Res>
+    extends _$SkrinningCopyWithImpl<$Res, _$SkrinningImpl>
+    implements _$$SkrinningImplCopyWith<$Res> {
+  __$$SkrinningImplCopyWithImpl(
+      _$SkrinningImpl _value, $Res Function(_$SkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSkrinning = freezed,
+    Object? jenisSkrinning = freezed,
+    Object? deskripsiSkrinning = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$SkrinningImpl(
+      idSkrinning: freezed == idSkrinning
+          ? _value.idSkrinning
+          : idSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jenisSkrinning: freezed == jenisSkrinning
+          ? _value.jenisSkrinning
+          : jenisSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deskripsiSkrinning: freezed == deskripsiSkrinning
+          ? _value.deskripsiSkrinning
+          : deskripsiSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SkrinningImpl implements _Skrinning {
+  _$SkrinningImpl(
+      {@JsonKey(name: 'id_skrinning') this.idSkrinning,
+      @JsonKey(name: 'jenis_skrinning') this.jenisSkrinning,
+      @JsonKey(name: 'deskripsi_skrinning') this.deskripsiSkrinning,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt});
+
+  factory _$SkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_skrinning')
+  int? idSkrinning;
+  @override
+  @JsonKey(name: 'jenis_skrinning')
+  String? jenisSkrinning;
+  @override
+  @JsonKey(name: 'deskripsi_skrinning')
+  String? deskripsiSkrinning;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? updatedAt;
+
+  @override
+  String toString() {
+    return 'Skrinning(idSkrinning: $idSkrinning, jenisSkrinning: $jenisSkrinning, deskripsiSkrinning: $deskripsiSkrinning, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SkrinningImplCopyWith<_$SkrinningImpl> get copyWith =>
+      __$$SkrinningImplCopyWithImpl<_$SkrinningImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Skrinning implements Skrinning {
+  factory _Skrinning(
+      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt}) = _$SkrinningImpl;
+
+  factory _Skrinning.fromJson(Map<String, dynamic> json) =
+      _$SkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_skrinning')
+  int? get idSkrinning;
+  @JsonKey(name: 'id_skrinning')
+  set idSkrinning(int? value);
+  @override
+  @JsonKey(name: 'jenis_skrinning')
+  String? get jenisSkrinning;
+  @JsonKey(name: 'jenis_skrinning')
+  set jenisSkrinning(String? value);
+  @override
+  @JsonKey(name: 'deskripsi_skrinning')
+  String? get deskripsiSkrinning;
+  @JsonKey(name: 'deskripsi_skrinning')
+  set deskripsiSkrinning(String? value);
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$SkrinningImplCopyWith<_$SkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+RiwayatSkrinning _$RiwayatSkrinningFromJson(Map<String, dynamic> json) {
+  return _RiwayatSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RiwayatSkrinning {
+  @JsonKey(name: 'id_skrin_user')
+  int? get idSkrinUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_skrin_user')
+  set idSkrinUser(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? get tglPengisian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_pengisian')
+  set tglPengisian(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'skrinning_id')
+  int? get skrinningId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'skrinning_id')
+  set skrinningId(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
+  int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
+  set userId(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_user')
+  int? get idUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_user')
+  set idUser(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'username')
+  String? get username => throw _privateConstructorUsedError;
+  @JsonKey(name: 'username')
+  set username(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
+  String? get email => throw _privateConstructorUsedError;
+  @JsonKey(name: 'email')
+  set email(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'password')
+  String? get password => throw _privateConstructorUsedError;
+  @JsonKey(name: 'password')
+  set password(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'role')
+  String? get role => throw _privateConstructorUsedError;
+  @JsonKey(name: 'role')
+  set role(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  Skrinning? get skrinning => throw _privateConstructorUsedError;
+  set skrinning(Skrinning? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RiwayatSkrinningCopyWith<RiwayatSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RiwayatSkrinningCopyWith<$Res> {
+  factory $RiwayatSkrinningCopyWith(
+          RiwayatSkrinning value, $Res Function(RiwayatSkrinning) then) =
+      _$RiwayatSkrinningCopyWithImpl<$Res, RiwayatSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_skrin_user') int? idSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+      @JsonKey(name: 'skrinning_id') int? skrinningId,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'id_user') int? idUser,
+      @JsonKey(name: 'username') String? username,
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'password') String? password,
+      @JsonKey(name: 'role') String? role,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      Skrinning? skrinning});
+
+  $SkrinningCopyWith<$Res>? get skrinning;
+}
+
+/// @nodoc
+class _$RiwayatSkrinningCopyWithImpl<$Res, $Val extends RiwayatSkrinning>
+    implements $RiwayatSkrinningCopyWith<$Res> {
+  _$RiwayatSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSkrinUser = freezed,
+    Object? tglPengisian = freezed,
+    Object? skrinningId = freezed,
+    Object? userId = freezed,
+    Object? idUser = freezed,
+    Object? username = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? role = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? skrinning = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idSkrinUser: freezed == idSkrinUser
+          ? _value.idSkrinUser
+          : idSkrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tglPengisian: freezed == tglPengisian
+          ? _value.tglPengisian
+          : tglPengisian // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      skrinningId: freezed == skrinningId
+          ? _value.skrinningId
+          : skrinningId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      idUser: freezed == idUser
+          ? _value.idUser
+          : idUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      skrinning: freezed == skrinning
+          ? _value.skrinning
+          : skrinning // ignore: cast_nullable_to_non_nullable
+              as Skrinning?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SkrinningCopyWith<$Res>? get skrinning {
+    if (_value.skrinning == null) {
+      return null;
+    }
+
+    return $SkrinningCopyWith<$Res>(_value.skrinning!, (value) {
+      return _then(_value.copyWith(skrinning: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$RiwayatSkrinningImplCopyWith<$Res>
+    implements $RiwayatSkrinningCopyWith<$Res> {
+  factory _$$RiwayatSkrinningImplCopyWith(_$RiwayatSkrinningImpl value,
+          $Res Function(_$RiwayatSkrinningImpl) then) =
+      __$$RiwayatSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_skrin_user') int? idSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+      @JsonKey(name: 'skrinning_id') int? skrinningId,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'id_user') int? idUser,
+      @JsonKey(name: 'username') String? username,
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'password') String? password,
+      @JsonKey(name: 'role') String? role,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      Skrinning? skrinning});
+
+  @override
+  $SkrinningCopyWith<$Res>? get skrinning;
+}
+
+/// @nodoc
+class __$$RiwayatSkrinningImplCopyWithImpl<$Res>
+    extends _$RiwayatSkrinningCopyWithImpl<$Res, _$RiwayatSkrinningImpl>
+    implements _$$RiwayatSkrinningImplCopyWith<$Res> {
+  __$$RiwayatSkrinningImplCopyWithImpl(_$RiwayatSkrinningImpl _value,
+      $Res Function(_$RiwayatSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSkrinUser = freezed,
+    Object? tglPengisian = freezed,
+    Object? skrinningId = freezed,
+    Object? userId = freezed,
+    Object? idUser = freezed,
+    Object? username = freezed,
+    Object? email = freezed,
+    Object? password = freezed,
+    Object? role = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? skrinning = freezed,
+  }) {
+    return _then(_$RiwayatSkrinningImpl(
+      idSkrinUser: freezed == idSkrinUser
+          ? _value.idSkrinUser
+          : idSkrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tglPengisian: freezed == tglPengisian
+          ? _value.tglPengisian
+          : tglPengisian // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      skrinningId: freezed == skrinningId
+          ? _value.skrinningId
+          : skrinningId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      idUser: freezed == idUser
+          ? _value.idUser
+          : idUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      username: freezed == username
+          ? _value.username
+          : username // ignore: cast_nullable_to_non_nullable
+              as String?,
+      email: freezed == email
+          ? _value.email
+          : email // ignore: cast_nullable_to_non_nullable
+              as String?,
+      password: freezed == password
+          ? _value.password
+          : password // ignore: cast_nullable_to_non_nullable
+              as String?,
+      role: freezed == role
+          ? _value.role
+          : role // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      skrinning: freezed == skrinning
+          ? _value.skrinning
+          : skrinning // ignore: cast_nullable_to_non_nullable
+              as Skrinning?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RiwayatSkrinningImpl implements _RiwayatSkrinning {
+  _$RiwayatSkrinningImpl(
+      {@JsonKey(name: 'id_skrin_user') this.idSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') this.tglPengisian,
+      @JsonKey(name: 'skrinning_id') this.skrinningId,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'id_user') this.idUser,
+      @JsonKey(name: 'username') this.username,
+      @JsonKey(name: 'email') this.email,
+      @JsonKey(name: 'password') this.password,
+      @JsonKey(name: 'role') this.role,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      this.skrinning});
+
+  factory _$RiwayatSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RiwayatSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_skrin_user')
+  int? idSkrinUser;
+  @override
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? tglPengisian;
+  @override
+  @JsonKey(name: 'skrinning_id')
+  int? skrinningId;
+  @override
+  @JsonKey(name: 'user_id')
+  int? userId;
+  @override
+  @JsonKey(name: 'id_user')
+  int? idUser;
+  @override
+  @JsonKey(name: 'username')
+  String? username;
+  @override
+  @JsonKey(name: 'email')
+  String? email;
+  @override
+  @JsonKey(name: 'password')
+  String? password;
+  @override
+  @JsonKey(name: 'role')
+  String? role;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? updatedAt;
+  @override
+  Skrinning? skrinning;
+
+  @override
+  String toString() {
+    return 'RiwayatSkrinning(idSkrinUser: $idSkrinUser, tglPengisian: $tglPengisian, skrinningId: $skrinningId, userId: $userId, idUser: $idUser, username: $username, email: $email, password: $password, role: $role, createdAt: $createdAt, updatedAt: $updatedAt, skrinning: $skrinning)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RiwayatSkrinningImplCopyWith<_$RiwayatSkrinningImpl> get copyWith =>
+      __$$RiwayatSkrinningImplCopyWithImpl<_$RiwayatSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RiwayatSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RiwayatSkrinning implements RiwayatSkrinning {
+  factory _RiwayatSkrinning(
+      {@JsonKey(name: 'id_skrin_user') int? idSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+      @JsonKey(name: 'skrinning_id') int? skrinningId,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'id_user') int? idUser,
+      @JsonKey(name: 'username') String? username,
+      @JsonKey(name: 'email') String? email,
+      @JsonKey(name: 'password') String? password,
+      @JsonKey(name: 'role') String? role,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      Skrinning? skrinning}) = _$RiwayatSkrinningImpl;
+
+  factory _RiwayatSkrinning.fromJson(Map<String, dynamic> json) =
+      _$RiwayatSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_skrin_user')
+  int? get idSkrinUser;
+  @JsonKey(name: 'id_skrin_user')
+  set idSkrinUser(int? value);
+  @override
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? get tglPengisian;
+  @JsonKey(name: 'tgl_pengisian')
+  set tglPengisian(DateTime? value);
+  @override
+  @JsonKey(name: 'skrinning_id')
+  int? get skrinningId;
+  @JsonKey(name: 'skrinning_id')
+  set skrinningId(int? value);
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
+  @JsonKey(name: 'user_id')
+  set userId(int? value);
+  @override
+  @JsonKey(name: 'id_user')
+  int? get idUser;
+  @JsonKey(name: 'id_user')
+  set idUser(int? value);
+  @override
+  @JsonKey(name: 'username')
+  String? get username;
+  @JsonKey(name: 'username')
+  set username(String? value);
+  @override
+  @JsonKey(name: 'email')
+  String? get email;
+  @JsonKey(name: 'email')
+  set email(String? value);
+  @override
+  @JsonKey(name: 'password')
+  String? get password;
+  @JsonKey(name: 'password')
+  set password(String? value);
+  @override
+  @JsonKey(name: 'role')
+  String? get role;
+  @JsonKey(name: 'role')
+  set role(String? value);
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
+  @override
+  Skrinning? get skrinning;
+  set skrinning(Skrinning? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$RiwayatSkrinningImplCopyWith<_$RiwayatSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DetailSkrinning _$DetailSkrinningFromJson(Map<String, dynamic> json) {
+  return _DetailSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DetailSkrinning {
+  DataBagianSkrinning? get data => throw _privateConstructorUsedError;
+  set data(DataBagianSkrinning? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'skrin_user')
+  int? get skrinUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'skrin_user')
+  set skrinUser(int? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DetailSkrinningCopyWith<DetailSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DetailSkrinningCopyWith<$Res> {
+  factory $DetailSkrinningCopyWith(
+          DetailSkrinning value, $Res Function(DetailSkrinning) then) =
+      _$DetailSkrinningCopyWithImpl<$Res, DetailSkrinning>;
+  @useResult
+  $Res call(
+      {DataBagianSkrinning? data, @JsonKey(name: 'skrin_user') int? skrinUser});
+
+  $DataBagianSkrinningCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class _$DetailSkrinningCopyWithImpl<$Res, $Val extends DetailSkrinning>
+    implements $DetailSkrinningCopyWith<$Res> {
+  _$DetailSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+    Object? skrinUser = freezed,
+  }) {
+    return _then(_value.copyWith(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as DataBagianSkrinning?,
+      skrinUser: freezed == skrinUser
+          ? _value.skrinUser
+          : skrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DataBagianSkrinningCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $DataBagianSkrinningCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$DetailSkrinningImplCopyWith<$Res>
+    implements $DetailSkrinningCopyWith<$Res> {
+  factory _$$DetailSkrinningImplCopyWith(_$DetailSkrinningImpl value,
+          $Res Function(_$DetailSkrinningImpl) then) =
+      __$$DetailSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {DataBagianSkrinning? data, @JsonKey(name: 'skrin_user') int? skrinUser});
+
+  @override
+  $DataBagianSkrinningCopyWith<$Res>? get data;
+}
+
+/// @nodoc
+class __$$DetailSkrinningImplCopyWithImpl<$Res>
+    extends _$DetailSkrinningCopyWithImpl<$Res, _$DetailSkrinningImpl>
+    implements _$$DetailSkrinningImplCopyWith<$Res> {
+  __$$DetailSkrinningImplCopyWithImpl(
+      _$DetailSkrinningImpl _value, $Res Function(_$DetailSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = freezed,
+    Object? skrinUser = freezed,
+  }) {
+    return _then(_$DetailSkrinningImpl(
+      data: freezed == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as DataBagianSkrinning?,
+      skrinUser: freezed == skrinUser
+          ? _value.skrinUser
+          : skrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DetailSkrinningImpl implements _DetailSkrinning {
+  _$DetailSkrinningImpl(
+      {this.data, @JsonKey(name: 'skrin_user') this.skrinUser});
+
+  factory _$DetailSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DetailSkrinningImplFromJson(json);
+
+  @override
+  DataBagianSkrinning? data;
+  @override
+  @JsonKey(name: 'skrin_user')
+  int? skrinUser;
+
+  @override
+  String toString() {
+    return 'DetailSkrinning(data: $data, skrinUser: $skrinUser)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DetailSkrinningImplCopyWith<_$DetailSkrinningImpl> get copyWith =>
+      __$$DetailSkrinningImplCopyWithImpl<_$DetailSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DetailSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DetailSkrinning implements DetailSkrinning {
+  factory _DetailSkrinning(
+      {DataBagianSkrinning? data,
+      @JsonKey(name: 'skrin_user') int? skrinUser}) = _$DetailSkrinningImpl;
+
+  factory _DetailSkrinning.fromJson(Map<String, dynamic> json) =
+      _$DetailSkrinningImpl.fromJson;
+
+  @override
+  DataBagianSkrinning? get data;
+  set data(DataBagianSkrinning? value);
+  @override
+  @JsonKey(name: 'skrin_user')
+  int? get skrinUser;
+  @JsonKey(name: 'skrin_user')
+  set skrinUser(int? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$DetailSkrinningImplCopyWith<_$DetailSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DataBagianSkrinning _$DataBagianSkrinningFromJson(Map<String, dynamic> json) {
+  return _DataBagianSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DataBagianSkrinning {
+  @JsonKey(name: 'id_bagian_skrinning')
+  int? get idBagianSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_bagian_skrinning')
+  set idBagianSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value) => throw _privateConstructorUsedError;
+  SoalJawabanSkrinning? get soalJawabanSkrinning =>
+      throw _privateConstructorUsedError;
+  set soalJawabanSkrinning(SoalJawabanSkrinning? value) =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DataBagianSkrinningCopyWith<DataBagianSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DataBagianSkrinningCopyWith<$Res> {
+  factory $DataBagianSkrinningCopyWith(
+          DataBagianSkrinning value, $Res Function(DataBagianSkrinning) then) =
+      _$DataBagianSkrinningCopyWithImpl<$Res, DataBagianSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      SoalJawabanSkrinning? soalJawabanSkrinning});
+
+  $SoalJawabanSkrinningCopyWith<$Res>? get soalJawabanSkrinning;
+}
+
+/// @nodoc
+class _$DataBagianSkrinningCopyWithImpl<$Res, $Val extends DataBagianSkrinning>
+    implements $DataBagianSkrinningCopyWith<$Res> {
+  _$DataBagianSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idBagianSkrinning = freezed,
+    Object? namaBagian = freezed,
+    Object? soalJawabanSkrinning = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idBagianSkrinning: freezed == idBagianSkrinning
+          ? _value.idBagianSkrinning
+          : idBagianSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
+              as String?,
+      soalJawabanSkrinning: freezed == soalJawabanSkrinning
+          ? _value.soalJawabanSkrinning
+          : soalJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as SoalJawabanSkrinning?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SoalJawabanSkrinningCopyWith<$Res>? get soalJawabanSkrinning {
+    if (_value.soalJawabanSkrinning == null) {
+      return null;
+    }
+
+    return $SoalJawabanSkrinningCopyWith<$Res>(_value.soalJawabanSkrinning!,
+        (value) {
+      return _then(_value.copyWith(soalJawabanSkrinning: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$DataBagianSkrinningImplCopyWith<$Res>
+    implements $DataBagianSkrinningCopyWith<$Res> {
+  factory _$$DataBagianSkrinningImplCopyWith(_$DataBagianSkrinningImpl value,
+          $Res Function(_$DataBagianSkrinningImpl) then) =
+      __$$DataBagianSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      SoalJawabanSkrinning? soalJawabanSkrinning});
+
+  @override
+  $SoalJawabanSkrinningCopyWith<$Res>? get soalJawabanSkrinning;
+}
+
+/// @nodoc
+class __$$DataBagianSkrinningImplCopyWithImpl<$Res>
+    extends _$DataBagianSkrinningCopyWithImpl<$Res, _$DataBagianSkrinningImpl>
+    implements _$$DataBagianSkrinningImplCopyWith<$Res> {
+  __$$DataBagianSkrinningImplCopyWithImpl(_$DataBagianSkrinningImpl _value,
+      $Res Function(_$DataBagianSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idBagianSkrinning = freezed,
+    Object? namaBagian = freezed,
+    Object? soalJawabanSkrinning = freezed,
+  }) {
+    return _then(_$DataBagianSkrinningImpl(
+      idBagianSkrinning: freezed == idBagianSkrinning
+          ? _value.idBagianSkrinning
+          : idBagianSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
+              as String?,
+      soalJawabanSkrinning: freezed == soalJawabanSkrinning
+          ? _value.soalJawabanSkrinning
+          : soalJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as SoalJawabanSkrinning?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DataBagianSkrinningImpl implements _DataBagianSkrinning {
+  _$DataBagianSkrinningImpl(
+      {@JsonKey(name: 'id_bagian_skrinning') this.idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') this.namaBagian,
+      this.soalJawabanSkrinning});
+
+  factory _$DataBagianSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DataBagianSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_bagian_skrinning')
+  int? idBagianSkrinning;
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? namaBagian;
+  @override
+  SoalJawabanSkrinning? soalJawabanSkrinning;
+
+  @override
+  String toString() {
+    return 'DataBagianSkrinning(idBagianSkrinning: $idBagianSkrinning, namaBagian: $namaBagian, soalJawabanSkrinning: $soalJawabanSkrinning)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataBagianSkrinningImplCopyWith<_$DataBagianSkrinningImpl> get copyWith =>
+      __$$DataBagianSkrinningImplCopyWithImpl<_$DataBagianSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DataBagianSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DataBagianSkrinning implements DataBagianSkrinning {
+  factory _DataBagianSkrinning(
+      {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      SoalJawabanSkrinning? soalJawabanSkrinning}) = _$DataBagianSkrinningImpl;
+
+  factory _DataBagianSkrinning.fromJson(Map<String, dynamic> json) =
+      _$DataBagianSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_bagian_skrinning')
+  int? get idBagianSkrinning;
+  @JsonKey(name: 'id_bagian_skrinning')
+  set idBagianSkrinning(int? value);
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value);
+  @override
+  SoalJawabanSkrinning? get soalJawabanSkrinning;
+  set soalJawabanSkrinning(SoalJawabanSkrinning? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$DataBagianSkrinningImplCopyWith<_$DataBagianSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+SoalJawabanSkrinning _$SoalJawabanSkrinningFromJson(Map<String, dynamic> json) {
+  return _SoalJawabanSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SoalJawabanSkrinning {
+  SoalSkrinning? get soal => throw _privateConstructorUsedError;
+  set soal(SoalSkrinning? value) => throw _privateConstructorUsedError;
+  JawabanSkrinning? get jawaban => throw _privateConstructorUsedError;
+  set jawaban(JawabanSkrinning? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SoalJawabanSkrinningCopyWith<SoalJawabanSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SoalJawabanSkrinningCopyWith<$Res> {
+  factory $SoalJawabanSkrinningCopyWith(SoalJawabanSkrinning value,
+          $Res Function(SoalJawabanSkrinning) then) =
+      _$SoalJawabanSkrinningCopyWithImpl<$Res, SoalJawabanSkrinning>;
+  @useResult
+  $Res call({SoalSkrinning? soal, JawabanSkrinning? jawaban});
+
+  $SoalSkrinningCopyWith<$Res>? get soal;
+  $JawabanSkrinningCopyWith<$Res>? get jawaban;
+}
+
+/// @nodoc
+class _$SoalJawabanSkrinningCopyWithImpl<$Res,
+        $Val extends SoalJawabanSkrinning>
+    implements $SoalJawabanSkrinningCopyWith<$Res> {
+  _$SoalJawabanSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? soal = freezed,
+    Object? jawaban = freezed,
+  }) {
+    return _then(_value.copyWith(
+      soal: freezed == soal
+          ? _value.soal
+          : soal // ignore: cast_nullable_to_non_nullable
+              as SoalSkrinning?,
+      jawaban: freezed == jawaban
+          ? _value.jawaban
+          : jawaban // ignore: cast_nullable_to_non_nullable
+              as JawabanSkrinning?,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SoalSkrinningCopyWith<$Res>? get soal {
+    if (_value.soal == null) {
+      return null;
+    }
+
+    return $SoalSkrinningCopyWith<$Res>(_value.soal!, (value) {
+      return _then(_value.copyWith(soal: value) as $Val);
+    });
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $JawabanSkrinningCopyWith<$Res>? get jawaban {
+    if (_value.jawaban == null) {
+      return null;
+    }
+
+    return $JawabanSkrinningCopyWith<$Res>(_value.jawaban!, (value) {
+      return _then(_value.copyWith(jawaban: value) as $Val);
+    });
+  }
+}
+
+/// @nodoc
+abstract class _$$SoalJawabanSkrinningImplCopyWith<$Res>
+    implements $SoalJawabanSkrinningCopyWith<$Res> {
+  factory _$$SoalJawabanSkrinningImplCopyWith(_$SoalJawabanSkrinningImpl value,
+          $Res Function(_$SoalJawabanSkrinningImpl) then) =
+      __$$SoalJawabanSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({SoalSkrinning? soal, JawabanSkrinning? jawaban});
+
+  @override
+  $SoalSkrinningCopyWith<$Res>? get soal;
+  @override
+  $JawabanSkrinningCopyWith<$Res>? get jawaban;
+}
+
+/// @nodoc
+class __$$SoalJawabanSkrinningImplCopyWithImpl<$Res>
+    extends _$SoalJawabanSkrinningCopyWithImpl<$Res, _$SoalJawabanSkrinningImpl>
+    implements _$$SoalJawabanSkrinningImplCopyWith<$Res> {
+  __$$SoalJawabanSkrinningImplCopyWithImpl(_$SoalJawabanSkrinningImpl _value,
+      $Res Function(_$SoalJawabanSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? soal = freezed,
+    Object? jawaban = freezed,
+  }) {
+    return _then(_$SoalJawabanSkrinningImpl(
+      soal: freezed == soal
+          ? _value.soal
+          : soal // ignore: cast_nullable_to_non_nullable
+              as SoalSkrinning?,
+      jawaban: freezed == jawaban
+          ? _value.jawaban
+          : jawaban // ignore: cast_nullable_to_non_nullable
+              as JawabanSkrinning?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SoalJawabanSkrinningImpl implements _SoalJawabanSkrinning {
+  _$SoalJawabanSkrinningImpl({this.soal, this.jawaban});
+
+  factory _$SoalJawabanSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoalJawabanSkrinningImplFromJson(json);
+
+  @override
+  SoalSkrinning? soal;
+  @override
+  JawabanSkrinning? jawaban;
+
+  @override
+  String toString() {
+    return 'SoalJawabanSkrinning(soal: $soal, jawaban: $jawaban)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SoalJawabanSkrinningImplCopyWith<_$SoalJawabanSkrinningImpl>
+      get copyWith =>
+          __$$SoalJawabanSkrinningImplCopyWithImpl<_$SoalJawabanSkrinningImpl>(
+              this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SoalJawabanSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SoalJawabanSkrinning implements SoalJawabanSkrinning {
+  factory _SoalJawabanSkrinning(
+      {SoalSkrinning? soal,
+      JawabanSkrinning? jawaban}) = _$SoalJawabanSkrinningImpl;
+
+  factory _SoalJawabanSkrinning.fromJson(Map<String, dynamic> json) =
+      _$SoalJawabanSkrinningImpl.fromJson;
+
+  @override
+  SoalSkrinning? get soal;
+  set soal(SoalSkrinning? value);
+  @override
+  JawabanSkrinning? get jawaban;
+  set jawaban(JawabanSkrinning? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$SoalJawabanSkrinningImplCopyWith<_$SoalJawabanSkrinningImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SoalSkrinning _$SoalSkrinningFromJson(Map<String, dynamic> json) {
+  return _SoalSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SoalSkrinning {
+  @JsonKey(name: 'id_soal')
+  int? get idSoal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_soal')
+  set idSoal(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal')
+  String? get soalSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal')
+  set soalSkrinning(String? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SoalSkrinningCopyWith<SoalSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SoalSkrinningCopyWith<$Res> {
+  factory $SoalSkrinningCopyWith(
+          SoalSkrinning value, $Res Function(SoalSkrinning) then) =
+      _$SoalSkrinningCopyWithImpl<$Res, SoalSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_soal') int? idSoal,
+      @JsonKey(name: 'soal') String? soalSkrinning});
+}
+
+/// @nodoc
+class _$SoalSkrinningCopyWithImpl<$Res, $Val extends SoalSkrinning>
+    implements $SoalSkrinningCopyWith<$Res> {
+  _$SoalSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSoal = freezed,
+    Object? soalSkrinning = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idSoal: freezed == idSoal
+          ? _value.idSoal
+          : idSoal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      soalSkrinning: freezed == soalSkrinning
+          ? _value.soalSkrinning
+          : soalSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SoalSkrinningImplCopyWith<$Res>
+    implements $SoalSkrinningCopyWith<$Res> {
+  factory _$$SoalSkrinningImplCopyWith(
+          _$SoalSkrinningImpl value, $Res Function(_$SoalSkrinningImpl) then) =
+      __$$SoalSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_soal') int? idSoal,
+      @JsonKey(name: 'soal') String? soalSkrinning});
+}
+
+/// @nodoc
+class __$$SoalSkrinningImplCopyWithImpl<$Res>
+    extends _$SoalSkrinningCopyWithImpl<$Res, _$SoalSkrinningImpl>
+    implements _$$SoalSkrinningImplCopyWith<$Res> {
+  __$$SoalSkrinningImplCopyWithImpl(
+      _$SoalSkrinningImpl _value, $Res Function(_$SoalSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSoal = freezed,
+    Object? soalSkrinning = freezed,
+  }) {
+    return _then(_$SoalSkrinningImpl(
+      idSoal: freezed == idSoal
+          ? _value.idSoal
+          : idSoal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      soalSkrinning: freezed == soalSkrinning
+          ? _value.soalSkrinning
+          : soalSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SoalSkrinningImpl implements _SoalSkrinning {
+  _$SoalSkrinningImpl(
+      {@JsonKey(name: 'id_soal') this.idSoal,
+      @JsonKey(name: 'soal') this.soalSkrinning});
+
+  factory _$SoalSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoalSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_soal')
+  int? idSoal;
+  @override
+  @JsonKey(name: 'soal')
+  String? soalSkrinning;
+
+  @override
+  String toString() {
+    return 'SoalSkrinning(idSoal: $idSoal, soalSkrinning: $soalSkrinning)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SoalSkrinningImplCopyWith<_$SoalSkrinningImpl> get copyWith =>
+      __$$SoalSkrinningImplCopyWithImpl<_$SoalSkrinningImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SoalSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SoalSkrinning implements SoalSkrinning {
+  factory _SoalSkrinning(
+      {@JsonKey(name: 'id_soal') int? idSoal,
+      @JsonKey(name: 'soal') String? soalSkrinning}) = _$SoalSkrinningImpl;
+
+  factory _SoalSkrinning.fromJson(Map<String, dynamic> json) =
+      _$SoalSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_soal')
+  int? get idSoal;
+  @JsonKey(name: 'id_soal')
+  set idSoal(int? value);
+  @override
+  @JsonKey(name: 'soal')
+  String? get soalSkrinning;
+  @JsonKey(name: 'soal')
+  set soalSkrinning(String? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$SoalSkrinningImplCopyWith<_$SoalSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+JawabanSkrinning _$JawabanSkrinningFromJson(Map<String, dynamic> json) {
+  return _JawabanSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$JawabanSkrinning {
+  @JsonKey(name: 'id_jawaban_skrinning')
+  int? get idJawabanSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_jawaban_skrinning')
+  set idJawabanSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jawaban')
+  String? get jawabanSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jawaban')
+  set jawabanSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $JawabanSkrinningCopyWith<JawabanSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $JawabanSkrinningCopyWith<$Res> {
+  factory $JawabanSkrinningCopyWith(
+          JawabanSkrinning value, $Res Function(JawabanSkrinning) then) =
+      _$JawabanSkrinningCopyWithImpl<$Res, JawabanSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+      @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
+}
+
+/// @nodoc
+class _$JawabanSkrinningCopyWithImpl<$Res, $Val extends JawabanSkrinning>
+    implements $JawabanSkrinningCopyWith<$Res> {
+  _$JawabanSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idJawabanSkrinning = freezed,
+    Object? jawabanSkrinning = freezed,
+    Object? poinJawaban = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idJawabanSkrinning: freezed == idJawabanSkrinning
+          ? _value.idJawabanSkrinning
+          : idJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jawabanSkrinning: freezed == jawabanSkrinning
+          ? _value.jawabanSkrinning
+          : jawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$JawabanSkrinningImplCopyWith<$Res>
+    implements $JawabanSkrinningCopyWith<$Res> {
+  factory _$$JawabanSkrinningImplCopyWith(_$JawabanSkrinningImpl value,
+          $Res Function(_$JawabanSkrinningImpl) then) =
+      __$$JawabanSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+      @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
+}
+
+/// @nodoc
+class __$$JawabanSkrinningImplCopyWithImpl<$Res>
+    extends _$JawabanSkrinningCopyWithImpl<$Res, _$JawabanSkrinningImpl>
+    implements _$$JawabanSkrinningImplCopyWith<$Res> {
+  __$$JawabanSkrinningImplCopyWithImpl(_$JawabanSkrinningImpl _value,
+      $Res Function(_$JawabanSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idJawabanSkrinning = freezed,
+    Object? jawabanSkrinning = freezed,
+    Object? poinJawaban = freezed,
+  }) {
+    return _then(_$JawabanSkrinningImpl(
+      idJawabanSkrinning: freezed == idJawabanSkrinning
+          ? _value.idJawabanSkrinning
+          : idJawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jawabanSkrinning: freezed == jawabanSkrinning
+          ? _value.jawabanSkrinning
+          : jawabanSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$JawabanSkrinningImpl implements _JawabanSkrinning {
+  _$JawabanSkrinningImpl(
+      {@JsonKey(name: 'id_jawaban_skrinning') this.idJawabanSkrinning,
+      @JsonKey(name: 'jawaban') this.jawabanSkrinning,
+      @JsonKey(name: 'poin_jawaban') this.poinJawaban});
+
+  factory _$JawabanSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$JawabanSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_jawaban_skrinning')
+  int? idJawabanSkrinning;
+  @override
+  @JsonKey(name: 'jawaban')
+  String? jawabanSkrinning;
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? poinJawaban;
+
+  @override
+  String toString() {
+    return 'JawabanSkrinning(idJawabanSkrinning: $idJawabanSkrinning, jawabanSkrinning: $jawabanSkrinning, poinJawaban: $poinJawaban)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$JawabanSkrinningImplCopyWith<_$JawabanSkrinningImpl> get copyWith =>
+      __$$JawabanSkrinningImplCopyWithImpl<_$JawabanSkrinningImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$JawabanSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _JawabanSkrinning implements JawabanSkrinning {
+  factory _JawabanSkrinning(
+          {@JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
+          @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+          @JsonKey(name: 'poin_jawaban') int? poinJawaban}) =
+      _$JawabanSkrinningImpl;
+
+  factory _JawabanSkrinning.fromJson(Map<String, dynamic> json) =
+      _$JawabanSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_jawaban_skrinning')
+  int? get idJawabanSkrinning;
+  @JsonKey(name: 'id_jawaban_skrinning')
+  set idJawabanSkrinning(int? value);
+  @override
+  @JsonKey(name: 'jawaban')
+  String? get jawabanSkrinning;
+  @JsonKey(name: 'jawaban')
+  set jawabanSkrinning(String? value);
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$JawabanSkrinningImplCopyWith<_$JawabanSkrinningImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

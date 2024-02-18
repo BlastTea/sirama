@@ -1,15 +1,15 @@
 part of '../pages.dart';
 
-class EducationalVideoPage extends StatelessWidget {
-  const EducationalVideoPage({super.key});
+class FilmPage extends StatelessWidget {
+  const FilmPage({super.key});
 
   static Widget listVideo({
     required BuildContext context,
-    required List<FavVideoEdukasi> favVideoEdukasis,
+    required List<FavFilm> favFilms,
     bool replaceCurrentPage = false,
-    int? currentEducationVideo,
+    int? currentFilm,
   }) =>
-      favVideoEdukasis.isEmpty
+      favFilms.isEmpty
           ? Center(
               child: Text(
                 'Tidak ada data',
@@ -21,15 +21,15 @@ class EducationalVideoPage extends StatelessWidget {
               primary: false,
               padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
               itemBuilder: (context, index) {
-                VideoEdukasi videoEdukasi = favVideoEdukasis[index].videoEdukasi!;
+                Film film = favFilms[index].film!;
 
-                if (videoEdukasi.idVideoEdukasi == currentEducationVideo) return Container();
+                if (film.idFilm == currentFilm) return Container();
 
                 return InkWell(
                   onTap: () {
                     Route route = MaterialPageRoute(
-                      builder: (context) => DetailsEducationalVideoPage(
-                        educationalVideo: videoEdukasi,
+                      builder: (context) => DetailsFilmPage(
+                        film: film,
                       ),
                     );
 
@@ -45,13 +45,13 @@ class EducationalVideoPage extends StatelessWidget {
                         aspectRatio: 16 / 9,
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(10.0),
-                          child: videoEdukasi.thumbnailImageData != null
+                          child: film.thumbnailImageData != null
                               ? Image.memory(
-                                  Uint8List.fromList(videoEdukasi.thumbnailImageData!),
+                                  Uint8List.fromList(film.thumbnailImageData!),
                                   fit: BoxFit.cover,
                                 )
                               : Image.network(
-                                  'https://dev-sirama.propertiideal.id/test/image not found.png',
+                                  'https://dev-sirama.propertiideal.id/storage/test/image not found.png',
                                   fit: BoxFit.cover,
                                 ),
                         ),
@@ -62,11 +62,11 @@ class EducationalVideoPage extends StatelessWidget {
                           backgroundImage: AssetImage('assets/user.png'),
                         ),
                         title: Text(
-                          videoEdukasi.judulVideoEdukasi ?? '?',
+                          film.judulFilm ?? '?',
                           style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
                         subtitle: Text(
-                          'Admin . ${videoEdukasi.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
+                          'Admin . ${film.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true)}',
                           style: const TextStyle(
                             color: Colors.grey,
                           ),
@@ -76,7 +76,7 @@ class EducationalVideoPage extends StatelessWidget {
                   ),
                 );
               },
-              itemCount: favVideoEdukasis.length,
+              itemCount: favFilms.length,
             );
 
   @override
@@ -86,7 +86,7 @@ class EducationalVideoPage extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
-                title: const Text('Video Edukasi'),
+                title: const Text('Film Edukasi'),
                 centerTitle: true,
               ),
               body: SafeArea(
@@ -114,7 +114,7 @@ class EducationalVideoPage extends StatelessWidget {
                     ),
                     listVideo(
                       context: context,
-                      favVideoEdukasis: stateContentFavorite.videoEdukasis,
+                      favFilms: stateContentFavorite.films,
                     )
                   ],
                 ),
@@ -124,7 +124,7 @@ class EducationalVideoPage extends StatelessWidget {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
-                title: const Text('Video Edukasi'),
+                title: const Text('Film Edukasi'),
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
@@ -136,7 +136,7 @@ class EducationalVideoPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text('Video Edukasi'),
+              title: const Text('Film Edukasi'),
               centerTitle: true,
             ),
             body: const Center(

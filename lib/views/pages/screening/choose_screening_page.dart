@@ -54,24 +54,6 @@ class ChooseScreeningPage extends StatelessWidget {
                   height: 20,
                 ),
                 const ScreeningChooseListItem(
-                  title: 'Skrining Bullying',
-                  route: '/mainscreening',
-                ),
-                const ScreeningChooseListItem(
-                  title: 'Skrining Cyberbullying',
-                  route: '/mainscreening',
-                ),
-                const ScreeningChooseListItem(
-                  title: 'Skrining Empati',
-                  route: '/mainscreening',
-                ),
-                const ScreeningChooseListItem(
-                  title: 'Skrining Efikasi Diri',
-                  route: '/mainscreening',
-                ),
-                const ScreeningChooseListItem(
-                  title: 'Skrining K. Prososial',
-                  route: '/mainscreening',
                 ),
               ],
             ),
