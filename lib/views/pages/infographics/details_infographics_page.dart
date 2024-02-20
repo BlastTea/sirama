@@ -1,7 +1,10 @@
 part of '../pages.dart';
 
 class DetailsInfographicsPage extends StatefulWidget {
-  const DetailsInfographicsPage({super.key, required this.infographic});
+  const DetailsInfographicsPage({
+    super.key,
+    required this.infographic,
+  });
 
   final Infografis infographic;
 
@@ -78,12 +81,10 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                                     children: [
                                       IconButton(
                                         onPressed: () {
-                                          setState(() {
-                                            isFavorited = !isFavorited;
-                                          });
+                                          // TODO: implement favorite
                                         },
                                         icon: Icon(
-                                          isFavorited ? Icons.favorite : Icons.favorite_border,
+                                          widget.infographic.isFavorited ? Icons.favorite : Icons.favorite_border,
                                         ),
                                       ),
                                       Text(widget.infographic.totalLikes?.toString() ?? '0'),

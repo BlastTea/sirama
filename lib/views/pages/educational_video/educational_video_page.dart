@@ -29,7 +29,7 @@ class EducationalVideoPage extends StatelessWidget {
                   onTap: () {
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsEducationalVideoPage(
-                        educationalVideo: videoEdukasi,
+                        videoEdukasi: videoEdukasi,
                       ),
                     );
 

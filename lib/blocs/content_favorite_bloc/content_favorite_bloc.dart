@@ -107,12 +107,30 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
 
       emit(_favoriteDataLoaded);
     });
+
+    on<InitializeEditFilmData>((event, emit) {
+      _currentFilm = event.favFilm;
+      emit(_favoriteDataLoaded);
+    });
+
+    on<ToggleFilmFavoritePressed>((event, emit) {
+      try {} catch (e) {
+        return;
+      }
+
+      emit(_favoriteDataLoaded);
+    });
   }
 
   List<FavFilm> _films = [];
   List<FavPodcast> _podcasts = [];
   List<FavVideoEdukasi> _videoEdukasis = [];
   List<FavInfografis> _infografis = [];
+
+  FavFilm? _currentFilm;
+  FavPodcast? _currentPodcast;
+  FavVideoEdukasi? _currentVideoEdukasi;
+  FavInfografis? _currentInfografis;
 
   ContentFavoriteDataLoaded get _favoriteDataLoaded => ContentFavoriteDataLoaded(
         films: _films,
