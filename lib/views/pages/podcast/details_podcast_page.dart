@@ -14,7 +14,6 @@ class DetailsPodcastPage extends StatefulWidget {
 
 class DetailsPodcastPageState extends State<DetailsPodcastPage> {
   late final PodPlayerController _podPlayerController;
-  bool isFavorited = false;
 
   @override
   void initState() {
@@ -94,12 +93,10 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    setState(() {
-                                      isFavorited = !isFavorited;
-                                    });
+                                    // TODO: implement favorite
                                   },
                                   icon: Icon(
-                                    isFavorited ? Icons.favorite : Icons.favorite_border,
+                                    widget.podcast.isFavorited ? Icons.favorite : Icons.favorite_border,
                                   ),
                                 ),
                                 Text(widget.podcast.totalLikes?.toThousandFormat() ?? '0'),

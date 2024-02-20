@@ -84,12 +84,10 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                                 ),
                                 IconButton(
                                   onPressed: () {
-                                    setState(() {
-                                      isFavorited = !isFavorited;
-                                    });
+                                    // TODO: implement favorite
                                   },
                                   icon: Icon(
-                                    isFavorited ? Icons.favorite : Icons.favorite_border,
+                                    widget.film.isFavorited ? Icons.favorite : Icons.favorite_border,
                                   ),
                                 ),
                                 Text(widget.film.totalLikes?.toString() ?? '0'),
