@@ -487,15 +487,9 @@ _$RiwayatSkrinningImpl _$$RiwayatSkrinningImplFromJson(
       email: json['email'] as String?,
       password: json['password'] as String?,
       role: json['role'] as String?,
-      createdAt: json['created_at'] == null
-          ? null
-          : DateTime.parse(json['created_at'] as String),
-      updatedAt: json['updated_at'] == null
-          ? null
-          : DateTime.parse(json['updated_at'] as String),
-      skrinning: json['skrinning'] == null
-          ? null
-          : Skrinning.fromJson(json['skrinning'] as Map<String, dynamic>),
+      idSkrinning: json['id_skrinning'] as int?,
+      jenisSkrinning: json['jenis_skrinning'] as String?,
+      deskripsiSkrinning: json['deskripsi_skrinning'] as String?,
     );
 
 Map<String, dynamic> _$$RiwayatSkrinningImplToJson(
@@ -510,7 +504,7 @@ Map<String, dynamic> _$$RiwayatSkrinningImplToJson(
       'email': instance.email,
       'password': instance.password,
       'role': instance.role,
-      'created_at': instance.createdAt?.toIso8601String(),
-      'updated_at': instance.updatedAt?.toIso8601String(),
-      'skrinning': instance.skrinning,
+      'id_skrinning': instance.idSkrinning,
+      'jenis_skrinning': instance.jenisSkrinning,
+      'deskripsi_skrinning': instance.deskripsiSkrinning,
     };

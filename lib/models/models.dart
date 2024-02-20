@@ -329,9 +329,10 @@ class RiwayatSkrinning with _$RiwayatSkrinning {
       @JsonKey(name: 'email') String? email,
       @JsonKey(name: 'password') String? password,
       @JsonKey(name: 'role') String? role,
-      @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt,
-      Skrinning? skrinning}) = _RiwayatSkrinning;
+      @JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+      }) = _RiwayatSkrinning;
 
   factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) =>
       _$RiwayatSkrinningFromJson(json);

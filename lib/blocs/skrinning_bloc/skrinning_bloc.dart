@@ -9,15 +9,18 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
 
     on<InitializeSkrinningData>((event, emit) async {
       try {
-        _skrinning = await ApiHelper.get('/api/skrinning').then(
-            (value) => (value.data['data'] as List)
+        skrinning = await ApiHelper.get('/api/skrinning').then((value) =>
+            (value.data['data'] as List)
                 .map((e) => Skrinning.fromJson(e))
                 .toList());
-        _riwayatskrinning = await ApiHelper.get('/api/riwayatskrinning').then(
+        riwayatskrinning = await ApiHelper.get('/api/riwayatskrinning').then(
             (value) => (value.data['data'] as List)
                 .map((e) => RiwayatSkrinning.fromJson(e))
                 .toList());
-        _detailskrinning = await ApiHelper.get('/api/detailskrinning/1').then((value) => (value.data['data'] as List).map((e) => DetailSkrinning.fromJson(e)).toList());
+        detailskrinning = await ApiHelper.get('/api/detailskrinning/1').then(
+            (value) => (value.data['data'] as List)
+                .map((e) => DetailSkrinning.fromJson(e))
+                .toList());
       } catch (e) {
         emit(SkrinningError());
         return;
@@ -26,15 +29,15 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
     });
   }
 
-  List<Skrinning> _skrinning = [];
+  List<Skrinning> skrinning = [];
 
-  List<RiwayatSkrinning> _riwayatskrinning = [];
+  List<RiwayatSkrinning> riwayatskrinning = [];
 
-  List<DetailSkrinning> _detailskrinning = [];
+  List<DetailSkrinning> detailskrinning = [];
 
   SkrinningDataLoaded get _skrinningDataLoaded => SkrinningDataLoaded(
-        skrinnings: _skrinning,
-        riwayatskrinning: _riwayatskrinning,
-        detailskrinning: _detailskrinning,
+        skrinnings: skrinning,
+        riwayatskrinning: riwayatskrinning,
+        detailskrinning: detailskrinning,
       );
 }

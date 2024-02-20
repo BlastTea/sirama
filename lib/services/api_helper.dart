@@ -57,6 +57,7 @@ class ApiHelper {
           if (options.method != 'GET' ||
               options.path.contains('/api/fav') ||
               options.path.contains('/api/detailskrinning') ||
+              options.path.contains('/api/skrinning') ||
               options.path.contains('/api/riwayatskrinning') ||
               options.path.contains('/api/detailriwayatskrinning')) {
             options.headers['Authorization'] = 'Bearer $token';
