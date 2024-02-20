@@ -255,14 +255,28 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
 @unfreezed
 class Skrinning with _$Skrinning {
   factory Skrinning({
-    @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
-    @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
-    SoalJawab? soalJawab,
-    SkrinUser? skrinUser,
+    @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _Skrinning;
 
   factory Skrinning.fromJson(Map<String, dynamic> json) =>
       _$SkrinningFromJson(json);
+}
+
+@unfreezed
+class DetailSkrinning with _$DetailSkrinning {
+  factory DetailSkrinning({
+    @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+    @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
+    SoalJawab? soalJawab,
+    SkrinUser? skrinUser,
+  }) = _DetailSkrinning;
+
+  factory DetailSkrinning.fromJson(Map<String, dynamic> json) =>
+      _$DetailSkrinningFromJson(json);
 }
 
 @unfreezed

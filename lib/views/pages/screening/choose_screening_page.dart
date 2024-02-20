@@ -53,8 +53,7 @@ class ChooseScreeningPage extends StatelessWidget {
                 const SizedBox(
                   height: 20,
                 ),
-                const ScreeningChooseListItem(
-                ),
+                const ScreeningChooseListItem(),
               ],
             ),
           ),

@@ -17,6 +17,7 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
             (value) => (value.data['data'] as List)
                 .map((e) => RiwayatSkrinning.fromJson(e))
                 .toList());
+        _detailskrinning = await ApiHelper.get('/api/detailskrinning/1').then((value) => (value.data['data'] as List).map((e) => DetailSkrinning.fromJson(e)).toList());
       } catch (e) {
         emit(SkrinningError());
         return;
@@ -29,8 +30,11 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
 
   List<RiwayatSkrinning> _riwayatskrinning = [];
 
+  List<DetailSkrinning> _detailskrinning = [];
+
   SkrinningDataLoaded get _skrinningDataLoaded => SkrinningDataLoaded(
         skrinnings: _skrinning,
         riwayatskrinning: _riwayatskrinning,
+        detailskrinning: _detailskrinning,
       );
 }

@@ -377,6 +377,29 @@ Map<String, dynamic> _$$FavVideoEdukasiImplToJson(
 
 _$SkrinningImpl _$$SkrinningImplFromJson(Map<String, dynamic> json) =>
     _$SkrinningImpl(
+      idSkrinning: json['id_skrinning'] as int?,
+      jenisSkrinning: json['jenis_skrinning'] as String?,
+      deskripsiSkrinning: json['deskripsi_skrinning'] as String?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+    );
+
+Map<String, dynamic> _$$SkrinningImplToJson(_$SkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_skrinning': instance.idSkrinning,
+      'jenis_skrinning': instance.jenisSkrinning,
+      'deskripsi_skrinning': instance.deskripsiSkrinning,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+    };
+
+_$DetailSkrinningImpl _$$DetailSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DetailSkrinningImpl(
       idBagianSkrinning: json['id_bagian_skrinning'] as int?,
       namaBagianSkrinning: json['nama_bagian_skrinning'] as String?,
       soalJawab: json['soalJawab'] == null
@@ -387,7 +410,8 @@ _$SkrinningImpl _$$SkrinningImplFromJson(Map<String, dynamic> json) =>
           : SkrinUser.fromJson(json['skrinUser'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$SkrinningImplToJson(_$SkrinningImpl instance) =>
+Map<String, dynamic> _$$DetailSkrinningImplToJson(
+        _$DetailSkrinningImpl instance) =>
     <String, dynamic>{
       'id_bagian_skrinning': instance.idBagianSkrinning,
       'nama_bagian_skrinning': instance.namaBagianSkrinning,
