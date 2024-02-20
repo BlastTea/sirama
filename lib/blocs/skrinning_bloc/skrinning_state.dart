@@ -18,5 +18,4 @@ class SkrinningDataLoaded extends SkrinningState {
   final List<RiwayatSkrinning> riwayatskrinning;
   final List<DetailSkrinning> detailskrinning;
 
-  // final List<List<Skrinning>> SkrinningsLength;
 }

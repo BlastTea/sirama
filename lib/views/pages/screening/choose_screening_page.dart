@@ -6,10 +6,13 @@ class ChooseScreeningPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
-      builder: (context, state) {
-        if (state is SkrinningDataLoaded) {
-          return _buildScreeningList(context, state);
-        } else if (state is SkrinningError) {
+      builder: (context, stateSkrinning) {
+        if (stateSkrinning is SkrinningInitial) {
+          MyApp.skrinningBloc.add(InitializeSkrinningData());
+        }
+        if (stateSkrinning is SkrinningDataLoaded) {
+          return _buildScreeningList(context, stateSkrinning);
+        } else if (stateSkrinning is SkrinningError) {
           return Scaffold(
             body: ErrorOccuredButton(
               onRetryPressed: () {
@@ -24,7 +27,7 @@ class ChooseScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildScreeningList(BuildContext context, SkrinningDataLoaded state) {
+  Widget _buildScreeningList(BuildContext context, SkrinningDataLoaded stateSkrinning) {
     return ListView(
       primary: true,
       shrinkWrap: true,
@@ -37,7 +40,7 @@ class ChooseScreeningPage extends StatelessWidget {
               const Text('Yuk, skrining sekarang', style: TextStyle(fontSize: 20)),
               Text('${currentUser?.username ?? 'Guest'} 🤩', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 20),
-              _buildScreeningTiles(state),
+              _buildScreeningTiles(stateSkrinning),
             ],
           ),
         ),
@@ -45,7 +48,7 @@ class ChooseScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildScreeningTiles(SkrinningDataLoaded state) {
+  Widget _buildScreeningTiles(SkrinningDataLoaded stateSkrinning) {
     return ListView.builder(
       shrinkWrap: true,
       primary: false,
@@ -73,7 +76,7 @@ class ChooseScreeningPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    state.skrinnings[index].jenisSkrinning!,
+                    stateSkrinning.skrinnings[index].jenisSkrinning!,
                     style: const TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 10,
@@ -89,7 +92,7 @@ class ChooseScreeningPage extends StatelessWidget {
           },
         );
       },
-      itemCount: state.skrinnings.length,
+      itemCount: stateSkrinning.skrinnings.length,
     );
   }
 }

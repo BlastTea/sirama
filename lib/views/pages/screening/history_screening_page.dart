@@ -3,71 +3,6 @@ part of '../pages.dart';
 // class HistoryScreeningPage extends StatelessWidget {
 //   const HistoryScreeningPage({super.key});
 
-//   @override
-//   Widget build(BuildContext context) =>
-//       BlocBuilder<SkrinningBloc, SkrinningState>(
-//         builder: (context, stateRiwayatSkrinning) {
-//           if (stateRiwayatSkrinning is SkrinningDataLoaded) {
-//             return Scaffold(
-//               body: ListView(
-//                   shrinkWrap: true,
-//                   padding: const EdgeInsets.symmetric(horizontal: 5),
-//                   children: [
-//                     Column(children: [
-//                       ListTile(
-//                         title: Row(
-//                           children: [
-//                             Text('tes', style: const TextStyle(fontSize: 30)),
-//                             const SizedBox(width: 10),
-//                             Column(
-//                               mainAxisAlignment: MainAxisAlignment.start,
-//                               crossAxisAlignment: CrossAxisAlignment.start,
-//                               children: [
-//                                 Row(
-//                                   mainAxisAlignment:
-//                                       MainAxisAlignment.spaceBetween,
-//                                   children: [
-//                                     Text('tes',
-//                                         style: Config.textStyleHeadlineSmall),
-//                                   ],
-//                                 ),
-//                                 Text(
-//                                   'tes',
-//                                   style: Config.textStyleBodyMedium,
-//                                 ),
-//                                 Text('tes', style: Config.textStyleBodyMedium),
-//                               ],
-//                             ),
-//                           ],
-//                         ),
-//                         subtitle: Column(
-//                           crossAxisAlignment: CrossAxisAlignment.start,
-//                           children: [
-//                             Padding(
-//                               padding: const EdgeInsets.fromLTRB(49, 5, 0, 0),
-//                               child: Text(
-//                                 'tes',
-//                                 style: Config.textStyleBodyMedium,
-//                               ),
-//                             ),
-//                             const SizedBox(
-//                               height: 10,
-//                             ),
-//                             const Divider(
-//                               height: 2,
-//                               color: Colors.black12,
-//                             ),
-//                           ],
-//                         ),
-//                       ),
-//                     ]),
-//                   ]),
-//             );
-//           }
-//           return Container();
-//         },
-//       );
-// }
 
 class HistoryScreeningPage extends StatelessWidget {
   const HistoryScreeningPage({super.key});
@@ -75,10 +10,13 @@ class HistoryScreeningPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
-      builder: (context, state) {
-        if (state is SkrinningDataLoaded) {
-          return _buildHistoryList(state);
-        } else if (state is SkrinningError) {
+      builder: (context, stateHistory) {
+        if (stateHistory is SkrinningInitial) {
+          MyApp.skrinningBloc.add(InitializeSkrinningData());
+        }
+        if (stateHistory is SkrinningDataLoaded) {
+          return _buildHistoryList(stateHistory);
+        } else if (stateHistory is SkrinningError) {
           return _buildErrorUI();
         } else {
           return _buildLoadingUI();
@@ -87,22 +25,56 @@ class HistoryScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildHistoryList(SkrinningDataLoaded state) {
+  Widget _buildHistoryList(SkrinningDataLoaded stateHistory) {
     return Scaffold(
       body: ListView(
         shrinkWrap: true,
         padding: const EdgeInsets.symmetric(horizontal: 5),
         children: [
           Column(
-            children: state.riwayatskrinning.map((riwayat) {
+            children: stateHistory.riwayatskrinning.map((riwayat) {
               return ListTile(
-                title: Text(
-                  'Title: ${riwayat.jenisSkrinning}',
-                  style: const TextStyle(fontSize: 16),
+                title: Row(
+                  children: [
+                    const Text('tes', style: const TextStyle(fontSize: 30)),
+                    const SizedBox(width: 10),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text('tes', style: Config.textStyleHeadlineSmall),
+                          ],
+                        ),
+                        Text(
+                          'tes',
+                          style: Config.textStyleBodyMedium,
+                        ),
+                        Text('tes', style: Config.textStyleBodyMedium),
+                      ],
+                    ),
+                  ],
                 ),
-                subtitle: Text(
-                  'Subtitle: ${riwayat.deskripsiSkrinning}',
-                  style: const TextStyle(fontSize: 14),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(49, 5, 0, 0),
+                      child: Text(
+                        'tes',
+                        style: Config.textStyleBodyMedium,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    const Divider(
+                      height: 2,
+                      color: Colors.black12,
+                    ),
+                  ],
                 ),
               );
             }).toList(),
