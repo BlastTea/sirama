@@ -273,7 +273,7 @@ _$FavInfografisImpl _$$FavInfografisImplFromJson(Map<String, dynamic> json) =>
     _$FavInfografisImpl(
       idFavInfografis: json['id_fav_infografis'] as int?,
       idUser: json['user_id'] as int?,
-      idInfografis: json['infografis_id'] as int?,
+      idInfografis: _parseInt(json['infografis_id']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -299,7 +299,7 @@ _$FavFilmImpl _$$FavFilmImplFromJson(Map<String, dynamic> json) =>
     _$FavFilmImpl(
       idFavFilm: json['id_fav_film'] as int?,
       idUser: json['user_id'] as int?,
-      idFilm: json['film_id'] as int?,
+      idFilm: _parseInt(json['film_id']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -325,7 +325,7 @@ _$FavPodcastImpl _$$FavPodcastImplFromJson(Map<String, dynamic> json) =>
     _$FavPodcastImpl(
       idFavPodcast: json['id_fav_podcast'] as int?,
       idUser: json['user_id'] as int?,
-      idPodcast: json['podcast_id'] as int?,
+      idPodcast: _parseInt(json['podcast_id']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -352,7 +352,7 @@ _$FavVideoEdukasiImpl _$$FavVideoEdukasiImplFromJson(
     _$FavVideoEdukasiImpl(
       idFavVideoEdukasi: json['id_fav_video_edukasi'] as int?,
       idUser: json['user_id'] as int?,
-      idVideoEdukasi: json['video_edukasi_id'] as int?,
+      idVideoEdukasi: _parseInt(json['video_edukasi_id']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

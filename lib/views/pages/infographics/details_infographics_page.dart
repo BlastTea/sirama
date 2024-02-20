@@ -66,28 +66,22 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                                     padding: const EdgeInsets.symmetric(horizontal: 10),
                                     child: Column(
                                       children: [
-                                        Text(widget.infographic.judulInfografis!, style: Config.textStyleTitleSmall.copyWith(fontSize: 14)),
+                                        Text(stateContentFavorite.currentInfografis?.infografis?.judulInfografis ?? '?', style: Config.textStyleTitleSmall.copyWith(fontSize: 14)),
                                         const SizedBox(height: 5),
-                                        Text(
-                                          widget.infographic.deskripsiInfografis!,
-                                        ),
+                                        Text(stateContentFavorite.currentInfografis?.infografis?.deskripsiInfografis ?? 'Tidak ada deskripsi'),
                                         const SizedBox(height: 20),
                                         const Text('Diupload oleh Admin'),
-                                        Text(widget.infographic.tanggalUpload!.toFormattedDate(withWeekday: true, withMonthName: true)),
+                                        Text(stateContentFavorite.currentInfografis?.infografis?.tanggalUpload?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?'),
                                       ],
                                     ),
                                   ),
                                   Row(
                                     children: [
                                       IconButton(
-                                        onPressed: () {
-                                          // TODO: implement favorite
-                                        },
-                                        icon: Icon(
-                                          widget.infographic.isFavorited ? Icons.favorite : Icons.favorite_border,
-                                        ),
+                                        onPressed: () => MyApp.contentFavorite.add(ToggleInfografisFavoritePressed()),
+                                        icon: Icon((stateContentFavorite.currentInfografis?.infografis?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                       ),
-                                      Text(widget.infographic.totalLikes?.toString() ?? '0'),
+                                      Text(stateContentFavorite.currentInfografis?.infografis?.totalLikes?.toString() ?? '0'),
                                     ],
                                   ),
                                 ],

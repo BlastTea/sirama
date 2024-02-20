@@ -20,6 +20,9 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
     super.initState();
     _podPlayerController = PodPlayerController(
       playVideoFrom: PlayVideoFrom.youtube(widget.videoEdukasi.linkVideoEdukasi!),
+      podPlayerConfig: const PodPlayerConfig(
+        autoPlay: !kDebugMode,
+      ),
     )..initialise();
   }
 
@@ -57,7 +60,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        widget.videoEdukasi.judulVideoEdukasi ?? '?',
+                        stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.judulVideoEdukasi ?? '?',
                         style: Config.textStyleTitleMedium,
                       ),
                     ),
@@ -79,15 +82,10 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                                 children: [
                                   Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                   IconButton(
-                                    onPressed: () {
-                                      // TODO: implement favorite
-                                    },
-                                    icon: Icon(
-                                      widget.videoEdukasi.isFavorited ? Icons.favorite : Icons.favorite_border,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
+                                    onPressed: () => MyApp.contentFavorite.add(ToggleVideoEdukasiFavoritePressed()),
+                                    icon: Icon((stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                   ),
-                                  Text(widget.videoEdukasi.totalLikes?.toString() ?? '0'),
+                                  Text(stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.totalLikes?.toString() ?? '0'),
                                 ],
                               ),
                             ),
@@ -99,7 +97,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: RichText(
                         text: TextSpan(
-                          text: (widget.videoEdukasi.deksripsiVideoEdukasi ?? '').trim().isEmpty ? 'Tidak ada deskripsi' : widget.videoEdukasi.deksripsiVideoEdukasi!,
+                          text: stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.deksripsiVideoEdukasi ?? 'Tidak ada deskripsi',
                           style: Config.textStyleBodyMedium.copyWith(color: Colors.black),
                         ),
                       ),

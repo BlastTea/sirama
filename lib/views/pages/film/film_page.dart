@@ -27,6 +27,8 @@ class FilmPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
+                    MyApp.contentFavorite.add(InitializeEditFilmData(favFilm: favFilms[index]));
+
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsFilmPage(
                         film: film,
@@ -106,7 +108,7 @@ class FilmPage extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Video edukasi terbaru',
+                            'Film edukasi terbaru',
                             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                           ),
                         ],

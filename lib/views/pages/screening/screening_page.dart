@@ -4,7 +4,8 @@ class ScreeningPage extends StatelessWidget {
   const ScreeningPage({super.key});
 
   @override
-  Widget build(BuildContext context) => DefaultTabController(
+  Widget build(BuildContext context) {
+    return DefaultTabController(
       length: 2,
       child: Scaffold(
         appBar: AppBar(
@@ -19,14 +20,14 @@ class ScreeningPage extends StatelessWidget {
             labelPadding: const EdgeInsets.symmetric(horizontal: 30.0),
             isScrollable: true,
             tabAlignment: TabAlignment.center,
-            tabs: ['Pilihan Skrining', 'Riwayat Skrining']
-                .map((e) => Tab(text: e))
-                .toList(),
+            tabs: ['Pilihan Skrining', 'Riwayat Skrining'].map((e) => Tab(text: e)).toList(),
           ),
         ),
         body: const TabBarView(children: [
           ChooseScreeningPage(),
           HistoryScreeningPage(),
         ]),
-      ));
+      ),
+    );
+  }
 }

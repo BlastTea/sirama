@@ -19,8 +19,11 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.podcast.linkPodcast ?? '?'),
-    )..initialise();
+        playVideoFrom: PlayVideoFrom.youtube(widget.podcast.linkPodcast ?? '?'),
+        podPlayerConfig: const PodPlayerConfig(
+          autoPlay: !kDebugMode,
+        ))
+      ..initialise();
   }
 
   @override
@@ -67,7 +70,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                       child: Column(
                         children: [
                           Text(
-                            widget.podcast.judulPodcast ?? '?',
+                            stateContentFavorite.currentPodcast?.podcast?.judulPodcast ?? '?',
                             style: Config.textStyleHeadlineSmall.copyWith(
                               fontSize: 16,
                               fontWeight: FontWeight.bold,
@@ -92,14 +95,12 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                                   child: Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                 ),
                                 IconButton(
-                                  onPressed: () {
-                                    // TODO: implement favorite
-                                  },
+                                  onPressed: () => MyApp.contentFavorite.add(TogglePodcastFavoritePressed()),
                                   icon: Icon(
-                                    widget.podcast.isFavorited ? Icons.favorite : Icons.favorite_border,
+                                    (stateContentFavorite.currentPodcast?.podcast?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border,
                                   ),
                                 ),
-                                Text(widget.podcast.totalLikes?.toThousandFormat() ?? '0'),
+                                Text(stateContentFavorite.currentPodcast?.podcast?.totalLikes?.toThousandFormat() ?? '0'),
                               ],
                             ),
                           ),
@@ -108,7 +109,10 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(widget.podcast.deksripsiPodcast ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
+                      child: Text(
+                        stateContentFavorite.currentPodcast?.podcast?.deksripsiPodcast ?? 'Tidak ada deskripsi',
+                        style: Config.textStyleBodyMedium.copyWith(color: Colors.black),
+                      ),
                     ),
                     const SizedBox(
                       height: 20,

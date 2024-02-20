@@ -3074,9 +3074,9 @@ mixin _$FavInfografis {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   set idUser(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'infografis_id')
+  @JsonKey(name: 'infografis_id', fromJson: _parseInt)
   int? get idInfografis => throw _privateConstructorUsedError;
-  @JsonKey(name: 'infografis_id')
+  @JsonKey(name: 'infografis_id', fromJson: _parseInt)
   set idInfografis(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -3109,7 +3109,7 @@ abstract class $FavInfografisCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'infografis_id') int? idInfografis,
+      @JsonKey(name: 'infografis_id', fromJson: _parseInt) int? idInfografis,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3196,7 +3196,7 @@ abstract class _$$FavInfografisImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'infografis_id') int? idInfografis,
+      @JsonKey(name: 'infografis_id', fromJson: _parseInt) int? idInfografis,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3265,7 +3265,7 @@ class _$FavInfografisImpl implements _FavInfografis {
   _$FavInfografisImpl(
       {@JsonKey(name: 'id_fav_infografis') this.idFavInfografis,
       @JsonKey(name: 'user_id') this.idUser,
-      @JsonKey(name: 'infografis_id') this.idInfografis,
+      @JsonKey(name: 'infografis_id', fromJson: _parseInt) this.idInfografis,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3282,7 +3282,7 @@ class _$FavInfografisImpl implements _FavInfografis {
   @JsonKey(name: 'user_id')
   int? idUser;
   @override
-  @JsonKey(name: 'infografis_id')
+  @JsonKey(name: 'infografis_id', fromJson: _parseInt)
   int? idInfografis;
   @override
   @JsonKey(name: 'created_at')
@@ -3319,7 +3319,7 @@ abstract class _FavInfografis implements FavInfografis {
   factory _FavInfografis(
       {@JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'infografis_id') int? idInfografis,
+      @JsonKey(name: 'infografis_id', fromJson: _parseInt) int? idInfografis,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3340,9 +3340,9 @@ abstract class _FavInfografis implements FavInfografis {
   @JsonKey(name: 'user_id')
   set idUser(int? value);
   @override
-  @JsonKey(name: 'infografis_id')
+  @JsonKey(name: 'infografis_id', fromJson: _parseInt)
   int? get idInfografis;
-  @JsonKey(name: 'infografis_id')
+  @JsonKey(name: 'infografis_id', fromJson: _parseInt)
   set idInfografis(int? value);
   @override
   @JsonKey(name: 'created_at')
@@ -3382,9 +3382,9 @@ mixin _$FavFilm {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   set idUser(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'film_id')
+  @JsonKey(name: 'film_id', fromJson: _parseInt)
   int? get idFilm => throw _privateConstructorUsedError;
-  @JsonKey(name: 'film_id')
+  @JsonKey(name: 'film_id', fromJson: _parseInt)
   set idFilm(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -3415,7 +3415,7 @@ abstract class $FavFilmCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'film_id') int? idFilm,
+      @JsonKey(name: 'film_id', fromJson: _parseInt) int? idFilm,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3501,7 +3501,7 @@ abstract class _$$FavFilmImplCopyWith<$Res> implements $FavFilmCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'film_id') int? idFilm,
+      @JsonKey(name: 'film_id', fromJson: _parseInt) int? idFilm,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3570,7 +3570,7 @@ class _$FavFilmImpl implements _FavFilm {
   _$FavFilmImpl(
       {@JsonKey(name: 'id_fav_film') this.idFavFilm,
       @JsonKey(name: 'user_id') this.idUser,
-      @JsonKey(name: 'film_id') this.idFilm,
+      @JsonKey(name: 'film_id', fromJson: _parseInt) this.idFilm,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3587,7 +3587,7 @@ class _$FavFilmImpl implements _FavFilm {
   @JsonKey(name: 'user_id')
   int? idUser;
   @override
-  @JsonKey(name: 'film_id')
+  @JsonKey(name: 'film_id', fromJson: _parseInt)
   int? idFilm;
   @override
   @JsonKey(name: 'created_at')
@@ -3624,7 +3624,7 @@ abstract class _FavFilm implements FavFilm {
   factory _FavFilm(
       {@JsonKey(name: 'id_fav_film') int? idFavFilm,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'film_id') int? idFilm,
+      @JsonKey(name: 'film_id', fromJson: _parseInt) int? idFilm,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3644,9 +3644,9 @@ abstract class _FavFilm implements FavFilm {
   @JsonKey(name: 'user_id')
   set idUser(int? value);
   @override
-  @JsonKey(name: 'film_id')
+  @JsonKey(name: 'film_id', fromJson: _parseInt)
   int? get idFilm;
-  @JsonKey(name: 'film_id')
+  @JsonKey(name: 'film_id', fromJson: _parseInt)
   set idFilm(int? value);
   @override
   @JsonKey(name: 'created_at')
@@ -3686,9 +3686,9 @@ mixin _$FavPodcast {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   set idUser(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'podcast_id')
+  @JsonKey(name: 'podcast_id', fromJson: _parseInt)
   int? get idPodcast => throw _privateConstructorUsedError;
-  @JsonKey(name: 'podcast_id')
+  @JsonKey(name: 'podcast_id', fromJson: _parseInt)
   set idPodcast(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -3721,7 +3721,7 @@ abstract class $FavPodcastCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'podcast_id') int? idPodcast,
+      @JsonKey(name: 'podcast_id', fromJson: _parseInt) int? idPodcast,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3808,7 +3808,7 @@ abstract class _$$FavPodcastImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'podcast_id') int? idPodcast,
+      @JsonKey(name: 'podcast_id', fromJson: _parseInt) int? idPodcast,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3877,7 +3877,7 @@ class _$FavPodcastImpl implements _FavPodcast {
   _$FavPodcastImpl(
       {@JsonKey(name: 'id_fav_podcast') this.idFavPodcast,
       @JsonKey(name: 'user_id') this.idUser,
-      @JsonKey(name: 'podcast_id') this.idPodcast,
+      @JsonKey(name: 'podcast_id', fromJson: _parseInt) this.idPodcast,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3894,7 +3894,7 @@ class _$FavPodcastImpl implements _FavPodcast {
   @JsonKey(name: 'user_id')
   int? idUser;
   @override
-  @JsonKey(name: 'podcast_id')
+  @JsonKey(name: 'podcast_id', fromJson: _parseInt)
   int? idPodcast;
   @override
   @JsonKey(name: 'created_at')
@@ -3931,7 +3931,7 @@ abstract class _FavPodcast implements FavPodcast {
   factory _FavPodcast(
       {@JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'podcast_id') int? idPodcast,
+      @JsonKey(name: 'podcast_id', fromJson: _parseInt) int? idPodcast,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -3952,9 +3952,9 @@ abstract class _FavPodcast implements FavPodcast {
   @JsonKey(name: 'user_id')
   set idUser(int? value);
   @override
-  @JsonKey(name: 'podcast_id')
+  @JsonKey(name: 'podcast_id', fromJson: _parseInt)
   int? get idPodcast;
-  @JsonKey(name: 'podcast_id')
+  @JsonKey(name: 'podcast_id', fromJson: _parseInt)
   set idPodcast(int? value);
   @override
   @JsonKey(name: 'created_at')
@@ -3994,9 +3994,9 @@ mixin _$FavVideoEdukasi {
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   set idUser(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'video_edukasi_id')
+  @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
   int? get idVideoEdukasi => throw _privateConstructorUsedError;
-  @JsonKey(name: 'video_edukasi_id')
+  @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
   set idVideoEdukasi(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
@@ -4029,7 +4029,8 @@ abstract class $FavVideoEdukasiCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'video_edukasi_id') int? idVideoEdukasi,
+      @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
+      int? idVideoEdukasi,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4116,7 +4117,8 @@ abstract class _$$FavVideoEdukasiImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'video_edukasi_id') int? idVideoEdukasi,
+      @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
+      int? idVideoEdukasi,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4185,7 +4187,8 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
   _$FavVideoEdukasiImpl(
       {@JsonKey(name: 'id_fav_video_edukasi') this.idFavVideoEdukasi,
       @JsonKey(name: 'user_id') this.idUser,
-      @JsonKey(name: 'video_edukasi_id') this.idVideoEdukasi,
+      @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
+      this.idVideoEdukasi,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4202,7 +4205,7 @@ class _$FavVideoEdukasiImpl implements _FavVideoEdukasi {
   @JsonKey(name: 'user_id')
   int? idUser;
   @override
-  @JsonKey(name: 'video_edukasi_id')
+  @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
   int? idVideoEdukasi;
   @override
   @JsonKey(name: 'created_at')
@@ -4240,7 +4243,8 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
   factory _FavVideoEdukasi(
       {@JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
       @JsonKey(name: 'user_id') int? idUser,
-      @JsonKey(name: 'video_edukasi_id') int? idVideoEdukasi,
+      @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
+      int? idVideoEdukasi,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -4261,9 +4265,9 @@ abstract class _FavVideoEdukasi implements FavVideoEdukasi {
   @JsonKey(name: 'user_id')
   set idUser(int? value);
   @override
-  @JsonKey(name: 'video_edukasi_id')
+  @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
   int? get idVideoEdukasi;
-  @JsonKey(name: 'video_edukasi_id')
+  @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt)
   set idVideoEdukasi(int? value);
   @override
   @JsonKey(name: 'created_at')

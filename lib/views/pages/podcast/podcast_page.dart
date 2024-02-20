@@ -27,6 +27,8 @@ class PodcastPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
+                    MyApp.contentFavorite.add(InitializeEditPodcastData(favPodcast: favPodcasts[index]));
+
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsPodcastPage(
                         podcast: podcast,
@@ -124,7 +126,7 @@ class PodcastPage extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Video edukasi terbaru',
+                            'Podcast terbaru',
                             style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
                           ),
                         ],
@@ -154,7 +156,7 @@ class PodcastPage extends StatelessWidget {
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
-              title: const Text('Film Edukasi'),
+              title: const Text('Podcast Edukasi'),
               centerTitle: true,
             ),
             body: const Center(

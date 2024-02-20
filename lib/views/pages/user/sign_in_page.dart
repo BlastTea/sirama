@@ -10,10 +10,10 @@ class SignInPage extends StatelessWidget {
 
           // if (kDebugMode) {
           // stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
-          // stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
           stateAuthentication.textControllerUsernameSignIn.text = 'altamisblade';
-          // stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
           stateAuthentication.textControllerPasswordSignIn.text = '123';
+          // stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
+          // stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
           // }
 
           return Scaffold(
