@@ -12,3 +12,15 @@ class SetSkrinningState extends SkrinningEvent {
 class SetSkrinningToInitial extends SkrinningEvent {}
 
 class InitializeSkrinningData extends SkrinningEvent {}
+
+class InitializeRiwayatSkrinningData extends SkrinningEvent {
+  InitializeRiwayatSkrinningData({required this.riwayatskrinning});
+
+  final RiwayatSkrinning riwayatskrinning;
+}
+
+class InitializePilihSkrinningData extends SkrinningEvent {
+  InitializePilihSkrinningData({required this.skrinning});
+
+  final Skrinning skrinning;
+}

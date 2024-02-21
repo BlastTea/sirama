@@ -27,9 +27,11 @@ class EducationalVideoPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
+                    MyApp.contentFavorite.add(InitializeEditVideoEdukasiData(favVideoEdukasi: favVideoEdukasis[index]));
+
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsEducationalVideoPage(
-                        educationalVideo: videoEdukasi,
+                        videoEdukasi: videoEdukasi,
                       ),
                     );
 

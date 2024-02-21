@@ -40,7 +40,7 @@ class ScreeningChooseListItem extends StatelessWidget {
                         Text(
                           stateSkrinning.skrinnings[index].jenisSkrinning!,
                           style: const TextStyle(
-                            fontWeight: FontWeight.bold, 
+                            fontWeight: FontWeight.bold,
                             fontSize: 10,
                           ),
                         ),
@@ -55,22 +55,21 @@ class ScreeningChooseListItem extends StatelessWidget {
               );
             },
           );
+        } else if (stateSkrinning is SkrinningInitial) {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        } else if (stateSkrinning is SkrinningError) {
+          return Scaffold(
+            body: ErrorOccuredButton(
+              onRetryPressed: () => MyApp.skrinningBloc.add(InitializeSkrinningData()),
+            ),
+          );
+        } else {
+          return Container();
         }
-        else if (stateSkrinning is SkrinningInitial) {
-            return const Scaffold(
-              body: Center(
-                child: CircularProgressIndicator(),
-              ),
-            );
-          } else if (stateSkrinning is SkrinningError) {
-            return Scaffold(
-              body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.skrinningBloc.add(InitializeSkrinningData()),
-              ),
-            );
-          } else {
-            return Container();
-          }
       },
     );
   }

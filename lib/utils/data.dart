@@ -2,7 +2,7 @@ part of 'utils.dart';
 
 
 List<Map<String, String>> siramaIcon = [
-  {'icon': 'skrining-menu-icon', 'title': 'Screening', 'route': '/screening'},
+  {'icon': 'skrining-menu-icon', 'title': 'Skrining', 'route': '/screening'},
   {'icon': 'infografis-menu-icon', 'title': 'Infografis', 'route': '/infographics'},
   {'icon': 'film-menu-icon', 'title': 'Film', 'route': '/film'},
   {'icon': 'podcast-menu-icon', 'title': 'Podcast', 'route': '/podcast'},

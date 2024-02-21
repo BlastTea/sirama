@@ -3,18 +3,14 @@ part of '../pages.dart';
 class DetailsEducationalVideoPage extends StatefulWidget {
   const DetailsEducationalVideoPage({
     super.key,
-    required this.educationalVideo,
-    this.favEducationalVideo,
+    required this.videoEdukasi,
   });
 
-  final VideoEdukasi educationalVideo;
-  final FavVideoEdukasi? favEducationalVideo;
+  final VideoEdukasi videoEdukasi;
 
   @override
   State<DetailsEducationalVideoPage> createState() => _DetailsEducationalVideoPageState();
 }
-
-bool isFavorited = true;
 
 class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPage> {
   late final PodPlayerController _podPlayerController;
@@ -23,7 +19,10 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
   void initState() {
     super.initState();
     _podPlayerController = PodPlayerController(
-      playVideoFrom: PlayVideoFrom.youtube(widget.educationalVideo.linkVideoEdukasi!),
+      playVideoFrom: PlayVideoFrom.youtube(widget.videoEdukasi.linkVideoEdukasi!),
+      podPlayerConfig: const PodPlayerConfig(
+        autoPlay: !kDebugMode,
+      ),
     )..initialise();
   }
 
@@ -45,7 +44,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                 actions: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7),
-                    child: IconButton(onPressed: () => (widget.educationalVideo.linkVideoEdukasi!.isNotEmpty) ? Share.shareUri(Uri.parse(widget.educationalVideo.linkVideoEdukasi!)) : null, icon: SvgPicture.asset('assets/icons/share-icons.svg')),
+                    child: IconButton(onPressed: () => (widget.videoEdukasi.linkVideoEdukasi!.isNotEmpty) ? Share.shareUri(Uri.parse(widget.videoEdukasi.linkVideoEdukasi!)) : null, icon: SvgPicture.asset('assets/icons/share-icons.svg')),
                   ),
                 ],
               ),
@@ -61,7 +60,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        widget.educationalVideo.judulVideoEdukasi ?? '?',
+                        stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.judulVideoEdukasi ?? '?',
                         style: Config.textStyleTitleMedium,
                       ),
                     ),
@@ -83,17 +82,10 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                                 children: [
                                   Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                   IconButton(
-                                    onPressed: () {
-                                      setState(() {
-                                        isFavorited = !isFavorited;
-                                      });
-                                    },
-                                    icon: Icon(
-                                      isFavorited ? Icons.favorite : Icons.favorite_border,
-                                      color: Theme.of(context).colorScheme.primary,
-                                    ),
+                                    onPressed: () => MyApp.contentFavorite.add(ToggleVideoEdukasiFavoritePressed()),
+                                    icon: Icon((stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                   ),
-                                  Text(widget.educationalVideo.totalLikes?.toString() ?? '0'),
+                                  Text(stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.totalLikes?.toString() ?? '0'),
                                 ],
                               ),
                             ),
@@ -105,7 +97,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: RichText(
                         text: TextSpan(
-                          text: (widget.educationalVideo.deksripsiVideoEdukasi ?? '').trim().isEmpty ? 'Tidak ada deskripsi' : widget.educationalVideo.deksripsiVideoEdukasi!,
+                          text: stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.deksripsiVideoEdukasi ?? 'Tidak ada deskripsi',
                           style: Config.textStyleBodyMedium.copyWith(color: Colors.black),
                         ),
                       ),
@@ -127,7 +119,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                       context: context,
                       favVideoEdukasis: stateContentFavorite.videoEdukasis,
                       replaceCurrentPage: true,
-                      currentEducationVideo: widget.educationalVideo.idVideoEdukasi,
+                      currentEducationVideo: widget.videoEdukasi.idVideoEdukasi,
                     ),
                   ],
                 ),

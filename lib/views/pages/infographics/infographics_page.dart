@@ -26,6 +26,8 @@ class InfographicsPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
+                    MyApp.contentFavorite.add(InitializeEditInfografisData(favInfografis: favInfografis[index]));
+
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsInfographicsPage(
                         infographic: infographic,
@@ -83,6 +85,8 @@ class InfographicsPage extends StatelessWidget {
 
           return InkWell(
             onTap: () {
+              MyApp.contentFavorite.add(InitializeEditInfografisData(favInfografis: favInfografis[index]));
+
               Navigator.push(
                 context,
                 MaterialPageRoute(

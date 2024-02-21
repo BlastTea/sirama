@@ -20,6 +20,9 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
     super.initState();
     _podPlayerController = PodPlayerController(
       playVideoFrom: PlayVideoFrom.youtube(widget.film.linkFilm!),
+      podPlayerConfig: const PodPlayerConfig(
+        autoPlay: !kDebugMode,
+      ),
     )..initialise();
   }
 
@@ -31,8 +34,8 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
 
   @override
   Widget build(BuildContext context) => BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
-        builder: (context, contentFavoriteState) {
-          if (contentFavoriteState is ContentFavoriteDataLoaded) {
+        builder: (context, stateContentFavorite) {
+          if (stateContentFavorite is ContentFavoriteDataLoaded) {
             return Scaffold(
               appBar: AppBar(
                 backgroundColor: Colors.white,
@@ -42,7 +45,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 7),
                     child: IconButton(
-                      onPressed: () => (widget.film.linkFilm!.isNotEmpty) ? Share.shareUri(Uri.parse(widget.film.linkFilm!)) : null,
+                      onPressed: () => (widget.film.linkFilm?.isNotEmpty ?? false) ? Share.shareUri(Uri.parse(widget.film.linkFilm!)) : null,
                       icon: SvgPicture.asset('assets/icons/share-iconss.svg'),
                     ),
                   ),
@@ -60,7 +63,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Text(
-                        widget.film.judulFilm ?? '?',
+                        stateContentFavorite.currentFilm?.film?.judulFilm ?? '?',
                         style: Config.textStyleTitleMedium,
                       ),
                     ),
@@ -83,16 +86,10 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                                   child: Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                 ),
                                 IconButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      isFavorited = !isFavorited;
-                                    });
-                                  },
-                                  icon: Icon(
-                                    isFavorited ? Icons.favorite : Icons.favorite_border,
-                                  ),
+                                  onPressed: () => MyApp.contentFavorite.add(ToggleFilmFavoritePressed()),
+                                  icon: Icon((stateContentFavorite.currentFilm?.film?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                 ),
-                                Text(widget.film.totalLikes?.toString() ?? '0'),
+                                Text(stateContentFavorite.currentFilm?.film?.totalLikes?.toString() ?? '0'),
                               ],
                             ),
                           ),
@@ -101,7 +98,10 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
-                      child: Text(widget.film.deksripsiFilm ?? '?', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
+                      child: Text(
+                        stateContentFavorite.currentFilm?.film?.deksripsiFilm ?? 'Tidak ada deskripsi',
+                        style: Config.textStyleBodyMedium.copyWith(color: Colors.black),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     Padding(
@@ -118,7 +118,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                     const SizedBox(height: 20),
                     FilmPage.listVideo(
                       context: context,
-                      favFilms: contentFavoriteState.films,
+                      favFilms: stateContentFavorite.films,
                       replaceCurrentPage: true,
                       currentFilm: widget.film.idFilm,
                     )
@@ -127,6 +127,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
               ),
             );
           }
+
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,

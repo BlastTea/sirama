@@ -10,10 +10,10 @@ bool? _parseBool(dynamic data) => data is int? && data != null
         : null;
 
 int? _parseInt(dynamic data) => data is String? && data != null
-    ? int.tryParse(data) ?? 0
+    ? int.tryParse(data)
     : data is int
         ? data
-        : 0;
+        : null;
 
 @freezed
 class User with _$User {
@@ -170,7 +170,7 @@ class FavInfografis with _$FavInfografis {
   factory FavInfografis({
     @JsonKey(name: 'id_fav_infografis') int? idFavInfografis,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'infografis_id') int? idInfografis,
+    @JsonKey(name: 'infografis_id', fromJson: _parseInt) int? idInfografis,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
@@ -185,7 +185,7 @@ class FavFilm with _$FavFilm {
   factory FavFilm({
     @JsonKey(name: 'id_fav_film') int? idFavFilm,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'film_id') int? idFilm,
+    @JsonKey(name: 'film_id', fromJson: _parseInt) int? idFilm,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
@@ -200,7 +200,7 @@ class FavPodcast with _$FavPodcast {
   factory FavPodcast({
     @JsonKey(name: 'id_fav_podcast') int? idFavPodcast,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'podcast_id') int? idPodcast,
+    @JsonKey(name: 'podcast_id', fromJson: _parseInt) int? idPodcast,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
@@ -215,7 +215,7 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
   factory FavVideoEdukasi({
     @JsonKey(name: 'id_fav_video_edukasi') int? idFavVideoEdukasi,
     @JsonKey(name: 'user_id') int? idUser,
-    @JsonKey(name: 'video_edukasi_id') int? idVideoEdukasi,
+    @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt) int? idVideoEdukasi,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
@@ -239,58 +239,70 @@ class Skrinning with _$Skrinning {
 }
 
 @unfreezed
-class RiwayatSkrinning with _$RiwayatSkrinning {
-  factory RiwayatSkrinning({@JsonKey(name: 'id_skrin_user') int? idSkrinUser, @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian, @JsonKey(name: 'skrinning_id') int? skrinningId, @JsonKey(name: 'user_id') int? userId, @JsonKey(name: 'id_user') int? idUser, @JsonKey(name: 'username') String? username, @JsonKey(name: 'email') String? email, @JsonKey(name: 'password') String? password, @JsonKey(name: 'role') String? role, @JsonKey(name: 'created_at') DateTime? createdAt, @JsonKey(name: 'updated_at') DateTime? updatedAt, Skrinning? skrinning}) = _RiwayatSkrinning;
-
-  factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
-}
-
-@unfreezed
 class DetailSkrinning with _$DetailSkrinning {
   factory DetailSkrinning({
-    DataBagianSkrinning? data,
-    @JsonKey(name: 'skrin_user') int? skrinUser,
+    @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+    @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
+    SoalJawab? soalJawab,
+    SkrinUser? skrinUser,
   }) = _DetailSkrinning;
 
   factory DetailSkrinning.fromJson(Map<String, dynamic> json) => _$DetailSkrinningFromJson(json);
 }
 
 @unfreezed
-class DataBagianSkrinning with _$DataBagianSkrinning {
-  factory DataBagianSkrinning({@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning, @JsonKey(name: 'nama_bagian') String? namaBagian, SoalJawabanSkrinning? soalJawabanSkrinning}) = _DataBagianSkrinning;
+class SkrinUser with _$SkrinUser {
+  factory SkrinUser({
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+    @JsonKey(name: 'skrinning_id') int? skrinningId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
+  }) = _SkrinUser;
 
-  factory DataBagianSkrinning.fromJson(Map<String, dynamic> json) => _$DataBagianSkrinningFromJson(json);
+  factory SkrinUser.fromJson(Map<String, dynamic> json) => _$SkrinUserFromJson(json);
 }
 
 @unfreezed
-class SoalJawabanSkrinning with _$SoalJawabanSkrinning {
-  factory SoalJawabanSkrinning({
-    SoalSkrinning? soal,
-    JawabanSkrinning? jawaban,
-  }) = _SoalJawabanSkrinning;
-
-  factory SoalJawabanSkrinning.fromJson(Map<String, dynamic> json) => _$SoalJawabanSkrinningFromJson(json);
-}
-
-@unfreezed
-class SoalSkrinning with _$SoalSkrinning {
-  factory SoalSkrinning({
+class SoalJawab with _$SoalJawab {
+  factory SoalJawab({
     @JsonKey(name: 'id_soal') int? idSoal,
-    @JsonKey(name: 'soal') String? soalSkrinning,
-  }) = _SoalSkrinning;
+    @JsonKey(name: 'soal') String? soal,
+    Jawaban? jawaban,
+  }) = _SoalJawab;
 
-  factory SoalSkrinning.fromJson(Map<String, dynamic> json) => _$SoalSkrinningFromJson(json);
+  factory SoalJawab.fromJson(Map<String, dynamic> json) => _$SoalJawabFromJson(json);
 }
 
 @unfreezed
-class JawabanSkrinning with _$JawabanSkrinning {
-  factory JawabanSkrinning({
+class Jawaban with _$Jawaban {
+  factory Jawaban({
     @JsonKey(name: 'id_jawaban_skrinning') int? idJawabanSkrinning,
-    @JsonKey(name: 'jawaban') String? jawabanSkrinning,
+    @JsonKey(name: 'jawaban') String? jawaban,
     @JsonKey(name: 'poin_jawaban') int? poinJawaban,
-  }) = _JawabanSkrinning;
+  }) = _Jawaban;
 
-  factory JawabanSkrinning.fromJson(Map<String, dynamic> json) => _$JawabanSkrinningFromJson(json);
+  factory Jawaban.fromJson(Map<String, dynamic> json) => _$JawabanFromJson(json);
+}
+
+@unfreezed
+class RiwayatSkrinning with _$RiwayatSkrinning {
+  factory RiwayatSkrinning({
+    @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+    @JsonKey(name: 'skrinning_id') int? skrinningId,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'id_user') int? idUser,
+    @JsonKey(name: 'username') String? username,
+    @JsonKey(name: 'email') String? email,
+    @JsonKey(name: 'password') String? password,
+    @JsonKey(name: 'role') String? role,
+    @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+  }) = _RiwayatSkrinning;
+
+  factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
 }
 
 enum UserRole {
