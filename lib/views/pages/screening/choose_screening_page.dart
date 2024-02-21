@@ -5,11 +5,11 @@ class ChooseScreeningPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.skrinningBloc.state is SkrinningInitial) {
+      MyApp.skrinningBloc.add(InitializeSkrinningData());
+    }
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
-        if (stateSkrinning is SkrinningInitial) {
-          MyApp.skrinningBloc.add(InitializeSkrinningData());
-        }
         if (stateSkrinning is SkrinningDataLoaded) {
           return _buildScreeningList(context, stateSkrinning);
         } else if (stateSkrinning is SkrinningError) {
@@ -27,7 +27,8 @@ class ChooseScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildScreeningList(BuildContext context, SkrinningDataLoaded stateSkrinning) {
+  Widget _buildScreeningList(
+      BuildContext context, SkrinningDataLoaded stateSkrinning) {
     return ListView(
       primary: true,
       shrinkWrap: true,
@@ -37,8 +38,11 @@ class ChooseScreeningPage extends StatelessWidget {
           child: Column(
             children: [
               const SizedBox(height: 20),
-              const Text('Yuk, skrining sekarang', style: TextStyle(fontSize: 20)),
-              Text('${currentUser?.username ?? 'Guest'} 🤩', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              const Text('Yuk, skrining sekarang',
+                  style: TextStyle(fontSize: 20)),
+              Text('${currentUser?.username ?? 'Guest'} 🤩',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 20),
               _buildScreeningTiles(stateSkrinning),
             ],

@@ -1,19 +1,16 @@
 part of '../pages.dart';
 
-// class HistoryScreeningPage extends StatelessWidget {
-//   const HistoryScreeningPage({super.key});
-
 
 class HistoryScreeningPage extends StatelessWidget {
   const HistoryScreeningPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.skrinningBloc.state is SkrinningInitial) {
+      MyApp.skrinningBloc.add(InitializeSkrinningData());
+    }
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateHistory) {
-        if (stateHistory is SkrinningInitial) {
-          MyApp.skrinningBloc.add(InitializeSkrinningData());
-        }
         if (stateHistory is SkrinningDataLoaded) {
           return _buildHistoryList(stateHistory);
         } else if (stateHistory is SkrinningError) {
@@ -36,7 +33,7 @@ class HistoryScreeningPage extends StatelessWidget {
               return ListTile(
                 title: Row(
                   children: [
-                    const Text('tes', style: const TextStyle(fontSize: 30)),
+                    const Text('tes', style: TextStyle(fontSize: 30)),
                     const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
