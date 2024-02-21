@@ -37,13 +37,45 @@ class ChooseScreeningPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
-              const SizedBox(height: 20),
+              const SizedBox(height: 10),
               const Text('Yuk, skrining sekarang',
                   style: TextStyle(fontSize: 20)),
               Text('${currentUser?.username ?? 'Guest'} 🤩',
                   style: const TextStyle(
                       fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 20),
+              Stack(
+                children: [
+                  Image.asset(
+                    'assets/carton.png',
+                    width: 250,
+                    height: 250,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: RichText(
+                    textAlign: TextAlign.center,
+                    text: const TextSpan(
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
+                        children: <TextSpan>[
+                          TextSpan(text: 'Hai'),
+                          TextSpan(
+                              text: ' Sobat Rama ',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text:
+                                  'ayo deteksi dini perilaku bullying. Beranikan mengisi, lihat hasilnya, berani berubah, Ikutin langkah selanjutnya. Penasaran? Yuk'),
+                          TextSpan(
+                              text: ' Sobat Rama ',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: 'klik dan jawab pertanyaannya!'),
+                        ])),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
               _buildScreeningTiles(stateSkrinning),
             ],
           ),
@@ -56,7 +88,7 @@ class ChooseScreeningPage extends StatelessWidget {
     return ListView.builder(
       shrinkWrap: true,
       primary: false,
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       itemBuilder: (context, index) {
         return ListTile(
           title: Container(
@@ -80,11 +112,8 @@ class ChooseScreeningPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    stateSkrinning.skrinnings[index].jenisSkrinning!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                    ),
+                    'Skrinning ${stateSkrinning.skrinnings[index].jenisSkrinning!}',
+                    style: Config.textStyleBodyMedium.copyWith(fontWeight: FontWeight.w900),
                   ),
                   const Icon(Icons.chevron_right),
                 ],

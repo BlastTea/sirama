@@ -33,7 +33,7 @@ class HistoryScreeningPage extends StatelessWidget {
               return ListTile(
                 title: Row(
                   children: [
-                    const Text('tes', style: TextStyle(fontSize: 30)),
+                    const Text('🤔', style: TextStyle(fontSize: 30)),
                     const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -42,11 +42,11 @@ class HistoryScreeningPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text('tes', style: Config.textStyleHeadlineSmall),
+                            Text(riwayat.jenisSkrinning!, style: Config.textStyleHeadlineSmall),
                           ],
                         ),
                         Text(
-                          'tes',
+                          riwayat.tglPengisian!.toFormattedDate(withWeekday: true, withMonthName: true),
                           style: Config.textStyleBodyMedium,
                         ),
                         Text('tes', style: Config.textStyleBodyMedium),
