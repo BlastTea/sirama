@@ -113,16 +113,16 @@ class ChooseScreeningPage extends StatelessWidget {
                 children: [
                   Text(
                     'Skrinning ${stateSkrinning.skrinnings[index].jenisSkrinning!}',
-                    style: Config.textStyleBodyMedium.copyWith(fontWeight: FontWeight.w900),
+                    style: Config.textStyleBodyMedium
+                        .copyWith(fontWeight: FontWeight.w900),
                   ),
                   const Icon(Icons.chevron_right),
                 ],
               ),
             ),
           ),
-          onTap: () {
-            Navigator.pushNamed(context, '/mainscreening');
-          },
+          onTap: () => NavigationHelper.to(MaterialPageRoute(
+              builder: (context) => const MainScreeningPage())),
         );
       },
       itemCount: stateSkrinning.skrinnings.length,

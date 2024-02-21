@@ -242,7 +242,7 @@ class Skrinning with _$Skrinning {
 class DetailSkrinning with _$DetailSkrinning {
   factory DetailSkrinning({
     @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
-    @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
     SoalJawab? soalJawab,
     SkrinUser? skrinUser,
   }) = _DetailSkrinning;

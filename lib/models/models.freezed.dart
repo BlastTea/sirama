@@ -4541,9 +4541,9 @@ mixin _$DetailSkrinning {
   int? get idBagianSkrinning => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_bagian_skrinning')
   set idBagianSkrinning(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'nama_bagian_skrinning')
+  @JsonKey(name: 'nama_bagian')
   String? get namaBagianSkrinning => throw _privateConstructorUsedError;
-  @JsonKey(name: 'nama_bagian_skrinning')
+  @JsonKey(name: 'nama_bagian')
   set namaBagianSkrinning(String? value) => throw _privateConstructorUsedError;
   SoalJawab? get soalJawab => throw _privateConstructorUsedError;
   set soalJawab(SoalJawab? value) => throw _privateConstructorUsedError;
@@ -4564,7 +4564,7 @@ abstract class $DetailSkrinningCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
-      @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
       SoalJawab? soalJawab,
       SkrinUser? skrinUser});
 
@@ -4645,7 +4645,7 @@ abstract class _$$DetailSkrinningImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
-      @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
       SoalJawab? soalJawab,
       SkrinUser? skrinUser});
 
@@ -4697,7 +4697,7 @@ class __$$DetailSkrinningImplCopyWithImpl<$Res>
 class _$DetailSkrinningImpl implements _DetailSkrinning {
   _$DetailSkrinningImpl(
       {@JsonKey(name: 'id_bagian_skrinning') this.idBagianSkrinning,
-      @JsonKey(name: 'nama_bagian_skrinning') this.namaBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') this.namaBagianSkrinning,
       this.soalJawab,
       this.skrinUser});
 
@@ -4708,7 +4708,7 @@ class _$DetailSkrinningImpl implements _DetailSkrinning {
   @JsonKey(name: 'id_bagian_skrinning')
   int? idBagianSkrinning;
   @override
-  @JsonKey(name: 'nama_bagian_skrinning')
+  @JsonKey(name: 'nama_bagian')
   String? namaBagianSkrinning;
   @override
   SoalJawab? soalJawab;
@@ -4738,7 +4738,7 @@ class _$DetailSkrinningImpl implements _DetailSkrinning {
 abstract class _DetailSkrinning implements DetailSkrinning {
   factory _DetailSkrinning(
       {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
-      @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
       SoalJawab? soalJawab,
       SkrinUser? skrinUser}) = _$DetailSkrinningImpl;
 
@@ -4751,9 +4751,9 @@ abstract class _DetailSkrinning implements DetailSkrinning {
   @JsonKey(name: 'id_bagian_skrinning')
   set idBagianSkrinning(int? value);
   @override
-  @JsonKey(name: 'nama_bagian_skrinning')
+  @JsonKey(name: 'nama_bagian')
   String? get namaBagianSkrinning;
-  @JsonKey(name: 'nama_bagian_skrinning')
+  @JsonKey(name: 'nama_bagian')
   set namaBagianSkrinning(String? value);
   @override
   SoalJawab? get soalJawab;

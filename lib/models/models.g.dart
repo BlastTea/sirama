@@ -401,7 +401,7 @@ _$DetailSkrinningImpl _$$DetailSkrinningImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailSkrinningImpl(
       idBagianSkrinning: json['id_bagian_skrinning'] as int?,
-      namaBagianSkrinning: json['nama_bagian_skrinning'] as String?,
+      namaBagianSkrinning: json['nama_bagian'] as String?,
       soalJawab: json['soalJawab'] == null
           ? null
           : SoalJawab.fromJson(json['soalJawab'] as Map<String, dynamic>),
@@ -414,7 +414,7 @@ Map<String, dynamic> _$$DetailSkrinningImplToJson(
         _$DetailSkrinningImpl instance) =>
     <String, dynamic>{
       'id_bagian_skrinning': instance.idBagianSkrinning,
-      'nama_bagian_skrinning': instance.namaBagianSkrinning,
+      'nama_bagian': instance.namaBagianSkrinning,
       'soalJawab': instance.soalJawab,
       'skrinUser': instance.skrinUser,
     };
