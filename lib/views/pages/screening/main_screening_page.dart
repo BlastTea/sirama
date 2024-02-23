@@ -1,7 +1,9 @@
 part of '../pages.dart';
 
 class MainScreeningPage extends StatefulWidget {
-  const MainScreeningPage({super.key});
+  const MainScreeningPage({super.key, this.idSkrinning});
+
+  final int? idSkrinning;
 
   @override
   State<MainScreeningPage> createState() => _MainScreeningPageState();
@@ -70,7 +72,7 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text(
-                                  stateSkrinning.detailskrinning[index][index]
+                                  stateSkrinning.detailskrinning[index]
                                           .namaBagianSkrinning ??
                                       '?',
                                   style: Config.textStyleTitleSmall,
@@ -78,13 +80,13 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                               ),
                               ListView.builder(
                               itemCount:
-                                  stateSkrinning.detailskrinning[index].length,
+                                  stateSkrinning.detailskrinning.length,
                               shrinkWrap: true,
                               primary: false,
                               itemBuilder: (context, indexx) {
                                 return ListTile(
                                   title: Text(stateSkrinning
-                                          .detailskrinning[index][indexx]
+                                          .detailskrinning[indexx]
                                           .soalJawab?[index]
                                           .soal
                                           .toString() ??

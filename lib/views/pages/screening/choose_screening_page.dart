@@ -76,7 +76,7 @@ class ChooseScreeningPage extends StatelessWidget {
               const SizedBox(
                 height: 20,
               ),
-              _buildScreeningTiles(stateSkrinning),
+              _buildScreeningTiles(context, stateSkrinning),
             ],
           ),
         ),
@@ -84,7 +84,8 @@ class ChooseScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildScreeningTiles(SkrinningDataLoaded stateSkrinning) {
+  Widget _buildScreeningTiles(
+      BuildContext context, SkrinningDataLoaded stateSkrinning) {
     return ListView.builder(
       shrinkWrap: true,
       primary: false,
@@ -121,8 +122,13 @@ class ChooseScreeningPage extends StatelessWidget {
               ),
             ),
           ),
-          onTap: () => NavigationHelper.to(MaterialPageRoute(
-              builder: (context) => const MainScreeningPage())),
+          onTap: () {
+            final idSkrinning = stateSkrinning.skrinnings[index].idSkrinning;
+            MyApp.skrinningBloc.add(GetDetailSkrinning(skrinning: stateSkrinning.skrinnings[index]));
+            NavigationHelper.to(MaterialPageRoute(
+              builder: (context) => MainScreeningPage(idSkrinning: idSkrinning),
+            ));
+          },
         );
       },
       itemCount: stateSkrinning.skrinnings.length,

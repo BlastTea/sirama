@@ -30,3 +30,9 @@ class InitializeDetailSkrinning extends SkrinningEvent {
 
   final DetailSkrinning detailskrinning;
 }
+
+class GetDetailSkrinning extends SkrinningEvent {
+  GetDetailSkrinning({required this.skrinning});
+
+  final Skrinning skrinning;
+}
