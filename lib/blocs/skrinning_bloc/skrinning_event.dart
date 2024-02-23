@@ -24,3 +24,9 @@ class InitializePilihSkrinningData extends SkrinningEvent {
 
   final Skrinning skrinning;
 }
+
+class InitializeDetailSkrinning extends SkrinningEvent {
+  InitializeDetailSkrinning({required this.detailskrinning});
+
+  final DetailSkrinning detailskrinning;
+}

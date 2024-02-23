@@ -19,7 +19,7 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
                 .toList());
         for (var item in skrinning) {
           if (item.idSkrinning != null) {
-            List<DetailSkrinning> details =
+            var details =
                 await ApiHelper.get('/api/detailskrinning/${item.idSkrinning}')
                     .then((value) => (value.data['data'] as List)
                         .map((e) => DetailSkrinning.fromJson(e))
