@@ -41,7 +41,10 @@ class ApiHelper {
           SharedPreferences sharedPref = await SharedPreferences.getInstance();
           String? token = sharedPref.getString(_keyToken);
 
-          if (token == null && options.method == 'POST' && !(options.uri.path == '/api/login' || options.uri.path == '/api/register')) {
+          if (token == null &&
+              options.method == 'POST' &&
+              !(options.uri.path == '/api/login' ||
+                  options.uri.path == '/api/register')) {
             return handler.reject(
               DioException(
                 requestOptions: options,
@@ -51,7 +54,12 @@ class ApiHelper {
             );
           }
 
-          if (options.method != 'GET' || options.path.contains('/api/fav') || options.path.contains('/api/detailskrinning') || options.path.contains('/api/skrinning') || options.path.contains('/api/riwayatskrinning') || options.path.contains('/api/detailriwayatskrinning')) {
+          if (options.method != 'GET' ||
+              options.path.contains('/api/fav') ||
+              options.path.contains('/api/detailskrinning') ||
+              options.path.contains('/api/skrinning') ||
+              options.path.contains('/api/riwayatskrinning') ||
+              options.path.contains('/api/detailriwayatskrinning')) {
             options.headers['Authorization'] = 'Bearer $token';
           }
 
@@ -63,7 +71,8 @@ class ApiHelper {
             data = options.data;
           }
 
-          debugPrint('http request : ${options.method} ${options.uri} ${options.headers} $data');
+          debugPrint(
+              'http request : ${options.method} ${options.uri} ${options.headers} $data');
 
           return handler.next(options);
         },
@@ -72,7 +81,8 @@ class ApiHelper {
           handler.next(response);
         },
         onError: (error, handler) {
-          if (error.requestOptions.uri.host == 'i.ytimg.com') return handler.next(error);
+          if (error.requestOptions.uri.host == 'i.ytimg.com')
+            return handler.next(error);
 
           String? message;
           try {
@@ -90,7 +100,8 @@ class ApiHelper {
             while (NavigationHelper.canGoBack()) {
               NavigationHelper.back();
             }
-            NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+            NavigationHelper.toReplacement(
+                MaterialPageRoute(builder: (context) => const WelcomePage()));
             message = 'Sesi Anda telah berakhir';
             showInformationDialog(message);
             return handler.next(error);
@@ -123,7 +134,8 @@ class ApiHelper {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
 
     await sharedPref.setString(_keyToken, token);
-    await sharedPref.setString(_keyCurrentUser, jsonEncode(currentUser!.toJson()));
+    await sharedPref.setString(
+        _keyCurrentUser, jsonEncode(currentUser!.toJson()));
   }
 
   static Future<void> signOut() async {
@@ -143,7 +155,8 @@ class ApiHelper {
     while (NavigationHelper.canGoBack()) {
       NavigationHelper.back();
     }
-    NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+    NavigationHelper.toReplacement(
+        MaterialPageRoute(builder: (context) => const WelcomePage()));
   }
 
   static Future<void> signInWithToken() async {
@@ -151,7 +164,8 @@ class ApiHelper {
 
     if (sharedPref.getString(_keyToken) == null) return;
 
-    currentUser = User.fromJson(jsonDecode(sharedPref.getString(_keyCurrentUser)!));
+    currentUser =
+        User.fromJson(jsonDecode(sharedPref.getString(_keyCurrentUser)!));
   }
 
   static Future<Response<Uint8List>> getBytesUri(Uri uri) {

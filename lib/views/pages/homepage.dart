@@ -13,7 +13,7 @@ class Homepage extends StatelessWidget {
               const HomeFragment(),
               const ContentFragment(),
               const AskTheExpertFragment(),
-              const ChatFragment(),
+              const ChatMeFragment(),
               const ProfileFragment(),
             ][stateHomepage.selectedIndex],
             bottomNavigationBar: MyNavigationBar(

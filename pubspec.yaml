@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.2.3 <4.0.0'
 
 dependencies:
+  carousel_slider: ^4.2.1
   dio: ^5.4.0
   flutter:
     sdk: flutter
@@ -22,12 +23,9 @@ dependencies:
       url: https://github.com/BlastTea/MWidget.git
       ref: 7ee878a89029f918427c56560e17f3356eeedb31
   pod_player: ^0.2.1
+  share_plus: ^7.2.2
   shared_preferences: ^2.2.2
   web_socket_channel: ^2.4.0
-  carousel_slider: ^4.2.1
-  share_plus: ^7.2.2
-
-
 
 dev_dependencies:
   build_runner: ^2.4.6
@@ -37,6 +35,7 @@ dev_dependencies:
     sdk: flutter
   freezed: ^2.4.5
   json_serializable: ^6.7.1
+  test: ^1.24.9
 
 flutter:
   uses-material-design: true

@@ -7,6 +7,8 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
     on<SetAskTheExpertToInitial>((event, emit) => emit(AskTheExpertInitial()));
 
     on<InitializeAskTheExpertData>((event, emit) async {
+      if (event.completer == null) emit(AskTheExpertInitial());
+
       try {
         _topikPertanyaans = await ApiHelper.get('/api/topikpertanyaan').then((value) => (value.data['data'] as List).map((e) => TopikPertanyaan.fromJson(e)).toList());
         _tanyaAhlis = List.generate(_topikPertanyaans.length, (index) => []);
@@ -22,10 +24,12 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
           }
         });
       } catch (e) {
+        event.completer?.complete(false);
         emit(AskTheExpertError());
         return;
       }
 
+      event.completer?.complete(true);
       emit(_askTheExpertDataLoaded);
     });
 

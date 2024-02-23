@@ -5,11 +5,11 @@ class ChooseScreeningPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.skrinningBloc.state is SkrinningInitial) {
+      MyApp.skrinningBloc.add(InitializeSkrinningData());
+    }
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
-        if (stateSkrinning is SkrinningInitial) {
-          MyApp.skrinningBloc.add(InitializeSkrinningData());
-        }
         if (stateSkrinning is SkrinningDataLoaded) {
           return _buildScreeningList(context, stateSkrinning);
         } else if (stateSkrinning is SkrinningError) {
@@ -27,7 +27,8 @@ class ChooseScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildScreeningList(BuildContext context, SkrinningDataLoaded stateSkrinning) {
+  Widget _buildScreeningList(
+      BuildContext context, SkrinningDataLoaded stateSkrinning) {
     return ListView(
       primary: true,
       shrinkWrap: true,
@@ -36,11 +37,46 @@ class ChooseScreeningPage extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Column(
             children: [
+              const SizedBox(height: 10),
+              const Text('Yuk, skrining sekarang',
+                  style: TextStyle(fontSize: 20)),
+              Text('${currentUser?.username ?? 'Guest'} 🤩',
+                  style: const TextStyle(
+                      fontSize: 20, fontWeight: FontWeight.bold)),
               const SizedBox(height: 20),
-              const Text('Yuk, skrining sekarang', style: TextStyle(fontSize: 20)),
-              Text('${currentUser?.username ?? 'Guest'} 🤩', style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-              const SizedBox(height: 20),
-              _buildScreeningTiles(stateSkrinning),
+              Stack(
+                children: [
+                  Image.asset(
+                    'assets/carton.png',
+                    width: 250,
+                    height: 250,
+                  ),
+                ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 10),
+                child: RichText(
+                    textAlign: TextAlign.center,
+                    text: const TextSpan(
+                        style: TextStyle(fontSize: 14.0, color: Colors.black),
+                        children: <TextSpan>[
+                          TextSpan(text: 'Hai'),
+                          TextSpan(
+                              text: ' Sobat Rama ',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(
+                              text:
+                                  'ayo deteksi dini perilaku bullying. Beranikan mengisi, lihat hasilnya, berani berubah, Ikutin langkah selanjutnya. Penasaran? Yuk'),
+                          TextSpan(
+                              text: ' Sobat Rama ',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          TextSpan(text: 'klik dan jawab pertanyaannya!'),
+                        ])),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
+              _buildScreeningTiles(context, stateSkrinning),
             ],
           ),
         ),
@@ -48,11 +84,12 @@ class ChooseScreeningPage extends StatelessWidget {
     );
   }
 
-  Widget _buildScreeningTiles(SkrinningDataLoaded stateSkrinning) {
+  Widget _buildScreeningTiles(
+      BuildContext context, SkrinningDataLoaded stateSkrinning) {
     return ListView.builder(
       shrinkWrap: true,
       primary: false,
-      padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10.0),
+      padding: const EdgeInsets.symmetric(vertical: 10.0),
       itemBuilder: (context, index) {
         return ListTile(
           title: Container(
@@ -77,10 +114,8 @@ class ChooseScreeningPage extends StatelessWidget {
                 children: [
                   Text(
                     stateSkrinning.skrinnings[index].jenisSkrinning!,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 10,
-                    ),
+                    style: Config.textStyleBodyMedium
+                        .copyWith(fontWeight: FontWeight.w900),
                   ),
                   const Icon(Icons.chevron_right),
                 ],
@@ -88,7 +123,11 @@ class ChooseScreeningPage extends StatelessWidget {
             ),
           ),
           onTap: () {
-            Navigator.pushNamed(context, '/mainscreening');
+            final idSkrinning = stateSkrinning.skrinnings[index].idSkrinning;
+            MyApp.skrinningBloc.add(GetDetailSkrinning(skrinning: stateSkrinning.skrinnings[index]));
+            NavigationHelper.to(MaterialPageRoute(
+              builder: (context) => MainScreeningPage(idSkrinning: idSkrinning),
+            ));
           },
         );
       },

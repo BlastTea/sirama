@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
@@ -10,9 +12,9 @@ part 'homepage_bloc/homepage_bloc.dart';
 part 'homepage_bloc/homepage_event.dart';
 part 'homepage_bloc/homepage_state.dart';
 
-part 'chatme_bloc/chatme_bloc.dart';
-part 'chatme_bloc/chatme_event.dart';
-part 'chatme_bloc/chatme_state.dart';
+part 'chatme_bloc/chat_me_bloc.dart';
+part 'chatme_bloc/chat_me_event.dart';
+part 'chatme_bloc/chat_me_state.dart';
 
 part 'authentication_bloc/authentication_bloc.dart';
 part 'authentication_bloc/authentication_event.dart';

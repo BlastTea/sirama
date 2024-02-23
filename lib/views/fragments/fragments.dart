@@ -1,3 +1,4 @@
+import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,9 +15,8 @@ import 'package:sirama/views/widgets/widgets.dart';
 import 'package:intl/intl.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 part 'home_fragment.dart';
 part 'content_fragment.dart';
 part 'profile_fragment.dart';
-part 'chat_fragment.dart';
+part 'chat_me_fragment.dart';
 part 'ask_the_expert_fragment.dart';

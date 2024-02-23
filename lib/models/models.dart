@@ -1,4 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:sirama/utils/utils.dart';
 
 part 'models.freezed.dart';
 part 'models.g.dart';
@@ -10,7 +11,7 @@ bool? _parseBool(dynamic data) => data is int? && data != null
         : null;
 
 int? _parseInt(dynamic data) => data is String? && data != null
-    ? int.tryParse(data)
+    ? int.tryParse(data) ?? 0
     : data is int
         ? data
         : null;
@@ -242,8 +243,8 @@ class Skrinning with _$Skrinning {
 class DetailSkrinning with _$DetailSkrinning {
   factory DetailSkrinning({
     @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
-    @JsonKey(name: 'nama_bagian_skrinning') String? namaBagianSkrinning,
-    SoalJawab? soalJawab,
+    @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
+    @JsonKey(name: 'soal_jawab') List<SoalJawab>? soalJawab,
     SkrinUser? skrinUser,
   }) = _DetailSkrinning;
 
@@ -268,7 +269,7 @@ class SoalJawab with _$SoalJawab {
   factory SoalJawab({
     @JsonKey(name: 'id_soal') int? idSoal,
     @JsonKey(name: 'soal') String? soal,
-    Jawaban? jawaban,
+    List<Jawaban>? jawaban,
   }) = _SoalJawab;
 
   factory SoalJawab.fromJson(Map<String, dynamic> json) => _$SoalJawabFromJson(json);
@@ -303,6 +304,92 @@ class RiwayatSkrinning with _$RiwayatSkrinning {
   }) = _RiwayatSkrinning;
 
   factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class RoomChatMe with _$RoomChatMe {
+  factory RoomChatMe({
+    @JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
+    @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    List<RiwayatChatMe>? riwayats,
+  }) = _RoomChatMe;
+
+  factory RoomChatMe.fromJson(Map<String, dynamic> json) => _$RoomChatMeFromJson(json);
+}
+
+@freezed
+class RiwayatChatMe with _$RiwayatChatMe {
+  const factory RiwayatChatMe({
+    @JsonKey(name: 'id_riwayat_chat') int? idRiwayatChat,
+    String? pesan,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'tgl_chat') DateTime? tglChat,
+    @JsonKey(name: 'waktu_chat') String? waktuChat,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    @JsonKey(name: 'room_chat_id') int? roomChatId,
+  }) = _RiwayatChatMe;
+
+  factory RiwayatChatMe.fromJson(Map<String, dynamic> json) => _$RiwayatChatMeFromJson(json);
+}
+
+@freezed
+class MessageBubbleList with _$MessageBubbleList {
+  const factory MessageBubbleList({required List<List<MessageBubbleData>> data}) = _MessageBubbleList;
+
+  factory MessageBubbleList.fromRoom({required List<RoomChatMe> rooms}) {
+    List<List<MessageBubbleData>> results = [];
+
+    for (RoomChatMe room in rooms) {
+      List<MessageBubbleData> messageBubbles = [];
+      DateTime? lastDate;
+
+      for (RiwayatChatMe riwayat in room.riwayats ?? []) {
+        // Parse tanggal chat dari riwayat ke objek DateTime
+        DateTime currentChatDate = riwayat.tglChat!;
+
+        // Jika ini adalah pesan pertama atau tanggalnya berbeda dari pesan terakhir,
+        // tambahkan MessageBubbleData.dateTime
+        if ((lastDate == null || currentChatDate.day != lastDate.day) && messageBubbles.isNotEmpty) messageBubbles.add(MessageBubbleData.dateTime(dateTime: currentChatDate));
+
+        // Tambahkan MessageBubbleData.text untuk pesan saat ini
+        messageBubbles.add(MessageBubbleData.text(
+          message: riwayat.pesan,
+          sentAt: riwayat.createdAt!,
+          // Anda mungkin ingin menentukan apakah pengguna adalah pengirim atau penerima
+          // isSender bisa di-set berdasarkan id pengguna atau kriteria lain
+          isSender: riwayat.userId == currentUser?.idUser, // Contoh, perlu logika untuk menentukan ini
+        ));
+
+        // Perbarui tanggal pesan terakhir
+        lastDate = currentChatDate;
+      }
+
+      // Tambahkan pesan dari room saat ini ke hasil
+      if (messageBubbles.isNotEmpty) {
+        results.add(messageBubbles);
+      }
+    }
+
+    return MessageBubbleList(data: results);
+  }
+}
+
+@freezed
+sealed class MessageBubbleData with _$MessageBubbleData {
+  const factory MessageBubbleData.dateTime({
+    DateTime? dateTime,
+  }) = MessageBubbleDataDateTime;
+
+  const factory MessageBubbleData.text({
+    String? message,
+    DateTime? sentAt,
+    @Default(true) bool isSender,
+  }) = MessageBubbleDataText;
+
+  factory MessageBubbleData.fromJson(Map<String, dynamic> json) => _$MessageBubbleDataFromJson(json);
 }
 
 enum UserRole {

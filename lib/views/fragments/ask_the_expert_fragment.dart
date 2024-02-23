@@ -18,19 +18,11 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
     }
 
     _pageController = PageController(
-      initialPage: MyApp.askTheExpertBloc.state is AskTheExpertDataLoaded
-          ? (MyApp.askTheExpertBloc.state as AskTheExpertDataLoaded)
-              .selectedTopikPertanyaan
-          : 0,
+      initialPage: MyApp.askTheExpertBloc.state is AskTheExpertDataLoaded ? (MyApp.askTheExpertBloc.state as AskTheExpertDataLoaded).selectedTopikPertanyaan : 0,
     );
   }
 
   bool showAllQuestions = false;
-
-    Future<void> _refreshData() async {
-    MyApp.askTheExpertBloc.add(InitializeAskTheExpertData());
-  }
-
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +37,11 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
               ),
               body: SafeArea(
                 child: RefreshIndicator(
-                  onRefresh: _refreshData,
+                  onRefresh: () async {
+                    Completer<bool> completer = Completer();
+                    MyApp.askTheExpertBloc.add(InitializeAskTheExpertData(completer: completer));
+                    await completer.future;
+                  },
                   child: NestedScrollView(
                     headerSliverBuilder: (context, innerBoxIsScrolled) => [
                       const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
@@ -70,17 +66,12 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                           child: SizedBox(
                             height: 55,
                             child: MyFilledButton(
-                              onPressed: () => NavigationHelper.to(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CategorySessionsPage())),
+                              onPressed: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const CategorySessionsPage())),
                               labelText: 'Konsultasi',
                               buttonStyle: FilledButton.styleFrom(
                                 padding: const EdgeInsets.all(0),
-                                textStyle:
-                                    Config.textStyleHeadlineSmall.copyWith(
-                                  color:
-                                      Theme.of(context).colorScheme.onPrimary,
+                                textStyle: Config.textStyleHeadlineSmall.copyWith(
+                                  color: Theme.of(context).colorScheme.onPrimary,
                                 ),
                               ),
                             ),
@@ -104,35 +95,21 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                           child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (context, index) {
-                              TopikPertanyaan topikPertanyaan =
-                                  stateAskTheExpert.topikPertanyaans[index];
+                              TopikPertanyaan topikPertanyaan = stateAskTheExpert.topikPertanyaans[index];
 
                               return Padding(
-                                padding: EdgeInsets.only(
-                                    left: index == 0 ? 20.0 : 8.0,
-                                    right: index ==
-                                            stateAskTheExpert
-                                                    .topikPertanyaans.length -
-                                                1
-                                        ? 20.0
-                                        : 0.0),
+                                padding: EdgeInsets.only(left: index == 0 ? 20.0 : 8.0, right: index == stateAskTheExpert.topikPertanyaans.length - 1 ? 20.0 : 0.0),
                                 child: ChoiceChip(
                                   label: Text(topikPertanyaan.namaTopik ?? '?'),
-                                  selected: index ==
-                                      stateAskTheExpert.selectedTopikPertanyaan,
+                                  selected: index == stateAskTheExpert.selectedTopikPertanyaan,
                                   onSelected: (value) {
-                                    MyApp.askTheExpertBloc.add(
-                                        SetSelectedTopikPertanyaan(
-                                            index: index));
-                                    _pageController.animateToPage(index,
-                                        duration: kDurationShort4,
-                                        curve: Curves.fastOutSlowIn);
+                                    MyApp.askTheExpertBloc.add(SetSelectedTopikPertanyaan(index: index));
+                                    _pageController.animateToPage(index, duration: kDurationShort4, curve: Curves.fastOutSlowIn);
                                   },
                                 ),
                               );
                             },
-                            itemCount:
-                                stateAskTheExpert.topikPertanyaans.length,
+                            itemCount: stateAskTheExpert.topikPertanyaans.length,
                           ),
                         ),
                       ),
@@ -153,12 +130,7 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                                     showAllQuestions = !showAllQuestions;
                                   });
                                 },
-                                child: Text(
-                                    showAllQuestions
-                                        ? 'Lihat sedikit'
-                                        : 'Lihat semua',
-                                    style: Config.textStyleBodyMedium.copyWith(
-                                        decoration: TextDecoration.underline)),
+                                child: Text(showAllQuestions ? 'Lihat sedikit' : 'Lihat semua', style: Config.textStyleBodyMedium.copyWith(decoration: TextDecoration.underline)),
                               ),
                             ],
                           ),
@@ -177,37 +149,31 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                             physics: const NeverScrollableScrollPhysics(),
                             controller: _pageController,
                             itemBuilder: (context, pageIndex) {
-                              List<TanyaAhli> tanyaAhlis = showAllQuestions
-                                  ? stateAskTheExpert.tanyaAhlis[pageIndex]
-                                  : stateAskTheExpert.tanyaAhlis[pageIndex]
-                                      .take(4)
-                                      .toList();
+                              List<TanyaAhli> tanyaAhlis = showAllQuestions ? stateAskTheExpert.tanyaAhlis[pageIndex] : stateAskTheExpert.tanyaAhlis[pageIndex].take(4).toList();
 
-                              tanyaAhlis.sort((a, b) =>
-                                  b.waktuTanya!.compareTo(a.waktuTanya!));
+                              tanyaAhlis.sort((a, b) => b.waktuTanya!.compareTo(a.waktuTanya!));
 
                               if (tanyaAhlis.isEmpty) {
                                 return Center(
                                   child: Text(
                                     'Tidak ada data',
-                                    style:
-                                        Theme.of(context).textTheme.bodyLarge,
+                                    style: Theme.of(context).textTheme.bodyLarge,
                                   ),
                                 );
                               }
 
                               return ListView.builder(
+                                primary: false,
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
                                   TanyaAhli tanyaAhli = tanyaAhlis[index];
 
                                   return ListTile(
                                     isThreeLine: true,
-                                    contentPadding: const EdgeInsets.symmetric(
-                                        horizontal: 20.0),
+                                    contentPadding: const EdgeInsets.symmetric(horizontal: 20.0),
                                     onTap: () => NavigationHelper.to(
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            ChatAskTheExpertPage(
+                                        builder: (context) => ChatAskTheExpertPage(
                                           topicIndex: pageIndex,
                                           index: index,
                                         ),
@@ -220,20 +186,17 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                                       iconSize: 24.0,
                                       icon: Icons.person,
                                       border: const Border(),
-                                      image: const NetworkImage(
-                                          'https://dev-sirama.propertiideal.id/storage/test/person.png'),
+                                      image: const NetworkImage('https://dev-sirama.propertiideal.id/storage/test/person.png'),
                                       borderRadius: BorderRadius.circular(24.0),
                                     ),
-                                    title: Text(
-                                        'Cal Dingo • ${tanyaAhli.waktuTanya?.toFormattedDate(
+                                    title: Text('Cal Dingo • ${tanyaAhli.waktuTanya?.toFormattedDate(
                                       withHour: true,
                                       withMonthName: true,
                                       withWeekday: true,
                                       withSeconds: false,
                                     )}'),
                                     subtitle: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                      crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           tanyaAhli.pertanyaan ?? '?',
@@ -244,22 +207,12 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                                         Row(
                                           children: [
                                             Icon(
-                                              (tanyaAhli.statusPertanyaan ??
-                                                      false)
-                                                  ? Icons.done_all
-                                                  : Icons.done,
+                                              (tanyaAhli.statusPertanyaan ?? false) ? Icons.done_all : Icons.done,
                                               size: 18.0,
-                                              color:
-                                                  (tanyaAhli.statusPertanyaan ??
-                                                          false)
-                                                      ? Theme.of(context)
-                                                          .colorScheme
-                                                          .primary
-                                                      : null,
+                                              color: (tanyaAhli.statusPertanyaan ?? false) ? Theme.of(context).colorScheme.primary : null,
                                             ),
                                             const SizedBox(width: 8.0),
-                                            Text(
-                                                '${(tanyaAhli.statusPertanyaan ?? false) ? 'Sudah' : 'Belum'} dijawab oleh ahli'),
+                                            Text('${(tanyaAhli.statusPertanyaan ?? false) ? 'Sudah' : 'Belum'} dijawab oleh ahli'),
                                           ],
                                         ),
                                         const Divider(),
@@ -270,8 +223,7 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                                 itemCount: tanyaAhlis.length,
                               );
                             },
-                            itemCount:
-                                stateAskTheExpert.topikPertanyaans.length,
+                            itemCount: stateAskTheExpert.topikPertanyaans.length,
                           ),
                   ),
                 ),
@@ -279,8 +231,7 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
         } else if (stateAskTheExpert is AskTheExpertError) {
           return SafeArea(
             child: ErrorOccuredButton(
-              onRetryPressed: () =>
-                  MyApp.askTheExpertBloc.add(InitializeAskTheExpertData()),
+              onRetryPressed: () => MyApp.askTheExpertBloc.add(InitializeAskTheExpertData()),
             ),
           );
         }
