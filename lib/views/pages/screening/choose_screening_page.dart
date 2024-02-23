@@ -112,7 +112,7 @@ class ChooseScreeningPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(
-                    'Skrinning ${stateSkrinning.skrinnings[index].jenisSkrinning!}',
+                    '${stateSkrinning.skrinnings[index].jenisSkrinning!}',
                     style: Config.textStyleBodyMedium
                         .copyWith(fontWeight: FontWeight.w900),
                   ),

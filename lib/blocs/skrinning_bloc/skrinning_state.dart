@@ -16,6 +16,6 @@ class SkrinningDataLoaded extends SkrinningState {
 
   final List<Skrinning> skrinnings;
   final List<RiwayatSkrinning> riwayatskrinning;
-  final List<DetailSkrinning> detailskrinning;
+  final List<List<DetailSkrinning>> detailskrinning;
 
 }

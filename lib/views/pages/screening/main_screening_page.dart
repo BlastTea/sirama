@@ -1,8 +1,13 @@
 part of '../pages.dart';
 
-class MainScreeningPage extends StatelessWidget {
+class MainScreeningPage extends StatefulWidget {
   const MainScreeningPage({super.key});
 
+  @override
+  State<MainScreeningPage> createState() => _MainScreeningPageState();
+}
+
+class _MainScreeningPageState extends State<MainScreeningPage> {
   @override
   Widget build(BuildContext context) {
     if (MyApp.skrinningBloc.state is SkrinningInitial) {
@@ -59,9 +64,10 @@ class MainScreeningPage extends StatelessWidget {
                         itemBuilder: (context, index) {
                           return ListTile(
                             title: Text(
-                              stateSkrinning.detailskrinning[index]
-                                      .namaBagianSkrinning?? '?',
-                              style: Config.textStyleTitleSmall
+                              stateSkrinning.detailskrinning[index][0]
+                                          .namaBagianSkrinning ??
+                                      '?',
+                              style: Config.textStyleTitleSmall,
                             ),
                           );
                         },
