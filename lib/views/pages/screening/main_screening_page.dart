@@ -60,16 +60,32 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                       const SizedBox(height: 20),
                       ListView.builder(
                         shrinkWrap: true,
+                        primary:false,
                         itemCount: stateSkrinning.detailskrinning.length,
                         itemBuilder: (context, index) {
                           return ListTile(
-                            title: Text(
-                              stateSkrinning.detailskrinning[index][0]
-                                          .namaBagianSkrinning ??
-                                      '?',
-                              style: Config.textStyleTitleSmall,
-                            ),
-                          );
+                              title: Text(
+                                stateSkrinning.detailskrinning[index][index]
+                                        .namaBagianSkrinning ??
+                                    '?',
+                                style: Config.textStyleTitleSmall,
+                              ),
+                              subtitle: ListView.builder(
+                                  itemCount: stateSkrinning
+                                      .detailskrinning[index].length,
+                                  shrinkWrap: true,
+                                  primary: false,
+                                  itemBuilder: (context, indexx) {
+                                    return ListTile(
+                                      title: Text(
+                                        stateSkrinning
+                                                .detailskrinning[index][indexx]
+                                                .soalJawab
+                                                ?.soal ??
+                                            '?',
+                                      ),
+                                    );
+                                  }));
                         },
                       ),
                     ],
