@@ -76,15 +76,13 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                               shrinkWrap: true,
                               primary: false,
                               itemBuilder: (context, indexx) {
-                                final soalJawab = stateSkrinning
-                                    .detailskrinning[index][indexx].soalJawab?[indexx];
-                                final soalText = soalJawab != null
-                                    ? soalJawab.soal ?? '?ada'
-                                    : '?adaa';
                                 return ListTile(
-                                  title: Text(
-                                    soalText
-                                  ),
+                                  title: Text(stateSkrinning
+                                          .detailskrinning[index][indexx]
+                                          .soalJawab?[0]
+                                          .soal
+                                          .toString() ??
+                                      ' ?'),
                                 );
                               },
                             ),
