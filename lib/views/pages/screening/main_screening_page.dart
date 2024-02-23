@@ -79,48 +79,31 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                 ),
                               ),
                               ListView.builder(
-                              itemCount:
-                                  stateSkrinning.detailskrinning.length,
-                              shrinkWrap: true,
-                              primary: false,
-                              itemBuilder: (context, indexx) {
-                                return ListTile(
-                                  title: Text(stateSkrinning
-                                          .detailskrinning[indexx]
-                                          .soalJawab?[index]
-                                          .soal
-                                          .toString() ??
-                                      ' ?'),
-                                );
-                              },
-                            ),
+                                itemCount:
+                                    // ignore: unnecessary_type_check
+                                    (stateSkrinning is SkrinningDataLoaded)
+                                        ? stateSkrinning.detailskrinning[index]
+                                                .soalJawab?.length ??
+                                            0
+                                        : 0,
+                                shrinkWrap: true,
+                                primary: false,
+                                itemBuilder: (context, indexx) {
+                                  final soalJawabList = stateSkrinning
+                                          .detailskrinning[index].soalJawab ??
+                                      [];
+                                  if (indexx < soalJawabList.length) {
+                                    return ListTile(
+                                      title: Text(
+                                          soalJawabList[indexx].soal ?? ' ?'),
+                                    );
+                                  } else {
+                                    return const SizedBox.shrink();
+                                  }
+                                },
+                              ),
                             ],
                           );
-                          // return ListTile(
-                          //   title: Text(
-                          //     stateSkrinning.detailskrinning[index][index]
-                          //             .namaBagianSkrinning ??
-                          //         '?',
-                          //     style: Config.textStyleTitleSmall,
-                          //   ),
-                          //   subtitle: 
-                          // ListView.builder(
-                          //     itemCount:
-                          //         stateSkrinning.detailskrinning[index].length,
-                          //     shrinkWrap: true,
-                          //     primary: false,
-                          //     itemBuilder: (context, indexx) {
-                          //       return ListTile(
-                          //         title: Text(stateSkrinning
-                          //                 .detailskrinning[index][indexx]
-                          //                 .soalJawab?[index]
-                          //                 .soal
-                          //                 .toString() ??
-                          //             ' ?'),
-                          //       );
-                          //     },
-                          //   ),
-                          // );
                         },
                       ),
                       MyFilledButton(onPressed: () {}, labelText: 'Submit')

@@ -36,3 +36,9 @@ class GetDetailSkrinning extends SkrinningEvent {
 
   final Skrinning skrinning;
 }
+
+class GetSoalJawabItem extends SkrinningEvent {
+  GetSoalJawabItem({required this.detailSkrinning});
+
+  final DetailSkrinning detailSkrinning;
+}
