@@ -401,10 +401,10 @@ _$DetailSkrinningImpl _$$DetailSkrinningImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailSkrinningImpl(
       idBagianSkrinning: json['id_bagian_skrinning'] as int?,
-      namaBagianSkrinning: json['nama_bagian_skrinning'] as String?,
-      soalJawab: json['soalJawab'] == null
-          ? null
-          : SoalJawab.fromJson(json['soalJawab'] as Map<String, dynamic>),
+      namaBagianSkrinning: json['nama_bagian'] as String?,
+      soalJawab: (json['soal_jawab'] as List<dynamic>?)
+          ?.map((e) => SoalJawab.fromJson(e as Map<String, dynamic>))
+          .toList(),
       skrinUser: json['skrinUser'] == null
           ? null
           : SkrinUser.fromJson(json['skrinUser'] as Map<String, dynamic>),
@@ -414,8 +414,8 @@ Map<String, dynamic> _$$DetailSkrinningImplToJson(
         _$DetailSkrinningImpl instance) =>
     <String, dynamic>{
       'id_bagian_skrinning': instance.idBagianSkrinning,
-      'nama_bagian_skrinning': instance.namaBagianSkrinning,
-      'soalJawab': instance.soalJawab,
+      'nama_bagian': instance.namaBagianSkrinning,
+      'soal_jawab': instance.soalJawab,
       'skrinUser': instance.skrinUser,
     };
 
@@ -447,9 +447,9 @@ _$SoalJawabImpl _$$SoalJawabImplFromJson(Map<String, dynamic> json) =>
     _$SoalJawabImpl(
       idSoal: json['id_soal'] as int?,
       soal: json['soal'] as String?,
-      jawaban: json['jawaban'] == null
-          ? null
-          : Jawaban.fromJson(json['jawaban'] as Map<String, dynamic>),
+      jawaban: (json['jawaban'] as List<dynamic>?)
+          ?.map((e) => Jawaban.fromJson(e as Map<String, dynamic>))
+          .toList(),
     );
 
 Map<String, dynamic> _$$SoalJawabImplToJson(_$SoalJawabImpl instance) =>
