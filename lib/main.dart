@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   static HomepageBloc homepageBloc = HomepageBloc();
-  static ChatmeBloc chatmeBloc = ChatmeBloc();
+  static ChatMeBloc chatmeBloc = ChatMeBloc();
   static AuthenticationBloc authenticationBloc = AuthenticationBloc();
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
   static QuoteBloc quoteBloc = QuoteBloc();
@@ -68,7 +68,7 @@ class MyApp extends StatelessWidget {
               '/infographics': (context) => const InfographicsPage(),
               '/mainscreening': (context) => const MainScreeningPage(),
               '/screening': (context) => const ScreeningPage(),
-              '/chatme': (context) => const ChatFragment(),
+              '/chatme': (context) => const ChatMeFragment(),
               '/asktheexpert': (context) => const AskTheExpertFragment(),
             },
             debugShowCheckedModeBanner: false,

@@ -9,9 +9,9 @@ class ChatMePage extends StatelessWidget {
   final int index;
 
   @override
-  Widget build(BuildContext context) => BlocBuilder<ChatmeBloc, ChatmeState>(
-        builder: (context, stateChatme) {
-          stateChatme as ChatmeDataLoaded;
+  Widget build(BuildContext context) => BlocBuilder<ChatMeBloc, ChatMeState>(
+        builder: (context, stateChatMe) {
+          stateChatMe as ChatMeDataLoaded;
 
           return Scaffold(
             appBar: AppBar(
@@ -31,42 +31,44 @@ class ChatMePage extends StatelessWidget {
             body: Column(
               children: [
                 Expanded(
-                  child: ListView.builder(
-                    key: ValueKey(stateChatme.chats.length),
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                    reverse: true,
-                    itemBuilder: (context, index) => index < stateChatme.chats.length
-                        ? Column(
+                  child: RefreshIndicator(
+                    onRefresh: () async {
+                      Completer<bool> completer = Completer();
+                      MyApp.chatmeBloc.add(InitializeChatMeData(completer: completer));
+                      await completer.future;
+                    },
+                    child: ListView.builder(
+                      key: ValueKey(stateChatMe.messageBubbleList.data[index].length),
+                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                      reverse: true,
+                      itemBuilder: (context, dataIndex) {
+                        MessageBubbleData data = stateChatMe.messageBubbleList.data[index][dataIndex];
+
+                        if (data is MessageBubbleDataText) {
+                          return Column(
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(
-                                  left: (stateChatme.chats[index]['isSender'] as bool? ?? false) ? 48.0 : 0.0,
-                                  right: (stateChatme.chats[index]['isSender'] as bool? ?? false) ? 0.0 : 48.0,
+                                  left: data.isSender ? 48.0 : 0.0,
+                                  right: data.isSender ? 0.0 : 48.0,
                                 ),
                                 child: MessageBubble(
-                                  message: (stateChatme.chats[index]['message'] as String?) ?? '-',
-                                  sentAt: (stateChatme.chats[index]['sentAt'] as TimeOfDay?) ?? TimeOfDay.fromDateTime(DateTime.now()),
-                                  isSender: (stateChatme.chats[index]['isSender'] as bool?) ?? false,
+                                  message: data.message ?? '-',
+                                  sentAt: data.sentAt != null ? TimeOfDay.fromDateTime(data.sentAt!) : TimeOfDay.fromDateTime(DateTime.now()),
+                                  isSender: data.isSender,
                                 ),
                               ),
                               const SizedBox(height: 2.0),
                             ],
-                          )
-                        : Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(left: 48.0),
-                                child: MessageBubble(
-                                  message: 'P',
-                                  sentAt: TimeOfDay.fromDateTime(DateTime.now()),
-                                  isSender: true,
-                                ),
-                              ),
-                              const SizedBox(height: 2.0),
-                            ],
-                          ),
-                    // : const SizedBox(height: 16)
-                    itemCount: stateChatme.chats.length + 10000,
+                          );
+                        }
+
+                        data as MessageBubbleDataDateTime;
+
+                        return Center(child: Text(data.dateTime?.toFormattedDate() ?? '?'));
+                      },
+                      itemCount: stateChatMe.messageBubbleList.data[index].length,
+                    ),
                   ),
                 ),
                 Padding(
@@ -79,7 +81,7 @@ class ChatMePage extends StatelessWidget {
                             maxHeight: 200.0,
                           ),
                           child: TextField(
-                            controller: stateChatme.textControllerMessage,
+                            controller: stateChatMe.textControllerMessage,
                             decoration: InputDecoration(
                               isDense: true,
                               filled: true,
@@ -97,7 +99,7 @@ class ChatMePage extends StatelessWidget {
                       ),
                       const SizedBox(width: 8.0),
                       IconButton.filled(
-                        onPressed: () => MyApp.chatmeBloc.add(ChatmeSendPressed()),
+                        onPressed: () => MyApp.chatmeBloc.add(ChatMeSendPressed()),
                         icon: SvgPicture.asset('assets/svgs/Send.svg'),
                       )
                     ],

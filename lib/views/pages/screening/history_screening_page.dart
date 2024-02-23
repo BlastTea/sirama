@@ -3,7 +3,6 @@ part of '../pages.dart';
 // class HistoryScreeningPage extends StatelessWidget {
 //   const HistoryScreeningPage({super.key});
 
-
 class HistoryScreeningPage extends StatelessWidget {
   const HistoryScreeningPage({super.key});
 

@@ -11,7 +11,11 @@ class SetAskTheExpertState extends AskTheExpertEvent {
 
 class SetAskTheExpertToInitial extends AskTheExpertEvent {}
 
-class InitializeAskTheExpertData extends AskTheExpertEvent {}
+class InitializeAskTheExpertData extends AskTheExpertEvent {
+  InitializeAskTheExpertData({this.completer});
+
+  final Completer<bool>? completer;
+}
 
 class SetSelectedTopikPertanyaan extends AskTheExpertEvent {
   SetSelectedTopikPertanyaan({required this.index});

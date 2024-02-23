@@ -5808,3 +5808,1085 @@ abstract class _RiwayatSkrinning implements RiwayatSkrinning {
   _$$RiwayatSkrinningImplCopyWith<_$RiwayatSkrinningImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
+
+RoomChatMe _$RoomChatMeFromJson(Map<String, dynamic> json) {
+  return _RoomChatMe.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RoomChatMe {
+  @JsonKey(name: 'id_room_chat_me')
+  int? get idRoomChatMe => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_room_chat_me')
+  set idRoomChatMe(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'remaja_user_id')
+  int? get remajaUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'remaja_user_id')
+  set remajaUserId(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  List<RiwayatChatMe>? get riwayats => throw _privateConstructorUsedError;
+  set riwayats(List<RiwayatChatMe>? value) =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RoomChatMeCopyWith<RoomChatMe> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RoomChatMeCopyWith<$Res> {
+  factory $RoomChatMeCopyWith(
+          RoomChatMe value, $Res Function(RoomChatMe) then) =
+      _$RoomChatMeCopyWithImpl<$Res, RoomChatMe>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
+      @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      List<RiwayatChatMe>? riwayats});
+}
+
+/// @nodoc
+class _$RoomChatMeCopyWithImpl<$Res, $Val extends RoomChatMe>
+    implements $RoomChatMeCopyWith<$Res> {
+  _$RoomChatMeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idRoomChatMe = freezed,
+    Object? remajaUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? riwayats = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idRoomChatMe: freezed == idRoomChatMe
+          ? _value.idRoomChatMe
+          : idRoomChatMe // ignore: cast_nullable_to_non_nullable
+              as int?,
+      remajaUserId: freezed == remajaUserId
+          ? _value.remajaUserId
+          : remajaUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      riwayats: freezed == riwayats
+          ? _value.riwayats
+          : riwayats // ignore: cast_nullable_to_non_nullable
+              as List<RiwayatChatMe>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RoomChatMeImplCopyWith<$Res>
+    implements $RoomChatMeCopyWith<$Res> {
+  factory _$$RoomChatMeImplCopyWith(
+          _$RoomChatMeImpl value, $Res Function(_$RoomChatMeImpl) then) =
+      __$$RoomChatMeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
+      @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      List<RiwayatChatMe>? riwayats});
+}
+
+/// @nodoc
+class __$$RoomChatMeImplCopyWithImpl<$Res>
+    extends _$RoomChatMeCopyWithImpl<$Res, _$RoomChatMeImpl>
+    implements _$$RoomChatMeImplCopyWith<$Res> {
+  __$$RoomChatMeImplCopyWithImpl(
+      _$RoomChatMeImpl _value, $Res Function(_$RoomChatMeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idRoomChatMe = freezed,
+    Object? remajaUserId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? riwayats = freezed,
+  }) {
+    return _then(_$RoomChatMeImpl(
+      idRoomChatMe: freezed == idRoomChatMe
+          ? _value.idRoomChatMe
+          : idRoomChatMe // ignore: cast_nullable_to_non_nullable
+              as int?,
+      remajaUserId: freezed == remajaUserId
+          ? _value.remajaUserId
+          : remajaUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      riwayats: freezed == riwayats
+          ? _value.riwayats
+          : riwayats // ignore: cast_nullable_to_non_nullable
+              as List<RiwayatChatMe>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RoomChatMeImpl implements _RoomChatMe {
+  _$RoomChatMeImpl(
+      {@JsonKey(name: 'id_room_chat_me') this.idRoomChatMe,
+      @JsonKey(name: 'remaja_user_id') this.remajaUserId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      this.riwayats});
+
+  factory _$RoomChatMeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RoomChatMeImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_room_chat_me')
+  int? idRoomChatMe;
+  @override
+  @JsonKey(name: 'remaja_user_id')
+  int? remajaUserId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? updatedAt;
+  @override
+  List<RiwayatChatMe>? riwayats;
+
+  @override
+  String toString() {
+    return 'RoomChatMe(idRoomChatMe: $idRoomChatMe, remajaUserId: $remajaUserId, createdAt: $createdAt, updatedAt: $updatedAt, riwayats: $riwayats)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RoomChatMeImplCopyWith<_$RoomChatMeImpl> get copyWith =>
+      __$$RoomChatMeImplCopyWithImpl<_$RoomChatMeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RoomChatMeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RoomChatMe implements RoomChatMe {
+  factory _RoomChatMe(
+      {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
+      @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      List<RiwayatChatMe>? riwayats}) = _$RoomChatMeImpl;
+
+  factory _RoomChatMe.fromJson(Map<String, dynamic> json) =
+      _$RoomChatMeImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_room_chat_me')
+  int? get idRoomChatMe;
+  @JsonKey(name: 'id_room_chat_me')
+  set idRoomChatMe(int? value);
+  @override
+  @JsonKey(name: 'remaja_user_id')
+  int? get remajaUserId;
+  @JsonKey(name: 'remaja_user_id')
+  set remajaUserId(int? value);
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
+  @override
+  List<RiwayatChatMe>? get riwayats;
+  set riwayats(List<RiwayatChatMe>? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$RoomChatMeImplCopyWith<_$RoomChatMeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+RiwayatChatMe _$RiwayatChatMeFromJson(Map<String, dynamic> json) {
+  return _RiwayatChatMe.fromJson(json);
+}
+
+/// @nodoc
+mixin _$RiwayatChatMe {
+  @JsonKey(name: 'id_riwayat_chat')
+  int? get idRiwayatChat => throw _privateConstructorUsedError;
+  String? get pesan => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
+  int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_chat')
+  DateTime? get tglChat => throw _privateConstructorUsedError;
+  @JsonKey(name: 'waktu_chat')
+  String? get waktuChat => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'room_chat_id')
+  int? get roomChatId => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $RiwayatChatMeCopyWith<RiwayatChatMe> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $RiwayatChatMeCopyWith<$Res> {
+  factory $RiwayatChatMeCopyWith(
+          RiwayatChatMe value, $Res Function(RiwayatChatMe) then) =
+      _$RiwayatChatMeCopyWithImpl<$Res, RiwayatChatMe>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_riwayat_chat') int? idRiwayatChat,
+      String? pesan,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'tgl_chat') DateTime? tglChat,
+      @JsonKey(name: 'waktu_chat') String? waktuChat,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'room_chat_id') int? roomChatId});
+}
+
+/// @nodoc
+class _$RiwayatChatMeCopyWithImpl<$Res, $Val extends RiwayatChatMe>
+    implements $RiwayatChatMeCopyWith<$Res> {
+  _$RiwayatChatMeCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idRiwayatChat = freezed,
+    Object? pesan = freezed,
+    Object? userId = freezed,
+    Object? tglChat = freezed,
+    Object? waktuChat = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? roomChatId = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idRiwayatChat: freezed == idRiwayatChat
+          ? _value.idRiwayatChat
+          : idRiwayatChat // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pesan: freezed == pesan
+          ? _value.pesan
+          : pesan // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tglChat: freezed == tglChat
+          ? _value.tglChat
+          : tglChat // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      waktuChat: freezed == waktuChat
+          ? _value.waktuChat
+          : waktuChat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      roomChatId: freezed == roomChatId
+          ? _value.roomChatId
+          : roomChatId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RiwayatChatMeImplCopyWith<$Res>
+    implements $RiwayatChatMeCopyWith<$Res> {
+  factory _$$RiwayatChatMeImplCopyWith(
+          _$RiwayatChatMeImpl value, $Res Function(_$RiwayatChatMeImpl) then) =
+      __$$RiwayatChatMeImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_riwayat_chat') int? idRiwayatChat,
+      String? pesan,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'tgl_chat') DateTime? tglChat,
+      @JsonKey(name: 'waktu_chat') String? waktuChat,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      @JsonKey(name: 'room_chat_id') int? roomChatId});
+}
+
+/// @nodoc
+class __$$RiwayatChatMeImplCopyWithImpl<$Res>
+    extends _$RiwayatChatMeCopyWithImpl<$Res, _$RiwayatChatMeImpl>
+    implements _$$RiwayatChatMeImplCopyWith<$Res> {
+  __$$RiwayatChatMeImplCopyWithImpl(
+      _$RiwayatChatMeImpl _value, $Res Function(_$RiwayatChatMeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idRiwayatChat = freezed,
+    Object? pesan = freezed,
+    Object? userId = freezed,
+    Object? tglChat = freezed,
+    Object? waktuChat = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+    Object? roomChatId = freezed,
+  }) {
+    return _then(_$RiwayatChatMeImpl(
+      idRiwayatChat: freezed == idRiwayatChat
+          ? _value.idRiwayatChat
+          : idRiwayatChat // ignore: cast_nullable_to_non_nullable
+              as int?,
+      pesan: freezed == pesan
+          ? _value.pesan
+          : pesan // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tglChat: freezed == tglChat
+          ? _value.tglChat
+          : tglChat // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      waktuChat: freezed == waktuChat
+          ? _value.waktuChat
+          : waktuChat // ignore: cast_nullable_to_non_nullable
+              as String?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      roomChatId: freezed == roomChatId
+          ? _value.roomChatId
+          : roomChatId // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RiwayatChatMeImpl implements _RiwayatChatMe {
+  const _$RiwayatChatMeImpl(
+      {@JsonKey(name: 'id_riwayat_chat') this.idRiwayatChat,
+      this.pesan,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'tgl_chat') this.tglChat,
+      @JsonKey(name: 'waktu_chat') this.waktuChat,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      @JsonKey(name: 'room_chat_id') this.roomChatId});
+
+  factory _$RiwayatChatMeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RiwayatChatMeImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_riwayat_chat')
+  final int? idRiwayatChat;
+  @override
+  final String? pesan;
+  @override
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  @override
+  @JsonKey(name: 'tgl_chat')
+  final DateTime? tglChat;
+  @override
+  @JsonKey(name: 'waktu_chat')
+  final String? waktuChat;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+  @override
+  @JsonKey(name: 'room_chat_id')
+  final int? roomChatId;
+
+  @override
+  String toString() {
+    return 'RiwayatChatMe(idRiwayatChat: $idRiwayatChat, pesan: $pesan, userId: $userId, tglChat: $tglChat, waktuChat: $waktuChat, createdAt: $createdAt, updatedAt: $updatedAt, roomChatId: $roomChatId)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RiwayatChatMeImpl &&
+            (identical(other.idRiwayatChat, idRiwayatChat) ||
+                other.idRiwayatChat == idRiwayatChat) &&
+            (identical(other.pesan, pesan) || other.pesan == pesan) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.tglChat, tglChat) || other.tglChat == tglChat) &&
+            (identical(other.waktuChat, waktuChat) ||
+                other.waktuChat == waktuChat) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt) &&
+            (identical(other.roomChatId, roomChatId) ||
+                other.roomChatId == roomChatId));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idRiwayatChat, pesan, userId,
+      tglChat, waktuChat, createdAt, updatedAt, roomChatId);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RiwayatChatMeImplCopyWith<_$RiwayatChatMeImpl> get copyWith =>
+      __$$RiwayatChatMeImplCopyWithImpl<_$RiwayatChatMeImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RiwayatChatMeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _RiwayatChatMe implements RiwayatChatMe {
+  const factory _RiwayatChatMe(
+          {@JsonKey(name: 'id_riwayat_chat') final int? idRiwayatChat,
+          final String? pesan,
+          @JsonKey(name: 'user_id') final int? userId,
+          @JsonKey(name: 'tgl_chat') final DateTime? tglChat,
+          @JsonKey(name: 'waktu_chat') final String? waktuChat,
+          @JsonKey(name: 'created_at') final DateTime? createdAt,
+          @JsonKey(name: 'updated_at') final DateTime? updatedAt,
+          @JsonKey(name: 'room_chat_id') final int? roomChatId}) =
+      _$RiwayatChatMeImpl;
+
+  factory _RiwayatChatMe.fromJson(Map<String, dynamic> json) =
+      _$RiwayatChatMeImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_riwayat_chat')
+  int? get idRiwayatChat;
+  @override
+  String? get pesan;
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
+  @override
+  @JsonKey(name: 'tgl_chat')
+  DateTime? get tglChat;
+  @override
+  @JsonKey(name: 'waktu_chat')
+  String? get waktuChat;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(name: 'room_chat_id')
+  int? get roomChatId;
+  @override
+  @JsonKey(ignore: true)
+  _$$RiwayatChatMeImplCopyWith<_$RiwayatChatMeImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+mixin _$MessageBubbleList {
+  List<List<MessageBubbleData>> get data => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $MessageBubbleListCopyWith<MessageBubbleList> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MessageBubbleListCopyWith<$Res> {
+  factory $MessageBubbleListCopyWith(
+          MessageBubbleList value, $Res Function(MessageBubbleList) then) =
+      _$MessageBubbleListCopyWithImpl<$Res, MessageBubbleList>;
+  @useResult
+  $Res call({List<List<MessageBubbleData>> data});
+}
+
+/// @nodoc
+class _$MessageBubbleListCopyWithImpl<$Res, $Val extends MessageBubbleList>
+    implements $MessageBubbleListCopyWith<$Res> {
+  _$MessageBubbleListCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_value.copyWith(
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<List<MessageBubbleData>>,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$MessageBubbleListImplCopyWith<$Res>
+    implements $MessageBubbleListCopyWith<$Res> {
+  factory _$$MessageBubbleListImplCopyWith(_$MessageBubbleListImpl value,
+          $Res Function(_$MessageBubbleListImpl) then) =
+      __$$MessageBubbleListImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({List<List<MessageBubbleData>> data});
+}
+
+/// @nodoc
+class __$$MessageBubbleListImplCopyWithImpl<$Res>
+    extends _$MessageBubbleListCopyWithImpl<$Res, _$MessageBubbleListImpl>
+    implements _$$MessageBubbleListImplCopyWith<$Res> {
+  __$$MessageBubbleListImplCopyWithImpl(_$MessageBubbleListImpl _value,
+      $Res Function(_$MessageBubbleListImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? data = null,
+  }) {
+    return _then(_$MessageBubbleListImpl(
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
+              as List<List<MessageBubbleData>>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$MessageBubbleListImpl implements _MessageBubbleList {
+  const _$MessageBubbleListImpl(
+      {required final List<List<MessageBubbleData>> data})
+      : _data = data;
+
+  final List<List<MessageBubbleData>> _data;
+  @override
+  List<List<MessageBubbleData>> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_data);
+  }
+
+  @override
+  String toString() {
+    return 'MessageBubbleList(data: $data)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessageBubbleListImpl &&
+            const DeepCollectionEquality().equals(other._data, _data));
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessageBubbleListImplCopyWith<_$MessageBubbleListImpl> get copyWith =>
+      __$$MessageBubbleListImplCopyWithImpl<_$MessageBubbleListImpl>(
+          this, _$identity);
+}
+
+abstract class _MessageBubbleList implements MessageBubbleList {
+  const factory _MessageBubbleList(
+          {required final List<List<MessageBubbleData>> data}) =
+      _$MessageBubbleListImpl;
+
+  @override
+  List<List<MessageBubbleData>> get data;
+  @override
+  @JsonKey(ignore: true)
+  _$$MessageBubbleListImplCopyWith<_$MessageBubbleListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+MessageBubbleData _$MessageBubbleDataFromJson(Map<String, dynamic> json) {
+  switch (json['runtimeType']) {
+    case 'dateTime':
+      return MessageBubbleDataDateTime.fromJson(json);
+    case 'text':
+      return MessageBubbleDataText.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(json, 'runtimeType', 'MessageBubbleData',
+          'Invalid union type "${json['runtimeType']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$MessageBubbleData {
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime? dateTime) dateTime,
+    required TResult Function(String? message, DateTime? sentAt, bool isSender)
+        text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime? dateTime)? dateTime,
+    TResult? Function(String? message, DateTime? sentAt, bool isSender)? text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime? dateTime)? dateTime,
+    TResult Function(String? message, DateTime? sentAt, bool isSender)? text,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessageBubbleDataDateTime value) dateTime,
+    required TResult Function(MessageBubbleDataText value) text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessageBubbleDataDateTime value)? dateTime,
+    TResult? Function(MessageBubbleDataText value)? text,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessageBubbleDataDateTime value)? dateTime,
+    TResult Function(MessageBubbleDataText value)? text,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $MessageBubbleDataCopyWith<$Res> {
+  factory $MessageBubbleDataCopyWith(
+          MessageBubbleData value, $Res Function(MessageBubbleData) then) =
+      _$MessageBubbleDataCopyWithImpl<$Res, MessageBubbleData>;
+}
+
+/// @nodoc
+class _$MessageBubbleDataCopyWithImpl<$Res, $Val extends MessageBubbleData>
+    implements $MessageBubbleDataCopyWith<$Res> {
+  _$MessageBubbleDataCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+}
+
+/// @nodoc
+abstract class _$$MessageBubbleDataDateTimeImplCopyWith<$Res> {
+  factory _$$MessageBubbleDataDateTimeImplCopyWith(
+          _$MessageBubbleDataDateTimeImpl value,
+          $Res Function(_$MessageBubbleDataDateTimeImpl) then) =
+      __$$MessageBubbleDataDateTimeImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({DateTime? dateTime});
+}
+
+/// @nodoc
+class __$$MessageBubbleDataDateTimeImplCopyWithImpl<$Res>
+    extends _$MessageBubbleDataCopyWithImpl<$Res,
+        _$MessageBubbleDataDateTimeImpl>
+    implements _$$MessageBubbleDataDateTimeImplCopyWith<$Res> {
+  __$$MessageBubbleDataDateTimeImplCopyWithImpl(
+      _$MessageBubbleDataDateTimeImpl _value,
+      $Res Function(_$MessageBubbleDataDateTimeImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? dateTime = freezed,
+  }) {
+    return _then(_$MessageBubbleDataDateTimeImpl(
+      dateTime: freezed == dateTime
+          ? _value.dateTime
+          : dateTime // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MessageBubbleDataDateTimeImpl implements MessageBubbleDataDateTime {
+  const _$MessageBubbleDataDateTimeImpl({this.dateTime, final String? $type})
+      : $type = $type ?? 'dateTime';
+
+  factory _$MessageBubbleDataDateTimeImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageBubbleDataDateTimeImplFromJson(json);
+
+  @override
+  final DateTime? dateTime;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MessageBubbleData.dateTime(dateTime: $dateTime)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessageBubbleDataDateTimeImpl &&
+            (identical(other.dateTime, dateTime) ||
+                other.dateTime == dateTime));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, dateTime);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessageBubbleDataDateTimeImplCopyWith<_$MessageBubbleDataDateTimeImpl>
+      get copyWith => __$$MessageBubbleDataDateTimeImplCopyWithImpl<
+          _$MessageBubbleDataDateTimeImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime? dateTime) dateTime,
+    required TResult Function(String? message, DateTime? sentAt, bool isSender)
+        text,
+  }) {
+    return dateTime(this.dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime? dateTime)? dateTime,
+    TResult? Function(String? message, DateTime? sentAt, bool isSender)? text,
+  }) {
+    return dateTime?.call(this.dateTime);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime? dateTime)? dateTime,
+    TResult Function(String? message, DateTime? sentAt, bool isSender)? text,
+    required TResult orElse(),
+  }) {
+    if (dateTime != null) {
+      return dateTime(this.dateTime);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessageBubbleDataDateTime value) dateTime,
+    required TResult Function(MessageBubbleDataText value) text,
+  }) {
+    return dateTime(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessageBubbleDataDateTime value)? dateTime,
+    TResult? Function(MessageBubbleDataText value)? text,
+  }) {
+    return dateTime?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessageBubbleDataDateTime value)? dateTime,
+    TResult Function(MessageBubbleDataText value)? text,
+    required TResult orElse(),
+  }) {
+    if (dateTime != null) {
+      return dateTime(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MessageBubbleDataDateTimeImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class MessageBubbleDataDateTime implements MessageBubbleData {
+  const factory MessageBubbleDataDateTime({final DateTime? dateTime}) =
+      _$MessageBubbleDataDateTimeImpl;
+
+  factory MessageBubbleDataDateTime.fromJson(Map<String, dynamic> json) =
+      _$MessageBubbleDataDateTimeImpl.fromJson;
+
+  DateTime? get dateTime;
+  @JsonKey(ignore: true)
+  _$$MessageBubbleDataDateTimeImplCopyWith<_$MessageBubbleDataDateTimeImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$MessageBubbleDataTextImplCopyWith<$Res> {
+  factory _$$MessageBubbleDataTextImplCopyWith(
+          _$MessageBubbleDataTextImpl value,
+          $Res Function(_$MessageBubbleDataTextImpl) then) =
+      __$$MessageBubbleDataTextImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String? message, DateTime? sentAt, bool isSender});
+}
+
+/// @nodoc
+class __$$MessageBubbleDataTextImplCopyWithImpl<$Res>
+    extends _$MessageBubbleDataCopyWithImpl<$Res, _$MessageBubbleDataTextImpl>
+    implements _$$MessageBubbleDataTextImplCopyWith<$Res> {
+  __$$MessageBubbleDataTextImplCopyWithImpl(_$MessageBubbleDataTextImpl _value,
+      $Res Function(_$MessageBubbleDataTextImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? message = freezed,
+    Object? sentAt = freezed,
+    Object? isSender = null,
+  }) {
+    return _then(_$MessageBubbleDataTextImpl(
+      message: freezed == message
+          ? _value.message
+          : message // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sentAt: freezed == sentAt
+          ? _value.sentAt
+          : sentAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      isSender: null == isSender
+          ? _value.isSender
+          : isSender // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$MessageBubbleDataTextImpl implements MessageBubbleDataText {
+  const _$MessageBubbleDataTextImpl(
+      {this.message, this.sentAt, this.isSender = true, final String? $type})
+      : $type = $type ?? 'text';
+
+  factory _$MessageBubbleDataTextImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MessageBubbleDataTextImplFromJson(json);
+
+  @override
+  final String? message;
+  @override
+  final DateTime? sentAt;
+  @override
+  @JsonKey()
+  final bool isSender;
+
+  @JsonKey(name: 'runtimeType')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'MessageBubbleData.text(message: $message, sentAt: $sentAt, isSender: $isSender)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$MessageBubbleDataTextImpl &&
+            (identical(other.message, message) || other.message == message) &&
+            (identical(other.sentAt, sentAt) || other.sentAt == sentAt) &&
+            (identical(other.isSender, isSender) ||
+                other.isSender == isSender));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, message, sentAt, isSender);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$MessageBubbleDataTextImplCopyWith<_$MessageBubbleDataTextImpl>
+      get copyWith => __$$MessageBubbleDataTextImplCopyWithImpl<
+          _$MessageBubbleDataTextImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(DateTime? dateTime) dateTime,
+    required TResult Function(String? message, DateTime? sentAt, bool isSender)
+        text,
+  }) {
+    return text(message, sentAt, isSender);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(DateTime? dateTime)? dateTime,
+    TResult? Function(String? message, DateTime? sentAt, bool isSender)? text,
+  }) {
+    return text?.call(message, sentAt, isSender);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(DateTime? dateTime)? dateTime,
+    TResult Function(String? message, DateTime? sentAt, bool isSender)? text,
+    required TResult orElse(),
+  }) {
+    if (text != null) {
+      return text(message, sentAt, isSender);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(MessageBubbleDataDateTime value) dateTime,
+    required TResult Function(MessageBubbleDataText value) text,
+  }) {
+    return text(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(MessageBubbleDataDateTime value)? dateTime,
+    TResult? Function(MessageBubbleDataText value)? text,
+  }) {
+    return text?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(MessageBubbleDataDateTime value)? dateTime,
+    TResult Function(MessageBubbleDataText value)? text,
+    required TResult orElse(),
+  }) {
+    if (text != null) {
+      return text(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$MessageBubbleDataTextImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class MessageBubbleDataText implements MessageBubbleData {
+  const factory MessageBubbleDataText(
+      {final String? message,
+      final DateTime? sentAt,
+      final bool isSender}) = _$MessageBubbleDataTextImpl;
+
+  factory MessageBubbleDataText.fromJson(Map<String, dynamic> json) =
+      _$MessageBubbleDataTextImpl.fromJson;
+
+  String? get message;
+  DateTime? get sentAt;
+  bool get isSender;
+  @JsonKey(ignore: true)
+  _$$MessageBubbleDataTextImplCopyWith<_$MessageBubbleDataTextImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
