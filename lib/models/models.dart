@@ -243,7 +243,7 @@ class DetailSkrinning with _$DetailSkrinning {
   factory DetailSkrinning({
     @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
     @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
-    SoalJawab? soalJawab,
+    @JsonKey(name: 'soal_jawab') List<SoalJawab>? soalJawab,
     SkrinUser? skrinUser,
   }) = _DetailSkrinning;
 
@@ -268,7 +268,7 @@ class SoalJawab with _$SoalJawab {
   factory SoalJawab({
     @JsonKey(name: 'id_soal') int? idSoal,
     @JsonKey(name: 'soal') String? soal,
-    Jawaban? jawaban,
+    List<Jawaban>? jawaban,
   }) = _SoalJawab;
 
   factory SoalJawab.fromJson(Map<String, dynamic> json) => _$SoalJawabFromJson(json);

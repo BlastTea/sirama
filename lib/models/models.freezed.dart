@@ -4545,8 +4545,10 @@ mixin _$DetailSkrinning {
   String? get namaBagianSkrinning => throw _privateConstructorUsedError;
   @JsonKey(name: 'nama_bagian')
   set namaBagianSkrinning(String? value) => throw _privateConstructorUsedError;
-  SoalJawab? get soalJawab => throw _privateConstructorUsedError;
-  set soalJawab(SoalJawab? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal_jawab')
+  List<SoalJawab>? get soalJawab => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal_jawab')
+  set soalJawab(List<SoalJawab>? value) => throw _privateConstructorUsedError;
   SkrinUser? get skrinUser => throw _privateConstructorUsedError;
   set skrinUser(SkrinUser? value) => throw _privateConstructorUsedError;
 
@@ -4565,10 +4567,9 @@ abstract class $DetailSkrinningCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
       @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
-      SoalJawab? soalJawab,
+      @JsonKey(name: 'soal_jawab') List<SoalJawab>? soalJawab,
       SkrinUser? skrinUser});
 
-  $SoalJawabCopyWith<$Res>? get soalJawab;
   $SkrinUserCopyWith<$Res>? get skrinUser;
 }
 
@@ -4602,24 +4603,12 @@ class _$DetailSkrinningCopyWithImpl<$Res, $Val extends DetailSkrinning>
       soalJawab: freezed == soalJawab
           ? _value.soalJawab
           : soalJawab // ignore: cast_nullable_to_non_nullable
-              as SoalJawab?,
+              as List<SoalJawab>?,
       skrinUser: freezed == skrinUser
           ? _value.skrinUser
           : skrinUser // ignore: cast_nullable_to_non_nullable
               as SkrinUser?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $SoalJawabCopyWith<$Res>? get soalJawab {
-    if (_value.soalJawab == null) {
-      return null;
-    }
-
-    return $SoalJawabCopyWith<$Res>(_value.soalJawab!, (value) {
-      return _then(_value.copyWith(soalJawab: value) as $Val);
-    });
   }
 
   @override
@@ -4646,11 +4635,9 @@ abstract class _$$DetailSkrinningImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
       @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
-      SoalJawab? soalJawab,
+      @JsonKey(name: 'soal_jawab') List<SoalJawab>? soalJawab,
       SkrinUser? skrinUser});
 
-  @override
-  $SoalJawabCopyWith<$Res>? get soalJawab;
   @override
   $SkrinUserCopyWith<$Res>? get skrinUser;
 }
@@ -4683,7 +4670,7 @@ class __$$DetailSkrinningImplCopyWithImpl<$Res>
       soalJawab: freezed == soalJawab
           ? _value.soalJawab
           : soalJawab // ignore: cast_nullable_to_non_nullable
-              as SoalJawab?,
+              as List<SoalJawab>?,
       skrinUser: freezed == skrinUser
           ? _value.skrinUser
           : skrinUser // ignore: cast_nullable_to_non_nullable
@@ -4698,7 +4685,7 @@ class _$DetailSkrinningImpl implements _DetailSkrinning {
   _$DetailSkrinningImpl(
       {@JsonKey(name: 'id_bagian_skrinning') this.idBagianSkrinning,
       @JsonKey(name: 'nama_bagian') this.namaBagianSkrinning,
-      this.soalJawab,
+      @JsonKey(name: 'soal_jawab') this.soalJawab,
       this.skrinUser});
 
   factory _$DetailSkrinningImpl.fromJson(Map<String, dynamic> json) =>
@@ -4711,7 +4698,8 @@ class _$DetailSkrinningImpl implements _DetailSkrinning {
   @JsonKey(name: 'nama_bagian')
   String? namaBagianSkrinning;
   @override
-  SoalJawab? soalJawab;
+  @JsonKey(name: 'soal_jawab')
+  List<SoalJawab>? soalJawab;
   @override
   SkrinUser? skrinUser;
 
@@ -4739,7 +4727,7 @@ abstract class _DetailSkrinning implements DetailSkrinning {
   factory _DetailSkrinning(
       {@JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
       @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
-      SoalJawab? soalJawab,
+      @JsonKey(name: 'soal_jawab') List<SoalJawab>? soalJawab,
       SkrinUser? skrinUser}) = _$DetailSkrinningImpl;
 
   factory _DetailSkrinning.fromJson(Map<String, dynamic> json) =
@@ -4756,8 +4744,10 @@ abstract class _DetailSkrinning implements DetailSkrinning {
   @JsonKey(name: 'nama_bagian')
   set namaBagianSkrinning(String? value);
   @override
-  SoalJawab? get soalJawab;
-  set soalJawab(SoalJawab? value);
+  @JsonKey(name: 'soal_jawab')
+  List<SoalJawab>? get soalJawab;
+  @JsonKey(name: 'soal_jawab')
+  set soalJawab(List<SoalJawab>? value);
   @override
   SkrinUser? get skrinUser;
   set skrinUser(SkrinUser? value);
@@ -5019,8 +5009,8 @@ mixin _$SoalJawab {
   String? get soal => throw _privateConstructorUsedError;
   @JsonKey(name: 'soal')
   set soal(String? value) => throw _privateConstructorUsedError;
-  Jawaban? get jawaban => throw _privateConstructorUsedError;
-  set jawaban(Jawaban? value) => throw _privateConstructorUsedError;
+  List<Jawaban>? get jawaban => throw _privateConstructorUsedError;
+  set jawaban(List<Jawaban>? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -5036,9 +5026,7 @@ abstract class $SoalJawabCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_soal') int? idSoal,
       @JsonKey(name: 'soal') String? soal,
-      Jawaban? jawaban});
-
-  $JawabanCopyWith<$Res>? get jawaban;
+      List<Jawaban>? jawaban});
 }
 
 /// @nodoc
@@ -5070,20 +5058,8 @@ class _$SoalJawabCopyWithImpl<$Res, $Val extends SoalJawab>
       jawaban: freezed == jawaban
           ? _value.jawaban
           : jawaban // ignore: cast_nullable_to_non_nullable
-              as Jawaban?,
+              as List<Jawaban>?,
     ) as $Val);
-  }
-
-  @override
-  @pragma('vm:prefer-inline')
-  $JawabanCopyWith<$Res>? get jawaban {
-    if (_value.jawaban == null) {
-      return null;
-    }
-
-    return $JawabanCopyWith<$Res>(_value.jawaban!, (value) {
-      return _then(_value.copyWith(jawaban: value) as $Val);
-    });
   }
 }
 
@@ -5098,10 +5074,7 @@ abstract class _$$SoalJawabImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_soal') int? idSoal,
       @JsonKey(name: 'soal') String? soal,
-      Jawaban? jawaban});
-
-  @override
-  $JawabanCopyWith<$Res>? get jawaban;
+      List<Jawaban>? jawaban});
 }
 
 /// @nodoc
@@ -5131,7 +5104,7 @@ class __$$SoalJawabImplCopyWithImpl<$Res>
       jawaban: freezed == jawaban
           ? _value.jawaban
           : jawaban // ignore: cast_nullable_to_non_nullable
-              as Jawaban?,
+              as List<Jawaban>?,
     ));
   }
 }
@@ -5154,7 +5127,7 @@ class _$SoalJawabImpl implements _SoalJawab {
   @JsonKey(name: 'soal')
   String? soal;
   @override
-  Jawaban? jawaban;
+  List<Jawaban>? jawaban;
 
   @override
   String toString() {
@@ -5179,7 +5152,7 @@ abstract class _SoalJawab implements SoalJawab {
   factory _SoalJawab(
       {@JsonKey(name: 'id_soal') int? idSoal,
       @JsonKey(name: 'soal') String? soal,
-      Jawaban? jawaban}) = _$SoalJawabImpl;
+      List<Jawaban>? jawaban}) = _$SoalJawabImpl;
 
   factory _SoalJawab.fromJson(Map<String, dynamic> json) =
       _$SoalJawabImpl.fromJson;
@@ -5195,8 +5168,8 @@ abstract class _SoalJawab implements SoalJawab {
   @JsonKey(name: 'soal')
   set soal(String? value);
   @override
-  Jawaban? get jawaban;
-  set jawaban(Jawaban? value);
+  List<Jawaban>? get jawaban;
+  set jawaban(List<Jawaban>? value);
   @override
   @JsonKey(ignore: true)
   _$$SoalJawabImplCopyWith<_$SoalJawabImpl> get copyWith =>
