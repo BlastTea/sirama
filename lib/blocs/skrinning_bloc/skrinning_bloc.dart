@@ -60,6 +60,6 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
         skrinnings: skrinning,
         riwayatskrinning: riwayatskrinning,
         detailskrinning: detailskrinning,
-        soalJawaban: [],
+        soalJawaban: const [],
       );
 }

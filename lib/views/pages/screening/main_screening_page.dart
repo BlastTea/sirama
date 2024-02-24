@@ -10,6 +10,22 @@ class MainScreeningPage extends StatefulWidget {
 }
 
 class _MainScreeningPageState extends State<MainScreeningPage> {
+  List<List<int>> _selectedJawaban = [];
+
+  @override
+  void initState() {
+    super.initState();
+    if (MyApp.skrinningBloc.state is SkrinningDataLoaded) {
+      final stateSkrinning = MyApp.skrinningBloc.state as SkrinningDataLoaded;
+      _initializeSelectedJawaban(stateSkrinning);
+    }
+  }
+
+  void _initializeSelectedJawaban(SkrinningDataLoaded stateSkrinning) {
+    final numberOfQuestions = stateSkrinning.detailskrinning.length;
+    _selectedJawaban = List.generate(numberOfQuestions, (_) => []);
+  }
+
   @override
   Widget build(BuildContext context) {
     if (MyApp.skrinningBloc.state is SkrinningInitial) {
@@ -18,6 +34,7 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
+          _initializeSelectedJawaban(stateSkrinning);
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -25,7 +42,8 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: const Text("Skrining"),
+              title: const Text("Skrining",),
+              centerTitle: true,
             ),
             body: ListView(
               shrinkWrap: true,
@@ -65,6 +83,10 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                         primary: false,
                         itemCount: stateSkrinning.detailskrinning.length,
                         itemBuilder: (context, index) {
+                          final detailSkrinning =
+                              stateSkrinning.detailskrinning[index];
+                          final soalList = detailSkrinning.soalJawab ?? [];
+
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -72,34 +94,49 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 5),
                                 child: Text(
-                                  stateSkrinning.detailskrinning[index]
-                                          .namaBagianSkrinning ??
-                                      '?',
+                                  detailSkrinning.namaBagianSkrinning ?? '?',
                                   style: Config.textStyleTitleSmall,
                                 ),
                               ),
                               ListView.builder(
-                                itemCount:
-                                    // ignore: unnecessary_type_check
-                                    (stateSkrinning is SkrinningDataLoaded)
-                                        ? stateSkrinning.detailskrinning[index]
-                                                .soalJawab?.length ??
-                                            0
-                                        : 0,
+                                itemCount: soalList.length,
                                 shrinkWrap: true,
                                 primary: false,
                                 itemBuilder: (context, indexx) {
-                                  final soalJawabList = stateSkrinning
-                                          .detailskrinning[index].soalJawab ??
-                                      [];
-                                  if (indexx < soalJawabList.length) {
-                                    return ListTile(
-                                      title: Text(
-                                          soalJawabList[indexx].soal ?? ' ?'),
-                                    );
-                                  } else {
-                                    return const SizedBox.shrink();
-                                  }
+                                  final soal = soalList[indexx].soal ?? '';
+                                  final jawabanList =
+                                      soalList[indexx].jawaban ?? [];
+                                  final questionNumber = indexx + 1;
+                                  return Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      ListTile(
+                                        title: Text('$questionNumber. $soal'),
+                                      ),
+                                      ...jawabanList.map((jawaban) {
+                                        final isSelected =
+                                            _selectedJawaban[index].contains(
+                                                jawaban.idJawabanSkrinning);
+                                        return RadioListTile(
+                                          title: Text(jawaban.jawaban ?? ''),
+                                          value: jawaban.poinJawaban,
+                                          groupValue: _selectedJawaban[index],
+                                          onChanged: (value) {
+                                            setState(() {
+                                              if (isSelected) {
+                                                _selectedJawaban[index]
+                                                    .remove(value);
+                                              } else {
+                                                _selectedJawaban[index]
+                                                    .add(value as int);
+                                              }
+                                            });
+                                          },
+                                        );
+                                      }).toList(),
+                                    ],
+                                  );
                                 },
                               ),
                             ],
@@ -121,20 +158,20 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
       },
     );
   }
-}
 
-Widget _buildLoadingUI() {
-  return const Scaffold(
-    body: Center(
-      child: CircularProgressIndicator(),
-    ),
-  );
-}
+  Widget _buildLoadingUI() {
+    return const Scaffold(
+      body: Center(
+        child: CircularProgressIndicator(),
+      ),
+    );
+  }
 
-Widget _buildErrorUI() {
-  return const Scaffold(
-    body: Center(
-      child: Text('Failed to load screening history. Please try again.'),
-    ),
-  );
+  Widget _buildErrorUI() {
+    return const Scaffold(
+      body: Center(
+        child: Text('Failed to load screening history. Please try again.'),
+      ),
+    );
+  }
 }
