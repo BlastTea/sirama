@@ -31,6 +31,12 @@ class InitializeDetailSkrinning extends SkrinningEvent {
   final DetailSkrinning detailskrinning;
 }
 
+class InitializeDetailRiwayatSkrinning extends SkrinningEvent {
+  InitializeDetailRiwayatSkrinning({required this.detailriwayatkrinning});
+
+  final DetailRiwayatSkrinning detailriwayatkrinning;
+}
+
 class GetDetailSkrinning extends SkrinningEvent {
   GetDetailSkrinning({required this.skrinning});
 
@@ -41,4 +47,11 @@ class GetSoalJawabItem extends SkrinningEvent {
   GetSoalJawabItem({required this.detailSkrinning});
 
   final DetailSkrinning detailSkrinning;
+}
+
+
+class GetDetailRiwayatSkrinning extends SkrinningEvent {
+  GetDetailRiwayatSkrinning({required this.riwayatskrinning});
+
+  final RiwayatSkrinning riwayatskrinning;
 }

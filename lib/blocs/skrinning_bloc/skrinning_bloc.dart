@@ -40,6 +40,22 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
       }
     });
 
+    on<GetDetailRiwayatSkrinning>((event, emit) async {
+      try {
+        final idBagSkrinUser = event.riwayatskrinning.idBagSkrinUser;
+        detailriwayatskrinning =
+            await ApiHelper.get('/api/detailriwayatskrinning/$idBagSkrinUser').then(
+                (value) => (value.data['data'] as List)
+                    .map((e) => DetailRiwayatSkrinning.fromJson(e))
+                    .toList());
+
+        emit(_skrinningDataLoaded);
+      } catch (e) {
+        emit(SkrinningError());
+        return;
+      }
+    });
+
     on<GetSoalJawabItem>((event, emit) {
       try {
         final soalJawaban = event.detailSkrinning.soalJawab ?? [];
@@ -54,12 +70,15 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
 
   List<RiwayatSkrinning> riwayatskrinning = [];
 
+  List<DetailRiwayatSkrinning> detailriwayatskrinning = [];
+
   List<DetailSkrinning> detailskrinning = [];
 
   SkrinningDataLoaded get _skrinningDataLoaded => SkrinningDataLoaded(
         skrinnings: skrinning,
         riwayatskrinning: riwayatskrinning,
         detailskrinning: detailskrinning,
+        detailriwayatskrinning: detailriwayatskrinning,
         soalJawaban: const [],
       );
 }

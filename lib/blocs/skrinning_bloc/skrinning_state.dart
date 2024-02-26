@@ -12,12 +12,14 @@ class SkrinningDataLoaded extends SkrinningState {
     required this.skrinnings,
     required this.riwayatskrinning,
     required this.detailskrinning,
+    required this.detailriwayatskrinning,
     required this.soalJawaban,
   });
 
   final List<Skrinning> skrinnings;
   final List<RiwayatSkrinning> riwayatskrinning;
   final List<DetailSkrinning> detailskrinning;
+  final List<DetailRiwayatSkrinning> detailriwayatskrinning;
   final List<SoalJawab> soalJawaban;
 }
 
