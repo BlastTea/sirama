@@ -39,7 +39,8 @@ class TopikPertanyaan with _$TopikPertanyaan {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _TopikPertanyaan;
 
-  factory TopikPertanyaan.fromJson(Map<String, dynamic> json) => _$TopikPertanyaanFromJson(json);
+  factory TopikPertanyaan.fromJson(Map<String, dynamic> json) =>
+      _$TopikPertanyaanFromJson(json);
 }
 
 @unfreezed
@@ -49,14 +50,16 @@ class TanyaAhli with _$TanyaAhli {
     @JsonKey(name: 'topik_id') int? topikId,
     @JsonKey(name: 'penanya_user_id') penanyaUserId,
     String? pertanyaan,
-    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
+    bool? statusPertanyaan,
     @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     JawabanAhli? jawabanAhli,
   }) = _TanyaAhli;
 
-  factory TanyaAhli.fromJson(Map<String, dynamic> json) => _$TanyaAhliFromJson(json);
+  factory TanyaAhli.fromJson(Map<String, dynamic> json) =>
+      _$TanyaAhliFromJson(json);
 }
 
 @freezed
@@ -71,10 +74,12 @@ class JawabanAhli with _$JawabanAhli {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     String? pertanyaan,
     @JsonKey(name: 'penanya_user_id') int? penanyaUserId,
-    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+    @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
+    bool? statusPertanyaan,
   }) = _JawabanAhli;
 
-  factory JawabanAhli.fromJson(Map<String, dynamic> json) => _$JawabanAhliFromJson(json);
+  factory JawabanAhli.fromJson(Map<String, dynamic> json) =>
+      _$JawabanAhliFromJson(json);
 }
 
 @unfreezed
@@ -89,11 +94,15 @@ class Podcast with _$Podcast {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'deskripsi') String? deksripsiPodcast,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
-    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+    @Default(false)
+    bool isFavorited,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
   }) = _Podcast;
 
-  factory Podcast.fromJson(Map<String, dynamic> json) => _$PodcastFromJson(json);
+  factory Podcast.fromJson(Map<String, dynamic> json) =>
+      _$PodcastFromJson(json);
 }
 
 @unfreezed
@@ -108,8 +117,11 @@ class Film with _$Film {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'deskripsi') String? deksripsiFilm,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
-    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+    @Default(false)
+    bool isFavorited,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
   }) = _Film;
 
   factory Film.fromJson(Map<String, dynamic> json) => _$FilmFromJson(json);
@@ -127,10 +139,13 @@ class Infografis with _$Infografis {
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
-    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+    @Default(false)
+    bool isFavorited,
   }) = _Infografis;
 
-  factory Infografis.fromJson(Map<String, dynamic> json) => _$InfografisFromJson(json);
+  factory Infografis.fromJson(Map<String, dynamic> json) =>
+      _$InfografisFromJson(json);
 }
 
 @unfreezed
@@ -145,11 +160,15 @@ class VideoEdukasi with _$VideoEdukasi {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'deskripsi') String? deksripsiVideoEdukasi,
     @JsonKey(name: 'total_likes', fromJson: _parseInt) int? totalLikes,
-    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false) @Default(false) bool isFavorited,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(name: 'is_favorited', includeFromJson: false, includeToJson: false)
+    @Default(false)
+    bool isFavorited,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
   }) = _VideoEdukasi;
 
-  factory VideoEdukasi.fromJson(Map<String, dynamic> json) => _$VideoEdukasiFromJson(json);
+  factory VideoEdukasi.fromJson(Map<String, dynamic> json) =>
+      _$VideoEdukasiFromJson(json);
 }
 
 @freezed
@@ -174,11 +193,13 @@ class FavInfografis with _$FavInfografis {
     @JsonKey(name: 'infografis_id', fromJson: _parseInt) int? idInfografis,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
     Infografis? infografis,
   }) = _FavInfografis;
 
-  factory FavInfografis.fromJson(Map<String, dynamic> json) => _$FavInfografisFromJson(json);
+  factory FavInfografis.fromJson(Map<String, dynamic> json) =>
+      _$FavInfografisFromJson(json);
 }
 
 @unfreezed
@@ -189,11 +210,13 @@ class FavFilm with _$FavFilm {
     @JsonKey(name: 'film_id', fromJson: _parseInt) int? idFilm,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
     Film? film,
   }) = _FavFilm;
 
-  factory FavFilm.fromJson(Map<String, dynamic> json) => _$FavFilmFromJson(json);
+  factory FavFilm.fromJson(Map<String, dynamic> json) =>
+      _$FavFilmFromJson(json);
 }
 
 @unfreezed
@@ -204,11 +227,13 @@ class FavPodcast with _$FavPodcast {
     @JsonKey(name: 'podcast_id', fromJson: _parseInt) int? idPodcast,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
     Podcast? podcast,
   }) = _FavPodcast;
 
-  factory FavPodcast.fromJson(Map<String, dynamic> json) => _$FavPodcastFromJson(json);
+  factory FavPodcast.fromJson(Map<String, dynamic> json) =>
+      _$FavPodcastFromJson(json);
 }
 
 @unfreezed
@@ -219,11 +244,13 @@ class FavVideoEdukasi with _$FavVideoEdukasi {
     @JsonKey(name: 'video_edukasi_id', fromJson: _parseInt) int? idVideoEdukasi,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
-    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? thumbnailImageData,
+    @JsonKey(includeFromJson: false, includeToJson: false)
+    List<int>? thumbnailImageData,
     VideoEdukasi? videoEdukasi,
   }) = _FavVideoEdukasi;
 
-  factory FavVideoEdukasi.fromJson(Map<String, dynamic> json) => _$FavVideoEdukasiFromJson(json);
+  factory FavVideoEdukasi.fromJson(Map<String, dynamic> json) =>
+      _$FavVideoEdukasiFromJson(json);
 }
 
 @unfreezed
@@ -236,7 +263,8 @@ class Skrinning with _$Skrinning {
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _Skrinning;
 
-  factory Skrinning.fromJson(Map<String, dynamic> json) => _$SkrinningFromJson(json);
+  factory Skrinning.fromJson(Map<String, dynamic> json) =>
+      _$SkrinningFromJson(json);
 }
 
 @unfreezed
@@ -248,7 +276,8 @@ class DetailSkrinning with _$DetailSkrinning {
     SkrinUser? skrinUser,
   }) = _DetailSkrinning;
 
-  factory DetailSkrinning.fromJson(Map<String, dynamic> json) => _$DetailSkrinningFromJson(json);
+  factory DetailSkrinning.fromJson(Map<String, dynamic> json) =>
+      _$DetailSkrinningFromJson(json);
 }
 
 @unfreezed
@@ -261,7 +290,8 @@ class SkrinUser with _$SkrinUser {
     @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
   }) = _SkrinUser;
 
-  factory SkrinUser.fromJson(Map<String, dynamic> json) => _$SkrinUserFromJson(json);
+  factory SkrinUser.fromJson(Map<String, dynamic> json) =>
+      _$SkrinUserFromJson(json);
 }
 
 @unfreezed
@@ -272,7 +302,8 @@ class SoalJawab with _$SoalJawab {
     List<Jawaban>? jawaban,
   }) = _SoalJawab;
 
-  factory SoalJawab.fromJson(Map<String, dynamic> json) => _$SoalJawabFromJson(json);
+  factory SoalJawab.fromJson(Map<String, dynamic> json) =>
+      _$SoalJawabFromJson(json);
 }
 
 @unfreezed
@@ -283,27 +314,58 @@ class Jawaban with _$Jawaban {
     @JsonKey(name: 'poin_jawaban') int? poinJawaban,
   }) = _Jawaban;
 
-  factory Jawaban.fromJson(Map<String, dynamic> json) => _$JawabanFromJson(json);
+  factory Jawaban.fromJson(Map<String, dynamic> json) =>
+      _$JawabanFromJson(json);
 }
 
 @unfreezed
 class RiwayatSkrinning with _$RiwayatSkrinning {
   factory RiwayatSkrinning({
     @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-    @JsonKey(name: 'skrinning_id') int? skrinningId,
-    @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'id_user') int? idUser,
-    @JsonKey(name: 'username') String? username,
-    @JsonKey(name: 'email') String? email,
-    @JsonKey(name: 'password') String? password,
-    @JsonKey(name: 'role') String? role,
     @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
     @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
     @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'hasil') String? hasil,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
   }) = _RiwayatSkrinning;
 
-  factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
+  factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) =>
+      _$RiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class DetailRiwayatSkrinning with _$DetailRiwayatSkrinning {
+  factory DetailRiwayatSkrinning({
+    @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+    @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'hasil') String? hasil,
+    @JsonKey(name: 'poin_total') String? pointotal,
+    List<SoalJawabRiwayat>? soalJawab,
+  }) = _DetailRiwayatSkrinning;
+
+  factory DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) =>
+      _$DetailRiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class SoalJawabRiwayat with _$SoalJawabRiwayat {
+  factory SoalJawabRiwayat({
+    @JsonKey(name: 'no_soal') int? noSoal,
+    @JsonKey(name: 'soal') String? soal,
+    @JsonKey(name: 'jawaban') String? jawaban,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
+  }) = _SoalJawabRiwayat;
+
+  factory SoalJawabRiwayat.fromJson(Map<String, dynamic> json) => _$SoalJawabRiwayatFromJson(json);
 }
 
 @unfreezed
@@ -316,7 +378,8 @@ class RoomChatMe with _$RoomChatMe {
     List<RiwayatChatMe>? riwayats,
   }) = _RoomChatMe;
 
-  factory RoomChatMe.fromJson(Map<String, dynamic> json) => _$RoomChatMeFromJson(json);
+  factory RoomChatMe.fromJson(Map<String, dynamic> json) =>
+      _$RoomChatMeFromJson(json);
 }
 
 @freezed
@@ -332,12 +395,14 @@ class RiwayatChatMe with _$RiwayatChatMe {
     @JsonKey(name: 'room_chat_id') int? roomChatId,
   }) = _RiwayatChatMe;
 
-  factory RiwayatChatMe.fromJson(Map<String, dynamic> json) => _$RiwayatChatMeFromJson(json);
+  factory RiwayatChatMe.fromJson(Map<String, dynamic> json) =>
+      _$RiwayatChatMeFromJson(json);
 }
 
 @freezed
 class MessageBubbleList with _$MessageBubbleList {
-  const factory MessageBubbleList({required List<List<MessageBubbleData>> data}) = _MessageBubbleList;
+  const factory MessageBubbleList(
+      {required List<List<MessageBubbleData>> data}) = _MessageBubbleList;
 
   factory MessageBubbleList.fromRoom({required List<RoomChatMe> rooms}) {
     List<List<MessageBubbleData>> results = [];
@@ -352,7 +417,10 @@ class MessageBubbleList with _$MessageBubbleList {
 
         // Jika ini adalah pesan pertama atau tanggalnya berbeda dari pesan terakhir,
         // tambahkan MessageBubbleData.dateTime
-        if ((lastDate == null || currentChatDate.day != lastDate.day) && messageBubbles.isNotEmpty) messageBubbles.add(MessageBubbleData.dateTime(dateTime: currentChatDate));
+        if ((lastDate == null || currentChatDate.day != lastDate.day) &&
+            messageBubbles.isNotEmpty)
+          messageBubbles
+              .add(MessageBubbleData.dateTime(dateTime: currentChatDate));
 
         // Tambahkan MessageBubbleData.text untuk pesan saat ini
         messageBubbles.add(MessageBubbleData.text(
@@ -360,7 +428,8 @@ class MessageBubbleList with _$MessageBubbleList {
           sentAt: riwayat.createdAt!,
           // Anda mungkin ingin menentukan apakah pengguna adalah pengirim atau penerima
           // isSender bisa di-set berdasarkan id pengguna atau kriteria lain
-          isSender: riwayat.userId == currentUser?.idUser, // Contoh, perlu logika untuk menentukan ini
+          isSender: riwayat.userId ==
+              currentUser?.idUser, // Contoh, perlu logika untuk menentukan ini
         ));
 
         // Perbarui tanggal pesan terakhir
@@ -389,7 +458,8 @@ sealed class MessageBubbleData with _$MessageBubbleData {
     @Default(true) bool isSender,
   }) = MessageBubbleDataText;
 
-  factory MessageBubbleData.fromJson(Map<String, dynamic> json) => _$MessageBubbleDataFromJson(json);
+  factory MessageBubbleData.fromJson(Map<String, dynamic> json) =>
+      _$MessageBubbleDataFromJson(json);
 }
 
 enum UserRole {

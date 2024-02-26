@@ -477,36 +477,84 @@ _$RiwayatSkrinningImpl _$$RiwayatSkrinningImplFromJson(
         Map<String, dynamic> json) =>
     _$RiwayatSkrinningImpl(
       idSkrinUser: json['id_skrin_user'] as int?,
+      idUser: json['id_user'] as int?,
+      idSkrinning: json['id_skrinning'] as int?,
+      idBagSkrinUser: json['id_bag_skrin_user'] as int?,
       tglPengisian: json['tgl_pengisian'] == null
           ? null
           : DateTime.parse(json['tgl_pengisian'] as String),
-      skrinningId: json['skrinning_id'] as int?,
-      userId: json['user_id'] as int?,
-      idUser: json['id_user'] as int?,
-      username: json['username'] as String?,
-      email: json['email'] as String?,
-      password: json['password'] as String?,
-      role: json['role'] as String?,
-      idSkrinning: json['id_skrinning'] as int?,
       jenisSkrinning: json['jenis_skrinning'] as String?,
+      namaBagian: json['nama_bagian'] as String?,
       deskripsiSkrinning: json['deskripsi_skrinning'] as String?,
+      jenisHasil: json['jenis_hasil'] as String?,
+      hasil: json['hasil'] as String?,
+      poinJawaban: json['poin_jawaban'] as int?,
     );
 
 Map<String, dynamic> _$$RiwayatSkrinningImplToJson(
         _$RiwayatSkrinningImpl instance) =>
     <String, dynamic>{
       'id_skrin_user': instance.idSkrinUser,
-      'tgl_pengisian': instance.tglPengisian?.toIso8601String(),
-      'skrinning_id': instance.skrinningId,
-      'user_id': instance.userId,
       'id_user': instance.idUser,
-      'username': instance.username,
-      'email': instance.email,
-      'password': instance.password,
-      'role': instance.role,
       'id_skrinning': instance.idSkrinning,
+      'id_bag_skrin_user': instance.idBagSkrinUser,
+      'tgl_pengisian': instance.tglPengisian?.toIso8601String(),
       'jenis_skrinning': instance.jenisSkrinning,
+      'nama_bagian': instance.namaBagian,
       'deskripsi_skrinning': instance.deskripsiSkrinning,
+      'jenis_hasil': instance.jenisHasil,
+      'hasil': instance.hasil,
+      'poin_jawaban': instance.poinJawaban,
+    };
+
+_$DetailRiwayatSkrinningImpl _$$DetailRiwayatSkrinningImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DetailRiwayatSkrinningImpl(
+      idSkrinning: json['id_skrinning'] as int?,
+      idBagSkrinUser: json['id_bag_skrin_user'] as int?,
+      jenisSkrinning: json['jenis_skrinning'] as String?,
+      namaBagian: json['nama_bagian'] as String?,
+      tglPengisian: json['tgl_pengisian'] == null
+          ? null
+          : DateTime.parse(json['tgl_pengisian'] as String),
+      jenisHasil: json['jenis_hasil'] as String?,
+      hasil: json['hasil'] as String?,
+      pointotal: json['poin_total'] as String?,
+      soalJawab: (json['soalJawab'] as List<dynamic>?)
+          ?.map((e) => SoalJawabRiwayat.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$DetailRiwayatSkrinningImplToJson(
+        _$DetailRiwayatSkrinningImpl instance) =>
+    <String, dynamic>{
+      'id_skrinning': instance.idSkrinning,
+      'id_bag_skrin_user': instance.idBagSkrinUser,
+      'jenis_skrinning': instance.jenisSkrinning,
+      'nama_bagian': instance.namaBagian,
+      'tgl_pengisian': instance.tglPengisian?.toIso8601String(),
+      'jenis_hasil': instance.jenisHasil,
+      'hasil': instance.hasil,
+      'poin_total': instance.pointotal,
+      'soalJawab': instance.soalJawab,
+    };
+
+_$SoalJawabRiwayatImpl _$$SoalJawabRiwayatImplFromJson(
+        Map<String, dynamic> json) =>
+    _$SoalJawabRiwayatImpl(
+      noSoal: json['no_soal'] as int?,
+      soal: json['soal'] as String?,
+      jawaban: json['jawaban'] as String?,
+      poinJawaban: json['poin_jawaban'] as int?,
+    );
+
+Map<String, dynamic> _$$SoalJawabRiwayatImplToJson(
+        _$SoalJawabRiwayatImpl instance) =>
+    <String, dynamic>{
+      'no_soal': instance.noSoal,
+      'soal': instance.soal,
+      'jawaban': instance.jawaban,
+      'poin_jawaban': instance.poinJawaban,
     };
 
 _$RoomChatMeImpl _$$RoomChatMeImplFromJson(Map<String, dynamic> json) =>

@@ -42,7 +42,9 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                 icon: const Icon(Icons.arrow_back, color: Colors.black),
                 onPressed: () => Navigator.of(context).pop(),
               ),
-              title: const Text("Skrining",),
+              title: const Text(
+                "Skrining",
+              ),
               centerTitle: true,
             ),
             body: ListView(
@@ -115,25 +117,22 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                         title: Text('$questionNumber. $soal'),
                                       ),
                                       ...jawabanList.map((jawaban) {
+                                        // ignore: unused_local_variable
                                         final isSelected =
-                                            _selectedJawaban[index].contains(
-                                                jawaban.idJawabanSkrinning);
+                                            _selectedJawaban[index]
+                                                .contains(jawaban.poinJawaban);
                                         return RadioListTile(
                                           title: Text(jawaban.jawaban ?? ''),
-                                          value: jawaban.poinJawaban,
-                                          groupValue: _selectedJawaban[index],
+                                          value: jawaban.idJawabanSkrinning,
+                                          groupValue: _selectedJawaban[index].isEmpty ? -1 : _selectedJawaban[index][indexx],
                                           onChanged: (value) {
                                             setState(() {
-                                              if (isSelected) {
-                                                _selectedJawaban[index]
-                                                    .remove(value);
-                                              } else {
-                                                _selectedJawaban[index]
-                                                    .add(value as int);
-                                              }
+                                              _selectedJawaban[index][indexx] =
+                                                  value as int;
                                             });
                                           },
                                         );
+                                        // ignore: unnecessary_to_list_in_spreads
                                       }).toList(),
                                     ],
                                   );
