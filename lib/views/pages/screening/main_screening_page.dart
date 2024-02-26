@@ -10,20 +10,11 @@ class MainScreeningPage extends StatefulWidget {
 }
 
 class _MainScreeningPageState extends State<MainScreeningPage> {
-  List<List<int>> _selectedJawaban = [];
+  Map<int, int> selectedAnswers = {};
 
   @override
   void initState() {
     super.initState();
-    if (MyApp.skrinningBloc.state is SkrinningDataLoaded) {
-      final stateSkrinning = MyApp.skrinningBloc.state as SkrinningDataLoaded;
-      _initializeSelectedJawaban(stateSkrinning);
-    }
-  }
-
-  void _initializeSelectedJawaban(SkrinningDataLoaded stateSkrinning) {
-    final numberOfQuestions = stateSkrinning.detailskrinning.length;
-    _selectedJawaban = List.generate(numberOfQuestions, (_) => []);
   }
 
   @override
@@ -34,7 +25,6 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
-          _initializeSelectedJawaban(stateSkrinning);
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -104,11 +94,11 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                 itemCount: soalList.length,
                                 shrinkWrap: true,
                                 primary: false,
-                                itemBuilder: (context, indexx) {
-                                  final soal = soalList[indexx].soal ?? '';
+                                itemBuilder: (context, index) {
+                                  final soal = soalList[index].soal ?? '';
                                   final jawabanList =
-                                      soalList[indexx].jawaban ?? [];
-                                  final questionNumber = indexx + 1;
+                                      soalList[index].jawaban ?? [];
+                                  final questionNumber = index + 1;
                                   return Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -116,24 +106,27 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                       ListTile(
                                         title: Text('$questionNumber. $soal'),
                                       ),
-                                      ...jawabanList.map((jawaban) {
-                                        // ignore: unused_local_variable
-                                        final isSelected =
-                                            _selectedJawaban[index]
-                                                .contains(jawaban.poinJawaban);
-                                        return RadioListTile(
-                                          title: Text(jawaban.jawaban ?? ''),
-                                          value: jawaban.idJawabanSkrinning,
-                                          groupValue: _selectedJawaban[index].isEmpty ? -1 : _selectedJawaban[index][indexx],
-                                          onChanged: (value) {
-                                            setState(() {
-                                              _selectedJawaban[index][indexx] =
-                                                  value as int;
-                                            });
-                                          },
-                                        );
-                                        // ignore: unnecessary_to_list_in_spreads
-                                      }).toList(),
+                                      ListView.builder(
+                                        itemCount: jawabanList.length,
+                                        shrinkWrap: true,
+                                        primary: false,
+                                        itemBuilder: (context, idx) {
+                                          final jawaban = jawabanList[idx];
+                                          return RadioListTile(
+                                            title: Text(jawaban.jawaban ?? ''),
+                                            value: jawaban.idJawabanSkrinning,
+                                            groupValue:
+                                                selectedAnswers[questionNumber],
+                                            onChanged: (value) {
+                                              setState(() {
+                                                selectedAnswers[
+                                                        questionNumber] =
+                                                    value!;
+                                              });
+                                            },
+                                          );
+                                        },
+                                      ),
                                     ],
                                   );
                                 },
