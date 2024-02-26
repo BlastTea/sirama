@@ -81,8 +81,9 @@ class ApiHelper {
           handler.next(response);
         },
         onError: (error, handler) {
-          if (error.requestOptions.uri.host == 'i.ytimg.com')
+          if (error.requestOptions.uri.host == 'i.ytimg.com') {
             return handler.next(error);
+          }
 
           String? message;
           try {

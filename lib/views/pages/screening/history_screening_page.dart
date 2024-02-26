@@ -41,7 +41,7 @@ class HistoryScreeningPage extends StatelessWidget {
                 },
                 title: Row(
                   children: [
-                    Text(riwayat.jenisHasil == 'positif' ? '🥳' : '😔',
+                    Text(riwayat.jenisHasil == 'positif' ? '😁' : '😔',
                         style: const TextStyle(fontSize: 30)),
                     const SizedBox(width: 10),
                     Column(
@@ -61,9 +61,7 @@ class HistoryScreeningPage extends StatelessWidget {
                           style: Config.textStyleBodyMedium,
                         ),
                         Text(
-                            riwayat.jenisHasil == 'Skrinning Bullying' &&
-                                    riwayat.jenisHasil ==
-                                        'Skrinning Cyberbullying'
+                            riwayat.idSkrinning == 1 && riwayat.idSkrinning == 2
                                 ? 'Skor anda dirahasiakan'
                                 : 'Skor anda adalah ${riwayat.poinJawaban.toString()}',
                             style: Config.textStyleBodyMedium),

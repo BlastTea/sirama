@@ -365,7 +365,8 @@ class SoalJawabRiwayat with _$SoalJawabRiwayat {
     @JsonKey(name: 'poin_jawaban') int? poinJawaban,
   }) = _SoalJawabRiwayat;
 
-  factory SoalJawabRiwayat.fromJson(Map<String, dynamic> json) => _$SoalJawabRiwayatFromJson(json);
+  factory SoalJawabRiwayat.fromJson(Map<String, dynamic> json) =>
+      _$SoalJawabRiwayatFromJson(json);
 }
 
 @unfreezed
@@ -418,9 +419,10 @@ class MessageBubbleList with _$MessageBubbleList {
         // Jika ini adalah pesan pertama atau tanggalnya berbeda dari pesan terakhir,
         // tambahkan MessageBubbleData.dateTime
         if ((lastDate == null || currentChatDate.day != lastDate.day) &&
-            messageBubbles.isNotEmpty)
+            messageBubbles.isNotEmpty) {
           messageBubbles
               .add(MessageBubbleData.dateTime(dateTime: currentChatDate));
+        }
 
         // Tambahkan MessageBubbleData.text untuk pesan saat ini
         messageBubbles.add(MessageBubbleData.text(
