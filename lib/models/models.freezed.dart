@@ -24,7 +24,7 @@ mixin _$User {
   int? get idUser => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String? get role => throw _privateConstructorUsedError;
+  UserRole? get role => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -44,7 +44,7 @@ abstract class $UserCopyWith<$Res> {
       {@JsonKey(name: 'id_user') int? idUser,
       String? username,
       String? email,
-      String? role,
+      UserRole? role,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -85,7 +85,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UserRole?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       {@JsonKey(name: 'id_user') int? idUser,
       String? username,
       String? email,
-      String? role,
+      UserRole? role,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -147,7 +147,7 @@ class __$$UserImplCopyWithImpl<$Res>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UserRole?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ class _$UserImpl implements _User {
   @override
   final String? email;
   @override
-  final String? role;
+  final UserRole? role;
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
@@ -235,7 +235,7 @@ abstract class _User implements User {
       {@JsonKey(name: 'id_user') final int? idUser,
       final String? username,
       final String? email,
-      final String? role,
+      final UserRole? role,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$UserImpl;
 
@@ -249,7 +249,7 @@ abstract class _User implements User {
   @override
   String? get email;
   @override
-  String? get role;
+  UserRole? get role;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
@@ -6330,6 +6330,10 @@ mixin _$RoomChatMe {
   int? get remajaUserId => throw _privateConstructorUsedError;
   @JsonKey(name: 'remaja_user_id')
   set remajaUserId(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'guru_user_id')
+  int? get guruUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'guru_user_id')
+  set guruUserId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
@@ -6357,6 +6361,7 @@ abstract class $RoomChatMeCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'guru_user_id') int? guruUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       List<RiwayatChatMe>? riwayats});
@@ -6377,6 +6382,7 @@ class _$RoomChatMeCopyWithImpl<$Res, $Val extends RoomChatMe>
   $Res call({
     Object? idRoomChatMe = freezed,
     Object? remajaUserId = freezed,
+    Object? guruUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? riwayats = freezed,
@@ -6389,6 +6395,10 @@ class _$RoomChatMeCopyWithImpl<$Res, $Val extends RoomChatMe>
       remajaUserId: freezed == remajaUserId
           ? _value.remajaUserId
           : remajaUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      guruUserId: freezed == guruUserId
+          ? _value.guruUserId
+          : guruUserId // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -6417,6 +6427,7 @@ abstract class _$$RoomChatMeImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'guru_user_id') int? guruUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       List<RiwayatChatMe>? riwayats});
@@ -6435,6 +6446,7 @@ class __$$RoomChatMeImplCopyWithImpl<$Res>
   $Res call({
     Object? idRoomChatMe = freezed,
     Object? remajaUserId = freezed,
+    Object? guruUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? riwayats = freezed,
@@ -6447,6 +6459,10 @@ class __$$RoomChatMeImplCopyWithImpl<$Res>
       remajaUserId: freezed == remajaUserId
           ? _value.remajaUserId
           : remajaUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      guruUserId: freezed == guruUserId
+          ? _value.guruUserId
+          : guruUserId // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -6470,6 +6486,7 @@ class _$RoomChatMeImpl implements _RoomChatMe {
   _$RoomChatMeImpl(
       {@JsonKey(name: 'id_room_chat_me') this.idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') this.remajaUserId,
+      @JsonKey(name: 'guru_user_id') this.guruUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       this.riwayats});
@@ -6484,6 +6501,9 @@ class _$RoomChatMeImpl implements _RoomChatMe {
   @JsonKey(name: 'remaja_user_id')
   int? remajaUserId;
   @override
+  @JsonKey(name: 'guru_user_id')
+  int? guruUserId;
+  @override
   @JsonKey(name: 'created_at')
   DateTime? createdAt;
   @override
@@ -6494,7 +6514,7 @@ class _$RoomChatMeImpl implements _RoomChatMe {
 
   @override
   String toString() {
-    return 'RoomChatMe(idRoomChatMe: $idRoomChatMe, remajaUserId: $remajaUserId, createdAt: $createdAt, updatedAt: $updatedAt, riwayats: $riwayats)';
+    return 'RoomChatMe(idRoomChatMe: $idRoomChatMe, remajaUserId: $remajaUserId, guruUserId: $guruUserId, createdAt: $createdAt, updatedAt: $updatedAt, riwayats: $riwayats)';
   }
 
   @JsonKey(ignore: true)
@@ -6515,6 +6535,7 @@ abstract class _RoomChatMe implements RoomChatMe {
   factory _RoomChatMe(
       {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'guru_user_id') int? guruUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       List<RiwayatChatMe>? riwayats}) = _$RoomChatMeImpl;
@@ -6532,6 +6553,11 @@ abstract class _RoomChatMe implements RoomChatMe {
   int? get remajaUserId;
   @JsonKey(name: 'remaja_user_id')
   set remajaUserId(int? value);
+  @override
+  @JsonKey(name: 'guru_user_id')
+  int? get guruUserId;
+  @JsonKey(name: 'guru_user_id')
+  set guruUserId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;

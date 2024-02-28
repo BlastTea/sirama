@@ -15,4 +15,8 @@ class InitializeChatMeData extends ChatMeEvent {
   final Completer<bool>? completer;
 }
 
-class ChatMeSendPressed extends ChatMeEvent {}
+class ChatMeSendPressed extends ChatMeEvent {
+  ChatMeSendPressed({required this.index});
+
+  final int index;
+}

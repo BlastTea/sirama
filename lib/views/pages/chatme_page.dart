@@ -65,7 +65,20 @@ class ChatMePage extends StatelessWidget {
 
                         data as MessageBubbleDataDateTime;
 
-                        return Center(child: Text(data.dateTime?.toFormattedDate() ?? '?'));
+                        return Center(
+                          child: Container(
+                            margin: const EdgeInsets.symmetric(vertical: 8.0),
+                            padding: const EdgeInsets.all(8.0),
+                            decoration: BoxDecoration(
+                              color: Theme.of(context).colorScheme.secondary,
+                              borderRadius: BorderRadius.circular(kShapeSmall),
+                            ),
+                            child: Text(
+                              data.dateTime?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?',
+                              style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+                            ),
+                          ),
+                        );
                       },
                       itemCount: stateChatMe.messageBubbleList.data[index].length,
                     ),
@@ -82,10 +95,11 @@ class ChatMePage extends StatelessWidget {
                           ),
                           child: TextField(
                             controller: stateChatMe.textControllerMessage,
+                            style: Theme.of(context).textTheme.bodyLarge!.copyWith(color: Theme.of(context).colorScheme.onSecondaryContainer),
                             decoration: InputDecoration(
                               isDense: true,
                               filled: true,
-                              fillColor: Config.greyColor.withOpacity(0.5),
+                              fillColor: Theme.of(context).colorScheme.secondaryContainer,
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(16.0),
                                 borderSide: BorderSide.none,
@@ -99,7 +113,7 @@ class ChatMePage extends StatelessWidget {
                       ),
                       const SizedBox(width: 8.0),
                       IconButton.filled(
-                        onPressed: () => MyApp.chatmeBloc.add(ChatMeSendPressed()),
+                        onPressed: () => MyApp.chatmeBloc.add(ChatMeSendPressed(index: index)),
                         icon: SvgPicture.asset('assets/svgs/Send.svg'),
                       )
                     ],

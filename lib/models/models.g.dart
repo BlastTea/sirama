@@ -10,7 +10,7 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       idUser: json['id_user'] as int?,
       username: json['username'] as String?,
       email: json['email'] as String?,
-      role: json['role'] as String?,
+      role: $enumDecodeNullable(_$UserRoleEnumMap, json['role']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -24,10 +24,19 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'id_user': instance.idUser,
       'username': instance.username,
       'email': instance.email,
-      'role': instance.role,
+      'role': _$UserRoleEnumMap[instance.role],
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
     };
+
+const _$UserRoleEnumMap = {
+  UserRole.remaja: 'remaja',
+  UserRole.orangTua: 'orangtua',
+  UserRole.tenagaAhli: 'ahli',
+  UserRole.kaderKesehatan: 'kader',
+  UserRole.guru: 'guru',
+  UserRole.superAdmin: 'superadmin',
+};
 
 _$TopikPertanyaanImpl _$$TopikPertanyaanImplFromJson(
         Map<String, dynamic> json) =>
@@ -561,6 +570,7 @@ _$RoomChatMeImpl _$$RoomChatMeImplFromJson(Map<String, dynamic> json) =>
     _$RoomChatMeImpl(
       idRoomChatMe: json['id_room_chat_me'] as int?,
       remajaUserId: json['remaja_user_id'] as int?,
+      guruUserId: json['guru_user_id'] as int?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -576,6 +586,7 @@ Map<String, dynamic> _$$RoomChatMeImplToJson(_$RoomChatMeImpl instance) =>
     <String, dynamic>{
       'id_room_chat_me': instance.idRoomChatMe,
       'remaja_user_id': instance.remajaUserId,
+      'guru_user_id': instance.guruUserId,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
       'riwayats': instance.riwayats,
