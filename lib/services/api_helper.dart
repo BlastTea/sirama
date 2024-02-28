@@ -11,6 +11,7 @@ part of 'services.dart';
 ///   );
 /// } catch (e) {
 ///   debugPrint(e.toString());
+///   ApiHelper.handleError(e);
 /// }
 /// ```
 class ApiHelper {
@@ -51,7 +52,7 @@ class ApiHelper {
             );
           }
 
-          if (options.method != 'GET' || options.path.contains('/api/fav') || options.path.contains('/api/detailskrinning') || options.path.contains('/api/skrinning') || options.path.contains('/api/riwayatskrinning') || options.path.contains('/api/detailriwayatskrinning') || options.path.contains('/api/chatme')) {
+          if (options.method != 'GET' || options.path.contains('/api/fav') || options.path.contains('/api/detailskrinning') || options.path.contains('/api/skrinning') || options.path.contains('/api/riwayatskrinning') || options.path.contains('/api/detailriwayatskrinning') || options.path.contains('/api/chatme') || options.path.contains('/api/me')) {
             options.headers['Authorization'] = 'Bearer $token';
           }
 
@@ -70,35 +71,6 @@ class ApiHelper {
         onResponse: (response, handler) {
           debugPrint('http response : ${response.data}');
           handler.next(response);
-        },
-        onError: (error, handler) {
-          if (error.requestOptions.uri.host == 'i.ytimg.com') return handler.next(error);
-
-          String? message;
-          try {
-            dynamic data = error.response?.data;
-            if (data is Map && data['message'] is String) {
-              message = data['message'];
-            } else {
-              message = data;
-            }
-          } catch (e) {
-            message = error.message;
-          }
-
-          if (message == 'Session is expired') {
-            while (NavigationHelper.canGoBack()) {
-              NavigationHelper.back();
-            }
-            NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
-            message = 'Sesi Anda telah berakhir';
-            showInformationDialog(message);
-            return handler.next(error);
-          }
-
-          if (message != null) showErrorDialog(message);
-
-          return handler.next(error);
         },
       ),
     );
@@ -124,6 +96,12 @@ class ApiHelper {
 
     await sharedPref.setString(_keyToken, token);
     await sharedPref.setString(_keyCurrentUser, jsonEncode(currentUser!.toJson()));
+
+    response = await get(
+      '/api/me',
+    );
+
+    currentUser?.userDetail = UserDetail.fromJson(response.data['data'][0]);
   }
 
   static Future<void> signOut() async {
@@ -193,5 +171,42 @@ class ApiHelper {
       path,
       data: body,
     );
+  }
+
+  static Future<bool> handleError(Object e) async {
+    if (e is DioException) {
+      if (e.requestOptions.uri.host == 'i.ytimg.com') return false;
+
+      String? message;
+      try {
+        dynamic data = e.response?.data;
+        if (data is Map && data['message'] is String) {
+          message = data['message'];
+          if (message == 'Invalid user role') return false;
+        } else {
+          message = data;
+        }
+      } catch (ex) {
+        message = e.message;
+      }
+
+      if (message == 'Session is expired') {
+        while (NavigationHelper.canGoBack()) {
+          NavigationHelper.back();
+        }
+        NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+        message = 'Sesi Anda telah berakhir';
+        await showInformationDialog(message);
+        return true;
+      }
+
+      if (message != null) {
+        await showErrorDialog(message);
+        return true;
+      }
+    }
+
+    await showErrorDialog(e.toString());
+    return true;
   }
 }

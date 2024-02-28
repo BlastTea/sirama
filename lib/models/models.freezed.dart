@@ -22,13 +22,24 @@ User _$UserFromJson(Map<String, dynamic> json) {
 mixin _$User {
   @JsonKey(name: 'id_user')
   int? get idUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_user')
+  set idUser(int? value) => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
+  set username(String? value) => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
+  set email(String? value) => throw _privateConstructorUsedError;
   UserRole? get role => throw _privateConstructorUsedError;
+  set role(UserRole? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
+  UserDetail? get userDetail => throw _privateConstructorUsedError;
+  set userDetail(UserDetail? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -46,7 +57,10 @@ abstract class $UserCopyWith<$Res> {
       String? email,
       UserRole? role,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      UserDetail? userDetail});
+
+  $UserDetailCopyWith<$Res>? get userDetail;
 }
 
 /// @nodoc
@@ -68,6 +82,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
     Object? role = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? userDetail = freezed,
   }) {
     return _then(_value.copyWith(
       idUser: freezed == idUser
@@ -94,7 +109,23 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      userDetail: freezed == userDetail
+          ? _value.userDetail
+          : userDetail // ignore: cast_nullable_to_non_nullable
+              as UserDetail?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UserDetailCopyWith<$Res>? get userDetail {
+    if (_value.userDetail == null) {
+      return null;
+    }
+
+    return $UserDetailCopyWith<$Res>(_value.userDetail!, (value) {
+      return _then(_value.copyWith(userDetail: value) as $Val);
+    });
   }
 }
 
@@ -111,7 +142,11 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       String? email,
       UserRole? role,
       @JsonKey(name: 'created_at') DateTime? createdAt,
-      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      UserDetail? userDetail});
+
+  @override
+  $UserDetailCopyWith<$Res>? get userDetail;
 }
 
 /// @nodoc
@@ -130,6 +165,7 @@ class __$$UserImplCopyWithImpl<$Res>
     Object? role = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
+    Object? userDetail = freezed,
   }) {
     return _then(_$UserImpl(
       idUser: freezed == idUser
@@ -156,6 +192,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.updatedAt
           : updatedAt // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      userDetail: freezed == userDetail
+          ? _value.userDetail
+          : userDetail // ignore: cast_nullable_to_non_nullable
+              as UserDetail?,
     ));
   }
 }
@@ -163,58 +203,40 @@ class __$$UserImplCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$UserImpl implements _User {
-  const _$UserImpl(
+  _$UserImpl(
       {@JsonKey(name: 'id_user') this.idUser,
       this.username,
       this.email,
       this.role,
       @JsonKey(name: 'created_at') this.createdAt,
-      @JsonKey(name: 'updated_at') this.updatedAt});
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      this.userDetail});
 
   factory _$UserImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_user')
-  final int? idUser;
+  int? idUser;
   @override
-  final String? username;
+  String? username;
   @override
-  final String? email;
+  String? email;
   @override
-  final UserRole? role;
+  UserRole? role;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
+  @override
+  UserDetail? userDetail;
 
   @override
   String toString() {
-    return 'User(idUser: $idUser, username: $username, email: $email, role: $role, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'User(idUser: $idUser, username: $username, email: $email, role: $role, createdAt: $createdAt, updatedAt: $updatedAt, userDetail: $userDetail)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$UserImpl &&
-            (identical(other.idUser, idUser) || other.idUser == idUser) &&
-            (identical(other.username, username) ||
-                other.username == username) &&
-            (identical(other.email, email) || other.email == email) &&
-            (identical(other.role, role) || other.role == role) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType, idUser, username, email, role, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -231,25 +253,835 @@ class _$UserImpl implements _User {
 }
 
 abstract class _User implements User {
-  const factory _User(
-      {@JsonKey(name: 'id_user') final int? idUser,
-      final String? username,
-      final String? email,
-      final UserRole? role,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$UserImpl;
+  factory _User(
+      {@JsonKey(name: 'id_user') int? idUser,
+      String? username,
+      String? email,
+      UserRole? role,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt,
+      UserDetail? userDetail}) = _$UserImpl;
 
   factory _User.fromJson(Map<String, dynamic> json) = _$UserImpl.fromJson;
 
   @override
   @JsonKey(name: 'id_user')
   int? get idUser;
+  @JsonKey(name: 'id_user')
+  set idUser(int? value);
   @override
   String? get username;
+  set username(String? value);
   @override
   String? get email;
+  set email(String? value);
   @override
   UserRole? get role;
+  set role(UserRole? value);
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
+  @override
+  UserDetail? get userDetail;
+  set userDetail(UserDetail? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+UserDetail _$UserDetailFromJson(Map<String, dynamic> json) {
+  switch (json['role']) {
+    case 'remaja':
+      return Remaja.fromJson(json);
+    case 'orangtua':
+      return OrangTua.fromJson(json);
+    case 'ahli':
+      return TenagaAhli.fromJson(json);
+    case 'kader':
+      return KaderKesehatan.fromJson(json);
+    case 'guru':
+      return Guru.fromJson(json);
+
+    default:
+      throw CheckedFromJsonException(
+          json, 'role', 'UserDetail', 'Invalid union type "${json['role']}"!');
+  }
+}
+
+/// @nodoc
+mixin _$UserDetail {
+  String? get nama => throw _privateConstructorUsedError;
+  @JsonKey(name: 'no_hp')
+  String? get noHp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
+  int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        remaja,
+    required TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        orangTua,
+    required TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        tenagaAhli,
+    required TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        kaderKesehatan,
+    required TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        guru,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult? Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult? Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult? Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult? Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Remaja value) remaja,
+    required TResult Function(OrangTua value) orangTua,
+    required TResult Function(TenagaAhli value) tenagaAhli,
+    required TResult Function(KaderKesehatan value) kaderKesehatan,
+    required TResult Function(Guru value) guru,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Remaja value)? remaja,
+    TResult? Function(OrangTua value)? orangTua,
+    TResult? Function(TenagaAhli value)? tenagaAhli,
+    TResult? Function(KaderKesehatan value)? kaderKesehatan,
+    TResult? Function(Guru value)? guru,
+  }) =>
+      throw _privateConstructorUsedError;
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Remaja value)? remaja,
+    TResult Function(OrangTua value)? orangTua,
+    TResult Function(TenagaAhli value)? tenagaAhli,
+    TResult Function(KaderKesehatan value)? kaderKesehatan,
+    TResult Function(Guru value)? guru,
+    required TResult orElse(),
+  }) =>
+      throw _privateConstructorUsedError;
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UserDetailCopyWith<UserDetail> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UserDetailCopyWith<$Res> {
+  factory $UserDetailCopyWith(
+          UserDetail value, $Res Function(UserDetail) then) =
+      _$UserDetailCopyWithImpl<$Res, UserDetail>;
+  @useResult
+  $Res call(
+      {String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class _$UserDetailCopyWithImpl<$Res, $Val extends UserDetail>
+    implements $UserDetailCopyWith<$Res> {
+  _$UserDetailCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? nama = freezed,
+    Object? noHp = freezed,
+    Object? fotoProfile = freezed,
+    Object? userId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_value.copyWith(
+      nama: freezed == nama
+          ? _value.nama
+          : nama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noHp: freezed == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$RemajaImplCopyWith<$Res>
+    implements $UserDetailCopyWith<$Res> {
+  factory _$$RemajaImplCopyWith(
+          _$RemajaImpl value, $Res Function(_$RemajaImpl) then) =
+      __$$RemajaImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_remaja') int? idRemaja,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+      @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+      String? sekolah,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$RemajaImplCopyWithImpl<$Res>
+    extends _$UserDetailCopyWithImpl<$Res, _$RemajaImpl>
+    implements _$$RemajaImplCopyWith<$Res> {
+  __$$RemajaImplCopyWithImpl(
+      _$RemajaImpl _value, $Res Function(_$RemajaImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idRemaja = freezed,
+    Object? nama = freezed,
+    Object? noHp = freezed,
+    Object? tglLahir = freezed,
+    Object? jenisKelamin = freezed,
+    Object? sekolah = freezed,
+    Object? fotoProfile = freezed,
+    Object? userId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$RemajaImpl(
+      idRemaja: freezed == idRemaja
+          ? _value.idRemaja
+          : idRemaja // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nama: freezed == nama
+          ? _value.nama
+          : nama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noHp: freezed == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tglLahir: freezed == tglLahir
+          ? _value.tglLahir
+          : tglLahir // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      jenisKelamin: freezed == jenisKelamin
+          ? _value.jenisKelamin
+          : jenisKelamin // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sekolah: freezed == sekolah
+          ? _value.sekolah
+          : sekolah // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$RemajaImpl implements Remaja {
+  _$RemajaImpl(
+      {@JsonKey(name: 'id_remaja') this.idRemaja,
+      this.nama,
+      @JsonKey(name: 'no_hp') this.noHp,
+      @JsonKey(name: 'tgl_lahir') this.tglLahir,
+      @JsonKey(name: 'jenis_kelamin') this.jenisKelamin,
+      this.sekolah,
+      @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      final String? $type})
+      : $type = $type ?? 'remaja';
+
+  factory _$RemajaImpl.fromJson(Map<String, dynamic> json) =>
+      _$$RemajaImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_remaja')
+  final int? idRemaja;
+  @override
+  final String? nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  final String? noHp;
+  @override
+  @JsonKey(name: 'tgl_lahir')
+  final DateTime? tglLahir;
+  @override
+  @JsonKey(name: 'jenis_kelamin')
+  final String? jenisKelamin;
+  @override
+  final String? sekolah;
+  @override
+  @JsonKey(name: 'foto_profile')
+  final String? fotoProfile;
+  @override
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'role')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'UserDetail.remaja(idRemaja: $idRemaja, nama: $nama, noHp: $noHp, tglLahir: $tglLahir, jenisKelamin: $jenisKelamin, sekolah: $sekolah, fotoProfile: $fotoProfile, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemajaImpl &&
+            (identical(other.idRemaja, idRemaja) ||
+                other.idRemaja == idRemaja) &&
+            (identical(other.nama, nama) || other.nama == nama) &&
+            (identical(other.noHp, noHp) || other.noHp == noHp) &&
+            (identical(other.tglLahir, tglLahir) ||
+                other.tglLahir == tglLahir) &&
+            (identical(other.jenisKelamin, jenisKelamin) ||
+                other.jenisKelamin == jenisKelamin) &&
+            (identical(other.sekolah, sekolah) || other.sekolah == sekolah) &&
+            (identical(other.fotoProfile, fotoProfile) ||
+                other.fotoProfile == fotoProfile) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idRemaja, nama, noHp, tglLahir,
+      jenisKelamin, sekolah, fotoProfile, userId, createdAt, updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemajaImplCopyWith<_$RemajaImpl> get copyWith =>
+      __$$RemajaImplCopyWithImpl<_$RemajaImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        remaja,
+    required TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        orangTua,
+    required TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        tenagaAhli,
+    required TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        kaderKesehatan,
+    required TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        guru,
+  }) {
+    return remaja(idRemaja, nama, noHp, tglLahir, jenisKelamin, sekolah,
+        fotoProfile, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult? Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult? Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult? Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult? Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+  }) {
+    return remaja?.call(idRemaja, nama, noHp, tglLahir, jenisKelamin, sekolah,
+        fotoProfile, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+    required TResult orElse(),
+  }) {
+    if (remaja != null) {
+      return remaja(idRemaja, nama, noHp, tglLahir, jenisKelamin, sekolah,
+          fotoProfile, userId, createdAt, updatedAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Remaja value) remaja,
+    required TResult Function(OrangTua value) orangTua,
+    required TResult Function(TenagaAhli value) tenagaAhli,
+    required TResult Function(KaderKesehatan value) kaderKesehatan,
+    required TResult Function(Guru value) guru,
+  }) {
+    return remaja(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Remaja value)? remaja,
+    TResult? Function(OrangTua value)? orangTua,
+    TResult? Function(TenagaAhli value)? tenagaAhli,
+    TResult? Function(KaderKesehatan value)? kaderKesehatan,
+    TResult? Function(Guru value)? guru,
+  }) {
+    return remaja?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Remaja value)? remaja,
+    TResult Function(OrangTua value)? orangTua,
+    TResult Function(TenagaAhli value)? tenagaAhli,
+    TResult Function(KaderKesehatan value)? kaderKesehatan,
+    TResult Function(Guru value)? guru,
+    required TResult orElse(),
+  }) {
+    if (remaja != null) {
+      return remaja(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$RemajaImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class Remaja implements UserDetail {
+  factory Remaja(
+      {@JsonKey(name: 'id_remaja') final int? idRemaja,
+      final String? nama,
+      @JsonKey(name: 'no_hp') final String? noHp,
+      @JsonKey(name: 'tgl_lahir') final DateTime? tglLahir,
+      @JsonKey(name: 'jenis_kelamin') final String? jenisKelamin,
+      final String? sekolah,
+      @JsonKey(name: 'foto_profile') final String? fotoProfile,
+      @JsonKey(name: 'user_id') final int? userId,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$RemajaImpl;
+
+  factory Remaja.fromJson(Map<String, dynamic> json) = _$RemajaImpl.fromJson;
+
+  @JsonKey(name: 'id_remaja')
+  int? get idRemaja;
+  @override
+  String? get nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  String? get noHp;
+  @JsonKey(name: 'tgl_lahir')
+  DateTime? get tglLahir;
+  @JsonKey(name: 'jenis_kelamin')
+  String? get jenisKelamin;
+  String? get sekolah;
+  @override
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile;
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
@@ -258,7 +1090,1921 @@ abstract class _User implements User {
   DateTime? get updatedAt;
   @override
   @JsonKey(ignore: true)
-  _$$UserImplCopyWith<_$UserImpl> get copyWith =>
+  _$$RemajaImplCopyWith<_$RemajaImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$OrangTuaImplCopyWith<$Res>
+    implements $UserDetailCopyWith<$Res> {
+  factory _$$OrangTuaImplCopyWith(
+          _$OrangTuaImpl value, $Res Function(_$OrangTuaImpl) then) =
+      __$$OrangTuaImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_orangtua') int? idOrangTua,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$OrangTuaImplCopyWithImpl<$Res>
+    extends _$UserDetailCopyWithImpl<$Res, _$OrangTuaImpl>
+    implements _$$OrangTuaImplCopyWith<$Res> {
+  __$$OrangTuaImplCopyWithImpl(
+      _$OrangTuaImpl _value, $Res Function(_$OrangTuaImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idOrangTua = freezed,
+    Object? nama = freezed,
+    Object? noHp = freezed,
+    Object? tingkatSekolahAnak = freezed,
+    Object? fotoProfile = freezed,
+    Object? userId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$OrangTuaImpl(
+      idOrangTua: freezed == idOrangTua
+          ? _value.idOrangTua
+          : idOrangTua // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nama: freezed == nama
+          ? _value.nama
+          : nama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noHp: freezed == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tingkatSekolahAnak: freezed == tingkatSekolahAnak
+          ? _value.tingkatSekolahAnak
+          : tingkatSekolahAnak // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$OrangTuaImpl implements OrangTua {
+  _$OrangTuaImpl(
+      {@JsonKey(name: 'id_orangtua') this.idOrangTua,
+      this.nama,
+      @JsonKey(name: 'no_hp') this.noHp,
+      @JsonKey(name: 'tingkat_sekolah_anak') this.tingkatSekolahAnak,
+      @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      final String? $type})
+      : $type = $type ?? 'orangtua';
+
+  factory _$OrangTuaImpl.fromJson(Map<String, dynamic> json) =>
+      _$$OrangTuaImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_orangtua')
+  final int? idOrangTua;
+  @override
+  final String? nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  final String? noHp;
+  @override
+  @JsonKey(name: 'tingkat_sekolah_anak')
+  final String? tingkatSekolahAnak;
+  @override
+  @JsonKey(name: 'foto_profile')
+  final String? fotoProfile;
+  @override
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'role')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'UserDetail.orangTua(idOrangTua: $idOrangTua, nama: $nama, noHp: $noHp, tingkatSekolahAnak: $tingkatSekolahAnak, fotoProfile: $fotoProfile, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$OrangTuaImpl &&
+            (identical(other.idOrangTua, idOrangTua) ||
+                other.idOrangTua == idOrangTua) &&
+            (identical(other.nama, nama) || other.nama == nama) &&
+            (identical(other.noHp, noHp) || other.noHp == noHp) &&
+            (identical(other.tingkatSekolahAnak, tingkatSekolahAnak) ||
+                other.tingkatSekolahAnak == tingkatSekolahAnak) &&
+            (identical(other.fotoProfile, fotoProfile) ||
+                other.fotoProfile == fotoProfile) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idOrangTua, nama, noHp,
+      tingkatSekolahAnak, fotoProfile, userId, createdAt, updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$OrangTuaImplCopyWith<_$OrangTuaImpl> get copyWith =>
+      __$$OrangTuaImplCopyWithImpl<_$OrangTuaImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        remaja,
+    required TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        orangTua,
+    required TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        tenagaAhli,
+    required TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        kaderKesehatan,
+    required TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        guru,
+  }) {
+    return orangTua(idOrangTua, nama, noHp, tingkatSekolahAnak, fotoProfile,
+        userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult? Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult? Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult? Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult? Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+  }) {
+    return orangTua?.call(idOrangTua, nama, noHp, tingkatSekolahAnak,
+        fotoProfile, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+    required TResult orElse(),
+  }) {
+    if (orangTua != null) {
+      return orangTua(idOrangTua, nama, noHp, tingkatSekolahAnak, fotoProfile,
+          userId, createdAt, updatedAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Remaja value) remaja,
+    required TResult Function(OrangTua value) orangTua,
+    required TResult Function(TenagaAhli value) tenagaAhli,
+    required TResult Function(KaderKesehatan value) kaderKesehatan,
+    required TResult Function(Guru value) guru,
+  }) {
+    return orangTua(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Remaja value)? remaja,
+    TResult? Function(OrangTua value)? orangTua,
+    TResult? Function(TenagaAhli value)? tenagaAhli,
+    TResult? Function(KaderKesehatan value)? kaderKesehatan,
+    TResult? Function(Guru value)? guru,
+  }) {
+    return orangTua?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Remaja value)? remaja,
+    TResult Function(OrangTua value)? orangTua,
+    TResult Function(TenagaAhli value)? tenagaAhli,
+    TResult Function(KaderKesehatan value)? kaderKesehatan,
+    TResult Function(Guru value)? guru,
+    required TResult orElse(),
+  }) {
+    if (orangTua != null) {
+      return orangTua(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$OrangTuaImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class OrangTua implements UserDetail {
+  factory OrangTua(
+      {@JsonKey(name: 'id_orangtua') final int? idOrangTua,
+      final String? nama,
+      @JsonKey(name: 'no_hp') final String? noHp,
+      @JsonKey(name: 'tingkat_sekolah_anak') final String? tingkatSekolahAnak,
+      @JsonKey(name: 'foto_profile') final String? fotoProfile,
+      @JsonKey(name: 'user_id') final int? userId,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$OrangTuaImpl;
+
+  factory OrangTua.fromJson(Map<String, dynamic> json) =
+      _$OrangTuaImpl.fromJson;
+
+  @JsonKey(name: 'id_orangtua')
+  int? get idOrangTua;
+  @override
+  String? get nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  String? get noHp;
+  @JsonKey(name: 'tingkat_sekolah_anak')
+  String? get tingkatSekolahAnak;
+  @override
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile;
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$OrangTuaImplCopyWith<_$OrangTuaImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$TenagaAhliImplCopyWith<$Res>
+    implements $UserDetailCopyWith<$Res> {
+  factory _$$TenagaAhliImplCopyWith(
+          _$TenagaAhliImpl value, $Res Function(_$TenagaAhliImpl) then) =
+      __$$TenagaAhliImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_ahli') int? idAhli,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+      @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$TenagaAhliImplCopyWithImpl<$Res>
+    extends _$UserDetailCopyWithImpl<$Res, _$TenagaAhliImpl>
+    implements _$$TenagaAhliImplCopyWith<$Res> {
+  __$$TenagaAhliImplCopyWithImpl(
+      _$TenagaAhliImpl _value, $Res Function(_$TenagaAhliImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idAhli = freezed,
+    Object? nama = freezed,
+    Object? noHp = freezed,
+    Object? jenisAhli = freezed,
+    Object? deskripsiAhli = freezed,
+    Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
+    Object? userId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$TenagaAhliImpl(
+      idAhli: freezed == idAhli
+          ? _value.idAhli
+          : idAhli // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nama: freezed == nama
+          ? _value.nama
+          : nama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noHp: freezed == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      jenisAhli: freezed == jenisAhli
+          ? _value.jenisAhli
+          : jenisAhli // ignore: cast_nullable_to_non_nullable
+              as String?,
+      deskripsiAhli: freezed == deskripsiAhli
+          ? _value.deskripsiAhli
+          : deskripsiAhli // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value._fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$TenagaAhliImpl implements TenagaAhli {
+  _$TenagaAhliImpl(
+      {@JsonKey(name: 'id_ahli') this.idAhli,
+      this.nama,
+      @JsonKey(name: 'no_hp') this.noHp,
+      @JsonKey(name: 'jenis_ahli') this.jenisAhli,
+      @JsonKey(name: 'deskripsi_ahli') this.deskripsiAhli,
+      @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      final String? $type})
+      : _fotoProfileData = fotoProfileData,
+        $type = $type ?? 'ahli';
+
+  factory _$TenagaAhliImpl.fromJson(Map<String, dynamic> json) =>
+      _$$TenagaAhliImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_ahli')
+  final int? idAhli;
+  @override
+  final String? nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  final String? noHp;
+  @override
+  @JsonKey(name: 'jenis_ahli')
+  final String? jenisAhli;
+  @override
+  @JsonKey(name: 'deskripsi_ahli')
+  final String? deskripsiAhli;
+  @override
+  @JsonKey(name: 'foto_profile')
+  final String? fotoProfile;
+  final List<int>? _fotoProfileData;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData {
+    final value = _fotoProfileData;
+    if (value == null) return null;
+    if (_fotoProfileData is EqualUnmodifiableListView) return _fotoProfileData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'role')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'UserDetail.tenagaAhli(idAhli: $idAhli, nama: $nama, noHp: $noHp, jenisAhli: $jenisAhli, deskripsiAhli: $deskripsiAhli, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$TenagaAhliImpl &&
+            (identical(other.idAhli, idAhli) || other.idAhli == idAhli) &&
+            (identical(other.nama, nama) || other.nama == nama) &&
+            (identical(other.noHp, noHp) || other.noHp == noHp) &&
+            (identical(other.jenisAhli, jenisAhli) ||
+                other.jenisAhli == jenisAhli) &&
+            (identical(other.deskripsiAhli, deskripsiAhli) ||
+                other.deskripsiAhli == deskripsiAhli) &&
+            (identical(other.fotoProfile, fotoProfile) ||
+                other.fotoProfile == fotoProfile) &&
+            const DeepCollectionEquality()
+                .equals(other._fotoProfileData, _fotoProfileData) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      idAhli,
+      nama,
+      noHp,
+      jenisAhli,
+      deskripsiAhli,
+      fotoProfile,
+      const DeepCollectionEquality().hash(_fotoProfileData),
+      userId,
+      createdAt,
+      updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$TenagaAhliImplCopyWith<_$TenagaAhliImpl> get copyWith =>
+      __$$TenagaAhliImplCopyWithImpl<_$TenagaAhliImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        remaja,
+    required TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        orangTua,
+    required TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        tenagaAhli,
+    required TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        kaderKesehatan,
+    required TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        guru,
+  }) {
+    return tenagaAhli(idAhli, nama, noHp, jenisAhli, deskripsiAhli, fotoProfile,
+        fotoProfileData, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult? Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult? Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult? Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult? Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+  }) {
+    return tenagaAhli?.call(idAhli, nama, noHp, jenisAhli, deskripsiAhli,
+        fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+    required TResult orElse(),
+  }) {
+    if (tenagaAhli != null) {
+      return tenagaAhli(idAhli, nama, noHp, jenisAhli, deskripsiAhli,
+          fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Remaja value) remaja,
+    required TResult Function(OrangTua value) orangTua,
+    required TResult Function(TenagaAhli value) tenagaAhli,
+    required TResult Function(KaderKesehatan value) kaderKesehatan,
+    required TResult Function(Guru value) guru,
+  }) {
+    return tenagaAhli(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Remaja value)? remaja,
+    TResult? Function(OrangTua value)? orangTua,
+    TResult? Function(TenagaAhli value)? tenagaAhli,
+    TResult? Function(KaderKesehatan value)? kaderKesehatan,
+    TResult? Function(Guru value)? guru,
+  }) {
+    return tenagaAhli?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Remaja value)? remaja,
+    TResult Function(OrangTua value)? orangTua,
+    TResult Function(TenagaAhli value)? tenagaAhli,
+    TResult Function(KaderKesehatan value)? kaderKesehatan,
+    TResult Function(Guru value)? guru,
+    required TResult orElse(),
+  }) {
+    if (tenagaAhli != null) {
+      return tenagaAhli(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$TenagaAhliImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class TenagaAhli implements UserDetail {
+  factory TenagaAhli(
+          {@JsonKey(name: 'id_ahli') final int? idAhli,
+          final String? nama,
+          @JsonKey(name: 'no_hp') final String? noHp,
+          @JsonKey(name: 'jenis_ahli') final String? jenisAhli,
+          @JsonKey(name: 'deskripsi_ahli') final String? deskripsiAhli,
+          @JsonKey(name: 'foto_profile') final String? fotoProfile,
+          @JsonKey(includeFromJson: false, includeToJson: false)
+          final List<int>? fotoProfileData,
+          @JsonKey(name: 'user_id') final int? userId,
+          @JsonKey(name: 'created_at') final DateTime? createdAt,
+          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
+      _$TenagaAhliImpl;
+
+  factory TenagaAhli.fromJson(Map<String, dynamic> json) =
+      _$TenagaAhliImpl.fromJson;
+
+  @JsonKey(name: 'id_ahli')
+  int? get idAhli;
+  @override
+  String? get nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  String? get noHp;
+  @JsonKey(name: 'jenis_ahli')
+  String? get jenisAhli;
+  @JsonKey(name: 'deskripsi_ahli')
+  String? get deskripsiAhli;
+  @override
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData;
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$TenagaAhliImplCopyWith<_$TenagaAhliImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$KaderKesehatanImplCopyWith<$Res>
+    implements $UserDetailCopyWith<$Res> {
+  factory _$$KaderKesehatanImplCopyWith(_$KaderKesehatanImpl value,
+          $Res Function(_$KaderKesehatanImpl) then) =
+      __$$KaderKesehatanImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_kader') int? idKader,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      int? usia,
+      @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$KaderKesehatanImplCopyWithImpl<$Res>
+    extends _$UserDetailCopyWithImpl<$Res, _$KaderKesehatanImpl>
+    implements _$$KaderKesehatanImplCopyWith<$Res> {
+  __$$KaderKesehatanImplCopyWithImpl(
+      _$KaderKesehatanImpl _value, $Res Function(_$KaderKesehatanImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idKader = freezed,
+    Object? nama = freezed,
+    Object? noHp = freezed,
+    Object? usia = freezed,
+    Object? wilayahBinaan = freezed,
+    Object? fotoProfile = freezed,
+    Object? userId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$KaderKesehatanImpl(
+      idKader: freezed == idKader
+          ? _value.idKader
+          : idKader // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nama: freezed == nama
+          ? _value.nama
+          : nama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noHp: freezed == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      usia: freezed == usia
+          ? _value.usia
+          : usia // ignore: cast_nullable_to_non_nullable
+              as int?,
+      wilayahBinaan: freezed == wilayahBinaan
+          ? _value.wilayahBinaan
+          : wilayahBinaan // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$KaderKesehatanImpl implements KaderKesehatan {
+  _$KaderKesehatanImpl(
+      {@JsonKey(name: 'id_kader') this.idKader,
+      this.nama,
+      @JsonKey(name: 'no_hp') this.noHp,
+      this.usia,
+      @JsonKey(name: 'wilayah_binaan') this.wilayahBinaan,
+      @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      final String? $type})
+      : $type = $type ?? 'kader';
+
+  factory _$KaderKesehatanImpl.fromJson(Map<String, dynamic> json) =>
+      _$$KaderKesehatanImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_kader')
+  final int? idKader;
+  @override
+  final String? nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  final String? noHp;
+  @override
+  final int? usia;
+  @override
+  @JsonKey(name: 'wilayah_binaan')
+  final String? wilayahBinaan;
+  @override
+  @JsonKey(name: 'foto_profile')
+  final String? fotoProfile;
+  @override
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'role')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'UserDetail.kaderKesehatan(idKader: $idKader, nama: $nama, noHp: $noHp, usia: $usia, wilayahBinaan: $wilayahBinaan, fotoProfile: $fotoProfile, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$KaderKesehatanImpl &&
+            (identical(other.idKader, idKader) || other.idKader == idKader) &&
+            (identical(other.nama, nama) || other.nama == nama) &&
+            (identical(other.noHp, noHp) || other.noHp == noHp) &&
+            (identical(other.usia, usia) || other.usia == usia) &&
+            (identical(other.wilayahBinaan, wilayahBinaan) ||
+                other.wilayahBinaan == wilayahBinaan) &&
+            (identical(other.fotoProfile, fotoProfile) ||
+                other.fotoProfile == fotoProfile) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, idKader, nama, noHp, usia,
+      wilayahBinaan, fotoProfile, userId, createdAt, updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$KaderKesehatanImplCopyWith<_$KaderKesehatanImpl> get copyWith =>
+      __$$KaderKesehatanImplCopyWithImpl<_$KaderKesehatanImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        remaja,
+    required TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        orangTua,
+    required TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        tenagaAhli,
+    required TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        kaderKesehatan,
+    required TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        guru,
+  }) {
+    return kaderKesehatan(idKader, nama, noHp, usia, wilayahBinaan, fotoProfile,
+        userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult? Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult? Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult? Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult? Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+  }) {
+    return kaderKesehatan?.call(idKader, nama, noHp, usia, wilayahBinaan,
+        fotoProfile, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+    required TResult orElse(),
+  }) {
+    if (kaderKesehatan != null) {
+      return kaderKesehatan(idKader, nama, noHp, usia, wilayahBinaan,
+          fotoProfile, userId, createdAt, updatedAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Remaja value) remaja,
+    required TResult Function(OrangTua value) orangTua,
+    required TResult Function(TenagaAhli value) tenagaAhli,
+    required TResult Function(KaderKesehatan value) kaderKesehatan,
+    required TResult Function(Guru value) guru,
+  }) {
+    return kaderKesehatan(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Remaja value)? remaja,
+    TResult? Function(OrangTua value)? orangTua,
+    TResult? Function(TenagaAhli value)? tenagaAhli,
+    TResult? Function(KaderKesehatan value)? kaderKesehatan,
+    TResult? Function(Guru value)? guru,
+  }) {
+    return kaderKesehatan?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Remaja value)? remaja,
+    TResult Function(OrangTua value)? orangTua,
+    TResult Function(TenagaAhli value)? tenagaAhli,
+    TResult Function(KaderKesehatan value)? kaderKesehatan,
+    TResult Function(Guru value)? guru,
+    required TResult orElse(),
+  }) {
+    if (kaderKesehatan != null) {
+      return kaderKesehatan(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$KaderKesehatanImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class KaderKesehatan implements UserDetail {
+  factory KaderKesehatan(
+          {@JsonKey(name: 'id_kader') final int? idKader,
+          final String? nama,
+          @JsonKey(name: 'no_hp') final String? noHp,
+          final int? usia,
+          @JsonKey(name: 'wilayah_binaan') final String? wilayahBinaan,
+          @JsonKey(name: 'foto_profile') final String? fotoProfile,
+          @JsonKey(name: 'user_id') final int? userId,
+          @JsonKey(name: 'created_at') final DateTime? createdAt,
+          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
+      _$KaderKesehatanImpl;
+
+  factory KaderKesehatan.fromJson(Map<String, dynamic> json) =
+      _$KaderKesehatanImpl.fromJson;
+
+  @JsonKey(name: 'id_kader')
+  int? get idKader;
+  @override
+  String? get nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  String? get noHp;
+  int? get usia;
+  @JsonKey(name: 'wilayah_binaan')
+  String? get wilayahBinaan;
+  @override
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile;
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$KaderKesehatanImplCopyWith<_$KaderKesehatanImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$GuruImplCopyWith<$Res> implements $UserDetailCopyWith<$Res> {
+  factory _$$GuruImplCopyWith(
+          _$GuruImpl value, $Res Function(_$GuruImpl) then) =
+      __$$GuruImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_guru') int? idGuru,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'jenis_guru') String? jenisGuru,
+      String? sekolah,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt});
+}
+
+/// @nodoc
+class __$$GuruImplCopyWithImpl<$Res>
+    extends _$UserDetailCopyWithImpl<$Res, _$GuruImpl>
+    implements _$$GuruImplCopyWith<$Res> {
+  __$$GuruImplCopyWithImpl(_$GuruImpl _value, $Res Function(_$GuruImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idGuru = freezed,
+    Object? nama = freezed,
+    Object? noHp = freezed,
+    Object? jenisGuru = freezed,
+    Object? sekolah = freezed,
+    Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
+    Object? userId = freezed,
+    Object? createdAt = freezed,
+    Object? updatedAt = freezed,
+  }) {
+    return _then(_$GuruImpl(
+      idGuru: freezed == idGuru
+          ? _value.idGuru
+          : idGuru // ignore: cast_nullable_to_non_nullable
+              as int?,
+      nama: freezed == nama
+          ? _value.nama
+          : nama // ignore: cast_nullable_to_non_nullable
+              as String?,
+      noHp: freezed == noHp
+          ? _value.noHp
+          : noHp // ignore: cast_nullable_to_non_nullable
+              as String?,
+      jenisGuru: freezed == jenisGuru
+          ? _value.jenisGuru
+          : jenisGuru // ignore: cast_nullable_to_non_nullable
+              as String?,
+      sekolah: freezed == sekolah
+          ? _value.sekolah
+          : sekolah // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value._fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
+      userId: freezed == userId
+          ? _value.userId
+          : userId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      createdAt: freezed == createdAt
+          ? _value.createdAt
+          : createdAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      updatedAt: freezed == updatedAt
+          ? _value.updatedAt
+          : updatedAt // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$GuruImpl implements Guru {
+  _$GuruImpl(
+      {@JsonKey(name: 'id_guru') this.idGuru,
+      this.nama,
+      @JsonKey(name: 'no_hp') this.noHp,
+      @JsonKey(name: 'jenis_guru') this.jenisGuru,
+      this.sekolah,
+      @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') this.userId,
+      @JsonKey(name: 'created_at') this.createdAt,
+      @JsonKey(name: 'updated_at') this.updatedAt,
+      final String? $type})
+      : _fotoProfileData = fotoProfileData,
+        $type = $type ?? 'guru';
+
+  factory _$GuruImpl.fromJson(Map<String, dynamic> json) =>
+      _$$GuruImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_guru')
+  final int? idGuru;
+  @override
+  final String? nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  final String? noHp;
+  @override
+  @JsonKey(name: 'jenis_guru')
+  final String? jenisGuru;
+  @override
+  final String? sekolah;
+  @override
+  @JsonKey(name: 'foto_profile')
+  final String? fotoProfile;
+  final List<int>? _fotoProfileData;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData {
+    final value = _fotoProfileData;
+    if (value == null) return null;
+    if (_fotoProfileData is EqualUnmodifiableListView) return _fotoProfileData;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(value);
+  }
+
+  @override
+  @JsonKey(name: 'user_id')
+  final int? userId;
+  @override
+  @JsonKey(name: 'created_at')
+  final DateTime? createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  final DateTime? updatedAt;
+
+  @JsonKey(name: 'role')
+  final String $type;
+
+  @override
+  String toString() {
+    return 'UserDetail.guru(idGuru: $idGuru, nama: $nama, noHp: $noHp, jenisGuru: $jenisGuru, sekolah: $sekolah, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$GuruImpl &&
+            (identical(other.idGuru, idGuru) || other.idGuru == idGuru) &&
+            (identical(other.nama, nama) || other.nama == nama) &&
+            (identical(other.noHp, noHp) || other.noHp == noHp) &&
+            (identical(other.jenisGuru, jenisGuru) ||
+                other.jenisGuru == jenisGuru) &&
+            (identical(other.sekolah, sekolah) || other.sekolah == sekolah) &&
+            (identical(other.fotoProfile, fotoProfile) ||
+                other.fotoProfile == fotoProfile) &&
+            const DeepCollectionEquality()
+                .equals(other._fotoProfileData, _fotoProfileData) &&
+            (identical(other.userId, userId) || other.userId == userId) &&
+            (identical(other.createdAt, createdAt) ||
+                other.createdAt == createdAt) &&
+            (identical(other.updatedAt, updatedAt) ||
+                other.updatedAt == updatedAt));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      idGuru,
+      nama,
+      noHp,
+      jenisGuru,
+      sekolah,
+      fotoProfile,
+      const DeepCollectionEquality().hash(_fotoProfileData),
+      userId,
+      createdAt,
+      updatedAt);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GuruImplCopyWith<_$GuruImpl> get copyWith =>
+      __$$GuruImplCopyWithImpl<_$GuruImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        remaja,
+    required TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        orangTua,
+    required TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        tenagaAhli,
+    required TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        kaderKesehatan,
+    required TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)
+        guru,
+  }) {
+    return guru(idGuru, nama, noHp, jenisGuru, sekolah, fotoProfile,
+        fotoProfileData, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult? Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult? Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult? Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult? Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+  }) {
+    return guru?.call(idGuru, nama, noHp, jenisGuru, sekolah, fotoProfile,
+        fotoProfileData, userId, createdAt, updatedAt);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function(
+            @JsonKey(name: 'id_remaja') int? idRemaja,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        remaja,
+    TResult Function(
+            @JsonKey(name: 'id_orangtua') int? idOrangTua,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        orangTua,
+    TResult Function(
+            @JsonKey(name: 'id_ahli') int? idAhli,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        tenagaAhli,
+    TResult Function(
+            @JsonKey(name: 'id_kader') int? idKader,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            int? usia,
+            @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        kaderKesehatan,
+    TResult Function(
+            @JsonKey(name: 'id_guru') int? idGuru,
+            String? nama,
+            @JsonKey(name: 'no_hp') String? noHp,
+            @JsonKey(name: 'jenis_guru') String? jenisGuru,
+            String? sekolah,
+            @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
+            @JsonKey(name: 'user_id') int? userId,
+            @JsonKey(name: 'created_at') DateTime? createdAt,
+            @JsonKey(name: 'updated_at') DateTime? updatedAt)?
+        guru,
+    required TResult orElse(),
+  }) {
+    if (guru != null) {
+      return guru(idGuru, nama, noHp, jenisGuru, sekolah, fotoProfile,
+          fotoProfileData, userId, createdAt, updatedAt);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(Remaja value) remaja,
+    required TResult Function(OrangTua value) orangTua,
+    required TResult Function(TenagaAhli value) tenagaAhli,
+    required TResult Function(KaderKesehatan value) kaderKesehatan,
+    required TResult Function(Guru value) guru,
+  }) {
+    return guru(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(Remaja value)? remaja,
+    TResult? Function(OrangTua value)? orangTua,
+    TResult? Function(TenagaAhli value)? tenagaAhli,
+    TResult? Function(KaderKesehatan value)? kaderKesehatan,
+    TResult? Function(Guru value)? guru,
+  }) {
+    return guru?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(Remaja value)? remaja,
+    TResult Function(OrangTua value)? orangTua,
+    TResult Function(TenagaAhli value)? tenagaAhli,
+    TResult Function(KaderKesehatan value)? kaderKesehatan,
+    TResult Function(Guru value)? guru,
+    required TResult orElse(),
+  }) {
+    if (guru != null) {
+      return guru(this);
+    }
+    return orElse();
+  }
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$GuruImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class Guru implements UserDetail {
+  factory Guru(
+      {@JsonKey(name: 'id_guru') final int? idGuru,
+      final String? nama,
+      @JsonKey(name: 'no_hp') final String? noHp,
+      @JsonKey(name: 'jenis_guru') final String? jenisGuru,
+      final String? sekolah,
+      @JsonKey(name: 'foto_profile') final String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      final List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') final int? userId,
+      @JsonKey(name: 'created_at') final DateTime? createdAt,
+      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$GuruImpl;
+
+  factory Guru.fromJson(Map<String, dynamic> json) = _$GuruImpl.fromJson;
+
+  @JsonKey(name: 'id_guru')
+  int? get idGuru;
+  @override
+  String? get nama;
+  @override
+  @JsonKey(name: 'no_hp')
+  String? get noHp;
+  @JsonKey(name: 'jenis_guru')
+  String? get jenisGuru;
+  String? get sekolah;
+  @override
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData;
+  @override
+  @JsonKey(name: 'user_id')
+  int? get userId;
+  @override
+  @JsonKey(name: 'created_at')
+  DateTime? get createdAt;
+  @override
+  @JsonKey(name: 'updated_at')
+  DateTime? get updatedAt;
+  @override
+  @JsonKey(ignore: true)
+  _$$GuruImplCopyWith<_$GuruImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 

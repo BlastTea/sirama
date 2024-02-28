@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
@@ -57,8 +58,20 @@ class MyApp extends StatelessWidget {
           textScaler: TextScaler.noScaling,
         ),
         child: MWidgetTheme(
-          dialogTheme: const MWidgetDialogThemeData(
+          dialogTheme: MWidgetDialogThemeData(
             primaryFilledButton: true,
+            onRenderMessage: (context, message) {
+              if (message.contains('<!doctype html>') || message.contains('<!DOCTYPE html>')) {
+                return SizedBox.fromSize(
+                  size: Size.square(MediaQuery.sizeOf(context).width - 32.0),
+                  child: SingleChildScrollView(
+                    child: Html(data: message),
+                  ),
+                );
+              }
+
+              return SelectableText(message);
+            },
           ),
           child: MaterialApp(
             routes: {

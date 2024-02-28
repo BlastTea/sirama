@@ -102,6 +102,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         }).toList();
       } catch (e) {
         emit(ContentFavoriteError());
+        ApiHelper.handleError(e);
         return;
       }
 
@@ -121,6 +122,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           _currentFilm = await ApiHelper.post('/api/favfilm/${_currentFilm!.film!.idFilm}').then((value) => FavFilm.fromJson(value.data['data']).copyWith(film: _currentFilm!.film!.copyWith(isFavorited: true, totalLikes: _currentFilm!.film!.totalLikes! + 1)));
         }
       } catch (e) {
+        ApiHelper.handleError(e);
         return;
       }
 
@@ -142,6 +144,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           _currentPodcast = await ApiHelper.post('/api/favpodcast/${_currentPodcast!.podcast!.idPodcast}').then((value) => FavPodcast.fromJson(value.data['data']).copyWith(podcast: _currentPodcast!.podcast!.copyWith(isFavorited: true, totalLikes: _currentPodcast!.podcast!.totalLikes! + 1)));
         }
       } catch (e) {
+        ApiHelper.handleError(e);
         return;
       }
 
@@ -163,6 +166,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           _currentVideoEdukasi = await ApiHelper.post('/api/fav-video-edukasi/${_currentVideoEdukasi!.videoEdukasi!.idVideoEdukasi}').then((value) => FavVideoEdukasi.fromJson(value.data['data']).copyWith(videoEdukasi: _currentVideoEdukasi!.videoEdukasi!.copyWith(isFavorited: true, totalLikes: _currentVideoEdukasi!.videoEdukasi!.totalLikes! + 1)));
         }
       } catch (e) {
+        ApiHelper.handleError(e);
         return;
       }
 
@@ -184,6 +188,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           _currentInfografis = await ApiHelper.post('/api/favinfografis/${_currentInfografis!.infografis!.idInfografis}').then((value) => FavInfografis.fromJson(value.data['data']).copyWith(infografis: _currentInfografis!.infografis!.copyWith(isFavorited: true, totalLikes: _currentInfografis!.infografis!.totalLikes! + 1)));
         }
       } catch (e) {
+        ApiHelper.handleError(e);
         return;
       }
 
