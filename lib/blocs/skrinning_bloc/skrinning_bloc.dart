@@ -64,6 +64,25 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
         emit(SkrinningError());
       }
     });
+
+    on<SubmitJawabanSkrinning>((event, emit) async {
+      try {
+        int n = 0;
+        final idBagSkrinning = event.riwayatskrinning?.idBagSkrinUser;
+        final idSkrinUser = event.detailskrinning?.skrinUser!.idSkrinUser;
+        await ApiHelper.post(
+          '/api/submitskrinning',
+          body: {
+            'id_bagian_skrining' : idBagSkrinning,
+            'skrin_user' : idSkrinUser,
+            'id_jawaban_skrinning[$n]' : 1,
+          },
+        );
+      } catch (e) {
+        emit(SkrinningError());
+      }
+    });
+
   }
 
   List<Skrinning> skrinning = [];

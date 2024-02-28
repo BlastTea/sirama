@@ -1,9 +1,9 @@
 part of '../pages.dart';
 
 class DetailRiwayatSkrinningPage extends StatefulWidget {
-  const DetailRiwayatSkrinningPage({super.key, this.idBagSkrinUser});
+  const DetailRiwayatSkrinningPage({super.key, required this.idBagSkrinUser});
 
-  final int? idBagSkrinUser;
+  final int idBagSkrinUser;
 
   @override
   State<DetailRiwayatSkrinningPage> createState() =>
@@ -15,13 +15,13 @@ class _DetailRiwayatSkrinningPageState
   @override
   void initState() {
     super.initState();
-    if (MyApp.skrinningBloc.state is SkrinningInitial) {
-      MyApp.skrinningBloc.add(InitializeSkrinningData());
-    }
   }
 
   @override
   Widget build(BuildContext context) {
+    if (MyApp.skrinningBloc.state is SkrinningInitial) {
+      MyApp.skrinningBloc.add(InitializeSkrinningData());
+    }
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
@@ -99,8 +99,6 @@ class _DetailRiwayatSkrinningPageState
               ),
             ),
           );
-        } else if (stateSkrinning is SkrinningError) {
-          return _buildErrorUI();
         } else {
           return _buildLoadingUI();
         }
@@ -109,19 +107,18 @@ class _DetailRiwayatSkrinningPageState
   }
 
   Widget _buildLoadingUI() {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
-      ),
-    );
-  }
-
-  Widget _buildErrorUI() {
     return Scaffold(
-      body: ErrorOccuredButton(
-        onRetryPressed: () {
-          MyApp.skrinningBloc.add(InitializeSkrinningData());
-        },
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.black),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: const Text("Skrining"),
+        centerTitle: true,
+      ),
+      body: const Center(
+        child: CircularProgressIndicator(),
       ),
     );
   }
