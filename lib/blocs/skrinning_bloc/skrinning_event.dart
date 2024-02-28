@@ -19,6 +19,12 @@ class InitializeRiwayatSkrinningData extends SkrinningEvent {
   final RiwayatSkrinning riwayatskrinning;
 }
 
+class InitializeDetailRiwayatSkrinningData extends SkrinningEvent {
+  InitializeDetailRiwayatSkrinningData({required this.detailriwayatskrinning});
+
+  final DetailRiwayatSkrinning detailriwayatskrinning;
+}
+
 class InitializePilihSkrinningData extends SkrinningEvent {
   InitializePilihSkrinningData({required this.skrinning});
 
@@ -54,4 +60,14 @@ class GetDetailRiwayatSkrinning extends SkrinningEvent {
   GetDetailRiwayatSkrinning({required this.riwayatskrinning});
 
   final RiwayatSkrinning riwayatskrinning;
+}
+
+class SubmitJawabanSkrinning extends SkrinningEvent {
+  final DetailSkrinning? detailskrinning;
+  final List<int> selectedAnswers;
+
+  SubmitJawabanSkrinning({
+    this.detailskrinning,
+    required this.selectedAnswers,
+  });
 }

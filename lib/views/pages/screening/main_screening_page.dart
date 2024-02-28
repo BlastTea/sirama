@@ -11,6 +11,7 @@ class MainScreeningPage extends StatefulWidget {
 
 class _MainScreeningPageState extends State<MainScreeningPage> {
   Map<int, int> selectedAnswers = {};
+  int currentPartIndex = 0;
 
   @override
   void initState() {
@@ -25,6 +26,9 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
+          if (kDebugMode) {
+            print(selectedAnswers);
+          }
           return Scaffold(
             appBar: AppBar(
               backgroundColor: Colors.white,
@@ -73,12 +77,11 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                       ListView.builder(
                         shrinkWrap: true,
                         primary: false,
-                        itemCount: stateSkrinning.detailskrinning.length,
+                        itemCount: 1,
                         itemBuilder: (context, index) {
                           final detailSkrinning =
-                              stateSkrinning.detailskrinning[index];
+                              stateSkrinning.detailskrinning[currentPartIndex];
                           final soalList = detailSkrinning.soalJawab ?? [];
-
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -120,8 +123,7 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                             onChanged: (value) {
                                               setState(() {
                                                 selectedAnswers[
-                                                        questionNumber] =
-                                                    value!;
+                                                    questionNumber] = value!;
                                               });
                                             },
                                           );
@@ -135,7 +137,46 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                           );
                         },
                       ),
-                      MyFilledButton(onPressed: () {}, labelText: 'Submit')
+                      MyFilledButton(
+                        onPressed: () {
+                          // ignore: unnecessary_type_check
+                          if (stateSkrinning is SkrinningDataLoaded) {
+                            setState(() {
+                              if (currentPartIndex <
+                                  stateSkrinning.detailskrinning.length - 1) {
+                                currentPartIndex++;
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    title: const Text('Skrinning Selesai'),
+                                    content: const Text(
+                                        'Anda telah menyelesaikan proses skrinning.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Oke'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                              MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
+                                detailskrinning: stateSkrinning
+                                    .detailskrinning[currentPartIndex],
+                                selectedAnswers:
+                                    selectedAnswers.values.toList(),
+                              ));
+                            });
+                          }
+                        },
+                        labelText: currentPartIndex <
+                                stateSkrinning.detailskrinning.length - 1
+                            ? 'Lanjutkan'
+                            : 'Selesai',
+                      ),
                     ],
                   ),
                 ),

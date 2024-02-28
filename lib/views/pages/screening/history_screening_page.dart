@@ -36,7 +36,7 @@ class HistoryScreeningPage extends StatelessWidget {
                       GetDetailRiwayatSkrinning(riwayatskrinning: riwayat));
                   NavigationHelper.to(MaterialPageRoute(
                     builder: (context) => DetailRiwayatSkrinningPage(
-                        idBagSkrinUser: idBagSkrinUser),
+                        idBagSkrinUser: idBagSkrinUser!),
                   ));
                 },
                 title: Row(
