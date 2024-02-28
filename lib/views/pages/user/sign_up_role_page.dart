@@ -21,7 +21,13 @@ class SignUpRolePage extends StatelessWidget {
                       style: Config.textStyleHeadlineMedium,
                     ),
                     const SizedBox(height: 20.0),
-                    ...UserRole.values.map(
+                    ...[
+                      UserRole.remaja,
+                      UserRole.orangTua,
+                      UserRole.tenagaAhli,
+                      UserRole.kaderKesehatan,
+                      UserRole.guru,
+                    ].map(
                       (e) => RadioListTile(
                         value: e,
                         groupValue: stateAuthentication.role,
