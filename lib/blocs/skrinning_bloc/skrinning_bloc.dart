@@ -27,10 +27,12 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
     on<GetDetailSkrinning>((event, emit) async {
       try {
         final idSkrinning = event.skrinning.idSkrinning;
-        detailskrinning = await ApiHelper.get('/api/detailskrinning/$idSkrinning').then((value) =>
-            (value.data['data'] as List)
-                .map((e) => DetailSkrinning.fromJson(e))
-                .toList());
+        detailskrinning =
+            await ApiHelper.get('/api/detailskrinning/$idSkrinning').then(
+                (value) => (value.data['data'] as List)
+                    .map((e) => DetailSkrinning.fromJson(e))
+                    .toList());
+
         emit(_skrinningDataLoaded);
       } catch (e) {
         emit(SkrinningError());
@@ -38,11 +40,37 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
       }
     });
 
+    on<GetDetailRiwayatSkrinning>((event, emit) async {
+      try {
+        final idBagSkrinUser = event.riwayatskrinning.idBagSkrinUser;
+        detailriwayatskrinning =
+            await ApiHelper.get('/api/detailriwayatskrinning/$idBagSkrinUser').then(
+                (value) => (value.data['data'] as List)
+                    .map((e) => DetailRiwayatSkrinning.fromJson(e))
+                    .toList());
+
+        emit(_skrinningDataLoaded);
+      } catch (e) {
+        emit(SkrinningError());
+        return;
+      }
+    });
+
+    on<GetSoalJawabItem>((event, emit) {
+      try {
+        final soalJawaban = event.detailSkrinning.soalJawab ?? [];
+        emit(SoalJawabItemCountLoaded(soalJawaban.length));
+      } catch (e) {
+        emit(SkrinningError());
+      }
+    });
   }
 
   List<Skrinning> skrinning = [];
 
   List<RiwayatSkrinning> riwayatskrinning = [];
+
+  List<DetailRiwayatSkrinning> detailriwayatskrinning = [];
 
   List<DetailSkrinning> detailskrinning = [];
 
@@ -50,5 +78,7 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
         skrinnings: skrinning,
         riwayatskrinning: riwayatskrinning,
         detailskrinning: detailskrinning,
+        detailriwayatskrinning: detailriwayatskrinning,
+        soalJawaban: const [],
       );
 }

@@ -290,20 +290,48 @@ class Jawaban with _$Jawaban {
 class RiwayatSkrinning with _$RiwayatSkrinning {
   factory RiwayatSkrinning({
     @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-    @JsonKey(name: 'skrinning_id') int? skrinningId,
-    @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'id_user') int? idUser,
-    @JsonKey(name: 'username') String? username,
-    @JsonKey(name: 'email') String? email,
-    @JsonKey(name: 'password') String? password,
-    @JsonKey(name: 'role') String? role,
     @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
     @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
     @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'hasil') String? hasil,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
   }) = _RiwayatSkrinning;
 
   factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class DetailRiwayatSkrinning with _$DetailRiwayatSkrinning {
+  factory DetailRiwayatSkrinning({
+    @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+    @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'hasil') String? hasil,
+    @JsonKey(name: 'poin_total') String? pointotal,
+    List<SoalJawabRiwayat>? soalJawab,
+  }) = _DetailRiwayatSkrinning;
+
+  factory DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$DetailRiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class SoalJawabRiwayat with _$SoalJawabRiwayat {
+  factory SoalJawabRiwayat({
+    @JsonKey(name: 'no_soal') int? noSoal,
+    @JsonKey(name: 'soal') String? soal,
+    @JsonKey(name: 'jawaban') String? jawaban,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
+  }) = _SoalJawabRiwayat;
+
+  factory SoalJawabRiwayat.fromJson(Map<String, dynamic> json) => _$SoalJawabRiwayatFromJson(json);
 }
 
 @unfreezed

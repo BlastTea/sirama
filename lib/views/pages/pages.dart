@@ -30,6 +30,7 @@ part 'screening/screening_page.dart';
 part 'screening/choose_screening_page.dart';
 part 'screening/screening_choose_list_item.dart';
 part 'screening/main_screening_page.dart';
+part 'screening/detail_riwayat_screening_page.dart';
 part 'screening/history_screening_page.dart';
 
 part 'ask_the_expert/category_sesions_page.dart';
