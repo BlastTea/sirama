@@ -82,8 +82,6 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                           final detailSkrinning =
                               stateSkrinning.detailskrinning[currentPartIndex];
                           final soalList = detailSkrinning.soalJawab ?? [];
-                          // selectedAnswers = List.filled(
-                          //     stateSkrinning.detailskrinning.length, null);
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -104,8 +102,6 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                   final jawabanList =
                                       soalList[index].jawaban ?? [];
                                   final questionNumber = index + 1;
-                                  // selectedAnswers =
-                                  //     List.filled(soalList.length, null);
                                   return Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -143,30 +139,38 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                       ),
                       MyFilledButton(
                         onPressed: () {
-                          setState(() {
-                            if (currentPartIndex <
-                                stateSkrinning.detailskrinning.length - 1) {
-                              currentPartIndex++; // Pindah ke bagian skrinning berikutnya
-                            } else {
-                              // Bagian terakhir selesai, tampilkan pesan selesai
-                              showDialog(
-                                context: context,
-                                builder: (_) => AlertDialog(
-                                  title: const Text('Skrinning Selesai'),
-                                  content: const Text(
-                                      'Anda telah menyelesaikan proses skrinning.'),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        Navigator.of(context).pop();
-                                      },
-                                      child: Text('OK'),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                          });
+                          // ignore: unnecessary_type_check
+                          if (stateSkrinning is SkrinningDataLoaded) {
+                            setState(() {
+                              if (currentPartIndex <
+                                  stateSkrinning.detailskrinning.length - 1) {
+                                currentPartIndex++;
+                              } else {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) => AlertDialog(
+                                    title: const Text('Skrinning Selesai'),
+                                    content: const Text(
+                                        'Anda telah menyelesaikan proses skrinning.'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () {
+                                          Navigator.of(context).pop();
+                                        },
+                                        child: const Text('Oke'),
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              }
+                              MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
+                                detailskrinning: stateSkrinning
+                                    .detailskrinning[currentPartIndex],
+                                selectedAnswers:
+                                    selectedAnswers.values.toList(),
+                              ));
+                            });
+                          }
                         },
                         labelText: currentPartIndex <
                                 stateSkrinning.detailskrinning.length - 1

@@ -44,8 +44,8 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
       try {
         final idBagSkrinUser = event.riwayatskrinning.idBagSkrinUser;
         detailriwayatskrinning =
-            await ApiHelper.get('/api/detailriwayatskrinning/$idBagSkrinUser').then(
-                (value) => (value.data['data'] as List)
+            await ApiHelper.get('/api/detailriwayatskrinning/$idBagSkrinUser')
+                .then((value) => (value.data['data'] as List)
                     .map((e) => DetailRiwayatSkrinning.fromJson(e))
                     .toList());
 
@@ -67,22 +67,25 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
 
     on<SubmitJawabanSkrinning>((event, emit) async {
       try {
-        int n = 0;
-        final idBagSkrinning = event.riwayatskrinning?.idBagSkrinUser;
+        final idBagSkrinning = event.detailskrinning?.idBagianSkrinning;
         final idSkrinUser = event.detailskrinning?.skrinUser!.idSkrinUser;
-        await ApiHelper.post(
-          '/api/submitskrinning',
-          body: {
-            'id_bagian_skrining' : idBagSkrinning,
-            'skrin_user' : idSkrinUser,
-            'id_jawaban_skrinning[$n]' : 1,
-          },
-        );
+        final selectedAnswers = event.selectedAnswers;
+        final jawabanCount = selectedAnswers.length;
+
+        Map<String, dynamic> requestBody = {
+          'id_bagian_skrining': idBagSkrinning,
+          'skrin_user': idSkrinUser,
+        };
+
+        for (int i = 0; i < jawabanCount; i++) {
+          requestBody['id_jawaban_skrinning[$i]'] = selectedAnswers[i];
+        }
+
+        await ApiHelper.post('/api/submitskrinning', body: requestBody);
       } catch (e) {
         emit(SkrinningError());
       }
     });
-
   }
 
   List<Skrinning> skrinning = [];
