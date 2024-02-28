@@ -30,9 +30,19 @@ class HistoryScreeningPage extends StatelessWidget {
           Column(
             children: stateHistory.riwayatskrinning.map((riwayat) {
               return ListTile(
+                onTap: () {
+                  final idBagSkrinUser = riwayat.idBagSkrinUser;
+                  MyApp.skrinningBloc.add(
+                      GetDetailRiwayatSkrinning(riwayatskrinning: riwayat));
+                  NavigationHelper.to(MaterialPageRoute(
+                    builder: (context) => DetailRiwayatSkrinningPage(
+                        idBagSkrinUser: idBagSkrinUser!),
+                  ));
+                },
                 title: Row(
                   children: [
-                    const Text('🤔', style: TextStyle(fontSize: 30)),
+                    Text(riwayat.jenisHasil == 'positif' ? '😁' : '😔',
+                        style: const TextStyle(fontSize: 30)),
                     const SizedBox(width: 10),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -41,14 +51,20 @@ class HistoryScreeningPage extends StatelessWidget {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(riwayat.jenisSkrinning!, style: Config.textStyleHeadlineSmall),
+                            Text(riwayat.jenisSkrinning!,
+                                style: Config.textStyleHeadlineSmall),
                           ],
                         ),
                         Text(
-                          riwayat.tglPengisian!.toFormattedDate(withWeekday: true, withMonthName: true),
+                          riwayat.tglPengisian!.toFormattedDate(
+                              withWeekday: true, withMonthName: true),
                           style: Config.textStyleBodyMedium,
                         ),
-                        Text('tes', style: Config.textStyleBodyMedium),
+                        Text(
+                            riwayat.idSkrinning == 1 && riwayat.idSkrinning == 2
+                                ? 'Skor anda dirahasiakan'
+                                : 'Skor anda adalah ${riwayat.poinJawaban.toString()}',
+                            style: Config.textStyleBodyMedium),
                       ],
                     ),
                   ],
@@ -59,7 +75,7 @@ class HistoryScreeningPage extends StatelessWidget {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(49, 5, 0, 0),
                       child: Text(
-                        'tes',
+                        riwayat.hasil ?? 'Tidak ada keterangan',
                         style: Config.textStyleBodyMedium,
                       ),
                     ),

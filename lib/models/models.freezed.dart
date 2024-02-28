@@ -24,7 +24,7 @@ mixin _$User {
   int? get idUser => throw _privateConstructorUsedError;
   String? get username => throw _privateConstructorUsedError;
   String? get email => throw _privateConstructorUsedError;
-  String? get role => throw _privateConstructorUsedError;
+  UserRole? get role => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
@@ -44,7 +44,7 @@ abstract class $UserCopyWith<$Res> {
       {@JsonKey(name: 'id_user') int? idUser,
       String? username,
       String? email,
-      String? role,
+      UserRole? role,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -85,7 +85,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UserRole?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -109,7 +109,7 @@ abstract class _$$UserImplCopyWith<$Res> implements $UserCopyWith<$Res> {
       {@JsonKey(name: 'id_user') int? idUser,
       String? username,
       String? email,
-      String? role,
+      UserRole? role,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
 }
@@ -147,7 +147,7 @@ class __$$UserImplCopyWithImpl<$Res>
       role: freezed == role
           ? _value.role
           : role // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as UserRole?,
       createdAt: freezed == createdAt
           ? _value.createdAt
           : createdAt // ignore: cast_nullable_to_non_nullable
@@ -182,7 +182,7 @@ class _$UserImpl implements _User {
   @override
   final String? email;
   @override
-  final String? role;
+  final UserRole? role;
   @override
   @JsonKey(name: 'created_at')
   final DateTime? createdAt;
@@ -235,7 +235,7 @@ abstract class _User implements User {
       {@JsonKey(name: 'id_user') final int? idUser,
       final String? username,
       final String? email,
-      final String? role,
+      final UserRole? role,
       @JsonKey(name: 'created_at') final DateTime? createdAt,
       @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$UserImpl;
 
@@ -249,7 +249,7 @@ abstract class _User implements User {
   @override
   String? get email;
   @override
-  String? get role;
+  UserRole? get role;
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
@@ -5369,50 +5369,46 @@ mixin _$RiwayatSkrinning {
   int? get idSkrinUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_skrin_user')
   set idSkrinUser(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tgl_pengisian')
-  DateTime? get tglPengisian => throw _privateConstructorUsedError;
-  @JsonKey(name: 'tgl_pengisian')
-  set tglPengisian(DateTime? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'skrinning_id')
-  int? get skrinningId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'skrinning_id')
-  set skrinningId(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user_id')
-  int? get userId => throw _privateConstructorUsedError;
-  @JsonKey(name: 'user_id')
-  set userId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_user')
   int? get idUser => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_user')
   set idUser(int? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'username')
-  String? get username => throw _privateConstructorUsedError;
-  @JsonKey(name: 'username')
-  set username(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'email')
-  String? get email => throw _privateConstructorUsedError;
-  @JsonKey(name: 'email')
-  set email(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'password')
-  String? get password => throw _privateConstructorUsedError;
-  @JsonKey(name: 'password')
-  set password(String? value) => throw _privateConstructorUsedError;
-  @JsonKey(name: 'role')
-  String? get role => throw _privateConstructorUsedError;
-  @JsonKey(name: 'role')
-  set role(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_skrinning')
   int? get idSkrinning => throw _privateConstructorUsedError;
   @JsonKey(name: 'id_skrinning')
   set idSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_bag_skrin_user')
+  int? get idBagSkrinUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_bag_skrin_user')
+  set idBagSkrinUser(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? get tglPengisian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_pengisian')
+  set tglPengisian(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'jenis_skrinning')
   String? get jenisSkrinning => throw _privateConstructorUsedError;
   @JsonKey(name: 'jenis_skrinning')
   set jenisSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'deskripsi_skrinning')
   String? get deskripsiSkrinning => throw _privateConstructorUsedError;
   @JsonKey(name: 'deskripsi_skrinning')
   set deskripsiSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_hasil')
+  String? get jenisHasil => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_hasil')
+  set jenisHasil(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasil')
+  String? get hasil => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasil')
+  set hasil(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value) => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -5428,17 +5424,16 @@ abstract class $RiwayatSkrinningCopyWith<$Res> {
   @useResult
   $Res call(
       {@JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-      @JsonKey(name: 'skrinning_id') int? skrinningId,
-      @JsonKey(name: 'user_id') int? userId,
       @JsonKey(name: 'id_user') int? idUser,
-      @JsonKey(name: 'username') String? username,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'password') String? password,
-      @JsonKey(name: 'role') String? role,
       @JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
       @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
-      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning});
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+      @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+      @JsonKey(name: 'hasil') String? hasil,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
 }
 
 /// @nodoc
@@ -5455,67 +5450,62 @@ class _$RiwayatSkrinningCopyWithImpl<$Res, $Val extends RiwayatSkrinning>
   @override
   $Res call({
     Object? idSkrinUser = freezed,
-    Object? tglPengisian = freezed,
-    Object? skrinningId = freezed,
-    Object? userId = freezed,
     Object? idUser = freezed,
-    Object? username = freezed,
-    Object? email = freezed,
-    Object? password = freezed,
-    Object? role = freezed,
     Object? idSkrinning = freezed,
+    Object? idBagSkrinUser = freezed,
+    Object? tglPengisian = freezed,
     Object? jenisSkrinning = freezed,
+    Object? namaBagian = freezed,
     Object? deskripsiSkrinning = freezed,
+    Object? jenisHasil = freezed,
+    Object? hasil = freezed,
+    Object? poinJawaban = freezed,
   }) {
     return _then(_value.copyWith(
       idSkrinUser: freezed == idSkrinUser
           ? _value.idSkrinUser
           : idSkrinUser // ignore: cast_nullable_to_non_nullable
               as int?,
-      tglPengisian: freezed == tglPengisian
-          ? _value.tglPengisian
-          : tglPengisian // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      skrinningId: freezed == skrinningId
-          ? _value.skrinningId
-          : skrinningId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
       idUser: freezed == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as int?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      role: freezed == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String?,
       idSkrinning: freezed == idSkrinning
           ? _value.idSkrinning
           : idSkrinning // ignore: cast_nullable_to_non_nullable
               as int?,
+      idBagSkrinUser: freezed == idBagSkrinUser
+          ? _value.idBagSkrinUser
+          : idBagSkrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tglPengisian: freezed == tglPengisian
+          ? _value.tglPengisian
+          : tglPengisian // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       jenisSkrinning: freezed == jenisSkrinning
           ? _value.jenisSkrinning
           : jenisSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
               as String?,
       deskripsiSkrinning: freezed == deskripsiSkrinning
           ? _value.deskripsiSkrinning
           : deskripsiSkrinning // ignore: cast_nullable_to_non_nullable
               as String?,
+      jenisHasil: freezed == jenisHasil
+          ? _value.jenisHasil
+          : jenisHasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasil: freezed == hasil
+          ? _value.hasil
+          : hasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -5530,17 +5520,16 @@ abstract class _$$RiwayatSkrinningImplCopyWith<$Res>
   @useResult
   $Res call(
       {@JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-      @JsonKey(name: 'skrinning_id') int? skrinningId,
-      @JsonKey(name: 'user_id') int? userId,
       @JsonKey(name: 'id_user') int? idUser,
-      @JsonKey(name: 'username') String? username,
-      @JsonKey(name: 'email') String? email,
-      @JsonKey(name: 'password') String? password,
-      @JsonKey(name: 'role') String? role,
       @JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
       @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
-      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning});
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+      @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+      @JsonKey(name: 'hasil') String? hasil,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
 }
 
 /// @nodoc
@@ -5555,67 +5544,62 @@ class __$$RiwayatSkrinningImplCopyWithImpl<$Res>
   @override
   $Res call({
     Object? idSkrinUser = freezed,
-    Object? tglPengisian = freezed,
-    Object? skrinningId = freezed,
-    Object? userId = freezed,
     Object? idUser = freezed,
-    Object? username = freezed,
-    Object? email = freezed,
-    Object? password = freezed,
-    Object? role = freezed,
     Object? idSkrinning = freezed,
+    Object? idBagSkrinUser = freezed,
+    Object? tglPengisian = freezed,
     Object? jenisSkrinning = freezed,
+    Object? namaBagian = freezed,
     Object? deskripsiSkrinning = freezed,
+    Object? jenisHasil = freezed,
+    Object? hasil = freezed,
+    Object? poinJawaban = freezed,
   }) {
     return _then(_$RiwayatSkrinningImpl(
       idSkrinUser: freezed == idSkrinUser
           ? _value.idSkrinUser
           : idSkrinUser // ignore: cast_nullable_to_non_nullable
               as int?,
-      tglPengisian: freezed == tglPengisian
-          ? _value.tglPengisian
-          : tglPengisian // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
-      skrinningId: freezed == skrinningId
-          ? _value.skrinningId
-          : skrinningId // ignore: cast_nullable_to_non_nullable
-              as int?,
-      userId: freezed == userId
-          ? _value.userId
-          : userId // ignore: cast_nullable_to_non_nullable
-              as int?,
       idUser: freezed == idUser
           ? _value.idUser
           : idUser // ignore: cast_nullable_to_non_nullable
               as int?,
-      username: freezed == username
-          ? _value.username
-          : username // ignore: cast_nullable_to_non_nullable
-              as String?,
-      email: freezed == email
-          ? _value.email
-          : email // ignore: cast_nullable_to_non_nullable
-              as String?,
-      password: freezed == password
-          ? _value.password
-          : password // ignore: cast_nullable_to_non_nullable
-              as String?,
-      role: freezed == role
-          ? _value.role
-          : role // ignore: cast_nullable_to_non_nullable
-              as String?,
       idSkrinning: freezed == idSkrinning
           ? _value.idSkrinning
           : idSkrinning // ignore: cast_nullable_to_non_nullable
               as int?,
+      idBagSkrinUser: freezed == idBagSkrinUser
+          ? _value.idBagSkrinUser
+          : idBagSkrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      tglPengisian: freezed == tglPengisian
+          ? _value.tglPengisian
+          : tglPengisian // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
       jenisSkrinning: freezed == jenisSkrinning
           ? _value.jenisSkrinning
           : jenisSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
               as String?,
       deskripsiSkrinning: freezed == deskripsiSkrinning
           ? _value.deskripsiSkrinning
           : deskripsiSkrinning // ignore: cast_nullable_to_non_nullable
               as String?,
+      jenisHasil: freezed == jenisHasil
+          ? _value.jenisHasil
+          : jenisHasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasil: freezed == hasil
+          ? _value.hasil
+          : hasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -5625,17 +5609,16 @@ class __$$RiwayatSkrinningImplCopyWithImpl<$Res>
 class _$RiwayatSkrinningImpl implements _RiwayatSkrinning {
   _$RiwayatSkrinningImpl(
       {@JsonKey(name: 'id_skrin_user') this.idSkrinUser,
-      @JsonKey(name: 'tgl_pengisian') this.tglPengisian,
-      @JsonKey(name: 'skrinning_id') this.skrinningId,
-      @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'id_user') this.idUser,
-      @JsonKey(name: 'username') this.username,
-      @JsonKey(name: 'email') this.email,
-      @JsonKey(name: 'password') this.password,
-      @JsonKey(name: 'role') this.role,
       @JsonKey(name: 'id_skrinning') this.idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') this.idBagSkrinUser,
+      @JsonKey(name: 'tgl_pengisian') this.tglPengisian,
       @JsonKey(name: 'jenis_skrinning') this.jenisSkrinning,
-      @JsonKey(name: 'deskripsi_skrinning') this.deskripsiSkrinning});
+      @JsonKey(name: 'nama_bagian') this.namaBagian,
+      @JsonKey(name: 'deskripsi_skrinning') this.deskripsiSkrinning,
+      @JsonKey(name: 'jenis_hasil') this.jenisHasil,
+      @JsonKey(name: 'hasil') this.hasil,
+      @JsonKey(name: 'poin_jawaban') this.poinJawaban});
 
   factory _$RiwayatSkrinningImpl.fromJson(Map<String, dynamic> json) =>
       _$$RiwayatSkrinningImplFromJson(json);
@@ -5644,42 +5627,39 @@ class _$RiwayatSkrinningImpl implements _RiwayatSkrinning {
   @JsonKey(name: 'id_skrin_user')
   int? idSkrinUser;
   @override
-  @JsonKey(name: 'tgl_pengisian')
-  DateTime? tglPengisian;
-  @override
-  @JsonKey(name: 'skrinning_id')
-  int? skrinningId;
-  @override
-  @JsonKey(name: 'user_id')
-  int? userId;
-  @override
   @JsonKey(name: 'id_user')
   int? idUser;
-  @override
-  @JsonKey(name: 'username')
-  String? username;
-  @override
-  @JsonKey(name: 'email')
-  String? email;
-  @override
-  @JsonKey(name: 'password')
-  String? password;
-  @override
-  @JsonKey(name: 'role')
-  String? role;
   @override
   @JsonKey(name: 'id_skrinning')
   int? idSkrinning;
   @override
+  @JsonKey(name: 'id_bag_skrin_user')
+  int? idBagSkrinUser;
+  @override
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? tglPengisian;
+  @override
   @JsonKey(name: 'jenis_skrinning')
   String? jenisSkrinning;
   @override
+  @JsonKey(name: 'nama_bagian')
+  String? namaBagian;
+  @override
   @JsonKey(name: 'deskripsi_skrinning')
   String? deskripsiSkrinning;
+  @override
+  @JsonKey(name: 'jenis_hasil')
+  String? jenisHasil;
+  @override
+  @JsonKey(name: 'hasil')
+  String? hasil;
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? poinJawaban;
 
   @override
   String toString() {
-    return 'RiwayatSkrinning(idSkrinUser: $idSkrinUser, tglPengisian: $tglPengisian, skrinningId: $skrinningId, userId: $userId, idUser: $idUser, username: $username, email: $email, password: $password, role: $role, idSkrinning: $idSkrinning, jenisSkrinning: $jenisSkrinning, deskripsiSkrinning: $deskripsiSkrinning)';
+    return 'RiwayatSkrinning(idSkrinUser: $idSkrinUser, idUser: $idUser, idSkrinning: $idSkrinning, idBagSkrinUser: $idBagSkrinUser, tglPengisian: $tglPengisian, jenisSkrinning: $jenisSkrinning, namaBagian: $namaBagian, deskripsiSkrinning: $deskripsiSkrinning, jenisHasil: $jenisHasil, hasil: $hasil, poinJawaban: $poinJawaban)';
   }
 
   @JsonKey(ignore: true)
@@ -5700,17 +5680,16 @@ class _$RiwayatSkrinningImpl implements _RiwayatSkrinning {
 abstract class _RiwayatSkrinning implements RiwayatSkrinning {
   factory _RiwayatSkrinning(
           {@JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-          @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-          @JsonKey(name: 'skrinning_id') int? skrinningId,
-          @JsonKey(name: 'user_id') int? userId,
           @JsonKey(name: 'id_user') int? idUser,
-          @JsonKey(name: 'username') String? username,
-          @JsonKey(name: 'email') String? email,
-          @JsonKey(name: 'password') String? password,
-          @JsonKey(name: 'role') String? role,
           @JsonKey(name: 'id_skrinning') int? idSkrinning,
+          @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+          @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
           @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
-          @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning}) =
+          @JsonKey(name: 'nama_bagian') String? namaBagian,
+          @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+          @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+          @JsonKey(name: 'hasil') String? hasil,
+          @JsonKey(name: 'poin_jawaban') int? poinJawaban}) =
       _$RiwayatSkrinningImpl;
 
   factory _RiwayatSkrinning.fromJson(Map<String, dynamic> json) =
@@ -5722,63 +5701,618 @@ abstract class _RiwayatSkrinning implements RiwayatSkrinning {
   @JsonKey(name: 'id_skrin_user')
   set idSkrinUser(int? value);
   @override
-  @JsonKey(name: 'tgl_pengisian')
-  DateTime? get tglPengisian;
-  @JsonKey(name: 'tgl_pengisian')
-  set tglPengisian(DateTime? value);
-  @override
-  @JsonKey(name: 'skrinning_id')
-  int? get skrinningId;
-  @JsonKey(name: 'skrinning_id')
-  set skrinningId(int? value);
-  @override
-  @JsonKey(name: 'user_id')
-  int? get userId;
-  @JsonKey(name: 'user_id')
-  set userId(int? value);
-  @override
   @JsonKey(name: 'id_user')
   int? get idUser;
   @JsonKey(name: 'id_user')
   set idUser(int? value);
-  @override
-  @JsonKey(name: 'username')
-  String? get username;
-  @JsonKey(name: 'username')
-  set username(String? value);
-  @override
-  @JsonKey(name: 'email')
-  String? get email;
-  @JsonKey(name: 'email')
-  set email(String? value);
-  @override
-  @JsonKey(name: 'password')
-  String? get password;
-  @JsonKey(name: 'password')
-  set password(String? value);
-  @override
-  @JsonKey(name: 'role')
-  String? get role;
-  @JsonKey(name: 'role')
-  set role(String? value);
   @override
   @JsonKey(name: 'id_skrinning')
   int? get idSkrinning;
   @JsonKey(name: 'id_skrinning')
   set idSkrinning(int? value);
   @override
+  @JsonKey(name: 'id_bag_skrin_user')
+  int? get idBagSkrinUser;
+  @JsonKey(name: 'id_bag_skrin_user')
+  set idBagSkrinUser(int? value);
+  @override
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? get tglPengisian;
+  @JsonKey(name: 'tgl_pengisian')
+  set tglPengisian(DateTime? value);
+  @override
   @JsonKey(name: 'jenis_skrinning')
   String? get jenisSkrinning;
   @JsonKey(name: 'jenis_skrinning')
   set jenisSkrinning(String? value);
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value);
   @override
   @JsonKey(name: 'deskripsi_skrinning')
   String? get deskripsiSkrinning;
   @JsonKey(name: 'deskripsi_skrinning')
   set deskripsiSkrinning(String? value);
   @override
+  @JsonKey(name: 'jenis_hasil')
+  String? get jenisHasil;
+  @JsonKey(name: 'jenis_hasil')
+  set jenisHasil(String? value);
+  @override
+  @JsonKey(name: 'hasil')
+  String? get hasil;
+  @JsonKey(name: 'hasil')
+  set hasil(String? value);
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value);
+  @override
   @JsonKey(ignore: true)
   _$$RiwayatSkrinningImplCopyWith<_$RiwayatSkrinningImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+DetailRiwayatSkrinning _$DetailRiwayatSkrinningFromJson(
+    Map<String, dynamic> json) {
+  return _DetailRiwayatSkrinning.fromJson(json);
+}
+
+/// @nodoc
+mixin _$DetailRiwayatSkrinning {
+  @JsonKey(name: 'id_skrinning')
+  int? get idSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_skrinning')
+  set idSkrinning(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_bag_skrin_user')
+  int? get idBagSkrinUser => throw _privateConstructorUsedError;
+  @JsonKey(name: 'id_bag_skrin_user')
+  set idBagSkrinUser(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_skrinning')
+  String? get jenisSkrinning => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_skrinning')
+  set jenisSkrinning(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? get tglPengisian => throw _privateConstructorUsedError;
+  @JsonKey(name: 'tgl_pengisian')
+  set tglPengisian(DateTime? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_hasil')
+  String? get jenisHasil => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jenis_hasil')
+  set jenisHasil(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasil')
+  String? get hasil => throw _privateConstructorUsedError;
+  @JsonKey(name: 'hasil')
+  set hasil(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_total')
+  String? get pointotal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_total')
+  set pointotal(String? value) => throw _privateConstructorUsedError;
+  List<SoalJawabRiwayat>? get soalJawab => throw _privateConstructorUsedError;
+  set soalJawab(List<SoalJawabRiwayat>? value) =>
+      throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $DetailRiwayatSkrinningCopyWith<DetailRiwayatSkrinning> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $DetailRiwayatSkrinningCopyWith<$Res> {
+  factory $DetailRiwayatSkrinningCopyWith(DetailRiwayatSkrinning value,
+          $Res Function(DetailRiwayatSkrinning) then) =
+      _$DetailRiwayatSkrinningCopyWithImpl<$Res, DetailRiwayatSkrinning>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+      @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+      @JsonKey(name: 'hasil') String? hasil,
+      @JsonKey(name: 'poin_total') String? pointotal,
+      List<SoalJawabRiwayat>? soalJawab});
+}
+
+/// @nodoc
+class _$DetailRiwayatSkrinningCopyWithImpl<$Res,
+        $Val extends DetailRiwayatSkrinning>
+    implements $DetailRiwayatSkrinningCopyWith<$Res> {
+  _$DetailRiwayatSkrinningCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSkrinning = freezed,
+    Object? idBagSkrinUser = freezed,
+    Object? jenisSkrinning = freezed,
+    Object? namaBagian = freezed,
+    Object? tglPengisian = freezed,
+    Object? jenisHasil = freezed,
+    Object? hasil = freezed,
+    Object? pointotal = freezed,
+    Object? soalJawab = freezed,
+  }) {
+    return _then(_value.copyWith(
+      idSkrinning: freezed == idSkrinning
+          ? _value.idSkrinning
+          : idSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      idBagSkrinUser: freezed == idBagSkrinUser
+          ? _value.idBagSkrinUser
+          : idBagSkrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jenisSkrinning: freezed == jenisSkrinning
+          ? _value.jenisSkrinning
+          : jenisSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tglPengisian: freezed == tglPengisian
+          ? _value.tglPengisian
+          : tglPengisian // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      jenisHasil: freezed == jenisHasil
+          ? _value.jenisHasil
+          : jenisHasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasil: freezed == hasil
+          ? _value.hasil
+          : hasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pointotal: freezed == pointotal
+          ? _value.pointotal
+          : pointotal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      soalJawab: freezed == soalJawab
+          ? _value.soalJawab
+          : soalJawab // ignore: cast_nullable_to_non_nullable
+              as List<SoalJawabRiwayat>?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$DetailRiwayatSkrinningImplCopyWith<$Res>
+    implements $DetailRiwayatSkrinningCopyWith<$Res> {
+  factory _$$DetailRiwayatSkrinningImplCopyWith(
+          _$DetailRiwayatSkrinningImpl value,
+          $Res Function(_$DetailRiwayatSkrinningImpl) then) =
+      __$$DetailRiwayatSkrinningImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+      @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+      @JsonKey(name: 'hasil') String? hasil,
+      @JsonKey(name: 'poin_total') String? pointotal,
+      List<SoalJawabRiwayat>? soalJawab});
+}
+
+/// @nodoc
+class __$$DetailRiwayatSkrinningImplCopyWithImpl<$Res>
+    extends _$DetailRiwayatSkrinningCopyWithImpl<$Res,
+        _$DetailRiwayatSkrinningImpl>
+    implements _$$DetailRiwayatSkrinningImplCopyWith<$Res> {
+  __$$DetailRiwayatSkrinningImplCopyWithImpl(
+      _$DetailRiwayatSkrinningImpl _value,
+      $Res Function(_$DetailRiwayatSkrinningImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? idSkrinning = freezed,
+    Object? idBagSkrinUser = freezed,
+    Object? jenisSkrinning = freezed,
+    Object? namaBagian = freezed,
+    Object? tglPengisian = freezed,
+    Object? jenisHasil = freezed,
+    Object? hasil = freezed,
+    Object? pointotal = freezed,
+    Object? soalJawab = freezed,
+  }) {
+    return _then(_$DetailRiwayatSkrinningImpl(
+      idSkrinning: freezed == idSkrinning
+          ? _value.idSkrinning
+          : idSkrinning // ignore: cast_nullable_to_non_nullable
+              as int?,
+      idBagSkrinUser: freezed == idBagSkrinUser
+          ? _value.idBagSkrinUser
+          : idBagSkrinUser // ignore: cast_nullable_to_non_nullable
+              as int?,
+      jenisSkrinning: freezed == jenisSkrinning
+          ? _value.jenisSkrinning
+          : jenisSkrinning // ignore: cast_nullable_to_non_nullable
+              as String?,
+      namaBagian: freezed == namaBagian
+          ? _value.namaBagian
+          : namaBagian // ignore: cast_nullable_to_non_nullable
+              as String?,
+      tglPengisian: freezed == tglPengisian
+          ? _value.tglPengisian
+          : tglPengisian // ignore: cast_nullable_to_non_nullable
+              as DateTime?,
+      jenisHasil: freezed == jenisHasil
+          ? _value.jenisHasil
+          : jenisHasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      hasil: freezed == hasil
+          ? _value.hasil
+          : hasil // ignore: cast_nullable_to_non_nullable
+              as String?,
+      pointotal: freezed == pointotal
+          ? _value.pointotal
+          : pointotal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      soalJawab: freezed == soalJawab
+          ? _value.soalJawab
+          : soalJawab // ignore: cast_nullable_to_non_nullable
+              as List<SoalJawabRiwayat>?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$DetailRiwayatSkrinningImpl implements _DetailRiwayatSkrinning {
+  _$DetailRiwayatSkrinningImpl(
+      {@JsonKey(name: 'id_skrinning') this.idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') this.idBagSkrinUser,
+      @JsonKey(name: 'jenis_skrinning') this.jenisSkrinning,
+      @JsonKey(name: 'nama_bagian') this.namaBagian,
+      @JsonKey(name: 'tgl_pengisian') this.tglPengisian,
+      @JsonKey(name: 'jenis_hasil') this.jenisHasil,
+      @JsonKey(name: 'hasil') this.hasil,
+      @JsonKey(name: 'poin_total') this.pointotal,
+      this.soalJawab});
+
+  factory _$DetailRiwayatSkrinningImpl.fromJson(Map<String, dynamic> json) =>
+      _$$DetailRiwayatSkrinningImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'id_skrinning')
+  int? idSkrinning;
+  @override
+  @JsonKey(name: 'id_bag_skrin_user')
+  int? idBagSkrinUser;
+  @override
+  @JsonKey(name: 'jenis_skrinning')
+  String? jenisSkrinning;
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? namaBagian;
+  @override
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? tglPengisian;
+  @override
+  @JsonKey(name: 'jenis_hasil')
+  String? jenisHasil;
+  @override
+  @JsonKey(name: 'hasil')
+  String? hasil;
+  @override
+  @JsonKey(name: 'poin_total')
+  String? pointotal;
+  @override
+  List<SoalJawabRiwayat>? soalJawab;
+
+  @override
+  String toString() {
+    return 'DetailRiwayatSkrinning(idSkrinning: $idSkrinning, idBagSkrinUser: $idBagSkrinUser, jenisSkrinning: $jenisSkrinning, namaBagian: $namaBagian, tglPengisian: $tglPengisian, jenisHasil: $jenisHasil, hasil: $hasil, pointotal: $pointotal, soalJawab: $soalJawab)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DetailRiwayatSkrinningImplCopyWith<_$DetailRiwayatSkrinningImpl>
+      get copyWith => __$$DetailRiwayatSkrinningImplCopyWithImpl<
+          _$DetailRiwayatSkrinningImpl>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$DetailRiwayatSkrinningImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _DetailRiwayatSkrinning implements DetailRiwayatSkrinning {
+  factory _DetailRiwayatSkrinning(
+      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+      @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+      @JsonKey(name: 'nama_bagian') String? namaBagian,
+      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+      @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+      @JsonKey(name: 'hasil') String? hasil,
+      @JsonKey(name: 'poin_total') String? pointotal,
+      List<SoalJawabRiwayat>? soalJawab}) = _$DetailRiwayatSkrinningImpl;
+
+  factory _DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) =
+      _$DetailRiwayatSkrinningImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'id_skrinning')
+  int? get idSkrinning;
+  @JsonKey(name: 'id_skrinning')
+  set idSkrinning(int? value);
+  @override
+  @JsonKey(name: 'id_bag_skrin_user')
+  int? get idBagSkrinUser;
+  @JsonKey(name: 'id_bag_skrin_user')
+  set idBagSkrinUser(int? value);
+  @override
+  @JsonKey(name: 'jenis_skrinning')
+  String? get jenisSkrinning;
+  @JsonKey(name: 'jenis_skrinning')
+  set jenisSkrinning(String? value);
+  @override
+  @JsonKey(name: 'nama_bagian')
+  String? get namaBagian;
+  @JsonKey(name: 'nama_bagian')
+  set namaBagian(String? value);
+  @override
+  @JsonKey(name: 'tgl_pengisian')
+  DateTime? get tglPengisian;
+  @JsonKey(name: 'tgl_pengisian')
+  set tglPengisian(DateTime? value);
+  @override
+  @JsonKey(name: 'jenis_hasil')
+  String? get jenisHasil;
+  @JsonKey(name: 'jenis_hasil')
+  set jenisHasil(String? value);
+  @override
+  @JsonKey(name: 'hasil')
+  String? get hasil;
+  @JsonKey(name: 'hasil')
+  set hasil(String? value);
+  @override
+  @JsonKey(name: 'poin_total')
+  String? get pointotal;
+  @JsonKey(name: 'poin_total')
+  set pointotal(String? value);
+  @override
+  List<SoalJawabRiwayat>? get soalJawab;
+  set soalJawab(List<SoalJawabRiwayat>? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$DetailRiwayatSkrinningImplCopyWith<_$DetailRiwayatSkrinningImpl>
+      get copyWith => throw _privateConstructorUsedError;
+}
+
+SoalJawabRiwayat _$SoalJawabRiwayatFromJson(Map<String, dynamic> json) {
+  return _SoalJawabRiwayat.fromJson(json);
+}
+
+/// @nodoc
+mixin _$SoalJawabRiwayat {
+  @JsonKey(name: 'no_soal')
+  int? get noSoal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'no_soal')
+  set noSoal(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal')
+  String? get soal => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal')
+  set soal(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jawaban')
+  String? get jawaban => throw _privateConstructorUsedError;
+  @JsonKey(name: 'jawaban')
+  set jawaban(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban => throw _privateConstructorUsedError;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value) => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $SoalJawabRiwayatCopyWith<SoalJawabRiwayat> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $SoalJawabRiwayatCopyWith<$Res> {
+  factory $SoalJawabRiwayatCopyWith(
+          SoalJawabRiwayat value, $Res Function(SoalJawabRiwayat) then) =
+      _$SoalJawabRiwayatCopyWithImpl<$Res, SoalJawabRiwayat>;
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'no_soal') int? noSoal,
+      @JsonKey(name: 'soal') String? soal,
+      @JsonKey(name: 'jawaban') String? jawaban,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
+}
+
+/// @nodoc
+class _$SoalJawabRiwayatCopyWithImpl<$Res, $Val extends SoalJawabRiwayat>
+    implements $SoalJawabRiwayatCopyWith<$Res> {
+  _$SoalJawabRiwayatCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? noSoal = freezed,
+    Object? soal = freezed,
+    Object? jawaban = freezed,
+    Object? poinJawaban = freezed,
+  }) {
+    return _then(_value.copyWith(
+      noSoal: freezed == noSoal
+          ? _value.noSoal
+          : noSoal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      soal: freezed == soal
+          ? _value.soal
+          : soal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      jawaban: freezed == jawaban
+          ? _value.jawaban
+          : jawaban // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$SoalJawabRiwayatImplCopyWith<$Res>
+    implements $SoalJawabRiwayatCopyWith<$Res> {
+  factory _$$SoalJawabRiwayatImplCopyWith(_$SoalJawabRiwayatImpl value,
+          $Res Function(_$SoalJawabRiwayatImpl) then) =
+      __$$SoalJawabRiwayatImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call(
+      {@JsonKey(name: 'no_soal') int? noSoal,
+      @JsonKey(name: 'soal') String? soal,
+      @JsonKey(name: 'jawaban') String? jawaban,
+      @JsonKey(name: 'poin_jawaban') int? poinJawaban});
+}
+
+/// @nodoc
+class __$$SoalJawabRiwayatImplCopyWithImpl<$Res>
+    extends _$SoalJawabRiwayatCopyWithImpl<$Res, _$SoalJawabRiwayatImpl>
+    implements _$$SoalJawabRiwayatImplCopyWith<$Res> {
+  __$$SoalJawabRiwayatImplCopyWithImpl(_$SoalJawabRiwayatImpl _value,
+      $Res Function(_$SoalJawabRiwayatImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? noSoal = freezed,
+    Object? soal = freezed,
+    Object? jawaban = freezed,
+    Object? poinJawaban = freezed,
+  }) {
+    return _then(_$SoalJawabRiwayatImpl(
+      noSoal: freezed == noSoal
+          ? _value.noSoal
+          : noSoal // ignore: cast_nullable_to_non_nullable
+              as int?,
+      soal: freezed == soal
+          ? _value.soal
+          : soal // ignore: cast_nullable_to_non_nullable
+              as String?,
+      jawaban: freezed == jawaban
+          ? _value.jawaban
+          : jawaban // ignore: cast_nullable_to_non_nullable
+              as String?,
+      poinJawaban: freezed == poinJawaban
+          ? _value.poinJawaban
+          : poinJawaban // ignore: cast_nullable_to_non_nullable
+              as int?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$SoalJawabRiwayatImpl implements _SoalJawabRiwayat {
+  _$SoalJawabRiwayatImpl(
+      {@JsonKey(name: 'no_soal') this.noSoal,
+      @JsonKey(name: 'soal') this.soal,
+      @JsonKey(name: 'jawaban') this.jawaban,
+      @JsonKey(name: 'poin_jawaban') this.poinJawaban});
+
+  factory _$SoalJawabRiwayatImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SoalJawabRiwayatImplFromJson(json);
+
+  @override
+  @JsonKey(name: 'no_soal')
+  int? noSoal;
+  @override
+  @JsonKey(name: 'soal')
+  String? soal;
+  @override
+  @JsonKey(name: 'jawaban')
+  String? jawaban;
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? poinJawaban;
+
+  @override
+  String toString() {
+    return 'SoalJawabRiwayat(noSoal: $noSoal, soal: $soal, jawaban: $jawaban, poinJawaban: $poinJawaban)';
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$SoalJawabRiwayatImplCopyWith<_$SoalJawabRiwayatImpl> get copyWith =>
+      __$$SoalJawabRiwayatImplCopyWithImpl<_$SoalJawabRiwayatImpl>(
+          this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$SoalJawabRiwayatImplToJson(
+      this,
+    );
+  }
+}
+
+abstract class _SoalJawabRiwayat implements SoalJawabRiwayat {
+  factory _SoalJawabRiwayat(
+          {@JsonKey(name: 'no_soal') int? noSoal,
+          @JsonKey(name: 'soal') String? soal,
+          @JsonKey(name: 'jawaban') String? jawaban,
+          @JsonKey(name: 'poin_jawaban') int? poinJawaban}) =
+      _$SoalJawabRiwayatImpl;
+
+  factory _SoalJawabRiwayat.fromJson(Map<String, dynamic> json) =
+      _$SoalJawabRiwayatImpl.fromJson;
+
+  @override
+  @JsonKey(name: 'no_soal')
+  int? get noSoal;
+  @JsonKey(name: 'no_soal')
+  set noSoal(int? value);
+  @override
+  @JsonKey(name: 'soal')
+  String? get soal;
+  @JsonKey(name: 'soal')
+  set soal(String? value);
+  @override
+  @JsonKey(name: 'jawaban')
+  String? get jawaban;
+  @JsonKey(name: 'jawaban')
+  set jawaban(String? value);
+  @override
+  @JsonKey(name: 'poin_jawaban')
+  int? get poinJawaban;
+  @JsonKey(name: 'poin_jawaban')
+  set poinJawaban(int? value);
+  @override
+  @JsonKey(ignore: true)
+  _$$SoalJawabRiwayatImplCopyWith<_$SoalJawabRiwayatImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -5796,6 +6330,10 @@ mixin _$RoomChatMe {
   int? get remajaUserId => throw _privateConstructorUsedError;
   @JsonKey(name: 'remaja_user_id')
   set remajaUserId(int? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'guru_user_id')
+  int? get guruUserId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'guru_user_id')
+  set guruUserId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
@@ -5823,6 +6361,7 @@ abstract class $RoomChatMeCopyWith<$Res> {
   $Res call(
       {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'guru_user_id') int? guruUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       List<RiwayatChatMe>? riwayats});
@@ -5843,6 +6382,7 @@ class _$RoomChatMeCopyWithImpl<$Res, $Val extends RoomChatMe>
   $Res call({
     Object? idRoomChatMe = freezed,
     Object? remajaUserId = freezed,
+    Object? guruUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? riwayats = freezed,
@@ -5855,6 +6395,10 @@ class _$RoomChatMeCopyWithImpl<$Res, $Val extends RoomChatMe>
       remajaUserId: freezed == remajaUserId
           ? _value.remajaUserId
           : remajaUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      guruUserId: freezed == guruUserId
+          ? _value.guruUserId
+          : guruUserId // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -5883,6 +6427,7 @@ abstract class _$$RoomChatMeImplCopyWith<$Res>
   $Res call(
       {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'guru_user_id') int? guruUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       List<RiwayatChatMe>? riwayats});
@@ -5901,6 +6446,7 @@ class __$$RoomChatMeImplCopyWithImpl<$Res>
   $Res call({
     Object? idRoomChatMe = freezed,
     Object? remajaUserId = freezed,
+    Object? guruUserId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
     Object? riwayats = freezed,
@@ -5913,6 +6459,10 @@ class __$$RoomChatMeImplCopyWithImpl<$Res>
       remajaUserId: freezed == remajaUserId
           ? _value.remajaUserId
           : remajaUserId // ignore: cast_nullable_to_non_nullable
+              as int?,
+      guruUserId: freezed == guruUserId
+          ? _value.guruUserId
+          : guruUserId // ignore: cast_nullable_to_non_nullable
               as int?,
       createdAt: freezed == createdAt
           ? _value.createdAt
@@ -5936,6 +6486,7 @@ class _$RoomChatMeImpl implements _RoomChatMe {
   _$RoomChatMeImpl(
       {@JsonKey(name: 'id_room_chat_me') this.idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') this.remajaUserId,
+      @JsonKey(name: 'guru_user_id') this.guruUserId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       this.riwayats});
@@ -5950,6 +6501,9 @@ class _$RoomChatMeImpl implements _RoomChatMe {
   @JsonKey(name: 'remaja_user_id')
   int? remajaUserId;
   @override
+  @JsonKey(name: 'guru_user_id')
+  int? guruUserId;
+  @override
   @JsonKey(name: 'created_at')
   DateTime? createdAt;
   @override
@@ -5960,7 +6514,7 @@ class _$RoomChatMeImpl implements _RoomChatMe {
 
   @override
   String toString() {
-    return 'RoomChatMe(idRoomChatMe: $idRoomChatMe, remajaUserId: $remajaUserId, createdAt: $createdAt, updatedAt: $updatedAt, riwayats: $riwayats)';
+    return 'RoomChatMe(idRoomChatMe: $idRoomChatMe, remajaUserId: $remajaUserId, guruUserId: $guruUserId, createdAt: $createdAt, updatedAt: $updatedAt, riwayats: $riwayats)';
   }
 
   @JsonKey(ignore: true)
@@ -5981,6 +6535,7 @@ abstract class _RoomChatMe implements RoomChatMe {
   factory _RoomChatMe(
       {@JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
       @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+      @JsonKey(name: 'guru_user_id') int? guruUserId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
       List<RiwayatChatMe>? riwayats}) = _$RoomChatMeImpl;
@@ -5998,6 +6553,11 @@ abstract class _RoomChatMe implements RoomChatMe {
   int? get remajaUserId;
   @JsonKey(name: 'remaja_user_id')
   set remajaUserId(int? value);
+  @override
+  @JsonKey(name: 'guru_user_id')
+  int? get guruUserId;
+  @JsonKey(name: 'guru_user_id')
+  set guruUserId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;

@@ -19,20 +19,28 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
         return;
       }
 
+      _textControllerMessage.text = longLorem;
+
       _messageBubbleList = MessageBubbleList.fromRoom(rooms: _rooms);
       event.completer?.complete(true);
       emit(_chatmeDataLoaded);
     });
 
-    on<ChatMeSendPressed>((event, emit) {
+    on<ChatMeSendPressed>((event, emit) async {
       if (_textControllerMessage.text.trim().isEmpty) return;
 
-      // _rooms[_currentRoomIndex].riwayats!.insert(
-      //       _rooms[_currentRoomIndex].riwayats!.length - 1,
-      //       RiwayatChatMe(),
-      //     );
+      RiwayatChatMe riwayatChatMe;
+      try {
+        riwayatChatMe = await ApiHelper.post('/api/chatme/${currentUser?.role == UserRole.remaja ? _rooms[event.index].guruUserId : _rooms[event.index].remajaUserId}', body: {'pesan': _textControllerMessage.text.trim()}).then((value) => RiwayatChatMe.fromJson(value.data['data']));
+      } catch (e) {
+        return;
+      }
+
+      _rooms[event.index].riwayats!.insert(0, riwayatChatMe);
 
       _textControllerMessage.text = '';
+
+      _messageBubbleList = MessageBubbleList.fromRoom(rooms: _rooms);
 
       emit(_chatmeDataLoaded);
     });

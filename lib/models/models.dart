@@ -22,7 +22,7 @@ class User with _$User {
     @JsonKey(name: 'id_user') int? idUser,
     String? username,
     String? email,
-    String? role,
+    UserRole? role,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
   }) = _User;
@@ -290,20 +290,48 @@ class Jawaban with _$Jawaban {
 class RiwayatSkrinning with _$RiwayatSkrinning {
   factory RiwayatSkrinning({
     @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
-    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-    @JsonKey(name: 'skrinning_id') int? skrinningId,
-    @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'id_user') int? idUser,
-    @JsonKey(name: 'username') String? username,
-    @JsonKey(name: 'email') String? email,
-    @JsonKey(name: 'password') String? password,
-    @JsonKey(name: 'role') String? role,
     @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
     @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
     @JsonKey(name: 'deskripsi_skrinning') String? deskripsiSkrinning,
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'hasil') String? hasil,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
   }) = _RiwayatSkrinning;
 
   factory RiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$RiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class DetailRiwayatSkrinning with _$DetailRiwayatSkrinning {
+  factory DetailRiwayatSkrinning({
+    @JsonKey(name: 'id_skrinning') int? idSkrinning,
+    @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+    @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+    @JsonKey(name: 'nama_bagian') String? namaBagian,
+    @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'hasil') String? hasil,
+    @JsonKey(name: 'poin_total') String? pointotal,
+    List<SoalJawabRiwayat>? soalJawab,
+  }) = _DetailRiwayatSkrinning;
+
+  factory DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$DetailRiwayatSkrinningFromJson(json);
+}
+
+@unfreezed
+class SoalJawabRiwayat with _$SoalJawabRiwayat {
+  factory SoalJawabRiwayat({
+    @JsonKey(name: 'no_soal') int? noSoal,
+    @JsonKey(name: 'soal') String? soal,
+    @JsonKey(name: 'jawaban') String? jawaban,
+    @JsonKey(name: 'poin_jawaban') int? poinJawaban,
+  }) = _SoalJawabRiwayat;
+
+  factory SoalJawabRiwayat.fromJson(Map<String, dynamic> json) => _$SoalJawabRiwayatFromJson(json);
 }
 
 @unfreezed
@@ -311,6 +339,7 @@ class RoomChatMe with _$RoomChatMe {
   factory RoomChatMe({
     @JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
     @JsonKey(name: 'remaja_user_id') int? remajaUserId,
+    @JsonKey(name: 'guru_user_id') int? guruUserId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     List<RiwayatChatMe>? riwayats,
@@ -346,31 +375,24 @@ class MessageBubbleList with _$MessageBubbleList {
       List<MessageBubbleData> messageBubbles = [];
       DateTime? lastDate;
 
-      for (RiwayatChatMe riwayat in room.riwayats ?? []) {
-        // Parse tanggal chat dari riwayat ke objek DateTime
+      for (int i = 0; i < (room.riwayats?.length ?? 0); i++) {
+        RiwayatChatMe riwayat = room.riwayats![i];
         DateTime currentChatDate = riwayat.tglChat!;
 
-        // Jika ini adalah pesan pertama atau tanggalnya berbeda dari pesan terakhir,
-        // tambahkan MessageBubbleData.dateTime
-        if ((lastDate == null || currentChatDate.day != lastDate.day) && messageBubbles.isNotEmpty) messageBubbles.add(MessageBubbleData.dateTime(dateTime: currentChatDate));
+        if (lastDate != null && currentChatDate.day != lastDate.day) messageBubbles.add(MessageBubbleData.dateTime(dateTime: lastDate));
 
-        // Tambahkan MessageBubbleData.text untuk pesan saat ini
         messageBubbles.add(MessageBubbleData.text(
           message: riwayat.pesan,
           sentAt: riwayat.createdAt!,
-          // Anda mungkin ingin menentukan apakah pengguna adalah pengirim atau penerima
-          // isSender bisa di-set berdasarkan id pengguna atau kriteria lain
-          isSender: riwayat.userId == currentUser?.idUser, // Contoh, perlu logika untuk menentukan ini
+          isSender: riwayat.userId == currentUser?.idUser,
         ));
 
-        // Perbarui tanggal pesan terakhir
+        if (i == room.riwayats!.length - 1) messageBubbles.add(MessageBubbleData.dateTime(dateTime: currentChatDate));
+
         lastDate = currentChatDate;
       }
 
-      // Tambahkan pesan dari room saat ini ke hasil
-      if (messageBubbles.isNotEmpty) {
-        results.add(messageBubbles);
-      }
+      if (messageBubbles.isNotEmpty) results.add(messageBubbles);
     }
 
     return MessageBubbleList(data: results);
@@ -400,7 +422,9 @@ enum UserRole {
   tenagaAhli,
   @JsonValue('kader')
   kaderKesehatan,
-  guru;
+  guru,
+  @JsonValue('superadmin')
+  superAdmin;
 
   String get text => switch (this) {
         remaja => 'Remaja',
@@ -408,6 +432,7 @@ enum UserRole {
         tenagaAhli => 'Tenaga Ahli',
         kaderKesehatan => 'Kader Kesehatan',
         guru => 'Guru',
+        superAdmin => 'Super Admin',
       };
 
   String get serverValue => switch (this) {
@@ -416,6 +441,7 @@ enum UserRole {
         tenagaAhli => 'ahli',
         kaderKesehatan => 'kader',
         guru => 'guru',
+        superAdmin => 'superadmin',
       };
 }
 
