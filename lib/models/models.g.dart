@@ -617,7 +617,7 @@ _$SkrinUserImpl _$$SkrinUserImplFromJson(Map<String, dynamic> json) =>
       tglPengisian: json['tgl_pengisian'] == null
           ? null
           : DateTime.parse(json['tgl_pengisian'] as String),
-      skrinningId: json['skrinning_id'] as int?,
+      skrinningId: _parseInt(json['skrinning_id']),
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),

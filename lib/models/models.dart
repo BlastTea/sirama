@@ -334,7 +334,7 @@ class DetailSkrinning with _$DetailSkrinning {
 class SkrinUser with _$SkrinUser {
   factory SkrinUser({
     @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-    @JsonKey(name: 'skrinning_id') int? skrinningId,
+    @JsonKey(name: 'skrinning_id', fromJson: _parseInt) int? skrinningId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'id_skrin_user') int? idSkrinUser,

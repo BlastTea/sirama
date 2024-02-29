@@ -131,7 +131,6 @@ class ChooseScreeningPage extends StatelessWidget {
                 idSkrinning: idSkrinning,
                 idBagianSkrinning:
                     stateSkrinning.detailskrinning[index].idBagianSkrinning,
-                idSkrinUser: stateSkrinning.skrinuser.firstOrNull?.idSkrinUser!,
               ),
             ));
           },

@@ -64,13 +64,11 @@ class GetDetailRiwayatSkrinning extends SkrinningEvent {
 
 class SubmitJawabanSkrinning extends SkrinningEvent {
   final DetailSkrinning detailskrinning;
-  final int skrinuser;
   final List<int> selectedAnswers;
 
   SubmitJawabanSkrinning({
     required this.detailskrinning,
     required this.selectedAnswers,
-    required this.skrinuser,
   });
 }
 

@@ -1,11 +1,10 @@
 part of '../pages.dart';
 
 class MainScreeningPage extends StatefulWidget {
-  const MainScreeningPage({super.key, this.idSkrinning, this.idBagianSkrinning, this.idSkrinUser});
+  const MainScreeningPage({super.key, this.idSkrinning, this.idBagianSkrinning,});
 
   final int? idSkrinning;
   final int? idBagianSkrinning;
-  final int? idSkrinUser;
 
   @override
   State<MainScreeningPage> createState() => _MainScreeningPageState();
@@ -159,7 +158,6 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                     .soalJawab!.length,
                                 (index) => selectedAnswers[index] ?? 0,
                               ),
-                                      skrinuser: widget.idSkrinUser!,
                             ));
                             setState(() {
                               currentPartIndex++;
@@ -190,7 +188,6 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                     .soalJawab!.length,
                                 (index) => selectedAnswers[index] ?? 0,
                               ),
-                              skrinuser: widget.idSkrinUser!,
                             ));
                           }
                         },
