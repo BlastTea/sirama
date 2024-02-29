@@ -31,16 +31,22 @@ class User with _$User {
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 }
 
-@Freezed(unionKey: 'role')
+@Freezed(
+  unionKey: 'role',
+  equal: false,
+  addImplicitFinal: false,
+  makeCollectionsUnmodifiable: false,
+)
 sealed class UserDetail with _$UserDetail {
   factory UserDetail.remaja({
     @JsonKey(name: 'id_remaja') int? idRemaja,
     String? nama,
     @JsonKey(name: 'no_hp') String? noHp,
     @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-    @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
+    @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
     String? sekolah,
     @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
     @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -51,8 +57,9 @@ sealed class UserDetail with _$UserDetail {
     @JsonKey(name: 'id_orangtua') int? idOrangTua,
     String? nama,
     @JsonKey(name: 'no_hp') String? noHp,
-    @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+    @JsonKey(name: 'tingkat_sekolah_anak') SchoolLevel? tingkatSekolahAnak,
     @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
     @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -63,7 +70,7 @@ sealed class UserDetail with _$UserDetail {
     @JsonKey(name: 'id_ahli') int? idAhli,
     String? nama,
     @JsonKey(name: 'no_hp') String? noHp,
-    @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+    @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
     @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
     @JsonKey(name: 'foto_profile') String? fotoProfile,
     @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
@@ -80,6 +87,7 @@ sealed class UserDetail with _$UserDetail {
     int? usia,
     @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
     @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
     @JsonKey(name: 'user_id') int? userId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,

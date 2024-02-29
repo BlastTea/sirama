@@ -319,16 +319,31 @@ UserDetail _$UserDetailFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$UserDetail {
   String? get nama => throw _privateConstructorUsedError;
+  set nama(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'no_hp')
   String? get noHp => throw _privateConstructorUsedError;
+  @JsonKey(name: 'no_hp')
+  set noHp(String? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'foto_profile')
   String? get fotoProfile => throw _privateConstructorUsedError;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'user_id')
   int? get userId => throw _privateConstructorUsedError;
+  @JsonKey(name: 'user_id')
+  set userId(int? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'created_at')
   DateTime? get createdAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt => throw _privateConstructorUsedError;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function(
@@ -336,9 +351,11 @@ mixin _$UserDetail {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -347,8 +364,11 @@ mixin _$UserDetail {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -357,7 +377,7 @@ mixin _$UserDetail {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -373,6 +393,8 @@ mixin _$UserDetail {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -399,9 +421,11 @@ mixin _$UserDetail {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -410,8 +434,11 @@ mixin _$UserDetail {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -420,7 +447,7 @@ mixin _$UserDetail {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -436,6 +463,8 @@ mixin _$UserDetail {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -462,9 +491,11 @@ mixin _$UserDetail {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -473,8 +504,11 @@ mixin _$UserDetail {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -483,7 +517,7 @@ mixin _$UserDetail {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -499,6 +533,8 @@ mixin _$UserDetail {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -563,6 +599,8 @@ abstract class $UserDetailCopyWith<$Res> {
       {String? nama,
       @JsonKey(name: 'no_hp') String? noHp,
       @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'user_id') int? userId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
@@ -584,6 +622,7 @@ class _$UserDetailCopyWithImpl<$Res, $Val extends UserDetail>
     Object? nama = freezed,
     Object? noHp = freezed,
     Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
     Object? userId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -601,6 +640,10 @@ class _$UserDetailCopyWithImpl<$Res, $Val extends UserDetail>
           ? _value.fotoProfile
           : fotoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value.fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -630,9 +673,11 @@ abstract class _$$RemajaImplCopyWith<$Res>
       String? nama,
       @JsonKey(name: 'no_hp') String? noHp,
       @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-      @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-      String? sekolah,
+      @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+      @JsonKey(includeIfNull: true) String? sekolah,
       @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'user_id') int? userId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
@@ -656,6 +701,7 @@ class __$$RemajaImplCopyWithImpl<$Res>
     Object? jenisKelamin = freezed,
     Object? sekolah = freezed,
     Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
     Object? userId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -680,7 +726,7 @@ class __$$RemajaImplCopyWithImpl<$Res>
       jenisKelamin: freezed == jenisKelamin
           ? _value.jenisKelamin
           : jenisKelamin // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as Gender?,
       sekolah: freezed == sekolah
           ? _value.sekolah
           : sekolah // ignore: cast_nullable_to_non_nullable
@@ -689,6 +735,10 @@ class __$$RemajaImplCopyWithImpl<$Res>
           ? _value.fotoProfile
           : fotoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value.fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -714,8 +764,10 @@ class _$RemajaImpl implements Remaja {
       @JsonKey(name: 'no_hp') this.noHp,
       @JsonKey(name: 'tgl_lahir') this.tglLahir,
       @JsonKey(name: 'jenis_kelamin') this.jenisKelamin,
-      this.sekolah,
+      @JsonKey(includeIfNull: true) this.sekolah,
       @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.fotoProfileData,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
@@ -727,68 +779,44 @@ class _$RemajaImpl implements Remaja {
 
   @override
   @JsonKey(name: 'id_remaja')
-  final int? idRemaja;
+  int? idRemaja;
   @override
-  final String? nama;
+  String? nama;
   @override
   @JsonKey(name: 'no_hp')
-  final String? noHp;
+  String? noHp;
   @override
   @JsonKey(name: 'tgl_lahir')
-  final DateTime? tglLahir;
+  DateTime? tglLahir;
   @override
   @JsonKey(name: 'jenis_kelamin')
-  final String? jenisKelamin;
+  Gender? jenisKelamin;
   @override
-  final String? sekolah;
+  @JsonKey(includeIfNull: true)
+  String? sekolah;
   @override
   @JsonKey(name: 'foto_profile')
-  final String? fotoProfile;
+  String? fotoProfile;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? fotoProfileData;
   @override
   @JsonKey(name: 'user_id')
-  final int? userId;
+  int? userId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
 
   @JsonKey(name: 'role')
   final String $type;
 
   @override
   String toString() {
-    return 'UserDetail.remaja(idRemaja: $idRemaja, nama: $nama, noHp: $noHp, tglLahir: $tglLahir, jenisKelamin: $jenisKelamin, sekolah: $sekolah, fotoProfile: $fotoProfile, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'UserDetail.remaja(idRemaja: $idRemaja, nama: $nama, noHp: $noHp, tglLahir: $tglLahir, jenisKelamin: $jenisKelamin, sekolah: $sekolah, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$RemajaImpl &&
-            (identical(other.idRemaja, idRemaja) ||
-                other.idRemaja == idRemaja) &&
-            (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.noHp, noHp) || other.noHp == noHp) &&
-            (identical(other.tglLahir, tglLahir) ||
-                other.tglLahir == tglLahir) &&
-            (identical(other.jenisKelamin, jenisKelamin) ||
-                other.jenisKelamin == jenisKelamin) &&
-            (identical(other.sekolah, sekolah) || other.sekolah == sekolah) &&
-            (identical(other.fotoProfile, fotoProfile) ||
-                other.fotoProfile == fotoProfile) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, idRemaja, nama, noHp, tglLahir,
-      jenisKelamin, sekolah, fotoProfile, userId, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -804,9 +832,11 @@ class _$RemajaImpl implements Remaja {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -815,8 +845,11 @@ class _$RemajaImpl implements Remaja {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -825,7 +858,7 @@ class _$RemajaImpl implements Remaja {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -841,6 +874,8 @@ class _$RemajaImpl implements Remaja {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -860,7 +895,7 @@ class _$RemajaImpl implements Remaja {
         guru,
   }) {
     return remaja(idRemaja, nama, noHp, tglLahir, jenisKelamin, sekolah,
-        fotoProfile, userId, createdAt, updatedAt);
+        fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
   }
 
   @override
@@ -871,9 +906,11 @@ class _$RemajaImpl implements Remaja {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -882,8 +919,11 @@ class _$RemajaImpl implements Remaja {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -892,7 +932,7 @@ class _$RemajaImpl implements Remaja {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -908,6 +948,8 @@ class _$RemajaImpl implements Remaja {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -927,7 +969,7 @@ class _$RemajaImpl implements Remaja {
         guru,
   }) {
     return remaja?.call(idRemaja, nama, noHp, tglLahir, jenisKelamin, sekolah,
-        fotoProfile, userId, createdAt, updatedAt);
+        fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
   }
 
   @override
@@ -938,9 +980,11 @@ class _$RemajaImpl implements Remaja {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -949,8 +993,11 @@ class _$RemajaImpl implements Remaja {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -959,7 +1006,7 @@ class _$RemajaImpl implements Remaja {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -975,6 +1022,8 @@ class _$RemajaImpl implements Remaja {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -996,7 +1045,7 @@ class _$RemajaImpl implements Remaja {
   }) {
     if (remaja != null) {
       return remaja(idRemaja, nama, noHp, tglLahir, jenisKelamin, sekolah,
-          fotoProfile, userId, createdAt, updatedAt);
+          fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
     }
     return orElse();
   }
@@ -1051,43 +1100,70 @@ class _$RemajaImpl implements Remaja {
 
 abstract class Remaja implements UserDetail {
   factory Remaja(
-      {@JsonKey(name: 'id_remaja') final int? idRemaja,
-      final String? nama,
-      @JsonKey(name: 'no_hp') final String? noHp,
-      @JsonKey(name: 'tgl_lahir') final DateTime? tglLahir,
-      @JsonKey(name: 'jenis_kelamin') final String? jenisKelamin,
-      final String? sekolah,
-      @JsonKey(name: 'foto_profile') final String? fotoProfile,
-      @JsonKey(name: 'user_id') final int? userId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$RemajaImpl;
+      {@JsonKey(name: 'id_remaja') int? idRemaja,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+      @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+      @JsonKey(includeIfNull: true) String? sekolah,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt}) = _$RemajaImpl;
 
   factory Remaja.fromJson(Map<String, dynamic> json) = _$RemajaImpl.fromJson;
 
   @JsonKey(name: 'id_remaja')
   int? get idRemaja;
+  @JsonKey(name: 'id_remaja')
+  set idRemaja(int? value);
   @override
   String? get nama;
+  set nama(String? value);
   @override
   @JsonKey(name: 'no_hp')
   String? get noHp;
+  @JsonKey(name: 'no_hp')
+  set noHp(String? value);
   @JsonKey(name: 'tgl_lahir')
   DateTime? get tglLahir;
+  @JsonKey(name: 'tgl_lahir')
+  set tglLahir(DateTime? value);
   @JsonKey(name: 'jenis_kelamin')
-  String? get jenisKelamin;
+  Gender? get jenisKelamin;
+  @JsonKey(name: 'jenis_kelamin')
+  set jenisKelamin(Gender? value);
+  @JsonKey(includeIfNull: true)
   String? get sekolah;
+  @JsonKey(includeIfNull: true)
+  set sekolah(String? value);
   @override
   @JsonKey(name: 'foto_profile')
   String? get fotoProfile;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value);
   @override
   @JsonKey(name: 'user_id')
   int? get userId;
+  @JsonKey(name: 'user_id')
+  set userId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$RemajaImplCopyWith<_$RemajaImpl> get copyWith =>
@@ -1106,8 +1182,10 @@ abstract class _$$OrangTuaImplCopyWith<$Res>
       {@JsonKey(name: 'id_orangtua') int? idOrangTua,
       String? nama,
       @JsonKey(name: 'no_hp') String? noHp,
-      @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+      @JsonKey(name: 'tingkat_sekolah_anak') SchoolLevel? tingkatSekolahAnak,
       @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'user_id') int? userId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
@@ -1129,6 +1207,7 @@ class __$$OrangTuaImplCopyWithImpl<$Res>
     Object? noHp = freezed,
     Object? tingkatSekolahAnak = freezed,
     Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
     Object? userId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -1149,11 +1228,15 @@ class __$$OrangTuaImplCopyWithImpl<$Res>
       tingkatSekolahAnak: freezed == tingkatSekolahAnak
           ? _value.tingkatSekolahAnak
           : tingkatSekolahAnak // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as SchoolLevel?,
       fotoProfile: freezed == fotoProfile
           ? _value.fotoProfile
           : fotoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value.fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -1179,6 +1262,8 @@ class _$OrangTuaImpl implements OrangTua {
       @JsonKey(name: 'no_hp') this.noHp,
       @JsonKey(name: 'tingkat_sekolah_anak') this.tingkatSekolahAnak,
       @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.fotoProfileData,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
@@ -1190,60 +1275,38 @@ class _$OrangTuaImpl implements OrangTua {
 
   @override
   @JsonKey(name: 'id_orangtua')
-  final int? idOrangTua;
+  int? idOrangTua;
   @override
-  final String? nama;
+  String? nama;
   @override
   @JsonKey(name: 'no_hp')
-  final String? noHp;
+  String? noHp;
   @override
   @JsonKey(name: 'tingkat_sekolah_anak')
-  final String? tingkatSekolahAnak;
+  SchoolLevel? tingkatSekolahAnak;
   @override
   @JsonKey(name: 'foto_profile')
-  final String? fotoProfile;
+  String? fotoProfile;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? fotoProfileData;
   @override
   @JsonKey(name: 'user_id')
-  final int? userId;
+  int? userId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
 
   @JsonKey(name: 'role')
   final String $type;
 
   @override
   String toString() {
-    return 'UserDetail.orangTua(idOrangTua: $idOrangTua, nama: $nama, noHp: $noHp, tingkatSekolahAnak: $tingkatSekolahAnak, fotoProfile: $fotoProfile, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'UserDetail.orangTua(idOrangTua: $idOrangTua, nama: $nama, noHp: $noHp, tingkatSekolahAnak: $tingkatSekolahAnak, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$OrangTuaImpl &&
-            (identical(other.idOrangTua, idOrangTua) ||
-                other.idOrangTua == idOrangTua) &&
-            (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.noHp, noHp) || other.noHp == noHp) &&
-            (identical(other.tingkatSekolahAnak, tingkatSekolahAnak) ||
-                other.tingkatSekolahAnak == tingkatSekolahAnak) &&
-            (identical(other.fotoProfile, fotoProfile) ||
-                other.fotoProfile == fotoProfile) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, idOrangTua, nama, noHp,
-      tingkatSekolahAnak, fotoProfile, userId, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -1259,9 +1322,11 @@ class _$OrangTuaImpl implements OrangTua {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -1270,8 +1335,11 @@ class _$OrangTuaImpl implements OrangTua {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -1280,7 +1348,7 @@ class _$OrangTuaImpl implements OrangTua {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1296,6 +1364,8 @@ class _$OrangTuaImpl implements OrangTua {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -1315,7 +1385,7 @@ class _$OrangTuaImpl implements OrangTua {
         guru,
   }) {
     return orangTua(idOrangTua, nama, noHp, tingkatSekolahAnak, fotoProfile,
-        userId, createdAt, updatedAt);
+        fotoProfileData, userId, createdAt, updatedAt);
   }
 
   @override
@@ -1326,9 +1396,11 @@ class _$OrangTuaImpl implements OrangTua {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1337,8 +1409,11 @@ class _$OrangTuaImpl implements OrangTua {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1347,7 +1422,7 @@ class _$OrangTuaImpl implements OrangTua {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1363,6 +1438,8 @@ class _$OrangTuaImpl implements OrangTua {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1382,7 +1459,7 @@ class _$OrangTuaImpl implements OrangTua {
         guru,
   }) {
     return orangTua?.call(idOrangTua, nama, noHp, tingkatSekolahAnak,
-        fotoProfile, userId, createdAt, updatedAt);
+        fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
   }
 
   @override
@@ -1393,9 +1470,11 @@ class _$OrangTuaImpl implements OrangTua {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1404,8 +1483,11 @@ class _$OrangTuaImpl implements OrangTua {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1414,7 +1496,7 @@ class _$OrangTuaImpl implements OrangTua {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1430,6 +1512,8 @@ class _$OrangTuaImpl implements OrangTua {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1451,7 +1535,7 @@ class _$OrangTuaImpl implements OrangTua {
   }) {
     if (orangTua != null) {
       return orangTua(idOrangTua, nama, noHp, tingkatSekolahAnak, fotoProfile,
-          userId, createdAt, updatedAt);
+          fotoProfileData, userId, createdAt, updatedAt);
     }
     return orElse();
   }
@@ -1506,39 +1590,61 @@ class _$OrangTuaImpl implements OrangTua {
 
 abstract class OrangTua implements UserDetail {
   factory OrangTua(
-      {@JsonKey(name: 'id_orangtua') final int? idOrangTua,
-      final String? nama,
-      @JsonKey(name: 'no_hp') final String? noHp,
-      @JsonKey(name: 'tingkat_sekolah_anak') final String? tingkatSekolahAnak,
-      @JsonKey(name: 'foto_profile') final String? fotoProfile,
-      @JsonKey(name: 'user_id') final int? userId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$OrangTuaImpl;
+      {@JsonKey(name: 'id_orangtua') int? idOrangTua,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'tingkat_sekolah_anak') SchoolLevel? tingkatSekolahAnak,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt}) = _$OrangTuaImpl;
 
   factory OrangTua.fromJson(Map<String, dynamic> json) =
       _$OrangTuaImpl.fromJson;
 
   @JsonKey(name: 'id_orangtua')
   int? get idOrangTua;
+  @JsonKey(name: 'id_orangtua')
+  set idOrangTua(int? value);
   @override
   String? get nama;
+  set nama(String? value);
   @override
   @JsonKey(name: 'no_hp')
   String? get noHp;
+  @JsonKey(name: 'no_hp')
+  set noHp(String? value);
   @JsonKey(name: 'tingkat_sekolah_anak')
-  String? get tingkatSekolahAnak;
+  SchoolLevel? get tingkatSekolahAnak;
+  @JsonKey(name: 'tingkat_sekolah_anak')
+  set tingkatSekolahAnak(SchoolLevel? value);
   @override
   @JsonKey(name: 'foto_profile')
   String? get fotoProfile;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value);
   @override
   @JsonKey(name: 'user_id')
   int? get userId;
+  @JsonKey(name: 'user_id')
+  set userId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$OrangTuaImplCopyWith<_$OrangTuaImpl> get copyWith =>
@@ -1557,7 +1663,7 @@ abstract class _$$TenagaAhliImplCopyWith<$Res>
       {@JsonKey(name: 'id_ahli') int? idAhli,
       String? nama,
       @JsonKey(name: 'no_hp') String? noHp,
-      @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+      @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
       @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
       @JsonKey(name: 'foto_profile') String? fotoProfile,
       @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1605,7 +1711,7 @@ class __$$TenagaAhliImplCopyWithImpl<$Res>
       jenisAhli: freezed == jenisAhli
           ? _value.jenisAhli
           : jenisAhli // ignore: cast_nullable_to_non_nullable
-              as String?,
+              as ExpertsType?,
       deskripsiAhli: freezed == deskripsiAhli
           ? _value.deskripsiAhli
           : deskripsiAhli // ignore: cast_nullable_to_non_nullable
@@ -1615,7 +1721,7 @@ class __$$TenagaAhliImplCopyWithImpl<$Res>
           : fotoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
       fotoProfileData: freezed == fotoProfileData
-          ? _value._fotoProfileData
+          ? _value.fotoProfileData
           : fotoProfileData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
       userId: freezed == userId
@@ -1645,54 +1751,45 @@ class _$TenagaAhliImpl implements TenagaAhli {
       @JsonKey(name: 'deskripsi_ahli') this.deskripsiAhli,
       @JsonKey(name: 'foto_profile') this.fotoProfile,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<int>? fotoProfileData,
+      this.fotoProfileData,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       final String? $type})
-      : _fotoProfileData = fotoProfileData,
-        $type = $type ?? 'ahli';
+      : $type = $type ?? 'ahli';
 
   factory _$TenagaAhliImpl.fromJson(Map<String, dynamic> json) =>
       _$$TenagaAhliImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_ahli')
-  final int? idAhli;
+  int? idAhli;
   @override
-  final String? nama;
+  String? nama;
   @override
   @JsonKey(name: 'no_hp')
-  final String? noHp;
+  String? noHp;
   @override
   @JsonKey(name: 'jenis_ahli')
-  final String? jenisAhli;
+  ExpertsType? jenisAhli;
   @override
   @JsonKey(name: 'deskripsi_ahli')
-  final String? deskripsiAhli;
+  String? deskripsiAhli;
   @override
   @JsonKey(name: 'foto_profile')
-  final String? fotoProfile;
-  final List<int>? _fotoProfileData;
+  String? fotoProfile;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  List<int>? get fotoProfileData {
-    final value = _fotoProfileData;
-    if (value == null) return null;
-    if (_fotoProfileData is EqualUnmodifiableListView) return _fotoProfileData;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<int>? fotoProfileData;
   @override
   @JsonKey(name: 'user_id')
-  final int? userId;
+  int? userId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
 
   @JsonKey(name: 'role')
   final String $type;
@@ -1701,44 +1798,6 @@ class _$TenagaAhliImpl implements TenagaAhli {
   String toString() {
     return 'UserDetail.tenagaAhli(idAhli: $idAhli, nama: $nama, noHp: $noHp, jenisAhli: $jenisAhli, deskripsiAhli: $deskripsiAhli, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$TenagaAhliImpl &&
-            (identical(other.idAhli, idAhli) || other.idAhli == idAhli) &&
-            (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.noHp, noHp) || other.noHp == noHp) &&
-            (identical(other.jenisAhli, jenisAhli) ||
-                other.jenisAhli == jenisAhli) &&
-            (identical(other.deskripsiAhli, deskripsiAhli) ||
-                other.deskripsiAhli == deskripsiAhli) &&
-            (identical(other.fotoProfile, fotoProfile) ||
-                other.fotoProfile == fotoProfile) &&
-            const DeepCollectionEquality()
-                .equals(other._fotoProfileData, _fotoProfileData) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idAhli,
-      nama,
-      noHp,
-      jenisAhli,
-      deskripsiAhli,
-      fotoProfile,
-      const DeepCollectionEquality().hash(_fotoProfileData),
-      userId,
-      createdAt,
-      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -1754,9 +1813,11 @@ class _$TenagaAhliImpl implements TenagaAhli {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -1765,8 +1826,11 @@ class _$TenagaAhliImpl implements TenagaAhli {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -1775,7 +1839,7 @@ class _$TenagaAhliImpl implements TenagaAhli {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1791,6 +1855,8 @@ class _$TenagaAhliImpl implements TenagaAhli {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -1821,9 +1887,11 @@ class _$TenagaAhliImpl implements TenagaAhli {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1832,8 +1900,11 @@ class _$TenagaAhliImpl implements TenagaAhli {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1842,7 +1913,7 @@ class _$TenagaAhliImpl implements TenagaAhli {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1858,6 +1929,8 @@ class _$TenagaAhliImpl implements TenagaAhli {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1888,9 +1961,11 @@ class _$TenagaAhliImpl implements TenagaAhli {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1899,8 +1974,11 @@ class _$TenagaAhliImpl implements TenagaAhli {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -1909,7 +1987,7 @@ class _$TenagaAhliImpl implements TenagaAhli {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -1925,6 +2003,8 @@ class _$TenagaAhliImpl implements TenagaAhli {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2001,47 +2081,66 @@ class _$TenagaAhliImpl implements TenagaAhli {
 
 abstract class TenagaAhli implements UserDetail {
   factory TenagaAhli(
-          {@JsonKey(name: 'id_ahli') final int? idAhli,
-          final String? nama,
-          @JsonKey(name: 'no_hp') final String? noHp,
-          @JsonKey(name: 'jenis_ahli') final String? jenisAhli,
-          @JsonKey(name: 'deskripsi_ahli') final String? deskripsiAhli,
-          @JsonKey(name: 'foto_profile') final String? fotoProfile,
-          @JsonKey(includeFromJson: false, includeToJson: false)
-          final List<int>? fotoProfileData,
-          @JsonKey(name: 'user_id') final int? userId,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
-      _$TenagaAhliImpl;
+      {@JsonKey(name: 'id_ahli') int? idAhli,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
+      @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt}) = _$TenagaAhliImpl;
 
   factory TenagaAhli.fromJson(Map<String, dynamic> json) =
       _$TenagaAhliImpl.fromJson;
 
   @JsonKey(name: 'id_ahli')
   int? get idAhli;
+  @JsonKey(name: 'id_ahli')
+  set idAhli(int? value);
   @override
   String? get nama;
+  set nama(String? value);
   @override
   @JsonKey(name: 'no_hp')
   String? get noHp;
+  @JsonKey(name: 'no_hp')
+  set noHp(String? value);
   @JsonKey(name: 'jenis_ahli')
-  String? get jenisAhli;
+  ExpertsType? get jenisAhli;
+  @JsonKey(name: 'jenis_ahli')
+  set jenisAhli(ExpertsType? value);
   @JsonKey(name: 'deskripsi_ahli')
   String? get deskripsiAhli;
+  @JsonKey(name: 'deskripsi_ahli')
+  set deskripsiAhli(String? value);
   @override
   @JsonKey(name: 'foto_profile')
   String? get fotoProfile;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value);
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get fotoProfileData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value);
   @override
   @JsonKey(name: 'user_id')
   int? get userId;
+  @JsonKey(name: 'user_id')
+  set userId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$TenagaAhliImplCopyWith<_$TenagaAhliImpl> get copyWith =>
@@ -2063,6 +2162,8 @@ abstract class _$$KaderKesehatanImplCopyWith<$Res>
       int? usia,
       @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
       @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'user_id') int? userId,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt});
@@ -2085,6 +2186,7 @@ class __$$KaderKesehatanImplCopyWithImpl<$Res>
     Object? usia = freezed,
     Object? wilayahBinaan = freezed,
     Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
     Object? userId = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -2114,6 +2216,10 @@ class __$$KaderKesehatanImplCopyWithImpl<$Res>
           ? _value.fotoProfile
           : fotoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value.fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       userId: freezed == userId
           ? _value.userId
           : userId // ignore: cast_nullable_to_non_nullable
@@ -2140,6 +2246,8 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
       this.usia,
       @JsonKey(name: 'wilayah_binaan') this.wilayahBinaan,
       @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.fotoProfileData,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
@@ -2151,62 +2259,40 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
 
   @override
   @JsonKey(name: 'id_kader')
-  final int? idKader;
+  int? idKader;
   @override
-  final String? nama;
+  String? nama;
   @override
   @JsonKey(name: 'no_hp')
-  final String? noHp;
+  String? noHp;
   @override
-  final int? usia;
+  int? usia;
   @override
   @JsonKey(name: 'wilayah_binaan')
-  final String? wilayahBinaan;
+  String? wilayahBinaan;
   @override
   @JsonKey(name: 'foto_profile')
-  final String? fotoProfile;
+  String? fotoProfile;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? fotoProfileData;
   @override
   @JsonKey(name: 'user_id')
-  final int? userId;
+  int? userId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
 
   @JsonKey(name: 'role')
   final String $type;
 
   @override
   String toString() {
-    return 'UserDetail.kaderKesehatan(idKader: $idKader, nama: $nama, noHp: $noHp, usia: $usia, wilayahBinaan: $wilayahBinaan, fotoProfile: $fotoProfile, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
+    return 'UserDetail.kaderKesehatan(idKader: $idKader, nama: $nama, noHp: $noHp, usia: $usia, wilayahBinaan: $wilayahBinaan, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$KaderKesehatanImpl &&
-            (identical(other.idKader, idKader) || other.idKader == idKader) &&
-            (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.noHp, noHp) || other.noHp == noHp) &&
-            (identical(other.usia, usia) || other.usia == usia) &&
-            (identical(other.wilayahBinaan, wilayahBinaan) ||
-                other.wilayahBinaan == wilayahBinaan) &&
-            (identical(other.fotoProfile, fotoProfile) ||
-                other.fotoProfile == fotoProfile) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(runtimeType, idKader, nama, noHp, usia,
-      wilayahBinaan, fotoProfile, userId, createdAt, updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -2223,9 +2309,11 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -2234,8 +2322,11 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -2244,7 +2335,7 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2260,6 +2351,8 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -2279,7 +2372,7 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
         guru,
   }) {
     return kaderKesehatan(idKader, nama, noHp, usia, wilayahBinaan, fotoProfile,
-        userId, createdAt, updatedAt);
+        fotoProfileData, userId, createdAt, updatedAt);
   }
 
   @override
@@ -2290,9 +2383,11 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2301,8 +2396,11 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2311,7 +2409,7 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2327,6 +2425,8 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2346,7 +2446,7 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
         guru,
   }) {
     return kaderKesehatan?.call(idKader, nama, noHp, usia, wilayahBinaan,
-        fotoProfile, userId, createdAt, updatedAt);
+        fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
   }
 
   @override
@@ -2357,9 +2457,11 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2368,8 +2470,11 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2378,7 +2483,7 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2394,6 +2499,8 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2415,7 +2522,7 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
   }) {
     if (kaderKesehatan != null) {
       return kaderKesehatan(idKader, nama, noHp, usia, wilayahBinaan,
-          fotoProfile, userId, createdAt, updatedAt);
+          fotoProfile, fotoProfileData, userId, createdAt, updatedAt);
     }
     return orElse();
   }
@@ -2470,42 +2577,64 @@ class _$KaderKesehatanImpl implements KaderKesehatan {
 
 abstract class KaderKesehatan implements UserDetail {
   factory KaderKesehatan(
-          {@JsonKey(name: 'id_kader') final int? idKader,
-          final String? nama,
-          @JsonKey(name: 'no_hp') final String? noHp,
-          final int? usia,
-          @JsonKey(name: 'wilayah_binaan') final String? wilayahBinaan,
-          @JsonKey(name: 'foto_profile') final String? fotoProfile,
-          @JsonKey(name: 'user_id') final int? userId,
-          @JsonKey(name: 'created_at') final DateTime? createdAt,
-          @JsonKey(name: 'updated_at') final DateTime? updatedAt}) =
-      _$KaderKesehatanImpl;
+      {@JsonKey(name: 'id_kader') int? idKader,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      int? usia,
+      @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt}) = _$KaderKesehatanImpl;
 
   factory KaderKesehatan.fromJson(Map<String, dynamic> json) =
       _$KaderKesehatanImpl.fromJson;
 
   @JsonKey(name: 'id_kader')
   int? get idKader;
+  @JsonKey(name: 'id_kader')
+  set idKader(int? value);
   @override
   String? get nama;
+  set nama(String? value);
   @override
   @JsonKey(name: 'no_hp')
   String? get noHp;
+  @JsonKey(name: 'no_hp')
+  set noHp(String? value);
   int? get usia;
+  set usia(int? value);
   @JsonKey(name: 'wilayah_binaan')
   String? get wilayahBinaan;
+  @JsonKey(name: 'wilayah_binaan')
+  set wilayahBinaan(String? value);
   @override
   @JsonKey(name: 'foto_profile')
   String? get fotoProfile;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value);
   @override
   @JsonKey(name: 'user_id')
   int? get userId;
+  @JsonKey(name: 'user_id')
+  set userId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$KaderKesehatanImplCopyWith<_$KaderKesehatanImpl> get copyWith =>
@@ -2580,7 +2709,7 @@ class __$$GuruImplCopyWithImpl<$Res>
           : fotoProfile // ignore: cast_nullable_to_non_nullable
               as String?,
       fotoProfileData: freezed == fotoProfileData
-          ? _value._fotoProfileData
+          ? _value.fotoProfileData
           : fotoProfileData // ignore: cast_nullable_to_non_nullable
               as List<int>?,
       userId: freezed == userId
@@ -2610,53 +2739,44 @@ class _$GuruImpl implements Guru {
       this.sekolah,
       @JsonKey(name: 'foto_profile') this.fotoProfile,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<int>? fotoProfileData,
+      this.fotoProfileData,
       @JsonKey(name: 'user_id') this.userId,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
       final String? $type})
-      : _fotoProfileData = fotoProfileData,
-        $type = $type ?? 'guru';
+      : $type = $type ?? 'guru';
 
   factory _$GuruImpl.fromJson(Map<String, dynamic> json) =>
       _$$GuruImplFromJson(json);
 
   @override
   @JsonKey(name: 'id_guru')
-  final int? idGuru;
+  int? idGuru;
   @override
-  final String? nama;
+  String? nama;
   @override
   @JsonKey(name: 'no_hp')
-  final String? noHp;
+  String? noHp;
   @override
   @JsonKey(name: 'jenis_guru')
-  final String? jenisGuru;
+  String? jenisGuru;
   @override
-  final String? sekolah;
+  String? sekolah;
   @override
   @JsonKey(name: 'foto_profile')
-  final String? fotoProfile;
-  final List<int>? _fotoProfileData;
+  String? fotoProfile;
   @override
   @JsonKey(includeFromJson: false, includeToJson: false)
-  List<int>? get fotoProfileData {
-    final value = _fotoProfileData;
-    if (value == null) return null;
-    if (_fotoProfileData is EqualUnmodifiableListView) return _fotoProfileData;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(value);
-  }
-
+  List<int>? fotoProfileData;
   @override
   @JsonKey(name: 'user_id')
-  final int? userId;
+  int? userId;
   @override
   @JsonKey(name: 'created_at')
-  final DateTime? createdAt;
+  DateTime? createdAt;
   @override
   @JsonKey(name: 'updated_at')
-  final DateTime? updatedAt;
+  DateTime? updatedAt;
 
   @JsonKey(name: 'role')
   final String $type;
@@ -2665,43 +2785,6 @@ class _$GuruImpl implements Guru {
   String toString() {
     return 'UserDetail.guru(idGuru: $idGuru, nama: $nama, noHp: $noHp, jenisGuru: $jenisGuru, sekolah: $sekolah, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, userId: $userId, createdAt: $createdAt, updatedAt: $updatedAt)';
   }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GuruImpl &&
-            (identical(other.idGuru, idGuru) || other.idGuru == idGuru) &&
-            (identical(other.nama, nama) || other.nama == nama) &&
-            (identical(other.noHp, noHp) || other.noHp == noHp) &&
-            (identical(other.jenisGuru, jenisGuru) ||
-                other.jenisGuru == jenisGuru) &&
-            (identical(other.sekolah, sekolah) || other.sekolah == sekolah) &&
-            (identical(other.fotoProfile, fotoProfile) ||
-                other.fotoProfile == fotoProfile) &&
-            const DeepCollectionEquality()
-                .equals(other._fotoProfileData, _fotoProfileData) &&
-            (identical(other.userId, userId) || other.userId == userId) &&
-            (identical(other.createdAt, createdAt) ||
-                other.createdAt == createdAt) &&
-            (identical(other.updatedAt, updatedAt) ||
-                other.updatedAt == updatedAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      idGuru,
-      nama,
-      noHp,
-      jenisGuru,
-      sekolah,
-      fotoProfile,
-      const DeepCollectionEquality().hash(_fotoProfileData),
-      userId,
-      createdAt,
-      updatedAt);
 
   @JsonKey(ignore: true)
   @override
@@ -2717,9 +2800,11 @@ class _$GuruImpl implements Guru {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -2728,8 +2813,11 @@ class _$GuruImpl implements Guru {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -2738,7 +2826,7 @@ class _$GuruImpl implements Guru {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2754,6 +2842,8 @@ class _$GuruImpl implements Guru {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)
@@ -2784,9 +2874,11 @@ class _$GuruImpl implements Guru {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2795,8 +2887,11 @@ class _$GuruImpl implements Guru {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2805,7 +2900,7 @@ class _$GuruImpl implements Guru {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2821,6 +2916,8 @@ class _$GuruImpl implements Guru {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2851,9 +2948,11 @@ class _$GuruImpl implements Guru {
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
             @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
-            @JsonKey(name: 'jenis_kelamin') String? jenisKelamin,
-            String? sekolah,
+            @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+            @JsonKey(includeIfNull: true) String? sekolah,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2862,8 +2961,11 @@ class _$GuruImpl implements Guru {
             @JsonKey(name: 'id_orangtua') int? idOrangTua,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'tingkat_sekolah_anak') String? tingkatSekolahAnak,
+            @JsonKey(name: 'tingkat_sekolah_anak')
+            SchoolLevel? tingkatSekolahAnak,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2872,7 +2974,7 @@ class _$GuruImpl implements Guru {
             @JsonKey(name: 'id_ahli') int? idAhli,
             String? nama,
             @JsonKey(name: 'no_hp') String? noHp,
-            @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+            @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
             @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
             @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2888,6 +2990,8 @@ class _$GuruImpl implements Guru {
             int? usia,
             @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
             @JsonKey(name: 'foto_profile') String? fotoProfile,
+            @JsonKey(includeFromJson: false, includeToJson: false)
+            List<int>? fotoProfileData,
             @JsonKey(name: 'user_id') int? userId,
             @JsonKey(name: 'created_at') DateTime? createdAt,
             @JsonKey(name: 'updated_at') DateTime? updatedAt)?
@@ -2964,44 +3068,63 @@ class _$GuruImpl implements Guru {
 
 abstract class Guru implements UserDetail {
   factory Guru(
-      {@JsonKey(name: 'id_guru') final int? idGuru,
-      final String? nama,
-      @JsonKey(name: 'no_hp') final String? noHp,
-      @JsonKey(name: 'jenis_guru') final String? jenisGuru,
-      final String? sekolah,
-      @JsonKey(name: 'foto_profile') final String? fotoProfile,
+      {@JsonKey(name: 'id_guru') int? idGuru,
+      String? nama,
+      @JsonKey(name: 'no_hp') String? noHp,
+      @JsonKey(name: 'jenis_guru') String? jenisGuru,
+      String? sekolah,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
       @JsonKey(includeFromJson: false, includeToJson: false)
-      final List<int>? fotoProfileData,
-      @JsonKey(name: 'user_id') final int? userId,
-      @JsonKey(name: 'created_at') final DateTime? createdAt,
-      @JsonKey(name: 'updated_at') final DateTime? updatedAt}) = _$GuruImpl;
+      List<int>? fotoProfileData,
+      @JsonKey(name: 'user_id') int? userId,
+      @JsonKey(name: 'created_at') DateTime? createdAt,
+      @JsonKey(name: 'updated_at') DateTime? updatedAt}) = _$GuruImpl;
 
   factory Guru.fromJson(Map<String, dynamic> json) = _$GuruImpl.fromJson;
 
   @JsonKey(name: 'id_guru')
   int? get idGuru;
+  @JsonKey(name: 'id_guru')
+  set idGuru(int? value);
   @override
   String? get nama;
+  set nama(String? value);
   @override
   @JsonKey(name: 'no_hp')
   String? get noHp;
+  @JsonKey(name: 'no_hp')
+  set noHp(String? value);
   @JsonKey(name: 'jenis_guru')
   String? get jenisGuru;
+  @JsonKey(name: 'jenis_guru')
+  set jenisGuru(String? value);
   String? get sekolah;
+  set sekolah(String? value);
   @override
   @JsonKey(name: 'foto_profile')
   String? get fotoProfile;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value);
+  @override
   @JsonKey(includeFromJson: false, includeToJson: false)
   List<int>? get fotoProfileData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value);
   @override
   @JsonKey(name: 'user_id')
   int? get userId;
+  @JsonKey(name: 'user_id')
+  set userId(int? value);
   @override
   @JsonKey(name: 'created_at')
   DateTime? get createdAt;
+  @JsonKey(name: 'created_at')
+  set createdAt(DateTime? value);
   @override
   @JsonKey(name: 'updated_at')
   DateTime? get updatedAt;
+  @JsonKey(name: 'updated_at')
+  set updatedAt(DateTime? value);
   @override
   @JsonKey(ignore: true)
   _$$GuruImplCopyWith<_$GuruImpl> get copyWith =>

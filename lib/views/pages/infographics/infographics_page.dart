@@ -26,7 +26,7 @@ class InfographicsPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
-                    MyApp.contentFavorite.add(InitializeEditInfografisData(favInfografis: favInfografis[index]));
+                    MyApp.contentFavoriteBloc.add(InitializeEditInfografisData(favInfografis: favInfografis[index]));
 
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsInfographicsPage(
@@ -85,7 +85,7 @@ class InfographicsPage extends StatelessWidget {
 
           return InkWell(
             onTap: () {
-              MyApp.contentFavorite.add(InitializeEditInfografisData(favInfografis: favInfografis[index]));
+              MyApp.contentFavoriteBloc.add(InitializeEditInfografisData(favInfografis: favInfografis[index]));
 
               Navigator.push(
                 context,
@@ -171,7 +171,7 @@ class InfographicsPage extends StatelessWidget {
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
               ),
             );
           }

@@ -42,7 +42,7 @@ class ContentFragment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MyApp.contentFavorite.state is ContentFavoriteInitial) MyApp.contentFavorite.add(InitializeContentFavoriteData());
+    if (MyApp.contentFavoriteBloc.state is ContentFavoriteInitial) MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData());
 
     return Scaffold(
       appBar: AppBar(
@@ -147,7 +147,7 @@ class ContentFragment extends StatelessWidget {
                   );
                 } else if (stateContentFavorite is ContentFavoriteError) {
                   return ErrorOccuredButton(
-                    onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                    onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
                   );
                 }
 

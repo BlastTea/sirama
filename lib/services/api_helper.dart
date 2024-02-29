@@ -97,11 +97,7 @@ class ApiHelper {
     await sharedPref.setString(_keyToken, token);
     await sharedPref.setString(_keyCurrentUser, jsonEncode(currentUser!.toJson()));
 
-    response = await get(
-      '/api/me',
-    );
-
-    currentUser?.userDetail = UserDetail.fromJson(response.data['data'][0]);
+    await getMe();
   }
 
   static Future<void> signOut() async {
@@ -130,6 +126,22 @@ class ApiHelper {
     if (sharedPref.getString(_keyToken) == null) return;
 
     currentUser = User.fromJson(jsonDecode(sharedPref.getString(_keyCurrentUser)!));
+
+    await getMe();
+  }
+
+  static Future<void> getMe() async {
+    Response response = await get('/api/me');
+
+    currentUser?.userDetail = UserDetail.fromJson(response.data['data'][0]);
+
+    if (currentUser?.userDetail?.fotoProfile != null) {
+      try {
+        currentUser?.userDetail?.fotoProfileData = await getBytesUri(Uri.parse('$url/storage/profile/${currentUser?.userDetail?.fotoProfile}')).then((value) => value.data);
+      } catch (e) {
+        // Ignored, really
+      }
+    }
   }
 
   static Future<Response<Uint8List>> getBytesUri(Uri uri) {

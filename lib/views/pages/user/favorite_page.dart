@@ -5,7 +5,7 @@ class FavoritePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (MyApp.contentFavorite.state is ContentFavoriteInitial) MyApp.contentFavorite.add(InitializeContentFavoriteData());
+    if (MyApp.contentFavoriteBloc.state is ContentFavoriteInitial) MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData());
 
     return BlocBuilder<ContentFavoriteBloc, ContentFavoriteState>(
       builder: (context, stateFavorite) {
@@ -56,7 +56,7 @@ class FavoritePage extends StatelessWidget {
               centerTitle: true,
             ),
             body: ErrorOccuredButton(
-              onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+              onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
             ),
           );
         }

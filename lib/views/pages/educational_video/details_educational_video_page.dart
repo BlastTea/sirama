@@ -82,7 +82,7 @@ class _DetailsEducationalVideoPageState extends State<DetailsEducationalVideoPag
                                 children: [
                                   Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                   IconButton(
-                                    onPressed: () => MyApp.contentFavorite.add(ToggleVideoEdukasiFavoritePressed()),
+                                    onPressed: () => MyApp.contentFavoriteBloc.add(ToggleVideoEdukasiFavoritePressed()),
                                     icon: Icon((stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                   ),
                                   Text(stateContentFavorite.currentVideoEdukasi?.videoEdukasi?.totalLikes?.toString() ?? '0'),

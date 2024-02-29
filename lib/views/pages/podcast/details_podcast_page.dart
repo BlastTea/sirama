@@ -95,7 +95,7 @@ class DetailsPodcastPageState extends State<DetailsPodcastPage> {
                                   child: Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                 ),
                                 IconButton(
-                                  onPressed: () => MyApp.contentFavorite.add(TogglePodcastFavoritePressed()),
+                                  onPressed: () => MyApp.contentFavoriteBloc.add(TogglePodcastFavoritePressed()),
                                   icon: Icon(
                                     (stateContentFavorite.currentPodcast?.podcast?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border,
                                   ),
