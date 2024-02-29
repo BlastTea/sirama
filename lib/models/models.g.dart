@@ -409,7 +409,7 @@ Map<String, dynamic> _$$SkrinningImplToJson(_$SkrinningImpl instance) =>
 _$DetailSkrinningImpl _$$DetailSkrinningImplFromJson(
         Map<String, dynamic> json) =>
     _$DetailSkrinningImpl(
-      idBagianSkrinning: json['id_bagian_skrinning'] as int?,
+      idBagianSkrinning: json['id_bagian_skrining'] as int?,
       namaBagianSkrinning: json['nama_bagian'] as String?,
       soalJawab: (json['soal_jawab'] as List<dynamic>?)
           ?.map((e) => SoalJawab.fromJson(e as Map<String, dynamic>))
@@ -422,7 +422,7 @@ _$DetailSkrinningImpl _$$DetailSkrinningImplFromJson(
 Map<String, dynamic> _$$DetailSkrinningImplToJson(
         _$DetailSkrinningImpl instance) =>
     <String, dynamic>{
-      'id_bagian_skrinning': instance.idBagianSkrinning,
+      'id_bagian_skrining': instance.idBagianSkrinning,
       'nama_bagian': instance.namaBagianSkrinning,
       'soal_jawab': instance.soalJawab,
       'skrinUser': instance.skrinUser,
@@ -564,6 +564,21 @@ Map<String, dynamic> _$$SoalJawabRiwayatImplToJson(
       'soal': instance.soal,
       'jawaban': instance.jawaban,
       'poin_jawaban': instance.poinJawaban,
+    };
+
+_$HasilSkrinningImpl _$$HasilSkrinningImplFromJson(Map<String, dynamic> json) =>
+    _$HasilSkrinningImpl(
+      jenisHasil: json['jenis_hasil'] as String?,
+      deskripsi: json['deskripsi'] as String?,
+      poin: json['poin'] as String?,
+    );
+
+Map<String, dynamic> _$$HasilSkrinningImplToJson(
+        _$HasilSkrinningImpl instance) =>
+    <String, dynamic>{
+      'jenis_hasil': instance.jenisHasil,
+      'deskripsi': instance.deskripsi,
+      'poin': instance.poin,
     };
 
 _$RoomChatMeImpl _$$RoomChatMeImplFromJson(Map<String, dynamic> json) =>

@@ -105,9 +105,11 @@ class HistoryScreeningPage extends StatelessWidget {
   }
 
   Widget _buildErrorUI() {
-    return const Scaffold(
-      body: Center(
-        child: Text('Failed to load screening history. Please try again.'),
+    return Scaffold(
+      body: ErrorOccuredButton(
+        onRetryPressed: () {
+          MyApp.skrinningBloc.add(InitializeSkrinningData());
+        },
       ),
     );
   }
