@@ -27,7 +27,7 @@ class EducationalVideoPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
-                    MyApp.contentFavorite.add(InitializeEditVideoEdukasiData(favVideoEdukasi: favVideoEdukasis[index]));
+                    MyApp.contentFavoriteBloc.add(InitializeEditVideoEdukasiData(favVideoEdukasi: favVideoEdukasis[index]));
 
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsEducationalVideoPage(
@@ -130,7 +130,7 @@ class EducationalVideoPage extends StatelessWidget {
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
               ),
             );
           }

@@ -94,7 +94,7 @@ class _HomeFragmentState extends State<HomeFragment> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: ClipOval(
-                        child: Image.asset('assets/person.png', width: 50),
+                        child: currentUser?.userDetail?.fotoProfileData != null ? Image.memory(Uint8List.fromList(currentUser!.userDetail!.fotoProfileData!), width: 50.0) : Image.asset('assets/user.png', width: 50),
                         //45:00 min
                       ),
                     ),

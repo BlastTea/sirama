@@ -10,16 +10,21 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
       try {
         _rooms = await ApiHelper.get('/api/chatme').then((value) => (value.data['data'] as List).map((e) => RoomChatMe.fromJson(e)).toList());
         await for (RoomChatMe room in Stream.fromIterable(_rooms)) {
-          List<RiwayatChatMe> riwayats = await ApiHelper.get('/api/chatme/${room.idRoomChatMe}').then((value) => (value.data['data'] as List).map((e) => RiwayatChatMe.fromJson(e)).toList());
-          room.riwayats = riwayats.reversed.toList();
+          try {
+            List<RiwayatChatMe> riwayats = await ApiHelper.get('/api/chatme/${room.idRoomChatMe}').then((value) => (value.data['data'] as List).map((e) => RiwayatChatMe.fromJson(e)).toList());
+            room.riwayats = riwayats.reversed.toList();
+          } catch (e) {
+            await ApiHelper.handleError(e);
+          }
         }
       } catch (e) {
         event.completer?.complete(false);
         emit(ChatMeError());
+        ApiHelper.handleError(e);
         return;
       }
 
-      _textControllerMessage.text = longLorem;
+      _textControllerMessage.clear();
 
       _messageBubbleList = MessageBubbleList.fromRoom(rooms: _rooms);
       event.completer?.complete(true);
@@ -33,12 +38,13 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
       try {
         riwayatChatMe = await ApiHelper.post('/api/chatme/${currentUser?.role == UserRole.remaja ? _rooms[event.index].guruUserId : _rooms[event.index].remajaUserId}', body: {'pesan': _textControllerMessage.text.trim()}).then((value) => RiwayatChatMe.fromJson(value.data['data']));
       } catch (e) {
+        ApiHelper.handleError(e);
         return;
       }
 
       _rooms[event.index].riwayats!.insert(0, riwayatChatMe);
 
-      _textControllerMessage.text = '';
+      _textControllerMessage.clear();
 
       _messageBubbleList = MessageBubbleList.fromRoom(rooms: _rooms);
 

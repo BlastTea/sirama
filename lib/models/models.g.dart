@@ -17,6 +17,9 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       updatedAt: json['updated_at'] == null
           ? null
           : DateTime.parse(json['updated_at'] as String),
+      userDetail: json['userDetail'] == null
+          ? null
+          : UserDetail.fromJson(json['userDetail'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
@@ -27,6 +30,7 @@ Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
       'role': _$UserRoleEnumMap[instance.role],
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
+      'userDetail': instance.userDetail,
     };
 
 const _$UserRoleEnumMap = {
@@ -37,6 +41,186 @@ const _$UserRoleEnumMap = {
   UserRole.guru: 'guru',
   UserRole.superAdmin: 'superadmin',
 };
+
+_$RemajaImpl _$$RemajaImplFromJson(Map<String, dynamic> json) => _$RemajaImpl(
+      idRemaja: json['id_remaja'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      tglLahir: json['tgl_lahir'] == null
+          ? null
+          : DateTime.parse(json['tgl_lahir'] as String),
+      jenisKelamin: $enumDecodeNullable(_$GenderEnumMap, json['jenis_kelamin']),
+      sekolah: json['sekolah'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      $type: json['role'] as String?,
+    );
+
+Map<String, dynamic> _$$RemajaImplToJson(_$RemajaImpl instance) =>
+    <String, dynamic>{
+      'id_remaja': instance.idRemaja,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'tgl_lahir': instance.tglLahir?.toIso8601String(),
+      'jenis_kelamin': _$GenderEnumMap[instance.jenisKelamin],
+      'sekolah': instance.sekolah,
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'role': instance.$type,
+    };
+
+const _$GenderEnumMap = {
+  Gender.lakiLaki: 'L',
+  Gender.perempuan: 'P',
+};
+
+_$OrangTuaImpl _$$OrangTuaImplFromJson(Map<String, dynamic> json) =>
+    _$OrangTuaImpl(
+      idOrangTua: json['id_orangtua'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      tingkatSekolahAnak: $enumDecodeNullable(
+          _$SchoolLevelEnumMap, json['tingkat_sekolah_anak']),
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      $type: json['role'] as String?,
+    );
+
+Map<String, dynamic> _$$OrangTuaImplToJson(_$OrangTuaImpl instance) =>
+    <String, dynamic>{
+      'id_orangtua': instance.idOrangTua,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'tingkat_sekolah_anak': _$SchoolLevelEnumMap[instance.tingkatSekolahAnak],
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'role': instance.$type,
+    };
+
+const _$SchoolLevelEnumMap = {
+  SchoolLevel.sd: 'SD',
+  SchoolLevel.smp: 'SMP',
+  SchoolLevel.sma: 'SMA',
+};
+
+_$TenagaAhliImpl _$$TenagaAhliImplFromJson(Map<String, dynamic> json) =>
+    _$TenagaAhliImpl(
+      idAhli: json['id_ahli'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      jenisAhli: $enumDecodeNullable(_$ExpertsTypeEnumMap, json['jenis_ahli']),
+      deskripsiAhli: json['deskripsi_ahli'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      $type: json['role'] as String?,
+    );
+
+Map<String, dynamic> _$$TenagaAhliImplToJson(_$TenagaAhliImpl instance) =>
+    <String, dynamic>{
+      'id_ahli': instance.idAhli,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'jenis_ahli': _$ExpertsTypeEnumMap[instance.jenisAhli],
+      'deskripsi_ahli': instance.deskripsiAhli,
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'role': instance.$type,
+    };
+
+const _$ExpertsTypeEnumMap = {
+  ExpertsType.spesialisKeperawatanJiwa: 'Spesialis Keperawatan Jiwa',
+  ExpertsType.spesialisKeperawatanAnak: 'Spesialis Keperawatan Anak',
+  ExpertsType.psikolog: 'Psikolog',
+  ExpertsType.psikiater: 'Psikiater',
+};
+
+_$KaderKesehatanImpl _$$KaderKesehatanImplFromJson(Map<String, dynamic> json) =>
+    _$KaderKesehatanImpl(
+      idKader: json['id_kader'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      usia: json['usia'] as int?,
+      wilayahBinaan: json['wilayah_binaan'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      $type: json['role'] as String?,
+    );
+
+Map<String, dynamic> _$$KaderKesehatanImplToJson(
+        _$KaderKesehatanImpl instance) =>
+    <String, dynamic>{
+      'id_kader': instance.idKader,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'usia': instance.usia,
+      'wilayah_binaan': instance.wilayahBinaan,
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'role': instance.$type,
+    };
+
+_$GuruImpl _$$GuruImplFromJson(Map<String, dynamic> json) => _$GuruImpl(
+      idGuru: json['id_guru'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      jenisGuru: json['jenis_guru'] as String?,
+      sekolah: json['sekolah'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      createdAt: json['created_at'] == null
+          ? null
+          : DateTime.parse(json['created_at'] as String),
+      updatedAt: json['updated_at'] == null
+          ? null
+          : DateTime.parse(json['updated_at'] as String),
+      $type: json['role'] as String?,
+    );
+
+Map<String, dynamic> _$$GuruImplToJson(_$GuruImpl instance) =>
+    <String, dynamic>{
+      'id_guru': instance.idGuru,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'jenis_guru': instance.jenisGuru,
+      'sekolah': instance.sekolah,
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'created_at': instance.createdAt?.toIso8601String(),
+      'updated_at': instance.updatedAt?.toIso8601String(),
+      'role': instance.$type,
+    };
 
 _$TopikPertanyaanImpl _$$TopikPertanyaanImplFromJson(
         Map<String, dynamic> json) =>

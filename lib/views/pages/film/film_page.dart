@@ -27,7 +27,7 @@ class FilmPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
-                    MyApp.contentFavorite.add(InitializeEditFilmData(favFilm: favFilms[index]));
+                    MyApp.contentFavoriteBloc.add(InitializeEditFilmData(favFilm: favFilms[index]));
 
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsFilmPage(
@@ -130,7 +130,7 @@ class FilmPage extends StatelessWidget {
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
               ),
             );
           }

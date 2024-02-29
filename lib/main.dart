@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/blocs/blocs.dart';
@@ -36,7 +37,8 @@ class MyApp extends StatelessWidget {
   static AskTheExpertBloc askTheExpertBloc = AskTheExpertBloc();
   static QuoteBloc quoteBloc = QuoteBloc();
   static SkrinningBloc skrinningBloc = SkrinningBloc();
-  static ContentFavoriteBloc contentFavorite = ContentFavoriteBloc();
+  static ContentFavoriteBloc contentFavoriteBloc = ContentFavoriteBloc();
+  static ProfileBloc profileBloc = ProfileBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -50,15 +52,28 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => askTheExpertBloc),
         BlocProvider(create: (context) => quoteBloc),
         BlocProvider(create: (context) => skrinningBloc),
-        BlocProvider(create: (context) => contentFavorite),
+        BlocProvider(create: (context) => contentFavoriteBloc),
+        BlocProvider(create: (context) => profileBloc),
       ],
       child: MediaQuery(
         data: MediaQuery.of(context).copyWith(
           textScaler: TextScaler.noScaling,
         ),
         child: MWidgetTheme(
-          dialogTheme: const MWidgetDialogThemeData(
+          dialogTheme: MWidgetDialogThemeData(
             primaryFilledButton: true,
+            onRenderMessage: (context, message) {
+              if (message.contains('<!doctype html>') || message.contains('<!DOCTYPE html>')) {
+                return SizedBox.fromSize(
+                  size: Size.square(MediaQuery.sizeOf(context).width - 32.0),
+                  child: SingleChildScrollView(
+                    child: Html(data: message),
+                  ),
+                );
+              }
+
+              return SelectableText(message);
+            },
           ),
           child: MaterialApp(
             routes: {

@@ -2,8 +2,7 @@ part of '../blocs.dart';
 
 class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
   SkrinningBloc() : super(SkrinningInitial()) {
-    on<SetSkrinningState>(
-        (event, emit) => emit(event.state ?? _skrinningDataLoaded));
+    on<SetSkrinningState>((event, emit) => emit(event.state ?? _skrinningDataLoaded));
 
     on<SetSkrinningToInitial>((event, emit) => emit(SkrinningInitial()));
 
@@ -19,6 +18,7 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
                 .toList());
       } catch (e) {
         emit(SkrinningError());
+        ApiHelper.handleError(e);
         return;
       }
       emit(_skrinningDataLoaded);
@@ -61,6 +61,7 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
         emit(SoalJawabItemCountLoaded(soalJawaban.length));
       } catch (e) {
         emit(SkrinningError());
+        ApiHelper.handleError(e);
       }
     });
 

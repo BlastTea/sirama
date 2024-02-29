@@ -27,7 +27,7 @@ class PodcastPage extends StatelessWidget {
 
                 return InkWell(
                   onTap: () {
-                    MyApp.contentFavorite.add(InitializeEditPodcastData(favPodcast: favPodcasts[index]));
+                    MyApp.contentFavoriteBloc.add(InitializeEditPodcastData(favPodcast: favPodcasts[index]));
 
                     Route route = MaterialPageRoute(
                       builder: (context) => DetailsPodcastPage(
@@ -148,7 +148,7 @@ class PodcastPage extends StatelessWidget {
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
               ),
             );
           }

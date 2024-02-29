@@ -37,3 +37,7 @@ part 'skrinning_bloc/skrinning_state.dart';
 part 'content_favorite_bloc/content_favorite_bloc.dart';
 part 'content_favorite_bloc/content_favorite_event.dart';
 part 'content_favorite_bloc/content_favorite_state.dart';
+
+part 'profile_bloc/profile_bloc.dart';
+part 'profile_bloc/profile_event.dart';
+part 'profile_bloc/profile_state.dart';

@@ -78,7 +78,7 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                                   Row(
                                     children: [
                                       IconButton(
-                                        onPressed: () => MyApp.contentFavorite.add(ToggleInfografisFavoritePressed()),
+                                        onPressed: () => MyApp.contentFavoriteBloc.add(ToggleInfografisFavoritePressed()),
                                         icon: Icon((stateContentFavorite.currentInfografis?.infografis?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                       ),
                                       Text(stateContentFavorite.currentInfografis?.infografis?.totalLikes?.toString() ?? '0'),
@@ -122,7 +122,7 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                 centerTitle: true,
               ),
               body: ErrorOccuredButton(
-                onRetryPressed: () => MyApp.contentFavorite.add(InitializeContentFavoriteData()),
+                onRetryPressed: () => MyApp.contentFavoriteBloc.add(InitializeContentFavoriteData()),
               ),
             );
           }

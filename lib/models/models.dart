@@ -16,18 +16,97 @@ int? _parseInt(dynamic data) => data is String? && data != null
         ? data
         : null;
 
-@freezed
+@unfreezed
 class User with _$User {
-  const factory User({
+  factory User({
     @JsonKey(name: 'id_user') int? idUser,
     String? username,
     String? email,
     UserRole? role,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
+    UserDetail? userDetail,
   }) = _User;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+}
+
+@Freezed(
+  unionKey: 'role',
+  equal: false,
+  addImplicitFinal: false,
+  makeCollectionsUnmodifiable: false,
+)
+sealed class UserDetail with _$UserDetail {
+  factory UserDetail.remaja({
+    @JsonKey(name: 'id_remaja') int? idRemaja,
+    String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'tgl_lahir') DateTime? tglLahir,
+    @JsonKey(name: 'jenis_kelamin') Gender? jenisKelamin,
+    String? sekolah,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = Remaja;
+
+  @FreezedUnionValue('orangtua')
+  factory UserDetail.orangTua({
+    @JsonKey(name: 'id_orangtua') int? idOrangTua,
+    String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'tingkat_sekolah_anak') SchoolLevel? tingkatSekolahAnak,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = OrangTua;
+
+  @FreezedUnionValue('ahli')
+  factory UserDetail.tenagaAhli({
+    @JsonKey(name: 'id_ahli') int? idAhli,
+    String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'jenis_ahli') ExpertsType? jenisAhli,
+    @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = TenagaAhli;
+
+  @FreezedUnionValue('kader')
+  factory UserDetail.kaderKesehatan({
+    @JsonKey(name: 'id_kader') int? idKader,
+    String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    int? usia,
+    @JsonKey(name: 'wilayah_binaan') String? wilayahBinaan,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = KaderKesehatan;
+
+  factory UserDetail.guru({
+    @JsonKey(name: 'id_guru') int? idGuru,
+    String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'jenis_guru') String? jenisGuru,
+    String? sekolah,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
+    @JsonKey(name: 'user_id') int? userId,
+    @JsonKey(name: 'created_at') DateTime? createdAt,
+    @JsonKey(name: 'updated_at') DateTime? updatedAt,
+  }) = Guru;
+
+  factory UserDetail.fromJson(Map<String, dynamic> json) => _$UserDetailFromJson(json);
 }
 
 @freezed
