@@ -26,6 +26,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
       } catch (e) {
         event.completer?.complete(false);
         emit(AskTheExpertError());
+        ApiHelper.handleError(e);
         return;
       }
 
@@ -68,6 +69,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
       } catch (e) {
         NavigationHelper.back();
         emit(_askTheExpertDataLoaded);
+        ApiHelper.handleError(e);
         return;
       }
 

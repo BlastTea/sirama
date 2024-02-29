@@ -28,7 +28,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       } catch (e) {
         _isSigningIn = false;
         emit(_authenticationDataLoaded);
-        return;
+        bool isError = await ApiHelper.handleError(e);
+        if (isError) return;
       }
 
       _isSigningIn = false;
@@ -43,8 +44,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         ),
       );
 
-      _textControllerUsernameSignIn.text = '';
-      _textControllerPasswordSignIn.text = '';
+      _textControllerUsernameSignIn.clear();
+      _textControllerPasswordSignIn.clear();
     });
 
     on<SetSignUpRole>((event, emit) {
@@ -139,6 +140,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         );
       } catch (e) {
         NavigationHelper.back();
+        ApiHelper.handleError(e);
         return;
       }
 
@@ -150,13 +152,13 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
       _isSigningIn = false;
 
-      _textControllerUsernameSignUp.text = '';
-      _textControllerEmailSignUp.text = '';
-      _textControllerPasswordSignUp.text = '';
-      _textControllerNameSignUp.text = '';
-      _textControllerPhoneNumberSignUp.text = '';
-      _textControllerSchoolSignUp.text = '';
-      _textControllerDescriptionSignUp.text = '';
+      _textControllerUsernameSignUp.clear();
+      _textControllerEmailSignUp.clear();
+      _textControllerPasswordSignUp.clear();
+      _textControllerNameSignUp.clear();
+      _textControllerPhoneNumberSignUp.clear();
+      _textControllerSchoolSignUp.clear();
+      _textControllerDescriptionSignUp.clear();
 
       _role = UserRole.values.first;
 

@@ -14,6 +14,8 @@ class SkrinningDataLoaded extends SkrinningState {
     required this.detailskrinning,
     required this.detailriwayatskrinning,
     required this.soalJawaban,
+    required this.hasilskrinning,
+    required this.skrinuser,
   });
 
   final List<Skrinning> skrinnings;
@@ -21,6 +23,8 @@ class SkrinningDataLoaded extends SkrinningState {
   final List<DetailSkrinning> detailskrinning;
   final List<DetailRiwayatSkrinning> detailriwayatskrinning;
   final List<SoalJawab> soalJawaban;
+  final List<HasilSkrinning> hasilskrinning;
+  final List<SkrinUser> skrinuser;
 }
 
 class SoalJawabItemCountLoaded extends SkrinningState {

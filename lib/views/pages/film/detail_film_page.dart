@@ -86,7 +86,7 @@ class DetailsFilmPageState extends State<DetailsFilmPage> {
                                   child: Text('Disukai', style: Config.textStyleBodyMedium.copyWith(color: Colors.black)),
                                 ),
                                 IconButton(
-                                  onPressed: () => MyApp.contentFavorite.add(ToggleFilmFavoritePressed()),
+                                  onPressed: () => MyApp.contentFavoriteBloc.add(ToggleFilmFavoritePressed()),
                                   icon: Icon((stateContentFavorite.currentFilm?.film?.isFavorited ?? false) ? Icons.favorite : Icons.favorite_border),
                                 ),
                                 Text(stateContentFavorite.currentFilm?.film?.totalLikes?.toString() ?? '0'),

@@ -1,9 +1,10 @@
 part of '../pages.dart';
 
 class MainScreeningPage extends StatefulWidget {
-  const MainScreeningPage({super.key, this.idSkrinning});
+  const MainScreeningPage({super.key, this.idSkrinning, this.idBagianSkrinning,});
 
   final int? idSkrinning;
+  final int? idBagianSkrinning;
 
   @override
   State<MainScreeningPage> createState() => _MainScreeningPageState();
@@ -26,8 +27,14 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
+          final sortedSelectedAnswers = List.generate(
+              stateSkrinning
+                  .detailskrinning[currentPartIndex].soalJawab!.length,
+              (index) => selectedAnswers[index] ?? 0,
+            );
           if (kDebugMode) {
-            print(selectedAnswers);
+            print(sortedSelectedAnswers);
+            print(stateSkrinning.detailskrinning[currentPartIndex]);
           }
           return Scaffold(
             appBar: AppBar(
@@ -57,23 +64,6 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                         subtitle: Text(shortLorem),
                       ),
                       const SizedBox(height: 20),
-                      RichText(
-                        textAlign: TextAlign.center,
-                        text: const TextSpan(
-                          style: TextStyle(fontSize: 14.0, color: Colors.black),
-                          children: <TextSpan>[
-                            TextSpan(
-                              text: 'Penting! ',
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            ),
-                            TextSpan(
-                              text:
-                                  'Bagaimana mereka merundungmu? (Beri centang pada seberapa sering kamu mengalami perundungan)?',
-                            ),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 20),
                       ListView.builder(
                         shrinkWrap: true,
                         primary: false,
@@ -85,6 +75,25 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              RichText(
+                                textAlign: TextAlign.center,
+                                text: TextSpan(
+                                  style: const TextStyle(
+                                      fontSize: 14.0, color: Colors.black),
+                                  children: <TextSpan>[
+                                    const TextSpan(
+                                      text: 'Penting! ',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    TextSpan(
+                                      text: stateSkrinning
+                                          .skrinnings[index].deskripsiSkrinning,
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              const SizedBox(height: 20),
                               Padding(
                                 padding:
                                     const EdgeInsets.symmetric(horizontal: 5),
@@ -119,11 +128,11 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                             title: Text(jawaban.jawaban ?? ''),
                                             value: jawaban.idJawabanSkrinning,
                                             groupValue:
-                                                selectedAnswers[questionNumber],
+                                                selectedAnswers[questionNumber -1],
                                             onChanged: (value) {
                                               setState(() {
                                                 selectedAnswers[
-                                                    questionNumber] = value!;
+                                                    questionNumber -1] = value!;
                                               });
                                             },
                                           );
@@ -139,42 +148,52 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                       ),
                       MyFilledButton(
                         onPressed: () {
-                          // ignore: unnecessary_type_check
-                          if (stateSkrinning is SkrinningDataLoaded) {
+                          if (currentPartIndex <
+                              stateSkrinning.detailskrinning.length - 1) {
+                            MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
+                              detailskrinning: stateSkrinning
+                                  .detailskrinning[currentPartIndex],
+                              selectedAnswers: List.generate(
+                                stateSkrinning.detailskrinning[currentPartIndex]
+                                    .soalJawab!.length,
+                                (index) => selectedAnswers[index] ?? 0,
+                              ),
+                            ));
                             setState(() {
-                              if (currentPartIndex <
-                                  stateSkrinning.detailskrinning.length - 1) {
-                                currentPartIndex++;
-                              } else {
-                                showDialog(
-                                  context: context,
-                                  builder: (_) => AlertDialog(
-                                    title: const Text('Skrinning Selesai'),
-                                    content: const Text(
-                                        'Anda telah menyelesaikan proses skrinning.'),
-                                    actions: [
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.of(context).pop();
-                                        },
-                                        child: const Text('Oke'),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              }
-                              MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
-                                detailskrinning: stateSkrinning
-                                    .detailskrinning[currentPartIndex],
-                                selectedAnswers:
-                                    selectedAnswers.values.toList(),
-                              ));
+                              currentPartIndex++;
+                              selectedAnswers.clear();
                             });
+                          } else {
+                            showDialog(
+                              context: context,
+                              builder: (_) => AlertDialog(
+                                title: const Text('Skrinning Selesai'),
+                                content: const Text(
+                                    'Anda telah menyelesaikan proses skrinning.'),
+                                actions: [
+                                  TextButton(
+                                    onPressed: () {
+                                      Navigator.of(context).pop();
+                                    },
+                                    child: const Text('Oke'),
+                                  ),
+                                ],
+                              ),
+                            );
+                            MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
+                              detailskrinning: stateSkrinning
+                                  .detailskrinning[currentPartIndex],
+                              selectedAnswers: List.generate(
+                                stateSkrinning.detailskrinning[currentPartIndex]
+                                    .soalJawab!.length,
+                                (index) => selectedAnswers[index] ?? 0,
+                              ),
+                            ));
                           }
                         },
                         labelText: currentPartIndex <
                                 stateSkrinning.detailskrinning.length - 1
-                            ? 'Lanjutkan'
+                            ? 'Kirim Jawaban'
                             : 'Selesai',
                       ),
                     ],
@@ -201,9 +220,11 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
   }
 
   Widget _buildErrorUI() {
-    return const Scaffold(
-      body: Center(
-        child: Text('Failed to load screening history. Please try again.'),
+    return Scaffold(
+      body: ErrorOccuredButton(
+        onRetryPressed: () {
+          MyApp.skrinningBloc.add(InitializeSkrinningData());
+        },
       ),
     );
   }

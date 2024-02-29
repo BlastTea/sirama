@@ -19,25 +19,10 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
                 .toList());
       } catch (e) {
         emit(SkrinningError());
+        ApiHelper.handleError(e);
         return;
       }
       emit(_skrinningDataLoaded);
-    });
-
-    on<GetDetailSkrinning>((event, emit) async {
-      try {
-        final idSkrinning = event.skrinning.idSkrinning;
-        detailskrinning =
-            await ApiHelper.get('/api/detailskrinning/$idSkrinning').then(
-                (value) => (value.data['data'] as List)
-                    .map((e) => DetailSkrinning.fromJson(e))
-                    .toList());
-
-        emit(_skrinningDataLoaded);
-      } catch (e) {
-        emit(SkrinningError());
-        return;
-      }
     });
 
     on<GetDetailRiwayatSkrinning>((event, emit) async {
@@ -56,37 +41,71 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
       }
     });
 
+    on<GetDetailSkrinning>((event, emit) async {
+      try {
+        final idSkrinning = event.skrinning.idSkrinning;
+
+        Response response =
+            await ApiHelper.get('/api/detailskrinning/$idSkrinning');
+        detailskrinning = (response.data['data'] as List)
+            .map((e) => DetailSkrinning.fromJson(e))
+            .toList();
+        skrinuser = (response.data['skrin_user'] as List)
+            .map((e) => SkrinUser.fromJson(e))
+            .toList();
+        emit(_skrinningDataLoaded);
+      } catch (e) {
+        emit(SkrinningError());
+        return;
+      }
+    });
+
     on<GetSoalJawabItem>((event, emit) {
       try {
         final soalJawaban = event.detailSkrinning.soalJawab ?? [];
         emit(SoalJawabItemCountLoaded(soalJawaban.length));
       } catch (e) {
         emit(SkrinningError());
+        ApiHelper.handleError(e);
       }
     });
 
     on<SubmitJawabanSkrinning>((event, emit) async {
       try {
-        final idBagSkrinning = event.detailskrinning?.idBagianSkrinning;
-        final idSkrinUser = event.detailskrinning?.skrinUser!.idSkrinUser;
+        final idBagSkrinning = event.detailskrinning.idBagianSkrinning;
         final selectedAnswers = event.selectedAnswers;
-        final jawabanCount = selectedAnswers.length;
+
+        int? skrinUserId;
+        if (skrinuser.isNotEmpty) {
+          skrinUserId = skrinuser[0].idSkrinUser;
+        }
 
         Map<String, dynamic> requestBody = {
           'id_bagian_skrining': idBagSkrinning,
-          'skrin_user': idSkrinUser,
+          'skrin_user': skrinUserId,
         };
 
-        for (int i = 0; i < jawabanCount; i++) {
+        for (int i = 0; i < selectedAnswers.length; i++) {
           requestBody['id_jawaban_skrinning[$i]'] = selectedAnswers[i];
+        }
+
+        if (kDebugMode) {
+          print('Data yang diposting:');
+          print(requestBody);
         }
 
         await ApiHelper.post('/api/submitskrinning', body: requestBody);
       } catch (e) {
+        if (kDebugMode) {
+          print(SkrinningError());
+          print('sudah kesini');
+        }
         emit(SkrinningError());
       }
     });
   }
+
+  List<HasilSkrinning> hasilskrinning = [];
 
   List<Skrinning> skrinning = [];
 
@@ -96,11 +115,15 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
 
   List<DetailSkrinning> detailskrinning = [];
 
+  List<SkrinUser> skrinuser = [];
+
   SkrinningDataLoaded get _skrinningDataLoaded => SkrinningDataLoaded(
         skrinnings: skrinning,
         riwayatskrinning: riwayatskrinning,
         detailskrinning: detailskrinning,
         detailriwayatskrinning: detailriwayatskrinning,
         soalJawaban: const [],
+        hasilskrinning: hasilskrinning,
+        skrinuser: skrinuser,
       );
 }

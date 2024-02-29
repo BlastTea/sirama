@@ -1,9 +1,9 @@
 part of '../pages.dart';
 
 class DetailRiwayatSkrinningPage extends StatefulWidget {
-  const DetailRiwayatSkrinningPage({super.key, required this.idBagSkrinUser});
+  const DetailRiwayatSkrinningPage({super.key, this.idBagSkrinUser});
 
-  final int idBagSkrinUser;
+  final int? idBagSkrinUser;
 
   @override
   State<DetailRiwayatSkrinningPage> createState() =>

@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:dio/dio.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:m_widget/m_widget.dart';
@@ -35,3 +37,7 @@ part 'skrinning_bloc/skrinning_state.dart';
 part 'content_favorite_bloc/content_favorite_bloc.dart';
 part 'content_favorite_bloc/content_favorite_event.dart';
 part 'content_favorite_bloc/content_favorite_state.dart';
+
+part 'profile_bloc/profile_bloc.dart';
+part 'profile_bloc/profile_event.dart';
+part 'profile_bloc/profile_state.dart';
