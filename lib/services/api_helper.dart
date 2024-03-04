@@ -151,7 +151,7 @@ class ApiHelper {
       options: Options(
         responseType: ResponseType.bytes,
         followRedirects: false,
-        receiveTimeout: Duration.zero,
+        receiveTimeout: const Duration(seconds: 60),
       ),
     );
   }

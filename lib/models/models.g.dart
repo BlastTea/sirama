@@ -713,7 +713,7 @@ _$DetailRiwayatSkrinningImpl _$$DetailRiwayatSkrinningImplFromJson(
       jenisHasil: json['jenis_hasil'] as String?,
       hasil: json['hasil'] as String?,
       pointotal: json['poin_total'] as String?,
-      soalJawab: (json['soalJawab'] as List<dynamic>?)
+      soalJawab: (json['soal_jawab'] as List<dynamic>?)
           ?.map((e) => SoalJawabRiwayat.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -729,7 +729,7 @@ Map<String, dynamic> _$$DetailRiwayatSkrinningImplToJson(
       'jenis_hasil': instance.jenisHasil,
       'hasil': instance.hasil,
       'poin_total': instance.pointotal,
-      'soalJawab': instance.soalJawab,
+      'soal_jawab': instance.soalJawab,
     };
 
 _$SoalJawabRiwayatImpl _$$SoalJawabRiwayatImplFromJson(

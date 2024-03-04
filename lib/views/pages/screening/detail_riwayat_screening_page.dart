@@ -36,66 +36,68 @@ class _DetailRiwayatSkrinningPageState
               centerTitle: true,
             ),
             body: SafeArea(
-              child: ListView.builder(
-                itemCount: stateSkrinning.detailriwayatskrinning.length,
-                itemBuilder: (context, index) {
-                  final currentDetailRiwayat =
-                      stateSkrinning.detailriwayatskrinning[index];
-
-                  final soalList = currentDetailRiwayat.soalJawab ?? [];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Card(
-                        child: ListTile(
-                          title: Text(
-                            'Hasil skrinning ${currentUser?.username ?? 'Guest'}',
-                            style: const TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          subtitle: Text(currentDetailRiwayat.hasil!),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: ListView.builder(
+                  itemCount: stateSkrinning.detailriwayatskrinning.length,
+                  itemBuilder: (context, index) {
+                    final currentDetailRiwayat =
+                        stateSkrinning.detailriwayatskrinning[index];
+                    final soalList = stateSkrinning.soalJawabanRiwayat;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CardTile(
+                        title: Text(
+                          'Hasil skrinning ${currentUser?.username ?? 'Guest'}',
+                          style: const TextStyle(fontWeight: FontWeight.bold),
                         ),
+                        subtitle: Text(currentDetailRiwayat.hasil!),
                       ),
-                      Text(
-                        'Skor anda adalah ${currentDetailRiwayat.pointotal ?? ''}',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      Text(
-                        currentDetailRiwayat.namaBagian ?? '',
-                        style: const TextStyle(color: Colors.black),
-                      ),
-                      ListView.builder(
-                        shrinkWrap: true,
-                        physics: const NeverScrollableScrollPhysics(),
-                        itemCount: soalList.length,
-                        itemBuilder: (context, index2) {
-                          final soalJawabList = soalList[index2];
-                          final soalDetail = soalJawabList.soal ?? '';
-                          final jawabanDetail = soalJawabList.jawaban ?? '';
-                          return Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              ListTile(
-                                title: Text(
-                                  '${soalJawabList.noSoal.toString()}. $soalDetail',
+                      const SizedBox(height: 20),
+                        Text(
+                          'Skor anda adalah ${currentDetailRiwayat.pointotal ?? ''}',
+                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
+                        ),
+                        const SizedBox(height: 20),
+                        Text(
+                          currentDetailRiwayat.namaBagian ?? '',
+                          style: Config.textStyleTitleSmall,
+                        ),
+                        ListView.builder(
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          itemCount: soalList.length,
+                          itemBuilder: (context, index2) {
+                            final noSoalDetail = soalList[index2].noSoal;
+                            final soalDetail = soalList[index2].soal;
+                            final jawabanDetail = soalList[index2].jawaban;
+                            return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                ListTile(
+                                  title: Text(
+                                    '$noSoalDetail. $soalDetail',
+                                  ),
                                 ),
-                              ),
-                              ColoredBox(
-                                color: Colors.green,
-                                child: RadioListTile(
-                                  tileColor: Colors.blue,
-                                  title: Text(jawabanDetail),
-                                  groupValue: jawabanDetail,
-                                  value: soalJawabList.poinJawaban,
-                                  onChanged: (value) {},
-                                ),
-                              )
-                            ],
-                          );
-                        },
-                      )
-                    ],
-                  );
-                },
+                                ColoredBox(
+                                  color: Colors.green,
+                                  child: RadioListTile(
+                                    tileColor: Colors.blue,
+                                    title: Text(jawabanDetail!),
+                                    groupValue: jawabanDetail,
+                                    value: soalList[index2].poinJawaban,
+                                    onChanged: (value) {},
+                                  ),
+                                )
+                              ],
+                            );
+                          },
+                        )
+                      ],
+                    );
+                  },
+                ),
               ),
             ),
           );

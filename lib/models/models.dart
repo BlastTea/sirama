@@ -395,7 +395,7 @@ class DetailRiwayatSkrinning with _$DetailRiwayatSkrinning {
     @JsonKey(name: 'jenis_hasil') String? jenisHasil,
     @JsonKey(name: 'hasil') String? hasil,
     @JsonKey(name: 'poin_total') String? pointotal,
-    List<SoalJawabRiwayat>? soalJawab,
+    @JsonKey(name: 'soal_jawab') List<SoalJawabRiwayat>? soalJawab,
   }) = _DetailRiwayatSkrinning;
 
   factory DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$DetailRiwayatSkrinningFromJson(json);

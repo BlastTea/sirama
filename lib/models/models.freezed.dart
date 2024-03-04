@@ -8661,7 +8661,9 @@ mixin _$DetailRiwayatSkrinning {
   String? get pointotal => throw _privateConstructorUsedError;
   @JsonKey(name: 'poin_total')
   set pointotal(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal_jawab')
   List<SoalJawabRiwayat>? get soalJawab => throw _privateConstructorUsedError;
+  @JsonKey(name: 'soal_jawab')
   set soalJawab(List<SoalJawabRiwayat>? value) =>
       throw _privateConstructorUsedError;
 
@@ -8686,7 +8688,7 @@ abstract class $DetailRiwayatSkrinningCopyWith<$Res> {
       @JsonKey(name: 'jenis_hasil') String? jenisHasil,
       @JsonKey(name: 'hasil') String? hasil,
       @JsonKey(name: 'poin_total') String? pointotal,
-      List<SoalJawabRiwayat>? soalJawab});
+      @JsonKey(name: 'soal_jawab') List<SoalJawabRiwayat>? soalJawab});
 }
 
 /// @nodoc
@@ -8772,7 +8774,7 @@ abstract class _$$DetailRiwayatSkrinningImplCopyWith<$Res>
       @JsonKey(name: 'jenis_hasil') String? jenisHasil,
       @JsonKey(name: 'hasil') String? hasil,
       @JsonKey(name: 'poin_total') String? pointotal,
-      List<SoalJawabRiwayat>? soalJawab});
+      @JsonKey(name: 'soal_jawab') List<SoalJawabRiwayat>? soalJawab});
 }
 
 /// @nodoc
@@ -8851,7 +8853,7 @@ class _$DetailRiwayatSkrinningImpl implements _DetailRiwayatSkrinning {
       @JsonKey(name: 'jenis_hasil') this.jenisHasil,
       @JsonKey(name: 'hasil') this.hasil,
       @JsonKey(name: 'poin_total') this.pointotal,
-      this.soalJawab});
+      @JsonKey(name: 'soal_jawab') this.soalJawab});
 
   factory _$DetailRiwayatSkrinningImpl.fromJson(Map<String, dynamic> json) =>
       _$$DetailRiwayatSkrinningImplFromJson(json);
@@ -8881,6 +8883,7 @@ class _$DetailRiwayatSkrinningImpl implements _DetailRiwayatSkrinning {
   @JsonKey(name: 'poin_total')
   String? pointotal;
   @override
+  @JsonKey(name: 'soal_jawab')
   List<SoalJawabRiwayat>? soalJawab;
 
   @override
@@ -8905,15 +8908,16 @@ class _$DetailRiwayatSkrinningImpl implements _DetailRiwayatSkrinning {
 
 abstract class _DetailRiwayatSkrinning implements DetailRiwayatSkrinning {
   factory _DetailRiwayatSkrinning(
-      {@JsonKey(name: 'id_skrinning') int? idSkrinning,
-      @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
-      @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
-      @JsonKey(name: 'nama_bagian') String? namaBagian,
-      @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-      @JsonKey(name: 'jenis_hasil') String? jenisHasil,
-      @JsonKey(name: 'hasil') String? hasil,
-      @JsonKey(name: 'poin_total') String? pointotal,
-      List<SoalJawabRiwayat>? soalJawab}) = _$DetailRiwayatSkrinningImpl;
+          {@JsonKey(name: 'id_skrinning') int? idSkrinning,
+          @JsonKey(name: 'id_bag_skrin_user') int? idBagSkrinUser,
+          @JsonKey(name: 'jenis_skrinning') String? jenisSkrinning,
+          @JsonKey(name: 'nama_bagian') String? namaBagian,
+          @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
+          @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+          @JsonKey(name: 'hasil') String? hasil,
+          @JsonKey(name: 'poin_total') String? pointotal,
+          @JsonKey(name: 'soal_jawab') List<SoalJawabRiwayat>? soalJawab}) =
+      _$DetailRiwayatSkrinningImpl;
 
   factory _DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) =
       _$DetailRiwayatSkrinningImpl.fromJson;
@@ -8959,7 +8963,9 @@ abstract class _DetailRiwayatSkrinning implements DetailRiwayatSkrinning {
   @JsonKey(name: 'poin_total')
   set pointotal(String? value);
   @override
+  @JsonKey(name: 'soal_jawab')
   List<SoalJawabRiwayat>? get soalJawab;
+  @JsonKey(name: 'soal_jawab')
   set soalJawab(List<SoalJawabRiwayat>? value);
   @override
   @JsonKey(ignore: true)
