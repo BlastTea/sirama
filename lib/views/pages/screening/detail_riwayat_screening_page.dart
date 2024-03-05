@@ -17,6 +17,8 @@ class _DetailRiwayatSkrinningPageState
     super.initState();
   }
 
+  String choice = 'one';
+
   @override
   Widget build(BuildContext context) {
     if (MyApp.skrinningBloc.state is SkrinningInitial) {
@@ -43,57 +45,72 @@ class _DetailRiwayatSkrinningPageState
                   itemBuilder: (context, index) {
                     final currentDetailRiwayat =
                         stateSkrinning.detailriwayatskrinning[index];
-                    final soalList = stateSkrinning.soalJawabanRiwayat;
+                    final soalList = currentDetailRiwayat.soalJawab;
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         CardTile(
-                        title: Text(
-                          'Hasil skrinning ${currentUser?.username ?? 'Guest'}',
-                          style: const TextStyle(fontWeight: FontWeight.bold),
+                          title: Text(
+                            'Hasil skrinning ${currentUser?.username ?? 'Guest'}',
+                            style: const TextStyle(fontWeight: FontWeight.bold),
+                          ),
+                          subtitle: Text(currentDetailRiwayat.hasil!),
                         ),
-                        subtitle: Text(currentDetailRiwayat.hasil!),
-                      ),
-                      const SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         Text(
                           'Skor anda adalah ${currentDetailRiwayat.pointotal ?? ''}',
-                          style: Config.textStyleHeadlineSmall.copyWith(fontSize: 20),
+                          style: Config.textStyleHeadlineSmall
+                              .copyWith(fontSize: 20),
                         ),
                         const SizedBox(height: 20),
                         Text(
                           currentDetailRiwayat.namaBagian ?? '',
                           style: Config.textStyleTitleSmall,
                         ),
+                        const SizedBox(height: 20),
                         ListView.builder(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
-                          itemCount: soalList.length,
+                          itemCount: soalList!.length,
                           itemBuilder: (context, index2) {
                             final noSoalDetail = soalList[index2].noSoal;
                             final soalDetail = soalList[index2].soal;
                             final jawabanDetail = soalList[index2].jawaban;
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                ListTile(
-                                  title: Text(
-                                    '$noSoalDetail. $soalDetail',
+                            final poinJawabanDetail =
+                                soalList[index2].poinJawaban;
+                            return SingleChildScrollView(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  ListTile(
+                                    title: Text(
+                                      '$noSoalDetail. $soalDetail',
+                                      style: Config.textStyleHeadlineSmall
+                                          .copyWith(fontSize: 16),
+                                    ),
                                   ),
-                                ),
-                                ColoredBox(
-                                  color: Colors.green,
-                                  child: RadioListTile(
-                                    tileColor: Colors.blue,
-                                    title: Text(jawabanDetail!),
-                                    groupValue: jawabanDetail,
-                                    value: soalList[index2].poinJawaban,
-                                    onChanged: (value) {},
+                                  RadioListTile(
+                                    title: Text(
+                                      jawabanDetail!,
+                                      style: Config.textStyleHeadlineSmall
+                                          .copyWith(fontSize: 16),
+                                    ),
+                                    subtitle: Text(
+                                        'Perolehan poin anda $poinJawabanDetail', style: Config.textStyleBodyMedium.copyWith(fontSize: 14),),
+                                    groupValue: choice,
+                                    value: 'one',
+                                    onChanged: (value) {
+                                      setState(() {
+                                        choice = value!;
+                                      });
+                                    },
                                   ),
-                                )
-                              ],
+                                ],
+                              ),
                             );
                           },
-                        )
+                        ),
+                        const SizedBox(height: 20),
                       ],
                     );
                   },
