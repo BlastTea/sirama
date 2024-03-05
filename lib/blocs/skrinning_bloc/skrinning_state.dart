@@ -8,16 +8,16 @@ class SkrinningInitial extends SkrinningState {}
 class SkrinningError extends SkrinningState {}
 
 class SkrinningDataLoaded extends SkrinningState {
-  SkrinningDataLoaded({
-    required this.skrinnings,
-    required this.riwayatskrinning,
-    required this.detailskrinning,
-    required this.detailriwayatskrinning,
-    required this.soalJawaban,
-    required this.hasilskrinning,
-    required this.skrinuser,
-    required this.soalJawabanRiwayat
-  });
+  SkrinningDataLoaded(
+      {required this.skrinnings,
+      required this.riwayatskrinning,
+      required this.detailskrinning,
+      required this.detailriwayatskrinning,
+      required this.soalJawaban,
+      required this.hasilskrinning,
+      required this.skrinuser,
+      required this.soalJawabanRiwayat,
+      });
 
   final List<Skrinning> skrinnings;
   final List<RiwayatSkrinning> riwayatskrinning;
@@ -33,4 +33,10 @@ class SoalJawabItemCountLoaded extends SkrinningState {
   SoalJawabItemCountLoaded(this.itemCount);
 
   final int itemCount;
+}
+
+class SubmissionSuccess extends SkrinningState {
+  final Map<String, dynamic> data;
+
+  SubmissionSuccess(this.data);
 }

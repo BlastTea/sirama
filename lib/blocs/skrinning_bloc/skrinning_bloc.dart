@@ -93,15 +93,23 @@ class SkrinningBloc extends Bloc<SkrinningEvent, SkrinningState> {
         Map<String, dynamic> requestBody = {
           'id_bagian_skrining': idBagSkrinning,
           'skrin_user': skrinUserId,
-          'id_jawaban_skrinning' : selectedAnswers,
+          'id_jawaban_skrinning': selectedAnswers,
         };
 
-        if (kDebugMode) {
-          print('Data yang diposting:');
-          print(requestBody);
-        }
+        Response response =
+            await ApiHelper.post('/api/submitskrinning', body: requestBody);
 
-        await ApiHelper.post('/api/submitskrinning', body: requestBody);
+        final dataHasilSubmit = response.data['data'];
+        if (response.statusCode == 200) {
+          emit(SubmissionSuccess(dataHasilSubmit));
+          if (kDebugMode) {
+            print('Data dari response $dataHasilSubmit');
+          } else {
+            if (kDebugMode) {
+              print('Ini data !200 $dataHasilSubmit');
+            }
+          }
+        }
       } catch (e) {
         emit(SkrinningError());
       }

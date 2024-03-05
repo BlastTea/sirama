@@ -1,7 +1,11 @@
 part of '../pages.dart';
 
 class MainScreeningPage extends StatefulWidget {
-  const MainScreeningPage({super.key, this.idSkrinning, this.idBagianSkrinning,});
+  const MainScreeningPage({
+    super.key,
+    this.idSkrinning,
+    this.idBagianSkrinning,
+  });
 
   final int? idSkrinning;
   final int? idBagianSkrinning;
@@ -28,10 +32,9 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
           final sortedSelectedAnswers = List.generate(
-              stateSkrinning
-                  .detailskrinning[currentPartIndex].soalJawab!.length,
-              (index) => selectedAnswers[index] ?? 0,
-            );
+            stateSkrinning.detailskrinning[currentPartIndex].soalJawab!.length,
+            (index) => selectedAnswers[index] ?? 0,
+          );
           if (kDebugMode) {
             print(sortedSelectedAnswers);
             print(stateSkrinning.detailskrinning[currentPartIndex]);
@@ -127,12 +130,12 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                           return RadioListTile(
                                             title: Text(jawaban.jawaban ?? ''),
                                             value: jawaban.idJawabanSkrinning,
-                                            groupValue:
-                                                selectedAnswers[questionNumber -1],
+                                            groupValue: selectedAnswers[
+                                                questionNumber - 1],
                                             onChanged: (value) {
                                               setState(() {
-                                                selectedAnswers[
-                                                    questionNumber -1] = value!;
+                                                selectedAnswers[questionNumber -
+                                                    1] = value!;
                                               });
                                             },
                                           );
@@ -160,6 +163,24 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                               ),
                             ));
                             setState(() {
+                              void showAlertDialog() {
+                                showDialog(
+                                  context: context,
+                                  builder: (_) {
+                                    return AlertDialog(
+                                      title: const Text('Data berhasil disimpan'),
+                                      actions: [
+                                        ElevatedButton(
+                                          child: const Text('Lanjutkan Skrinning'),
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'Lanjutkan Skrinning'),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                );
+                              }
+                              showAlertDialog();
                               currentPartIndex++;
                               selectedAnswers.clear();
                             });
@@ -179,16 +200,19 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
                                   ),
                                 ],
                               ),
-                            );
-                            MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
-                              detailskrinning: stateSkrinning
-                                  .detailskrinning[currentPartIndex],
-                              selectedAnswers: List.generate(
-                                stateSkrinning.detailskrinning[currentPartIndex]
-                                    .soalJawab!.length,
-                                (index) => selectedAnswers[index] ?? 0,
-                              ),
-                            ));
+                            ).then((_) {
+                              MyApp.skrinningBloc.add(SubmitJawabanSkrinning(
+                                detailskrinning: stateSkrinning
+                                    .detailskrinning[currentPartIndex],
+                                selectedAnswers: List.generate(
+                                  stateSkrinning
+                                      .detailskrinning[currentPartIndex]
+                                      .soalJawab!
+                                      .length,
+                                  (index) => selectedAnswers[index] ?? 0,
+                                ),
+                              ));
+                            });
                           }
                         },
                         labelText: currentPartIndex <
