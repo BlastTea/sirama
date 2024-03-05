@@ -755,6 +755,8 @@ _$RoomChatMeImpl _$$RoomChatMeImplFromJson(Map<String, dynamic> json) =>
       idRoomChatMe: json['id_room_chat_me'] as int?,
       remajaUserId: json['remaja_user_id'] as int?,
       guruUserId: json['guru_user_id'] as int?,
+      nama: json['nama'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -771,6 +773,8 @@ Map<String, dynamic> _$$RoomChatMeImplToJson(_$RoomChatMeImpl instance) =>
       'id_room_chat_me': instance.idRoomChatMe,
       'remaja_user_id': instance.remajaUserId,
       'guru_user_id': instance.guruUserId,
+      'nama': instance.nama,
+      'foto_profile': instance.fotoProfile,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
       'riwayats': instance.riwayats,

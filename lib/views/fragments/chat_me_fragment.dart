@@ -21,7 +21,8 @@ class ChatMeFragment extends StatelessWidget {
                 slivers: [
                   SliverList.builder(
                     itemBuilder: (context, index) {
-                      List<MessageBubbleData> data = stateChatMe.messageBubbleList.data[index];
+                      RoomChatMe roomChatMe = stateChatMe.rooms[index];
+                      List<MessageBubbleData> data = stateChatMe.messageBubbleList!.data[index];
 
                       return ListTile(
                         leading: ImageContainer.hero(
@@ -31,10 +32,10 @@ class ChatMeFragment extends StatelessWidget {
                           iconSize: 24.0,
                           icon: Icons.person,
                           border: const Border(),
-                          image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                          image: roomChatMe.fotoProfileData != null ? MemoryImage(Uint8List.fromList(roomChatMe.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                           borderRadius: BorderRadius.circular(24.0),
                         ),
-                        title: const Text('Zalorin Vexstar'),
+                        title: Text(roomChatMe.nama ?? '?'),
                         subtitle: Text(
                           (data.first as MessageBubbleDataText).message ?? '?',
                           maxLines: 1,
@@ -45,7 +46,7 @@ class ChatMeFragment extends StatelessWidget {
                         onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => ChatMePage(index: index))),
                       );
                     },
-                    itemCount: stateChatMe.messageBubbleList.data.length,
+                    itemCount: stateChatMe.messageBubbleList!.data.length,
                   ),
                 ],
               ),

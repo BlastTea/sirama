@@ -13,14 +13,16 @@ class ChatMePage extends StatelessWidget {
         builder: (context, stateChatMe) {
           stateChatMe as ChatMeDataLoaded;
 
+          RoomChatMe roomChatMe = stateChatMe.rooms[index];
+
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Zalorin Vexstar'),
+              title: Text(roomChatMe.nama ?? '?'),
               centerTitle: true,
               actions: [
                 ImageContainer.hero(
                   tag: 'Chat profile picture $index',
-                  image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                  image: roomChatMe.fotoProfileData != null ? MemoryImage(Uint8List.fromList(roomChatMe.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                   width: 40.0,
                   height: 40.0,
                   border: const Border(),
@@ -38,11 +40,11 @@ class ChatMePage extends StatelessWidget {
                       await completer.future;
                     },
                     child: ListView.builder(
-                      key: ValueKey(stateChatMe.messageBubbleList.data[index].length),
+                      key: ValueKey(stateChatMe.messageBubbleList!.data[index].length),
                       padding: const EdgeInsets.symmetric(horizontal: 8.0),
                       reverse: true,
                       itemBuilder: (context, dataIndex) {
-                        MessageBubbleData data = stateChatMe.messageBubbleList.data[index][dataIndex];
+                        MessageBubbleData data = stateChatMe.messageBubbleList!.data[index][dataIndex];
 
                         if (data is MessageBubbleDataText) {
                           return Column(
@@ -80,7 +82,7 @@ class ChatMePage extends StatelessWidget {
                           ),
                         );
                       },
-                      itemCount: stateChatMe.messageBubbleList.data[index].length,
+                      itemCount: stateChatMe.messageBubbleList!.data[index].length,
                     ),
                   ),
                 ),

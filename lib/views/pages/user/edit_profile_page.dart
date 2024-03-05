@@ -211,7 +211,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             labelText: 'Sekolah',
                             decoration: InputDecoration(
                               hintText: 'Masukkan Sekolah Anda',
-                              errorText: stateProfile.invalidTypes.contains(InvalidType.nameIsStillEmpty) ? InvalidType.nameIsStillEmpty.text : null,
+                              errorText: stateProfile.invalidTypes.contains(InvalidType.schoolIsStillEmpty) ? InvalidType.schoolIsStillEmpty.text : null,
                             ),
                             labelStyle: Config.textStyleBodyLarge.copyWith(fontWeight: FontWeight.bold),
                             minVerticalPadding: 4.0,
@@ -220,14 +220,103 @@ class _EditProfilePageState extends State<EditProfilePage> {
                         ),
                       ),
                     ],
-                  UserRole.orangTua => [],
+                  UserRole.orangTua => [
+                      SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        sliver: SliverToBoxAdapter(
+                          child: LabeledTextField.dropdown(
+                            controller: TextEditingController(text: stateProfile.currentUser?.userDetail?.mapOrNull(orangTua: (value) => value.tingkatSekolahAnak?.text)),
+                            labelText: 'Tingkat Sekolah Anak',
+                            width: MediaQuery.sizeOf(context).width - 40.0,
+                            minVerticalPadding: 4.0,
+                            items: SchoolLevel.values.map((e) => DropdownMenuEntry(value: e, label: e.text)).toList(),
+                            decoration: const InputDecoration(
+                              hintText: 'Masukkan Tingkat Sekolah Anak Anda',
+                            ),
+                            onSelected: (value) => MyApp.authenticationBloc.add(SetSignupChildSchoolLevel(value: value)),
+                          ),
+                        ),
+                      ),
+                    ],
+                  UserRole.tenagaAhli => [
+                      SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        sliver: SliverToBoxAdapter(
+                          child: LabeledTextField.dropdown(
+                            controller: TextEditingController(text: stateProfile.currentUser?.userDetail?.mapOrNull(tenagaAhli: (value) => value.jenisAhli?.text)),
+                            labelText: 'Jenis',
+                            width: MediaQuery.sizeOf(context).width - 40.0,
+                            minVerticalPadding: 4.0,
+                            items: ExpertsType.values.map((e) => DropdownMenuEntry(value: e, label: e.text)).toList(),
+                            decoration: const InputDecoration(
+                              hintText: 'Masukkan Jenis Tenaga Ahli',
+                            ),
+                            onSelected: (value) => MyApp.authenticationBloc.add(SetSignUpExpertsType(value: value)),
+                          ),
+                        ),
+                      ),
+                      const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+                      SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        sliver: SliverToBoxAdapter(
+                          child: LabeledTextField(
+                            controller: stateProfile.textControllerDescription,
+                            labelText: 'Deskripsi',
+                            maxLength: 255,
+                            buildCounter: counter,
+                            maxLines: null,
+                            expands: true,
+                            minVerticalPadding: 4.0,
+                            textInputAction: TextInputAction.newline,
+                            textAlignVertical: TextAlignVertical.top,
+                            constraints: const BoxConstraints.tightFor(height: kMaximumDescriptionHeight),
+                            decoration: InputDecoration(
+                              hintText: 'Masukkan Deskripsi Anda',
+                              errorText: stateProfile.invalidTypes.contains(InvalidType.descriptionIsStillEmpty) ? InvalidType.descriptionIsStillEmpty.text : null,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  UserRole.kaderKesehatan => [
+                      SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        sliver: SliverToBoxAdapter(
+                          child: LabeledTextField(
+                            controller: stateProfile.textControllerAge,
+                            labelText: 'Usia',
+                            keyboardType: TextInputType.number,
+                            textInputAction: TextInputAction.next,
+                            minVerticalPadding: 4.0,
+                            decoration: InputDecoration(
+                              hintText: 'Masukkan Usia Anda',
+                              errorText: stateProfile.invalidTypes.contains(InvalidType.ageIsStillEmpty) ? InvalidType.ageIsStillEmpty.text : null,
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
+                      SliverPadding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                        sliver: SliverToBoxAdapter(
+                          child: LabeledTextField(
+                            controller: stateProfile.textControllerBuiltArea,
+                            labelText: 'Wilayah Binaan',
+                            decoration: InputDecoration(
+                              hintText: 'Masukkan Wilayah Binaan Anda',
+                              errorText: stateProfile.invalidTypes.contains(InvalidType.builtAreaIsStillEmpty) ? InvalidType.builtAreaIsStillEmpty.text : null,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   _ => [],
                 },
                 const SliverToBoxAdapter(child: SizedBox(height: 40.0)),
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   sliver: SliverToBoxAdapter(
-                    child: MyFilledButton(onPressed: () {}, labelText: 'Ubah'),
+                    child: MyFilledButton(onPressed: () {}, labelText: 'Simpan'),
                   ),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 20.0)),

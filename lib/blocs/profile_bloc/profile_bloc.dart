@@ -2,6 +2,10 @@ part of '../blocs.dart';
 
 class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ProfileBloc() : super(_profileDataLoaded) {
+    _textControllerUsername.addListener(() {
+      _currentUser?.username = _textControllerUsername.text.trim();
+    });
+
     on<SetProfileState>((event, emit) => emit(event.state ?? _profileDataLoaded));
 
     on<InitializeProfileData>((event, emit) {
@@ -21,6 +25,26 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     on<SetCurrentEditingProfile>((event, emit) {
       _currentUser = event.value.copyWith();
       emit(_profileDataLoaded);
+    });
+
+    on<SaveEditingProfilePressed>((event, emit) async {
+      // Butuh endpoint update profile bang!!!
+      switch (_currentUser?.role) {
+        case UserRole.remaja:
+        // TODO: Handle this case.
+        case UserRole.orangTua:
+        // TODO: Handle this case.
+        case UserRole.tenagaAhli:
+        // TODO: Handle this case.
+        case UserRole.kaderKesehatan:
+        // TODO: Handle this case.
+        case UserRole.guru:
+        // TODO: Handle this case.
+        case UserRole.superAdmin:
+        // TODO: Handle this case.
+        case null:
+        // TODO: Handle this case.
+      }
     });
   }
 

@@ -9,11 +9,31 @@ class SignInPage extends StatelessWidget {
           stateAuthentication as AuthenticationDataLoaded;
 
           if (kDebugMode) {
+            /// Remaja
             // stateAuthentication.textControllerUsernameSignIn.text = 'ady remaja';
+            // stateAuthentication.textControllerPasswordSignIn.text = '123';
+
             // stateAuthentication.textControllerUsernameSignIn.text = 'altamisblade';
             // stateAuthentication.textControllerPasswordSignIn.text = '123';
-            stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
-            stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
+
+            // stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
+            // stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
+
+            /// Orang tua
+            // stateAuthentication.textControllerUsernameSignIn.text = 'test ortu 1';
+            // stateAuthentication.textControllerPasswordSignIn.text = '123';
+
+            /// Ahli
+            // stateAuthentication.textControllerUsernameSignIn.text = 'ahli';
+            // stateAuthentication.textControllerPasswordSignIn.text = '123';
+
+            /// Kader
+            // stateAuthentication.textControllerUsernameSignIn.text = 'kader';
+            // stateAuthentication.textControllerPasswordSignIn.text = '123';
+
+            /// Guru
+            stateAuthentication.textControllerUsernameSignIn.text = 'ady guru';
+            stateAuthentication.textControllerPasswordSignIn.text = '123';
 
             // auth for admin and skrinning
             // stateAuthentication.textControllerUsernameSignIn.text = 'admin';

@@ -120,18 +120,30 @@ class ApiHelper {
     NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
   }
 
-  static Future<void> signInWithToken() async {
+  static Future<bool> signInWithToken() async {
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
 
-    if (sharedPref.getString(_keyToken) == null) return;
+    if (sharedPref.getString(_keyToken) == null) return false;
 
     currentUser = User.fromJson(jsonDecode(sharedPref.getString(_keyCurrentUser)!));
 
-    await getMe();
+    try {
+      await getMe();
+    } catch (e) {
+      if (e == 'Session is expired') {
+        await signOut();
+        await handleError(e);
+        return false;
+      }
+    }
+
+    return true;
   }
 
   static Future<void> getMe() async {
     Response response = await get('/api/me');
+
+    if (response.data is String && (response.data.contains('<!doctype html>') || response.data.contains('<!DOCTYPE html>'))) throw 'Session is expired';
 
     currentUser?.userDetail = UserDetail.fromJson(response.data['data'][0]);
 
@@ -216,6 +228,13 @@ class ApiHelper {
         await showErrorDialog(message);
         return true;
       }
+    } else if (e is String && e == 'Session is expired') {
+      while (NavigationHelper.canGoBack()) {
+        NavigationHelper.back();
+      }
+      NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
+      await showInformationDialog('Sesi Anda telah berakhir');
+      return true;
     }
 
     await showErrorDialog(e.toString());

@@ -16,3 +16,5 @@ class SetCurrentEditingProfile extends ProfileEvent {
 
   final User value;
 }
+
+class SaveEditingProfilePressed extends ProfileEvent {}

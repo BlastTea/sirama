@@ -4,12 +4,27 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
   ChatMeBloc() : super(ChatMeInitial()) {
     on<SetChatmeState>((event, emit) => emit(event.state ?? _chatmeDataLoaded));
 
+    on<SetChatMeToInitial>((event, emit) {
+      _textControllerMessage.clear();
+
+      _rooms = [];
+
+      _messageBubbleList = null;
+    });
+
     on<InitializeChatMeData>((event, emit) async {
       if (event.completer == null) emit(ChatMeInitial());
 
       try {
         _rooms = await ApiHelper.get('/api/chatme').then((value) => (value.data['data'] as List).map((e) => RoomChatMe.fromJson(e)).toList());
         await for (RoomChatMe room in Stream.fromIterable(_rooms)) {
+          try {
+            if (room.fotoProfile != null) {
+              room.fotoProfileData = await ApiHelper.getBytesUri(Uri.parse('${ApiHelper.url}/storage/profile/${room.fotoProfile}')).then((value) => value.data);
+            }
+          } catch (e) {
+            // Ignored, really
+          }
           try {
             List<RiwayatChatMe> riwayats = await ApiHelper.get('/api/chatme/${room.idRoomChatMe}').then((value) => (value.data['data'] as List).map((e) => RiwayatChatMe.fromJson(e)).toList());
             room.riwayats = riwayats.reversed.toList();
@@ -56,10 +71,11 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
 
   List<RoomChatMe> _rooms = [];
 
-  late MessageBubbleList _messageBubbleList;
+  MessageBubbleList? _messageBubbleList;
 
   ChatMeDataLoaded get _chatmeDataLoaded => ChatMeDataLoaded(
         textControllerMessage: _textControllerMessage,
         messageBubbleList: _messageBubbleList,
+        rooms: _rooms,
       );
 }

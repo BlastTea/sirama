@@ -9,6 +9,8 @@ class SetChatmeState extends ChatMeEvent {
   final ChatMeState? state;
 }
 
+class SetChatMeToInitial extends ChatMeEvent {}
+
 class InitializeChatMeData extends ChatMeEvent {
   InitializeChatMeData({this.completer});
 

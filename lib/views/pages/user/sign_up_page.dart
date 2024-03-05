@@ -153,7 +153,6 @@ class SignUpPage extends StatelessWidget {
                           buildCounter: counter,
                           maxLines: null,
                           expands: true,
-                          minVerticalPadding: 4.0,
                           textInputAction: TextInputAction.newline,
                           textAlignVertical: TextAlignVertical.top,
                           constraints: const BoxConstraints.tightFor(height: kMaximumDescriptionHeight),
