@@ -321,7 +321,7 @@ class Skrinning with _$Skrinning {
 @unfreezed
 class DetailSkrinning with _$DetailSkrinning {
   factory DetailSkrinning({
-    @JsonKey(name: 'id_bagian_skrinning') int? idBagianSkrinning,
+    @JsonKey(name: 'id_bagian_skrining') int? idBagianSkrinning,
     @JsonKey(name: 'nama_bagian') String? namaBagianSkrinning,
     @JsonKey(name: 'soal_jawab') List<SoalJawab>? soalJawab,
     SkrinUser? skrinUser,
@@ -334,7 +334,7 @@ class DetailSkrinning with _$DetailSkrinning {
 class SkrinUser with _$SkrinUser {
   factory SkrinUser({
     @JsonKey(name: 'tgl_pengisian') DateTime? tglPengisian,
-    @JsonKey(name: 'skrinning_id') int? skrinningId,
+    @JsonKey(name: 'skrinning_id', fromJson: _parseInt) int? skrinningId,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     @JsonKey(name: 'id_skrin_user') int? idSkrinUser,
@@ -395,7 +395,7 @@ class DetailRiwayatSkrinning with _$DetailRiwayatSkrinning {
     @JsonKey(name: 'jenis_hasil') String? jenisHasil,
     @JsonKey(name: 'hasil') String? hasil,
     @JsonKey(name: 'poin_total') String? pointotal,
-    List<SoalJawabRiwayat>? soalJawab,
+    @JsonKey(name: 'soal_jawab') List<SoalJawabRiwayat>? soalJawab,
   }) = _DetailRiwayatSkrinning;
 
   factory DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$DetailRiwayatSkrinningFromJson(json);
@@ -411,6 +411,17 @@ class SoalJawabRiwayat with _$SoalJawabRiwayat {
   }) = _SoalJawabRiwayat;
 
   factory SoalJawabRiwayat.fromJson(Map<String, dynamic> json) => _$SoalJawabRiwayatFromJson(json);
+}
+
+@freezed
+class HasilSkrinning with _$HasilSkrinning{
+  factory HasilSkrinning({
+    @JsonKey(name: 'jenis_hasil') String? jenisHasil,
+    @JsonKey(name: 'deskripsi') String? deskripsi,
+    @JsonKey(name: 'poin') String? poin,
+  }) = _HasilSkrinning;
+
+  factory HasilSkrinning.fromJson(Map<String, dynamic> json) => _$HasilSkrinningFromJson(json);
 }
 
 @unfreezed
@@ -445,6 +456,7 @@ class RiwayatChatMe with _$RiwayatChatMe {
 
   factory RiwayatChatMe.fromJson(Map<String, dynamic> json) => _$RiwayatChatMeFromJson(json);
 }
+
 
 @freezed
 class MessageBubbleList with _$MessageBubbleList {

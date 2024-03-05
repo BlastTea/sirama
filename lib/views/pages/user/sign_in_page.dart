@@ -36,8 +36,8 @@ class SignInPage extends StatelessWidget {
             stateAuthentication.textControllerPasswordSignIn.text = '123';
 
             // auth for admin and skrinning
-            // stateAuthentication.textControllerUsernameSignIn.text = 'admin';
-            // stateAuthentication.textControllerPasswordSignIn.text = 'admin123';
+            stateAuthentication.textControllerUsernameSignIn.text = 'b5';
+            stateAuthentication.textControllerPasswordSignIn.text = 'a2';
           }
 
           return Scaffold(

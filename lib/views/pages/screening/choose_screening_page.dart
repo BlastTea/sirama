@@ -124,9 +124,14 @@ class ChooseScreeningPage extends StatelessWidget {
           ),
           onTap: () {
             final idSkrinning = stateSkrinning.skrinnings[index].idSkrinning;
-            MyApp.skrinningBloc.add(GetDetailSkrinning(skrinning: stateSkrinning.skrinnings[index]));
+            MyApp.skrinningBloc.add(GetDetailSkrinning(
+                skrinning: stateSkrinning.skrinnings[index]));
             NavigationHelper.to(MaterialPageRoute(
-              builder: (context) => MainScreeningPage(idSkrinning: idSkrinning),
+              builder: (context) => MainScreeningPage(
+                idSkrinning: idSkrinning,
+                idBagianSkrinning:
+                    stateSkrinning.detailskrinning[index].idBagianSkrinning,
+              ),
             ));
           },
         );
