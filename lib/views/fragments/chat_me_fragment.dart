@@ -46,7 +46,7 @@ class ChatMeFragment extends StatelessWidget {
                         onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => ChatMePage(index: index))),
                       );
                     },
-                    itemCount: stateChatMe.messageBubbleList!.data.length,
+                    itemCount: stateChatMe.rooms.length,
                   ),
                 ],
               ),

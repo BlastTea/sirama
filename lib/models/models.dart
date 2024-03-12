@@ -414,7 +414,7 @@ class SoalJawabRiwayat with _$SoalJawabRiwayat {
 }
 
 @freezed
-class HasilSkrinning with _$HasilSkrinning{
+class HasilSkrinning with _$HasilSkrinning {
   factory HasilSkrinning({
     @JsonKey(name: 'jenis_hasil') String? jenisHasil,
     @JsonKey(name: 'deskripsi') String? deskripsi,
@@ -457,7 +457,6 @@ class RiwayatChatMe with _$RiwayatChatMe {
   factory RiwayatChatMe.fromJson(Map<String, dynamic> json) => _$RiwayatChatMeFromJson(json);
 }
 
-
 @freezed
 class MessageBubbleList with _$MessageBubbleList {
   const factory MessageBubbleList({required List<List<MessageBubbleData>> data}) = _MessageBubbleList;
@@ -471,13 +470,14 @@ class MessageBubbleList with _$MessageBubbleList {
 
       for (int i = 0; i < (room.riwayats?.length ?? 0); i++) {
         RiwayatChatMe riwayat = room.riwayats![i];
-        DateTime currentChatDate = riwayat.tglChat!;
+        List<int?>? waktuChat = riwayat.waktuChat?.split(':').map((e) => int.tryParse(e)).toList();
+        DateTime currentChatDate = DateTime(riwayat.tglChat!.year, riwayat.tglChat!.month, riwayat.tglChat!.day, waktuChat?[0] ?? 0, waktuChat?[1] ?? 0, waktuChat?[2] ?? 0);
 
-        if (lastDate != null && currentChatDate.day != lastDate.day) messageBubbles.add(MessageBubbleData.dateTime(dateTime: lastDate));
+        if (lastDate != null && (currentChatDate.day != lastDate.day || currentChatDate.month != lastDate.month || currentChatDate.year != lastDate.year)) messageBubbles.add(MessageBubbleData.dateTime(dateTime: lastDate));
 
         messageBubbles.add(MessageBubbleData.text(
           message: riwayat.pesan,
-          sentAt: riwayat.createdAt!,
+          sentAt: currentChatDate,
           isSender: riwayat.userId == currentUser?.idUser,
         ));
 

@@ -23,14 +23,13 @@ class ApiHelper {
 
   static Dio? _dioInstance;
 
-  static _initialize() {
+  static void _initialize() {
     if (_dioInstance != null) return;
 
     _dioInstance = Dio(
       BaseOptions(
         baseUrl: url,
         headers: {
-          'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*',
         },
       ),
@@ -60,8 +59,10 @@ class ApiHelper {
 
           if (options.data is FormData) {
             data = (options.data as FormData).fields;
+            options.headers['Content-Type'] = 'multipart/form-data';
           } else {
             data = options.data;
+            options.headers['Content-Type'] = 'application/json';
           }
 
           debugPrint('http request : ${options.method} ${options.uri} ${options.headers} $data');
@@ -69,7 +70,7 @@ class ApiHelper {
           return handler.next(options);
         },
         onResponse: (response, handler) {
-          debugPrint('http response : ${response.data}');
+          debugPrint('http response : ${response.data is List<int> ? 'Intinya isi responsenya bytes 😁' : response.data}');
           handler.next(response);
         },
       ),
@@ -181,11 +182,43 @@ class ApiHelper {
     );
   }
 
+  static Future<Response> postMultipart(
+    String path, {
+    List<MapEntry<String, String>>? fields,
+    List<MapEntry<String, MultipartFile>>? files,
+  }) {
+    _initialize();
+    FormData data = FormData();
+    if (files != null) data.files.addAll(files);
+    if (fields != null) data.fields.addAll(fields);
+
+    return _dioInstance!.post(
+      path,
+      data: data,
+    );
+  }
+
   static Future<Response> put(String path, {Map<String, dynamic>? body}) {
     _initialize();
     return _dioInstance!.put(
       path,
       data: body,
+    );
+  }
+
+  static Future<Response> putMultipart(
+    String path, {
+    List<MapEntry<String, String>>? fields,
+    List<MapEntry<String, MultipartFile>>? files,
+  }) {
+    _initialize();
+    FormData data = FormData();
+    if (files != null) data.files.addAll(files);
+    if (fields != null) data.fields.addAll(fields);
+
+    return _dioInstance!.put(
+      path,
+      data: data,
     );
   }
 

@@ -29,7 +29,10 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
             List<RiwayatChatMe> riwayats = await ApiHelper.get('/api/chatme/${room.idRoomChatMe}').then((value) => (value.data['data'] as List).map((e) => RiwayatChatMe.fromJson(e)).toList());
             room.riwayats = riwayats.reversed.toList();
           } catch (e) {
-            await ApiHelper.handleError(e);
+            event.completer?.complete(false);
+            emit(ChatMeError());
+            ApiHelper.handleError(e);
+            return;
           }
         }
       } catch (e) {

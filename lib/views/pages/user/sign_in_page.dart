@@ -16,8 +16,8 @@ class SignInPage extends StatelessWidget {
             // stateAuthentication.textControllerUsernameSignIn.text = 'altamisblade';
             // stateAuthentication.textControllerPasswordSignIn.text = '123';
 
-            // stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
-            // stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
+            stateAuthentication.textControllerUsernameSignIn.text = 'BlastTea';
+            stateAuthentication.textControllerPasswordSignIn.text = 'HelloWorld123!';
 
             /// Orang tua
             // stateAuthentication.textControllerUsernameSignIn.text = 'test ortu 1';
@@ -32,12 +32,12 @@ class SignInPage extends StatelessWidget {
             // stateAuthentication.textControllerPasswordSignIn.text = '123';
 
             /// Guru
-            stateAuthentication.textControllerUsernameSignIn.text = 'ady guru';
-            stateAuthentication.textControllerPasswordSignIn.text = '123';
+            // stateAuthentication.textControllerUsernameSignIn.text = 'ady guru';
+            // stateAuthentication.textControllerPasswordSignIn.text = '123';
 
             // auth for admin and skrinning
-            stateAuthentication.textControllerUsernameSignIn.text = 'b5';
-            stateAuthentication.textControllerPasswordSignIn.text = 'a2';
+            // stateAuthentication.textControllerUsernameSignIn.text = 'b5';
+            // stateAuthentication.textControllerPasswordSignIn.text = 'a2';
           }
 
           return Scaffold(

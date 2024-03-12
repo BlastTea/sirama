@@ -67,10 +67,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
                             bottom: 0.0,
                             right: MediaQuery.sizeOf(context).width / 2 - 56.0 - 32.0,
                             child: IconButton.filled(
-                              onPressed: () => ImageContainer.handleChangeImage(
-                                showDelete: true,
-                                sheetTitleText: 'Ganti foto profil',
-                              ),
+                              onPressed: () => MyApp.profileBloc.add(ChangeProfilePhotoPressed()),
                               icon: const Icon(Icons.camera_alt),
                               iconSize: 28.0,
                               style: const ButtonStyle(
@@ -316,7 +313,10 @@ class _EditProfilePageState extends State<EditProfilePage> {
                 SliverPadding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
                   sliver: SliverToBoxAdapter(
-                    child: MyFilledButton(onPressed: () {}, labelText: 'Simpan'),
+                    child: MyFilledButton(
+                      onPressed: () => MyApp.profileBloc.add(SaveEditingProfilePressed()),
+                      labelText: 'Simpan',
+                    ),
                   ),
                 ),
                 const SliverToBoxAdapter(child: SizedBox(height: 20.0)),
