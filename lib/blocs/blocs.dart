@@ -41,3 +41,7 @@ part 'content_favorite_bloc/content_favorite_state.dart';
 part 'profile_bloc/profile_bloc.dart';
 part 'profile_bloc/profile_event.dart';
 part 'profile_bloc/profile_state.dart';
+
+part 'change_password_bloc/change_password_bloc.dart';
+part 'change_password_bloc/change_password_event.dart';
+part 'change_password_bloc/change_password_state.dart';

@@ -16,15 +16,17 @@ import 'package:sirama/views/widgets/widgets.dart';
 import 'package:share_plus/share_plus.dart';
 
 part 'welcome_page.dart';
-part 'user/sign_in_page.dart';
-part 'user/sign_up_page.dart';
 part 'homepage.dart';
 part 'chatme_page.dart';
 part 'doctor_profile_page.dart';
+part 'my_carousel_slider.dart';
+
+part 'user/sign_in_page.dart';
+part 'user/sign_up_page.dart';
 part 'user/edit_profile_page.dart';
 part 'user/sign_up_role_page.dart';
 part 'user/favorite_page.dart';
-part 'my_carousel_slider.dart';
+part 'user/change_password_page.dart';
 
 part 'screening/screening_page.dart';
 part 'screening/choose_screening_page.dart';

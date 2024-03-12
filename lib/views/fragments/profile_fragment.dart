@@ -26,6 +26,12 @@ class ProfileFragment extends StatelessWidget {
             ),
             const SizedBox(height: 32.0),
             ListTile(
+              leading: const Icon(Icons.key),
+              title: const Text('Ganti Password'),
+              onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const ChangePasswordPage())),
+            ),
+            const Divider(),
+            ListTile(
               leading: const Icon(Icons.favorite),
               title: const Text('Favorit'),
               onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const FavoritePage())),
