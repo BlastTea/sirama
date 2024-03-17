@@ -22,7 +22,12 @@ class ChatMeFragment extends StatelessWidget {
                   SliverList.builder(
                     itemBuilder: (context, index) {
                       RoomChatMe roomChatMe = stateChatMe.rooms[index];
-                      List<MessageBubbleData> data = stateChatMe.messageBubbleList!.data[index];
+                      List<MessageBubbleData>? data;
+                      try {
+                        data = stateChatMe.messageBubbleList!.data[index];
+                      } catch (e) {
+                        data = null;
+                      }
 
                       return ListTile(
                         leading: ImageContainer.hero(
@@ -34,14 +39,19 @@ class ChatMeFragment extends StatelessWidget {
                           border: const Border(),
                           image: roomChatMe.fotoProfileData != null ? MemoryImage(Uint8List.fromList(roomChatMe.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                           borderRadius: BorderRadius.circular(24.0),
+                          extendedAppBar: AppBar(
+                            title: Text(roomChatMe.nama ?? '?'),
+                          ),
                         ),
                         title: Text(roomChatMe.nama ?? '?'),
-                        subtitle: Text(
-                          (data.first as MessageBubbleDataText).message ?? '?',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        trailing: Text(TimeOfDay.fromDateTime((data.first as MessageBubbleDataText).sentAt!).toFormattedString()),
+                        subtitle: data != null
+                            ? Text(
+                                (data.first as MessageBubbleDataText).message ?? '?',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              )
+                            : null,
+                        trailing: data != null ? Text(TimeOfDay.fromDateTime((data.first as MessageBubbleDataText).sentAt!).toFormattedString()) : null,
                         contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                         onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => ChatMePage(index: index))),
                       );

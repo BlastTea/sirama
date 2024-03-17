@@ -58,7 +58,8 @@ class ApiHelper {
           dynamic data;
 
           if (options.data is FormData) {
-            data = (options.data as FormData).fields;
+            data = '${(options.data as FormData).fields.fold('Fields : {', (previousValue, element) => '$previousValue${element.key}: ${element.value}, ')}}';
+            data += '${(options.data as FormData).files.fold('Files : [', (previousValue, element) => '$previousValue${element.key}: ${element.value.filename}, ')}}';
             options.headers['Content-Type'] = 'multipart/form-data';
           } else {
             data = options.data;
@@ -107,6 +108,8 @@ class ApiHelper {
     } catch (e) {
       // Ignored, really
     }
+
+    MyApp.chatmeBloc.add(SetChatMeToInitial());
 
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
 
@@ -182,16 +185,8 @@ class ApiHelper {
     );
   }
 
-  static Future<Response> postMultipart(
-    String path, {
-    List<MapEntry<String, String>>? fields,
-    List<MapEntry<String, MultipartFile>>? files,
-  }) {
+  static Future<Response> postMultipart(String path, {FormData? data}) {
     _initialize();
-    FormData data = FormData();
-    if (files != null) data.files.addAll(files);
-    if (fields != null) data.fields.addAll(fields);
-
     return _dioInstance!.post(
       path,
       data: data,
@@ -206,16 +201,8 @@ class ApiHelper {
     );
   }
 
-  static Future<Response> putMultipart(
-    String path, {
-    List<MapEntry<String, String>>? fields,
-    List<MapEntry<String, MultipartFile>>? files,
-  }) {
+  static Future<Response> putMultipart(String path, {FormData? data}) {
     _initialize();
-    FormData data = FormData();
-    if (files != null) data.files.addAll(files);
-    if (fields != null) data.fields.addAll(fields);
-
     return _dioInstance!.put(
       path,
       data: data,

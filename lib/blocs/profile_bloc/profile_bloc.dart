@@ -87,16 +87,16 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           case UserRole.remaja:
             await ApiHelper.putMultipart(
               '/api/update-remaja',
-              fields: [
-                MapEntry('nama', _textControllerName.text.trim()),
-                MapEntry('no_hp', _textControllerPhoneNumber.text.trim()),
-                MapEntry('tgl_lahir', _currentUser!.userDetail!.mapOrNull(remaja: (value) => '${value.tglLahir?.year}-${value.tglLahir?.month}-${value.tglLahir?.day}')!),
-                MapEntry('jenis_kelamin', _currentUser!.userDetail!.mapOrNull(remaja: (value) => value.jenisKelamin!.serverValue)!),
-                MapEntry('sekolah', _textControllerSchool.text.trim()),
-              ],
-              files: [
-                if (_isPhotoDiff && _currentUser?.userDetail?.fotoProfileData != null) MapEntry('foto_profile', MultipartFile.fromBytes(_currentUser!.userDetail!.fotoProfileData!, filename: '🤪.png')),
-              ],
+              data: FormData.fromMap({
+                'username': _currentUser!.username!,
+                'email': _currentUser!.email!,
+                'nama': _textControllerName.text.trim(),
+                'no_hp': _textControllerPhoneNumber.text.trim(),
+                'tgl_lahir': _currentUser!.userDetail!.mapOrNull(remaja: (value) => '${value.tglLahir?.year}-${value.tglLahir?.month}-${value.tglLahir?.day}')!,
+                'jenis_kelamin': _currentUser!.userDetail!.mapOrNull(remaja: (value) => value.jenisKelamin!.serverValue)!,
+                'sekolah': _textControllerSchool.text.trim(),
+                if (_isPhotoDiff && _currentUser?.userDetail?.fotoProfileData != null) 'foto_profile': MultipartFile.fromBytes(_currentUser!.userDetail!.fotoProfileData!, filename: '🤪.png'),
+              }),
             );
           case UserRole.orangTua:
           // TODO: Handle this case.

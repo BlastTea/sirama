@@ -12,7 +12,7 @@ part of 'models.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
 
 User _$UserFromJson(Map<String, dynamic> json) {
   return _User.fromJson(json);
@@ -3372,6 +3372,14 @@ mixin _$TanyaAhli {
   bool? get statusPertanyaan => throw _privateConstructorUsedError;
   @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
   set statusPertanyaan(bool? value) => throw _privateConstructorUsedError;
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile => throw _privateConstructorUsedError;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value) => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData => throw _privateConstructorUsedError;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value) => throw _privateConstructorUsedError;
   @JsonKey(name: 'waktu_tanya')
   DateTime? get waktuTanya => throw _privateConstructorUsedError;
   @JsonKey(name: 'waktu_tanya')
@@ -3405,6 +3413,9 @@ abstract class $TanyaAhliCopyWith<$Res> {
       String? pertanyaan,
       @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
       bool? statusPertanyaan,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -3431,6 +3442,8 @@ class _$TanyaAhliCopyWithImpl<$Res, $Val extends TanyaAhli>
     Object? penanyaUserId = freezed,
     Object? pertanyaan = freezed,
     Object? statusPertanyaan = freezed,
+    Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
     Object? waktuTanya = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -3457,6 +3470,14 @@ class _$TanyaAhliCopyWithImpl<$Res, $Val extends TanyaAhli>
           ? _value.statusPertanyaan
           : statusPertanyaan // ignore: cast_nullable_to_non_nullable
               as bool?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value.fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       waktuTanya: freezed == waktuTanya
           ? _value.waktuTanya
           : waktuTanya // ignore: cast_nullable_to_non_nullable
@@ -3504,6 +3525,9 @@ abstract class _$$TanyaAhliImplCopyWith<$Res>
       String? pertanyaan,
       @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
       bool? statusPertanyaan,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -3529,6 +3553,8 @@ class __$$TanyaAhliImplCopyWithImpl<$Res>
     Object? penanyaUserId = freezed,
     Object? pertanyaan = freezed,
     Object? statusPertanyaan = freezed,
+    Object? fotoProfile = freezed,
+    Object? fotoProfileData = freezed,
     Object? waktuTanya = freezed,
     Object? createdAt = freezed,
     Object? updatedAt = freezed,
@@ -3553,6 +3579,14 @@ class __$$TanyaAhliImplCopyWithImpl<$Res>
           ? _value.statusPertanyaan
           : statusPertanyaan // ignore: cast_nullable_to_non_nullable
               as bool?,
+      fotoProfile: freezed == fotoProfile
+          ? _value.fotoProfile
+          : fotoProfile // ignore: cast_nullable_to_non_nullable
+              as String?,
+      fotoProfileData: freezed == fotoProfileData
+          ? _value.fotoProfileData
+          : fotoProfileData // ignore: cast_nullable_to_non_nullable
+              as List<int>?,
       waktuTanya: freezed == waktuTanya
           ? _value.waktuTanya
           : waktuTanya // ignore: cast_nullable_to_non_nullable
@@ -3583,6 +3617,9 @@ class _$TanyaAhliImpl implements _TanyaAhli {
       this.pertanyaan,
       @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
       this.statusPertanyaan,
+      @JsonKey(name: 'foto_profile') this.fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      this.fotoProfileData,
       @JsonKey(name: 'waktu_tanya') this.waktuTanya,
       @JsonKey(name: 'created_at') this.createdAt,
       @JsonKey(name: 'updated_at') this.updatedAt,
@@ -3606,6 +3643,12 @@ class _$TanyaAhliImpl implements _TanyaAhli {
   @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
   bool? statusPertanyaan;
   @override
+  @JsonKey(name: 'foto_profile')
+  String? fotoProfile;
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? fotoProfileData;
+  @override
   @JsonKey(name: 'waktu_tanya')
   DateTime? waktuTanya;
   @override
@@ -3619,7 +3662,7 @@ class _$TanyaAhliImpl implements _TanyaAhli {
 
   @override
   String toString() {
-    return 'TanyaAhli(idTanyaAhli: $idTanyaAhli, topikId: $topikId, penanyaUserId: $penanyaUserId, pertanyaan: $pertanyaan, statusPertanyaan: $statusPertanyaan, waktuTanya: $waktuTanya, createdAt: $createdAt, updatedAt: $updatedAt, jawabanAhli: $jawabanAhli)';
+    return 'TanyaAhli(idTanyaAhli: $idTanyaAhli, topikId: $topikId, penanyaUserId: $penanyaUserId, pertanyaan: $pertanyaan, statusPertanyaan: $statusPertanyaan, fotoProfile: $fotoProfile, fotoProfileData: $fotoProfileData, waktuTanya: $waktuTanya, createdAt: $createdAt, updatedAt: $updatedAt, jawabanAhli: $jawabanAhli)';
   }
 
   @JsonKey(ignore: true)
@@ -3644,6 +3687,9 @@ abstract class _TanyaAhli implements TanyaAhli {
       String? pertanyaan,
       @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
       bool? statusPertanyaan,
+      @JsonKey(name: 'foto_profile') String? fotoProfile,
+      @JsonKey(includeFromJson: false, includeToJson: false)
+      List<int>? fotoProfileData,
       @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
       @JsonKey(name: 'created_at') DateTime? createdAt,
       @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -3675,6 +3721,16 @@ abstract class _TanyaAhli implements TanyaAhli {
   bool? get statusPertanyaan;
   @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool)
   set statusPertanyaan(bool? value);
+  @override
+  @JsonKey(name: 'foto_profile')
+  String? get fotoProfile;
+  @JsonKey(name: 'foto_profile')
+  set fotoProfile(String? value);
+  @override
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  List<int>? get fotoProfileData;
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  set fotoProfileData(List<int>? value);
   @override
   @JsonKey(name: 'waktu_tanya')
   DateTime? get waktuTanya;

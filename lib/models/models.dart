@@ -129,6 +129,8 @@ class TanyaAhli with _$TanyaAhli {
     @JsonKey(name: 'penanya_user_id') penanyaUserId,
     String? pertanyaan,
     @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
     @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,

@@ -10,6 +10,8 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
       _rooms = [];
 
       _messageBubbleList = null;
+
+      emit(ChatMeInitial());
     });
 
     on<InitializeChatMeData>((event, emit) async {
