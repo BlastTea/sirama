@@ -87,7 +87,7 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
           case UserRole.remaja:
             await ApiHelper.putMultipart(
               '/api/update-remaja',
-              data: FormData.fromMap({
+              fields: {
                 'username': _currentUser!.username!,
                 'email': _currentUser!.email!,
                 'nama': _textControllerName.text.trim(),
@@ -95,8 +95,10 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
                 'tgl_lahir': _currentUser!.userDetail!.mapOrNull(remaja: (value) => '${value.tglLahir?.year}-${value.tglLahir?.month}-${value.tglLahir?.day}')!,
                 'jenis_kelamin': _currentUser!.userDetail!.mapOrNull(remaja: (value) => value.jenisKelamin!.serverValue)!,
                 'sekolah': _textControllerSchool.text.trim(),
-                if (_isPhotoDiff && _currentUser?.userDetail?.fotoProfileData != null) 'foto_profile': MultipartFile.fromBytes(_currentUser!.userDetail!.fotoProfileData!, filename: '🤪.png'),
-              }),
+              },
+              files: [
+                if (_isPhotoDiff && _currentUser?.userDetail?.fotoProfileData != null) http.MultipartFile.fromBytes('foto_profile', _currentUser!.userDetail!.fotoProfileData!, filename: '🤪.png'),
+              ],
             );
           case UserRole.orangTua:
           // TODO: Handle this case.
@@ -116,6 +118,8 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
         ApiHelper.handleError(e);
         return;
       }
+
+      NavigationHelper.back();
 
       NavigationHelper.clearSnackBars();
       NavigationHelper.showSnackBar(const SnackBar(content: Text('Data berhasil diupdate')));

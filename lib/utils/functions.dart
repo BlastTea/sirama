@@ -19,13 +19,13 @@ Future<Uint8List?> getYoutubeThumbnailImageData({required Uri uri}) async {
   Uint8List? imageData;
 
   try {
-    imageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/maxresdefault.jpg')).then((value) => value.data);
+    imageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/maxresdefault.jpg')).then((value) => value);
   } catch (e) {
     // Ignored, really
   }
   if (imageData == null) {
     try {
-      imageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/hqdefault.jpg')).then((value) => value.data);
+      imageData = await ApiHelper.getBytesUri(Uri.parse('https://i.ytimg.com/vi/$id/hqdefault.jpg')).then((value) => value);
     } catch (e) {
       // Ignored, really
     }

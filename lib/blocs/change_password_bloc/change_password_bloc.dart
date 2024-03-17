@@ -49,7 +49,7 @@ class ChangePasswordBloc extends Bloc<ChangePasswordEvent, ChangePasswordState> 
       } catch (e) {
         NavigationHelper.back();
 
-        if (e is DioException && e.response is Response && e.response?.data is Map && (e.response?.data as Map)['message'] != null && (e.response?.data as Map)['message'] == 'password tidak sesuai, gagal diperbarui') {
+        if (e is Map && e['message'] != null && e['message'] == 'password tidak sesuai, gagal diperbarui') {
           _isOldPasswordMatch = false;
           emit(_changePasswordDataLoaded);
         }

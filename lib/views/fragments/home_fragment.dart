@@ -93,9 +93,18 @@ class _HomeFragmentState extends State<HomeFragment> {
                     ),
                     Padding(
                       padding: const EdgeInsets.all(10.0),
-                      child: ClipOval(
-                        child: currentUser?.userDetail?.fotoProfileData != null ? Image.memory(Uint8List.fromList(currentUser!.userDetail!.fotoProfileData!), width: 50.0) : Image.asset('assets/user.png', width: 50),
-                        //45:00 min
+                      child: ImageContainer.hero(
+                        tag: 'home profile',
+                        width: 48.0,
+                        height: 48.0,
+                        iconSize: 24.0,
+                        icon: Icons.person,
+                        border: const Border(),
+                        image: currentUser?.userDetail?.fotoProfileData != null ? MemoryImage(Uint8List.fromList(currentUser!.userDetail!.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
+                        borderRadius: BorderRadius.circular(24.0),
+                        extendedAppBar: AppBar(
+                          title: Text(currentUser?.username ?? 'Guest'),
+                        ),
                       ),
                     ),
                   ],
