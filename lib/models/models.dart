@@ -129,6 +129,8 @@ class TanyaAhli with _$TanyaAhli {
     @JsonKey(name: 'penanya_user_id') penanyaUserId,
     String? pertanyaan,
     @JsonKey(name: 'status_pertanyaan', fromJson: _parseBool) bool? statusPertanyaan,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
     @JsonKey(name: 'waktu_tanya') DateTime? waktuTanya,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
@@ -395,7 +397,7 @@ class DetailRiwayatSkrinning with _$DetailRiwayatSkrinning {
     @JsonKey(name: 'jenis_hasil') String? jenisHasil,
     @JsonKey(name: 'hasil') String? hasil,
     @JsonKey(name: 'poin_total') String? pointotal,
-    List<SoalJawabRiwayat>? soalJawab,
+    @JsonKey(name: 'soal_jawab') List<SoalJawabRiwayat>? soalJawab,
   }) = _DetailRiwayatSkrinning;
 
   factory DetailRiwayatSkrinning.fromJson(Map<String, dynamic> json) => _$DetailRiwayatSkrinningFromJson(json);
@@ -414,7 +416,7 @@ class SoalJawabRiwayat with _$SoalJawabRiwayat {
 }
 
 @freezed
-class HasilSkrinning with _$HasilSkrinning{
+class HasilSkrinning with _$HasilSkrinning {
   factory HasilSkrinning({
     @JsonKey(name: 'jenis_hasil') String? jenisHasil,
     @JsonKey(name: 'deskripsi') String? deskripsi,
@@ -430,6 +432,9 @@ class RoomChatMe with _$RoomChatMe {
     @JsonKey(name: 'id_room_chat_me') int? idRoomChatMe,
     @JsonKey(name: 'remaja_user_id') int? remajaUserId,
     @JsonKey(name: 'guru_user_id') int? guruUserId,
+    String? nama,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(includeFromJson: false, includeToJson: false) List<int>? fotoProfileData,
     @JsonKey(name: 'created_at') DateTime? createdAt,
     @JsonKey(name: 'updated_at') DateTime? updatedAt,
     List<RiwayatChatMe>? riwayats,
@@ -454,6 +459,35 @@ class RiwayatChatMe with _$RiwayatChatMe {
   factory RiwayatChatMe.fromJson(Map<String, dynamic> json) => _$RiwayatChatMeFromJson(json);
 }
 
+@freezed
+class JadwalAhli with _$JadwalAhli {
+  const factory JadwalAhli({
+    @JsonKey(name: 'id_jadwal_ahli') int? idJadwalAhli,
+    @JsonKey(name: 'ahli_user_id') int? ahliUserId,
+    @JsonKey(name: 'jam_mulai') DateTime? jamMulai,
+    @JsonKey(name: 'jam_berakhir') DateTime? jamBerakhir,
+    @JsonKey(name: 'id_ahli') int? idAhli,
+    @JsonKey(name: 'nama') String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+    @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(name: 'user_id') int? userId,
+    List<DetailPendidikanAhli>? detailPendidikanAhli,
+  }) = _JadwalAhli;
+
+  factory JadwalAhli.fromJson(Map<String, dynamic> json) => _$JadwalAhliFromJson(json);
+}
+
+@freezed
+class DetailPendidikanAhli with _$DetailPendidikanAhli {
+  const factory DetailPendidikanAhli({
+    @JsonKey(name: 'id_riwayatpend_ahli') int? idRiwayatpendAhli,
+    @JsonKey(name: 'riwayat_pendidikan') String? riwayatPendidikan,
+  }) = _DetailPendidikanAhli;
+
+  factory DetailPendidikanAhli.fromJson(Map<String, dynamic> json) => _$DetailPendidikanAhliFromJson(json);
+}
 
 @freezed
 class MessageBubbleList with _$MessageBubbleList {
@@ -468,13 +502,14 @@ class MessageBubbleList with _$MessageBubbleList {
 
       for (int i = 0; i < (room.riwayats?.length ?? 0); i++) {
         RiwayatChatMe riwayat = room.riwayats![i];
-        DateTime currentChatDate = riwayat.tglChat!;
+        List<int?>? waktuChat = riwayat.waktuChat?.split(':').map((e) => int.tryParse(e)).toList();
+        DateTime currentChatDate = DateTime(riwayat.tglChat!.year, riwayat.tglChat!.month, riwayat.tglChat!.day, waktuChat?[0] ?? 0, waktuChat?[1] ?? 0, waktuChat?[2] ?? 0);
 
-        if (lastDate != null && currentChatDate.day != lastDate.day) messageBubbles.add(MessageBubbleData.dateTime(dateTime: lastDate));
+        if (lastDate != null && (currentChatDate.day != lastDate.day || currentChatDate.month != lastDate.month || currentChatDate.year != lastDate.year)) messageBubbles.add(MessageBubbleData.dateTime(dateTime: lastDate));
 
         messageBubbles.add(MessageBubbleData.text(
           message: riwayat.pesan,
-          sentAt: riwayat.createdAt!,
+          sentAt: currentChatDate,
           isSender: riwayat.userId == currentUser?.idUser,
         ));
 

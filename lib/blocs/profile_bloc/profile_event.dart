@@ -11,8 +11,12 @@ class SetProfileState extends ProfileEvent {
 
 class InitializeProfileData extends ProfileEvent {}
 
+class ChangeProfilePhotoPressed extends ProfileEvent {}
+
 class SetCurrentEditingProfile extends ProfileEvent {
   SetCurrentEditingProfile({required this.value});
 
   final User value;
 }
+
+class SaveEditingProfilePressed extends ProfileEvent {}

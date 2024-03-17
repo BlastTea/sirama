@@ -19,12 +19,21 @@ class ProfileFragment extends StatelessWidget {
                 border: const Border(),
                 image: currentUser?.userDetail?.fotoProfileData != null ? MemoryImage(Uint8List.fromList(currentUser!.userDetail!.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                 borderRadius: BorderRadius.circular(24.0),
+                extendedAppBar: AppBar(
+                  title: Text(currentUser?.username ?? 'Guest'),
+                ),
               ),
-              title: Text(currentUser?.username ?? 'Anonymous'),
+              title: Text(currentUser?.username ?? 'Guest'),
               trailing: const Icon(Icons.chevron_right),
               onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const EditProfilePage())),
             ),
             const SizedBox(height: 32.0),
+            ListTile(
+              leading: const Icon(Icons.key),
+              title: const Text('Ganti Password'),
+              onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => const ChangePasswordPage())),
+            ),
+            const Divider(),
             ListTile(
               leading: const Icon(Icons.favorite),
               title: const Text('Favorit'),

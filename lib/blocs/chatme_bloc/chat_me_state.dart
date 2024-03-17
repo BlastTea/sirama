@@ -11,9 +11,12 @@ class ChatMeDataLoaded extends ChatMeState {
   ChatMeDataLoaded({
     required this.textControllerMessage,
     required this.messageBubbleList,
+    required this.rooms,
   });
 
   final TextEditingController textControllerMessage;
 
-  final MessageBubbleList messageBubbleList;
+  final MessageBubbleList? messageBubbleList;
+
+  final List<RoomChatMe> rooms;
 }

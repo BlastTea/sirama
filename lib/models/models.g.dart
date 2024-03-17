@@ -251,6 +251,7 @@ _$TanyaAhliImpl _$$TanyaAhliImplFromJson(Map<String, dynamic> json) =>
       penanyaUserId: json['penanya_user_id'],
       pertanyaan: json['pertanyaan'] as String?,
       statusPertanyaan: _parseBool(json['status_pertanyaan']),
+      fotoProfile: json['foto_profile'] as String?,
       waktuTanya: json['waktu_tanya'] == null
           ? null
           : DateTime.parse(json['waktu_tanya'] as String),
@@ -272,6 +273,7 @@ Map<String, dynamic> _$$TanyaAhliImplToJson(_$TanyaAhliImpl instance) =>
       'penanya_user_id': instance.penanyaUserId,
       'pertanyaan': instance.pertanyaan,
       'status_pertanyaan': instance.statusPertanyaan,
+      'foto_profile': instance.fotoProfile,
       'waktu_tanya': instance.waktuTanya?.toIso8601String(),
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
@@ -713,7 +715,7 @@ _$DetailRiwayatSkrinningImpl _$$DetailRiwayatSkrinningImplFromJson(
       jenisHasil: json['jenis_hasil'] as String?,
       hasil: json['hasil'] as String?,
       pointotal: json['poin_total'] as String?,
-      soalJawab: (json['soalJawab'] as List<dynamic>?)
+      soalJawab: (json['soal_jawab'] as List<dynamic>?)
           ?.map((e) => SoalJawabRiwayat.fromJson(e as Map<String, dynamic>))
           .toList(),
     );
@@ -729,7 +731,7 @@ Map<String, dynamic> _$$DetailRiwayatSkrinningImplToJson(
       'jenis_hasil': instance.jenisHasil,
       'hasil': instance.hasil,
       'poin_total': instance.pointotal,
-      'soalJawab': instance.soalJawab,
+      'soal_jawab': instance.soalJawab,
     };
 
 _$SoalJawabRiwayatImpl _$$SoalJawabRiwayatImplFromJson(
@@ -770,6 +772,8 @@ _$RoomChatMeImpl _$$RoomChatMeImplFromJson(Map<String, dynamic> json) =>
       idRoomChatMe: json['id_room_chat_me'] as int?,
       remajaUserId: json['remaja_user_id'] as int?,
       guruUserId: json['guru_user_id'] as int?,
+      nama: json['nama'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
       createdAt: json['created_at'] == null
           ? null
           : DateTime.parse(json['created_at'] as String),
@@ -786,6 +790,8 @@ Map<String, dynamic> _$$RoomChatMeImplToJson(_$RoomChatMeImpl instance) =>
       'id_room_chat_me': instance.idRoomChatMe,
       'remaja_user_id': instance.remajaUserId,
       'guru_user_id': instance.guruUserId,
+      'nama': instance.nama,
+      'foto_profile': instance.fotoProfile,
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
       'riwayats': instance.riwayats,
@@ -819,6 +825,58 @@ Map<String, dynamic> _$$RiwayatChatMeImplToJson(_$RiwayatChatMeImpl instance) =>
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
       'room_chat_id': instance.roomChatId,
+    };
+
+_$JadwalAhliImpl _$$JadwalAhliImplFromJson(Map<String, dynamic> json) =>
+    _$JadwalAhliImpl(
+      idJadwalAhli: json['id_jadwal_ahli'] as int?,
+      ahliUserId: json['ahli_user_id'] as int?,
+      jamMulai: json['jam_mulai'] == null
+          ? null
+          : DateTime.parse(json['jam_mulai'] as String),
+      jamBerakhir: json['jam_berakhir'] == null
+          ? null
+          : DateTime.parse(json['jam_berakhir'] as String),
+      idAhli: json['id_ahli'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      jenisAhli: json['jenis_ahli'] as String?,
+      deskripsiAhli: json['deskripsi_ahli'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      detailPendidikanAhli: (json['detailPendidikanAhli'] as List<dynamic>?)
+          ?.map((e) => DetailPendidikanAhli.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$JadwalAhliImplToJson(_$JadwalAhliImpl instance) =>
+    <String, dynamic>{
+      'id_jadwal_ahli': instance.idJadwalAhli,
+      'ahli_user_id': instance.ahliUserId,
+      'jam_mulai': instance.jamMulai?.toIso8601String(),
+      'jam_berakhir': instance.jamBerakhir?.toIso8601String(),
+      'id_ahli': instance.idAhli,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'jenis_ahli': instance.jenisAhli,
+      'deskripsi_ahli': instance.deskripsiAhli,
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'detailPendidikanAhli': instance.detailPendidikanAhli,
+    };
+
+_$DetailPendidikanAhliImpl _$$DetailPendidikanAhliImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DetailPendidikanAhliImpl(
+      idRiwayatpendAhli: json['id_riwayatpend_ahli'] as int?,
+      riwayatPendidikan: json['riwayat_pendidikan'] as String?,
+    );
+
+Map<String, dynamic> _$$DetailPendidikanAhliImplToJson(
+        _$DetailPendidikanAhliImpl instance) =>
+    <String, dynamic>{
+      'id_riwayatpend_ahli': instance.idRiwayatpendAhli,
+      'riwayat_pendidikan': instance.riwayatPendidikan,
     };
 
 _$MessageBubbleDataDateTimeImpl _$$MessageBubbleDataDateTimeImplFromJson(

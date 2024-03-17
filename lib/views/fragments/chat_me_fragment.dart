@@ -21,7 +21,13 @@ class ChatMeFragment extends StatelessWidget {
                 slivers: [
                   SliverList.builder(
                     itemBuilder: (context, index) {
-                      List<MessageBubbleData> data = stateChatMe.messageBubbleList.data[index];
+                      RoomChatMe roomChatMe = stateChatMe.rooms[index];
+                      List<MessageBubbleData>? data;
+                      try {
+                        data = stateChatMe.messageBubbleList!.data[index];
+                      } catch (e) {
+                        data = null;
+                      }
 
                       return ListTile(
                         leading: ImageContainer.hero(
@@ -31,21 +37,26 @@ class ChatMeFragment extends StatelessWidget {
                           iconSize: 24.0,
                           icon: Icons.person,
                           border: const Border(),
-                          image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                          image: roomChatMe.fotoProfileData != null ? MemoryImage(Uint8List.fromList(roomChatMe.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                           borderRadius: BorderRadius.circular(24.0),
+                          extendedAppBar: AppBar(
+                            title: Text(roomChatMe.nama ?? '?'),
+                          ),
                         ),
-                        title: const Text('Zalorin Vexstar'),
-                        subtitle: Text(
-                          (data.first as MessageBubbleDataText).message ?? '?',
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                        ),
-                        trailing: Text(TimeOfDay.fromDateTime((data.first as MessageBubbleDataText).sentAt!).toFormattedString()),
+                        title: Text(roomChatMe.nama ?? '?'),
+                        subtitle: data != null
+                            ? Text(
+                                (data.first as MessageBubbleDataText).message ?? '?',
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                              )
+                            : null,
+                        trailing: data != null ? Text(TimeOfDay.fromDateTime((data.first as MessageBubbleDataText).sentAt!).toFormattedString()) : null,
                         contentPadding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 4.0),
                         onTap: () => NavigationHelper.to(MaterialPageRoute(builder: (context) => ChatMePage(index: index))),
                       );
                     },
-                    itemCount: stateChatMe.messageBubbleList.data.length,
+                    itemCount: stateChatMe.rooms.length,
                   ),
                 ],
               ),

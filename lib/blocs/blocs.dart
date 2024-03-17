@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart' as http;
 import 'package:m_widget/m_widget.dart';
 import 'package:sirama/models/models.dart';
 import 'package:sirama/services/services.dart';
@@ -41,3 +41,7 @@ part 'content_favorite_bloc/content_favorite_state.dart';
 part 'profile_bloc/profile_bloc.dart';
 part 'profile_bloc/profile_event.dart';
 part 'profile_bloc/profile_state.dart';
+
+part 'change_password_bloc/change_password_bloc.dart';
+part 'change_password_bloc/change_password_event.dart';
+part 'change_password_bloc/change_password_state.dart';

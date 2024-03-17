@@ -4,17 +4,37 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
   ChatMeBloc() : super(ChatMeInitial()) {
     on<SetChatmeState>((event, emit) => emit(event.state ?? _chatmeDataLoaded));
 
+    on<SetChatMeToInitial>((event, emit) {
+      _textControllerMessage.clear();
+
+      _rooms = [];
+
+      _messageBubbleList = null;
+
+      emit(ChatMeInitial());
+    });
+
     on<InitializeChatMeData>((event, emit) async {
       if (event.completer == null) emit(ChatMeInitial());
 
       try {
-        _rooms = await ApiHelper.get('/api/chatme').then((value) => (value.data['data'] as List).map((e) => RoomChatMe.fromJson(e)).toList());
+        _rooms = await ApiHelper.get('/api/chatme', ignoreAuthorization: false).then((value) => (value['data'] as List).map((e) => RoomChatMe.fromJson(e)).toList());
         await for (RoomChatMe room in Stream.fromIterable(_rooms)) {
           try {
-            List<RiwayatChatMe> riwayats = await ApiHelper.get('/api/chatme/${room.idRoomChatMe}').then((value) => (value.data['data'] as List).map((e) => RiwayatChatMe.fromJson(e)).toList());
+            if (room.fotoProfile != null) {
+              room.fotoProfileData = await ApiHelper.getBytesUri(Uri.parse('${ApiHelper.url}/storage/profile/${room.fotoProfile}')).then((value) => value);
+            }
+          } catch (e) {
+            // Ignored, really
+          }
+          try {
+            List<RiwayatChatMe> riwayats = await ApiHelper.get('/api/chatme/${room.idRoomChatMe}', ignoreAuthorization: false).then((value) => (value['data'] as List).map((e) => RiwayatChatMe.fromJson(e)).toList());
             room.riwayats = riwayats.reversed.toList();
           } catch (e) {
-            await ApiHelper.handleError(e);
+            event.completer?.complete(false);
+            emit(ChatMeError());
+            ApiHelper.handleError(e);
+            return;
           }
         }
       } catch (e) {
@@ -36,7 +56,7 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
 
       RiwayatChatMe riwayatChatMe;
       try {
-        riwayatChatMe = await ApiHelper.post('/api/chatme/${currentUser?.role == UserRole.remaja ? _rooms[event.index].guruUserId : _rooms[event.index].remajaUserId}', body: {'pesan': _textControllerMessage.text.trim()}).then((value) => RiwayatChatMe.fromJson(value.data['data']));
+        riwayatChatMe = await ApiHelper.post('/api/chatme/${currentUser?.role == UserRole.remaja ? _rooms[event.index].guruUserId : _rooms[event.index].remajaUserId}', body: {'pesan': _textControllerMessage.text.trim()}, ignoreAuthorization: false).then((value) => RiwayatChatMe.fromJson(value['data']));
       } catch (e) {
         ApiHelper.handleError(e);
         return;
@@ -56,10 +76,11 @@ class ChatMeBloc extends Bloc<ChatMeEvent, ChatMeState> {
 
   List<RoomChatMe> _rooms = [];
 
-  late MessageBubbleList _messageBubbleList;
+  MessageBubbleList? _messageBubbleList;
 
   ChatMeDataLoaded get _chatmeDataLoaded => ChatMeDataLoaded(
         textControllerMessage: _textControllerMessage,
         messageBubbleList: _messageBubbleList,
+        rooms: _rooms,
       );
 }

@@ -28,8 +28,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       } catch (e) {
         _isSigningIn = false;
         emit(_authenticationDataLoaded);
-        bool isError = await ApiHelper.handleError(e);
-        if (isError) return;
+        await ApiHelper.handleError(e);
+        return;
       }
 
       _isSigningIn = false;
@@ -114,6 +114,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
 
         await ApiHelper.post(
           '/api/register',
+          ignoreAuthorization: true,
           body: {
             'username': _textControllerUsernameSignUp.text.trim(),
             'email': _textControllerEmailSignUp.text.trim(),

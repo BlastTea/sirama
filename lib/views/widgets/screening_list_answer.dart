@@ -14,7 +14,7 @@ class ScreeningListAnswer extends StatefulWidget {
   State<ScreeningListAnswer> createState() => _ScreeningListAnswerState();
 }
 
-enum SingingCharacter { zero, one, two, three, four, five }
+enum SingingCharacter { zero, one, two, three, four, five, lafayette }
 
 class _ScreeningListAnswerState extends State<ScreeningListAnswer> {
   SingingCharacter? _character;

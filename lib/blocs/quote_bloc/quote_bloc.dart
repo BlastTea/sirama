@@ -8,7 +8,7 @@ class QuoteBloc extends Bloc<QuoteEvent, QuoteState> {
 
     on<InitializeQuoteData>((event, emit) async {
       try {
-        _quoteList = await ApiHelper.get('/api/quote').then((value) => (value.data['data'] as List).map((e) => Quote.fromJson(e)).toList());
+        _quoteList = await ApiHelper.get('/api/quote').then((value) => (value['data'] as List).map((e) => Quote.fromJson(e)).toList());
       } catch (e) {
         emit(QuoteError());
         ApiHelper.handleError(e);

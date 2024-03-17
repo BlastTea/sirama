@@ -13,14 +13,16 @@ class ChatMePage extends StatelessWidget {
         builder: (context, stateChatMe) {
           stateChatMe as ChatMeDataLoaded;
 
+          RoomChatMe roomChatMe = stateChatMe.rooms[index];
+
           return Scaffold(
             appBar: AppBar(
-              title: const Text('Zalorin Vexstar'),
+              title: Text(roomChatMe.nama ?? '?'),
               centerTitle: true,
               actions: [
                 ImageContainer.hero(
                   tag: 'Chat profile picture $index',
-                  image: const NetworkImage('https://avatars.githubusercontent.com/u/75353116?v=4'),
+                  image: roomChatMe.fotoProfileData != null ? MemoryImage(Uint8List.fromList(roomChatMe.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                   width: 40.0,
                   height: 40.0,
                   border: const Border(),
@@ -30,60 +32,67 @@ class ChatMePage extends StatelessWidget {
             ),
             body: Column(
               children: [
-                Expanded(
-                  child: RefreshIndicator(
-                    onRefresh: () async {
-                      Completer<bool> completer = Completer();
-                      MyApp.chatmeBloc.add(InitializeChatMeData(completer: completer));
-                      await completer.future;
-                    },
-                    child: ListView.builder(
-                      key: ValueKey(stateChatMe.messageBubbleList.data[index].length),
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      reverse: true,
-                      itemBuilder: (context, dataIndex) {
-                        MessageBubbleData data = stateChatMe.messageBubbleList.data[index][dataIndex];
+                index > stateChatMe.messageBubbleList!.data.length - 1
+                    ? Expanded(
+                        child: RetryButton(
+                          titleText: 'Tidak ada chat',
+                          onRetryPressed: () => MyApp.chatmeBloc.add(InitializeChatMeData(completer: Completer())),
+                        ),
+                      )
+                    : Expanded(
+                        child: RefreshIndicator(
+                          onRefresh: () async {
+                            Completer<bool> completer = Completer();
+                            MyApp.chatmeBloc.add(InitializeChatMeData(completer: completer));
+                            await completer.future;
+                          },
+                          child: ListView.builder(
+                            key: ValueKey(stateChatMe.messageBubbleList!.data[index].length),
+                            padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                            reverse: true,
+                            itemBuilder: (context, dataIndex) {
+                              MessageBubbleData data = stateChatMe.messageBubbleList!.data[index][dataIndex];
 
-                        if (data is MessageBubbleDataText) {
-                          return Column(
-                            children: [
-                              Padding(
-                                padding: EdgeInsets.only(
-                                  left: data.isSender ? 48.0 : 0.0,
-                                  right: data.isSender ? 0.0 : 48.0,
+                              if (data is MessageBubbleDataText) {
+                                return Column(
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsets.only(
+                                        left: data.isSender ? 48.0 : 0.0,
+                                        right: data.isSender ? 0.0 : 48.0,
+                                      ),
+                                      child: MessageBubble(
+                                        message: data.message ?? '-',
+                                        sentAt: data.sentAt != null ? TimeOfDay.fromDateTime(data.sentAt!) : TimeOfDay.fromDateTime(DateTime.now()),
+                                        isSender: data.isSender,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 2.0),
+                                  ],
+                                );
+                              }
+
+                              data as MessageBubbleDataDateTime;
+
+                              return Center(
+                                child: Container(
+                                  margin: const EdgeInsets.symmetric(vertical: 8.0),
+                                  padding: const EdgeInsets.all(8.0),
+                                  decoration: BoxDecoration(
+                                    color: Theme.of(context).colorScheme.secondary,
+                                    borderRadius: BorderRadius.circular(kShapeSmall),
+                                  ),
+                                  child: Text(
+                                    data.dateTime?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?',
+                                    style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.onSecondary),
+                                  ),
                                 ),
-                                child: MessageBubble(
-                                  message: data.message ?? '-',
-                                  sentAt: data.sentAt != null ? TimeOfDay.fromDateTime(data.sentAt!) : TimeOfDay.fromDateTime(DateTime.now()),
-                                  isSender: data.isSender,
-                                ),
-                              ),
-                              const SizedBox(height: 2.0),
-                            ],
-                          );
-                        }
-
-                        data as MessageBubbleDataDateTime;
-
-                        return Center(
-                          child: Container(
-                            margin: const EdgeInsets.symmetric(vertical: 8.0),
-                            padding: const EdgeInsets.all(8.0),
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).colorScheme.secondary,
-                              borderRadius: BorderRadius.circular(kShapeSmall),
-                            ),
-                            child: Text(
-                              data.dateTime?.toFormattedDate(withWeekday: true, withMonthName: true) ?? '?',
-                              style: Theme.of(context).textTheme.bodySmall!.copyWith(color: Theme.of(context).colorScheme.onSecondary),
-                            ),
+                              );
+                            },
+                            itemCount: stateChatMe.messageBubbleList!.data[index].length,
                           ),
-                        );
-                      },
-                      itemCount: stateChatMe.messageBubbleList.data[index].length,
-                    ),
-                  ),
-                ),
+                        ),
+                      ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
