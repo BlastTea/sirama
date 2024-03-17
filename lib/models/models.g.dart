@@ -251,6 +251,7 @@ _$TanyaAhliImpl _$$TanyaAhliImplFromJson(Map<String, dynamic> json) =>
       penanyaUserId: json['penanya_user_id'],
       pertanyaan: json['pertanyaan'] as String?,
       statusPertanyaan: _parseBool(json['status_pertanyaan']),
+      fotoProfile: json['foto_profile'] as String?,
       waktuTanya: json['waktu_tanya'] == null
           ? null
           : DateTime.parse(json['waktu_tanya'] as String),
@@ -272,6 +273,7 @@ Map<String, dynamic> _$$TanyaAhliImplToJson(_$TanyaAhliImpl instance) =>
       'penanya_user_id': instance.penanyaUserId,
       'pertanyaan': instance.pertanyaan,
       'status_pertanyaan': instance.statusPertanyaan,
+      'foto_profile': instance.fotoProfile,
       'waktu_tanya': instance.waktuTanya?.toIso8601String(),
       'created_at': instance.createdAt?.toIso8601String(),
       'updated_at': instance.updatedAt?.toIso8601String(),
