@@ -825,6 +825,58 @@ Map<String, dynamic> _$$RiwayatChatMeImplToJson(_$RiwayatChatMeImpl instance) =>
       'room_chat_id': instance.roomChatId,
     };
 
+_$JadwalAhliImpl _$$JadwalAhliImplFromJson(Map<String, dynamic> json) =>
+    _$JadwalAhliImpl(
+      idJadwalAhli: json['id_jadwal_ahli'] as int?,
+      ahliUserId: json['ahli_user_id'] as int?,
+      jamMulai: json['jam_mulai'] == null
+          ? null
+          : DateTime.parse(json['jam_mulai'] as String),
+      jamBerakhir: json['jam_berakhir'] == null
+          ? null
+          : DateTime.parse(json['jam_berakhir'] as String),
+      idAhli: json['id_ahli'] as int?,
+      nama: json['nama'] as String?,
+      noHp: json['no_hp'] as String?,
+      jenisAhli: json['jenis_ahli'] as String?,
+      deskripsiAhli: json['deskripsi_ahli'] as String?,
+      fotoProfile: json['foto_profile'] as String?,
+      userId: json['user_id'] as int?,
+      detailPendidikanAhli: (json['detailPendidikanAhli'] as List<dynamic>?)
+          ?.map((e) => DetailPendidikanAhli.fromJson(e as Map<String, dynamic>))
+          .toList(),
+    );
+
+Map<String, dynamic> _$$JadwalAhliImplToJson(_$JadwalAhliImpl instance) =>
+    <String, dynamic>{
+      'id_jadwal_ahli': instance.idJadwalAhli,
+      'ahli_user_id': instance.ahliUserId,
+      'jam_mulai': instance.jamMulai?.toIso8601String(),
+      'jam_berakhir': instance.jamBerakhir?.toIso8601String(),
+      'id_ahli': instance.idAhli,
+      'nama': instance.nama,
+      'no_hp': instance.noHp,
+      'jenis_ahli': instance.jenisAhli,
+      'deskripsi_ahli': instance.deskripsiAhli,
+      'foto_profile': instance.fotoProfile,
+      'user_id': instance.userId,
+      'detailPendidikanAhli': instance.detailPendidikanAhli,
+    };
+
+_$DetailPendidikanAhliImpl _$$DetailPendidikanAhliImplFromJson(
+        Map<String, dynamic> json) =>
+    _$DetailPendidikanAhliImpl(
+      idRiwayatpendAhli: json['id_riwayatpend_ahli'] as int?,
+      riwayatPendidikan: json['riwayat_pendidikan'] as String?,
+    );
+
+Map<String, dynamic> _$$DetailPendidikanAhliImplToJson(
+        _$DetailPendidikanAhliImpl instance) =>
+    <String, dynamic>{
+      'id_riwayatpend_ahli': instance.idRiwayatpendAhli,
+      'riwayat_pendidikan': instance.riwayatPendidikan,
+    };
+
 _$MessageBubbleDataDateTimeImpl _$$MessageBubbleDataDateTimeImplFromJson(
         Map<String, dynamic> json) =>
     _$MessageBubbleDataDateTimeImpl(

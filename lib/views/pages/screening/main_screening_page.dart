@@ -31,13 +31,14 @@ class _MainScreeningPageState extends State<MainScreeningPage> {
     return BlocBuilder<SkrinningBloc, SkrinningState>(
       builder: (context, stateSkrinning) {
         if (stateSkrinning is SkrinningDataLoaded) {
+          final currentPart = stateSkrinning.detailskrinning[currentPartIndex];
           final sortedSelectedAnswers = List.generate(
-            stateSkrinning.detailskrinning[currentPartIndex].soalJawab!.length,
+            currentPart.soalJawab!.length,
             (index) => selectedAnswers[index] ?? 0,
           );
           if (kDebugMode) {
             print(sortedSelectedAnswers);
-            print(stateSkrinning.detailskrinning[currentPartIndex]);
+            print(currentPart);
           }
           return Scaffold(
             appBar: AppBar(

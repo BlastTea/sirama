@@ -458,6 +458,36 @@ class RiwayatChatMe with _$RiwayatChatMe {
 }
 
 @freezed
+class JadwalAhli with _$JadwalAhli {
+  const factory JadwalAhli({
+    @JsonKey(name: 'id_jadwal_ahli') int? idJadwalAhli,
+    @JsonKey(name: 'ahli_user_id') int? ahliUserId,
+    @JsonKey(name: 'jam_mulai') DateTime? jamMulai,
+    @JsonKey(name: 'jam_berakhir') DateTime? jamBerakhir,
+    @JsonKey(name: 'id_ahli') int? idAhli,
+    @JsonKey(name: 'nama') String? nama,
+    @JsonKey(name: 'no_hp') String? noHp,
+    @JsonKey(name: 'jenis_ahli') String? jenisAhli,
+    @JsonKey(name: 'deskripsi_ahli') String? deskripsiAhli,
+    @JsonKey(name: 'foto_profile') String? fotoProfile,
+    @JsonKey(name: 'user_id') int? userId,
+    List<DetailPendidikanAhli>? detailPendidikanAhli,
+  }) = _JadwalAhli;
+
+  factory JadwalAhli.fromJson(Map<String, dynamic> json) => _$JadwalAhliFromJson(json);
+}
+
+@freezed
+class DetailPendidikanAhli with _$DetailPendidikanAhli {
+  const factory DetailPendidikanAhli({
+    @JsonKey(name: 'id_riwayatpend_ahli') int? idRiwayatpendAhli,
+    @JsonKey(name: 'riwayat_pendidikan') String? riwayatPendidikan,
+  }) = _DetailPendidikanAhli;
+
+  factory DetailPendidikanAhli.fromJson(Map<String, dynamic> json) => _$DetailPendidikanAhliFromJson(json);
+}
+
+@freezed
 class MessageBubbleList with _$MessageBubbleList {
   const factory MessageBubbleList({required List<List<MessageBubbleData>> data}) = _MessageBubbleList;
 

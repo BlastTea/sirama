@@ -23,6 +23,10 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
             _tanyaAhlis[topikIndex].add(tanyaAhli);
           }
         });
+
+        // consume api for data expert
+        _jadwalAhli = await ApiHelper.get('/api/jadwalahli').then((value) => (value.data['data'] as List).map((e) => JadwalAhli.fromJson(e)).toList());
+
       } catch (e) {
         event.completer?.complete(false);
         emit(AskTheExpertError());
@@ -94,6 +98,8 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
 
   List<List<TanyaAhli>> _tanyaAhlis = [];
 
+  List<JadwalAhli> _jadwalAhli = [];
+
   int _selectedTopikPertanyaan = 0;
   int? _selectedInputTopikPertanyaan;
 
@@ -104,5 +110,6 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
         tanyaAhlis: _tanyaAhlis,
         selectedTopikPertanyaan: _selectedTopikPertanyaan,
         selectedInputTopikPertanyaan: _selectedInputTopikPertanyaan,
+        jadwalAhli : _jadwalAhli,
       );
 }
