@@ -10,14 +10,20 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
       if (event.completer == null) emit(AskTheExpertInitial());
 
       try {
-        _topikPertanyaans = await ApiHelper.get('/api/topikpertanyaan').then((value) => (value.data['data'] as List).map((e) => TopikPertanyaan.fromJson(e)).toList());
+        _topikPertanyaans = await ApiHelper.get('/api/topikpertanyaan').then((value) => (value['data'] as List).map((e) => TopikPertanyaan.fromJson(e)).toList());
         _tanyaAhlis = List.generate(_topikPertanyaans.length, (index) => []);
 
-        List<JawabanAhli> jawabanAhlis = await ApiHelper.get('/api/jawabanahli').then((value) => (value.data['data'] as List).map((e) => JawabanAhli.fromJson(e)).toList());
+        List<JawabanAhli> jawabanAhlis = await ApiHelper.get('/api/jawabanahli').then((value) => (value['data'] as List).map((e) => JawabanAhli.fromJson(e)).toList());
 
-        await ApiHelper.get('/api/tanyaahli').then((value) {
-          List<TanyaAhli> ahlis = (value.data['data'] as List).map((e) => TanyaAhli.fromJson(e)).toList();
-          for (TanyaAhli tanyaAhli in ahlis) {
+        await ApiHelper.get('/api/tanyaahli').then((value) async {
+          List<TanyaAhli> ahlis = (value['data'] as List).map((e) => TanyaAhli.fromJson(e)).toList();
+          await for (TanyaAhli tanyaAhli in Stream.fromIterable(ahlis)) {
+            try {
+              tanyaAhli.fotoProfileData = await ApiHelper.getBytesUri(Uri.parse('${ApiHelper.url}/storage/profile/${tanyaAhli.fotoProfile}'));
+            } catch (e) {
+              // Ignored, really
+            }
+
             tanyaAhli.jawabanAhli = jawabanAhlis.trySingleWhere((element) => element.tanyaAhliId == tanyaAhli.idTanyaAhli);
             int topikIndex = _topikPertanyaans.indexWhere((element) => element.idJenisTopikPertanyaan == tanyaAhli.topikId);
             _tanyaAhlis[topikIndex].add(tanyaAhli);
@@ -69,7 +75,7 @@ class AskTheExpertBloc extends Bloc<AskTheExpertEvent, AskTheExpertState> {
             'topik_id': _topikPertanyaans[_selectedTopikPertanyaan].idJenisTopikPertanyaan,
             'pertanyaan': _textControllerQuestion.text.trim(),
           },
-        ).then((value) => TanyaAhli.fromJson(value.data['data']));
+        ).then((value) => TanyaAhli.fromJson(value['data']));
       } catch (e) {
         NavigationHelper.back();
         emit(_askTheExpertDataLoaded);

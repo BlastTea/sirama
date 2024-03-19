@@ -36,22 +36,13 @@ class _DetailsInfographicsPageState extends State<DetailsInfographicsPage> {
                           SizedBox(
                             width: 148.75,
                             height: 210.50,
-                            child: Hero(
+                            child: ImageContainer.hero(
+                              borderRadius: BorderRadius.circular(10.0),
+                              border: const Border(),
                               tag: 'infografis ${widget.infographic.idInfografis}',
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  border: Border.all(
-                                    color: Colors.white,
-                                    width: 0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(10.0),
-                                  image: DecorationImage(
-                                    image: NetworkImage(
-                                      'https://dev-sirama.propertiideal.id/storage/infografis/${widget.infographic.gambarInfografis}',
-                                    ),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
+                              image: NetworkImage('https://dev-sirama.propertiideal.id/storage/infografis/${widget.infographic.gambarInfografis}'),
+                              extendedAppBar: AppBar(
+                                title: Text(stateContentFavorite.currentInfografis?.infografis?.judulInfografis ?? '?'),
                               ),
                             ),
                           ),

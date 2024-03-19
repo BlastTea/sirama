@@ -181,7 +181,7 @@ class _AskTheExpertFragmentState extends State<AskTheExpertFragment> {
                                     iconSize: 24.0,
                                     icon: Icons.person,
                                     border: const Border(),
-                                    image: const NetworkImage('https://dev-sirama.propertiideal.id/storage/test/person.png'),
+                                    image: tanyaAhli.fotoProfileData != null ? MemoryImage(Uint8List.fromList(tanyaAhli.fotoProfileData!)) : const AssetImage('assets/user.png') as ImageProvider,
                                     borderRadius: BorderRadius.circular(24.0),
                                   ),
                                   title: Text('Cal Dingo • ${tanyaAhli.waktuTanya?.toFormattedDate(

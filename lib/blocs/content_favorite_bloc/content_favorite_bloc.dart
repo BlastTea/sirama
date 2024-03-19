@@ -13,7 +13,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         // Film
         _films = await ApiHelper.get('/api/film').then((value) async {
           List<FavFilm> results = [];
-          await for (dynamic e in Stream.fromIterable(value.data['data'])) {
+          await for (dynamic e in Stream.fromIterable(value['data'])) {
             FavFilm favFilm = FavFilm.fromJson(e);
             favFilm.film = Film.fromJson(e);
             favFilm.film?.thumbnailImageData = await getYoutubeThumbnailImageData(uri: Uri.parse(favFilm.film?.linkFilm ?? ''));
@@ -21,7 +21,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           }
           return results;
         });
-        List<FavFilm> favFilms = await ApiHelper.get('/api/favfilm').then((value) => (value.data['data'] as List).map((e) {
+        List<FavFilm> favFilms = await ApiHelper.get('/api/favfilm', ignoreAuthorization: false).then((value) => (value['data'] as List).map((e) {
               FavFilm favFilm = FavFilm.fromJson(e);
               favFilm.film = Film.fromJson(e);
               return favFilm;
@@ -37,7 +37,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         // Podcast
         _podcasts = await ApiHelper.get('/api/podcast').then((value) async {
           List<FavPodcast> results = [];
-          await for (dynamic e in Stream.fromIterable(value.data['data'])) {
+          await for (dynamic e in Stream.fromIterable(value['data'])) {
             FavPodcast favPodcast = FavPodcast.fromJson(e);
             favPodcast.podcast = Podcast.fromJson(e);
             favPodcast.podcast?.thumbnailImageData = await getYoutubeThumbnailImageData(uri: Uri.parse(favPodcast.podcast?.linkPodcast ?? ''));
@@ -45,7 +45,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           }
           return results;
         });
-        List<FavPodcast> favPodcasts = await ApiHelper.get('/api/favpodcast').then((value) => (value.data['data'] as List).map((e) {
+        List<FavPodcast> favPodcasts = await ApiHelper.get('/api/favpodcast', ignoreAuthorization: false).then((value) => (value['data'] as List).map((e) {
               FavPodcast favPodcast = FavPodcast.fromJson(e);
               favPodcast.podcast = Podcast.fromJson(e);
               return favPodcast;
@@ -61,7 +61,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         // Video Edukasi
         _videoEdukasis = await ApiHelper.get('/api/videoedukasi').then((value) async {
           List<FavVideoEdukasi> results = [];
-          await for (dynamic e in Stream.fromIterable(value.data['data'])) {
+          await for (dynamic e in Stream.fromIterable(value['data'])) {
             FavVideoEdukasi favVideoEdukasi = FavVideoEdukasi.fromJson(e);
             favVideoEdukasi.videoEdukasi = VideoEdukasi.fromJson(e);
             favVideoEdukasi.videoEdukasi?.thumbnailImageData = await getYoutubeThumbnailImageData(uri: Uri.parse(favVideoEdukasi.videoEdukasi?.linkVideoEdukasi ?? ''));
@@ -69,7 +69,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
           }
           return results;
         });
-        List<FavVideoEdukasi> favVideoEdukasis = await ApiHelper.get('/api/fav-video-edukasi').then((value) => (value.data['data'] as List).map((e) {
+        List<FavVideoEdukasi> favVideoEdukasis = await ApiHelper.get('/api/fav-video-edukasi', ignoreAuthorization: false).then((value) => (value['data'] as List).map((e) {
               FavVideoEdukasi favVideoEdukasi = FavVideoEdukasi.fromJson(e);
               favVideoEdukasi.videoEdukasi = VideoEdukasi.fromJson(e);
               return favVideoEdukasi;
@@ -83,12 +83,12 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         }).toList();
 
         // Infografis
-        _infografis = await ApiHelper.get('/api/infografis').then((value) => (value.data['data'] as List).map((e) {
+        _infografis = await ApiHelper.get('/api/infografis').then((value) => (value['data'] as List).map((e) {
               FavInfografis favInfografis = FavInfografis.fromJson(e);
               favInfografis.infografis = Infografis.fromJson(e);
               return favInfografis;
             }).toList());
-        List<FavInfografis> favInfografiss = await ApiHelper.get('/api/favinfografis').then((value) => (value.data['data'] as List).map((e) {
+        List<FavInfografis> favInfografiss = await ApiHelper.get('/api/favinfografis', ignoreAuthorization: false).then((value) => (value['data'] as List).map((e) {
               FavInfografis favInfografis = FavInfografis.fromJson(e);
               favInfografis.infografis = Infografis.fromJson(e);
               return favInfografis;
@@ -119,7 +119,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         if (_currentFilm!.film!.isFavorited) {
           _currentFilm = await ApiHelper.delete('/api/favfilm/${_currentFilm!.idFavFilm}').then((value) => FavFilm(film: _currentFilm!.film!.copyWith(isFavorited: false, totalLikes: _currentFilm!.film!.totalLikes! - 1)));
         } else {
-          _currentFilm = await ApiHelper.post('/api/favfilm/${_currentFilm!.film!.idFilm}').then((value) => FavFilm.fromJson(value.data['data']).copyWith(film: _currentFilm!.film!.copyWith(isFavorited: true, totalLikes: _currentFilm!.film!.totalLikes! + 1)));
+          _currentFilm = await ApiHelper.post('/api/favfilm/${_currentFilm!.film!.idFilm}').then((value) => FavFilm.fromJson(value['data']).copyWith(film: _currentFilm!.film!.copyWith(isFavorited: true, totalLikes: _currentFilm!.film!.totalLikes! + 1)));
         }
       } catch (e) {
         ApiHelper.handleError(e);
@@ -141,7 +141,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         if (_currentPodcast!.podcast!.isFavorited) {
           _currentPodcast = await ApiHelper.delete('/api/favpodcast/${_currentPodcast!.idFavPodcast}').then((value) => FavPodcast(podcast: _currentPodcast!.podcast!.copyWith(isFavorited: false, totalLikes: _currentPodcast!.podcast!.totalLikes! - 1)));
         } else {
-          _currentPodcast = await ApiHelper.post('/api/favpodcast/${_currentPodcast!.podcast!.idPodcast}').then((value) => FavPodcast.fromJson(value.data['data']).copyWith(podcast: _currentPodcast!.podcast!.copyWith(isFavorited: true, totalLikes: _currentPodcast!.podcast!.totalLikes! + 1)));
+          _currentPodcast = await ApiHelper.post('/api/favpodcast/${_currentPodcast!.podcast!.idPodcast}').then((value) => FavPodcast.fromJson(value['data']).copyWith(podcast: _currentPodcast!.podcast!.copyWith(isFavorited: true, totalLikes: _currentPodcast!.podcast!.totalLikes! + 1)));
         }
       } catch (e) {
         ApiHelper.handleError(e);
@@ -163,7 +163,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         if (_currentVideoEdukasi!.videoEdukasi!.isFavorited) {
           _currentVideoEdukasi = await ApiHelper.delete('/api/fav-video-edukasi/${_currentVideoEdukasi!.idFavVideoEdukasi}').then((value) => FavVideoEdukasi(videoEdukasi: _currentVideoEdukasi!.videoEdukasi!.copyWith(isFavorited: false, totalLikes: _currentVideoEdukasi!.videoEdukasi!.totalLikes! - 1)));
         } else {
-          _currentVideoEdukasi = await ApiHelper.post('/api/fav-video-edukasi/${_currentVideoEdukasi!.videoEdukasi!.idVideoEdukasi}').then((value) => FavVideoEdukasi.fromJson(value.data['data']).copyWith(videoEdukasi: _currentVideoEdukasi!.videoEdukasi!.copyWith(isFavorited: true, totalLikes: _currentVideoEdukasi!.videoEdukasi!.totalLikes! + 1)));
+          _currentVideoEdukasi = await ApiHelper.post('/api/fav-video-edukasi/${_currentVideoEdukasi!.videoEdukasi!.idVideoEdukasi}').then((value) => FavVideoEdukasi.fromJson(value['data']).copyWith(videoEdukasi: _currentVideoEdukasi!.videoEdukasi!.copyWith(isFavorited: true, totalLikes: _currentVideoEdukasi!.videoEdukasi!.totalLikes! + 1)));
         }
       } catch (e) {
         ApiHelper.handleError(e);
@@ -185,7 +185,7 @@ class ContentFavoriteBloc extends Bloc<ContentFavoriteEvent, ContentFavoriteStat
         if (_currentInfografis!.infografis!.isFavorited) {
           _currentInfografis = await ApiHelper.delete('/api/favinfografis/${_currentInfografis!.idFavInfografis}').then((value) => FavInfografis(infografis: _currentInfografis!.infografis!.copyWith(isFavorited: false, totalLikes: _currentInfografis!.infografis!.totalLikes! - 1)));
         } else {
-          _currentInfografis = await ApiHelper.post('/api/favinfografis/${_currentInfografis!.infografis!.idInfografis}').then((value) => FavInfografis.fromJson(value.data['data']).copyWith(infografis: _currentInfografis!.infografis!.copyWith(isFavorited: true, totalLikes: _currentInfografis!.infografis!.totalLikes! + 1)));
+          _currentInfografis = await ApiHelper.post('/api/favinfografis/${_currentInfografis!.infografis!.idInfografis}').then((value) => FavInfografis.fromJson(value['data']).copyWith(infografis: _currentInfografis!.infografis!.copyWith(isFavorited: true, totalLikes: _currentInfografis!.infografis!.totalLikes! + 1)));
         }
       } catch (e) {
         ApiHelper.handleError(e);

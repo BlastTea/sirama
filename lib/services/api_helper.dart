@@ -4,7 +4,7 @@ part of 'services.dart';
 /// ```
 /// try {
 ///   Response response = await ApiHelper.post(
-///     '/endpoint',
+///     '/api/endpoint',
 ///     body: {
 ///       'message': 'Hello World',
 ///     },
@@ -15,84 +15,168 @@ part of 'services.dart';
 /// }
 /// ```
 class ApiHelper {
-  // static String url = 'http://192.168.121.58:8000';
   static String url = 'https://dev-sirama.propertiideal.id';
 
   static const String _keyToken = 'token';
   static const String _keyCurrentUser = 'current_user';
 
-  static Dio? _dioInstance;
+  // static void _initialize() {
+  //   if (_dioInstance != null) return;
 
-  static void _initialize() {
-    if (_dioInstance != null) return;
+  //   _dioInstance = Dio(
+  //     BaseOptions(
+  //       baseUrl: url,
+  //       headers: {
+  //         'Access-Control-Allow-Origin': '*',
+  //       },
+  //     ),
+  //   );
 
-    _dioInstance = Dio(
-      BaseOptions(
-        baseUrl: url,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
+  //   _dioInstance!.interceptors.add(
+  //     InterceptorsWrapper(
+  //       onRequest: (options, handler) async {
+  //         SharedPreferences sharedPref = await SharedPreferences.getInstance();
+  //         String? token = sharedPref.getString(_keyToken);
+
+  //         if (token == null && options.method == 'POST' && !(options.uri.path == '/api/login' || options.uri.path == '/api/register')) {
+  //           return handler.reject(
+  //             DioException(
+  //               requestOptions: options,
+  //               message: 'Session is expired',
+  //             ),
+  //             true,
+  //           );
+  //         }
+
+  //         if (options.method != 'GET' || options.path.contains('/api/fav') || options.path.contains('/api/detailskrinning') || options.path.contains('/api/skrinning') || options.path.contains('/api/riwayatskrinning') || options.path.contains('/api/detailriwayatskrinning') || options.path.contains('/api/chatme') || options.path.contains('/api/me')) {
+  //           options.headers['Authorization'] = 'Bearer $token';
+  //         }
+
+  //         dynamic data;
+
+  //         if (options.data is FormData) {
+  //           data = '${(options.data as FormData).fields.fold('Fields : {', (previousValue, element) => '$previousValue${element.key}: ${element.value}, ')}}';
+  //           data += '${(options.data as FormData).files.fold('Files : [', (previousValue, element) => '$previousValue${element.key}: ${element.value.filename}, ')}}';
+  //           options.headers['Content-Type'] = 'multipart/form-data';
+  //         } else {
+  //           data = options.data;
+  //           options.headers['Content-Type'] = 'application/json';
+  //         }
+
+  //         debugPrint('http request : ${options.method} ${options.uri} ${options.headers} $data');
+
+  //         return handler.next(options);
+  //       },
+  //       onResponse: (response, handler) {
+  //         debugPrint('http response : ${response.data is List<int> ? 'Intinya isi responsenya bytes 😁' : response.data}');
+  //         handler.next(response);
+  //       },
+  //     ),
+  //   );
+  // }
+
+  static Future<Map<String, String>> _getHeaders({bool ignoreAuthorization = false, bool isMultpartFormData = false}) async => {
+        if (!ignoreAuthorization) 'Authorization': 'Bearer ${await _getToken()}',
+        'Access-Control-Allow-Origin': '*',
+        'Content-Type': isMultpartFormData ? 'multipar/form-data' : 'application/json',
+      };
+
+  static Future<String?> _getToken() async {
+    SharedPreferences sharedPref = await SharedPreferences.getInstance();
+    String? token = sharedPref.getString(_keyToken);
+
+    if (token == null) throw 'Session is expired';
+
+    return token;
+  }
+
+  static http.StreamedResponse _onRequestTimeout() => http.StreamedResponse(
+      Stream.fromIterable(
+        [
+          json.encode({'message': 'Request Timeout'}).codeUnits,
+        ],
       ),
-    );
+      408);
 
-    _dioInstance!.interceptors.add(
-      InterceptorsWrapper(
-        onRequest: (options, handler) async {
-          SharedPreferences sharedPref = await SharedPreferences.getInstance();
-          String? token = sharedPref.getString(_keyToken);
+  static Future<dynamic> _request({
+    required String method,
+    required Uri uri,
+    Map<String, dynamic>? body,
+    bool ignoreAuthorization = false,
+    bool decode = true,
+    Duration? timeout,
+  }) async {
+    http.Request request = http.Request(method, uri);
+    debugPrint('(http request) : $method ${request.url} $body');
+    request.headers.addAll(await _getHeaders(ignoreAuthorization: ignoreAuthorization));
+    if (body != null) request.body = json.encode(body);
 
-          if (token == null && options.method == 'POST' && !(options.uri.path == '/api/login' || options.uri.path == '/api/register')) {
-            return handler.reject(
-              DioException(
-                requestOptions: options,
-                message: 'Session is expired',
-              ),
-              true,
-            );
-          }
+    http.StreamedResponse response;
+    if (timeout == null) {
+      response = await request.send();
+    } else {
+      response = await request.send().timeout(timeout, onTimeout: _onRequestTimeout);
+    }
 
-          if (options.method != 'GET' || options.path.contains('/api/fav') || options.path.contains('/api/detailskrinning') || options.path.contains('/api/skrinning') || options.path.contains('/api/riwayatskrinning') || options.path.contains('/api/detailriwayatskrinning') || options.path.contains('/api/chatme') || options.path.contains('/api/me')) {
-            options.headers['Authorization'] = 'Bearer $token';
-          }
+    dynamic responseString = !decode && (response.statusCode > 199 && response.statusCode < 300) ? await response.stream.toBytes() : await response.stream.bytesToString();
 
-          dynamic data;
+    debugPrint('(http response) : $method ${request.url} ${response.statusCode} $body => $responseString');
 
-          if (options.data is FormData) {
-            data = '${(options.data as FormData).fields.fold('Fields : {', (previousValue, element) => '$previousValue${element.key}: ${element.value}, ')}}';
-            data += '${(options.data as FormData).files.fold('Files : [', (previousValue, element) => '$previousValue${element.key}: ${element.value.filename}, ')}}';
-            options.headers['Content-Type'] = 'multipart/form-data';
-          } else {
-            data = options.data;
-            options.headers['Content-Type'] = 'application/json';
-          }
+    if ((response.statusCode < 200 && response.statusCode > 299) && (responseString.contains('<!doctype html>') || responseString.contains('<!DOCTYPE html>'))) throw responseString;
 
-          debugPrint('http request : ${options.method} ${options.uri} ${options.headers} $data');
+    if ((response.statusCode < 200 && response.statusCode > 299)) throw json.decode(responseString);
 
-          return handler.next(options);
-        },
-        onResponse: (response, handler) {
-          debugPrint('http response : ${response.data is List<int> ? 'Intinya isi responsenya bytes 😁' : response.data}');
-          handler.next(response);
-        },
-      ),
-    );
+    if (!decode) return responseString;
+
+    return json.decode(responseString);
+  }
+
+  static Future<dynamic> _requestMultipart({
+    required String method,
+    required Uri uri,
+    Map<String, String>? fields,
+    List<http.MultipartFile>? files,
+    Duration? timeout,
+  }) async {
+    var request = http.MultipartRequest(method, uri);
+    request.headers.addAll(await _getHeaders(isMultpartFormData: true));
+    if (files != null) request.files.addAll(files);
+    if (fields != null) request.fields.addAll(fields);
+
+    debugPrint('(http request) : ${request.method} ${request.headers} ${request.fields}');
+
+    http.StreamedResponse response;
+    if (timeout == null) {
+      response = await request.send();
+    } else {
+      response = await request.send().timeout(timeout, onTimeout: _onRequestTimeout);
+    }
+
+    dynamic responseString = await response.stream.bytesToString();
+
+    debugPrint('(http response) : $method ${request.url} ${response.statusCode} $fields => $responseString');
+
+    if ((response.statusCode < 200 && response.statusCode > 299)) throw json.decode(responseString);
+
+    return json.decode(responseString);
   }
 
   static Future<void> signIn({
     required String username,
     required String password,
   }) async {
-    Response response = await post(
+    dynamic response = await post(
       '/api/login',
       body: {
         'username': username,
         'password': password,
       },
+      ignoreAuthorization: true,
     );
 
-    String token = response.data['token'];
+    String token = response['token'];
 
-    currentUser = User.fromJson(response.data['user']);
+    currentUser = User.fromJson(response['user']);
 
     SharedPreferences sharedPref = await SharedPreferences.getInstance();
 
@@ -145,11 +229,11 @@ class ApiHelper {
   }
 
   static Future<void> getMe() async {
-    Response response = await get('/api/me');
+    dynamic response = await get('/api/me', ignoreAuthorization: false);
 
-    if (response.data is String && (response.data.contains('<!doctype html>') || response.data.contains('<!DOCTYPE html>'))) throw 'Session is expired';
+    if (response is String && (response.contains('<!doctype html>') || response.contains('<!DOCTYPE html>'))) throw 'Session is expired';
 
-    currentUser?.userDetail = UserDetail.fromJson(response.data['data'][0]);
+    currentUser?.userDetail = UserDetail.fromJson(response['data'][0]);
 
     if (currentUser?.userDetail?.fotoProfile != null) {
       try {
@@ -160,104 +244,57 @@ class ApiHelper {
     }
   }
 
-  static Future<Response<Uint8List>> getBytesUri(Uri uri) {
-    _initialize();
-    return _dioInstance!.getUri(
-      uri,
-      options: Options(
-        responseType: ResponseType.bytes,
-        followRedirects: false,
-        receiveTimeout: const Duration(seconds: 60),
-      ),
-    );
-  }
+  static Future<dynamic> get(String path, {bool ignoreAuthorization = true}) => _request(method: 'GET', uri: Uri.parse('$url$path'), ignoreAuthorization: ignoreAuthorization);
 
-  static Future<Response> get(String path) {
-    _initialize();
-    return _dioInstance!.get(path);
-  }
+  static Future<dynamic> getBytesUri(Uri uri, {Duration? timeout}) => _request(method: 'GET', uri: uri, decode: false, ignoreAuthorization: true, timeout: timeout);
 
-  static Future<Response> post(String path, {Map<String, dynamic>? body}) {
-    _initialize();
-    return _dioInstance!.post(
-      path,
-      data: body,
-    );
-  }
+  static Future<dynamic> post(String path, {Map<String, dynamic>? body, bool ignoreAuthorization = false}) => _request(method: 'POST', uri: Uri.parse('$url$path'), body: body, ignoreAuthorization: ignoreAuthorization);
 
-  static Future<Response> postMultipart(String path, {FormData? data}) {
-    _initialize();
-    return _dioInstance!.post(
-      path,
-      data: data,
-    );
-  }
+  static Future<dynamic> postMultipart(
+    String path, {
+    Map<String, String>? fields,
+    List<http.MultipartFile>? files,
+    Duration? timeout,
+  }) =>
+      _requestMultipart(
+        method: 'POST',
+        uri: Uri.parse('$url$path'),
+        fields: fields,
+        files: files,
+        timeout: timeout,
+      );
 
-  static Future<Response> put(String path, {Map<String, dynamic>? body}) {
-    _initialize();
-    return _dioInstance!.put(
-      path,
-      data: body,
-    );
-  }
+  static Future<dynamic> put(String path, {Map<String, dynamic>? body}) => _request(method: 'PUT', uri: Uri.parse('$url$path'), body: body);
 
-  static Future<Response> putMultipart(String path, {FormData? data}) {
-    _initialize();
-    return _dioInstance!.put(
-      path,
-      data: data,
-    );
-  }
+  static Future<dynamic> putMultipart(
+    String path, {
+    Map<String, String>? fields,
+    List<http.MultipartFile>? files,
+    Duration? timeout,
+  }) =>
+      _requestMultipart(
+        method: 'PUT',
+        uri: Uri.parse('$url$path'),
+        fields: fields,
+        files: files,
+        timeout: timeout,
+      );
 
-  static Future<Response> delete(String path, {Map<String, dynamic>? body}) {
-    _initialize();
-    return _dioInstance!.delete(
-      path,
-      data: body,
-    );
-  }
+  static Future<dynamic> delete(String path, {Map<String, dynamic>? body}) => _request(method: 'DELETE', uri: Uri.parse('$url$path'), body: body);
 
-  static Future<bool> handleError(Object e) async {
-    if (e is DioException) {
-      if (e.requestOptions.uri.host == 'i.ytimg.com') return false;
-
-      String? message;
-      try {
-        dynamic data = e.response?.data;
-        if (data is Map && data['message'] is String) {
-          message = data['message'];
-          if (message == 'Invalid user role') return false;
-        } else {
-          message = data;
-        }
-      } catch (ex) {
-        message = e.message;
-      }
-
-      if (message == 'Session is expired') {
-        while (NavigationHelper.canGoBack()) {
-          NavigationHelper.back();
-        }
-        NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
-        message = 'Sesi Anda telah berakhir';
-        await showInformationDialog(message);
-        return true;
-      }
-
-      if (message != null) {
-        await showErrorDialog(message);
-        return true;
-      }
-    } else if (e is String && e == 'Session is expired') {
+  static Future<void> handleError(Object e) async {
+    if (e is String && e == 'Session is expired') {
       while (NavigationHelper.canGoBack()) {
         NavigationHelper.back();
       }
       NavigationHelper.toReplacement(MaterialPageRoute(builder: (context) => const WelcomePage()));
-      await showInformationDialog('Sesi Anda telah berakhir');
-      return true;
+      return await showInformationDialog('Sesi Anda telah berakhir');
     }
 
-    await showErrorDialog(e.toString());
-    return true;
+    if (e is Map && e['message'] != null) return showErrorDialog(e['message'].toString());
+
+    if (e is FormatException) return showErrorDialog(e.source);
+
+    return showErrorDialog(e.toString());
   }
 }
