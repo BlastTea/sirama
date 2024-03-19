@@ -15,14 +15,14 @@ class AskTheExpertDataLoaded extends AskTheExpertState {
     required this.tanyaAhlis,
     required this.selectedTopikPertanyaan,
     required this.selectedInputTopikPertanyaan,
-    required this.jadwalAhli,
+    // required this.jadwalAhli,
   });
 
   final TextEditingController textControllerTopic;
   final TextEditingController textControllerQuestion;
 
   final List<TopikPertanyaan> topikPertanyaans;
-  final List<JadwalAhli> jadwalAhli;
+  // final List<JadwalAhli> jadwalAhli;
 
   final List<List<TanyaAhli>> tanyaAhlis;
 
